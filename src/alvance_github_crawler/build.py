@@ -11,6 +11,7 @@ from .models import BuildResult
 
 DOCKERFILE_TEMPLATES = {
     "go": """FROM golang:1.22
+ENV GOPROXY=https://goproxy.cn,direct
 RUN apt-get update && apt-get install -y --no-install-recommends time && rm -rf /var/lib/apt/lists/*
 WORKDIR /repo
 COPY . .
