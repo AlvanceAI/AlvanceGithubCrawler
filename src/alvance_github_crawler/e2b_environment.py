@@ -10,8 +10,8 @@ from typing import Any
 
 from .build import test_command_for
 
-RUNTIME_RECIPE_VERSION = "v1"
-REPOSITORY_RECIPE_VERSION = "v1"
+RUNTIME_RECIPE_VERSION = "v2"
+REPOSITORY_RECIPE_VERSION = "v2"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
@@ -118,8 +118,8 @@ class E2BEnvironmentManager:
         runtime_build_s = 0.0
         if not runtime_cache_hit:
             started = time.monotonic()
-            runtime_builder = Template().from_dockerfile(
-                render_runtime_dockerfile(language, runtime_version)
+            runtime_builder = _runtime_template_builder(
+                Template, language, runtime_version
             )
             try:
                 Template.build(
@@ -333,6 +333,69 @@ def _add_repository_build_steps(builder: Any, language: str, repo_path: Path) ->
         )
     if language == "rust":
         return builder.run_cmd("cargo build --tests")
+    raise ValueError(f"unsupported language: {language}")
+
+
+def _runtime_template_builder(Template: Any, language: str, version: str) -> Any:
+    common_packages = (
+        "apt-get update && apt-get install -y --no-install-recommends "
+        "time git ca-certificates build-essential && rm -rf /var/lib/apt/lists/*"
+    )
+    language = language.lower()
+    if language == "go":
+        return (
+            Template()
+            .from_image("docker.io/library/golang:1.22")
+            .set_envs(
+                {
+                    "PATH": "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                    "GOPROXY": "https://goproxy.cn,direct",
+                    "GOTOOLCHAIN": f"go{version}+auto",
+                }
+            )
+            .run_cmd(common_packages)
+            .run_cmd("/usr/local/go/bin/go version")
+            .set_workdir("/repo")
+        )
+    if language == "python":
+        return (
+            Template()
+            .from_image(f"docker.io/library/python:{version}")
+            .set_envs(
+                {
+                    "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+                }
+            )
+            .run_cmd(common_packages)
+            .run_cmd("/usr/local/bin/python --version && /usr/local/bin/pip --version")
+            .set_workdir("/repo")
+        )
+    if language in {"typescript", "javascript"}:
+        return (
+            Template()
+            .from_image(f"docker.io/library/node:{version}")
+            .set_envs(
+                {
+                    "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+                }
+            )
+            .run_cmd(common_packages)
+            .run_cmd("/usr/local/bin/node --version && /usr/local/bin/npm --version")
+            .set_workdir("/repo")
+        )
+    if language == "rust":
+        return (
+            Template()
+            .from_image(f"docker.io/library/rust:{version}")
+            .set_envs(
+                {
+                    "PATH": "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+                }
+            )
+            .run_cmd(common_packages)
+            .run_cmd("/usr/local/cargo/bin/rustc --version && /usr/local/cargo/bin/cargo --version")
+            .set_workdir("/repo")
+        )
     raise ValueError(f"unsupported language: {language}")
 
 
