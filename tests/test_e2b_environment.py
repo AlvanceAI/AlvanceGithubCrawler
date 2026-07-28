@@ -6,6 +6,7 @@ from types import SimpleNamespace
 from alvance_github_crawler.e2b_environment import (
     E2BOfflineVerifier,
     detect_runtime_version,
+    go_local_dependency_paths,
     hash_dependency_manifests,
     render_runtime_dockerfile,
     repository_template_alias,
@@ -86,6 +87,21 @@ def test_dependency_hash_changes_with_lockfile(tmp_path) -> None:
     (tmp_path / "package-lock.json").write_text("{}", encoding="utf-8")
     second = hash_dependency_manifests("typescript", tmp_path)
     assert first != second
+
+
+def test_go_local_dependency_paths(tmp_path) -> None:
+    (tmp_path / "internal" / "mintcore").mkdir(parents=True)
+    (tmp_path / "tools").mkdir()
+    (tmp_path / "go.mod").write_text(
+        "replace example.com/mintcore => ./internal/mintcore\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "go.work").write_text(
+        "use (\n\t./tools\n\t../outside\n)\n",
+        encoding="utf-8",
+    )
+
+    assert go_local_dependency_paths(tmp_path) == ["internal/mintcore", "tools"]
 
 
 def test_repository_alias_is_bounded() -> None:

@@ -23,7 +23,7 @@ DEFAULT_RUNTIME_VERSIONS = {
 }
 
 DEPENDENCY_FILES = {
-    "go": ("go.mod", "go.sum"),
+    "go": ("go.mod", "go.sum", "go.work", "go.work.sum"),
     "python": (
         "pyproject.toml",
         "poetry.lock",
@@ -330,9 +330,11 @@ def repository_template_alias(full_name: str, commit: str, dependency_hash: str)
 def _add_repository_build_steps(builder: Any, language: str, repo_path: Path) -> Any:
     language = language.lower()
     if language == "go":
-        for name in ("go.mod", "go.sum"):
+        for name in DEPENDENCY_FILES[language]:
             if (repo_path / name).is_file():
                 builder = builder.copy(name, f"/repo/{name}")
+        for relative in go_local_dependency_paths(repo_path):
+            builder = builder.copy(relative, f"/repo/{relative}")
         builder = builder.run_cmd("/usr/local/go/bin/go mod download", user="root")
         builder = builder.copy(".", "/repo")
         return builder.run_cmd("/usr/local/go/bin/go build ./...", user="root")
@@ -435,6 +437,38 @@ def runtime_environment(language: str, version: str) -> dict[str, str]:
             "RUSTUP_HOME": "/usr/local/rustup",
         }
     raise ValueError(f"unsupported language: {language}")
+
+
+def go_local_dependency_paths(repo_path: Path) -> list[str]:
+    """Return repository-local modules needed before `go mod download`."""
+    raw_paths = re.findall(
+        r"=>\s*(\.{1,2}/[^\s]+)",
+        _read(repo_path / "go.mod"),
+    )
+
+    in_use_block = False
+    for raw_line in _read(repo_path / "go.work").splitlines():
+        line = raw_line.split("//", 1)[0].strip()
+        if line == "use (":
+            in_use_block = True
+            continue
+        if in_use_block and line == ")":
+            in_use_block = False
+            continue
+        if line.startswith("use "):
+            raw_paths.append(line.removeprefix("use ").strip())
+        elif in_use_block:
+            raw_paths.append(line)
+
+    paths: set[str] = set()
+    for raw_path in raw_paths:
+        relative = Path(raw_path.removeprefix("./"))
+        if not relative.parts or ".." in relative.parts:
+            continue
+        candidate = repo_path / relative
+        if candidate.exists():
+            paths.add(relative.as_posix())
+    return sorted(paths)
 
 
 def command_with_environment(command: str, envs: dict[str, str] | None) -> str:
