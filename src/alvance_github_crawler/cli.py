@@ -8,6 +8,7 @@ import shutil
 import sys
 
 from .config import PipelineConfig
+from .harbor_packaging import HarborPackager
 from .pipeline import Pipeline
 
 
@@ -30,6 +31,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="retry repositories with previous terminal rejection records",
     )
     parser.add_argument("--doctor", action="store_true", help="check local tools and credentials")
+    parser.add_argument(
+        "--package-existing",
+        action="store_true",
+        help="create Harbor/E2B packages for existing qualified candidates",
+    )
     parser.add_argument("--verbose", action="store_true")
     return parser
 
@@ -46,6 +52,7 @@ def doctor(config: PipelineConfig) -> dict[str, object]:
         "openai_sdk": importlib.util.find_spec("openai") is not None,
         "e2b_sdk": importlib.util.find_spec("e2b") is not None,
         "output_dir": str(config.output_dir),
+        "catalog_dir": str(config.catalog_dir),
     }
 
 
@@ -63,6 +70,16 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.doctor:
         print(json.dumps(doctor(config), ensure_ascii=False, indent=2))
+        return 0
+
+    if args.package_existing:
+        if not config.e2b_api_key:
+            print("missing required environment variable: E2B_API_KEY", file=sys.stderr)
+            return 2
+        stats = HarborPackager(config.e2b_api_key, config.catalog_dir).package_existing(
+            config.candidates_path
+        )
+        print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
 
     try:

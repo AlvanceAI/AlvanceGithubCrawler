@@ -17,6 +17,7 @@ from .e2b_environment import (
 )
 from .filters import HardFilter
 from .github import GitHubClient
+from .harbor_packaging import HarborPackager
 from .registry import JsonlRegistry
 from .scoring import LanguageQuota, SoftScorer
 from .workspace import cloned_repository, tree_summary
@@ -70,6 +71,11 @@ class Pipeline:
                 runs=config.benchmark_runs,
                 command_timeout_s=config.benchmark_timeout_s,
             )
+        )
+        self.harbor_packager = (
+            None
+            if skip_e2b
+            else HarborPackager(config.e2b_api_key, config.catalog_dir)
         )
 
     def run(
@@ -270,6 +276,7 @@ class Pipeline:
                     "test_cmd": environment.test_cmd,
                     "log_tail": "",
                 }
+                stage = "stage6_harbor_package"
                 self._register(
                     repo,
                     score=score.to_dict(),
@@ -307,6 +314,12 @@ class Pipeline:
         status: str,
     ) -> None:
         language = (repo.get("language") or "").lower()
+        environment_record = dict(environment) if environment else None
+        if environment_record and environment_record.get("offline"):
+            offline_record = dict(environment_record["offline"])
+            offline_record.pop("stdout_tail", None)
+            offline_record.pop("stderr_tail", None)
+            environment_record["offline"] = offline_record
         record = {
             "repo": repo["full_name"],
             "base_commit": repo["base_commit"],
@@ -320,7 +333,7 @@ class Pipeline:
             "local_image": build["image"],
             "local_image_retained": False,
             "e2b_template": template_id,
-            "e2b_environment": environment,
+            "e2b_environment": environment_record,
             "benchmark": benchmark,
             "direction_source": direction["source"],
             "direction": direction["direction"],
@@ -329,5 +342,7 @@ class Pipeline:
             "h6_sources": direction.get("h6_sources", []),
             "status": status,
         }
+        if self.harbor_packager is not None:
+            record["harbor_package"] = self.harbor_packager.package(record).to_dict()
         self.registry.register(record)
         self.quota.register(language)

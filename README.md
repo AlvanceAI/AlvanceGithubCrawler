@@ -8,7 +8,8 @@
 4. OpenAI 结构化输出分析 feature issue，并通过 GitHub Code Search 与 grep.app 执行 H6 核查；
 5. 在 e2b 持久化 Runtime Template 与 Repository Template；
 6. 从同一个 Repository Template 启动断网 Sandbox 做 H5 检验和三次执行基准；
-7. 写入 `output/candidates.jsonl`，所有排除原因写入 `output/rejections.jsonl`。
+7. 将爬取状态写入本地忽略的 `.crawler-state/`；
+8. 为通过项目生成 `catalog/` 下的轻量 Harbor task envelope，并在 e2b 持久化 Harbor-compatible wrapper template。
 
 ## 安装
 
@@ -62,7 +63,27 @@ alvance-github-crawler \
 
 构建器升级后需要精确重跑历史淘汰项时，可添加 `--retry-rejected`。Docker 基础版本会优先从仓库的 `go.mod`、`pyproject.toml`、`package.json engines` 或 `rust-toolchain` 推导。
 
-输出文件是追加写入的。再次执行时，已经进入 `candidates.jsonl` 的仓库会跳过；语言配额也会从这个文件恢复。失败记录不会永久去重，因此临时 API 或构建错误修复后可以重试。
+爬取状态文件是追加写入的。再次执行时，已经进入 `.crawler-state/candidates.jsonl` 的仓库会跳过；语言配额也会从这个文件恢复。失败记录不会永久去重，因此临时 API 或构建错误修复后可以重试。
+
+通过项目会自动生成轻量 Harbor 封装：本地和 GitHub 只保存 TOML、JSON、Dockerfile 指纹以及测试入口，不保存仓库源码、依赖、编译缓存或镜像。完整环境仅存在 e2b。已有候选可迁移：
+
+```bash
+PIPELINE_OUTPUT_DIR=output alvance-github-crawler --package-existing
+```
+
+迁移后可从项目根目录直接复用远端模板：
+
+```bash
+export E2B_API_KEY="${E2B_API_KEY:-$E2B_KEY}"
+harbor run \
+  --path catalog/harbor/<task-name> \
+  --env e2b \
+  --no-force-build \
+  --agent nop \
+  --disable-verification
+```
+
+不要对这种封装使用 `harbor tasks start-env`，因为当前 Harbor 版本的该命令固定强制重建；`harbor run` 默认会命中已经准备好的 e2b alias。
 
 ## 关键实现约定
 
@@ -70,6 +91,7 @@ alvance-github-crawler \
 - Stage 1 的测试设施检测不只看文件名：Go 还要求 `_test.go`，Node 检查 jest/vitest，Python 检查 pytest 配置，Rust 检查 `[dev-dependencies]`。
 - Stage 4 与方案伪代码一致：依赖在镜像构建期联网获取，随后在完全断网的容器中跑测试，用于排除运行期联网依赖。
 - 默认路径不在本机保存仓库镜像：Runtime Template 按语言/版本持久化在 e2b，Repository Template 按仓库/commit/依赖哈希持久化在 e2b；相同 alias 会直接复用，不重新安装或编译。
+- 每个通过仓库还会派生一个只做运行时命令适配的 Harbor wrapper Template。wrapper 构建一次后持久化在 e2b；本地 `catalog/` 只保留通常不足 10 KB 的启动封装。
 - Stage 4 和 Stage 5 复用同一个 e2b Repository Template，二者均设置 `allow_internet_access=False`。本地 Docker 只在 `--skip-e2b` 时启用。
 - E2B Runtime/Repository Template 的首次构建不设淘汰超时，只记录构建耗时；600 秒限制仅用于断网测试命令。本地 Docker fallback 仍保留自身构建超时。
 - Node 的默认测试命令使用 `CI=1 npm test`，同时兼容 jest 和 vitest。

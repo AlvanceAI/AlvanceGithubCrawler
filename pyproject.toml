@@ -12,6 +12,7 @@ dependencies = [
   "openai>=1.99.0,<3",
   "pydantic>=2.8,<3",
   "requests>=2.31,<3",
+  "dirhash>=0.5,<1",
 ]
 
 [project.optional-dependencies]
@@ -34,4 +35,3 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
-

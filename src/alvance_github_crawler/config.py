@@ -31,7 +31,8 @@ class PipelineConfig:
     openai_base_url: str = ""
     e2b_api_key: str = ""
     openai_model: str = "gpt-5-mini"
-    output_dir: Path = Path("output")
+    output_dir: Path = Path(".crawler-state")
+    catalog_dir: Path = Path("catalog")
     min_soft_score: float = 7.0
     max_candidates_per_query: int = 100
     search_pages: int = 1
@@ -63,7 +64,8 @@ class PipelineConfig:
             openai_model=os.getenv("OPENAI_MODEL", "")
             or os.getenv("MODEL_NAME", "")
             or "gpt-5-mini",
-            output_dir=Path(os.getenv("PIPELINE_OUTPUT_DIR", "output")),
+            output_dir=Path(os.getenv("PIPELINE_OUTPUT_DIR", ".crawler-state")),
+            catalog_dir=Path(os.getenv("PIPELINE_CATALOG_DIR", "catalog")),
             feature_issue_limit=int(os.getenv("PIPELINE_FEATURE_ISSUE_LIMIT", "10")),
             openai_timeout_s=int(os.getenv("PIPELINE_OPENAI_TIMEOUT_S", "120")),
             openai_max_output_tokens=int(
