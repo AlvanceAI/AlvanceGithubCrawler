@@ -99,6 +99,10 @@ class PipelineConfig:
     def rejections_path(self) -> Path:
         return self.output_dir / "rejections.jsonl"
 
+    @property
+    def pending_path(self) -> Path:
+        return self.output_dir / "pending.jsonl"
+
 
 def discover_github_token() -> str:
     """Reuse an existing GitHub CLI login without printing the credential."""

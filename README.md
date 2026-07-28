@@ -71,6 +71,15 @@ alvance-github-crawler \
 alvance-github-crawler --package-existing
 ```
 
+大量发现时可先把通过前三阶段的候选写入本地忽略的轻量队列，避免一个耗时较长的
+E2B 首次构建阻塞后续仓库发现；消费队列时仍会重新下载精确 commit 到临时目录，
+并在单项结束后删除：
+
+```bash
+alvance-github-crawler --defer-e2b --max-repos 100
+alvance-github-crawler --verify-pending --max-repos 10
+```
+
 迁移后可从项目根目录直接复用远端模板：
 
 ```bash

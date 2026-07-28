@@ -11,6 +11,7 @@ from .config import PipelineConfig
 from .github import GitHubClient
 from .harbor_packaging import HarborPackager
 from .logging_setup import configure_logging
+from .pending_verification import PendingVerificationRunner
 from .pipeline import Pipeline
 
 
@@ -43,6 +44,17 @@ def build_parser() -> argparse.ArgumentParser:
         "--package-existing",
         action="store_true",
         help="create Harbor/E2B packages for existing qualified candidates",
+    )
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument(
+        "--defer-e2b",
+        action="store_true",
+        help="queue pre-screened candidates without blocking on E2B builds",
+    )
+    modes.add_argument(
+        "--verify-pending",
+        action="store_true",
+        help="consume queued candidates through E2B, benchmark, and Harbor packaging",
     )
     parser.add_argument("--verbose", action="store_true")
     return parser
@@ -89,8 +101,18 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
 
+    if args.verify_pending:
+        try:
+            config.validate(require_e2b=True)
+        except ValueError as exc:
+            print(str(exc), file=sys.stderr)
+            return 2
+        stats = PendingVerificationRunner.from_config(config).run(max_items=args.max_repos)
+        print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0
+
     try:
-        config.validate(require_e2b=not args.skip_e2b)
+        config.validate(require_e2b=not (args.skip_e2b or args.defer_e2b))
     except ValueError as exc:
         print(str(exc), file=sys.stderr)
         return 2
@@ -98,6 +120,7 @@ def main(argv: list[str] | None = None) -> int:
     pipeline = Pipeline(
         config,
         skip_e2b=args.skip_e2b,
+        defer_e2b=args.defer_e2b,
         retry_rejected=args.retry_rejected,
     )
     stats = pipeline.run(queries=args.query, max_repos=args.max_repos)

@@ -5,21 +5,15 @@ from collections import Counter
 from collections.abc import Iterable
 from typing import Any
 
-from .benchmark import E2BBenchmark, subset_test_command
 from .build import DockerBuildVerifier
 from .candidate_registration import CandidateRegistrar
+from .candidate_verification import E2BCandidateVerifier
 from .config import PipelineConfig
 from .direction import DirectionChecker, OpenAIDirectionJudge, PublicImplementationSearch
-from .e2b_environment import (
-    E2BEnvironmentManager,
-    E2BOfflineVerifier,
-    RepositoryTemplateBuildError,
-    RuntimeTemplateBuildError,
-    runtime_environment,
-)
 from .filters import HardFilter
 from .github import GitHubClient
 from .harbor_packaging import HarborPackager
+from .pending_queue import PendingQueue, build_pending_candidate
 from .registry import JsonlRegistry
 from .scoring import LanguageQuota, SoftScorer
 from .workspace import cloned_repository, tree_summary
@@ -33,10 +27,12 @@ class Pipeline:
         config: PipelineConfig,
         *,
         skip_e2b: bool = False,
+        defer_e2b: bool = False,
         retry_rejected: bool = False,
     ) -> None:
         self.config = config
         self.skip_e2b = skip_e2b
+        self.defer_e2b = defer_e2b
         self.retry_rejected = retry_rejected
         self.github = GitHubClient(config.github_token)
         self.registry = JsonlRegistry(config.candidates_path, config.rejections_path)
@@ -57,28 +53,26 @@ class Pipeline:
             issue_limit=config.feature_issue_limit,
         )
         self.build_verifier = DockerBuildVerifier(timeout_s=config.build_timeout_s)
-        self.e2b_environment = None if skip_e2b else E2BEnvironmentManager(config.e2b_api_key)
-        self.e2b_offline = (
-            None
-            if skip_e2b
-            else E2BOfflineVerifier(config.e2b_api_key, timeout_s=config.build_timeout_s)
-        )
-        self.benchmark = (
-            None
-            if skip_e2b
-            else E2BBenchmark(
-                config.e2b_api_key,
-                runs=config.benchmark_runs,
-                command_timeout_s=config.benchmark_timeout_s,
-            )
-        )
+        self.pending = PendingQueue(config.pending_path)
+        for pending in self.pending.pending():
+            repo = pending.candidate.get("repo") or {}
+            language = str(repo.get("language") or "").lower()
+            if language:
+                self.quota.register(language)
         self.harbor_packager = (
-            None if skip_e2b else HarborPackager(config.e2b_api_key, config.catalog_dir)
+            None
+            if skip_e2b or defer_e2b
+            else HarborPackager(config.e2b_api_key, config.catalog_dir)
         )
         self.registrar = CandidateRegistrar(
             self.registry,
             self.quota,
             self.harbor_packager,
+        )
+        self.e2b_verifier = (
+            None
+            if skip_e2b or defer_e2b
+            else E2BCandidateVerifier(config, self.registry, self.registrar)
         )
 
     def run(
@@ -89,6 +83,7 @@ class Pipeline:
     ) -> dict[str, int]:
         stats: Counter[str] = Counter()
         seen = self.registry.existing_repos()
+        seen |= self.pending.known_repos()
         if not self.retry_rejected:
             seen |= self.registry.terminal_rejections()
         reached_limit = False
@@ -189,109 +184,24 @@ class Pipeline:
                     finally:
                         self.build_verifier.remove_image(build.image)
 
-                assert self.e2b_environment is not None
-                assert self.e2b_offline is not None
-                assert self.benchmark is not None
-                stage = "stage3_5_e2b_environment"
-                try:
-                    environment = self.e2b_environment.ensure(repo, repo_path, base_commit)
-                except RuntimeTemplateBuildError as exc:
-                    self.registry.reject(repo, stage, "infra_error", error=str(exc)[:2_000])
-                    return "error"
-                except RepositoryTemplateBuildError as exc:
-                    self.registry.reject(repo, stage, "build_fail", error=str(exc)[:2_000])
-                    return "rejected"
-
-                runtime_env = runtime_environment(
-                    (repo.get("language") or "").lower(),
-                    environment.runtime_version,
-                )
-                stage = "stage4_e2b_offline_test"
-                offline = self.e2b_offline.verify(
-                    environment.repository_template,
-                    environment.test_cmd,
-                    envs=runtime_env,
-                )
-                if not offline.ok:
-                    self.registry.reject(
+                if self.defer_e2b:
+                    candidate = build_pending_candidate(
                         repo,
-                        stage,
-                        offline.reason,
-                        offline=offline.to_dict(),
-                        environment=environment.to_dict(),
+                        score.to_dict(),
+                        direction.to_dict(),
                     )
-                    return "rejected"
+                    if not self.pending.enqueue(candidate):
+                        return "duplicate"
+                    self.quota.register(str(repo.get("language") or ""))
+                    return "queued"
 
-                stage = "stage5_e2b_benchmark"
-                benchmark = self.benchmark.run(
-                    environment.repository_template,
-                    environment.test_cmd,
-                    envs=runtime_env,
-                )
-                if not benchmark.resource_pass:
-                    subset_cmd = subset_test_command(
-                        repo_path,
-                        (repo.get("language") or "").lower(),
-                        direction.target_paths,
-                    )
-                    if subset_cmd and subset_cmd != environment.test_cmd:
-                        benchmark = self.benchmark.run(
-                            environment.repository_template,
-                            subset_cmd,
-                            envs=runtime_env,
-                        )
-
-                adjusted_score = score.total
-                status = "ready_for_phase1"
-                if benchmark.flaky:
-                    adjusted_score -= 2
-                    status = "ready_for_phase1_flaky_test_suite"
-                if not benchmark.resource_pass:
-                    self.registry.reject(
-                        repo,
-                        stage,
-                        "benchmark_resource_fail",
-                        benchmark=benchmark.to_dict(),
-                    )
-                    return "rejected"
-                if not benchmark.all_passed and not benchmark.flaky:
-                    self.registry.reject(
-                        repo,
-                        stage,
-                        "benchmark_test_fail",
-                        benchmark=benchmark.to_dict(),
-                    )
-                    return "rejected"
-                if adjusted_score < self.config.min_soft_score:
-                    self.registry.reject(
-                        repo,
-                        stage,
-                        f"flaky_adjusted_score={adjusted_score}",
-                        benchmark=benchmark.to_dict(),
-                    )
-                    return "rejected"
-
-                build_record = {
-                    "ok": True,
-                    "reason": "ok",
-                    "image": "",
-                    "dockerfile": "",
-                    "test_cmd": environment.test_cmd,
-                    "log_tail": "",
-                }
-                stage = "stage6_harbor_package"
-                self.registrar.register(
+                assert self.e2b_verifier is not None
+                return self.e2b_verifier.verify(
                     repo,
+                    repo_path,
                     score=score.to_dict(),
                     direction=direction.to_dict(),
-                    build=build_record,
-                    environment={**environment.to_dict(), "offline": offline.to_dict()},
-                    template_id=environment.repository_template,
-                    benchmark=benchmark.to_dict(),
-                    adjusted_score=adjusted_score,
-                    status=status,
                 )
-                return "registered"
         except Exception as exc:
             LOGGER.exception("%s failed during %s", repo.get("full_name"), stage)
             self.registry.reject(
