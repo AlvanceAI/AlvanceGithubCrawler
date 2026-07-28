@@ -143,7 +143,7 @@ class DockerBuildVerifier:
 
         try:
             offline_test = subprocess.run(
-                ["docker", "run", "--rm", "--network=none", tag, "sh", "-lc", test_cmd],
+                ["docker", "run", "--rm", "--network=none", tag, "sh", "-c", test_cmd],
                 text=True,
                 capture_output=True,
                 timeout=self.timeout_s,

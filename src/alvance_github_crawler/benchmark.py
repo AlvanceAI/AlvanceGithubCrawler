@@ -100,7 +100,7 @@ class E2BBenchmark:
 
         runs: list[BenchmarkRun] = []
         timed_command = (
-            f"/usr/bin/time -v -o /tmp/time.log sh -lc {shlex.quote(test_cmd)}"
+            f"/usr/bin/time -v -o /tmp/time.log sh -c {shlex.quote(test_cmd)}"
         )
         for _ in range(self.runs):
             started = time.monotonic()
