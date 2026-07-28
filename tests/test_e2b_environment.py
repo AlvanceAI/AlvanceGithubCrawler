@@ -19,7 +19,7 @@ def test_go_runtime_and_template_recipe(tmp_path) -> None:
     assert "GOTOOLCHAIN=go1.26.5+auto" in dockerfile
     assert "PATH=/usr/local/go/bin" in dockerfile
     assert runtime_template_alias("go", version) == (
-        "alvance-runtime-go-1-26-5-amd64-v2"
+        "alvance-runtime-go-1-26-5-amd64-v3"
     )
 
 

@@ -10,8 +10,8 @@ from typing import Any
 
 from .build import test_command_for
 
-RUNTIME_RECIPE_VERSION = "v2"
-REPOSITORY_RECIPE_VERSION = "v2"
+RUNTIME_RECIPE_VERSION = "v3"
+REPOSITORY_RECIPE_VERSION = "v3"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
@@ -315,24 +315,25 @@ def _add_repository_build_steps(builder: Any, language: str, repo_path: Path) ->
         for name in ("go.mod", "go.sum"):
             if (repo_path / name).is_file():
                 builder = builder.copy(name, f"/repo/{name}")
-        builder = builder.run_cmd("go mod download")
+        builder = builder.run_cmd("go mod download", user="root")
         builder = builder.copy(".", "/repo")
-        return builder.run_cmd("go build ./...")
+        return builder.run_cmd("go build ./...", user="root")
 
     if language in {"typescript", "javascript"}:
         for name in ("package.json", "package-lock.json", "pnpm-lock.yaml", "yarn.lock"):
             if (repo_path / name).is_file():
                 builder = builder.copy(name, f"/repo/{name}")
-        builder = builder.run_cmd("npm ci")
+        builder = builder.run_cmd("npm ci", user="root")
         return builder.copy(".", "/repo")
 
     builder = builder.copy(".", "/repo")
     if language == "python":
         return builder.run_cmd(
-            "pip install --no-cache-dir -e '.[test,dev]' || pip install --no-cache-dir -e ."
+            "pip install --no-cache-dir -e '.[test,dev]' || pip install --no-cache-dir -e .",
+            user="root",
         )
     if language == "rust":
-        return builder.run_cmd("cargo build --tests")
+        return builder.run_cmd("cargo build --tests", user="root")
     raise ValueError(f"unsupported language: {language}")
 
 
@@ -353,8 +354,8 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
                     "GOTOOLCHAIN": f"go{version}+auto",
                 }
             )
-            .run_cmd(common_packages)
-            .run_cmd("/usr/local/go/bin/go version")
+            .run_cmd(common_packages, user="root")
+            .run_cmd("/usr/local/go/bin/go version", user="root")
             .set_workdir("/repo")
         )
     if language == "python":
@@ -366,8 +367,11 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
                     "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
                 }
             )
-            .run_cmd(common_packages)
-            .run_cmd("/usr/local/bin/python --version && /usr/local/bin/pip --version")
+            .run_cmd(common_packages, user="root")
+            .run_cmd(
+                "/usr/local/bin/python --version && /usr/local/bin/pip --version",
+                user="root",
+            )
             .set_workdir("/repo")
         )
     if language in {"typescript", "javascript"}:
@@ -379,8 +383,11 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
                     "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
                 }
             )
-            .run_cmd(common_packages)
-            .run_cmd("/usr/local/bin/node --version && /usr/local/bin/npm --version")
+            .run_cmd(common_packages, user="root")
+            .run_cmd(
+                "/usr/local/bin/node --version && /usr/local/bin/npm --version",
+                user="root",
+            )
             .set_workdir("/repo")
         )
     if language == "rust":
@@ -392,8 +399,11 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
                     "PATH": "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
                 }
             )
-            .run_cmd(common_packages)
-            .run_cmd("/usr/local/cargo/bin/rustc --version && /usr/local/cargo/bin/cargo --version")
+            .run_cmd(common_packages, user="root")
+            .run_cmd(
+                "/usr/local/cargo/bin/rustc --version && /usr/local/cargo/bin/cargo --version",
+                user="root",
+            )
             .set_workdir("/repo")
         )
     raise ValueError(f"unsupported language: {language}")
