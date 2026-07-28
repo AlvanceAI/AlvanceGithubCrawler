@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
-import logging
 import shutil
 import sys
 
@@ -11,6 +10,7 @@ from .catalog_migration import package_existing_candidates
 from .config import PipelineConfig
 from .github import GitHubClient
 from .harbor_packaging import HarborPackager
+from .logging_setup import configure_logging
 from .pipeline import Pipeline
 
 
@@ -66,10 +66,7 @@ def doctor(config: PipelineConfig) -> dict[str, object]:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-    )
+    configure_logging(verbose=args.verbose)
     config = PipelineConfig.from_env()
     if args.search_pages is not None:
         if args.search_pages < 1:
