@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from alvance_github_crawler.benchmark import parse_max_rss, subset_test_command, summarize_runs
+from alvance_github_crawler.build import dockerfile_for
 from alvance_github_crawler.build import test_command_for as resolve_test_command
 from alvance_github_crawler.models import BenchmarkRun
 
@@ -42,3 +43,8 @@ def test_node_test_command_without_npm_test_script(tmp_path) -> None:
         '{"devDependencies":{"vitest":"2.0.0"}}', encoding="utf-8"
     )
     assert resolve_test_command("typescript", tmp_path) == "npx vitest run"
+
+
+def test_dockerfile_uses_repository_runtime_version(tmp_path) -> None:
+    (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.26.5\n", encoding="utf-8")
+    assert dockerfile_for("go", tmp_path).startswith("FROM golang:1.26.5\n")

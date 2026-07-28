@@ -24,6 +24,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="stop after Docker offline verification and register status=offline_verified",
     )
+    parser.add_argument(
+        "--retry-rejected",
+        action="store_true",
+        help="retry repositories with previous terminal rejection records",
+    )
     parser.add_argument("--doctor", action="store_true", help="check local tools and credentials")
     parser.add_argument("--verbose", action="store_true")
     return parser
@@ -66,7 +71,11 @@ def main(argv: list[str] | None = None) -> int:
         print(str(exc), file=sys.stderr)
         return 2
 
-    pipeline = Pipeline(config, skip_e2b=args.skip_e2b)
+    pipeline = Pipeline(
+        config,
+        skip_e2b=args.skip_e2b,
+        retry_rejected=args.retry_rejected,
+    )
     stats = pipeline.run(queries=args.query, max_repos=args.max_repos)
     print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
     return 0

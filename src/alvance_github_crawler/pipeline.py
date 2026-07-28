@@ -20,9 +20,16 @@ LOGGER = logging.getLogger(__name__)
 
 
 class Pipeline:
-    def __init__(self, config: PipelineConfig, *, skip_e2b: bool = False) -> None:
+    def __init__(
+        self,
+        config: PipelineConfig,
+        *,
+        skip_e2b: bool = False,
+        retry_rejected: bool = False,
+    ) -> None:
         self.config = config
         self.skip_e2b = skip_e2b
+        self.retry_rejected = retry_rejected
         self.github = GitHubClient(config.github_token)
         self.registry = JsonlRegistry(config.candidates_path, config.rejections_path)
         self.quota = LanguageQuota(config.candidates_path)
@@ -62,7 +69,9 @@ class Pipeline:
         max_repos: int | None = None,
     ) -> dict[str, int]:
         stats: Counter[str] = Counter()
-        seen = self.registry.existing_repos() | self.registry.terminal_rejections()
+        seen = self.registry.existing_repos()
+        if not self.retry_rejected:
+            seen |= self.registry.terminal_rejections()
         reached_limit = False
         for query in queries or self.config.queries:
             if reached_limit:

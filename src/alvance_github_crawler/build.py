@@ -51,11 +51,17 @@ TEST_COMMANDS = {
 }
 
 
-def dockerfile_for(language: str) -> str:
+def dockerfile_for(language: str, repo_path: Path | None = None) -> str:
+    language = language.lower()
     try:
-        return DOCKERFILE_TEMPLATES[language.lower()]
+        dockerfile = DOCKERFILE_TEMPLATES[language]
     except KeyError as exc:
         raise ValueError(f"unsupported language: {language}") from exc
+    if repo_path is None:
+        return dockerfile
+    base_image = _detect_base_image(language, repo_path)
+    first_line, rest = dockerfile.split("\n", 1)
+    return f"FROM {base_image}\n{rest}" if first_line.startswith("FROM ") else dockerfile
 
 
 def test_command_for(language: str, repo_path: Path | None = None) -> str:
@@ -97,7 +103,7 @@ class DockerBuildVerifier:
         self, repo: dict[str, Any], base_commit: str, repo_path: Path
     ) -> BuildResult:
         language = (repo.get("language") or "").lower()
-        dockerfile = dockerfile_for(language)
+        dockerfile = dockerfile_for(language, repo_path)
         test_cmd = test_command_for(language, repo_path)
         tag = image_tag(repo, base_commit)
 
@@ -187,3 +193,41 @@ def _timeout_tail(exc: subprocess.TimeoutExpired) -> str:
     stdout = exc.stdout.decode(errors="replace") if isinstance(exc.stdout, bytes) else exc.stdout
     stderr = exc.stderr.decode(errors="replace") if isinstance(exc.stderr, bytes) else exc.stderr
     return _tail(stdout, stderr)
+
+
+def _detect_base_image(language: str, repo_path: Path) -> str:
+    if language == "go":
+        content = _read(repo_path / "go.mod")
+        match = re.search(r"^go\s+(\d+\.\d+(?:\.\d+)?)\s*$", content, re.MULTILINE)
+        return f"golang:{match.group(1)}" if match else "golang:1.22"
+
+    if language == "python":
+        content = _read(repo_path / "pyproject.toml")
+        match = re.search(r"requires-python\s*=\s*['\"][^'\"]*?(\d+\.\d+)", content)
+        return f"python:{match.group(1)}" if match else "python:3.11"
+
+    if language in {"typescript", "javascript"}:
+        try:
+            package = json.loads(_read(repo_path / "package.json") or "{}")
+        except json.JSONDecodeError:
+            package = {}
+        engine = str((package.get("engines") or {}).get("node", ""))
+        majors = [int(value) for value in re.findall(r"(?<!\d)(\d{2})(?:\.\d+)?", engine)]
+        major = max(20, min(majors)) if majors else 20
+        return f"node:{major}"
+
+    if language == "rust":
+        content = _read(repo_path / "rust-toolchain.toml") or _read(
+            repo_path / "rust-toolchain"
+        )
+        match = re.search(r"(?:channel\s*=\s*)?['\"]?(\d+\.\d+(?:\.\d+)?)", content)
+        return f"rust:{match.group(1)}" if match else "rust:1.77"
+
+    raise ValueError(f"unsupported language: {language}")
+
+
+def _read(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return ""

@@ -60,6 +60,8 @@ alvance-github-crawler \
   --max-repos 20
 ```
 
+构建器升级后需要精确重跑历史淘汰项时，可添加 `--retry-rejected`。Docker 基础版本会优先从仓库的 `go.mod`、`pyproject.toml`、`package.json engines` 或 `rust-toolchain` 推导。
+
 输出文件是追加写入的。再次执行时，已经进入 `candidates.jsonl` 的仓库会跳过；语言配额也会从这个文件恢复。失败记录不会永久去重，因此临时 API 或构建错误修复后可以重试。
 
 ## 关键实现约定
