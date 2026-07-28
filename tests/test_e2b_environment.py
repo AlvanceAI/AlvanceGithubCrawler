@@ -24,6 +24,10 @@ class _CommandFailure(Exception):
         self.stderr = "test failure"
 
 
+class TimeoutException(Exception):
+    pass
+
+
 def test_offline_verifier_passes_envs_and_records_command_failure(monkeypatch) -> None:
     created: dict[str, object] = {}
 
@@ -67,6 +71,37 @@ def test_offline_verifier_passes_envs_and_records_command_failure(monkeypatch) -
     assert result.reason == "offline_test_fail"
     assert result.exit_code == 2
     assert result.stderr_tail == "test failure"
+
+
+def test_offline_verifier_records_timeout(monkeypatch) -> None:
+    class Commands:
+        def run(self, command: str, *, user: str, timeout: int):
+            raise TimeoutException("request timed out")
+
+    class Sandbox:
+        commands = Commands()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return None
+
+        @classmethod
+        def create(cls, **kwargs):
+            return cls()
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Sandbox=Sandbox))
+    result = E2BOfflineVerifier("test-key").verify(
+        "repo-template",
+        "go test ./...",
+        envs={"PATH": "/usr/local/go/bin:/usr/bin"},
+    )
+
+    assert not result.ok
+    assert result.reason == "offline_test_timeout"
+    assert result.exit_code == -1
+    assert result.stderr_tail == "request timed out"
 
 
 def test_go_runtime_and_template_recipe(tmp_path) -> None:

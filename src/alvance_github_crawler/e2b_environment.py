@@ -215,9 +215,18 @@ class E2BOfflineVerifier:
                     timeout=self.timeout_s,
                 )
             except Exception as exc:
-                if not hasattr(exc, "exit_code"):
+                if hasattr(exc, "exit_code"):
+                    result = exc
+                elif type(exc).__name__ == "TimeoutException":
+                    return OfflineTestResult(
+                        ok=False,
+                        reason="offline_test_timeout",
+                        duration_s=round(time.monotonic() - started, 2),
+                        exit_code=-1,
+                        stderr_tail=str(exc)[-4_000:],
+                    )
+                else:
                     raise
-                result = exc
         duration = time.monotonic() - started
         return OfflineTestResult(
             ok=result.exit_code == 0,
