@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import shlex
 import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -183,7 +184,13 @@ class E2BOfflineVerifier:
         self.api_key = api_key
         self.timeout_s = timeout_s
 
-    def verify(self, template: str, test_cmd: str) -> OfflineTestResult:
+    def verify(
+        self,
+        template: str,
+        test_cmd: str,
+        *,
+        envs: dict[str, str] | None = None,
+    ) -> OfflineTestResult:
         try:
             from e2b import Sandbox
         except ImportError as exc:
@@ -194,17 +201,27 @@ class E2BOfflineVerifier:
             template=template,
             allow_internet_access=False,
             timeout=self.timeout_s + 60,
+            envs=envs,
             api_key=self.api_key,
         ) as sandbox:
-            result = sandbox.commands.run(test_cmd, timeout=self.timeout_s)
+            try:
+                result = sandbox.commands.run(
+                    command_with_environment(test_cmd, envs),
+                    user="root",
+                    timeout=self.timeout_s,
+                )
+            except Exception as exc:
+                if not hasattr(exc, "exit_code"):
+                    raise
+                result = exc
         duration = time.monotonic() - started
         return OfflineTestResult(
             ok=result.exit_code == 0,
             reason="ok" if result.exit_code == 0 else "offline_test_fail",
             duration_s=round(duration, 2),
             exit_code=result.exit_code,
-            stdout_tail=(result.stdout or "")[-4_000:],
-            stderr_tail=(result.stderr or "")[-4_000:],
+            stdout_tail=(getattr(result, "stdout", "") or "")[-4_000:],
+            stderr_tail=(getattr(result, "stderr", "") or "")[-4_000:],
         )
 
 
@@ -398,18 +415,36 @@ def runtime_environment(language: str, version: str) -> dict[str, str]:
     if language == "go":
         return {
             "PATH": "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "HOME": "/root",
+            "GOPATH": "/go",
+            "GOMODCACHE": "/go/pkg/mod",
+            "GOCACHE": "/root/.cache/go-build",
             "GOPROXY": "https://goproxy.cn,direct",
             "GOTOOLCHAIN": f"go{version}+auto",
         }
     if language in {"python", "typescript", "javascript"}:
         return {
-            "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+            "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "HOME": "/root",
         }
     if language == "rust":
         return {
-            "PATH": "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            "PATH": "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "HOME": "/root",
+            "CARGO_HOME": "/usr/local/cargo",
+            "RUSTUP_HOME": "/usr/local/rustup",
         }
     raise ValueError(f"unsupported language: {language}")
+
+
+def command_with_environment(command: str, envs: dict[str, str] | None) -> str:
+    """Inject envs in the shell command because e2b normalizes PATH at startup."""
+    if not envs:
+        return command
+    assignments = " ".join(
+        f"{key}={shlex.quote(value)}" for key, value in sorted(envs.items())
+    )
+    return f"env {assignments} sh -c {shlex.quote(command)}"
 
 
 def _read(path: Path) -> str:

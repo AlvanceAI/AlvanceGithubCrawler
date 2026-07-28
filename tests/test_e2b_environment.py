@@ -1,12 +1,69 @@
 from __future__ import annotations
 
+import sys
+from types import SimpleNamespace
+
 from alvance_github_crawler.e2b_environment import (
+    E2BOfflineVerifier,
     detect_runtime_version,
     hash_dependency_manifests,
     render_runtime_dockerfile,
     repository_template_alias,
     runtime_template_alias,
 )
+
+
+class _CommandFailure(Exception):
+    def __init__(self) -> None:
+        super().__init__("tests failed")
+        self.exit_code = 2
+        self.stdout = "test output"
+        self.stderr = "test failure"
+
+
+def test_offline_verifier_passes_envs_and_records_command_failure(monkeypatch) -> None:
+    created: dict[str, object] = {}
+
+    class Commands:
+        def run(self, command: str, *, user: str, timeout: int):
+            assert command.startswith("env ")
+            assert "PATH=" in command
+            assert "go test ./..." in command
+            assert user == "root"
+            assert timeout == 600
+            raise _CommandFailure
+
+    class Sandbox:
+        commands = Commands()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return None
+
+        @classmethod
+        def create(cls, **kwargs):
+            created.update(kwargs)
+            return cls()
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Sandbox=Sandbox))
+    envs = {
+        "PATH": "/usr/local/go/bin:/usr/bin",
+        "GOTOOLCHAIN": "go1.26.5+auto",
+    }
+    result = E2BOfflineVerifier("test-key").verify(
+        "repo-template",
+        "go test ./...",
+        envs=envs,
+    )
+
+    assert created["allow_internet_access"] is False
+    assert created["envs"] == envs
+    assert not result.ok
+    assert result.reason == "offline_test_fail"
+    assert result.exit_code == 2
+    assert result.stderr_tail == "test failure"
 
 
 def test_go_runtime_and_template_recipe(tmp_path) -> None:

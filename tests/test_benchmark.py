@@ -1,9 +1,64 @@
 from __future__ import annotations
 
-from alvance_github_crawler.benchmark import parse_max_rss, subset_test_command, summarize_runs
+import sys
+from types import SimpleNamespace
+
+from alvance_github_crawler.benchmark import (
+    E2BBenchmark,
+    parse_max_rss,
+    subset_test_command,
+    summarize_runs,
+)
 from alvance_github_crawler.build import dockerfile_for
 from alvance_github_crawler.build import test_command_for as resolve_test_command
 from alvance_github_crawler.models import BenchmarkRun
+
+
+def test_e2b_benchmark_passes_runtime_envs(monkeypatch) -> None:
+    created: list[dict[str, object]] = []
+
+    class Result:
+        exit_code = 0
+
+    class Commands:
+        def run(self, command: str, *, user: str, timeout: int):
+            assert command.startswith("env ")
+            assert "PATH=" in command
+            assert user == "root"
+            assert timeout == 600
+            return Result()
+
+    class Files:
+        def read(self, path: str) -> str:
+            assert path == "/tmp/time.log"
+            return "Maximum resident set size (kbytes): 1024"
+
+    class Sandbox:
+        commands = Commands()
+        files = Files()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return None
+
+        @classmethod
+        def create(cls, **kwargs):
+            created.append(kwargs)
+            return cls()
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Sandbox=Sandbox))
+    envs = {"PATH": "/usr/local/go/bin:/usr/bin"}
+    result = E2BBenchmark("test-key", runs=1).run(
+        "repo-template",
+        "go test ./...",
+        envs=envs,
+    )
+
+    assert created[0]["allow_internet_access"] is False
+    assert created[0]["envs"] == envs
+    assert result.all_passed
 
 
 def test_parse_max_rss() -> None:

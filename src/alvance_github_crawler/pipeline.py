@@ -13,6 +13,7 @@ from .e2b_environment import (
     E2BOfflineVerifier,
     RepositoryTemplateBuildError,
     RuntimeTemplateBuildError,
+    runtime_environment,
 )
 from .filters import HardFilter
 from .github import GitHubClient
@@ -192,10 +193,15 @@ class Pipeline:
                     self.registry.reject(repo, stage, "build_fail", error=str(exc)[:2_000])
                     return "rejected"
 
+                runtime_env = runtime_environment(
+                    (repo.get("language") or "").lower(),
+                    environment.runtime_version,
+                )
                 stage = "stage4_e2b_offline_test"
                 offline = self.e2b_offline.verify(
                     environment.repository_template,
                     environment.test_cmd,
+                    envs=runtime_env,
                 )
                 if not offline.ok:
                     self.registry.reject(
@@ -211,6 +217,7 @@ class Pipeline:
                 benchmark = self.benchmark.run(
                     environment.repository_template,
                     environment.test_cmd,
+                    envs=runtime_env,
                 )
                 if not benchmark.resource_pass:
                     subset_cmd = subset_test_command(
@@ -220,7 +227,9 @@ class Pipeline:
                     )
                     if subset_cmd and subset_cmd != environment.test_cmd:
                         benchmark = self.benchmark.run(
-                            environment.repository_template, subset_cmd
+                            environment.repository_template,
+                            subset_cmd,
+                            envs=runtime_env,
                         )
 
                 adjusted_score = score.total

@@ -6,6 +6,7 @@ import statistics
 import time
 from pathlib import Path
 
+from .e2b_environment import command_with_environment
 from .models import BenchmarkResult, BenchmarkRun
 
 THRESHOLDS = {
@@ -92,7 +93,13 @@ class E2BBenchmark:
         self.runs = runs
         self.command_timeout_s = command_timeout_s
 
-    def run(self, template_id: str, test_cmd: str) -> BenchmarkResult:
+    def run(
+        self,
+        template_id: str,
+        test_cmd: str,
+        *,
+        envs: dict[str, str] | None = None,
+    ) -> BenchmarkResult:
         try:
             from e2b import Sandbox
         except ImportError as exc:
@@ -102,6 +109,7 @@ class E2BBenchmark:
         timed_command = (
             f"/usr/bin/time -v -o /tmp/time.log sh -c {shlex.quote(test_cmd)}"
         )
+        sandbox_command = command_with_environment(timed_command, envs)
         for _ in range(self.runs):
             started = time.monotonic()
             try:
@@ -109,15 +117,22 @@ class E2BBenchmark:
                     template=template_id,
                     allow_internet_access=False,
                     timeout=self.command_timeout_s + 60,
+                    envs=envs,
                     api_key=self.api_key,
                 )
                 cold_start = time.monotonic() - started
                 with sandbox:
                     test_started = time.monotonic()
-                    result = sandbox.commands.run(
-                        timed_command,
-                        timeout=self.command_timeout_s,
-                    )
+                    try:
+                        result = sandbox.commands.run(
+                            sandbox_command,
+                            user="root",
+                            timeout=self.command_timeout_s,
+                        )
+                    except Exception as exc:
+                        if not hasattr(exc, "exit_code"):
+                            raise
+                        result = exc
                     duration = time.monotonic() - test_started
                     memory_log = sandbox.files.read("/tmp/time.log")
                     peak_kb = parse_max_rss(str(memory_log))
