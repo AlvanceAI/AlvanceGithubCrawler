@@ -66,7 +66,9 @@ def test_grep_app_challenge_uses_sourcegraph(monkeypatch) -> None:
         headers = {"X-Vercel-Mitigated": "challenge"}
 
     search = PublicImplementationSearch(FakeGitHub())
-    monkeypatch.setattr("alvance_github_crawler.direction.requests.get", lambda *a, **k: ChallengeResponse())
+    monkeypatch.setattr(
+        "alvance_github_crawler.direction.requests.get", lambda *a, **k: ChallengeResponse()
+    )
     monkeypatch.setattr(search, "sourcegraph_count", lambda keywords: 0)
     assert search.grep_app_count(["rare phrase", "another phrase"]) == 0
     assert search.last_secondary_provider == "sourcegraph_fallback"

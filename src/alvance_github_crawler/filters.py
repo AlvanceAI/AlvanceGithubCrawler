@@ -26,9 +26,7 @@ class HardFilter:
         self.github = github
         self.now = now or datetime.now(UTC)
 
-    def evaluate(
-        self, repo: dict[str, Any], tree: list[dict[str, Any]]
-    ) -> HardFilterResult:
+    def evaluate(self, repo: dict[str, Any], tree: list[dict[str, Any]]) -> HardFilterResult:
         if int(repo.get("stargazers_count", 0)) < 100:
             return HardFilterResult(False, "stars<100")
 

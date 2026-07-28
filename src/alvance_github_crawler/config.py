@@ -20,7 +20,7 @@ def load_dotenv(path: Path = Path(".env")) -> None:
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, value = line.split("=", 1)
-        value = value.strip().strip("\"").strip("'")
+        value = value.strip().strip('"').strip("'")
         os.environ.setdefault(key.strip(), value)
 
 
@@ -55,8 +55,7 @@ class PipelineConfig:
         load_dotenv()
         return cls(
             github_token=os.getenv("GITHUB_TOKEN", "") or discover_github_token(),
-            openai_api_key=os.getenv("OPENAI_API_KEY", "")
-            or os.getenv("MODEL_API_KEY", ""),
+            openai_api_key=os.getenv("OPENAI_API_KEY", "") or os.getenv("MODEL_API_KEY", ""),
             openai_base_url=normalize_openai_base_url(
                 os.getenv("OPENAI_BASE_URL", "") or os.getenv("MODEL_BASE_URL", "")
             ),
@@ -68,9 +67,7 @@ class PipelineConfig:
             catalog_dir=Path(os.getenv("PIPELINE_CATALOG_DIR", "catalog")),
             feature_issue_limit=int(os.getenv("PIPELINE_FEATURE_ISSUE_LIMIT", "10")),
             openai_timeout_s=int(os.getenv("PIPELINE_OPENAI_TIMEOUT_S", "120")),
-            openai_max_output_tokens=int(
-                os.getenv("PIPELINE_OPENAI_MAX_OUTPUT_TOKENS", "1000")
-            ),
+            openai_max_output_tokens=int(os.getenv("PIPELINE_OPENAI_MAX_OUTPUT_TOKENS", "1000")),
             max_repo_size_kb=int(os.getenv("PIPELINE_MAX_REPO_SIZE_KB", "100000")),
         )
 

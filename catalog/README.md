@@ -1,26 +1,28 @@
-# E2B Harbor Catalog
+# Trace Repository Material Catalog
 
-This directory contains only lightweight metadata and Harbor task envelopes. Repository
-source trees, dependency caches, compiler caches, and images stay in persistent E2B
-templates and are never stored here.
+This repository emits the same three-layer layout consumed by `/home/inuyasha/Trace`:
 
-Each qualified repository is represented by:
+- `catalog/repo-materials.toml` indexes immutable qualified materials;
+- `materials/<material-id>/` stores provenance, E2B receipts, baseline entrypoints, and
+  the Harbor environment fingerprint;
+- `tasks/<task-id>/` stores the initial Harbor-compatible direction task referencing
+  its material.
 
-- one line in `e2b-packages.jsonl`;
-- one tiny task directory under `harbor/`;
-- one persistent Harbor-compatible E2B template alias recorded in `e2b.json`.
+Repository source, `.git`, dependencies, compiler caches, and images live only inside
+persistent E2B templates. The checked-in material/task records are small control-plane
+artifacts and contain no credentials.
 
-Launch a packaged task from the repository root:
+Launch a task without rebuilding:
 
 ```bash
 export E2B_API_KEY="${E2B_API_KEY:-$E2B_KEY}"
 harbor run \
-  --path catalog/harbor/<task-name> \
+  --path tasks/<task-id> \
   --env e2b \
   --no-force-build \
   --agent nop \
   --disable-verification
 ```
 
-Do not use `harbor tasks start-env` for these envelopes because that command currently
-forces a rebuild. `harbor run` defaults to reusing the prepared E2B alias.
+Do not use `harbor tasks start-env`: the installed Harbor version forces a build for
+that command. `harbor run` reuses the ready E2B alias recorded in the material receipt.

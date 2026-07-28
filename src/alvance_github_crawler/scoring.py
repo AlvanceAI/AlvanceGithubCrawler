@@ -62,9 +62,7 @@ SOURCE_EXTENSIONS = {
 
 PUBLIC_SYMBOL_PATTERNS = {
     "go": re.compile(r"^(?:func (?:\([^)]*\) )?[A-Z]\w*|type [A-Z]\w*)", re.MULTILINE),
-    "python": re.compile(
-        r"^(?:(?:async )?def [A-Za-z]\w*|class [A-Za-z]\w*)", re.MULTILINE
-    ),
+    "python": re.compile(r"^(?:(?:async )?def [A-Za-z]\w*|class [A-Za-z]\w*)", re.MULTILINE),
     "typescript": re.compile(r"^\s*export\s+(?:default\s+)?", re.MULTILINE),
     "javascript": re.compile(r"^\s*(?:export\s+|module\.exports\b)", re.MULTILINE),
     "rust": re.compile(
@@ -176,4 +174,3 @@ class SoftScorer:
             developer_lib=developer_lib,
             details=details,
         )
-

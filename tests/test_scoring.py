@@ -69,4 +69,3 @@ def test_public_symbol_count_and_complete_score(tmp_path) -> None:
         "S6_developer_lib": 2,
     }
     assert score.total == 10
-

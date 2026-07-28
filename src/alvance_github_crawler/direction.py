@@ -122,9 +122,7 @@ class PublicImplementationSearch:
 
     def sourcegraph_count(self, keywords: list[str]) -> int:
         phrases = " ".join(
-            f'"{keyword.replace(chr(34), "")}"'
-            for keyword in keywords
-            if keyword.strip()
+            f'"{keyword.replace(chr(34), "")}"' for keyword in keywords if keyword.strip()
         )
         query = f"context:global patternType:literal {phrases} count:1 timeout:10s"
         response = requests.get(

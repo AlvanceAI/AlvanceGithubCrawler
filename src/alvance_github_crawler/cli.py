@@ -7,7 +7,9 @@ import logging
 import shutil
 import sys
 
+from .catalog_migration import package_existing_candidates
 from .config import PipelineConfig
+from .github import GitHubClient
 from .harbor_packaging import HarborPackager
 from .pipeline import Pipeline
 
@@ -17,9 +19,15 @@ def build_parser() -> argparse.ArgumentParser:
         prog="alvance-github-crawler",
         description="Collect and verify GitHub repositories using the staged pipeline.",
     )
-    parser.add_argument("--query", action="append", help="override a GitHub search query; repeatable")
-    parser.add_argument("--max-repos", type=int, help="maximum number of new repositories to process")
-    parser.add_argument("--search-pages", type=int, default=None, help="GitHub result pages per query")
+    parser.add_argument(
+        "--query", action="append", help="override a GitHub search query; repeatable"
+    )
+    parser.add_argument(
+        "--max-repos", type=int, help="maximum number of new repositories to process"
+    )
+    parser.add_argument(
+        "--search-pages", type=int, default=None, help="GitHub result pages per query"
+    )
     parser.add_argument(
         "--skip-e2b",
         action="store_true",
@@ -76,8 +84,10 @@ def main(argv: list[str] | None = None) -> int:
         if not config.e2b_api_key:
             print("missing required environment variable: E2B_API_KEY", file=sys.stderr)
             return 2
-        stats = HarborPackager(config.e2b_api_key, config.catalog_dir).package_existing(
-            config.candidates_path
+        stats = package_existing_candidates(
+            config.candidates_path,
+            HarborPackager(config.e2b_api_key, config.catalog_dir),
+            GitHubClient(config.github_token),
         )
         print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
         return 0

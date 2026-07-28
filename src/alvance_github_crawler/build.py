@@ -107,9 +107,7 @@ class DockerBuildVerifier:
         self.timeout_s = timeout_s
         self.runtime_prep_timeout_s = runtime_prep_timeout_s
 
-    def verify(
-        self, repo: dict[str, Any], base_commit: str, repo_path: Path
-    ) -> BuildResult:
+    def verify(self, repo: dict[str, Any], base_commit: str, repo_path: Path) -> BuildResult:
         language = (repo.get("language") or "").lower()
         dockerfile = dockerfile_for(language, repo_path)
         test_cmd = test_command_for(language, repo_path)
@@ -190,9 +188,7 @@ class DockerBuildVerifier:
             log_tail=_tail(offline_test.stdout, offline_test.stderr),
         )
 
-    def _prepare_go_runtime(
-        self, dockerfile: str, repo_path: Path
-    ) -> tuple[bool, str, str, str]:
+    def _prepare_go_runtime(self, dockerfile: str, repo_path: Path) -> tuple[bool, str, str, str]:
         lines = dockerfile.splitlines()
         try:
             workdir_index = next(
@@ -227,9 +223,7 @@ class DockerBuildVerifier:
             if prep.returncode != 0:
                 return False, "runtime_prep_fail", _tail(prep.stdout, prep.stderr), ""
 
-        local_dockerfile = "\n".join(
-            [f"FROM {runtime_tag}", *lines[workdir_index:], ""]
-        )
+        local_dockerfile = "\n".join([f"FROM {runtime_tag}", *lines[workdir_index:], ""])
         return True, "ok", "", local_dockerfile
 
     @staticmethod
@@ -278,9 +272,7 @@ def _detect_base_image(language: str, repo_path: Path) -> str:
         return f"node:{major}"
 
     if language == "rust":
-        content = _read(repo_path / "rust-toolchain.toml") or _read(
-            repo_path / "rust-toolchain"
-        )
+        content = _read(repo_path / "rust-toolchain.toml") or _read(repo_path / "rust-toolchain")
         match = re.search(r"(?:channel\s*=\s*)?['\"]?(\d+\.\d+(?:\.\d+)?)", content)
         return f"rust:{match.group(1)}" if match else "rust:1.77"
 

@@ -65,7 +65,9 @@ def test_rust_requires_dev_dependencies() -> None:
 def test_rejects_inactive_or_non_permissive_repo() -> None:
     stale = repo()
     stale["pushed_at"] = (datetime.now(UTC) - timedelta(days=366)).isoformat()
-    assert HardFilter(FakeGitHub()).evaluate(stale, blobs("go.mod", "a_test.go")).reason == "inactive"
+    assert (
+        HardFilter(FakeGitHub()).evaluate(stale, blobs("go.mod", "a_test.go")).reason == "inactive"
+    )
 
     non_permissive = repo()
     non_permissive["license"] = {"spdx_id": "GPL-3.0"}
@@ -73,4 +75,3 @@ def test_rejects_inactive_or_non_permissive_repo() -> None:
         HardFilter(FakeGitHub()).evaluate(non_permissive, blobs("go.mod", "a_test.go")).reason
         == "license"
     )
-

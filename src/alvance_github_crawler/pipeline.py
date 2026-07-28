@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import logging
 from collections import Counter
-from typing import Any, Iterable
+from collections.abc import Iterable
+from typing import Any
 
 from .benchmark import E2BBenchmark, subset_test_command
 from .build import DockerBuildVerifier
+from .candidate_registration import CandidateRegistrar
 from .config import PipelineConfig
 from .direction import DirectionChecker, OpenAIDirectionJudge, PublicImplementationSearch
 from .e2b_environment import (
@@ -55,9 +57,7 @@ class Pipeline:
             issue_limit=config.feature_issue_limit,
         )
         self.build_verifier = DockerBuildVerifier(timeout_s=config.build_timeout_s)
-        self.e2b_environment = (
-            None if skip_e2b else E2BEnvironmentManager(config.e2b_api_key)
-        )
+        self.e2b_environment = None if skip_e2b else E2BEnvironmentManager(config.e2b_api_key)
         self.e2b_offline = (
             None
             if skip_e2b
@@ -73,9 +73,12 @@ class Pipeline:
             )
         )
         self.harbor_packager = (
-            None
-            if skip_e2b
-            else HarborPackager(config.e2b_api_key, config.catalog_dir)
+            None if skip_e2b else HarborPackager(config.e2b_api_key, config.catalog_dir)
+        )
+        self.registrar = CandidateRegistrar(
+            self.registry,
+            self.quota,
+            self.harbor_packager,
         )
 
     def run(
@@ -171,7 +174,7 @@ class Pipeline:
                             )
                             return "rejected"
 
-                        self._register(
+                        self.registrar.register(
                             repo,
                             score=score.to_dict(),
                             direction=direction.to_dict(),
@@ -277,7 +280,7 @@ class Pipeline:
                     "log_tail": "",
                 }
                 stage = "stage6_harbor_package"
-                self._register(
+                self.registrar.register(
                     repo,
                     score=score.to_dict(),
                     direction=direction.to_dict(),
@@ -299,50 +302,3 @@ class Pipeline:
                 error=str(exc)[:2_000],
             )
             return "error"
-
-    def _register(
-        self,
-        repo: dict[str, Any],
-        *,
-        score: dict[str, Any],
-        direction: dict[str, Any],
-        build: dict[str, Any],
-        environment: dict[str, Any] | None,
-        template_id: str | None,
-        benchmark: dict[str, Any] | None,
-        adjusted_score: float,
-        status: str,
-    ) -> None:
-        language = (repo.get("language") or "").lower()
-        environment_record = dict(environment) if environment else None
-        if environment_record and environment_record.get("offline"):
-            offline_record = dict(environment_record["offline"])
-            offline_record.pop("stdout_tail", None)
-            offline_record.pop("stderr_tail", None)
-            environment_record["offline"] = offline_record
-        record = {
-            "repo": repo["full_name"],
-            "base_commit": repo["base_commit"],
-            "language": language,
-            "stars": repo.get("stargazers_count", 0),
-            "file_count": score["file_count"],
-            "soft_score": score["total"],
-            "adjusted_score": adjusted_score,
-            "score": score,
-            "test_cmd": build["test_cmd"],
-            "local_image": build["image"],
-            "local_image_retained": False,
-            "e2b_template": template_id,
-            "e2b_environment": environment_record,
-            "benchmark": benchmark,
-            "direction_source": direction["source"],
-            "direction": direction["direction"],
-            "direction_keywords": direction["keywords"],
-            "direction_target_paths": direction["target_paths"],
-            "h6_sources": direction.get("h6_sources", []),
-            "status": status,
-        }
-        if self.harbor_packager is not None:
-            record["harbor_package"] = self.harbor_packager.package(record).to_dict()
-        self.registry.register(record)
-        self.quota.register(language)

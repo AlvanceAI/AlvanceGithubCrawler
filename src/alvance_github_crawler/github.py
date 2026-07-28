@@ -122,7 +122,17 @@ class GitHubClient:
         branch = repo.get("default_branch") or "HEAD"
         encoded_branch = quote(branch, safe="")
         response = self._get(f"/repos/{repo['full_name']}/commits/{encoded_branch}")
-        return response.json()["sha"]
+        payload = response.json()
+        repo["source_tree"] = payload["commit"]["tree"]["sha"]
+        return payload["sha"]
+
+    def get_commit_tree(self, full_name: str, commit: str) -> str:
+        response = self._get(f"/repos/{full_name}/git/commits/{quote(commit, safe='')}")
+        return str(response.json()["tree"]["sha"])
+
+    def get_repository(self, full_name: str) -> dict[str, Any]:
+        response = self._get(f"/repos/{full_name}")
+        return dict(response.json())
 
     def list_feature_issues(self, full_name: str, *, limit: int = 10) -> list[dict[str, Any]]:
         issues: dict[int, dict[str, Any]] = {}

@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-import subprocess
 import shutil
+import subprocess
 import tarfile
 import tempfile
 import time
+from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Iterator
 
 import requests
 
@@ -40,9 +40,7 @@ def cloned_repository(full_name: str, base_commit: str) -> Iterator[Path]:
         except CloneError:
             shutil.rmtree(path, ignore_errors=True)
             path.mkdir(parents=True, exist_ok=True)
-            _run_git(
-                ["clone", "--depth=1", "--no-tags", "--filter=blob:none", url, str(path)]
-            )
+            _run_git(["clone", "--depth=1", "--no-tags", "--filter=blob:none", url, str(path)])
             try:
                 _run_git(["checkout", "--detach", base_commit], cwd=path)
             except CloneError:

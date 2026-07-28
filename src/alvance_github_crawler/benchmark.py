@@ -6,8 +6,8 @@ import statistics
 import time
 from pathlib import Path
 
-from .e2b_environment import command_with_environment
 from .models import BenchmarkResult, BenchmarkRun
+from .runtime_profiles import command_with_environment
 
 THRESHOLDS = {
     "cold_start_s": 20.0,
@@ -106,9 +106,7 @@ class E2BBenchmark:
             raise RuntimeError("e2b SDK is not installed; install the project with [e2b]") from exc
 
         runs: list[BenchmarkRun] = []
-        timed_command = (
-            f"/usr/bin/time -v -o /tmp/time.log sh -c {shlex.quote(test_cmd)}"
-        )
+        timed_command = f"/usr/bin/time -v -o /tmp/time.log sh -c {shlex.quote(test_cmd)}"
         sandbox_command = command_with_environment(timed_command, envs)
         for _ in range(self.runs):
             started = time.monotonic()

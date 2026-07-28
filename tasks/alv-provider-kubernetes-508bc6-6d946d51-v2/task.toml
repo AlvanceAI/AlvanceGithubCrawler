@@ -2,15 +2,18 @@ version = "1.0"
 schema_version = "1.3"
 
 [task]
-name = "alvance/alv-provider-kubernetes-508bc6-6d946d51-v1"
+name = "alvance/alv-provider-kubernetes-508bc6-6d946d51-v2"
 description = "E2B-backed repository task for crossplane-contrib/provider-kubernetes"
 authors = []
 keywords = ["go", "e2b", "github"]
 
 [metadata]
+task_id = "alv-provider-kubernetes-508bc6-6d946d51-v2"
+material_id = "provider-kubernetes-508bc6-6d946d51"
+status = "direction"
+language = "go"
 repository_url = "https://github.com/crossplane-contrib/provider-kubernetes"
 base_commit_hash = "6d946d51b467058a56023bd806977589735749bd"
-language = "go"
 storage_mode = "e2b-only"
 
 [verifier]
