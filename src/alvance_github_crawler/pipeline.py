@@ -1,15 +1,19 @@
 from __future__ import annotations
 
-import hashlib
 import logging
-import re
 from collections import Counter
 from typing import Any, Iterable
 
-from .benchmark import E2BBenchmark, E2BTemplateBuilder, subset_test_command
+from .benchmark import E2BBenchmark, subset_test_command
 from .build import DockerBuildVerifier
 from .config import PipelineConfig
 from .direction import DirectionChecker, OpenAIDirectionJudge, PublicImplementationSearch
+from .e2b_environment import (
+    E2BEnvironmentManager,
+    E2BOfflineVerifier,
+    RepositoryTemplateBuildError,
+    RuntimeTemplateBuildError,
+)
 from .filters import HardFilter
 from .github import GitHubClient
 from .registry import JsonlRegistry
@@ -49,8 +53,13 @@ class Pipeline:
             issue_limit=config.feature_issue_limit,
         )
         self.build_verifier = DockerBuildVerifier(timeout_s=config.build_timeout_s)
-        self.template_builder = (
-            None if skip_e2b else E2BTemplateBuilder(config.e2b_api_key)
+        self.e2b_environment = (
+            None if skip_e2b else E2BEnvironmentManager(config.e2b_api_key)
+        )
+        self.e2b_offline = (
+            None
+            if skip_e2b
+            else E2BOfflineVerifier(config.e2b_api_key, timeout_s=config.build_timeout_s)
         )
         self.benchmark = (
             None
@@ -142,91 +151,140 @@ class Pipeline:
                     self.registry.reject(repo, stage, "no_direction")
                     return "rejected"
 
-                stage = "stage4_offline_build"
-                build = self.build_verifier.verify(repo, base_commit, repo_path)
-                try:
-                    if not build.ok:
-                        self.registry.reject(
-                            repo,
-                            stage,
-                            build.reason,
-                            log_tail=build.log_tail,
-                        )
-                        return "rejected"
+                if self.skip_e2b:
+                    stage = "stage4_local_docker_fallback"
+                    build = self.build_verifier.verify(repo, base_commit, repo_path)
+                    try:
+                        if not build.ok:
+                            self.registry.reject(
+                                repo,
+                                stage,
+                                build.reason,
+                                log_tail=build.log_tail,
+                            )
+                            return "rejected"
 
-                    if self.skip_e2b:
                         self._register(
                             repo,
                             score=score.to_dict(),
                             direction=direction.to_dict(),
                             build=build.to_dict(),
+                            environment=None,
                             template_id=None,
                             benchmark=None,
                             adjusted_score=score.total,
-                            status="offline_verified",
+                            status="offline_verified_local",
                         )
                         return "registered"
+                    finally:
+                        self.build_verifier.remove_image(build.image)
 
-                    stage = "stage5_e2b_benchmark"
-                    assert self.template_builder is not None and self.benchmark is not None
-                    template_id = self.template_builder.build(
-                        repo_path,
-                        build.dockerfile,
-                        _template_alias(repo["full_name"], base_commit),
-                    )
-                    benchmark = self.benchmark.run(template_id, build.test_cmd)
-                    if not benchmark.resource_pass:
-                        subset_cmd = subset_test_command(
-                            repo_path,
-                            (repo.get("language") or "").lower(),
-                            direction.target_paths,
-                        )
-                        if subset_cmd and subset_cmd != build.test_cmd:
-                            benchmark = self.benchmark.run(template_id, subset_cmd)
+                assert self.e2b_environment is not None
+                assert self.e2b_offline is not None
+                assert self.benchmark is not None
+                stage = "stage3_5_e2b_environment"
+                try:
+                    environment = self.e2b_environment.ensure(repo, repo_path, base_commit)
+                except RuntimeTemplateBuildError as exc:
+                    self.registry.reject(repo, stage, "infra_error", error=str(exc)[:2_000])
+                    return "error"
+                except RepositoryTemplateBuildError as exc:
+                    self.registry.reject(repo, stage, "build_fail", error=str(exc)[:2_000])
+                    return "rejected"
 
-                    adjusted_score = score.total
-                    status = "ready_for_phase1"
-                    if benchmark.flaky:
-                        adjusted_score -= 2
-                        status = "ready_for_phase1_flaky_test_suite"
-                    if not benchmark.resource_pass:
-                        self.registry.reject(
-                            repo,
-                            stage,
-                            "benchmark_resource_fail",
-                            benchmark=benchmark.to_dict(),
-                        )
-                        return "rejected"
-                    if not benchmark.all_passed and not benchmark.flaky:
-                        self.registry.reject(
-                            repo,
-                            stage,
-                            "benchmark_test_fail",
-                            benchmark=benchmark.to_dict(),
-                        )
-                        return "rejected"
-                    if adjusted_score < self.config.min_soft_score:
-                        self.registry.reject(
-                            repo,
-                            stage,
-                            f"flaky_adjusted_score={adjusted_score}",
-                            benchmark=benchmark.to_dict(),
-                        )
-                        return "rejected"
-
-                    self._register(
+                if (
+                    not environment.repository_cache_hit
+                    and environment.repository_template_build_s > self.config.build_timeout_s
+                ):
+                    self.registry.reject(
                         repo,
-                        score=score.to_dict(),
-                        direction=direction.to_dict(),
-                        build=build.to_dict(),
-                        template_id=template_id,
-                        benchmark=benchmark.to_dict(),
-                        adjusted_score=adjusted_score,
-                        status=status,
+                        stage,
+                        "build_timeout",
+                        environment=environment.to_dict(),
                     )
-                    return "registered"
-                finally:
-                    self.build_verifier.remove_image(build.image)
+                    return "rejected"
+
+                stage = "stage4_e2b_offline_test"
+                offline = self.e2b_offline.verify(
+                    environment.repository_template,
+                    environment.test_cmd,
+                )
+                if not offline.ok:
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        offline.reason,
+                        offline=offline.to_dict(),
+                        environment=environment.to_dict(),
+                    )
+                    return "rejected"
+
+                stage = "stage5_e2b_benchmark"
+                benchmark = self.benchmark.run(
+                    environment.repository_template,
+                    environment.test_cmd,
+                )
+                if not benchmark.resource_pass:
+                    subset_cmd = subset_test_command(
+                        repo_path,
+                        (repo.get("language") or "").lower(),
+                        direction.target_paths,
+                    )
+                    if subset_cmd and subset_cmd != environment.test_cmd:
+                        benchmark = self.benchmark.run(
+                            environment.repository_template, subset_cmd
+                        )
+
+                adjusted_score = score.total
+                status = "ready_for_phase1"
+                if benchmark.flaky:
+                    adjusted_score -= 2
+                    status = "ready_for_phase1_flaky_test_suite"
+                if not benchmark.resource_pass:
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        "benchmark_resource_fail",
+                        benchmark=benchmark.to_dict(),
+                    )
+                    return "rejected"
+                if not benchmark.all_passed and not benchmark.flaky:
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        "benchmark_test_fail",
+                        benchmark=benchmark.to_dict(),
+                    )
+                    return "rejected"
+                if adjusted_score < self.config.min_soft_score:
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        f"flaky_adjusted_score={adjusted_score}",
+                        benchmark=benchmark.to_dict(),
+                    )
+                    return "rejected"
+
+                build_record = {
+                    "ok": True,
+                    "reason": "ok",
+                    "image": "",
+                    "dockerfile": "",
+                    "test_cmd": environment.test_cmd,
+                    "log_tail": "",
+                }
+                self._register(
+                    repo,
+                    score=score.to_dict(),
+                    direction=direction.to_dict(),
+                    build=build_record,
+                    environment={**environment.to_dict(), "offline": offline.to_dict()},
+                    template_id=environment.repository_template,
+                    benchmark=benchmark.to_dict(),
+                    adjusted_score=adjusted_score,
+                    status=status,
+                )
+                return "registered"
         except Exception as exc:
             LOGGER.exception("%s failed during %s", repo.get("full_name"), stage)
             self.registry.reject(
@@ -245,6 +303,7 @@ class Pipeline:
         score: dict[str, Any],
         direction: dict[str, Any],
         build: dict[str, Any],
+        environment: dict[str, Any] | None,
         template_id: str | None,
         benchmark: dict[str, Any] | None,
         adjusted_score: float,
@@ -264,6 +323,7 @@ class Pipeline:
             "local_image": build["image"],
             "local_image_retained": False,
             "e2b_template": template_id,
+            "e2b_environment": environment,
             "benchmark": benchmark,
             "direction_source": direction["source"],
             "direction": direction["direction"],
@@ -274,9 +334,3 @@ class Pipeline:
         }
         self.registry.register(record)
         self.quota.register(language)
-
-
-def _template_alias(full_name: str, base_commit: str) -> str:
-    clean = re.sub(r"[^a-z0-9-]+", "-", full_name.lower()).strip("-")
-    digest = hashlib.sha256(f"{full_name}@{base_commit}".encode()).hexdigest()[:8]
-    return f"alvance-{clean[:40]}-{digest}"

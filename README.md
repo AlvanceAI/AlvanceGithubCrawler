@@ -6,8 +6,8 @@
 2. Stars、活跃度、许可证和原生测试设施硬过滤；
 3. 文件数、Stars、feature issue、公开符号、语言配额、开发者库偏好评分（满分 12，默认 7 分入围）；
 4. OpenAI 结构化输出分析 feature issue，并通过 GitHub Code Search 与 grep.app 执行 H6 核查；
-5. Docker 联网构建镜像，在 `--network=none` 容器中运行全量测试；
-6. 构建 e2b template，运行三次冷启动、测试耗时和峰值内存基准；
+5. 在 e2b 持久化 Runtime Template 与 Repository Template；
+6. 从同一个 Repository Template 启动断网 Sandbox 做 H5 检验和三次执行基准；
 7. 写入 `output/candidates.jsonl`，所有排除原因写入 `output/rejections.jsonl`。
 
 ## 安装
@@ -45,7 +45,7 @@ alvance-github-crawler --doctor
 alvance-github-crawler --max-repos 5 --verbose
 ```
 
-暂时没有 e2b 凭据时，可先完成 Docker 离线测试。此模式写入的状态是 `offline_verified`，不是最终的 `ready_for_phase1`：
+暂时没有 e2b 凭据时，可显式使用本地 Docker fallback。此模式写入的状态是 `offline_verified_local`，不是最终的 `ready_for_phase1`：
 
 ```bash
 alvance-github-crawler --max-repos 5 --skip-e2b
@@ -69,6 +69,8 @@ alvance-github-crawler \
 - 采用方案末尾的最终修订：S6 纳入评分，阈值为 7/12。
 - Stage 1 的测试设施检测不只看文件名：Go 还要求 `_test.go`，Node 检查 jest/vitest，Python 检查 pytest 配置，Rust 检查 `[dev-dependencies]`。
 - Stage 4 与方案伪代码一致：依赖在镜像构建期联网获取，随后在完全断网的容器中跑测试，用于排除运行期联网依赖。
+- 默认路径不在本机保存仓库镜像：Runtime Template 按语言/版本持久化在 e2b，Repository Template 按仓库/commit/依赖哈希持久化在 e2b；相同 alias 会直接复用，不重新安装或编译。
+- Stage 4 和 Stage 5 复用同一个 e2b Repository Template，二者均设置 `allow_internet_access=False`。本地 Docker 只在 `--skip-e2b` 时启用。
 - Node 的默认测试命令使用 `CI=1 npm test`，同时兼容 jest 和 vitest。
 - H6 的任何搜索异常都会记录为 `stage_error`，不会当作“零结果”放行。
 - 当 grep.app 明确返回 Vercel Security Checkpoint 时，使用 Sourcegraph 公共代码索引作为第二独立搜索源，并在候选记录的 `h6_sources` 中标注 `sourcegraph_fallback`；普通搜索错误仍失败关闭。

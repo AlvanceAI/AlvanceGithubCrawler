@@ -45,6 +45,7 @@ class JsonlRegistry:
             "build_timeout",
             "runtime_prep_timeout",
             "runtime_prep_fail",
+            "infra_error",
         }
         return {repo for repo, reason in latest.items() if reason not in retryable}
 

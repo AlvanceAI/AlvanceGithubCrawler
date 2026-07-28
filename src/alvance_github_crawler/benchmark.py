@@ -108,6 +108,7 @@ class E2BBenchmark:
                 sandbox = Sandbox.create(
                     template=template_id,
                     allow_internet_access=False,
+                    timeout=self.command_timeout_s + 60,
                     api_key=self.api_key,
                 )
                 cold_start = time.monotonic() - started
