@@ -70,3 +70,17 @@ def test_grep_app_challenge_uses_sourcegraph(monkeypatch) -> None:
     monkeypatch.setattr(search, "sourcegraph_count", lambda keywords: 0)
     assert search.grep_app_count(["rare phrase", "another phrase"]) == 0
     assert search.last_secondary_provider == "sourcegraph_fallback"
+
+
+def test_grep_app_timeout_uses_sourcegraph(monkeypatch) -> None:
+    search = PublicImplementationSearch(FakeGitHub())
+
+    def timeout(*args, **kwargs):
+        import requests
+
+        raise requests.Timeout("unavailable")
+
+    monkeypatch.setattr("alvance_github_crawler.direction.requests.get", timeout)
+    monkeypatch.setattr(search, "sourcegraph_count", lambda keywords: 0)
+    assert search.grep_app_count(["rare phrase", "another phrase"]) == 0
+    assert search.last_secondary_provider == "sourcegraph_fallback"

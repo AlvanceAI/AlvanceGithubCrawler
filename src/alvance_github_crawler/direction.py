@@ -92,12 +92,16 @@ class PublicImplementationSearch:
             since_last = time.monotonic() - self._last_grep_request
             if since_last < 3.0:
                 time.sleep(3.0 - since_last)
-            response = requests.get(
-                "https://grep.app/api/search",
-                params={"q": query},
-                timeout=self.timeout,
-                headers={"User-Agent": "alvance-github-crawler/0.1"},
-            )
+            try:
+                response = requests.get(
+                    "https://grep.app/api/search",
+                    params={"q": query},
+                    timeout=self.timeout,
+                    headers={"User-Agent": "alvance-github-crawler/0.1"},
+                )
+            except requests.RequestException:
+                self.last_secondary_provider = "sourcegraph_fallback"
+                return self.sourcegraph_count(keywords)
             self._last_grep_request = time.monotonic()
             if response.headers.get("X-Vercel-Mitigated", "").lower() == "challenge":
                 self.last_secondary_provider = "sourcegraph_fallback"

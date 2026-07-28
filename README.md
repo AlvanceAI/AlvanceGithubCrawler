@@ -73,7 +73,7 @@ alvance-github-crawler \
 - Stage 4 和 Stage 5 复用同一个 e2b Repository Template，二者均设置 `allow_internet_access=False`。本地 Docker 只在 `--skip-e2b` 时启用。
 - Node 的默认测试命令使用 `CI=1 npm test`，同时兼容 jest 和 vitest。
 - H6 的任何搜索异常都会记录为 `stage_error`，不会当作“零结果”放行。
-- 当 grep.app 明确返回 Vercel Security Checkpoint 时，使用 Sourcegraph 公共代码索引作为第二独立搜索源，并在候选记录的 `h6_sources` 中标注 `sourcegraph_fallback`；普通搜索错误仍失败关闭。
+- 当 grep.app 返回 Vercel Security Checkpoint 或连接超时时，使用 Sourcegraph 公共代码索引作为第二独立搜索源，并在候选记录的 `h6_sources` 中标注 `sourcegraph_fallback`；两个来源都不可用时仍失败关闭。
 - e2b 超资源阈值时，会依据 LLM 返回的 `target_paths` 尝试生成保守的子集测试命令。
 - flaky 定义为三次耗时极差至少 15 秒或退出码不一致，按方案扣 2 分；资源仍超限或扣分后低于 7 时排除。
 - 为避免明显不可能满足 e2b 启动/测试阈值的超大仓库阻塞下载，默认跳过 GitHub 报告体积超过 100 MB 的仓库；可用 `PIPELINE_MAX_REPO_SIZE_KB` 调整。tarball 本身另有 200 MB/180 秒保护上限。
