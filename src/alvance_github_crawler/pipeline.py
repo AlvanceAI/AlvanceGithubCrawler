@@ -192,18 +192,6 @@ class Pipeline:
                     self.registry.reject(repo, stage, "build_fail", error=str(exc)[:2_000])
                     return "rejected"
 
-                if (
-                    not environment.repository_cache_hit
-                    and environment.repository_template_build_s > self.config.build_timeout_s
-                ):
-                    self.registry.reject(
-                        repo,
-                        stage,
-                        "build_timeout",
-                        environment=environment.to_dict(),
-                    )
-                    return "rejected"
-
                 stage = "stage4_e2b_offline_test"
                 offline = self.e2b_offline.verify(
                     environment.repository_template,

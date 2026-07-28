@@ -5,6 +5,7 @@
 - 状态：提案，尚未合并进《仓库收集与检验管线 — 最终方案》
 - 影响范围：Stage 4、Stage 5，以及二者之前的执行环境准备
 - 不影响：Stage 0–3 的候选抓取、硬过滤、软评分和方向核查
+- 已确认决策：E2B Repository Template 首次构建不设置淘汰超时，仅记录耗时；600 秒只用于断网测试。
 
 ## 背景与问题
 
@@ -207,7 +208,7 @@ def verify_offline(template_id: str, test_cmd: str) -> dict:
 |指标|用途|是否用于淘汰仓库|
 |---|---|---|
 |`runtime_template_build_s`|观察基础设施健康度|否|
-|`repository_template_build_s`|仓库依赖与编译成本|是，建议阈值 600 秒|
+|`repository_template_build_s`|仓库依赖与编译成本观测|否，不设淘汰阈值|
 |`offline_test_s`|H5 离线测试|是，建议阈值 600 秒|
 |`sandbox_cold_start_s`|Stage 5 冷启动|是，阈值 20 秒|
 |`benchmark_test_s`|Stage 5 测试耗时|是，阈值 120 秒|
@@ -279,14 +280,14 @@ def pipeline():
 |Runtime Template 构建失败|基础设施|`infra_error`，重试|
 |E2B API 暂时不可用|基础设施|`infra_error`，重试|
 |仓库依赖声明不可解析|仓库|`build_fail`|
-|仓库专属构建超过 600 秒|仓库|`build_timeout`|
+|仓库专属 E2B Template 构建耗时较长|观测指标|继续等待完成，不淘汰|
 |断网测试失败|仓库|`offline_test_fail`|
 |Sandbox 冷启动超过 20 秒|仓库模板/执行成本|Stage 5 降级或淘汰|
 
 ## 合并进最终方案前需要确认
 
 1. H5 是否定义为“联网准备后可断网运行”，还是“从零开始可离线安装”。
-2. Repository Template 在线构建的 600 秒阈值是否保留。
+2. Repository Template 在线构建不设淘汰阈值（已确认）。
 3. Runtime Template 的维护者、版本保留数量和过期清理策略。
 4. E2B template 构建和存储成本预算。
 5. `infra_error` 的最大重试次数与退避策略。

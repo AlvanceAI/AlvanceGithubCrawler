@@ -71,6 +71,7 @@ alvance-github-crawler \
 - Stage 4 与方案伪代码一致：依赖在镜像构建期联网获取，随后在完全断网的容器中跑测试，用于排除运行期联网依赖。
 - 默认路径不在本机保存仓库镜像：Runtime Template 按语言/版本持久化在 e2b，Repository Template 按仓库/commit/依赖哈希持久化在 e2b；相同 alias 会直接复用，不重新安装或编译。
 - Stage 4 和 Stage 5 复用同一个 e2b Repository Template，二者均设置 `allow_internet_access=False`。本地 Docker 只在 `--skip-e2b` 时启用。
+- E2B Runtime/Repository Template 的首次构建不设淘汰超时，只记录构建耗时；600 秒限制仅用于断网测试命令。本地 Docker fallback 仍保留自身构建超时。
 - Node 的默认测试命令使用 `CI=1 npm test`，同时兼容 jest 和 vitest。
 - H6 的任何搜索异常都会记录为 `stage_error`，不会当作“零结果”放行。
 - 当 grep.app 返回 Vercel Security Checkpoint 或连接超时时，使用 Sourcegraph 公共代码索引作为第二独立搜索源，并在候选记录的 `h6_sources` 中标注 `sourcegraph_fallback`；两个来源都不可用时仍失败关闭。
