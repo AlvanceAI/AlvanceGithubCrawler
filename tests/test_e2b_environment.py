@@ -9,6 +9,7 @@ from alvance_github_crawler.e2b_environment import (
     go_local_dependency_paths,
     hash_dependency_manifests,
     render_runtime_dockerfile,
+    repository_recipe_version,
     repository_template_alias,
     runtime_template_alias,
 )
@@ -102,6 +103,12 @@ def test_go_local_dependency_paths(tmp_path) -> None:
     )
 
     assert go_local_dependency_paths(tmp_path) == ["internal/mintcore", "tools"]
+    assert repository_recipe_version("go", tmp_path) == "v5"
+
+
+def test_standard_repository_recipe_stays_on_v4(tmp_path) -> None:
+    (tmp_path / "go.mod").write_text("module example.com/demo\n", encoding="utf-8")
+    assert repository_recipe_version("go", tmp_path) == "v4"
 
 
 def test_repository_alias_is_bounded() -> None:

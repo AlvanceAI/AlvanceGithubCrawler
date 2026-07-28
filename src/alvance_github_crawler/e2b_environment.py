@@ -13,6 +13,7 @@ from .build import test_command_for
 
 RUNTIME_RECIPE_VERSION = "v3"
 REPOSITORY_RECIPE_VERSION = "v4"
+LOCAL_GO_REPOSITORY_RECIPE_VERSION = "v5"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
@@ -138,7 +139,10 @@ class E2BEnvironmentManager:
 
         dependency_hash = hash_dependency_manifests(language, repo_path)
         repository_alias = repository_template_alias(
-            repo["full_name"], base_commit, dependency_hash
+            repo["full_name"],
+            base_commit,
+            dependency_hash,
+            recipe_version=repository_recipe_version(language, repo_path),
         )
         repository_cache_hit = Template.alias_exists(
             repository_alias, api_key=self.api_key
@@ -319,12 +323,26 @@ def runtime_template_alias(language: str, version: str) -> str:
     return f"alvance-runtime-{normalized_language}-{version_slug}-amd64-{RUNTIME_RECIPE_VERSION}"
 
 
-def repository_template_alias(full_name: str, commit: str, dependency_hash: str) -> str:
+def repository_template_alias(
+    full_name: str,
+    commit: str,
+    dependency_hash: str,
+    *,
+    recipe_version: str = REPOSITORY_RECIPE_VERSION,
+) -> str:
     repo_slug = re.sub(r"[^a-z0-9]+", "-", full_name.lower()).strip("-")[:22]
     return (
         f"alvance-repo-{repo_slug}-{commit[:10]}-{dependency_hash[:10]}-"
-        f"{REPOSITORY_RECIPE_VERSION}"
+        f"{recipe_version}"
     )
+
+
+def repository_recipe_version(language: str, repo_path: Path) -> str:
+    if language.lower() == "go" and (
+        (repo_path / "go.work").is_file() or go_local_dependency_paths(repo_path)
+    ):
+        return LOCAL_GO_REPOSITORY_RECIPE_VERSION
+    return REPOSITORY_RECIPE_VERSION
 
 
 def _add_repository_build_steps(builder: Any, language: str, repo_path: Path) -> Any:
