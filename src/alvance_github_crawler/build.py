@@ -103,8 +103,9 @@ def image_tag(repo: dict[str, Any], base_commit: str) -> str:
 
 
 class DockerBuildVerifier:
-    def __init__(self, *, timeout_s: int = 600) -> None:
+    def __init__(self, *, timeout_s: int = 600, runtime_prep_timeout_s: int = 1_800) -> None:
         self.timeout_s = timeout_s
+        self.runtime_prep_timeout_s = runtime_prep_timeout_s
 
     def verify(
         self, repo: dict[str, Any], base_commit: str, repo_path: Path
@@ -114,11 +115,24 @@ class DockerBuildVerifier:
         test_cmd = test_command_for(language, repo_path)
         tag = image_tag(repo, base_commit)
 
+        local_dockerfile = dockerfile
+        if language == "go":
+            prep = self._prepare_go_runtime(dockerfile, repo_path)
+            if not prep[0]:
+                return BuildResult(
+                    ok=False,
+                    reason=prep[1],
+                    dockerfile=dockerfile,
+                    test_cmd=test_cmd,
+                    log_tail=prep[2],
+                )
+            local_dockerfile = prep[3]
+
         try:
             build = subprocess.run(
                 ["docker", "build", "-f", "-", "-t", tag, "."],
                 cwd=repo_path,
-                input=dockerfile,
+                input=local_dockerfile,
                 text=True,
                 capture_output=True,
                 timeout=self.timeout_s,
@@ -175,6 +189,48 @@ class DockerBuildVerifier:
             test_cmd=test_cmd,
             log_tail=_tail(offline_test.stdout, offline_test.stderr),
         )
+
+    def _prepare_go_runtime(
+        self, dockerfile: str, repo_path: Path
+    ) -> tuple[bool, str, str, str]:
+        lines = dockerfile.splitlines()
+        try:
+            workdir_index = next(
+                index for index, line in enumerate(lines) if line.startswith("WORKDIR ")
+            )
+        except StopIteration:
+            return True, "ok", "", dockerfile
+
+        runtime_dockerfile = "\n".join([*lines[:workdir_index], "RUN go version", ""])
+        digest = hashlib.sha256(runtime_dockerfile.encode()).hexdigest()[:12]
+        runtime_tag = f"alvance-runtime:go-{digest}"
+        inspect = subprocess.run(
+            ["docker", "image", "inspect", runtime_tag],
+            text=True,
+            capture_output=True,
+            timeout=30,
+            check=False,
+        )
+        if inspect.returncode != 0:
+            try:
+                prep = subprocess.run(
+                    ["docker", "build", "-f", "-", "-t", runtime_tag, "."],
+                    cwd=repo_path,
+                    input=runtime_dockerfile,
+                    text=True,
+                    capture_output=True,
+                    timeout=self.runtime_prep_timeout_s,
+                    check=False,
+                )
+            except subprocess.TimeoutExpired as exc:
+                return False, "runtime_prep_timeout", _timeout_tail(exc), ""
+            if prep.returncode != 0:
+                return False, "runtime_prep_fail", _tail(prep.stdout, prep.stderr), ""
+
+        local_dockerfile = "\n".join(
+            [f"FROM {runtime_tag}", *lines[workdir_index:], ""]
+        )
+        return True, "ok", "", local_dockerfile
 
     @staticmethod
     def remove_image(tag: str) -> None:

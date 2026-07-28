@@ -40,7 +40,12 @@ class JsonlRegistry:
             reason = str(record.get("reason", ""))
             if repo:
                 latest[repo] = reason
-        retryable = {"stage_error", "build_timeout"}
+        retryable = {
+            "stage_error",
+            "build_timeout",
+            "runtime_prep_timeout",
+            "runtime_prep_fail",
+        }
         return {repo for repo, reason in latest.items() if reason not in retryable}
 
     def register(self, record: dict[str, Any]) -> None:
