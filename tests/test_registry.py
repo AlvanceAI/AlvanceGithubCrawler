@@ -10,6 +10,7 @@ def test_registry_round_trip(tmp_path) -> None:
     registry.register({"repo": "owner/repo", "language": "go"})
     registry.reject({"full_name": "bad/repo"}, "stage1", "license")
     registry.reject({"full_name": "retry/repo"}, "stage3", "stage_error")
+    registry.reject({"full_name": "timeout/repo"}, "stage4", "build_timeout")
 
     assert registry.existing_repos() == {"owner/repo"}
     assert registry.terminal_rejections() == {"bad/repo"}
