@@ -5,6 +5,7 @@ from types import SimpleNamespace
 
 from alvance_github_crawler.e2b_environment import (
     E2BOfflineVerifier,
+    _add_repository_build_steps,
     detect_runtime_version,
     go_local_dependency_paths,
     hash_dependency_manifests,
@@ -103,12 +104,40 @@ def test_go_local_dependency_paths(tmp_path) -> None:
     )
 
     assert go_local_dependency_paths(tmp_path) == ["internal/mintcore", "tools"]
-    assert repository_recipe_version("go", tmp_path) == "v5"
+    assert repository_recipe_version("go", tmp_path) == "v6"
 
 
 def test_standard_repository_recipe_stays_on_v4(tmp_path) -> None:
     (tmp_path / "go.mod").write_text("module example.com/demo\n", encoding="utf-8")
     assert repository_recipe_version("go", tmp_path) == "v4"
+
+
+def test_go_repository_clears_dependency_staging_before_full_copy(tmp_path) -> None:
+    (tmp_path / "internal" / "mintcore").mkdir(parents=True)
+    (tmp_path / "go.mod").write_text(
+        "replace example.com/mintcore => ./internal/mintcore\n",
+        encoding="utf-8",
+    )
+
+    class Builder:
+        def __init__(self) -> None:
+            self.events: list[tuple[str, str]] = []
+
+        def copy(self, source: str, destination: str):
+            self.events.append(("copy", f"{source} {destination}"))
+            return self
+
+        def run_cmd(self, command: str, *, user: str):
+            assert user == "root"
+            self.events.append(("run", command))
+            return self
+
+    builder = _add_repository_build_steps(Builder(), "go", tmp_path)
+    cleanup_index = builder.events.index(
+        ("run", "find /repo -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +")
+    )
+    full_copy_index = builder.events.index(("copy", ". /repo"))
+    assert cleanup_index < full_copy_index
 
 
 def test_repository_alias_is_bounded() -> None:

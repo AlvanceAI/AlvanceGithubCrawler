@@ -13,7 +13,7 @@ from .build import test_command_for
 
 RUNTIME_RECIPE_VERSION = "v3"
 REPOSITORY_RECIPE_VERSION = "v4"
-LOCAL_GO_REPOSITORY_RECIPE_VERSION = "v5"
+LOCAL_GO_REPOSITORY_RECIPE_VERSION = "v6"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
@@ -354,6 +354,10 @@ def _add_repository_build_steps(builder: Any, language: str, repo_path: Path) ->
         for relative in go_local_dependency_paths(repo_path):
             builder = builder.copy(relative, f"/repo/{relative}")
         builder = builder.run_cmd("/usr/local/go/bin/go mod download", user="root")
+        builder = builder.run_cmd(
+            "find /repo -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +",
+            user="root",
+        )
         builder = builder.copy(".", "/repo")
         return builder.run_cmd("/usr/local/go/bin/go build ./...", user="root")
 
