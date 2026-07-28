@@ -11,7 +11,7 @@ from typing import Any
 from .build import test_command_for
 
 RUNTIME_RECIPE_VERSION = "v3"
-REPOSITORY_RECIPE_VERSION = "v3"
+REPOSITORY_RECIPE_VERSION = "v4"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
@@ -145,6 +145,7 @@ class E2BEnvironmentManager:
         repository_build_s = 0.0
         if not repository_cache_hit:
             builder = Template(file_context_path=repo_path).from_template(runtime_alias)
+            builder = builder.set_envs(runtime_environment(language, runtime_version))
             builder = builder.set_workdir("/repo")
             builder = _add_repository_build_steps(builder, language, repo_path)
             started = time.monotonic()
@@ -315,25 +316,26 @@ def _add_repository_build_steps(builder: Any, language: str, repo_path: Path) ->
         for name in ("go.mod", "go.sum"):
             if (repo_path / name).is_file():
                 builder = builder.copy(name, f"/repo/{name}")
-        builder = builder.run_cmd("go mod download", user="root")
+        builder = builder.run_cmd("/usr/local/go/bin/go mod download", user="root")
         builder = builder.copy(".", "/repo")
-        return builder.run_cmd("go build ./...", user="root")
+        return builder.run_cmd("/usr/local/go/bin/go build ./...", user="root")
 
     if language in {"typescript", "javascript"}:
         for name in ("package.json", "package-lock.json", "pnpm-lock.yaml", "yarn.lock"):
             if (repo_path / name).is_file():
                 builder = builder.copy(name, f"/repo/{name}")
-        builder = builder.run_cmd("npm ci", user="root")
+        builder = builder.run_cmd("/usr/local/bin/npm ci", user="root")
         return builder.copy(".", "/repo")
 
     builder = builder.copy(".", "/repo")
     if language == "python":
         return builder.run_cmd(
-            "pip install --no-cache-dir -e '.[test,dev]' || pip install --no-cache-dir -e .",
+            "/usr/local/bin/pip install --no-cache-dir -e '.[test,dev]' || "
+            "/usr/local/bin/pip install --no-cache-dir -e .",
             user="root",
         )
     if language == "rust":
-        return builder.run_cmd("cargo build --tests", user="root")
+        return builder.run_cmd("/usr/local/cargo/bin/cargo build --tests", user="root")
     raise ValueError(f"unsupported language: {language}")
 
 
@@ -347,13 +349,7 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
         return (
             Template()
             .from_image("docker.io/library/golang:1.22")
-            .set_envs(
-                {
-                    "PATH": "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-                    "GOPROXY": "https://goproxy.cn,direct",
-                    "GOTOOLCHAIN": f"go{version}+auto",
-                }
-            )
+            .set_envs(runtime_environment(language, version))
             .run_cmd(common_packages, user="root")
             .run_cmd("/usr/local/go/bin/go version", user="root")
             .set_workdir("/repo")
@@ -362,11 +358,7 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
         return (
             Template()
             .from_image(f"docker.io/library/python:{version}")
-            .set_envs(
-                {
-                    "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
-                }
-            )
+            .set_envs(runtime_environment(language, version))
             .run_cmd(common_packages, user="root")
             .run_cmd(
                 "/usr/local/bin/python --version && /usr/local/bin/pip --version",
@@ -378,11 +370,7 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
         return (
             Template()
             .from_image(f"docker.io/library/node:{version}")
-            .set_envs(
-                {
-                    "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
-                }
-            )
+            .set_envs(runtime_environment(language, version))
             .run_cmd(common_packages, user="root")
             .run_cmd(
                 "/usr/local/bin/node --version && /usr/local/bin/npm --version",
@@ -394,11 +382,7 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
         return (
             Template()
             .from_image(f"docker.io/library/rust:{version}")
-            .set_envs(
-                {
-                    "PATH": "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-                }
-            )
+            .set_envs(runtime_environment(language, version))
             .run_cmd(common_packages, user="root")
             .run_cmd(
                 "/usr/local/cargo/bin/rustc --version && /usr/local/cargo/bin/cargo --version",
@@ -406,6 +390,25 @@ def _runtime_template_builder(Template: Any, language: str, version: str) -> Any
             )
             .set_workdir("/repo")
         )
+    raise ValueError(f"unsupported language: {language}")
+
+
+def runtime_environment(language: str, version: str) -> dict[str, str]:
+    language = language.lower()
+    if language == "go":
+        return {
+            "PATH": "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "GOPROXY": "https://goproxy.cn,direct",
+            "GOTOOLCHAIN": f"go{version}+auto",
+        }
+    if language in {"python", "typescript", "javascript"}:
+        return {
+            "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+        }
+    if language == "rust":
+        return {
+            "PATH": "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        }
     raise ValueError(f"unsupported language: {language}")
 
 
