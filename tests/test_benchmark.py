@@ -47,4 +47,6 @@ def test_node_test_command_without_npm_test_script(tmp_path) -> None:
 
 def test_dockerfile_uses_repository_runtime_version(tmp_path) -> None:
     (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.26.5\n", encoding="utf-8")
-    assert dockerfile_for("go", tmp_path).startswith("FROM golang:1.26.5\n")
+    dockerfile = dockerfile_for("go", tmp_path)
+    assert dockerfile.startswith("FROM golang:1.22\n")
+    assert "ENV GOTOOLCHAIN=go1.26.5+auto\n" in dockerfile

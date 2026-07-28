@@ -61,7 +61,13 @@ def dockerfile_for(language: str, repo_path: Path | None = None) -> str:
         return dockerfile
     base_image = _detect_base_image(language, repo_path)
     first_line, rest = dockerfile.split("\n", 1)
-    return f"FROM {base_image}\n{rest}" if first_line.startswith("FROM ") else dockerfile
+    if not first_line.startswith("FROM "):
+        return dockerfile
+    if language == "go":
+        required = _detect_go_version(repo_path)
+        if required and required != "1.22":
+            rest = f"ENV GOTOOLCHAIN=go{required}+auto\n{rest}"
+    return f"FROM {base_image}\n{rest}"
 
 
 def test_command_for(language: str, repo_path: Path | None = None) -> str:
@@ -197,9 +203,7 @@ def _timeout_tail(exc: subprocess.TimeoutExpired) -> str:
 
 def _detect_base_image(language: str, repo_path: Path) -> str:
     if language == "go":
-        content = _read(repo_path / "go.mod")
-        match = re.search(r"^go\s+(\d+\.\d+(?:\.\d+)?)\s*$", content, re.MULTILINE)
-        return f"golang:{match.group(1)}" if match else "golang:1.22"
+        return "golang:1.22"
 
     if language == "python":
         content = _read(repo_path / "pyproject.toml")
@@ -231,3 +235,9 @@ def _read(path: Path) -> str:
         return path.read_text(encoding="utf-8", errors="replace")
     except OSError:
         return ""
+
+
+def _detect_go_version(repo_path: Path) -> str:
+    content = _read(repo_path / "go.mod")
+    match = re.search(r"^go\s+(\d+\.\d+(?:\.\d+)?)\s*$", content, re.MULTILINE)
+    return match.group(1) if match else ""
