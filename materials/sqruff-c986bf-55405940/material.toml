@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "sqruff-c986bf-55405940"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/quarylabs/sqruff"
+base_commit = "554059400962398e03b166ba26f364fa58a25bac"
+source_tree = "70511b3f20fb423ca9fb1f2ccae173c25c53eaab"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b5c19fe106c41b7433f493b178d70b07588783d9bec69630c20df76b76dceaba"
+harbor_template_alias = "alv-sqruff-c986bf-55405940-v2-env-b5c19fe1"
+e2b_template = "5t4ojgqt7or9xe4doz50"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "ntim3dzebfnvbz8uoc82"
+source_template_id = "ntim3dzebfnvbz8uoc82"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
