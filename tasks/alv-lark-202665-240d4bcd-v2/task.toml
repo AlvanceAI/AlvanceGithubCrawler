@@ -1,0 +1,37 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-lark-202665-240d4bcd-v2"
+description = "E2B-backed repository task for lark-parser/lark"
+authors = []
+keywords = ["python", "e2b", "github"]
+
+[metadata]
+task_id = "alv-lark-202665-240d4bcd-v2"
+material_id = "lark-202665-240d4bcd"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/lark-parser/lark"
+base_commit_hash = "240d4bcd3e207c7ed1cebd9908be41150c3ea1ab"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []
