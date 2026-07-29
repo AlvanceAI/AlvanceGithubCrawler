@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from pathlib import Path
 from typing import Any
 
@@ -240,10 +241,11 @@ def benchmark_rejection(
 def is_transient_e2b_error(error: BaseException) -> bool:
     message = str(error).lower()
     markers = (
-        "429",
         "rate limit",
-        "too many",
-        "concurrent",
+        "too many requests",
+        "too many concurrent",
+        "maximum number of concurrent",
+        "concurrency limit",
         "temporarily unavailable",
         "service unavailable",
         "bad gateway",
@@ -255,7 +257,16 @@ def is_transient_e2b_error(error: BaseException) -> bool:
         "request timed out",
         "internal server error",
     )
-    return any(marker in message for marker in markers)
+    if any(marker in message for marker in markers):
+        return True
+    return bool(
+        re.search(
+            r"\bhttp(?:\s+status)?\s*429\b"
+            r"|\bstatus(?:\s+code|_code)?\s*[=:]\s*429\b"
+            r"|\b429\s+(?:client error|too many requests)\b",
+            message,
+        )
+    )
 
 
 def is_e2b_key_exhausted_error(error: BaseException) -> bool:

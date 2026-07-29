@@ -39,6 +39,9 @@ def test_transient_e2b_error_classification() -> None:
     assert is_transient_e2b_error(RuntimeError("HTTP 429: too many concurrent builds"))
     assert is_transient_e2b_error(RuntimeError("502 Bad Gateway"))
     assert not is_transient_e2b_error(RuntimeError("failed to run command 'npm ci': exit status 1"))
+    assert not is_transient_e2b_error(
+        RuntimeError("layer 18f429ac: compiling concurrent-queue failed")
+    )
 
 
 def test_resource_e2b_error_classification() -> None:

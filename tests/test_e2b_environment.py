@@ -311,6 +311,19 @@ def test_rust_runtime_uses_toml_fields_instead_of_license_comment(tmp_path) -> N
     assert detect_runtime_version("rust", tmp_path) == "1.97.1"
 
 
+def test_stable_rust_channel_uses_pinned_numeric_image(tmp_path) -> None:
+    (tmp_path / "rust-toolchain.toml").write_text(
+        '[toolchain]\nchannel = "stable"\n',
+        encoding="utf-8",
+    )
+    (tmp_path / "Cargo.toml").write_text(
+        '[package]\nname = "demo"\nversion = "0.1.0"\n',
+        encoding="utf-8",
+    )
+
+    assert detect_runtime_version("rust", tmp_path) == "1.97.1"
+
+
 def test_dependency_hash_changes_with_lockfile(tmp_path) -> None:
     (tmp_path / "package.json").write_text('{"name":"demo"}', encoding="utf-8")
     first = hash_dependency_manifests("typescript", tmp_path)

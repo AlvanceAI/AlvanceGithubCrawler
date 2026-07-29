@@ -17,7 +17,7 @@ DEFAULT_RUNTIME_VERSIONS = {
     "python": "3.11",
     "typescript": "20",
     "javascript": "20",
-    "rust": "1.77",
+    "rust": "1.97.1",
 }
 
 PYTHON_RUNTIME_CANDIDATES = ("3.11", "3.12", "3.13", "3.10", "3.9", "3.8")
@@ -127,8 +127,12 @@ def detect_rust_runtime(repo_path: Path) -> str:
     rust_version = str(workspace_version or package_version or "").strip()
     if re.fullmatch(r"\d+\.\d+(?:\.\d+)?", rust_version):
         return rust_version
-    if channel in {"stable", "beta", "nightly"}:
-        return channel
+    if channel == "stable":
+        return DEFAULT_RUNTIME_VERSIONS["rust"]
+    if channel.startswith(("beta", "nightly")):
+        raise UnsupportedRuntimeError(
+            f"unsupported Rust toolchain channel {channel!r}; a numeric stable version is required"
+        )
     return DEFAULT_RUNTIME_VERSIONS["rust"]
 
 
