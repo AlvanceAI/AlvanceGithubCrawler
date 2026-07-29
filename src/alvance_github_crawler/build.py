@@ -73,6 +73,10 @@ def dockerfile_for(language: str, repo_path: Path | None = None) -> str:
 
 def test_command_for(language: str, repo_path: Path | None = None) -> str:
     language = language.lower()
+    if language == "python" and repo_path is not None:
+        target = _conventional_python_test_target(repo_path)
+        if target:
+            return f"python -m pytest -x -q {target}"
     if language in {"typescript", "javascript"} and repo_path is not None:
         package_path = repo_path / "package.json"
         try:
@@ -94,6 +98,28 @@ def test_command_for(language: str, repo_path: Path | None = None) -> str:
         return TEST_COMMANDS[language]
     except KeyError as exc:
         raise ValueError(f"unsupported language: {language}") from exc
+
+
+def _conventional_python_test_target(repo_path: Path) -> str:
+    if _has_explicit_pytest_collection_config(repo_path):
+        return ""
+    for name in ("tests", "test"):
+        if (repo_path / name).is_dir():
+            return name
+    return ""
+
+
+def _has_explicit_pytest_collection_config(repo_path: Path) -> bool:
+    if (repo_path / "pytest.ini").is_file():
+        return True
+    pyproject = _read(repo_path / "pyproject.toml")
+    if "[tool.pytest.ini_options]" in pyproject:
+        return True
+    for name in ("setup.cfg", "tox.ini"):
+        content = _read(repo_path / name)
+        if "[pytest]" in content or "[tool:pytest]" in content:
+            return True
+    return False
 
 
 def image_tag(repo: dict[str, Any], base_commit: str) -> str:
