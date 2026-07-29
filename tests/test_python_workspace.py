@@ -31,7 +31,7 @@ def test_workspace_installs_omitted_local_package_and_node_toolchain(tmp_path) -
     assert python_workspace_install_commands(tmp_path, ["requirements-dev.txt"]) == [
         "apt-get update && apt-get install -y --no-install-recommends nodejs npm "
         "&& rm -rf /var/lib/apt/lists/*",
-        "/usr/local/bin/pip install --no-cache-dir -e packages/assets",
+        "/usr/local/bin/pip install --no-cache-dir -e . -e packages/assets",
     ]
 
 
@@ -66,6 +66,6 @@ def test_workspace_installs_uv_members_before_dependency_groups(tmp_path) -> Non
     )
     assert uv_workspace_packages(tmp_path) == expected
     assert python_workspace_install_commands(tmp_path, []) == [
-        "/usr/local/bin/pip install --no-cache-dir -e examples/parser",
-        "/usr/local/bin/pip install --no-cache-dir -e tests/fixtures/plugin",
+        "/usr/local/bin/pip install --no-cache-dir -e . -e examples/parser "
+        "-e tests/fixtures/plugin",
     ]

@@ -24,10 +24,10 @@ def python_workspace_install_commands(
             "apt-get update && apt-get install -y --no-install-recommends nodejs npm "
             "&& rm -rf /var/lib/apt/lists/*"
         )
-    commands.extend(
-        f"/usr/local/bin/pip install --no-cache-dir -e {shlex.quote(path.as_posix())}"
-        for path in packages
+    editable_paths = " ".join(
+        f"-e {shlex.quote(path)}" for path in (".", *(item.as_posix() for item in packages))
     )
+    commands.append(f"/usr/local/bin/pip install --no-cache-dir {editable_paths}")
     return commands
 
 
