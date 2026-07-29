@@ -23,7 +23,7 @@ GITHUB_LANGUAGE_NAMES = {
     "javascript": "JavaScript",
     "rust": "Rust",
 }
-CRAWL_STATE_VERSION = "1.1"
+CRAWL_STATE_VERSION = "1.2"
 SELECTION_SEMANTICS = "raw_sample_all_pass_v1"
 FULL_SHA = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
 
@@ -124,12 +124,17 @@ class CandidateCrawler:
 
                     page = int(self.state["next_page_by_language"][language])
                     if page > self.max_search_pages:
+                        if self._advance_search_window(language, raw_records):
+                            continue
                         raise CrawlIncompleteError(
                             f"{language} has only {raw_count} raw repositories "
-                            f"after {self.max_search_pages} search pages"
+                            "after exhausting all search windows"
                         )
                     items = self._fetch_page(language, page)
                     fetched_at = _utc_now()
+                    pushed_before = str(
+                        self.state["pushed_before_by_language"].get(language) or ""
+                    )
                     page_records = []
                     known_raw = {
                         str(record.get("full_name") or "").casefold()
@@ -147,6 +152,7 @@ class CandidateCrawler:
                         record["_crawl"] = {
                             "query_language": language,
                             "page": page,
+                            "pushed_before": pushed_before,
                             "fetched_at": fetched_at,
                         }
                         page_records.append(record)
@@ -156,10 +162,17 @@ class CandidateCrawler:
                     _append_jsonl_many(self.raw_path, page_records)
                     raw_records.extend(page_records)
                     self.state["next_page_by_language"][language] = page + 1
+                    self.state["search_pages_fetched_by_language"][language] += 1
                     self._save_state(completed=False)
                     if not page_records:
+                        if self._advance_search_window(
+                            language,
+                            raw_records,
+                            page_items=items,
+                        ):
+                            continue
                         raise CrawlIncompleteError(
-                            f"GitHub search was exhausted for {language} at page {page}"
+                            f"GitHub search was exhausted for {language}"
                         )
         except KeyboardInterrupt:
             self._save_state(completed=False)
@@ -215,18 +228,34 @@ class CandidateCrawler:
             persisted_cutoff = started_at - timedelta(days=365)
             state["cutoff_time"] = persisted_cutoff.isoformat()
         self.cutoff = persisted_cutoff
+        state["schema_version"] = CRAWL_STATE_VERSION
 
         pages = state.setdefault(
             "next_page_by_language", {language: 1 for language in CRAWL_LANGUAGES}
         )
+        pushed_before = state.setdefault(
+            "pushed_before_by_language", {language: "" for language in CRAWL_LANGUAGES}
+        )
+        windows = state.setdefault(
+            "search_windows_by_language", {language: 1 for language in CRAWL_LANGUAGES}
+        )
+        pages_fetched = state.setdefault("search_pages_fetched_by_language", {})
         for language in CRAWL_LANGUAGES:
             pages.setdefault(language, 1)
+            pushed_before.setdefault(language, "")
+            windows.setdefault(language, 1)
+            pages_fetched.setdefault(language, max(0, int(pages[language]) - 1))
         for record in raw_records:
             crawl = record.get("_crawl") or {}
             language = str(crawl.get("query_language") or "").lower()
             page = int(crawl.get("page", 0) or 0)
-            if language in CRAWL_LANGUAGES:
+            record_before = str(crawl.get("pushed_before") or "")
+            if language in CRAWL_LANGUAGES and record_before == pushed_before[language]:
                 pages[language] = max(int(pages[language]), page + 1)
+                pages_fetched[language] = max(
+                    int(pages_fetched[language]),
+                    page,
+                )
         return state
 
     def _raw_count(self, raw_records: list[dict[str, Any]], language: str) -> int:
@@ -427,16 +456,81 @@ class CandidateCrawler:
         }
 
     def _fetch_page(self, language: str, page: int) -> list[dict[str, Any]]:
+        pushed_before = str(self.state["pushed_before_by_language"].get(language) or "")
+        pushed_range = f"pushed:>={_github_time(self.cutoff)}"
+        if pushed_before:
+            pushed_range += f" pushed:<{pushed_before}"
         query = (
             f"language:{GITHUB_LANGUAGE_NAMES[language]} stars:>=100 "
-            f"pushed:>={self.cutoff.date().isoformat()} archived:false fork:false mirror:false"
+            f"{pushed_range} archived:false fork:false mirror:false"
         )
-        LOGGER.info("fetching %s search page %s", language, page)
+        LOGGER.info(
+            "fetching %s search window %s page %s",
+            language,
+            self.state["search_windows_by_language"][language],
+            page,
+        )
         payload = self.github.search_repositories_page(query, page=page, per_page=100)
         items = payload.get("items") or []
         if not isinstance(items, list):
             raise CrawlIncompleteError(f"GitHub search returned invalid items for {language}")
         return [item for item in items if isinstance(item, dict)]
+
+    def _advance_search_window(
+        self,
+        language: str,
+        raw_records: list[dict[str, Any]],
+        *,
+        page_items: list[dict[str, Any]] | None = None,
+    ) -> bool:
+        current_before = str(self.state["pushed_before_by_language"].get(language) or "")
+        candidates = list(page_items or [])
+        if not candidates:
+            current_window = [
+                record
+                for record in raw_records
+                if str((record.get("_crawl") or {}).get("query_language") or "").lower()
+                == language
+                and str((record.get("_crawl") or {}).get("pushed_before") or "")
+                == current_before
+            ]
+            if current_window:
+                last_page = max(
+                    int((record.get("_crawl") or {}).get("page", 0) or 0)
+                    for record in current_window
+                )
+                candidates = [
+                    record
+                    for record in current_window
+                    if int((record.get("_crawl") or {}).get("page", 0) or 0) == last_page
+                ]
+
+        pushed_times = [
+            parsed
+            for item in candidates
+            if (parsed := _parse_github_time(str(item.get("pushed_at") or ""))) is not None
+        ]
+        if not pushed_times:
+            return False
+        oldest = min(pushed_times)
+        current_boundary = _parse_github_time(current_before)
+        if oldest <= self.cutoff or (
+            current_boundary is not None and oldest >= current_boundary
+        ):
+            return False
+
+        boundary = _github_time(oldest)
+        self.state["pushed_before_by_language"][language] = boundary
+        self.state["next_page_by_language"][language] = 1
+        self.state["search_windows_by_language"][language] += 1
+        self._save_state(completed=False)
+        LOGGER.info(
+            "advancing %s to search window %s pushed before %s",
+            language,
+            self.state["search_windows_by_language"][language],
+            boundary,
+        )
+        return True
 
     def _completed_summary_matches(
         self,
@@ -538,7 +632,11 @@ class CandidateCrawler:
             "retry_count": self._prior_retries + self.github.retry_count,
             "github_rate_limit_remaining": rate_remaining,
             "search_pages_fetched": {
-                language: int(self.state["next_page_by_language"][language]) - 1
+                language: int(self.state["search_pages_fetched_by_language"][language])
+                for language in CRAWL_LANGUAGES
+            },
+            "search_windows_used": {
+                language: int(self.state["search_windows_by_language"][language])
                 for language in CRAWL_LANGUAGES
             },
             "start_time": started_at.isoformat(),
@@ -649,3 +747,7 @@ def _parse_github_time(value: str) -> datetime | None:
 
 def _utc_now() -> str:
     return datetime.now(UTC).isoformat()
+
+
+def _github_time(value: datetime) -> str:
+    return value.astimezone(UTC).isoformat().replace("+00:00", "Z")

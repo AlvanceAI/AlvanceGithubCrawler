@@ -170,3 +170,50 @@ def test_completed_checkpoint_can_expand_to_more_search_pages(tmp_path: Path) ->
     assert expanded["target_total"] == 10
     assert expanded["cutoff_time"] == initial["cutoff_time"]
     assert expanded_github.search_calls == 5
+
+
+def test_crawl_advances_to_older_search_windows(tmp_path: Path) -> None:
+    class WindowedFakeGitHub(FakeGitHub):
+        def __init__(self) -> None:
+            super().__init__()
+            self.queries: list[str] = []
+
+        def search_repositories_page(
+            self,
+            query: str,
+            *,
+            page: int,
+            per_page: int,
+        ) -> dict[str, Any]:
+            self.request_count += 1
+            self.search_calls += 1
+            self.queries.append(query)
+            language = next(
+                key for key, name in LANGUAGE_NAMES.items() if f"language:{name}" in query
+            )
+            older_window = "pushed:<" in query
+            window = "older" if older_window else "newer"
+            pushed_at = "2026-06-20T00:00:00Z" if older_window else "2026-07-20T00:00:00Z"
+            items = [
+                self._repo(language, suffix=f"{window}-first"),
+                self._repo(language, suffix=f"{window}-second"),
+            ]
+            for item in items:
+                item["pushed_at"] = pushed_at
+            return {"items": items, "total_count": len(items)}
+
+    github = WindowedFakeGitHub()
+    summary = CandidateCrawler(
+        github,
+        tmp_path,
+        target_total=15,
+        per_language=3,
+        max_search_pages=1,
+        now=datetime(2026, 7, 29, tzinfo=UTC),
+    ).run()
+
+    assert summary["status"] == "completed"
+    assert summary["fetched_total"] == 15
+    assert summary["search_windows_used"] == {language: 2 for language in LANGUAGE_NAMES}
+    assert github.search_calls == 10
+    assert sum("pushed:<" in query for query in github.queries) == 5
