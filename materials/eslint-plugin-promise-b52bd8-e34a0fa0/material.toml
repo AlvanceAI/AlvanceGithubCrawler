@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "eslint-plugin-promise-b52bd8-e34a0fa0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/eslint-community/eslint-plugin-promise"
+base_commit = "e34a0fa0cab49a65c0e27475e9776a8d848bddcc"
+source_tree = "1e620c158a06fcfd4ab1317fe5fd6d29235beef8"
+default_branch = "main"
+license = "ISC"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b6eecca9711bfee430aacb51c009b9cdababbe52f6340f51b4b009ad26f9fe4e"
+harbor_template_alias = "alv-eslint-plugin-promis-b52bd8-e34a0fa0-v2__b6eecca9"
+e2b_template = "zpl4fv1jwbnfeubrxu45"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "alvance-repo-eslint-b52bd815-e34a0fa0ca-b539688a94-c1-m1024-v17"
+source_template_id = "0bkkwmecs6xkqt7wcf0r"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

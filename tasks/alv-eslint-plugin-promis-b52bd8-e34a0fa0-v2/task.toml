@@ -1,0 +1,37 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-eslint-plugin-promis-b52bd8-e34a0fa0-v2"
+description = "E2B-backed repository task for eslint-community/eslint-plugin-promise"
+authors = []
+keywords = ["javascript", "e2b", "github"]
+
+[metadata]
+task_id = "alv-eslint-plugin-promis-b52bd8-e34a0fa0-v2"
+material_id = "eslint-plugin-promise-b52bd8-e34a0fa0"
+status = "direction"
+language = "javascript"
+repository_url = "https://github.com/eslint-community/eslint-plugin-promise"
+base_commit_hash = "e34a0fa0cab49a65c0e27475e9776a8d848bddcc"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

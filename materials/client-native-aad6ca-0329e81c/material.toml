@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "client-native-aad6ca-0329e81c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/haproxytech/client-native"
+base_commit = "0329e81cc3c6367544f9adbbb57b9374936aafae"
+source_tree = "a669de201231916ebb2b780ebe8dd277f400725c"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "302f57f78f1adbd5f36ab27a36f7496dd4dfddd9da9182c7924546ad60be7e95"
+harbor_template_alias = "alv-client-native-aad6ca-0329e81c-v2__302f57f7"
+e2b_template = "pknyyyzlg5rs2qnfjr0w"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "alvance-repo-haprox-aad6ca73-0329e81cc3-f7a87c9d99-c1-m1024-v17"
+source_template_id = "spubklju4zzy1xsmz20o"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

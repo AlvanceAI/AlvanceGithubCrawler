@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "skillfile-3ee39d-fd042844"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/eljulians/skillfile"
+base_commit = "fd04284451985cccb94c6161cd81516a654d6d37"
+source_tree = "e1beae5a569e23542a59fa403bf9e697ae2d59b9"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.82"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e37e22025131b696bfb2b04e83b30c3b443bec1b348ef9499380b806cce617ef"
+harbor_template_alias = "alv-skillfile-3ee39d-fd042844-v2__e37e2202"
+e2b_template = "zdxmpo6pmm44losqr6de"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "alvance-repo-eljuli-3ee39d38-fd04284451-4b0a00dfbd-c1-m1024-v17"
+source_template_id = "8ukqzkqn45ihslwm1a6j"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

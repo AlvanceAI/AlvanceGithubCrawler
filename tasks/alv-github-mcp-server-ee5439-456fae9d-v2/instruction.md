@@ -1,0 +1,5 @@
+Repository `github/github-mcp-server` at commit `456fae9d0464944b946a288aed152dbb0c369a76` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为 HTTP 模式增加显式启用的静态环境变量令牌认证：请求缺少 Authorization 头时回退到 GITHUB_PERSONAL_ACCESS_TOKEN 或 GITHUB_ACCESS_TOKEN，同时始终优先使用请求级令牌。

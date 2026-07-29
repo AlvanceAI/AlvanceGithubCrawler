@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "coolify-mcp-cbb913-fcff9518"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/StuMason/coolify-mcp"
+base_commit = "fcff951833435579dddd43b2f43cf6531ce62223"
+source_tree = "1773976293683b8668f0f19cbcd3d2ef2efb8005"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fa6feaecb9dc41b61272330671cab7809ec6d0fe2d77cf615e9470a54da02935"
+harbor_template_alias = "alv-coolify-mcp-cbb913-fcff9518-v2__fa6feaec"
+e2b_template = "sfzto9quz2aqvo0n7kjt"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "alvance-repo-stumas-f8ddcbbd-fcff951833-b36edbc18d-c1-m1024-v17"
+source_template_id = "f2yxk6dfml1uns4k1dab"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

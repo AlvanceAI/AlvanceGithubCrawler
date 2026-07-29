@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-multicalc-rust-9f373b-54cfa52e-v2"
+description = "E2B-backed repository task for kmolan/multicalc-rust"
+authors = []
+keywords = ["rust", "e2b", "github"]
+
+[metadata]
+task_id = "alv-multicalc-rust-9f373b-54cfa52e-v2"
+material_id = "multicalc-rust-9f373b-54cfa52e"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/kmolan/multicalc-rust"
+base_commit_hash = "54cfa52e744040578f26ae80b08cf5ef45213cdd"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

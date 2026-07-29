@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "gickup-310952-66eaf7bd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cooperspencer/gickup"
+base_commit = "66eaf7bd2cc80fb9cb13f113c3a17d7c25e42baf"
+source_tree = "e31234df926098e49bc4cc548467953253c93a02"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7dcc6b088c47a9bde1660773d1bdfbf9b3cb28c122391c49a89ef4a381015919"
+harbor_template_alias = "alv-gickup-310952-66eaf7bd-v2__7dcc6b08"
+e2b_template = "xtbnejz7sfexvepy9j5k"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "alvance-repo-cooper-310952c3-66eaf7bd2c-fe2d6d79d3-c1-m1024-v17"
+source_template_id = "dxrmhzfgk3wp2awffsne"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
