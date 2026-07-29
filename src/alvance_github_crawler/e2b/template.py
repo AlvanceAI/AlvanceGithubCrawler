@@ -74,7 +74,7 @@ class E2BEnvironmentManager:
         language = str(repo.get("language") or "").lower()
         runtime_version = detect_runtime_version(language, repo_path)
         runtime_alias = runtime_template_alias(language, runtime_version)
-        runtime_cache_hit, runtime_build_s = self._ensure_runtime(
+        runtime_template_id, runtime_cache_hit, runtime_build_s = self._ensure_runtime(
             Template,
             language,
             runtime_version,
@@ -86,10 +86,11 @@ class E2BEnvironmentManager:
             base_commit,
             dependency_hash,
         )
-        repository_cache_hit, repository_build_s = self._ensure_repository(
+        repository_template_id, repository_cache_hit, repository_build_s = self._ensure_repository(
             Template,
             language,
             runtime_version,
+            runtime_template_id,
             runtime_alias,
             repository_alias,
             str(repo["full_name"]),
@@ -99,8 +100,8 @@ class E2BEnvironmentManager:
         )
         return E2BEnvironmentResult(
             runtime_version=runtime_version,
-            runtime_template=runtime_alias,
-            repository_template=repository_alias,
+            runtime_template=runtime_template_id,
+            repository_template=repository_template_id,
             runtime_alias=runtime_alias,
             repository_alias=repository_alias,
             dependency_hash=dependency_hash,
@@ -118,15 +119,15 @@ class E2BEnvironmentManager:
         language: str,
         runtime_version: str,
         runtime_alias: str,
-    ) -> tuple[bool, float]:
+    ) -> tuple[str, bool, float]:
         cache_hit = Template.alias_exists(runtime_alias, api_key=self.api_key)
         if cache_hit:
-            return True, 0.0
+            return runtime_alias, True, 0.0
         builder = _runtime_template_builder(Template, language, runtime_version)
         started = time.monotonic()
         logs = E2BBuildLogBuffer()
         try:
-            Template.build(
+            info = Template.build(
                 builder,
                 name=runtime_alias,
                 cpu_count=self.cpu_count,
@@ -137,26 +138,28 @@ class E2BEnvironmentManager:
             )
         except Exception as exc:
             raise RuntimeTemplateBuildError(logs.error_message(exc)) from exc
-        return False, time.monotonic() - started
+        template_id = getattr(info, "template_id", None) or runtime_alias
+        return template_id, False, time.monotonic() - started
 
     def _ensure_repository(
         self,
         Template: Any,
         language: str,
         runtime_version: str,
+        runtime_template_id: str,
         runtime_alias: str,
         repository_alias: str,
         full_name: str,
         base_commit: str,
         repo_path: Path,
         default_branch: str,
-    ) -> tuple[bool, float]:
+    ) -> tuple[str, bool, float]:
         cache_hit = Template.alias_exists(repository_alias, api_key=self.api_key)
         if cache_hit:
-            return True, 0.0
+            return repository_alias, True, 0.0
         builder = (
             Template()
-            .from_template(runtime_alias)
+            .from_template(runtime_template_id)
             .set_envs(runtime_environment(language, runtime_version))
             .set_workdir("/")
         )
@@ -171,7 +174,7 @@ class E2BEnvironmentManager:
         started = time.monotonic()
         logs = E2BBuildLogBuffer()
         try:
-            Template.build(
+            info = Template.build(
                 builder,
                 name=repository_alias,
                 cpu_count=self.cpu_count,
@@ -182,7 +185,8 @@ class E2BEnvironmentManager:
             )
         except Exception as exc:
             raise RepositoryTemplateBuildError(logs.error_message(exc)) from exc
-        return False, time.monotonic() - started
+        template_id = getattr(info, "template_id", None) or repository_alias
+        return template_id, False, time.monotonic() - started
 
 
 def _add_repository_build_steps(
