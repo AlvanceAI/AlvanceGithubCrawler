@@ -132,9 +132,26 @@ current_per_language() {
     jq -r '.raw_per_language // .per_language // 0' "$crawl_dir/summary.json"
 }
 
+run_prescreen() {
+    local stage=$1
+    run_stage "$stage" \
+        env \
+            PIPELINE_OUTPUT_DIR="$production_dir" \
+            PIPELINE_LANGUAGE_QUOTA_ENABLED=false \
+            PIPELINE_PRESCREEN_CONCURRENCY="$prescreen_concurrency" \
+            uv run alvance-github-crawler produce \
+            --input "$crawl_dir/accepted_repositories.jsonl" \
+            --prescreen-concurrency "$prescreen_concurrency" \
+            --defer-e2b \
+            --verbose
+}
+
 produce_candidates() {
     local current next target
     current=$(current_per_language)
+    if (( current > 0 )); then
+        run_prescreen "prescreen-resume-$((current * 5))" || return $?
+    fi
     while (( current < max_per_language )); do
         next=$((current + batch_per_language))
         if (( next > max_per_language )); then
@@ -149,16 +166,7 @@ produce_candidates() {
             --output "$crawl_dir" \
             --request-interval 0.2 \
             --verbose || return $?
-        run_stage "prescreen-$target" \
-            env \
-                PIPELINE_OUTPUT_DIR="$production_dir" \
-                PIPELINE_LANGUAGE_QUOTA_ENABLED=false \
-                PIPELINE_PRESCREEN_CONCURRENCY="$prescreen_concurrency" \
-                uv run alvance-github-crawler produce \
-                --input "$crawl_dir/accepted_repositories.jsonl" \
-                --prescreen-concurrency "$prescreen_concurrency" \
-                --defer-e2b \
-                --verbose || return $?
+        run_prescreen "prescreen-$target" || return $?
         current=$next
     done
 }
