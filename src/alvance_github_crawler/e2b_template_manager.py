@@ -10,6 +10,7 @@ from .build import test_command_for
 from .python_install import python_install_commands
 from .runtime_profiles import (
     detect_runtime_version,
+    execution_user,
     hash_dependency_manifests,
     repository_template_alias,
     runtime_environment,
@@ -38,6 +39,7 @@ class E2BEnvironmentResult:
     runtime_template_build_s: float
     repository_template_build_s: float
     test_cmd: str
+    execution_user: str
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -106,6 +108,7 @@ class E2BEnvironmentManager:
             runtime_template_build_s=round(runtime_build_s, 2),
             repository_template_build_s=round(repository_build_s, 2),
             test_cmd=test_command_for(language, repo_path),
+            execution_user=execution_user(language),
         )
 
     def _ensure_runtime(
@@ -215,7 +218,10 @@ def _add_repository_build_steps(
         )
     else:
         raise ValueError(f"unsupported language: {language}")
-    return builder.run_cmd('test -z "$(git status --porcelain)"', user="root")
+    builder = builder.run_cmd('test -z "$(git status --porcelain)"', user="root")
+    if language == "python":
+        builder = builder.run_cmd("chown -R user:user /app", user="root")
+    return builder
 
 
 def _runtime_template_builder(Template: Any, language: str, version: str) -> Any:

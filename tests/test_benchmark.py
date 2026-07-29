@@ -61,6 +61,48 @@ def test_e2b_benchmark_passes_runtime_envs(monkeypatch) -> None:
     assert result.all_passed
 
 
+def test_e2b_benchmark_runs_as_selected_user(monkeypatch) -> None:
+    observed: dict[str, object] = {}
+
+    class Result:
+        exit_code = 0
+
+    class Commands:
+        def run(self, command: str, *, user: str, timeout: int):
+            observed.update(command=command, user=user, timeout=timeout)
+            return Result()
+
+    class Files:
+        def read(self, path: str) -> str:
+            return "Maximum resident set size (kbytes): 1024"
+
+    class Sandbox:
+        commands = Commands()
+        files = Files()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return None
+
+        @classmethod
+        def create(cls, **kwargs):
+            return cls()
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Sandbox=Sandbox))
+    result = E2BBenchmark("test-key", runs=1).run(
+        "repo-template",
+        "python -m pytest -q",
+        envs={"HOME": "/home/user"},
+        user="user",
+    )
+
+    assert result.all_passed
+    assert observed["user"] == "user"
+    assert "HOME=/home/user" in str(observed["command"])
+
+
 def test_parse_max_rss() -> None:
     log = "\tMaximum resident set size (kbytes): 262144\n"
     assert parse_max_rss(log) == 262_144

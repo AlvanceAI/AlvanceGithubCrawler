@@ -16,7 +16,6 @@ def test_python_install_uses_only_declared_extras(tmp_path) -> None:
 
     assert declared_test_extras(tmp_path / "pyproject.toml") == ("test",)
     assert python_install_commands(tmp_path) == [
-        "/usr/local/bin/python -m pip install --no-cache-dir --upgrade 'pip>=25.1'",
         "/usr/local/bin/pip install --no-cache-dir pytest",
         "/usr/local/bin/pip install --no-cache-dir -r requirements-dev.txt",
         "/usr/local/bin/pip install --no-cache-dir -e '.[test]'",
@@ -30,7 +29,6 @@ def test_python_install_falls_back_to_plain_editable(tmp_path) -> None:
     )
 
     assert python_install_commands(tmp_path) == [
-        "/usr/local/bin/python -m pip install --no-cache-dir --upgrade 'pip>=25.1'",
         "/usr/local/bin/pip install --no-cache-dir pytest",
         "/usr/local/bin/pip install --no-cache-dir -e .",
     ]

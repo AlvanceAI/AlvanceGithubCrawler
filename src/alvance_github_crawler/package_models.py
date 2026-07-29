@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from typing import Any
 
-from .runtime_profiles import runtime_environment
+from .runtime_profiles import execution_user, runtime_environment
 
 PACKAGE_SCHEMA_VERSION = "0.2"
 
@@ -21,6 +21,7 @@ class QualifiedRepository:
     direction: str
     source_template_alias: str
     runtime_env: dict[str, str]
+    execution_user: str
 
     @property
     def repository_url(self) -> str:
@@ -55,6 +56,7 @@ class QualifiedRepository:
             direction=str(record.get("direction") or ""),
             source_template_alias=str(required["source_template_alias"]),
             runtime_env=runtime_environment(language, runtime_version),
+            execution_user=str(environment.get("execution_user") or execution_user(language)),
         )
 
 
@@ -124,6 +126,7 @@ def compact_package_record(
         "runtime_env": repository.runtime_env,
         "workdir": "/app",
         "test_cmd": repository.test_cmd,
+        "execution_user": repository.execution_user,
         "material_path": prepared.material_path,
         "task_path": prepared.task_path,
         "environment_sha256": prepared.environment_sha256,

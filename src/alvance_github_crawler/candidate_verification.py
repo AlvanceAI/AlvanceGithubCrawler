@@ -70,6 +70,7 @@ class E2BCandidateVerifier:
                 environment.repository_template,
                 environment.test_cmd,
                 envs=runtime_env,
+                user=environment.execution_user,
             )
             if not offline.ok:
                 self.registry.reject(
@@ -86,6 +87,7 @@ class E2BCandidateVerifier:
                 environment.repository_template,
                 environment.test_cmd,
                 envs=runtime_env,
+                user=environment.execution_user,
             )
             if not benchmark.resource_pass:
                 subset_cmd = subset_test_command(
@@ -98,6 +100,7 @@ class E2BCandidateVerifier:
                         environment.repository_template,
                         subset_cmd,
                         envs=runtime_env,
+                        user=environment.execution_user,
                     )
 
             adjusted_score = float(score["total"])

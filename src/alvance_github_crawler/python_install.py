@@ -18,15 +18,15 @@ REQUIREMENT_FILES = (
 def python_install_commands(repo_path: Path) -> list[str]:
     """Build deterministic Python install steps from declared project metadata."""
     metadata = read_pyproject(repo_path / "pyproject.toml")
-    commands = [
-        "/usr/local/bin/python -m pip install --no-cache-dir --upgrade 'pip>=25.1'",
-        "/usr/local/bin/pip install --no-cache-dir pytest",
-    ]
+    groups = declared_dependency_groups(metadata)
+    commands = []
+    if groups:
+        commands.append("/usr/local/bin/python -m pip install --no-cache-dir --upgrade 'pip>=25.1'")
+    commands.append("/usr/local/bin/pip install --no-cache-dir pytest")
     requirements = [name for name in REQUIREMENT_FILES if (repo_path / name).is_file()]
     commands.extend(
         f"/usr/local/bin/pip install --no-cache-dir -r {shlex.quote(name)}" for name in requirements
     )
-    groups = declared_dependency_groups(metadata)
     commands.extend(
         f"/usr/local/bin/pip install --no-cache-dir --group {shlex.quote(group)}"
         for group in groups

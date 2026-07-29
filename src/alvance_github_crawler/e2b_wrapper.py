@@ -100,10 +100,14 @@ class E2BHarborWrapperManager:
             timeout=120,
             api_key=self.api_key,
         ) as sandbox:
-            result = sandbox.commands.run(command, user="root", timeout=60)
+            result = sandbox.commands.run(
+                command,
+                user=repository.execution_user,
+                timeout=60,
+            )
         return {
             "ok": result.exit_code == 0,
-            "user": "root",
+            "user": repository.execution_user,
             "workdir": "/app",
             "base_commit": repository.base_commit,
             "runtime_probe": probe,

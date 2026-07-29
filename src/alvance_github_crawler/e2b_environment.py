@@ -13,11 +13,13 @@ from .e2b_template_manager import (
 from .runtime_profiles import (
     command_with_environment,
     detect_runtime_version,
+    execution_user,
     hash_dependency_manifests,
     render_runtime_dockerfile,
     repository_template_alias,
     runtime_environment,
     runtime_template_alias,
+    select_python_runtime,
 )
 
 __all__ = [
@@ -29,9 +31,11 @@ __all__ = [
     "RuntimeTemplateBuildError",
     "command_with_environment",
     "detect_runtime_version",
+    "execution_user",
     "hash_dependency_manifests",
     "render_runtime_dockerfile",
     "repository_template_alias",
+    "select_python_runtime",
     "runtime_environment",
     "runtime_template_alias",
 ]

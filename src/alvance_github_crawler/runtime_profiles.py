@@ -6,8 +6,10 @@ import re
 import shlex
 from pathlib import Path
 
+from packaging.specifiers import InvalidSpecifier, SpecifierSet
+
 RUNTIME_RECIPE_VERSION = "v3"
-REPOSITORY_RECIPE_VERSION = "v9"
+REPOSITORY_RECIPE_VERSION = "v10"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
@@ -16,6 +18,8 @@ DEFAULT_RUNTIME_VERSIONS = {
     "javascript": "20",
     "rust": "1.77",
 }
+
+PYTHON_RUNTIME_CANDIDATES = ("3.11", "3.12", "3.13", "3.10", "3.9", "3.8")
 
 DEPENDENCY_FILES = {
     "go": ("go.mod", "go.sum", "go.work", "go.work.sum"),
@@ -54,10 +58,10 @@ def detect_runtime_version(language: str, repo_path: Path) -> str:
         return match.group(1) if match else DEFAULT_RUNTIME_VERSIONS[language]
     if language == "python":
         match = re.search(
-            r"requires-python\s*=\s*['\"][^'\"]*?(\d+\.\d+)",
+            r"requires-python\s*=\s*['\"]([^'\"]+)['\"]",
             _read(repo_path / "pyproject.toml"),
         )
-        return match.group(1) if match else DEFAULT_RUNTIME_VERSIONS[language]
+        return select_python_runtime(match.group(1) if match else "")
     if language in {"typescript", "javascript"}:
         try:
             package = json.loads(_read(repo_path / "package.json") or "{}")
@@ -71,6 +75,19 @@ def detect_runtime_version(language: str, repo_path: Path) -> str:
         match = re.search(r"(?:channel\s*=\s*)?['\"]?(\d+\.\d+(?:\.\d+)?)", content)
         return match.group(1) if match else DEFAULT_RUNTIME_VERSIONS[language]
     raise ValueError(f"unsupported language: {language}")
+
+
+def select_python_runtime(requirement: str) -> str:
+    if not requirement.strip():
+        return DEFAULT_RUNTIME_VERSIONS["python"]
+    try:
+        specifier = SpecifierSet(requirement)
+    except InvalidSpecifier:
+        return DEFAULT_RUNTIME_VERSIONS["python"]
+    for version in PYTHON_RUNTIME_CANDIDATES:
+        if specifier.contains(version, prereleases=False):
+            return version
+    raise ValueError(f"no supported Python runtime satisfies requires-python={requirement!r}")
 
 
 def hash_dependency_manifests(language: str, repo_path: Path) -> str:
@@ -122,7 +139,12 @@ def runtime_environment(language: str, version: str) -> dict[str, str]:
             "GOPROXY": "https://goproxy.cn,direct",
             "GOTOOLCHAIN": f"go{version}+auto",
         }
-    if language in {"python", "typescript", "javascript"}:
+    if language == "python":
+        return {
+            "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "HOME": "/home/user",
+        }
+    if language in {"typescript", "javascript"}:
         return {
             "PATH": "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin",
             "HOME": "/root",
@@ -139,12 +161,23 @@ def runtime_environment(language: str, version: str) -> dict[str, str]:
     raise ValueError(f"unsupported language: {language}")
 
 
+def execution_user(language: str) -> str:
+    """Return the user whose filesystem semantics define repository tests."""
+    return "user" if language.lower() == "python" else "root"
+
+
 def command_with_environment(command: str, envs: dict[str, str] | None) -> str:
     """Inject envs in the shell command because E2B normalizes PATH at startup."""
     if not envs:
         return command
     assignments = " ".join(f"{key}={shlex.quote(value)}" for key, value in sorted(envs.items()))
     return f"env {assignments} sh -c {shlex.quote(command)}"
+
+
+def command_as_user(command: str, user: str) -> str:
+    if user == "root":
+        return command
+    return f"runuser -u {shlex.quote(user)} -- {command}"
 
 
 def render_runtime_dockerfile(language: str, version: str) -> str:

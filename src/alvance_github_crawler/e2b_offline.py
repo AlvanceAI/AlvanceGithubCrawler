@@ -31,6 +31,7 @@ class E2BOfflineVerifier:
         test_cmd: str,
         *,
         envs: dict[str, str] | None = None,
+        user: str = "root",
     ) -> OfflineTestResult:
         try:
             from e2b import Sandbox
@@ -48,7 +49,7 @@ class E2BOfflineVerifier:
             try:
                 result = sandbox.commands.run(
                     command_with_environment(test_cmd, envs),
-                    user="root",
+                    user=user,
                     timeout=self.timeout_s,
                 )
             except Exception as exc:

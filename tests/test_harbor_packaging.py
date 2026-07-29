@@ -85,6 +85,7 @@ def test_trace_store_writes_tiny_native_layout(tmp_path) -> None:
     assert "WORKDIR /app" in (task_dir / "environment" / "Dockerfile").read_text()
     test_script = (task_dir / "tests" / "test.sh").read_text()
     assert "cd /app" in test_script
+    assert "runuser -u user -- env HOME=/home/user" in test_script
     assert "echo 1 > /logs/verifier/reward.txt" in test_script
     assert "echo 0 > /logs/verifier/reward.txt" in test_script
     assert not any(path.name == ".git" for path in tmp_path.rglob(".git"))
@@ -94,6 +95,12 @@ def test_trace_store_writes_tiny_native_layout(tmp_path) -> None:
         material = tomllib.load(handle)
     assert material["environment"]["e2b_template"] == "harbor-id"
     assert material["source"]["source_tree"] == "b" * 40
+    assert (
+        "runuser -u user -- env HOME=/home/user"
+        in (material_dir / "scripts" / "baseline.sh").read_text()
+    )
+    receipt = json.loads((material_dir / "receipts" / "e2b.json").read_text())
+    assert receipt["execution_user"] == "user"
 
 
 def test_compact_package_omits_test_logs(tmp_path) -> None:
@@ -127,3 +134,4 @@ def test_compact_package_omits_test_logs(tmp_path) -> None:
     serialized = json.dumps(payload)
     assert "large log" not in serialized
     assert payload["storage"]["remote_e2b_only"] is True
+    assert payload["execution_user"] == "user"

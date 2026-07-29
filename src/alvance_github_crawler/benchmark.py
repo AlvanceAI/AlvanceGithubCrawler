@@ -99,6 +99,7 @@ class E2BBenchmark:
         test_cmd: str,
         *,
         envs: dict[str, str] | None = None,
+        user: str = "root",
     ) -> BenchmarkResult:
         try:
             from e2b import Sandbox
@@ -124,7 +125,7 @@ class E2BBenchmark:
                     try:
                         result = sandbox.commands.run(
                             sandbox_command,
-                            user="root",
+                            user=user,
                             timeout=self.command_timeout_s,
                         )
                     except Exception as exc:

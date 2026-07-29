@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 
 from .package_models import QualifiedRepository
-from .runtime_profiles import command_with_environment
+from .runtime_profiles import command_as_user, command_with_environment
 
 HARBOR_ENVELOPE_VERSION = "v2"
 
@@ -104,6 +104,7 @@ def render_task_toml(repository: QualifiedRepository, task: str, material: str) 
 
 def render_test_script(repository: QualifiedRepository) -> str:
     command = command_with_environment(repository.test_cmd, repository.runtime_env)
+    command = command_as_user(command, repository.execution_user)
     return (
         "#!/bin/sh\n"
         "set -u\n"

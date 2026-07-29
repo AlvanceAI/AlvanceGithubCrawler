@@ -10,7 +10,9 @@ from alvance_github_crawler.e2b_environment import (
     hash_dependency_manifests,
     render_runtime_dockerfile,
     repository_template_alias,
+    runtime_environment,
     runtime_template_alias,
+    select_python_runtime,
 )
 
 
@@ -102,6 +104,45 @@ def test_offline_verifier_records_timeout(monkeypatch) -> None:
     assert result.stderr_tail == "request timed out"
 
 
+def test_offline_verifier_runs_as_selected_user(monkeypatch) -> None:
+    observed: dict[str, object] = {}
+
+    class Result:
+        exit_code = 0
+        stdout = ""
+        stderr = ""
+
+    class Commands:
+        def run(self, command: str, *, user: str, timeout: int):
+            observed.update(command=command, user=user, timeout=timeout)
+            return Result()
+
+    class Sandbox:
+        commands = Commands()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return None
+
+        @classmethod
+        def create(cls, **kwargs):
+            return cls()
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Sandbox=Sandbox))
+    result = E2BOfflineVerifier("test-key").verify(
+        "repo-template",
+        "python -m pytest -q",
+        envs=runtime_environment("python", "3.11"),
+        user="user",
+    )
+
+    assert result.ok
+    assert observed["user"] == "user"
+    assert "HOME=/home/user" in str(observed["command"])
+
+
 def test_go_runtime_and_template_recipe(tmp_path) -> None:
     (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.26.5\n", encoding="utf-8")
     version = detect_runtime_version("go", tmp_path)
@@ -118,6 +159,17 @@ def test_dependency_hash_changes_with_lockfile(tmp_path) -> None:
     (tmp_path / "package-lock.json").write_text("{}", encoding="utf-8")
     second = hash_dependency_manifests("typescript", tmp_path)
     assert first != second
+
+
+def test_python_runtime_prefers_stable_default_within_constraints(tmp_path) -> None:
+    (tmp_path / "pyproject.toml").write_text(
+        '[project]\nrequires-python = ">=3.7"\n',
+        encoding="utf-8",
+    )
+    assert detect_runtime_version("python", tmp_path) == "3.11"
+    assert select_python_runtime(">=3.12,<4") == "3.12"
+    assert select_python_runtime(">=3.8,<3.11") == "3.10"
+    assert runtime_environment("python", "3.11")["HOME"] == "/home/user"
 
 
 def test_repository_build_keeps_exact_git_commit() -> None:
@@ -150,6 +202,35 @@ def test_repository_build_keeps_exact_git_commit() -> None:
     assert builder.events[-1] == ("run", 'test -z "$(git status --porcelain)"')
 
 
+def test_python_repository_becomes_owned_by_execution_user(tmp_path) -> None:
+    class Builder:
+        def __init__(self) -> None:
+            self.events: list[tuple[str, str]] = []
+
+        def run_cmd(self, command: str, *, user: str):
+            assert user == "root"
+            self.events.append(("run", command))
+            return self
+
+        def set_workdir(self, workdir: str):
+            self.events.append(("workdir", workdir))
+            return self
+
+    (tmp_path / "pyproject.toml").write_text('[project]\nname = "demo"\n', encoding="utf-8")
+    builder = _add_repository_build_steps(
+        Builder(),
+        "python",
+        "owner/repo",
+        "a" * 40,
+        repo_path=tmp_path,
+    )
+
+    assert builder.events[-2:] == [
+        ("run", 'test -z "$(git status --porcelain)"'),
+        ("run", "chown -R user:user /app"),
+    ]
+
+
 def test_repository_alias_is_bounded() -> None:
     alias = repository_template_alias(
         "organization-with-a-very-long-name/repository-with-a-very-long-name",
@@ -157,4 +238,4 @@ def test_repository_alias_is_bounded() -> None:
         "b" * 16,
     )
     assert len(alias) <= 63
-    assert alias.endswith("-v9")
+    assert alias.endswith("-v10")

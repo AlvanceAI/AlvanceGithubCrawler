@@ -7,7 +7,7 @@ from importlib.metadata import PackageNotFoundError, version
 from typing import Any
 
 from .package_models import E2BWrapperReceipt, QualifiedRepository
-from .runtime_profiles import command_with_environment
+from .runtime_profiles import command_as_user, command_with_environment
 
 TRACE_MATERIAL_SCHEMA_VERSION = "0.2"
 
@@ -79,6 +79,7 @@ Dockerfile; Harbor must reuse the recorded ready template alias.
 
 def render_baseline_script(repository: QualifiedRepository) -> str:
     command = command_with_environment(repository.test_cmd, repository.runtime_env)
+    command = command_as_user(command, repository.execution_user)
     return f"#!/usr/bin/env bash\nset -euo pipefail\ncd /app\nexec {command}\n"
 
 
@@ -110,6 +111,7 @@ def build_e2b_receipt(
         "source_template_id": wrapper.source_template_id,
         "source_template_alias": repository.source_template_alias,
         "build_status": "ready",
+        "execution_user": repository.execution_user,
         "wrapper_cache_hit": wrapper.cache_hit,
         "wrapper_build_duration_s": wrapper.build_duration_s,
         "environment_sha256": environment_sha256,
