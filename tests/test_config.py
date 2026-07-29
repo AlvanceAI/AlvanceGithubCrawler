@@ -32,9 +32,12 @@ def test_external_env_aliases(tmp_path, monkeypatch) -> None:
         "MODEL_BASE_URL",
         "MODEL_NAME",
         "E2B_KEY",
+        "PIPELINE_ENV_FILE",
     ):
         monkeypatch.delenv(key, raising=False)
     monkeypatch.setenv("PIPELINE_ENV_FILE", str(env_file))
+    # Prevent auto-loading the project's .env file during tests
+    monkeypatch.chdir(tmp_path)
 
     config = PipelineConfig.from_env()
     assert config.openai_api_key == "model-key"

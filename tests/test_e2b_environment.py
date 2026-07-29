@@ -14,7 +14,7 @@ from alvance_github_crawler.e2b import (
     runtime_template_alias,
     select_python_runtime,
 )
-from alvance_github_crawler.e2b.template import _template_alias_ready
+from alvance_github_crawler.e2b.template import E2BEnvironmentManager, _template_alias_ready
 
 
 class _CommandFailure(Exception):
@@ -40,6 +40,94 @@ def test_template_cache_requires_launchable_default_tag() -> None:
 
     assert _template_alias_ready(Template, "repo-template", "test-key") is True
     assert checked == [("repo-template:default", "test-key")]
+
+
+def test_environment_manager_propagates_built_template_ids(monkeypatch, tmp_path) -> None:
+    build_names: list[str] = []
+    parent_template_ids: list[str] = []
+    build_resources: list[tuple[int, int]] = []
+
+    class Template:
+        @staticmethod
+        def alias_exists(alias: str, *, api_key: str) -> bool:
+            assert alias.endswith(":default")
+            assert api_key == "test-key"
+            return False
+
+        @classmethod
+        def build(cls, builder, *, name: str, cpu_count: int, memory_mb: int, **kwargs):
+            build_names.append(name)
+            build_resources.append((cpu_count, memory_mb))
+            template_id = "runtime-uuid" if len(build_names) == 1 else "repository-uuid"
+            return SimpleNamespace(template_id=template_id)
+
+        def from_image(self, image: str):
+            return self
+
+        def from_template(self, template_id: str):
+            parent_template_ids.append(template_id)
+            return self
+
+        def set_envs(self, envs: dict[str, str]):
+            return self
+
+        def set_workdir(self, workdir: str):
+            return self
+
+        def run_cmd(self, command: str, *, user: str):
+            return self
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Template=Template))
+    (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.22\n", encoding="utf-8")
+
+    result = E2BEnvironmentManager(
+        "test-key",
+        cpu_count=2,
+        memory_mb=4_096,
+    ).ensure(
+        {"language": "go", "full_name": "owner/repo", "default_branch": "main"},
+        tmp_path,
+        "a" * 40,
+    )
+
+    assert result.runtime_template == "runtime-uuid"
+    assert result.repository_template == "repository-uuid"
+    assert result.runtime_alias.endswith("-c2-m4096-v3")
+    assert result.repository_alias.endswith("-c2-m4096-v17")
+    assert parent_template_ids == ["runtime-uuid"]
+    assert build_resources == [(2, 4_096), (2, 4_096)]
+
+
+def test_environment_manager_returns_launchable_aliases_on_cache_hit(
+    monkeypatch,
+    tmp_path,
+) -> None:
+    checked_aliases: list[str] = []
+
+    class Template:
+        @staticmethod
+        def alias_exists(alias: str, *, api_key: str) -> bool:
+            checked_aliases.append(alias)
+            return True
+
+        def __init__(self) -> None:
+            raise AssertionError("cache hits must not construct template builders")
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Template=Template))
+    (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.22\n", encoding="utf-8")
+
+    result = E2BEnvironmentManager("test-key").ensure(
+        {"language": "go", "full_name": "owner/repo", "default_branch": "main"},
+        tmp_path,
+        "a" * 40,
+    )
+
+    assert result.runtime_template == result.runtime_alias
+    assert result.repository_template == result.repository_alias
+    assert checked_aliases == [
+        f"{result.runtime_alias}:default",
+        f"{result.repository_alias}:default",
+    ]
 
 
 def test_offline_verifier_passes_envs_and_records_command_failure(monkeypatch) -> None:

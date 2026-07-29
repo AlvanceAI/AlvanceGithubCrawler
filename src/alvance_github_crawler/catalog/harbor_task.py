@@ -29,7 +29,7 @@ def harbor_template_alias(task_name: str, environment_dir: Path) -> str:
     except ImportError as exc:
         raise RuntimeError("dirhash is required for Harbor packaging") from exc
     digest = dirhash(environment_dir, "sha256")[:8]
-    return f"{task_name}__{digest}".replace(".", "-")
+    return f"{task_name}-env-{digest}".replace(".", "-")
 
 
 def render_environment_dockerfile(repository: QualifiedRepository) -> str:

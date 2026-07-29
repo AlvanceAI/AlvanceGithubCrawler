@@ -61,7 +61,7 @@ class TracePackageStore:
         (task_environment / "Dockerfile").write_text(dockerfile, encoding="utf-8")
 
         alias = harbor_template_alias(task, task_environment)
-        environment_sha256 = alias.rsplit("__", 1)[-1]
+        environment_sha256 = alias.rsplit("-env-", 1)[-1]
         try:
             from dirhash import dirhash
         except ImportError as exc:
