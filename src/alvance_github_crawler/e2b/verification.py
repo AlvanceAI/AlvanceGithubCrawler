@@ -7,6 +7,7 @@ from typing import Any
 from ..config import PipelineConfig
 from ..pending.registration import CandidateRegistrar
 from ..registry import JsonlRegistry
+from ..runtime.profiles import UnsupportedRuntimeError
 from . import (
     E2BEnvironmentManager,
     E2BOfflineVerifier,
@@ -192,6 +193,14 @@ class E2BCandidateVerifier:
             )
             return "registered"
         except Exception as exc:
+            if isinstance(exc, UnsupportedRuntimeError):
+                self.registry.reject(
+                    repo,
+                    stage,
+                    "unsupported_runtime",
+                    error=str(exc)[-4_000:],
+                )
+                return "rejected"
             if is_e2b_key_exhausted_error(exc):
                 LOGGER.error("%s exhausted its E2B key during %s", repo.get("full_name"), stage)
                 self.registry.reject(

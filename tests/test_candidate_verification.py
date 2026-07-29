@@ -3,11 +3,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from alvance_github_crawler.e2b.verification import (
+    E2BCandidateVerifier,
     benchmark_rejection,
     is_e2b_key_exhausted_error,
     is_resource_e2b_error,
     is_transient_e2b_error,
 )
+from alvance_github_crawler.runtime.profiles import UnsupportedRuntimeError
 
 
 @dataclass
@@ -50,3 +52,31 @@ def test_e2b_key_exhaustion_classification() -> None:
     assert is_e2b_key_exhausted_error(RuntimeError("HTTP 402: payment required"))
     assert is_e2b_key_exhausted_error(RuntimeError("not enough credits to build template"))
     assert not is_e2b_key_exhausted_error(RuntimeError("too many concurrent sandboxes"))
+
+
+def test_unsupported_runtime_is_a_terminal_rejection(tmp_path) -> None:
+    rejected: list[tuple[str, str]] = []
+
+    class Environment:
+        @staticmethod
+        def ensure(repo, repo_path, base_commit):
+            raise UnsupportedRuntimeError("requires Python 3.14")
+
+    class Registry:
+        @staticmethod
+        def reject(repo, stage, reason, **details):
+            rejected.append((stage, reason))
+
+    verifier = E2BCandidateVerifier.__new__(E2BCandidateVerifier)
+    verifier.environment = Environment()  # type: ignore[assignment]
+    verifier.registry = Registry()  # type: ignore[assignment]
+
+    outcome = verifier.verify(
+        {"full_name": "owner/repository", "base_commit": "a" * 40},
+        tmp_path,
+        score={"total": 10},
+        direction={},
+    )
+
+    assert outcome == "rejected"
+    assert rejected == [("stage3_5_e2b_environment", "unsupported_runtime")]

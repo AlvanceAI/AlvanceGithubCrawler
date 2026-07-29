@@ -48,6 +48,10 @@ DEPENDENCY_FILES = {
 }
 
 
+class UnsupportedRuntimeError(ValueError):
+    """The repository requires a runtime version the pipeline cannot build."""
+
+
 def detect_runtime_version(language: str, repo_path: Path) -> str:
     language = language.lower()
     if language == "go":
@@ -87,7 +91,9 @@ def select_python_runtime(requirement: str) -> str:
     for version in PYTHON_RUNTIME_CANDIDATES:
         if specifier.contains(version, prereleases=False):
             return version
-    raise ValueError(f"no supported Python runtime satisfies requires-python={requirement!r}")
+    raise UnsupportedRuntimeError(
+        f"no supported Python runtime satisfies requires-python={requirement!r}"
+    )
 
 
 def normalize_go_toolchain_version(version: str) -> str:
