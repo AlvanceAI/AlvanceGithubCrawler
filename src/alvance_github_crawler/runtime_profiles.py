@@ -7,7 +7,7 @@ import shlex
 from pathlib import Path
 
 RUNTIME_RECIPE_VERSION = "v3"
-REPOSITORY_RECIPE_VERSION = "v8"
+REPOSITORY_RECIPE_VERSION = "v9"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
