@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "docopt-ng-0715f5-587f41a6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jazzband/docopt-ng"
+base_commit = "587f41a61437b680b4215de1874fb6975d8a49d6"
+source_tree = "f9675d6e9147d19b6c6e11dc9aefcae5090e123e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0b55e4941bb93aa093931d5c08e5a994c3b2979ac8d1c956be19c9a80509cc78"
+harbor_template_alias = "alv-docopt-ng-0715f5-587f41a6-v2__0b55e494"
+e2b_template = "mlsyxq6fpzm1so4ci9qu"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "alvance-repo-jazzband-docopt-ng-587f41a614-716fcad118-v15"
+source_template_id = "farq4a8jn94kw40glhrt"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
