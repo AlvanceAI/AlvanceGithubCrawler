@@ -52,3 +52,24 @@ def test_python_install_supports_pep735_and_poetry_groups(tmp_path) -> None:
         "--no-interaction --no-root --with dev --all-extras",
         "/usr/local/bin/pip install --no-cache-dir -e .",
     ]
+
+
+def test_python_install_supports_testing_requirements_and_dynamic_optional_extra(tmp_path) -> None:
+    (tmp_path / "pyproject.toml").write_text(
+        '[project]\nname = "demo"\ndynamic = ["optional-dependencies"]\n'
+        "[tool.setuptools.dynamic.optional-dependencies]\n"
+        'optional = {file = ["requirements/optional.txt"]}\n'
+        'docs = {file = ["requirements/docs.txt"]}\n',
+        encoding="utf-8",
+    )
+    requirements = tmp_path / "requirements"
+    requirements.mkdir()
+    (requirements / "testing.txt").write_text("pytest-timeout\n", encoding="utf-8")
+    (requirements / "optional.txt").write_text("aiohttp\n", encoding="utf-8")
+
+    assert declared_test_extras(tmp_path / "pyproject.toml") == ("optional",)
+    assert python_install_commands(tmp_path) == [
+        "/usr/local/bin/pip install --no-cache-dir pytest",
+        "/usr/local/bin/pip install --no-cache-dir -r requirements/testing.txt",
+        "/usr/local/bin/pip install --no-cache-dir -e '.[optional]'",
+    ]

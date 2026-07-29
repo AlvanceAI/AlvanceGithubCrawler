@@ -1,0 +1,46 @@
+from __future__ import annotations
+
+from alvance_github_crawler.python_workspace import (
+    omitted_workspace_packages,
+    python_workspace_install_commands,
+)
+
+
+def test_workspace_installs_omitted_local_package_and_node_toolchain(tmp_path) -> None:
+    requirements = tmp_path / "requirements-dev.txt"
+    requirements.write_text(
+        "-e ./packages/server[all]\n-e ./packages/meta[all]\n",
+        encoding="utf-8",
+    )
+    for name in ("server", "meta", "assets"):
+        package = tmp_path / "packages" / name
+        package.mkdir(parents=True)
+        (package / "pyproject.toml").write_text(
+            f'[project]\nname = "demo-{name}"\nversion = "1.0"\n',
+            encoding="utf-8",
+        )
+    (tmp_path / "packages" / "assets" / "hatch_build.py").write_text(
+        'subprocess.check_call("npm pack demo-assets")\n',
+        encoding="utf-8",
+    )
+
+    assert omitted_workspace_packages(tmp_path, ["requirements-dev.txt"]) == (
+        tmp_path.joinpath("packages/assets").relative_to(tmp_path),
+    )
+    assert python_workspace_install_commands(tmp_path, ["requirements-dev.txt"]) == [
+        "apt-get update && apt-get install -y --no-install-recommends nodejs npm "
+        "&& rm -rf /var/lib/apt/lists/*",
+        "/usr/local/bin/pip install --no-cache-dir -e packages/assets",
+    ]
+
+
+def test_workspace_is_inactive_without_local_requirement_references(tmp_path) -> None:
+    package = tmp_path / "packages" / "unused"
+    package.mkdir(parents=True)
+    (package / "pyproject.toml").write_text(
+        '[project]\nname = "unused"\nversion = "1.0"\n',
+        encoding="utf-8",
+    )
+    (tmp_path / "requirements-dev.txt").write_text("pytest\n", encoding="utf-8")
+
+    assert python_workspace_install_commands(tmp_path, ["requirements-dev.txt"]) == []
