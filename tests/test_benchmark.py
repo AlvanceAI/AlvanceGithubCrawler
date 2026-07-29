@@ -173,6 +173,15 @@ def test_subset_test_command(tmp_path) -> None:
     assert subset_test_command(tmp_path, "go", ["../escape"]) is None
 
 
+def test_python_subset_maps_src_layout_to_test_directory(tmp_path) -> None:
+    (tmp_path / "src" / "demo" / "config").mkdir(parents=True)
+    (tmp_path / "tests" / "test_config").mkdir(parents=True)
+
+    assert subset_test_command(tmp_path, "python", ["src/demo/config"]) == (
+        "python -m pytest -x -q tests/test_config"
+    )
+
+
 def test_node_test_command_without_npm_test_script(tmp_path) -> None:
     (tmp_path / "package.json").write_text(
         '{"devDependencies":{"vitest":"2.0.0"}}', encoding="utf-8"

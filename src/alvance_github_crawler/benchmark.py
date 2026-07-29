@@ -178,7 +178,8 @@ def subset_test_command(repo_path: Path, language: str, target_paths: list[str])
         if language == "go":
             return f"go test ./{target.as_posix().rstrip('/')}/..."
         if language == "python":
-            return f"python -m pytest -x -q {quoted}"
+            python_target = python_test_target(repo_path, relative, candidate)
+            return f"python -m pytest -x -q {shlex.quote(python_target.as_posix())}"
         if language in {"typescript", "javascript"}:
             return f"CI=1 npm test -- {quoted}"
         if language == "rust":
@@ -190,3 +191,27 @@ def subset_test_command(repo_path: Path, language: str, target_paths: list[str])
                     return f"cargo test --manifest-path {shlex.quote(manifest_path)}"
                 current = current.parent
     return None
+
+
+def python_test_target(repo_path: Path, relative: Path, candidate: Path) -> Path:
+    """Map src-layout targets to conventional pytest paths when available."""
+    direct = relative if candidate.is_dir() else relative.parent
+    if direct.parts and direct.parts[0] in {"test", "tests"}:
+        return direct
+
+    source_parts = list(relative.parts)
+    if source_parts and source_parts[0] == "src":
+        source_parts.pop(0)
+    if not source_parts:
+        return direct
+
+    leaf = Path(source_parts[-1]).stem
+    names = (f"test_{leaf}", leaf, f"test_{leaf}.py")
+    candidates = [Path("tests") / name for name in names]
+    if len(source_parts) > 1:
+        parent = Path("tests", *source_parts[:-1])
+        candidates.extend(parent / name for name in names)
+    for test_target in candidates:
+        if (repo_path / test_target).exists():
+            return test_target
+    return direct
