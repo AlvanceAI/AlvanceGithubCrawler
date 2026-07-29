@@ -139,7 +139,13 @@ class GitHubClient:
         for label in ("enhancement", "feature", "roadmap"):
             response = self._get(
                 f"/repos/{full_name}/issues",
-                params={"labels": label, "state": "open", "per_page": min(limit, 100)},
+                params={
+                    "labels": label,
+                    "state": "open",
+                    # The /issues endpoint mixes issues and pull requests; fetch
+                    # more than `limit` so PR filtering cannot empty the page.
+                    "per_page": min(max(limit, 10), 100),
+                },
             )
             for issue in response.json():
                 if "pull_request" not in issue:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from alvance_github_crawler.python_workspace import (
+from alvance_github_crawler.runtime.python import (
     omitted_workspace_packages,
     python_workspace_install_commands,
     uv_workspace_packages,

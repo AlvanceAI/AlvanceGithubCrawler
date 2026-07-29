@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
 
-from alvance_github_crawler.filters import HardFilter
+from alvance_github_crawler.screening.filters import HardFilter
 
 
 class FakeGitHub:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from alvance_github_crawler.build import test_command_for as resolve_test_command
+from alvance_github_crawler.runtime.build import test_command_for as resolve_test_command
 
 
 def test_python_command_targets_conventional_tests_directory(tmp_path) -> None:

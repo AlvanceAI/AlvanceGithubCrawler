@@ -5,17 +5,17 @@ from collections import Counter
 from collections.abc import Iterable
 from typing import Any
 
-from .build import DockerBuildVerifier
-from .candidate_registration import CandidateRegistrar
-from .candidate_verification import E2BCandidateVerifier
+from .runtime.build import DockerBuildVerifier
+from .pending.registration import CandidateRegistrar
+from .e2b.verification import E2BCandidateVerifier
 from .config import PipelineConfig
-from .direction import DirectionChecker, OpenAIDirectionJudge, PublicImplementationSearch
-from .filters import HardFilter
-from .github import GitHubClient
-from .harbor_packaging import HarborPackager
-from .pending_queue import PendingQueue, build_pending_candidate
+from .screening.direction import DirectionChecker, OpenAIDirectionJudge, PublicImplementationSearch
+from .screening.filters import HardFilter
+from .github import GitHubClient, GitHubError
+from .catalog.harbor_packaging import HarborPackager
+from .pending.queue import PendingQueue, build_pending_candidate
 from .registry import JsonlRegistry
-from .scoring import LanguageQuota, SoftScorer
+from .screening.scoring import LanguageQuota, SoftScorer
 from .workspace import cloned_repository, tree_summary
 
 LOGGER = logging.getLogger(__name__)
@@ -54,8 +54,13 @@ class Pipeline:
         )
         self.build_verifier = DockerBuildVerifier(timeout_s=config.build_timeout_s)
         self.pending = PendingQueue(config.pending_path)
+        registered_repos = self.registry.existing_repos()
         for pending in self.pending.pending():
             repo = pending.candidate.get("repo") or {}
+            if str(repo.get("full_name") or "") in registered_repos:
+                # Registered-but-not-completed leftovers are already counted
+                # from candidates.jsonl by LanguageQuota.
+                continue
             language = str(repo.get("language") or "").lower()
             if language:
                 self.quota.register(language)
@@ -83,7 +88,7 @@ class Pipeline:
     ) -> dict[str, int]:
         stats: Counter[str] = Counter()
         seen = self.registry.existing_repos()
-        seen |= self.pending.known_repos()
+        seen |= self.pending.active_repos()
         if not self.retry_rejected:
             seen |= self.registry.terminal_rejections()
         reached_limit = False
@@ -91,11 +96,16 @@ class Pipeline:
             if reached_limit:
                 break
             LOGGER.info("fetching candidates: %s", query)
-            repos = self.github.search_repositories(
-                query,
-                pages=self.config.search_pages,
-                per_page=self.config.max_candidates_per_query,
-            )
+            try:
+                repos = self.github.search_repositories(
+                    query,
+                    pages=self.config.search_pages,
+                    per_page=self.config.max_candidates_per_query,
+                )
+            except GitHubError:
+                LOGGER.exception("repository search failed: %s", query)
+                stats["search_error"] += 1
+                continue
             for repo in repos:
                 full_name = repo.get("full_name", "unknown")
                 if full_name in seen:
@@ -133,6 +143,7 @@ class Pipeline:
                 )
                 return "rejected"
 
+            stage = "stage2_checkout"
             with cloned_repository(repo["full_name"], base_commit) as repo_path:
                 stage = "stage2_soft_score"
                 score = self.soft_scorer.evaluate(repo, tree, repo_path)

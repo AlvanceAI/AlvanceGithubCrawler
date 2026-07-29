@@ -3,14 +3,14 @@ from __future__ import annotations
 import sys
 from types import SimpleNamespace
 
-from alvance_github_crawler.benchmark import (
+from alvance_github_crawler.e2b.benchmark import (
     E2BBenchmark,
     parse_max_rss,
     subset_test_command,
     summarize_runs,
 )
-from alvance_github_crawler.build import dockerfile_for
-from alvance_github_crawler.build import test_command_for as resolve_test_command
+from alvance_github_crawler.runtime.build import dockerfile_for
+from alvance_github_crawler.runtime.build import test_command_for as resolve_test_command
 from alvance_github_crawler.models import BenchmarkRun
 
 

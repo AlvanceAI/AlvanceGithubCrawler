@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from alvance_github_crawler.pending_queue import (
+from alvance_github_crawler.pending.queue import (
     PendingQueue,
     build_pending_candidate,
     pending_key,
@@ -62,3 +62,46 @@ def test_pending_queue_distinguishes_commits(tmp_path) -> None:
     assert queue.enqueue(first) is True
     assert queue.enqueue(second) is True
     assert len(queue.pending()) == 2
+
+
+def test_defer_moves_item_to_tail(tmp_path) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    first = candidate()
+    second = candidate()
+    second["repo"]["base_commit"] = "c" * 40
+    queue.enqueue(first)
+    queue.enqueue(second)
+
+    queue.defer(pending_key(first))
+
+    assert [item.key for item in queue.pending()] == [
+        pending_key(second),
+        pending_key(first),
+    ]
+
+
+def test_completed_item_can_be_enqueued_again(tmp_path) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    item = candidate()
+    key = pending_key(item)
+    queue.enqueue(item)
+    queue.complete(key, "rejected")
+
+    assert queue.enqueue(item) is True
+    assert [pending.key for pending in queue.pending()] == [key]
+
+
+def test_attempt_counts_and_active_repos(tmp_path) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    item = candidate()
+    key = pending_key(item)
+    queue.enqueue(item)
+    queue.record_attempt(key)
+    queue.record_attempt(key)
+
+    assert queue.attempt_counts() == {key: 2}
+    assert queue.active_repos() == {"owner/repository"}
+
+    queue.complete(key, "error_exhausted")
+    assert queue.active_repos() == set()
+    assert queue.known_repos() == {"owner/repository"}

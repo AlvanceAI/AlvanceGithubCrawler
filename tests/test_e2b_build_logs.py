@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
-from alvance_github_crawler.e2b_build_logs import E2BBuildLogBuffer
+from alvance_github_crawler.e2b.build_logs import E2BBuildLogBuffer
 
 
 def test_build_log_buffer_is_bounded_and_sanitized() -> None:

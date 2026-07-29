@@ -3,7 +3,7 @@ from __future__ import annotations
 import sys
 from types import SimpleNamespace
 
-from alvance_github_crawler.e2b_environment import (
+from alvance_github_crawler.e2b import (
     E2BOfflineVerifier,
     _add_repository_build_steps,
     detect_runtime_version,

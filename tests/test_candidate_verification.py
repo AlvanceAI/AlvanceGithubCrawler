@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from alvance_github_crawler.candidate_verification import benchmark_rejection
+from alvance_github_crawler.e2b.verification import benchmark_rejection
 
 
 @dataclass

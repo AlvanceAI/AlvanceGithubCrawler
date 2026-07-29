@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from alvance_github_crawler.direction import (
+from alvance_github_crawler.screening.direction import (
     DirectionChecker,
     DirectionVerdict,
     PublicImplementationSearch,
@@ -67,7 +67,7 @@ def test_grep_app_challenge_uses_sourcegraph(monkeypatch) -> None:
 
     search = PublicImplementationSearch(FakeGitHub())
     monkeypatch.setattr(
-        "alvance_github_crawler.direction.requests.get", lambda *a, **k: ChallengeResponse()
+        "alvance_github_crawler.screening.direction.requests.get", lambda *a, **k: ChallengeResponse()
     )
     monkeypatch.setattr(search, "sourcegraph_count", lambda keywords: 0)
     assert search.grep_app_count(["rare phrase", "another phrase"]) == 0
@@ -82,7 +82,7 @@ def test_grep_app_timeout_uses_sourcegraph(monkeypatch) -> None:
 
         raise requests.Timeout("unavailable")
 
-    monkeypatch.setattr("alvance_github_crawler.direction.requests.get", timeout)
+    monkeypatch.setattr("alvance_github_crawler.screening.direction.requests.get", timeout)
     monkeypatch.setattr(search, "sourcegraph_count", lambda keywords: 0)
     assert search.grep_app_count(["rare phrase", "another phrase"]) == 0
     assert search.last_secondary_provider == "sourcegraph_fallback"

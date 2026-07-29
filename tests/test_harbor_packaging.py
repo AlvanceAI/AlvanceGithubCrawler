@@ -3,13 +3,13 @@ from __future__ import annotations
 import json
 import tomllib
 
-from alvance_github_crawler.package_models import (
+from alvance_github_crawler.catalog.package_models import (
     E2BWrapperReceipt,
     HarborPackageResult,
     QualifiedRepository,
     compact_package_record,
 )
-from alvance_github_crawler.trace_store import TracePackageStore
+from alvance_github_crawler.catalog.trace_store import TracePackageStore
 
 
 def candidate_record() -> dict[str, object]:

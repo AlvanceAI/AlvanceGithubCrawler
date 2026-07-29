@@ -36,7 +36,6 @@ def cloned_repository(full_name: str, base_commit: str) -> Iterator[Path]:
         url = f"https://github.com/{full_name}.git"
         try:
             extracted = _download_tarball(full_name, base_commit, path)
-            yield extracted
         except CloneError:
             shutil.rmtree(path, ignore_errors=True)
             path.mkdir(parents=True, exist_ok=True)
@@ -46,7 +45,10 @@ def cloned_repository(full_name: str, base_commit: str) -> Iterator[Path]:
             except CloneError:
                 _run_git(["fetch", "--depth=1", "origin", base_commit], cwd=path)
                 _run_git(["checkout", "--detach", base_commit], cwd=path)
-            yield path
+            extracted = path
+        # Single yield outside the except block: an exception raised inside the
+        # caller's `with` body must not re-trigger the clone fallback path.
+        yield extracted
 
 
 def _download_tarball(full_name: str, base_commit: str, destination: Path) -> Path:

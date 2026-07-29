@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from alvance_github_crawler.candidate_registration import compact_environment
+from alvance_github_crawler.pending.registration import compact_environment
 
 
 def test_compact_environment_removes_remote_test_logs() -> None:

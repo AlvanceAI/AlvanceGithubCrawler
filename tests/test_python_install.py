@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from alvance_github_crawler.python_install import (
+from alvance_github_crawler.runtime.python import (
     declared_test_extras,
     python_install_commands,
 )

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from alvance_github_crawler.scoring import (
+from alvance_github_crawler.screening.scoring import (
     LanguageQuota,
     SoftScorer,
     count_public_symbols,

@@ -2,12 +2,12 @@ from __future__ import annotations
 
 import json
 
-from alvance_github_crawler.pending_queue import (
+from alvance_github_crawler.pending.queue import (
     PendingQueue,
     build_pending_candidate,
     pending_key,
 )
-from alvance_github_crawler.requeue_failures import requeue_failures
+from alvance_github_crawler.pending.requeue import requeue_failures
 
 
 def test_requeue_selects_latest_matching_failure(tmp_path) -> None:
@@ -45,5 +45,37 @@ def test_requeue_selects_latest_matching_failure(tmp_path) -> None:
         error_contains="No module named pytest",
     )
 
-    assert stats == {"matched": 1, "requeued": 1}
+    assert stats == {"matched": 1, "requeued": 1, "already_registered": 0}
     assert [item.key for item in queue.pending()] == [key]
+
+
+def test_requeue_skips_repositories_registered_after_the_failure(tmp_path) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    candidate = build_pending_candidate(
+        {
+            "full_name": "owner/repository",
+            "language": "Python",
+            "base_commit": "a" * 40,
+            "source_tree": "b" * 40,
+        },
+        {"total": 9},
+        {"direction": "Add a parser."},
+    )
+    key = pending_key(candidate)
+    queue.enqueue(candidate)
+    queue.complete(key, "registered")
+    rejections = tmp_path / "rejections.jsonl"
+    rejections.write_text(
+        json.dumps({"repo": "owner/repository", "reason": "stage_error"}) + "\n",
+        encoding="utf-8",
+    )
+
+    stats = requeue_failures(
+        queue,
+        rejections,
+        reasons={"stage_error"},
+        exclude_repos={"owner/repository"},
+    )
+
+    assert stats == {"matched": 0, "requeued": 0, "already_registered": 1}
+    assert queue.pending() == []

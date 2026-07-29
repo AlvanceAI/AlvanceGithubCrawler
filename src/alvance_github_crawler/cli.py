@@ -6,15 +6,16 @@ import json
 import shutil
 import sys
 
-from .catalog_migration import package_existing_candidates
+from .catalog.migration import package_existing_candidates
 from .config import PipelineConfig
 from .github import GitHubClient
-from .harbor_packaging import HarborPackager
+from .catalog.harbor_packaging import HarborPackager
 from .logging_setup import configure_logging
-from .pending_queue import PendingQueue
-from .pending_verification import PendingVerificationRunner
+from .pending.queue import PendingQueue
+from .pending.verification import PendingVerificationRunner
 from .pipeline import Pipeline
-from .requeue_failures import requeue_failures
+from .registry import JsonlRegistry
+from .pending.requeue import requeue_failures
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -101,6 +102,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.search_pages < 1:
             raise SystemExit("--search-pages must be >= 1")
         config.search_pages = args.search_pages
+    if args.max_repos is not None and args.max_repos < 1:
+        raise SystemExit("--max-repos must be >= 1")
 
     if args.doctor:
         print(json.dumps(doctor(config), ensure_ascii=False, indent=2))
@@ -133,11 +136,13 @@ def main(argv: list[str] | None = None) -> int:
         if not reasons:
             print("--requeue-failures requires --failure-reason", file=sys.stderr)
             return 2
+        registry = JsonlRegistry(config.candidates_path, config.rejections_path)
         stats = requeue_failures(
             PendingQueue(config.pending_path),
             config.rejections_path,
             reasons=reasons,
             error_contains=args.failure_contains,
+            exclude_repos=registry.existing_repos(),
         )
         print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
