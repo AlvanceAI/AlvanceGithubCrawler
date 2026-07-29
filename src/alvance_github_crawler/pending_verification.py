@@ -44,8 +44,14 @@ class PendingVerificationRunner:
             E2BCandidateVerifier(config, registry, registrar),
         )
 
-    def run(self, *, max_items: int | None = None) -> dict[str, int]:
+    def run(
+        self,
+        *,
+        max_items: int | None = None,
+        max_consecutive_errors: int = 3,
+    ) -> dict[str, int]:
         stats: Counter[str] = Counter()
+        consecutive_errors = 0
         for item in self.queue.pending():
             if max_items is not None and stats["processed"] >= max_items:
                 break
@@ -57,8 +63,13 @@ class PendingVerificationRunner:
             stats[outcome] += 1
             if outcome == "error":
                 self.queue.record_attempt(item.key)
+                consecutive_errors += 1
+                if consecutive_errors >= max_consecutive_errors:
+                    stats["halted"] = 1
+                    break
             else:
                 self.queue.complete(item.key, outcome)
+                consecutive_errors = 0
         stats["remaining"] = len(self.queue.pending())
         return dict(stats)
 
