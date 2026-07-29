@@ -214,6 +214,31 @@ def test_runner_bounds_concurrency_per_key_slot(tmp_path, monkeypatch) -> None:
     assert stats["remaining"] == 0
 
 
+def test_runner_balances_small_queue_across_key_slots(tmp_path, monkeypatch) -> None:
+    queue = filled_queue(tmp_path, count=2)
+    first = object()
+    second = object()
+    runner = PendingVerificationRunner(
+        queue,
+        registry=StubRegistry(),
+        verifier=first,  # type: ignore[arg-type]
+        verifiers=(first, second),  # type: ignore[arg-type]
+    )
+    used_slots: set[int] = set()
+
+    def verify(verifier, repo, candidate):
+        used_slots.add(id(verifier))
+        return "registered"
+
+    monkeypatch.setattr(runner, "_verify_item_with", verify)
+
+    stats = runner.run(max_workers=20)
+
+    assert used_slots == {id(first), id(second)}
+    assert stats["registered"] == 2
+    assert stats["remaining"] == 0
+
+
 def test_runner_moves_exhausted_key_work_to_remaining_slot(tmp_path, monkeypatch) -> None:
     queue = filled_queue(tmp_path, count=4)
     exhausted = object()
@@ -273,3 +298,39 @@ def test_runner_absorbs_items_enqueued_while_verification_is_running(
     assert not thread.is_alive()
     assert len(verified) == 4
     assert result["stats"] == {"processed": 4, "registered": 4, "remaining": 0}
+
+
+def test_runner_absorbs_new_item_before_existing_item_finishes(
+    tmp_path, monkeypatch
+) -> None:
+    queue = filled_queue(tmp_path, count=1)
+    runner = PendingVerificationRunner(
+        queue, registry=StubRegistry(), verifier=None  # type: ignore[arg-type]
+    )
+    first_started = threading.Event()
+    second_started = threading.Event()
+
+    def verify(repo, candidate):
+        index = int(repo["full_name"].rsplit("-", 1)[1])
+        if index == 0:
+            first_started.set()
+            assert second_started.wait(timeout=3)
+        else:
+            second_started.set()
+        return "registered"
+
+    monkeypatch.setattr(runner, "_verify_item", verify)
+    result: dict[str, dict[str, int]] = {}
+
+    def run() -> None:
+        result["stats"] = runner.run(max_workers=2)
+
+    thread = threading.Thread(target=run)
+    thread.start()
+    assert first_started.wait(timeout=2)
+    queue.enqueue(make_candidate(1))
+    thread.join(timeout=4)
+
+    assert not thread.is_alive()
+    assert second_started.is_set()
+    assert result["stats"] == {"processed": 2, "registered": 2, "remaining": 0}

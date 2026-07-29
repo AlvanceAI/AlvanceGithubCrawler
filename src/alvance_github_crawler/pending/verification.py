@@ -133,12 +133,23 @@ class PendingVerificationRunner:
                 in_flight[lane] += 1
                 return True
 
-            for lane in range(lane_count):
-                while in_flight[lane] < max_workers and submit_next(lane):
-                    pass
+            def fill_available_slots() -> None:
+                while items:
+                    submitted = False
+                    for lane in range(lane_count):
+                        if in_flight[lane] < max_workers and submit_next(lane):
+                            submitted = True
+                    if not submitted:
+                        return
+
+            fill_available_slots()
 
             while futures:
-                completed, _ = wait(futures, return_when=FIRST_COMPLETED)
+                completed, _ = wait(
+                    futures,
+                    timeout=1,
+                    return_when=FIRST_COMPLETED,
+                )
                 for future in completed:
                     item, lane = futures.pop(future)
                     in_flight[lane] -= 1
@@ -183,9 +194,7 @@ class PendingVerificationRunner:
                             stats["halted"] = 1
 
                 refresh_items()
-                for lane in range(lane_count):
-                    while in_flight[lane] < max_workers and submit_next(lane):
-                        pass
+                fill_available_slots()
 
         if exhausted_lanes:
             stats["key_slots_exhausted"] = len(exhausted_lanes)
