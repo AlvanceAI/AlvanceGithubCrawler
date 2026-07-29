@@ -7,12 +7,14 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from .jsonl_io import read_text_locked
+
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
     if not path.is_file():
         return []
     rows: list[dict[str, Any]] = []
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in read_text_locked(path).splitlines():
         try:
             value = json.loads(line)
         except json.JSONDecodeError:

@@ -12,6 +12,7 @@ from .catalog.harbor_packaging import HarborPackager
 from .config import PipelineConfig
 from .e2b.verification import E2BCandidateVerifier
 from .github import GitHubClient, GitHubError
+from .jsonl_io import read_text_locked
 from .pending.queue import PendingQueue, build_pending_candidate
 from .pending.registration import CandidateRegistrar
 from .registry import JsonlRegistry
@@ -25,6 +26,19 @@ LOGGER = logging.getLogger(__name__)
 COMMIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
 
 
+def catalog_repositories(catalog_dir: Path) -> set[str]:
+    repositories: set[str] = set()
+    for raw_line in read_text_locked(catalog_dir / "e2b-packages.jsonl").splitlines():
+        try:
+            package = json.loads(raw_line)
+        except json.JSONDecodeError:
+            continue
+        repo = str(package.get("repo") or "") if isinstance(package, dict) else ""
+        if repo:
+            repositories.add(repo)
+    return repositories
+
+
 def load_crawl_candidates(
     path: Path,
     *,
@@ -35,7 +49,7 @@ def load_crawl_candidates(
         raise ValueError(f"candidate input file does not exist: {path}")
 
     candidates: dict[str, dict[str, Any]] = {}
-    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    for line_number, raw_line in enumerate(read_text_locked(path).splitlines(), 1):
         if not raw_line.strip():
             continue
         try:
@@ -156,6 +170,7 @@ class Pipeline:
         stats: Counter[str] = Counter()
         seen = self.registry.existing_repos()
         seen |= self.pending.active_repos()
+        seen |= catalog_repositories(self.config.catalog_dir)
         if not self.retry_rejected:
             seen |= self.registry.terminal_rejections()
         reached_limit = False
@@ -205,6 +220,7 @@ class Pipeline:
         stats: Counter[str] = Counter(input_total=len(candidates))
         seen = self.registry.existing_repos()
         seen |= self.pending.known_repos()
+        seen |= catalog_repositories(self.config.catalog_dir)
         if not self.retry_rejected:
             seen |= self.registry.terminal_rejections()
 

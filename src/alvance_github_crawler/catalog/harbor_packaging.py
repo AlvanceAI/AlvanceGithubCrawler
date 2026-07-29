@@ -34,33 +34,38 @@ class HarborPackager:
     def package(self, candidate_record: dict[str, Any]) -> HarborPackageResult:
         repository = QualifiedRepository.from_candidate(candidate_record)
         prepared = self.store.prepare(repository)
-        wrapper = self.wrapper_manager.ensure(
-            repository,
-            prepared.harbor_template_alias,
-        )
-        result = HarborPackageResult(
-            package_id=prepared.material_id,
-            material_id=prepared.material_id,
-            task_name=prepared.task_name,
-            material_path=prepared.material_path,
-            task_path=prepared.task_path,
-            source_template_alias=repository.source_template_alias,
-            source_template_id=wrapper.source_template_id,
-            harbor_template_alias=wrapper.harbor_template_alias,
-            harbor_template_id=wrapper.harbor_template_id,
-            wrapper_cache_hit=wrapper.cache_hit,
-            wrapper_build_s=wrapper.build_duration_s,
-            smoke_ok=bool(wrapper.smoke["ok"]),
-            launch_command=(
-                f"harbor run --path {shlex.quote(prepared.task_path)} --env e2b --no-force-build"
-            ),
-        )
-        package_record = compact_package_record(
-            candidate_record,
-            repository,
-            prepared,
-            wrapper,
-            result,
-        )
-        self.store.finalize(repository, prepared, wrapper, package_record)
-        return result
+        try:
+            wrapper = self.wrapper_manager.ensure(
+                repository,
+                prepared.harbor_template_alias,
+            )
+            result = HarborPackageResult(
+                package_id=prepared.material_id,
+                material_id=prepared.material_id,
+                task_name=prepared.task_name,
+                material_path=prepared.material_path,
+                task_path=prepared.task_path,
+                source_template_alias=repository.source_template_alias,
+                source_template_id=wrapper.source_template_id,
+                harbor_template_alias=wrapper.harbor_template_alias,
+                harbor_template_id=wrapper.harbor_template_id,
+                wrapper_cache_hit=wrapper.cache_hit,
+                wrapper_build_s=wrapper.build_duration_s,
+                smoke_ok=bool(wrapper.smoke["ok"]),
+                launch_command=(
+                    f"harbor run --path {shlex.quote(prepared.task_path)} "
+                    "--env e2b --no-force-build"
+                ),
+            )
+            package_record = compact_package_record(
+                candidate_record,
+                repository,
+                prepared,
+                wrapper,
+                result,
+            )
+            self.store.finalize(repository, prepared, wrapper, package_record)
+            return result
+        except Exception:
+            self.store.discard(prepared)
+            raise

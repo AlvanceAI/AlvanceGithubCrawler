@@ -172,3 +172,67 @@ def test_runner_refills_worker_slot_as_soon_as_one_finishes(tmp_path, monkeypatc
 
     assert slow_workers_saw_replacement == [True, True]
     assert stats == {"processed": 4, "registered": 4, "remaining": 0}
+
+
+def test_runner_bounds_concurrency_per_key_slot(tmp_path, monkeypatch) -> None:
+    queue = filled_queue(tmp_path, count=8)
+    first = object()
+    second = object()
+    runner = PendingVerificationRunner(
+        queue,
+        registry=StubRegistry(),
+        verifier=first,  # type: ignore[arg-type]
+        verifiers=(first, second),  # type: ignore[arg-type]
+    )
+    lock = threading.Lock()
+    active = {id(first): 0, id(second): 0}
+    maximum = {id(first): 0, id(second): 0}
+    total_active = 0
+    total_maximum = 0
+
+    def verify(verifier, repo, candidate):
+        nonlocal total_active, total_maximum
+        slot = id(verifier)
+        with lock:
+            active[slot] += 1
+            maximum[slot] = max(maximum[slot], active[slot])
+            total_active += 1
+            total_maximum = max(total_maximum, total_active)
+        time.sleep(0.03)
+        with lock:
+            active[slot] -= 1
+            total_active -= 1
+        return "registered"
+
+    monkeypatch.setattr(runner, "_verify_item_with", verify)
+
+    stats = runner.run(max_workers=2)
+
+    assert maximum == {id(first): 2, id(second): 2}
+    assert total_maximum == 4
+    assert stats["registered"] == 8
+    assert stats["remaining"] == 0
+
+
+def test_runner_moves_exhausted_key_work_to_remaining_slot(tmp_path, monkeypatch) -> None:
+    queue = filled_queue(tmp_path, count=4)
+    exhausted = object()
+    available = object()
+    runner = PendingVerificationRunner(
+        queue,
+        registry=StubRegistry(),
+        verifier=exhausted,  # type: ignore[arg-type]
+        verifiers=(exhausted, available),  # type: ignore[arg-type]
+    )
+
+    def verify(verifier, repo, candidate):
+        return "key_exhausted" if verifier is exhausted else "registered"
+
+    monkeypatch.setattr(runner, "_verify_item_with", verify)
+
+    stats = runner.run(max_workers=1)
+
+    assert stats["key_slots_exhausted"] == 1
+    assert stats["key_exhausted"] == 1
+    assert stats["registered"] == 4
+    assert stats["remaining"] == 0

@@ -28,7 +28,10 @@ class FakeGitHub:
         self.request_count += 1
         self.search_calls += 1
         language = next(key for key, name in LANGUAGE_NAMES.items() if f"language:{name}" in query)
-        items = [self._repo(language), self._repo(language, suffix="second")]
+        items = [
+            self._repo(language, suffix=f"candidate-{page}"),
+            self._repo(language, suffix=f"second-{page}"),
+        ]
         if language == "python":
             items[1]["license"] = {"spdx_id": "GPL-3.0"}
             items[1]["stargazers_count"] = 10_000
@@ -140,3 +143,30 @@ def test_crawl_filters_complete_raw_sample_without_acceptance_quotas(tmp_path: P
     assert resumed["cutoff_time"] == summary["cutoff_time"]
     assert resumed == summary
     assert resumed_github.search_calls == 0
+
+
+def test_completed_checkpoint_can_expand_to_more_search_pages(tmp_path: Path) -> None:
+    initial = CandidateCrawler(
+        FakeGitHub(),
+        tmp_path,
+        target_total=5,
+        per_language=1,
+        max_search_pages=2,
+        now=datetime(2026, 7, 29, tzinfo=UTC),
+    ).run()
+    expanded_github = FakeGitHub()
+
+    expanded = CandidateCrawler(
+        expanded_github,
+        tmp_path,
+        target_total=10,
+        per_language=2,
+        max_search_pages=2,
+        now=datetime(2026, 8, 1, tzinfo=UTC),
+    ).run()
+
+    assert initial["fetched_total"] == 5
+    assert expanded["fetched_total"] == 10
+    assert expanded["target_total"] == 10
+    assert expanded["cutoff_time"] == initial["cutoff_time"]
+    assert expanded_github.search_calls == 5

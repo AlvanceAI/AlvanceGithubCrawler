@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .github import GitHubClient
+from .jsonl_io import append_text_locked, read_text_locked
 from .screening.filters import PERMISSIVE_LICENSES, test_infrastructure_evidence
 from .screening.scoring import developer_library_score
 
@@ -186,10 +187,14 @@ class CandidateCrawler:
                     "checkpoint uses the retired accepted-language-quota semantics; "
                     "choose a new output directory"
                 )
-            if int(state.get("target_total", 0)) != self.target_total:
-                raise CrawlIncompleteError("checkpoint target_total does not match this run")
-            if int(state.get("per_language", 0)) != self.per_language:
-                raise CrawlIncompleteError("checkpoint per_language does not match this run")
+            previous_target = int(state.get("target_total", 0))
+            previous_per_language = int(state.get("per_language", 0))
+            if self.target_total < previous_target or self.per_language < previous_per_language:
+                raise CrawlIncompleteError("checkpoint sample size cannot be reduced")
+            if self.target_total > previous_target or self.per_language > previous_per_language:
+                state["target_total"] = self.target_total
+                state["per_language"] = self.per_language
+                state["completed"] = False
         else:
             state = {
                 "schema_version": CRAWL_STATE_VERSION,
@@ -586,7 +591,7 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
     if not path.is_file():
         return []
     records: list[dict[str, Any]] = []
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in read_text_locked(path).splitlines():
         if not line.strip():
             continue
         try:
@@ -616,9 +621,10 @@ def _append_jsonl_many(path: Path, payloads: list[dict[str, Any]]) -> None:
     if not payloads:
         return
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a", encoding="utf-8") as handle:
-        for payload in payloads:
-            handle.write(json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n")
+    serialized = "".join(
+        json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n" for payload in payloads
+    )
+    append_text_locked(path, serialized)
 
 
 def _write_json_atomic(path: Path, payload: dict[str, Any]) -> None:

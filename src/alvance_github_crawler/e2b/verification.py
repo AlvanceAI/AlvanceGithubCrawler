@@ -59,6 +59,14 @@ class E2BCandidateVerifier:
             try:
                 environment = self.environment.ensure(repo, repo_path, str(repo["base_commit"]))
             except RuntimeTemplateBuildError as exc:
+                if is_e2b_key_exhausted_error(exc):
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        "e2b_key_exhausted",
+                        error=str(exc)[-4_000:],
+                    )
+                    return "key_exhausted"
                 if is_resource_e2b_error(exc):
                     self.registry.reject(
                         repo,
@@ -70,6 +78,14 @@ class E2BCandidateVerifier:
                 self.registry.reject(repo, stage, "infra_error", error=str(exc)[-4_000:])
                 return "error"
             except RepositoryTemplateBuildError as exc:
+                if is_e2b_key_exhausted_error(exc):
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        "e2b_key_exhausted",
+                        error=str(exc)[-4_000:],
+                    )
+                    return "key_exhausted"
                 if is_resource_e2b_error(exc):
                     self.registry.reject(
                         repo,
@@ -176,6 +192,16 @@ class E2BCandidateVerifier:
             )
             return "registered"
         except Exception as exc:
+            if is_e2b_key_exhausted_error(exc):
+                LOGGER.error("%s exhausted its E2B key during %s", repo.get("full_name"), stage)
+                self.registry.reject(
+                    repo,
+                    stage,
+                    "e2b_key_exhausted",
+                    error_type=type(exc).__name__,
+                    error=str(exc)[-4_000:],
+                )
+                return "key_exhausted"
             LOGGER.exception("%s failed during %s", repo.get("full_name"), stage)
             self.registry.reject(
                 repo,
@@ -219,6 +245,24 @@ def is_transient_e2b_error(error: BaseException) -> bool:
         "request timeout",
         "request timed out",
         "internal server error",
+    )
+    return any(marker in message for marker in markers)
+
+
+def is_e2b_key_exhausted_error(error: BaseException) -> bool:
+    message = str(error).lower()
+    markers = (
+        "insufficient credits",
+        "not enough credits",
+        "no credits remaining",
+        "credits exhausted",
+        "credit limit reached",
+        "monthly credit limit",
+        "spending limit reached",
+        "payment required",
+        "http 402",
+        "status code 402",
+        "status_code=402",
     )
     return any(marker in message for marker in markers)
 

@@ -6,7 +6,11 @@ from pathlib import Path
 import pytest
 
 from alvance_github_crawler.models import HardFilterResult
-from alvance_github_crawler.pipeline import Pipeline, load_crawl_candidates
+from alvance_github_crawler.pipeline import (
+    Pipeline,
+    catalog_repositories,
+    load_crawl_candidates,
+)
 
 
 def crawl_candidate(repo: str = "owner/library") -> dict[str, object]:
@@ -41,6 +45,17 @@ def test_load_crawl_candidates_rejects_non_pinned_records(tmp_path: Path) -> Non
 
     with pytest.raises(ValueError, match="full commit SHA"):
         load_crawl_candidates(path)
+
+
+def test_catalog_repositories_ignores_invalid_records(tmp_path: Path) -> None:
+    catalog = tmp_path / "catalog"
+    catalog.mkdir()
+    (catalog / "e2b-packages.jsonl").write_text(
+        '{"repo":"owner/already-packaged"}\nnot-json\n',
+        encoding="utf-8",
+    )
+
+    assert catalog_repositories(catalog) == {"owner/already-packaged"}
 
 
 class _PinnedGitHub:

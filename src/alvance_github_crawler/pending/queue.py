@@ -6,6 +6,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from ..jsonl_io import append_text_locked, read_text_locked
+
 PENDING_SCHEMA_VERSION = "0.1"
 REPO_FIELDS = (
     "full_name",
@@ -121,7 +123,7 @@ class PendingQueue:
         if not self.path.is_file():
             return []
         events: list[dict[str, Any]] = []
-        for line in self.path.read_text(encoding="utf-8").splitlines():
+        for line in read_text_locked(self.path).splitlines():
             try:
                 event = json.loads(line)
             except json.JSONDecodeError:
@@ -138,8 +140,10 @@ class PendingQueue:
             "recorded_at": datetime.now(UTC).isoformat(),
             **fields,
         }
-        with self.path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n")
+        append_text_locked(
+            self.path,
+            json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n",
+        )
 
 
 def build_pending_candidate(

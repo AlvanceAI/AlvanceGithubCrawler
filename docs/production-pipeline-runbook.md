@@ -91,3 +91,21 @@ PIPELINE_RUN_ID=github-500-20260729 \
 
 脚本退出后先查看 `metrics.json` 的 `status` 和 `pending_remaining`，再使用
 `statistics.md` 编写最终按语言分类的交付文档。
+
+## 双 Key 持续量产
+
+当 `.env` 同时提供 `E2B_API_KEY1` 和 `E2B_API_KEY2` 时，使用持续量产入口：
+
+```bash
+PIPELINE_RUN_ID=github-mass-production-20260729 \
+  scripts/run_continuous_production.sh
+```
+
+`PIPELINE_E2B_CONCURRENCY`/`E2B_CONCURRENCY` 表示每个 Key 的并发数，默认每个 Key
+20，总并发 40。脚本复用现有 crawl 和 production checkpoint，逐批把样本扩展到
+每种语言 1000 条（GitHub Search 单查询上限），生产者与 E2B 消费者并行运行。每轮完整
+task 会自动提交并推送到 `XBY`；原始日志、阶段耗时、最终指标和 Markdown 统计保存在
+`outputs/production-runs/<RUN_ID>/`。
+
+任一 Key 额度耗尽后，其未完成任务会转交另一 Key；两个 Key 都耗尽时脚本以退出码 4
+停止并保留 pending checkpoint。日志只显示 Key 槽编号，不包含密钥值。

@@ -82,7 +82,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--e2b-concurrency",
         type=int,
         default=None,
-        help="parallel E2B pending verifications (1-20; defaults to environment config)",
+        help="parallel E2B verifications per API key (1-20; defaults to environment config)",
     )
     parser.add_argument(
         "--query", action="append", help="override a GitHub search query; repeatable"
@@ -145,10 +145,11 @@ def doctor(config: PipelineConfig) -> dict[str, object]:
         "openai_api_key": bool(config.openai_api_key),
         "openai_base_url": bool(config.openai_base_url),
         "openai_model": config.openai_model,
-        "e2b_api_key": bool(config.e2b_api_key),
+        "e2b_api_key_count": len(config.e2b_api_keys),
         "e2b_cpu_count": config.e2b_cpu_count,
         "e2b_memory_mb": config.e2b_memory_mb,
-        "e2b_concurrency": config.e2b_concurrency,
+        "e2b_concurrency_per_key": config.e2b_concurrency,
+        "e2b_total_concurrency": config.e2b_total_concurrency,
         "language_quota_enabled": config.language_quota_enabled,
         "git": shutil.which("git") is not None,
         "docker": shutil.which("docker") is not None,
@@ -226,8 +227,11 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.package_existing:
-        if not config.e2b_api_key:
-            print("missing required environment variable: E2B_API_KEY", file=sys.stderr)
+        if not config.e2b_api_keys:
+            print(
+                "missing required environment variable: E2B_API_KEY or E2B_API_KEY1/2",
+                file=sys.stderr,
+            )
             return 2
         stats = package_existing_candidates(
             config.candidates_path,
@@ -253,6 +257,11 @@ def main(argv: list[str] | None = None) -> int:
             max_workers=config.e2b_concurrency,
         )
         print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
+        if (
+            int(stats.get("key_slots_exhausted", 0)) >= len(config.e2b_api_keys)
+            and int(stats.get("remaining", 0)) > 0
+        ):
+            return 4
         return 0
 
     if args.requeue_failures:

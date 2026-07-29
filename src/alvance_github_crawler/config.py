@@ -49,6 +49,7 @@ class PipelineConfig:
     openai_api_key: str = ""
     openai_base_url: str = ""
     e2b_api_key: str = ""
+    e2b_api_keys: tuple[str, ...] = field(default_factory=tuple)
     openai_model: str = "gpt-5-mini"
     output_dir: Path = Path(".crawler-state")
     catalog_dir: Path = Path("catalog")
@@ -70,6 +71,14 @@ class PipelineConfig:
     max_repo_size_kb: int = 100_000
     languages: tuple[str, ...] = field(default_factory=lambda: SUPPORTED_LANGUAGES)
 
+    def __post_init__(self) -> None:
+        keys = tuple(dict.fromkeys(key for key in self.e2b_api_keys if key))
+        if not keys and self.e2b_api_key:
+            keys = (self.e2b_api_key,)
+        self.e2b_api_keys = keys
+        if keys:
+            self.e2b_api_key = keys[0]
+
     @classmethod
     def from_env(cls) -> PipelineConfig:
         external_env = os.getenv("PIPELINE_ENV_FILE")
@@ -88,11 +97,30 @@ class PipelineConfig:
                         return resolved
             return ""
 
+        def e2b_keys() -> tuple[str, ...]:
+            for source in sources:
+                numbered = tuple(
+                    dict.fromkeys(
+                        str(source.get(key) or "").strip()
+                        for key in ("E2B_API_KEY1", "E2B_API_KEY2")
+                        if str(source.get(key) or "").strip()
+                    )
+                )
+                if numbered:
+                    return numbered
+                fallback = str(source.get("E2B_API_KEY") or source.get("E2B_KEY") or "").strip()
+                if fallback:
+                    return (fallback,)
+            return ()
+
+        resolved_e2b_keys = e2b_keys()
+
         return cls(
             github_token=value("GITHUB_TOKEN") or discover_github_token(),
             openai_api_key=value("OPENAI_API_KEY", "MODEL_API_KEY"),
             openai_base_url=normalize_openai_base_url(value("OPENAI_BASE_URL", "MODEL_BASE_URL")),
-            e2b_api_key=value("E2B_API_KEY", "E2B_KEY"),
+            e2b_api_key=resolved_e2b_keys[0] if resolved_e2b_keys else "",
+            e2b_api_keys=resolved_e2b_keys,
             openai_model=value("OPENAI_MODEL", "MODEL_NAME") or "gpt-5-mini",
             output_dir=Path(value("PIPELINE_OUTPUT_DIR") or ".crawler-state"),
             catalog_dir=Path(value("PIPELINE_CATALOG_DIR") or "catalog"),
@@ -114,8 +142,8 @@ class PipelineConfig:
             missing.append("GITHUB_TOKEN")
         if not self.openai_api_key:
             missing.append("OPENAI_API_KEY")
-        if require_e2b and not self.e2b_api_key:
-            missing.append("E2B_API_KEY")
+        if require_e2b and not self.e2b_api_keys:
+            missing.append("E2B_API_KEY or E2B_API_KEY1/2")
         if missing:
             raise ValueError(f"missing required environment variables: {', '.join(missing)}")
         if self.e2b_cpu_count < 1:
@@ -123,7 +151,11 @@ class PipelineConfig:
         if self.e2b_memory_mb < 128:
             raise ValueError("PIPELINE_E2B_MEMORY_MB must be >= 128")
         if not 1 <= self.e2b_concurrency <= 20:
-            raise ValueError("PIPELINE_E2B_CONCURRENCY must be between 1 and 20")
+            raise ValueError("PIPELINE_E2B_CONCURRENCY must be between 1 and 20 per key")
+
+    @property
+    def e2b_total_concurrency(self) -> int:
+        return self.e2b_concurrency * max(1, len(self.e2b_api_keys))
 
     @property
     def queries(self) -> list[str]:

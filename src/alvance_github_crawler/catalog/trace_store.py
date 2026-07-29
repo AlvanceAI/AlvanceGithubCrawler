@@ -30,6 +30,9 @@ from .trace_materials import (
     render_material_toml,
 )
 
+_CATALOG_LOCKS_GUARD = threading.Lock()
+_CATALOG_LOCKS: dict[Path, threading.Lock] = {}
+
 
 class TracePackageStore:
     """Persist immutable Trace catalog, material, and Harbor task records."""
@@ -39,7 +42,9 @@ class TracePackageStore:
         self.root_dir = catalog_dir.parent
         self.materials_dir = self.root_dir / "materials"
         self.tasks_dir = self.root_dir / "tasks"
-        self._catalog_lock = threading.Lock()
+        catalog_key = catalog_dir.resolve()
+        with _CATALOG_LOCKS_GUARD:
+            self._catalog_lock = _CATALOG_LOCKS.setdefault(catalog_key, threading.Lock())
 
     def prepare(self, repository: QualifiedRepository) -> PreparedTracePackage:
         material = material_id(repository)
@@ -191,3 +196,7 @@ class TracePackageStore:
 
     def remove_task(self, task: str) -> None:
         shutil.rmtree(self.tasks_dir / task, ignore_errors=True)
+
+    def discard(self, prepared: PreparedTracePackage) -> None:
+        shutil.rmtree(self.root_dir / prepared.task_path, ignore_errors=True)
+        shutil.rmtree(self.root_dir / prepared.material_path, ignore_errors=True)

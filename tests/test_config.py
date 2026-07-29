@@ -26,6 +26,8 @@ def test_external_env_aliases(tmp_path, monkeypatch) -> None:
         "OPENAI_BASE_URL",
         "OPENAI_MODEL",
         "E2B_API_KEY",
+        "E2B_API_KEY1",
+        "E2B_API_KEY2",
         "MODEL_API_KEY",
         "MODEL_BASE_URL",
         "MODEL_NAME",
@@ -39,6 +41,7 @@ def test_external_env_aliases(tmp_path, monkeypatch) -> None:
     assert config.openai_base_url == "http://model.example/v1"
     assert config.openai_model == "custom-model"
     assert config.e2b_api_key == "e2b-key"
+    assert config.e2b_api_keys == ("e2b-key",)
 
 
 def test_e2b_resource_and_concurrency_config(monkeypatch) -> None:
@@ -54,3 +57,18 @@ def test_e2b_resource_and_concurrency_config(monkeypatch) -> None:
     assert config.e2b_concurrency == 20
     assert config.language_quota_enabled is False
     config.validate(require_e2b=False)
+
+
+def test_numbered_e2b_keys_create_independent_concurrency_pools(monkeypatch) -> None:
+    monkeypatch.delenv("E2B_API_KEY", raising=False)
+    monkeypatch.delenv("E2B_KEY", raising=False)
+    monkeypatch.setenv("E2B_API_KEY1", "first-key")
+    monkeypatch.setenv("E2B_API_KEY2", "second-key")
+    monkeypatch.setenv("PIPELINE_E2B_CONCURRENCY", "20")
+
+    config = PipelineConfig.from_env()
+
+    assert config.e2b_api_keys == ("first-key", "second-key")
+    assert config.e2b_api_key == "first-key"
+    assert config.e2b_total_concurrency == 40
+    config.validate(require_e2b=True)

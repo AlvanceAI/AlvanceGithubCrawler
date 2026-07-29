@@ -6,6 +6,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from .jsonl_io import append_text_locked, read_text_locked
+
 
 class JsonlRegistry:
     def __init__(self, candidates_path: Path, rejections_path: Path) -> None:
@@ -19,7 +21,7 @@ class JsonlRegistry:
         if not self.candidates_path.is_file():
             return set()
         repos: set[str] = set()
-        for line in self.candidates_path.read_text(encoding="utf-8").splitlines():
+        for line in read_text_locked(self.candidates_path).splitlines():
             try:
                 record = json.loads(line)
             except json.JSONDecodeError:
@@ -33,7 +35,7 @@ class JsonlRegistry:
         if not self.rejections_path.is_file():
             return set()
         latest: dict[str, str] = {}
-        for line in self.rejections_path.read_text(encoding="utf-8").splitlines():
+        for line in read_text_locked(self.rejections_path).splitlines():
             try:
                 record = json.loads(line)
             except json.JSONDecodeError:
@@ -48,6 +50,7 @@ class JsonlRegistry:
             "runtime_prep_timeout",
             "runtime_prep_fail",
             "infra_error",
+            "e2b_key_exhausted",
         }
         return {repo for repo, reason in latest.items() if reason not in retryable}
 
@@ -75,5 +78,4 @@ class JsonlRegistry:
 
     @staticmethod
     def _append(path: Path, payload: dict[str, Any]) -> None:
-        with path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n")
+        append_text_locked(path, json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n")
