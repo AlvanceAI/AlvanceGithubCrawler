@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "a2a-go-d98be9-3d5d8eb2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/a2aproject/a2a-go"
+base_commit = "3d5d8eb2ff95429c7029d7547fd43eab2f181a7f"
+source_tree = "e3f299aaf0d0d419cdbef2942cb525f69ba99097"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b1deb4058ed1eee3a7f8be0ca88808ad037ca4de81253383d1dc5b0ae64442f9"
+harbor_template_alias = "alv-a2a-go-d98be9-3d5d8eb2-v2-env-b1deb405"
+e2b_template = "cngurwsq9gst2j5z8788"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "9957hct97zqqax7ts35a"
+source_template_id = "9957hct97zqqax7ts35a"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
