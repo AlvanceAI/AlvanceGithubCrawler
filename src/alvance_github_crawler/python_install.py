@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import shlex
 import tomllib
 from pathlib import Path
@@ -24,6 +25,16 @@ REQUIREMENT_FILES = (
     "requirements/test.txt",
     "requirements/testing.txt",
     "requirements/dev.txt",
+)
+CI_EXTRA_PATTERN = re.compile(r"\.\[([A-Za-z0-9_.\-,\s]+)\]")
+CI_CONFIG_GLOBS = (
+    ".github/workflows/*.yml",
+    ".github/workflows/*.yaml",
+    "tox.ini",
+    "noxfile.py",
+    "Makefile",
+    "makefile",
+    "justfile",
 )
 
 
@@ -64,6 +75,8 @@ def declared_test_extras(pyproject_path: Path) -> tuple[str, ...]:
     if not isinstance(project, dict):
         return ()
     optional = project.get("optional-dependencies") or {}
+    if not isinstance(optional, dict):
+        optional = {}
     extras = [extra for extra in PREFERRED_EXTRAS if extra in optional]
     dynamic = project.get("dynamic") or []
     if "optional-dependencies" in dynamic:
@@ -73,7 +86,30 @@ def declared_test_extras(pyproject_path: Path) -> tuple[str, ...]:
             for extra in DYNAMIC_PREFERRED_EXTRAS
             if extra in dynamic_optional and extra not in extras
         )
+        optional = {**optional, **dynamic_optional}
+    extras.extend(
+        extra
+        for extra in declared_ci_extras(pyproject_path.parent, set(optional))
+        if extra not in extras
+    )
     return tuple(extras)
+
+
+def declared_ci_extras(repo_path: Path, available: set[str]) -> tuple[str, ...]:
+    """Extract declared extras explicitly installed by upstream validation scripts."""
+    selected: list[str] = []
+    for pattern in CI_CONFIG_GLOBS:
+        for path in sorted(repo_path.glob(pattern)):
+            try:
+                content = path.read_text(encoding="utf-8", errors="replace")
+            except OSError:
+                continue
+            for match in CI_EXTRA_PATTERN.finditer(content):
+                for raw_extra in match.group(1).split(","):
+                    extra = raw_extra.strip()
+                    if extra in available and extra not in selected:
+                        selected.append(extra)
+    return tuple(selected)
 
 
 def setuptools_dynamic_optional_dependencies(metadata: dict[str, object]) -> dict[str, object]:

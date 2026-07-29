@@ -42,6 +42,34 @@ def test_python_install_includes_declared_benchmarking_extra(tmp_path) -> None:
     ]
 
 
+def test_python_install_includes_extras_declared_by_ci(tmp_path) -> None:
+    (tmp_path / "pyproject.toml").write_text(
+        '[project]\nname = "demo"\n'
+        "[project.optional-dependencies]\n"
+        'test = ["pytest"]\n'
+        'cli = ["click"]\n'
+        'lxml = ["lxml"]\n'
+        'docs = ["mkdocs"]\n',
+        encoding="utf-8",
+    )
+    workflows = tmp_path / ".github" / "workflows"
+    workflows.mkdir(parents=True)
+    (workflows / "tests.yml").write_text(
+        "steps:\n  - run: python -m pip install .[lxml,cli,test]\n",
+        encoding="utf-8",
+    )
+
+    assert declared_test_extras(tmp_path / "pyproject.toml") == (
+        "test",
+        "lxml",
+        "cli",
+    )
+    assert python_install_commands(tmp_path) == [
+        "/usr/local/bin/pip install --no-cache-dir pytest",
+        "/usr/local/bin/pip install --no-cache-dir -e '.[test,lxml,cli]'",
+    ]
+
+
 def test_python_install_falls_back_to_plain_editable(tmp_path) -> None:
     (tmp_path / "pyproject.toml").write_text(
         '[project]\nname = "demo"\n',
