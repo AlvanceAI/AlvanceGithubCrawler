@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-slack-morphism-rust-a12632-65482925-v2"
+description = "E2B-backed repository task for abdolence/slack-morphism-rust"
+authors = []
+keywords = ["rust", "e2b", "github"]
+
+[metadata]
+task_id = "alv-slack-morphism-rust-a12632-65482925-v2"
+material_id = "slack-morphism-rust-a12632-65482925"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/abdolence/slack-morphism-rust"
+base_commit_hash = "65482925407ce3eec04f040b8bd4ecdb608e709c"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

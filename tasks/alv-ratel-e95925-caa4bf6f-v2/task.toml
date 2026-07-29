@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-ratel-e95925-caa4bf6f-v2"
+description = "E2B-backed repository task for ratel-ai/ratel"
+authors = []
+keywords = ["rust", "e2b", "github"]
+
+[metadata]
+task_id = "alv-ratel-e95925-caa4bf6f-v2"
+material_id = "ratel-e95925-caa4bf6f"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/ratel-ai/ratel"
+base_commit_hash = "caa4bf6ff97f5f0b59605f9b8855b39bf6d800f5"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

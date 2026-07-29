@@ -1,0 +1,42 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-provider-helm-7cc9b5-122e0ce1-v2"
+description = "E2B-backed repository task for crossplane-contrib/provider-helm"
+authors = []
+keywords = ["go", "e2b", "github"]
+
+[metadata]
+task_id = "alv-provider-helm-7cc9b5-122e0ce1-v2"
+material_id = "provider-helm-7cc9b5-122e0ce1"
+status = "direction"
+language = "go"
+repository_url = "https://github.com/crossplane-contrib/provider-helm"
+base_commit_hash = "122e0ce18a46bfd1576e57763679d23e62418391"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+GOCACHE = "/root/.cache/go-build"
+GOMODCACHE = "/go/pkg/mod"
+GOPATH = "/go"
+GOPROXY = "https://goproxy.cn,direct"
+GOTOOLCHAIN = "go1.26.5+auto"
+HOME = "/root"
+PATH = "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

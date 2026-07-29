@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "gomodel-bf3f5d-cdad1458"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ENTERPILOT/GoModel"
+base_commit = "cdad1458fcab07936583e10042c841c7e301bd62"
+source_tree = "51759a2efec657984090cebcad3720bdad9ea1b5"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.5"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f912281c3ef47773980ccd98f021bc2ad20c1e220a245e7aaa09ca9cbcad8cfe"
+harbor_template_alias = "alv-gomodel-bf3f5d-cdad1458-v2-env-f912281c"
+e2b_template = "28575yyoh9755gfq7v6q"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "38r7q7h5udda259rar4p"
+source_template_id = "38r7q7h5udda259rar4p"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

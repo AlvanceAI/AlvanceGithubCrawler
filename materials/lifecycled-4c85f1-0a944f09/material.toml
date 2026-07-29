@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "lifecycled-4c85f1-0a944f09"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/buildkite/lifecycled"
+base_commit = "0a944f09a9b6cf96e8c92e8a3ceb915dbebfd46f"
+source_tree = "bc271f2e545a6771ee1dcfb8cf5466a9c3524ca6"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6ce504a16df02ddee57250c691c25f5f86675f80871032ba620cde371029d742"
+harbor_template_alias = "alv-lifecycled-4c85f1-0a944f09-v2-env-6ce504a1"
+e2b_template = "97kuxa8fs12h4tl1ogiv"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "xfnkw2e6bo6kqz0ri8mg"
+source_template_id = "xfnkw2e6bo6kqz0ri8mg"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

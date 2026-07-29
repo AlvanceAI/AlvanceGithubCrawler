@@ -1,0 +1,1 @@
+优化 openstack_objectstorage_container_v1 的 force_destroy，实现分页批量删除对象并通过受控并发减少清空大型容器时的 API 往返次数。

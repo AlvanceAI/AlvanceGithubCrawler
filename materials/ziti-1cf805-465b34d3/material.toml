@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "ziti-1cf805-465b34d3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/openziti/ziti"
+base_commit = "465b34d38c85cc0eaa9ff020518cbc0aa0303d15"
+source_tree = "19c9b318cdaf1e9fb9680a35d5c3f51a5dd09e6e"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "005cdf4d4641dc8b3c7f95a9ee9d5bb58c2214273a4461f570756c03a18a42c1"
+harbor_template_alias = "alv-ziti-1cf805-465b34d3-v2-env-005cdf4d"
+e2b_template = "dsi31wj0gg8awaa2qrsl"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "9454bnvkwoyyev1hdsl5"
+source_template_id = "9454bnvkwoyyev1hdsl5"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

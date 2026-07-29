@@ -1,0 +1,42 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-pipelines-as-code-2d6fb9-e309d1a6-v2"
+description = "E2B-backed repository task for tektoncd/pipelines-as-code"
+authors = []
+keywords = ["go", "e2b", "github"]
+
+[metadata]
+task_id = "alv-pipelines-as-code-2d6fb9-e309d1a6-v2"
+material_id = "pipelines-as-code-2d6fb9-e309d1a6"
+status = "direction"
+language = "go"
+repository_url = "https://github.com/tektoncd/pipelines-as-code"
+base_commit_hash = "e309d1a679af9684f4540952686fb0ba9971126d"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+GOCACHE = "/root/.cache/go-build"
+GOMODCACHE = "/go/pkg/mod"
+GOPATH = "/go"
+GOPROXY = "https://goproxy.cn,direct"
+GOTOOLCHAIN = "go1.26.5+auto"
+HOME = "/root"
+PATH = "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

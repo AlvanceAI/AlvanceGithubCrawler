@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "terraform-provider-opens-c95f38-0fbdf8f8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/terraform-provider-openstack/terraform-provider-openstack"
+base_commit = "0fbdf8f8f1cab7571a4e783b8908a3687208e5b4"
+source_tree = "10874c1abfd72df30e9b85aa0a47a01bdc0109c9"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.10"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d80dbf4f847a3c1f95ec285c7507b9c54e2c9bf790df85265073a571de3e476b"
+harbor_template_alias = "alv-terraform-provider-o-c95f38-0fbdf8f8-v2-env-d80dbf4f"
+e2b_template = "kil9xlz9q0975xo0ptzx"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "6gaqox1fcdqokm7kve8r"
+source_template_id = "6gaqox1fcdqokm7kve8r"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
