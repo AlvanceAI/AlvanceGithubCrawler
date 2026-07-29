@@ -101,6 +101,7 @@ class PendingVerificationRunner:
         in_flight = [0] * lane_count
         halted_lanes: set[int] = set()
         exhausted_lanes: set[int] = set()
+        next_lane = 0
 
         with ThreadPoolExecutor(
             max_workers=total_workers,
@@ -134,13 +135,31 @@ class PendingVerificationRunner:
                 return True
 
             def fill_available_slots() -> None:
+                nonlocal next_lane
                 while items:
-                    submitted = False
-                    for lane in range(lane_count):
-                        if in_flight[lane] < max_workers and submit_next(lane):
-                            submitted = True
-                    if not submitted:
+                    available = [
+                        lane
+                        for lane in range(lane_count)
+                        if in_flight[lane] < max_workers
+                        and lane not in halted_lanes
+                        and lane not in exhausted_lanes
+                    ]
+                    if not available:
                         return
+                    minimum_in_flight = min(in_flight[lane] for lane in available)
+                    least_loaded = {
+                        lane
+                        for lane in available
+                        if in_flight[lane] == minimum_in_flight
+                    }
+                    lane = next(
+                        lane
+                        for offset in range(lane_count)
+                        if (lane := (next_lane + offset) % lane_count) in least_loaded
+                    )
+                    if not submit_next(lane):
+                        return
+                    next_lane = (lane + 1) % lane_count
 
             fill_available_slots()
 
