@@ -270,4 +270,4 @@ def test_repository_alias_is_bounded() -> None:
         "b" * 16,
     )
     assert len(alias) <= 63
-    assert alias.endswith("-v12")
+    assert alias.endswith("-v13")

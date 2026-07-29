@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import shlex
+import tomllib
 from pathlib import Path
 
 LOCAL_PACKAGE_PATTERN = re.compile(r"(?:^|\s)(?:-e\s+)?(?:\./)?(packages/[^\s;\[]+)")
@@ -13,21 +14,30 @@ def python_workspace_install_commands(
     requirement_files: list[str],
 ) -> list[str]:
     """Install omitted local packages required by monorepo development environments."""
-    omitted = omitted_workspace_packages(repo_path, requirement_files)
-    if not omitted:
+    packages = workspace_packages_to_install(repo_path, requirement_files)
+    if not packages:
         return []
 
     commands: list[str] = []
-    if any(package_requires_node(repo_path / path) for path in omitted):
+    if any(package_requires_node(repo_path / path) for path in packages):
         commands.append(
             "apt-get update && apt-get install -y --no-install-recommends nodejs npm "
             "&& rm -rf /var/lib/apt/lists/*"
         )
     commands.extend(
         f"/usr/local/bin/pip install --no-cache-dir -e {shlex.quote(path.as_posix())}"
-        for path in omitted
+        for path in packages
     )
     return commands
+
+
+def workspace_packages_to_install(
+    repo_path: Path,
+    requirement_files: list[str],
+) -> tuple[Path, ...]:
+    packages = set(omitted_workspace_packages(repo_path, requirement_files))
+    packages.update(uv_workspace_packages(repo_path))
+    return tuple(sorted(packages, key=lambda path: path.as_posix()))
 
 
 def omitted_workspace_packages(repo_path: Path, requirement_files: list[str]) -> tuple[Path, ...]:
@@ -54,6 +64,34 @@ def referenced_workspace_packages(repo_path: Path, requirement_files: list[str])
             if match:
                 referenced.add(Path(match.group(1).rstrip("/")))
     return referenced
+
+
+def uv_workspace_packages(repo_path: Path) -> tuple[Path, ...]:
+    """Return installable local members declared by uv workspace metadata."""
+    pyproject = repo_path / "pyproject.toml"
+    try:
+        with pyproject.open("rb") as handle:
+            metadata = tomllib.load(handle)
+    except (OSError, tomllib.TOMLDecodeError):
+        return ()
+
+    tool = metadata.get("tool") or {}
+    uv = tool.get("uv") if isinstance(tool, dict) else None
+    workspace = uv.get("workspace") if isinstance(uv, dict) else None
+    members = workspace.get("members") if isinstance(workspace, dict) else None
+    if not isinstance(members, list):
+        return ()
+
+    packages: set[Path] = set()
+    for member in members:
+        if not isinstance(member, str) or not member.strip():
+            continue
+        for path in repo_path.glob(member):
+            if path.is_dir() and any(
+                (path / manifest).is_file() for manifest in ("pyproject.toml", "setup.py")
+            ):
+                packages.add(path.relative_to(repo_path))
+    return tuple(sorted(packages, key=lambda path: path.as_posix()))
 
 
 def package_requires_node(package_path: Path) -> bool:
