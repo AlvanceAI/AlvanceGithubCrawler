@@ -24,3 +24,17 @@ def test_python_command_respects_explicit_pytest_collection_config(tmp_path) -> 
     )
 
     assert resolve_test_command("python", tmp_path) == "python -m pytest -x -q"
+
+
+def test_python_command_prefers_upstream_justfile_test_target(tmp_path) -> None:
+    (tmp_path / "tests" / "functional").mkdir(parents=True)
+    (tmp_path / "tests" / "perf").mkdir()
+    (tmp_path / "justfile").write_text(
+        'test flags="":\n'
+        "\tuv run --group test pytest {{ flags }} tests/functional\n\n"
+        "coverage:\n"
+        "\tuv run coverage run -m pytest tests\n",
+        encoding="utf-8",
+    )
+
+    assert resolve_test_command("python", tmp_path) == "python -m pytest -x -q tests/functional"
