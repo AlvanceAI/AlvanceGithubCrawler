@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from .build import test_command_for
+from .python_install import python_install_commands
 from .runtime_profiles import (
     detect_runtime_version,
     hash_dependency_manifests,
@@ -90,6 +91,8 @@ class E2BEnvironmentManager:
             repository_alias,
             str(repo["full_name"]),
             base_commit,
+            repo_path,
+            str(repo.get("default_branch") or "main"),
         )
         return E2BEnvironmentResult(
             runtime_version=runtime_version,
@@ -139,6 +142,8 @@ class E2BEnvironmentManager:
         repository_alias: str,
         full_name: str,
         base_commit: str,
+        repo_path: Path,
+        default_branch: str,
     ) -> tuple[bool, float]:
         cache_hit = Template.alias_exists(repository_alias, api_key=self.api_key)
         if cache_hit:
@@ -154,6 +159,8 @@ class E2BEnvironmentManager:
             language,
             full_name,
             base_commit,
+            repo_path=repo_path,
+            default_branch=default_branch,
         )
         started = time.monotonic()
         try:
@@ -175,16 +182,20 @@ def _add_repository_build_steps(
     language: str,
     full_name: str,
     base_commit: str,
+    *,
+    repo_path: Path | None = None,
+    default_branch: str = "main",
 ) -> Any:
     repository_url = shlex.quote(f"https://github.com/{full_name}.git")
     commit = shlex.quote(base_commit)
+    branch = shlex.quote(default_branch)
     builder = builder.run_cmd(
         "rm -rf /app && mkdir -p /app && git init /app && cd /app "
         f"&& git remote add origin {repository_url} "
         f"&& git fetch --depth=1 origin {commit} "
         "&& git checkout --detach FETCH_HEAD "
         "&& git submodule update --init --recursive "
-        "&& git remote remove origin",
+        f"&& git update-ref refs/remotes/origin/{branch} HEAD",
         user="root",
     ).set_workdir("/app")
     if language == "go":
@@ -193,11 +204,10 @@ def _add_repository_build_steps(
     elif language in {"typescript", "javascript"}:
         builder = builder.run_cmd("/usr/local/bin/npm ci", user="root")
     elif language == "python":
-        builder = builder.run_cmd(
-            "/usr/local/bin/pip install --no-cache-dir -e '.[test,dev]' || "
-            "/usr/local/bin/pip install --no-cache-dir -e .",
-            user="root",
-        )
+        if repo_path is None:
+            raise ValueError("repo_path is required for Python repository templates")
+        for command in python_install_commands(repo_path):
+            builder = builder.run_cmd(command, user="root")
     elif language == "rust":
         builder = builder.run_cmd(
             "/usr/local/cargo/bin/cargo build --tests",

@@ -37,6 +37,9 @@ def test_pending_queue_is_idempotent_and_recoverable(tmp_path) -> None:
     queue.complete(key, "registered")
     assert queue.pending() == []
     assert queue.known_repos() == {"owner/repository"}
+    assert queue.requeue(key) is True
+    assert [pending.key for pending in queue.pending()] == [key]
+    assert queue.requeue(key) is False
 
 
 def test_pending_record_contains_only_control_plane_fields(tmp_path) -> None:

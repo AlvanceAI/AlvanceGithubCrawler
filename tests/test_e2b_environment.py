@@ -145,6 +145,7 @@ def test_repository_build_keeps_exact_git_commit() -> None:
     assert "git init /app" in clone_command
     assert f"git fetch --depth=1 origin {commit}" in clone_command
     assert ("workdir", "/app") in builder.events
+    assert "refs/remotes/origin/main" in clone_command
     assert ("run", "/usr/local/go/bin/go mod download") in builder.events
     assert builder.events[-1] == ("run", 'test -z "$(git status --porcelain)"')
 
@@ -156,4 +157,4 @@ def test_repository_alias_is_bounded() -> None:
         "b" * 16,
     )
     assert len(alias) <= 63
-    assert alias.endswith("-v7")
+    assert alias.endswith("-v8")

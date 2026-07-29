@@ -11,8 +11,10 @@ from .config import PipelineConfig
 from .github import GitHubClient
 from .harbor_packaging import HarborPackager
 from .logging_setup import configure_logging
+from .pending_queue import PendingQueue
 from .pending_verification import PendingVerificationRunner
 from .pipeline import Pipeline
+from .requeue_failures import requeue_failures
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -55,6 +57,21 @@ def build_parser() -> argparse.ArgumentParser:
         "--verify-pending",
         action="store_true",
         help="consume queued candidates through E2B, benchmark, and Harbor packaging",
+    )
+    modes.add_argument(
+        "--requeue-failures",
+        action="store_true",
+        help="reopen completed pending candidates matching a rejection reason",
+    )
+    parser.add_argument(
+        "--failure-reason",
+        action="append",
+        help="rejection reason selected by --requeue-failures; repeatable",
+    )
+    parser.add_argument(
+        "--failure-contains",
+        default="",
+        help="optional rejection-log substring selected by --requeue-failures",
     )
     parser.add_argument("--verbose", action="store_true")
     return parser
@@ -108,6 +125,20 @@ def main(argv: list[str] | None = None) -> int:
             print(str(exc), file=sys.stderr)
             return 2
         stats = PendingVerificationRunner.from_config(config).run(max_items=args.max_repos)
+        print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0
+
+    if args.requeue_failures:
+        reasons = set(args.failure_reason or [])
+        if not reasons:
+            print("--requeue-failures requires --failure-reason", file=sys.stderr)
+            return 2
+        stats = requeue_failures(
+            PendingQueue(config.pending_path),
+            config.rejections_path,
+            reasons=reasons,
+            error_contains=args.failure_contains,
+        )
         print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
 

@@ -43,6 +43,13 @@ class PendingQueue:
         self._append("queued", key, candidate=candidate)
         return True
 
+    def requeue(self, key: str) -> bool:
+        candidate = self.candidates_by_key().get(key)
+        if candidate is None or key in {item.key for item in self.pending()}:
+            return False
+        self._append("requeued", key, candidate=candidate)
+        return True
+
     def complete(self, key: str, outcome: str) -> None:
         self._append("completed", key, outcome=outcome)
 
@@ -55,7 +62,9 @@ class PendingQueue:
             key = str(event.get("key") or "")
             if not key:
                 continue
-            if event.get("event") == "queued" and isinstance(event.get("candidate"), dict):
+            if event.get("event") in {"queued", "requeued"} and isinstance(
+                event.get("candidate"), dict
+            ):
                 active[key] = PendingItem(key=key, candidate=dict(event["candidate"]))
             elif event.get("event") == "completed":
                 active.pop(key, None)
@@ -74,6 +83,14 @@ class PendingQueue:
             if isinstance(repo, dict) and repo.get("full_name"):
                 repos.add(str(repo["full_name"]))
         return repos
+
+    def candidates_by_key(self) -> dict[str, dict[str, Any]]:
+        candidates: dict[str, dict[str, Any]] = {}
+        for event in self._events():
+            candidate = event.get("candidate")
+            if event.get("key") and isinstance(candidate, dict):
+                candidates[str(event["key"])] = dict(candidate)
+        return candidates
 
     def _events(self) -> list[dict[str, Any]]:
         if not self.path.is_file():
