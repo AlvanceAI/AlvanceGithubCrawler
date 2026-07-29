@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "hifitime-1e9ac1-7b6238d0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nyx-space/hifitime"
+base_commit = "7b6238d0bfdfee940dca49e217f3a59c9234e6ab"
+source_tree = "79314d942030974023abe82999e26e922c1e2b6a"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fcdbe07ccb72690883077c5c9d7cbfce9bd72f944800345daa19210c6adaea5d"
+harbor_template_alias = "alv-hifitime-1e9ac1-7b6238d0-v2-env-fcdbe07c"
+e2b_template = "tdg46armaajfbl1i9rhs"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "z2rdk1eq642rfb00mpm9"
+source_template_id = "z2rdk1eq642rfb00mpm9"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

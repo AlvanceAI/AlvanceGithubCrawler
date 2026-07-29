@@ -1,0 +1,42 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-azqr-1e536e-ed6b9588-v2"
+description = "E2B-backed repository task for Azure/azqr"
+authors = []
+keywords = ["go", "e2b", "github"]
+
+[metadata]
+task_id = "alv-azqr-1e536e-ed6b9588-v2"
+material_id = "azqr-1e536e-ed6b9588"
+status = "direction"
+language = "go"
+repository_url = "https://github.com/Azure/azqr"
+base_commit_hash = "ed6b95888a221c576b53ec39aeb441242112ef4d"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+GOCACHE = "/root/.cache/go-build"
+GOMODCACHE = "/go/pkg/mod"
+GOPATH = "/go"
+GOPROXY = "https://goproxy.cn,direct"
+GOTOOLCHAIN = "go1.26.0+auto"
+HOME = "/root"
+PATH = "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

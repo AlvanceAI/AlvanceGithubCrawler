@@ -1,8 +1,14 @@
 from __future__ import annotations
 
+import threading
+from types import SimpleNamespace
+
+import pytest
+
 from alvance_github_crawler.screening.direction import (
     DirectionChecker,
     DirectionVerdict,
+    OpenAIDirectionJudge,
     PublicImplementationSearch,
 )
 
@@ -87,3 +93,87 @@ def test_grep_app_timeout_uses_sourcegraph(monkeypatch) -> None:
     monkeypatch.setattr(search, "sourcegraph_count", lambda keywords: 0)
     assert search.grep_app_count(["rare phrase", "another phrase"]) == 0
     assert search.last_secondary_provider == "sourcegraph_fallback"
+
+
+def test_openai_direction_judge_retries_shared_rate_limit(monkeypatch) -> None:
+    verdict = DirectionVerdict(
+        implemented=False,
+        behavior_boundary_clear=True,
+        estimated_loc=300,
+        keywords=["binary frame", "stream checksum"],
+        direction="增加流式帧校验",
+    )
+
+    class RateLimitError(RuntimeError):
+        status_code = 429
+        body = {"retry_after": 7}
+        response = SimpleNamespace(headers={})
+
+    class Responses:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def parse(self, **kwargs):
+            self.calls += 1
+            if self.calls == 1:
+                raise RateLimitError("retry later")
+            return SimpleNamespace(output_parsed=verdict)
+
+    judge = OpenAIDirectionJudge.__new__(OpenAIDirectionJudge)
+    judge.client = SimpleNamespace(responses=Responses())
+    judge.model = "test-model"
+    judge.max_output_tokens = 100
+    judge._request_lock = threading.Lock()
+    judge._next_request_at = 0.0
+    delays: list[float] = []
+    monkeypatch.setattr(
+        "alvance_github_crawler.screening.direction.time.monotonic",
+        lambda: 0.0,
+    )
+    monkeypatch.setattr(
+        "alvance_github_crawler.screening.direction.time.sleep",
+        delays.append,
+    )
+
+    result = judge.judge(
+        {"full_name": "owner/repo", "description": "test"},
+        {"number": 1, "title": "feature", "body": "details"},
+        "src/",
+    )
+
+    assert result == verdict
+    assert judge.client.responses.calls == 2
+    assert delays == [7.0]
+
+
+def test_openai_direction_judge_does_not_retry_client_error(monkeypatch) -> None:
+    class ClientError(RuntimeError):
+        status_code = 400
+
+    class Responses:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def parse(self, **kwargs):
+            self.calls += 1
+            raise ClientError("invalid request")
+
+    judge = OpenAIDirectionJudge.__new__(OpenAIDirectionJudge)
+    judge.client = SimpleNamespace(responses=Responses())
+    judge.model = "test-model"
+    judge.max_output_tokens = 100
+    judge._request_lock = threading.Lock()
+    judge._next_request_at = 0.0
+    monkeypatch.setattr(
+        "alvance_github_crawler.screening.direction.time.monotonic",
+        lambda: 0.0,
+    )
+
+    with pytest.raises(ClientError):
+        judge.judge(
+            {"full_name": "owner/repo", "description": "test"},
+            {"number": 1, "title": "feature", "body": "details"},
+            "src/",
+        )
+
+    assert judge.client.responses.calls == 1

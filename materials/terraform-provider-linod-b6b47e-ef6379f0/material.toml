@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "terraform-provider-linod-b6b47e-ef6379f0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/linode/terraform-provider-linode"
+base_commit = "ef6379f07ba664f78c22e59776376ea475dbe43f"
+source_tree = "1d69453a15e56df75b8fe4d2f424a211da4eb881"
+default_branch = "dev"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b8d2274b7ac4771584c952ceb8dd5e1ea6f7064eb70105dccf90b23bf76a8d1b"
+harbor_template_alias = "alv-terraform-provider-l-b6b47e-ef6379f0-v2-env-b8d2274b"
+e2b_template = "uipkk792wp8eljxckx2r"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "nfh4a6ibc61xwzpy1e32"
+source_template_id = "nfh4a6ibc61xwzpy1e32"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

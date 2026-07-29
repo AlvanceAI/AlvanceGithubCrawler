@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "lima-bb25e2-947c3caa"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/lima-vm/lima"
+base_commit = "947c3caaf08a6958180168f0b9f1289f722a18a8"
+source_tree = "f48e622db063c5aa36903554456092deee24ef68"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.7"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a17408fcb451e9ec8946295d15ae5e384947a5d653081e074c9d9ffa974772b7"
+harbor_template_alias = "alv-lima-bb25e2-947c3caa-v2-env-a17408fc"
+e2b_template = "yhzpu5bczecpqnt8lgl7"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "4yq7c3yf8zaox7nb3k6w"
+source_template_id = "4yq7c3yf8zaox7nb3k6w"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

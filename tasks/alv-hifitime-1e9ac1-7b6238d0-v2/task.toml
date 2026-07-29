@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-hifitime-1e9ac1-7b6238d0-v2"
+description = "E2B-backed repository task for nyx-space/hifitime"
+authors = []
+keywords = ["rust", "e2b", "github"]
+
+[metadata]
+task_id = "alv-hifitime-1e9ac1-7b6238d0-v2"
+material_id = "hifitime-1e9ac1-7b6238d0"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/nyx-space/hifitime"
+base_commit_hash = "7b6238d0bfdfee940dca49e217f3a59c9234e6ab"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

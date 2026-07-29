@@ -1,0 +1,34 @@
+schema_version = "0.2"
+material_id = "quinn-4679cd-ba294586"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/quinn-rs/quinn"
+base_commit = "ba294586bd91bba94a9085d83a599e486b9d0656"
+source_tree = "aca10ff99d1942ed3079e093373c087b9d6928c5"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "e2b-only"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3ae8d4ad893ea572cc9c0966693302a7bdf20768a898bc7d9554d5b8638f6dbc"
+harbor_template_alias = "alv-quinn-4679cd-ba294586-v2-env-3ae8d4ad"
+e2b_template = "yt02a0ggcb2vlvf630sg"
+e2b_status = "ready"
+e2b_receipt = "receipts/e2b.json"
+source_template_alias = "pw7houp9rwce09snx8h5"
+source_template_id = "pw7houp9rwce09snx8h5"
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

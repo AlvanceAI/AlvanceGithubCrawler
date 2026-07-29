@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-opendal-reqsign-06eb54-79e2ba6f-v2"
+description = "E2B-backed repository task for apache/opendal-reqsign"
+authors = []
+keywords = ["rust", "e2b", "github"]
+
+[metadata]
+task_id = "alv-opendal-reqsign-06eb54-79e2ba6f-v2"
+material_id = "opendal-reqsign-06eb54-79e2ba6f"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/apache/opendal-reqsign"
+base_commit_hash = "79e2ba6f0db7776578bd7de67948a5eb53cf8a75"
+storage_mode = "e2b-only"
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []
