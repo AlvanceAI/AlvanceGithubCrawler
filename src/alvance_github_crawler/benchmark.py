@@ -14,6 +14,7 @@ THRESHOLDS = {
     "test_duration_s": 120.0,
     "peak_mem_mb": 4_096.0,
 }
+STABILITY_WINDOW_S = 15.0
 
 
 def parse_max_rss(log: str) -> int:
@@ -36,7 +37,7 @@ def summarize_runs(runs: list[BenchmarkRun], test_cmd: str) -> BenchmarkResult:
     duration_median = round(float(statistics.median(durations)), 2)
     memory_median = round(float(statistics.median(memories)), 1)
     all_passed = all(code == 0 for code in exit_codes)
-    stable = max(durations) - min(durations) < 15 and len(set(exit_codes)) == 1
+    stable = max(durations) - min(durations) < STABILITY_WINDOW_S and len(set(exit_codes)) == 1
     resource_pass = (
         cold_median < THRESHOLDS["cold_start_s"]
         and duration_median < THRESHOLDS["test_duration_s"]
@@ -107,7 +108,9 @@ class E2BBenchmark:
             raise RuntimeError("e2b SDK is not installed; install the project with [e2b]") from exc
 
         runs: list[BenchmarkRun] = []
-        bounded_command = command_with_timeout(test_cmd, self.command_timeout_s)
+        decisive_timeout_s = int(THRESHOLDS["test_duration_s"] + STABILITY_WINDOW_S)
+        run_timeout_s = min(self.command_timeout_s, decisive_timeout_s)
+        bounded_command = command_with_timeout(test_cmd, run_timeout_s)
         timed_command = f"/usr/bin/time -v -o /tmp/time.log sh -c {shlex.quote(bounded_command)}"
         sandbox_command = command_with_environment(timed_command, envs)
         for _ in range(self.runs):
@@ -116,7 +119,7 @@ class E2BBenchmark:
                 sandbox = Sandbox.create(
                     template=template_id,
                     allow_internet_access=False,
-                    timeout=self.command_timeout_s + 60,
+                    timeout=run_timeout_s + 60,
                     envs=envs,
                     api_key=self.api_key,
                 )
@@ -127,7 +130,7 @@ class E2BBenchmark:
                         result = sandbox.commands.run(
                             sandbox_command,
                             user=user,
-                            timeout=self.command_timeout_s + 30,
+                            timeout=run_timeout_s + 30,
                         )
                     except Exception as exc:
                         if not hasattr(exc, "exit_code"):
@@ -144,11 +147,13 @@ class E2BBenchmark:
                             exit_code=result.exit_code,
                         )
                     )
+                    if result.exit_code == 124:
+                        break
             except Exception:
                 runs.append(
                     BenchmarkRun(
                         cold_start_s=time.monotonic() - started,
-                        test_duration_s=float(self.command_timeout_s),
+                        test_duration_s=float(run_timeout_s),
                         peak_mem_mb=-1,
                         exit_code=-1,
                     )

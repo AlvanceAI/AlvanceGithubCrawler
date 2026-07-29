@@ -24,9 +24,9 @@ def test_e2b_benchmark_passes_runtime_envs(monkeypatch) -> None:
         def run(self, command: str, *, user: str, timeout: int):
             assert command.startswith("env ")
             assert "PATH=" in command
-            assert "timeout --signal=TERM --kill-after=10s 600s" in command
+            assert "timeout --signal=TERM --kill-after=10s 135s" in command
             assert user == "root"
-            assert timeout == 630
+            assert timeout == 165
             return Result()
 
     class Files:
@@ -102,6 +102,43 @@ def test_e2b_benchmark_runs_as_selected_user(monkeypatch) -> None:
     assert result.all_passed
     assert observed["user"] == "user"
     assert "HOME=/home/user" in str(observed["command"])
+
+
+def test_e2b_benchmark_stops_after_decisive_timeout(monkeypatch) -> None:
+    created: list[dict[str, object]] = []
+
+    class Result:
+        exit_code = 124
+
+    class Commands:
+        def run(self, command: str, *, user: str, timeout: int):
+            return Result()
+
+    class Files:
+        def read(self, path: str) -> str:
+            return "Maximum resident set size (kbytes): 1024"
+
+    class Sandbox:
+        commands = Commands()
+        files = Files()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return None
+
+        @classmethod
+        def create(cls, **kwargs):
+            created.append(kwargs)
+            return cls()
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Sandbox=Sandbox))
+    result = E2BBenchmark("test-key", runs=3).run("repo-template", "pytest")
+
+    assert len(created) == 1
+    assert len(result.runs) == 1
+    assert not result.all_passed
 
 
 def test_parse_max_rss() -> None:
