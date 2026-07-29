@@ -16,8 +16,19 @@ from .trace_store import TracePackageStore
 class HarborPackager:
     """Orchestrate domain validation, E2B wrapping, and Trace persistence."""
 
-    def __init__(self, api_key: str, catalog_dir: Path) -> None:
-        self.wrapper_manager = E2BHarborWrapperManager(api_key)
+    def __init__(
+        self,
+        api_key: str,
+        catalog_dir: Path,
+        *,
+        cpu_count: int = 1,
+        memory_mb: int = 1_024,
+    ) -> None:
+        self.wrapper_manager = E2BHarborWrapperManager(
+            api_key,
+            cpu_count=cpu_count,
+            memory_mb=memory_mb,
+        )
         self.store = TracePackageStore(catalog_dir)
 
     def package(self, candidate_record: dict[str, Any]) -> HarborPackageResult:

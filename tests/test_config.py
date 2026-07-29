@@ -39,3 +39,18 @@ def test_external_env_aliases(tmp_path, monkeypatch) -> None:
     assert config.openai_base_url == "http://model.example/v1"
     assert config.openai_model == "custom-model"
     assert config.e2b_api_key == "e2b-key"
+
+
+def test_e2b_resource_and_concurrency_config(monkeypatch) -> None:
+    monkeypatch.setenv("PIPELINE_E2B_CPU_COUNT", "1")
+    monkeypatch.setenv("PIPELINE_E2B_MEMORY_MB", "1024")
+    monkeypatch.setenv("PIPELINE_E2B_CONCURRENCY", "20")
+    monkeypatch.setenv("PIPELINE_LANGUAGE_QUOTA_ENABLED", "false")
+
+    config = PipelineConfig.from_env()
+
+    assert config.e2b_cpu_count == 1
+    assert config.e2b_memory_mb == 1024
+    assert config.e2b_concurrency == 20
+    assert config.language_quota_enabled is False
+    config.validate(require_e2b=False)

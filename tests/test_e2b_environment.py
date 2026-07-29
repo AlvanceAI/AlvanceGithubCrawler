@@ -14,6 +14,7 @@ from alvance_github_crawler.e2b import (
     runtime_template_alias,
     select_python_runtime,
 )
+from alvance_github_crawler.e2b.template import _template_alias_ready
 
 
 class _CommandFailure(Exception):
@@ -26,6 +27,19 @@ class _CommandFailure(Exception):
 
 class TimeoutException(Exception):
     pass
+
+
+def test_template_cache_requires_launchable_default_tag() -> None:
+    checked: list[tuple[str, str]] = []
+
+    class Template:
+        @staticmethod
+        def alias_exists(alias: str, *, api_key: str) -> bool:
+            checked.append((alias, api_key))
+            return alias.endswith(":default")
+
+    assert _template_alias_ready(Template, "repo-template", "test-key") is True
+    assert checked == [("repo-template:default", "test-key")]
 
 
 def test_offline_verifier_passes_envs_and_records_command_failure(monkeypatch) -> None:
@@ -185,6 +199,30 @@ def test_go_runtime_and_template_recipe(tmp_path) -> None:
     assert runtime_template_alias("go", version) == ("alvance-runtime-go-1-26-5-amd64-v3")
 
 
+def test_go_language_version_is_normalized_to_a_concrete_toolchain(tmp_path) -> None:
+    (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.26\n", encoding="utf-8")
+
+    version = detect_runtime_version("go", tmp_path)
+
+    assert version == "1.26.0"
+    assert runtime_environment("go", "1.26")["GOTOOLCHAIN"] == "go1.26.0+auto"
+    assert runtime_template_alias("go", "1.26") == "alvance-runtime-go-1-26-0-amd64-v3"
+
+
+def test_rust_runtime_uses_toml_fields_instead_of_license_comment(tmp_path) -> None:
+    (tmp_path / "rust-toolchain.toml").write_text(
+        '# Licensed under the Apache License, Version 2.0\n'
+        '[toolchain]\nchannel = "stable"\n',
+        encoding="utf-8",
+    )
+    (tmp_path / "Cargo.toml").write_text(
+        '[workspace.package]\nrust-version = "1.97.1"\n',
+        encoding="utf-8",
+    )
+
+    assert detect_runtime_version("rust", tmp_path) == "1.97.1"
+
+
 def test_dependency_hash_changes_with_lockfile(tmp_path) -> None:
     (tmp_path / "package.json").write_text('{"name":"demo"}', encoding="utf-8")
     first = hash_dependency_manifests("typescript", tmp_path)
@@ -270,4 +308,19 @@ def test_repository_alias_is_bounded() -> None:
         "b" * 16,
     )
     assert len(alias) <= 63
-    assert alias.endswith("-v17")
+    assert alias.endswith("-c1-m1024-v17")
+
+
+def test_resource_escalation_uses_distinct_bounded_template_aliases() -> None:
+    runtime = runtime_template_alias("go", "1.26.0", cpu_count=2, memory_mb=4_096)
+    repository = repository_template_alias(
+        "organization-with-a-very-long-name/repository-with-a-very-long-name",
+        "a" * 40,
+        "b" * 16,
+        cpu_count=2,
+        memory_mb=4_096,
+    )
+
+    assert runtime == "alvance-runtime-go-1-26-0-amd64-c2-m4096-v3"
+    assert len(repository) <= 63
+    assert repository.endswith("-c2-m4096-v17")

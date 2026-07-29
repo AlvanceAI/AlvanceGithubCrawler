@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 import shlex
+import tomllib
 from pathlib import Path
 
 from packaging.specifiers import InvalidSpecifier, SpecifierSet
@@ -55,7 +56,8 @@ def detect_runtime_version(language: str, repo_path: Path) -> str:
             _read(repo_path / "go.mod"),
             re.MULTILINE,
         )
-        return match.group(1) if match else DEFAULT_RUNTIME_VERSIONS[language]
+        version = match.group(1) if match else DEFAULT_RUNTIME_VERSIONS[language]
+        return normalize_go_toolchain_version(version)
     if language == "python":
         match = re.search(
             r"requires-python\s*=\s*['\"]([^'\"]+)['\"]",
@@ -71,9 +73,7 @@ def detect_runtime_version(language: str, repo_path: Path) -> str:
         majors = [int(value) for value in re.findall(r"(?<!\d)(\d{2})(?:\.\d+)?", engine)]
         return str(max(20, min(majors))) if majors else DEFAULT_RUNTIME_VERSIONS[language]
     if language == "rust":
-        content = _read(repo_path / "rust-toolchain.toml") or _read(repo_path / "rust-toolchain")
-        match = re.search(r"(?:channel\s*=\s*)?['\"]?(\d+\.\d+(?:\.\d+)?)", content)
-        return match.group(1) if match else DEFAULT_RUNTIME_VERSIONS[language]
+        return detect_rust_runtime(repo_path)
     raise ValueError(f"unsupported language: {language}")
 
 
@@ -88,6 +88,42 @@ def select_python_runtime(requirement: str) -> str:
         if specifier.contains(version, prereleases=False):
             return version
     raise ValueError(f"no supported Python runtime satisfies requires-python={requirement!r}")
+
+
+def normalize_go_toolchain_version(version: str) -> str:
+    """Turn a Go language version into the concrete toolchain name E2B needs."""
+    return f"{version}.0" if re.fullmatch(r"\d+\.\d+", version) else version
+
+
+def detect_rust_runtime(repo_path: Path) -> str:
+    channel = ""
+    toolchain_path = repo_path / "rust-toolchain.toml"
+    if toolchain_path.is_file():
+        try:
+            toolchain = tomllib.loads(_read(toolchain_path))
+        except tomllib.TOMLDecodeError:
+            toolchain = {}
+        channel = str((toolchain.get("toolchain") or {}).get("channel") or "").strip()
+    else:
+        channel = _read(repo_path / "rust-toolchain").strip()
+
+    if re.fullmatch(r"\d+\.\d+(?:\.\d+)?", channel):
+        return channel
+
+    try:
+        cargo = tomllib.loads(_read(repo_path / "Cargo.toml"))
+    except tomllib.TOMLDecodeError:
+        cargo = {}
+    workspace_version = ((cargo.get("workspace") or {}).get("package") or {}).get(
+        "rust-version"
+    )
+    package_version = (cargo.get("package") or {}).get("rust-version")
+    rust_version = str(workspace_version or package_version or "").strip()
+    if re.fullmatch(r"\d+\.\d+(?:\.\d+)?", rust_version):
+        return rust_version
+    if channel in {"stable", "beta", "nightly"}:
+        return channel
+    return DEFAULT_RUNTIME_VERSIONS["rust"]
 
 
 def hash_dependency_manifests(language: str, repo_path: Path) -> str:
@@ -107,10 +143,22 @@ def hash_dependency_manifests(language: str, repo_path: Path) -> str:
     return digest.hexdigest()[:16]
 
 
-def runtime_template_alias(language: str, version: str) -> str:
+def runtime_template_alias(
+    language: str,
+    version: str,
+    *,
+    cpu_count: int = 1,
+    memory_mb: int = 1_024,
+) -> str:
     normalized_language = "node" if language in {"typescript", "javascript"} else language
+    if normalized_language == "go":
+        version = normalize_go_toolchain_version(version)
     version_slug = re.sub(r"[^a-z0-9]+", "-", version.lower()).strip("-")
-    return f"alvance-runtime-{normalized_language}-{version_slug}-amd64-{RUNTIME_RECIPE_VERSION}"
+    resources = _resource_alias_suffix(cpu_count, memory_mb)
+    return (
+        f"alvance-runtime-{normalized_language}-{version_slug}-amd64"
+        f"{resources}-{RUNTIME_RECIPE_VERSION}"
+    )
 
 
 def repository_template_alias(
@@ -119,15 +167,32 @@ def repository_template_alias(
     dependency_hash: str,
     *,
     recipe_version: str = REPOSITORY_RECIPE_VERSION,
+    cpu_count: int = 1,
+    memory_mb: int = 1_024,
 ) -> str:
     name_hash = hashlib.sha256(full_name.lower().encode()).hexdigest()[:8]
-    repo_slug = re.sub(r"[^a-z0-9]+", "-", full_name.lower()).strip("-")[:14]
-    return f"alvance-repo-{repo_slug}-{name_hash}-{commit[:10]}-{dependency_hash[:10]}-{recipe_version}"
+    resources = _resource_alias_suffix(cpu_count, memory_mb, include_default=True)
+    suffix = f"-{name_hash}-{commit[:10]}-{dependency_hash[:10]}{resources}-{recipe_version}"
+    max_slug_length = max(1, min(22, 63 - len("alvance-repo-") - len(suffix)))
+    repo_slug = re.sub(r"[^a-z0-9]+", "-", full_name.lower()).strip("-")[:max_slug_length]
+    return f"alvance-repo-{repo_slug}{suffix}"
+
+
+def _resource_alias_suffix(
+    cpu_count: int,
+    memory_mb: int,
+    *,
+    include_default: bool = False,
+) -> str:
+    if not include_default and cpu_count == 1 and memory_mb == 1_024:
+        return ""
+    return f"-c{cpu_count}-m{memory_mb}"
 
 
 def runtime_environment(language: str, version: str) -> dict[str, str]:
     language = language.lower()
     if language == "go":
+        version = normalize_go_toolchain_version(version)
         return {
             "PATH": (
                 "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:"

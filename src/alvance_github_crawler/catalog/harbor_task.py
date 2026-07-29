@@ -5,8 +5,8 @@ import json
 import re
 from pathlib import Path
 
-from .package_models import QualifiedRepository
 from ..runtime.profiles import command_as_user, command_with_environment
+from .package_models import QualifiedRepository
 
 HARBOR_ENVELOPE_VERSION = "v2"
 
@@ -90,8 +90,8 @@ def render_task_toml(repository: QualifiedRepository, task: str, material: str) 
             "",
             "[environment]",
             "build_timeout_sec = 3600.0",
-            "cpus = 2",
-            "memory_mb = 4096",
+            f"cpus = {repository.cpu_count}",
+            f"memory_mb = {repository.memory_mb}",
             "storage_mb = 10240",
             "gpus = 0",
             "allow_internet = true",

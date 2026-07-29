@@ -57,7 +57,7 @@ def summarize_runs(runs: list[BenchmarkRun], test_cmd: str) -> BenchmarkResult:
 
 
 class E2BTemplateBuilder:
-    def __init__(self, api_key: str, *, cpu_count: int = 2, memory_mb: int = 4_096) -> None:
+    def __init__(self, api_key: str, *, cpu_count: int = 1, memory_mb: int = 1_024) -> None:
         self.api_key = api_key
         self.cpu_count = cpu_count
         self.memory_mb = memory_mb

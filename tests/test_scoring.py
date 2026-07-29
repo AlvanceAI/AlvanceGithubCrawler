@@ -6,6 +6,7 @@ from alvance_github_crawler.screening.scoring import (
     LanguageQuota,
     SoftScorer,
     count_public_symbols,
+    developer_library_score,
     is_developer_lib,
 )
 
@@ -40,6 +41,16 @@ def test_developer_library_signals() -> None:
     assert not is_developer_lib(
         {"name": "parser-dashboard", "description": "A parser web app", "topics": []}
     )
+    assert (
+        developer_library_score({"name": "photo-app", "description": "A website", "topics": []})
+        == 0
+    )
+    assert (
+        developer_library_score(
+            {"name": "utilities", "description": "Reusable components", "topics": []}
+        )
+        == 1
+    )
 
 
 def test_public_symbol_count_and_complete_score(tmp_path) -> None:
@@ -69,3 +80,25 @@ def test_public_symbol_count_and_complete_score(tmp_path) -> None:
         "S6_developer_lib": 2,
     }
     assert score.total == 10
+
+
+def test_language_quota_penalty_can_be_disabled(tmp_path) -> None:
+    repo = {
+        "full_name": "owner/parser",
+        "name": "parser",
+        "description": "Protocol parsing library",
+        "topics": ["sdk"],
+        "language": "Python",
+        "stargazers_count": 5_000,
+    }
+    tree = [{"type": "blob", "path": f"file-{index}"} for index in range(200)]
+
+    score = SoftScorer(
+        FakeGitHub(),
+        LanguageQuota(),
+        enforce_language_quota=False,
+    ).evaluate(repo, tree, tmp_path)
+
+    assert score.quota_ok
+    assert score.details["S5_language_quota"] == 2
+    assert score.total == 11

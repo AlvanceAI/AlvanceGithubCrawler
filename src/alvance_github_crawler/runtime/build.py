@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from ..models import BuildResult
+from .profiles import detect_runtime_version, normalize_go_toolchain_version
 from .python import python_test_command
 
 DOCKERFILE_TEMPLATES = {
@@ -290,9 +291,7 @@ def _detect_base_image(language: str, repo_path: Path) -> str:
         return f"node:{major}"
 
     if language == "rust":
-        content = _read(repo_path / "rust-toolchain.toml") or _read(repo_path / "rust-toolchain")
-        match = re.search(r"(?:channel\s*=\s*)?['\"]?(\d+\.\d+(?:\.\d+)?)", content)
-        return f"rust:{match.group(1)}" if match else "rust:1.77"
+        return f"rust:{detect_runtime_version('rust', repo_path)}"
 
     raise ValueError(f"unsupported language: {language}")
 
@@ -307,4 +306,4 @@ def _read(path: Path) -> str:
 def _detect_go_version(repo_path: Path) -> str:
     content = _read(repo_path / "go.mod")
     match = re.search(r"^go\s+(\d+\.\d+(?:\.\d+)?)\s*$", content, re.MULTILINE)
-    return match.group(1) if match else ""
+    return normalize_go_toolchain_version(match.group(1)) if match else ""

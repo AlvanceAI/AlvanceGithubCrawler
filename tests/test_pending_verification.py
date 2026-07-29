@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import threading
+import time
+
 from alvance_github_crawler.pending.queue import (
     PendingQueue,
     build_pending_candidate,
@@ -92,3 +95,80 @@ def test_runner_skips_already_registered_repos(tmp_path, monkeypatch) -> None:
     assert stats["already_registered"] == 1
     assert stats["processed"] == 1
     assert queue.pending() == []
+
+
+def test_runner_bounds_parallel_verification(tmp_path, monkeypatch) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    for index in range(4):
+        queue.enqueue(
+            build_pending_candidate(
+                {
+                    "full_name": f"owner/repository-{index}",
+                    "language": "Python",
+                    "base_commit": str(index) * 40,
+                    "source_tree": "a" * 40,
+                },
+                {"total": 9},
+                {"direction": "Add a parser."},
+            )
+        )
+    runner = PendingVerificationRunner(
+        queue, registry=StubRegistry(), verifier=None  # type: ignore[arg-type]
+    )
+    lock = threading.Lock()
+    active = 0
+    maximum = 0
+
+    def verify(repo, candidate):
+        nonlocal active, maximum
+        with lock:
+            active += 1
+            maximum = max(maximum, active)
+        time.sleep(0.03)
+        with lock:
+            active -= 1
+        return "registered"
+
+    monkeypatch.setattr(runner, "_verify_item", verify)
+
+    stats = runner.run(max_workers=3)
+
+    assert maximum == 3
+    assert stats == {"processed": 4, "registered": 4, "remaining": 0}
+
+
+def test_runner_refills_worker_slot_as_soon_as_one_finishes(tmp_path, monkeypatch) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    for index in range(4):
+        queue.enqueue(
+            build_pending_candidate(
+                {
+                    "full_name": f"owner/repository-{index}",
+                    "language": "Python",
+                    "base_commit": str(index) * 40,
+                    "source_tree": "a" * 40,
+                },
+                {"total": 9},
+                {"direction": "Add a parser."},
+            )
+        )
+    runner = PendingVerificationRunner(
+        queue, registry=StubRegistry(), verifier=None  # type: ignore[arg-type]
+    )
+    replacement_started = threading.Event()
+    slow_workers_saw_replacement: list[bool] = []
+
+    def verify(repo, candidate):
+        index = int(repo["full_name"].rsplit("-", 1)[1])
+        if index in {1, 2}:
+            slow_workers_saw_replacement.append(replacement_started.wait(timeout=1))
+        elif index == 3:
+            replacement_started.set()
+        return "registered"
+
+    monkeypatch.setattr(runner, "_verify_item", verify)
+
+    stats = runner.run(max_workers=3)
+
+    assert slow_workers_saw_replacement == [True, True]
+    assert stats == {"processed": 4, "registered": 4, "remaining": 0}

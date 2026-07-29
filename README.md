@@ -4,7 +4,7 @@
 
 1. GitHub Search 抓取 Go、Python、TypeScript、JavaScript、Rust 候选；
 2. Stars、活跃度、许可证和原生测试设施硬过滤；
-3. 文件数、Stars、feature issue、公开符号、语言配额、开发者库偏好评分（满分 12，默认 7 分入围）；
+3. 文件数、Stars、feature issue、公开符号和开发者库偏好评分（满分 12，默认 7 分入围）；
 4. OpenAI 结构化输出分析 feature issue，并通过 GitHub Code Search 与 grep.app 执行 H6 核查；
 5. 在 e2b 持久化 Runtime Template 与 Repository Template；
 6. 从同一个 Repository Template 启动断网 Sandbox 做 H5 检验和三次执行基准；
@@ -14,11 +14,11 @@
 ## 安装
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e '.[e2b,dev]'
+uv sync --extra e2b --extra dev
 cp .env.example .env
 ```
+
+后续命令通过 `uv run` 使用项目环境，无需手动激活虚拟环境。
 
 填写：
 
@@ -35,7 +35,7 @@ cp .env.example .env
 环境自检不会输出密钥内容：
 
 ```bash
-alvance-github-crawler --doctor
+uv run alvance-github-crawler --doctor
 ```
 
 ## 运行
@@ -43,19 +43,19 @@ alvance-github-crawler --doctor
 先用少量仓库验证完整链路：
 
 ```bash
-alvance-github-crawler --max-repos 5 --verbose
+uv run alvance-github-crawler --max-repos 5 --verbose
 ```
 
 暂时没有 e2b 凭据时，可显式使用本地 Docker fallback。此模式写入的状态是 `offline_verified_local`，不是最终的 `ready_for_phase1`：
 
 ```bash
-alvance-github-crawler --max-repos 5 --skip-e2b
+uv run alvance-github-crawler --max-repos 5 --skip-e2b
 ```
 
 覆盖默认搜索条件：
 
 ```bash
-alvance-github-crawler \
+uv run alvance-github-crawler \
   --query 'language:go stars:100..5000 pushed:>2025-07-01' \
   --search-pages 2 \
   --max-repos 20
@@ -68,7 +68,7 @@ alvance-github-crawler \
 通过项目会自动生成轻量 Harbor 封装：本地和 GitHub 只保存 TOML、JSON、Dockerfile 指纹以及测试入口，不保存仓库源码、依赖、编译缓存或镜像。完整环境仅存在 e2b。已有候选可迁移：
 
 ```bash
-alvance-github-crawler --package-existing
+uv run alvance-github-crawler --package-existing
 ```
 
 大量发现时可先把通过前三阶段的候选写入本地忽略的轻量队列，避免一个耗时较长的
@@ -76,9 +76,15 @@ E2B 首次构建阻塞后续仓库发现；消费队列时仍会重新下载精�
 并在单项结束后删除：
 
 ```bash
-alvance-github-crawler --defer-e2b --max-repos 100
-alvance-github-crawler --verify-pending --max-repos 10
+uv run alvance-github-crawler --defer-e2b --max-repos 100
+uv run alvance-github-crawler --verify-pending --e2b-concurrency 20
 ```
+
+新建 E2B template 默认使用 1 vCPU、1024 MB；并发默认上限为 20。可分别通过
+`PIPELINE_E2B_CPU_COUNT`、`PIPELINE_E2B_MEMORY_MB` 和
+`PIPELINE_E2B_CONCURRENCY` 调整。已存在且命中 alias 的 template 会直接复用原规格。
+语言配额惩罚默认关闭，因此仓库不会因当前语言占比而被淘汰；只有明确设置
+`PIPELINE_LANGUAGE_QUOTA_ENABLED=true` 时才启用原方案中的 S5 配额评分。
 
 迁移后可从项目根目录直接复用远端模板：
 
@@ -97,7 +103,9 @@ harbor run \
 ## 关键实现约定
 
 - 采用方案末尾的最终修订：S6 纳入评分，阈值为 7/12。
-- Stage 1 的测试设施检测不只看文件名：Go 还要求 `_test.go`，Node 检查 jest/vitest，Python 检查 pytest 配置，Rust 检查 `[dev-dependencies]`。
+- Stage 1 的测试设施检测不只看配置文件：Go 要求 `go.mod` 和 `_test.go`；Node 要求
+  test script 和 Jest/Vitest/Mocha 等框架；Python 检查 pytest 配置、测试依赖或 `tests/`；
+  Rust 检查 Cargo 测试代码、测试 target 或 dev dependencies。
 - Stage 4 与方案伪代码一致：依赖在镜像构建期联网获取，随后在完全断网的容器中跑测试，用于排除运行期联网依赖。
 - 默认路径不在本机保存仓库镜像：Runtime Template 按语言/版本持久化在 e2b，Repository Template 按仓库/commit/依赖哈希持久化在 e2b；相同 alias 会直接复用，不重新安装或编译。
 - Repository Template 在 e2b 内按精确 commit 初始化真实浅 Git 仓库到 `/app`，因此 Trace 可直接执行 `git rev-parse`、保留 rollout commit 并导出二进制 patch。
@@ -114,7 +122,34 @@ harbor run \
 ## 测试
 
 ```bash
-pytest
+uv run pytest
 ```
 
 单元测试不访问 GitHub、OpenAI、Docker 或 e2b。真实端到端执行会产生 API、Docker 构建与 e2b 费用，建议从 `--max-repos 1` 开始。
+
+完整的 500 仓库生产运行使用可恢复脚本：
+
+```bash
+PIPELINE_RUN_ID=github-500-20260729 scripts/run_production_pipeline.sh
+```
+
+该脚本默认使用滚动 20 并发，保留逐阶段日志和性能统计，并只对明确的资源失败项从
+1 CPU / 1024 MB 升级到 2 CPU / 4096 MB。运行和恢复说明见
+[`docs/production-pipeline-runbook.md`](docs/production-pipeline-runbook.md)。
+
+## 初步候选抓取
+
+本轮只抓取并筛选五种语言的候选，不调用 LLM、Docker 或 E2B。`target-total`
+表示原始 GitHub 样本数；`per-language` 仅控制每条语言查询抽取多少原始结果，
+不限制初筛通过数。500 条原始记录都会被检查，通过项全部进入后续管线：
+
+```bash
+uv run alvance-github-crawler crawl \
+  --target-total 100 \
+  --per-language 20 \
+  --output outputs/github_crawl_100
+```
+
+该模式生成 `raw_repositories.jsonl`、`accepted_repositories.jsonl`、
+`rejected_repositories.jsonl`、`summary.json` 以及断点文件；同一输出目录可重复运行并继续
+未完成的语言页。

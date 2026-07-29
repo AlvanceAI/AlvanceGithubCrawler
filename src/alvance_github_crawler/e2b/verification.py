@@ -4,9 +4,9 @@ import logging
 from pathlib import Path
 from typing import Any
 
-from .benchmark import E2BBenchmark, subset_test_command
-from ..pending.registration import CandidateRegistrar
 from ..config import PipelineConfig
+from ..pending.registration import CandidateRegistrar
+from ..registry import JsonlRegistry
 from . import (
     E2BEnvironmentManager,
     E2BOfflineVerifier,
@@ -14,7 +14,7 @@ from . import (
     RuntimeTemplateBuildError,
     runtime_environment,
 )
-from ..registry import JsonlRegistry
+from .benchmark import E2BBenchmark, subset_test_command
 
 LOGGER = logging.getLogger(__name__)
 
@@ -31,7 +31,11 @@ class E2BCandidateVerifier:
         self.config = config
         self.registry = registry
         self.registrar = registrar
-        self.environment = E2BEnvironmentManager(config.e2b_api_key)
+        self.environment = E2BEnvironmentManager(
+            config.e2b_api_key,
+            cpu_count=config.e2b_cpu_count,
+            memory_mb=config.e2b_memory_mb,
+        )
         self.offline = E2BOfflineVerifier(
             config.e2b_api_key,
             timeout_s=config.build_timeout_s,
@@ -55,10 +59,29 @@ class E2BCandidateVerifier:
             try:
                 environment = self.environment.ensure(repo, repo_path, str(repo["base_commit"]))
             except RuntimeTemplateBuildError as exc:
-                self.registry.reject(repo, stage, "infra_error", error=str(exc)[:2_000])
+                if is_resource_e2b_error(exc):
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        "e2b_resource_exhausted",
+                        error=str(exc)[-4_000:],
+                    )
+                    return "rejected"
+                self.registry.reject(repo, stage, "infra_error", error=str(exc)[-4_000:])
                 return "error"
             except RepositoryTemplateBuildError as exc:
-                self.registry.reject(repo, stage, "build_fail", error=str(exc)[:2_000])
+                if is_resource_e2b_error(exc):
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        "e2b_resource_exhausted",
+                        error=str(exc)[-4_000:],
+                    )
+                    return "rejected"
+                if is_transient_e2b_error(exc):
+                    self.registry.reject(repo, stage, "infra_error", error=str(exc)[-4_000:])
+                    return "error"
+                self.registry.reject(repo, stage, "build_fail", error=str(exc)[-4_000:])
                 return "rejected"
 
             runtime_env = runtime_environment(
@@ -73,10 +96,20 @@ class E2BCandidateVerifier:
                 user=environment.execution_user,
             )
             if not offline.ok:
+                offline_reason = (
+                    "e2b_resource_exhausted"
+                    if is_resource_e2b_error(
+                        RuntimeError(
+                            f"exit_code={offline.exit_code}\n"
+                            f"{offline.stdout_tail}\n{offline.stderr_tail}"
+                        )
+                    )
+                    else offline.reason
+                )
                 self.registry.reject(
                     repo,
                     stage,
-                    offline.reason,
+                    offline_reason,
                     offline=offline.to_dict(),
                     environment=environment.to_dict(),
                 )
@@ -167,3 +200,41 @@ def benchmark_rejection(
     if adjusted_score < minimum_score:
         return f"flaky_adjusted_score={adjusted_score}"
     return ""
+
+
+def is_transient_e2b_error(error: BaseException) -> bool:
+    message = str(error).lower()
+    markers = (
+        "429",
+        "rate limit",
+        "too many",
+        "concurrent",
+        "temporarily unavailable",
+        "service unavailable",
+        "bad gateway",
+        "gateway timeout",
+        "connection error",
+        "connection reset",
+        "connection timed out",
+        "request timeout",
+        "request timed out",
+        "internal server error",
+    )
+    return any(marker in message for marker in markers)
+
+
+def is_resource_e2b_error(error: BaseException) -> bool:
+    message = str(error).lower()
+    markers = (
+        "signal: killed",
+        "signal: 9",
+        "sigkill",
+        "out of memory",
+        "oom killed",
+        "oom-kill",
+        "cannot allocate memory",
+        "memory limit",
+        "exit code 137",
+        "exit_code=137",
+    )
+    return any(marker in message for marker in markers)

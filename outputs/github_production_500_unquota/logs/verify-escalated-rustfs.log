@@ -1,0 +1,47 @@
+2026-07-29 12:35:28,067 INFO alvance_github_crawler.pending_verification: verifying pending candidate rustfs/rustfs
+2026-07-29 12:35:31,117 ERROR alvance_github_crawler.candidate_verification: rustfs/rustfs failed during stage4_e2b_offline_test
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/candidate_verification.py", line 92, in verify
+    offline = self.offline.verify(
+        environment.repository_template,
+    ...<2 lines>...
+        user=environment.execution_user,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b_offline.py", line 42, in verify
+    with Sandbox.create(
+         ~~~~~~~~~~~~~~^
+        template=template,
+        ^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        api_key=self.api_key,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ) as sandbox:
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/sandbox_sync/main.py", line 212, in create
+    sandbox = cls._create(
+        template=template,
+    ...<10 lines>...
+        **opts,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/sandbox_sync/main.py", line 1108, in _create
+    response = SandboxApi._create_sandbox(
+        template=template or cls.default_template,
+    ...<10 lines>...
+        **opts,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/sandbox_sync/sandbox_api.py", line 279, in _create_sandbox
+    raise handle_api_exception(res)
+e2b.exceptions.SandboxException: 404: tag 'default' does not exist for template 'cathelloyas-default-team/alvance-repo-rustfs-rustfs-453e3d0faa-87bfa4b8cc-c2-m4096-v12'
+2026-07-29 12:35:31,191 INFO alvance_github_crawler.pending_verification: pending candidate rustfs/rustfs finished outcome=error processed=1 in_flight=0
+{
+  "error": 1,
+  "processed": 1,
+  "remaining": 1
+}
+2026-07-29 12:40:07,922 INFO alvance_github_crawler.pending_verification: verifying pending candidate rustfs/rustfs
+2026-07-29 12:49:06,397 INFO alvance_github_crawler.pending_verification: pending candidate rustfs/rustfs finished outcome=rejected processed=1 in_flight=0
+{
+  "processed": 1,
+  "rejected": 1,
+  "remaining": 0
+}

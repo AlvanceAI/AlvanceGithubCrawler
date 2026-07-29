@@ -22,6 +22,8 @@ class QualifiedRepository:
     source_template_alias: str
     runtime_env: dict[str, str]
     execution_user: str
+    cpu_count: int = 1
+    memory_mb: int = 1_024
 
     @property
     def repository_url(self) -> str:
@@ -57,6 +59,8 @@ class QualifiedRepository:
             source_template_alias=str(required["source_template_alias"]),
             runtime_env=runtime_environment(language, runtime_version),
             execution_user=str(environment.get("execution_user") or execution_user(language)),
+            cpu_count=int(environment.get("cpu_count") or 1),
+            memory_mb=int(environment.get("memory_mb") or 1_024),
         )
 
 
@@ -127,6 +131,10 @@ def compact_package_record(
         "workdir": "/app",
         "test_cmd": repository.test_cmd,
         "execution_user": repository.execution_user,
+        "resources": {
+            "cpu_count": repository.cpu_count,
+            "memory_mb": repository.memory_mb,
+        },
         "material_path": prepared.material_path,
         "task_path": prepared.task_path,
         "environment_sha256": prepared.environment_sha256,

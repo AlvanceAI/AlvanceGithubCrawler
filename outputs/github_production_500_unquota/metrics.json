@@ -1,0 +1,230 @@
+{
+  "candidates": [
+    {
+      "base_commit": "e800285910913db9a3afc2bc53a846fa64b0c747",
+      "cold_start_median_s": 0.42,
+      "cpu_count": 1,
+      "language": "python",
+      "launch_command": "harbor run --path tasks/alv-rovr-462fd8-e8002859-v2 --env e2b --no-force-build",
+      "memory_mb": 1024,
+      "offline_duration_s": 40.3,
+      "peak_mem_median_mb": 308.3,
+      "repo": "NSPC911/rovr",
+      "status": "ready_for_phase1",
+      "task_path": "tasks/alv-rovr-462fd8-e8002859-v2",
+      "test_duration_median_s": 37.47
+    },
+    {
+      "base_commit": "7ed49fc9b26efcc2d42a6ee1f163c042f4b7e55f",
+      "cold_start_median_s": 0.63,
+      "cpu_count": 1,
+      "language": "python",
+      "launch_command": "harbor run --path tasks/alv-loushang-2b9ea9-7ed49fc9-v2 --env e2b --no-force-build",
+      "memory_mb": 1024,
+      "offline_duration_s": 154.82,
+      "peak_mem_median_mb": 196.3,
+      "repo": "zhnt/loushang",
+      "status": "ready_for_phase1_flaky_test_suite",
+      "task_path": "tasks/alv-loushang-2b9ea9-7ed49fc9-v2",
+      "test_duration_median_s": 67.07
+    },
+    {
+      "base_commit": "fb7da1e9ba98dfda0e068d6a3849ab2a40adc9d0",
+      "cold_start_median_s": 0.45,
+      "cpu_count": 1,
+      "language": "go",
+      "launch_command": "harbor run --path tasks/alv-sealed-secrets-2ab4a1-fb7da1e9-v2 --env e2b --no-force-build",
+      "memory_mb": 1024,
+      "offline_duration_s": 140.23,
+      "peak_mem_median_mb": 744.1,
+      "repo": "bitnami/sealed-secrets",
+      "status": "ready_for_phase1",
+      "task_path": "tasks/alv-sealed-secrets-2ab4a1-fb7da1e9-v2",
+      "test_duration_median_s": 106.06
+    },
+    {
+      "base_commit": "27253f52c336e71fcac8441845ab0ff6e418ce60",
+      "cold_start_median_s": 0.48,
+      "cpu_count": 1,
+      "language": "go",
+      "launch_command": "harbor run --path tasks/alv-hcloud-cloud-control-a2a07e-27253f52-v2 --env e2b --no-force-build",
+      "memory_mb": 1024,
+      "offline_duration_s": 166.07,
+      "peak_mem_median_mb": 665.8,
+      "repo": "hetznercloud/hcloud-cloud-controller-manager",
+      "status": "ready_for_phase1",
+      "task_path": "tasks/alv-hcloud-cloud-control-a2a07e-27253f52-v2",
+      "test_duration_median_s": 91.86
+    },
+    {
+      "base_commit": "0d248ba40fd7004050f258b615ed6cfceac932b6",
+      "cold_start_median_s": 0.39,
+      "cpu_count": 1,
+      "language": "go",
+      "launch_command": "harbor run --path tasks/alv-kube-vip-51d2e4-0d248ba4-v2 --env e2b --no-force-build",
+      "memory_mb": 1024,
+      "offline_duration_s": 170.98,
+      "peak_mem_median_mb": 144.5,
+      "repo": "kube-vip/kube-vip",
+      "status": "ready_for_phase1",
+      "task_path": "tasks/alv-kube-vip-51d2e4-0d248ba4-v2",
+      "test_duration_median_s": 27.91
+    },
+    {
+      "base_commit": "b98b3b03e885e6996750d88f7b851010be6ed912",
+      "cold_start_median_s": 0.49,
+      "cpu_count": 1,
+      "language": "javascript",
+      "launch_command": "harbor run --path tasks/alv-patina-6b5b94-b98b3b03-v2 --env e2b --no-force-build",
+      "memory_mb": 1024,
+      "offline_duration_s": 120.69,
+      "peak_mem_median_mb": 101.1,
+      "repo": "devswha/patina",
+      "status": "ready_for_phase1",
+      "task_path": "tasks/alv-patina-6b5b94-b98b3b03-v2",
+      "test_duration_median_s": 118.28
+    }
+  ],
+  "crawl": {
+    "accepted_by_language": {
+      "go": 65,
+      "javascript": 33,
+      "python": 54,
+      "rust": 52,
+      "typescript": 35
+    },
+    "accepted_total": 239,
+    "api_request_count": 834,
+    "cutoff_time": "2025-07-29T09:08:23.059900+00:00",
+    "deduplicated_total": 500,
+    "duplicate_results": 0,
+    "duration_seconds": 344.187,
+    "end_time": "2026-07-29T09:14:07.247225+00:00",
+    "fetched_total": 500,
+    "github_rate_limit_remaining": {
+      "actions_runner_registration": 10000,
+      "audit_log": 1750,
+      "audit_log_streaming": 15,
+      "code_scanning_autofix": 10,
+      "code_search": 9,
+      "copilot_usage_records": 1750,
+      "core": 4991,
+      "dependency_sbom": 100,
+      "dependency_snapshots": 100,
+      "graphql": 5000,
+      "integration_manifest": 5000,
+      "scim": 15000,
+      "search": 30,
+      "source_import": 100
+    },
+    "output_dir": "outputs/github_crawl_500_unquota",
+    "per_language": 100,
+    "raw_per_language": 100,
+    "rejected_by_reason": {
+      "no_test_infra": 99,
+      "tree_unavailable": 3,
+      "unsupported_license": 159
+    },
+    "rejected_total": 261,
+    "retry_count": 0,
+    "schema_version": "1.1",
+    "search_pages_fetched": {
+      "go": 1,
+      "javascript": 1,
+      "python": 1,
+      "rust": 1,
+      "typescript": 1
+    },
+    "selection_semantics": "raw_sample_all_pass_v1",
+    "start_time": "2026-07-29T09:08:23.060613+00:00",
+    "status": "completed",
+    "target_total": 500,
+    "validation_errors": []
+  },
+  "generated_at": "2026-07-29T12:53:52.387045+00:00",
+  "paths": {
+    "crawl_dir": "outputs/github_crawl_500_unquota",
+    "production_dir": "outputs/github_production_500_unquota",
+    "timings": "outputs/github_production_500_unquota/stage-timings.jsonl"
+  },
+  "production": {
+    "candidate_by_language": {
+      "go": 3,
+      "javascript": 1,
+      "python": 2
+    },
+    "candidate_by_resource": {
+      "1cpu-1024mb": 6
+    },
+    "candidate_total": 6,
+    "e2b_queued_total": 59,
+    "latest_rejection_by_reason": {
+      "benchmark_resource_fail": 1,
+      "build_fail": 32,
+      "e2b_resource_exhausted": 1,
+      "no_direction": 88,
+      "offline_test_fail": 17,
+      "offline_test_timeout": 2,
+      "repo_too_large": 73,
+      "score=4": 2,
+      "score=5": 4,
+      "score=6": 13
+    },
+    "latest_rejection_total": 233,
+    "pending_remaining": 0,
+    "rejection_record_total": 244
+  },
+  "run_id": "github-500-unquota-20260729",
+  "schema_version": "1.0",
+  "stage_timings": [
+    {
+      "duration_s": 344,
+      "exit_code": 0,
+      "finished_at": "2026-07-29T09:14:07.247225+00:00",
+      "run_id": "github-500-unquota-20260729",
+      "stage": "crawl",
+      "started_at": "2026-07-29T09:08:23.060613+00:00"
+    },
+    {
+      "duration_s": 760,
+      "exit_code": 0,
+      "finished_at": "2026-07-29T12:17:10.978000+00:00",
+      "run_id": "github-500-unquota-20260729",
+      "stage": "verify-default-resume",
+      "started_at": "2026-07-29T12:04:30.531000+00:00"
+    },
+    {
+      "duration_s": 1307,
+      "exit_code": 0,
+      "finished_at": "2026-07-29T12:34:44.726000+00:00",
+      "run_id": "github-500-unquota-20260729",
+      "stage": "prebuild-escalated",
+      "started_at": "2026-07-29T12:12:57.370000+00:00"
+    },
+    {
+      "duration_s": 798,
+      "exit_code": 0,
+      "finished_at": "2026-07-29T12:33:48.054000+00:00",
+      "run_id": "github-500-unquota-20260729",
+      "stage": "verify-escalated",
+      "started_at": "2026-07-29T12:20:30.162000+00:00"
+    },
+    {
+      "duration_s": 3,
+      "exit_code": 0,
+      "finished_at": "2026-07-29T12:35:31.191000+00:00",
+      "run_id": "github-500-unquota-20260729",
+      "stage": "verify-rustfs-cache-recovery",
+      "started_at": "2026-07-29T12:35:28.067000+00:00"
+    },
+    {
+      "duration_s": 538,
+      "exit_code": 0,
+      "finished_at": "2026-07-29T12:49:06.397000+00:00",
+      "run_id": "github-500-unquota-20260729",
+      "stage": "verify-rustfs-final",
+      "started_at": "2026-07-29T12:40:07.922000+00:00"
+    }
+  ],
+  "status": "complete"
+}

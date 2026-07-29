@@ -88,6 +88,9 @@ def test_trace_store_writes_tiny_native_layout(tmp_path) -> None:
     assert "runuser -u user -- env HOME=/home/user" in test_script
     assert "echo 1 > /logs/verifier/reward.txt" in test_script
     assert "echo 0 > /logs/verifier/reward.txt" in test_script
+    task_config = (task_dir / "task.toml").read_text()
+    assert "cpus = 1" in task_config
+    assert "memory_mb = 1024" in task_config
     assert not any(path.name == ".git" for path in tmp_path.rglob(".git"))
     assert sum(path.stat().st_size for path in tmp_path.rglob("*") if path.is_file()) < 30_000
 
@@ -101,6 +104,7 @@ def test_trace_store_writes_tiny_native_layout(tmp_path) -> None:
     )
     receipt = json.loads((material_dir / "receipts" / "e2b.json").read_text())
     assert receipt["execution_user"] == "user"
+    assert receipt["resources"] == {"cpu_count": 1, "memory_mb": 1024}
 
 
 def test_compact_package_omits_test_logs(tmp_path) -> None:

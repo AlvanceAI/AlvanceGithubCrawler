@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import threading
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -12,6 +13,7 @@ class JsonlRegistry:
         self.rejections_path = rejections_path
         candidates_path.parent.mkdir(parents=True, exist_ok=True)
         rejections_path.parent.mkdir(parents=True, exist_ok=True)
+        self._write_lock = threading.Lock()
 
     def existing_repos(self) -> set[str]:
         if not self.candidates_path.is_file():
@@ -51,7 +53,8 @@ class JsonlRegistry:
 
     def register(self, record: dict[str, Any]) -> None:
         payload = {"registered_at": datetime.now(UTC).isoformat(), **record}
-        self._append(self.candidates_path, payload)
+        with self._write_lock:
+            self._append(self.candidates_path, payload)
 
     def reject(
         self,
@@ -67,7 +70,8 @@ class JsonlRegistry:
             "reason": reason,
             **details,
         }
-        self._append(self.rejections_path, payload)
+        with self._write_lock:
+            self._append(self.rejections_path, payload)
 
     @staticmethod
     def _append(path: Path, payload: dict[str, Any]) -> None:

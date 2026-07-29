@@ -11,17 +11,36 @@ from urllib.parse import urlsplit, urlunsplit
 SUPPORTED_LANGUAGES = ("go", "python", "typescript", "javascript", "rust")
 
 
-def load_dotenv(path: Path = Path(".env")) -> None:
-    """Load a small, dependency-free subset of dotenv syntax."""
+def parse_env_bool(value: str, *, default: bool = False) -> bool:
+    if not value:
+        return default
+    normalized = value.strip().lower()
+    if normalized in {"1", "true", "yes", "on"}:
+        return True
+    if normalized in {"0", "false", "no", "off"}:
+        return False
+    raise ValueError(f"invalid boolean environment value: {value}")
+
+
+def dotenv_values(path: Path = Path(".env")) -> dict[str, str]:
+    """Read a small, dependency-free subset of dotenv syntax without mutating env."""
     if not path.is_file():
-        return
+        return {}
+    values: dict[str, str] = {}
     for raw_line in path.read_text(encoding="utf-8").splitlines():
         line = raw_line.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, value = line.split("=", 1)
         value = value.strip().strip('"').strip("'")
-        os.environ.setdefault(key.strip(), value)
+        values[key.strip()] = value
+    return values
+
+
+def load_dotenv(path: Path = Path(".env")) -> None:
+    """Load dotenv values only when an actual environment value is absent."""
+    for key, value in dotenv_values(path).items():
+        os.environ.setdefault(key, value)
 
 
 @dataclass(slots=True)
@@ -42,6 +61,10 @@ class PipelineConfig:
     build_timeout_s: int = 600
     benchmark_timeout_s: int = 600
     benchmark_runs: int = 3
+    e2b_cpu_count: int = 1
+    e2b_memory_mb: int = 1_024
+    e2b_concurrency: int = 20
+    language_quota_enabled: bool = False
     max_tree_entries: int = 1_500
     max_tree_chars: int = 18_000
     max_repo_size_kb: int = 100_000
@@ -50,25 +73,39 @@ class PipelineConfig:
     @classmethod
     def from_env(cls) -> PipelineConfig:
         external_env = os.getenv("PIPELINE_ENV_FILE")
+        # Process environment wins over files. An explicitly selected external file
+        # then overrides the repository-local defaults for reproducible runs.
+        sources = [dict(os.environ)]
         if external_env:
-            load_dotenv(Path(external_env).expanduser())
-        load_dotenv()
+            sources.append(dotenv_values(Path(external_env).expanduser()))
+        sources.append(dotenv_values())
+
+        def value(*keys: str) -> str:
+            for source in sources:
+                for key in keys:
+                    resolved = source.get(key, "")
+                    if resolved:
+                        return resolved
+            return ""
+
         return cls(
-            github_token=os.getenv("GITHUB_TOKEN", "") or discover_github_token(),
-            openai_api_key=os.getenv("OPENAI_API_KEY", "") or os.getenv("MODEL_API_KEY", ""),
-            openai_base_url=normalize_openai_base_url(
-                os.getenv("OPENAI_BASE_URL", "") or os.getenv("MODEL_BASE_URL", "")
+            github_token=value("GITHUB_TOKEN") or discover_github_token(),
+            openai_api_key=value("OPENAI_API_KEY", "MODEL_API_KEY"),
+            openai_base_url=normalize_openai_base_url(value("OPENAI_BASE_URL", "MODEL_BASE_URL")),
+            e2b_api_key=value("E2B_API_KEY", "E2B_KEY"),
+            openai_model=value("OPENAI_MODEL", "MODEL_NAME") or "gpt-5-mini",
+            output_dir=Path(value("PIPELINE_OUTPUT_DIR") or ".crawler-state"),
+            catalog_dir=Path(value("PIPELINE_CATALOG_DIR") or "catalog"),
+            feature_issue_limit=int(value("PIPELINE_FEATURE_ISSUE_LIMIT") or "10"),
+            openai_timeout_s=int(value("PIPELINE_OPENAI_TIMEOUT_S") or "120"),
+            openai_max_output_tokens=int(value("PIPELINE_OPENAI_MAX_OUTPUT_TOKENS") or "1000"),
+            e2b_cpu_count=int(value("PIPELINE_E2B_CPU_COUNT") or "1"),
+            e2b_memory_mb=int(value("PIPELINE_E2B_MEMORY_MB") or "1024"),
+            e2b_concurrency=int(value("PIPELINE_E2B_CONCURRENCY") or "20"),
+            language_quota_enabled=parse_env_bool(
+                value("PIPELINE_LANGUAGE_QUOTA_ENABLED"), default=False
             ),
-            e2b_api_key=os.getenv("E2B_API_KEY", "") or os.getenv("E2B_KEY", ""),
-            openai_model=os.getenv("OPENAI_MODEL", "")
-            or os.getenv("MODEL_NAME", "")
-            or "gpt-5-mini",
-            output_dir=Path(os.getenv("PIPELINE_OUTPUT_DIR", ".crawler-state")),
-            catalog_dir=Path(os.getenv("PIPELINE_CATALOG_DIR", "catalog")),
-            feature_issue_limit=int(os.getenv("PIPELINE_FEATURE_ISSUE_LIMIT", "10")),
-            openai_timeout_s=int(os.getenv("PIPELINE_OPENAI_TIMEOUT_S", "120")),
-            openai_max_output_tokens=int(os.getenv("PIPELINE_OPENAI_MAX_OUTPUT_TOKENS", "1000")),
-            max_repo_size_kb=int(os.getenv("PIPELINE_MAX_REPO_SIZE_KB", "100000")),
+            max_repo_size_kb=int(value("PIPELINE_MAX_REPO_SIZE_KB") or "100000"),
         )
 
     def validate(self, *, require_e2b: bool = True) -> None:
@@ -81,6 +118,12 @@ class PipelineConfig:
             missing.append("E2B_API_KEY")
         if missing:
             raise ValueError(f"missing required environment variables: {', '.join(missing)}")
+        if self.e2b_cpu_count < 1:
+            raise ValueError("PIPELINE_E2B_CPU_COUNT must be >= 1")
+        if self.e2b_memory_mb < 128:
+            raise ValueError("PIPELINE_E2B_MEMORY_MB must be >= 128")
+        if not 1 <= self.e2b_concurrency <= 20:
+            raise ValueError("PIPELINE_E2B_CONCURRENCY must be between 1 and 20")
 
     @property
     def queries(self) -> list[str]:

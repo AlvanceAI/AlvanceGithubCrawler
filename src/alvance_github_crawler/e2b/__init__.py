@@ -1,13 +1,5 @@
 """E2B sandbox management: template building, offline verification, benchmarking."""
 
-from .offline import E2BOfflineVerifier, OfflineTestResult
-from .template import (
-    E2BEnvironmentManager,
-    E2BEnvironmentResult,
-    RepositoryTemplateBuildError,
-    RuntimeTemplateBuildError,
-    _add_repository_build_steps,
-)
 from ..runtime.profiles import (
     command_with_environment,
     detect_runtime_version,
@@ -19,6 +11,14 @@ from ..runtime.profiles import (
     runtime_template_alias,
     select_python_runtime,
 )
+from .offline import E2BOfflineVerifier, OfflineTestResult
+from .template import (
+    E2BEnvironmentManager,
+    E2BEnvironmentResult,
+    RepositoryTemplateBuildError,
+    RuntimeTemplateBuildError,
+    _add_repository_build_steps,
+)
 
 __all__ = [
     "E2BEnvironmentManager",
@@ -27,6 +27,7 @@ __all__ = [
     "OfflineTestResult",
     "RepositoryTemplateBuildError",
     "RuntimeTemplateBuildError",
+    "_add_repository_build_steps",
     "command_with_environment",
     "detect_runtime_version",
     "execution_user",

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import threading
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -75,6 +76,7 @@ PUBLIC_SYMBOL_PATTERNS = {
 class LanguageQuota:
     def __init__(self, candidates_path: Path | None = None) -> None:
         self.counter: Counter[str] = Counter()
+        self._lock = threading.Lock()
         seen_repos: set[str] = set()
         if candidates_path and candidates_path.is_file():
             for line in candidates_path.read_text(encoding="utf-8").splitlines():
@@ -93,24 +95,37 @@ class LanguageQuota:
 
     def quota_ok(self, language: str) -> bool:
         language = language.lower()
-        projected_total = sum(self.counter.values()) + 1
-        projected_language = self.counter[language] + 1
-        return projected_language / projected_total <= LANG_QUOTA.get(language, 0.10)
+        with self._lock:
+            projected_total = sum(self.counter.values()) + 1
+            projected_language = self.counter[language] + 1
+            return projected_language / projected_total <= LANG_QUOTA.get(language, 0.10)
 
     def register(self, language: str) -> None:
-        self.counter[language.lower()] += 1
+        with self._lock:
+            self.counter[language.lower()] += 1
 
 
 def is_developer_lib(repo: dict[str, Any]) -> bool:
+    return developer_library_score(repo) == 2
+
+
+def developer_library_score(repo: dict[str, Any]) -> int:
     text = f"{repo.get('name', '')} {repo.get('description') or ''}".lower()
     topics = {str(topic).lower() for topic in repo.get("topics", [])}
+    tokens = set(re.findall(r"[a-z0-9]+", text))
 
     def contains(signal: str) -> bool:
-        return signal in text or signal in topics
+        return signal in tokens or signal in topics
 
     positive = sum(1 for signal in POSITIVE_LIB_SIGNALS if contains(signal))
     negative = sum(1 for signal in NEGATIVE_LIB_SIGNALS if contains(signal))
-    return positive > 0 and negative == 0
+    if positive > 0 and negative == 0:
+        return 2
+    if positive > 0:
+        return 1
+    if negative > 0:
+        return 0
+    return 1
 
 
 def count_public_symbols(repo_path: Path, language: str) -> int:
@@ -135,9 +150,16 @@ def count_public_symbols(repo_path: Path, language: str) -> int:
 
 
 class SoftScorer:
-    def __init__(self, github: GitHubClient, quota: LanguageQuota) -> None:
+    def __init__(
+        self,
+        github: GitHubClient,
+        quota: LanguageQuota,
+        *,
+        enforce_language_quota: bool = True,
+    ) -> None:
         self.github = github
         self.quota = quota
+        self.enforce_language_quota = enforce_language_quota
 
     def evaluate(
         self,
@@ -148,7 +170,7 @@ class SoftScorer:
         language = (repo.get("language") or "").lower()
         file_count = sum(1 for item in tree if item.get("type") == "blob")
         symbol_count = count_public_symbols(repo_path, language)
-        quota_ok = self.quota.quota_ok(language)
+        quota_ok = self.quota.quota_ok(language) if self.enforce_language_quota else True
         developer_lib = is_developer_lib(repo)
         details: dict[str, float] = {}
 

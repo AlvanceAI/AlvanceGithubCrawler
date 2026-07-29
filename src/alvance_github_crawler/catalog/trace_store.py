@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import threading
 from pathlib import Path
 from typing import Any
 
@@ -38,6 +39,7 @@ class TracePackageStore:
         self.root_dir = catalog_dir.parent
         self.materials_dir = self.root_dir / "materials"
         self.tasks_dir = self.root_dir / "tasks"
+        self._catalog_lock = threading.Lock()
 
     def prepare(self, repository: QualifiedRepository) -> PreparedTracePackage:
         material = material_id(repository)
@@ -83,11 +85,12 @@ class TracePackageStore:
         task_dir = self.root_dir / prepared.task_path
         self._write_material(repository, prepared, wrapper, material_dir)
         self._write_task(repository, prepared, wrapper, task_dir)
-        packages = self._upsert_package(package_record)
-        (self.catalog_dir / "repo-materials.toml").write_text(
-            render_catalog(packages),
-            encoding="utf-8",
-        )
+        with self._catalog_lock:
+            packages = self._upsert_package(package_record)
+            (self.catalog_dir / "repo-materials.toml").write_text(
+                render_catalog(packages),
+                encoding="utf-8",
+            )
 
     def _write_material(
         self,

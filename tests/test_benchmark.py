@@ -9,9 +9,9 @@ from alvance_github_crawler.e2b.benchmark import (
     subset_test_command,
     summarize_runs,
 )
+from alvance_github_crawler.models import BenchmarkRun
 from alvance_github_crawler.runtime.build import dockerfile_for
 from alvance_github_crawler.runtime.build import test_command_for as resolve_test_command
-from alvance_github_crawler.models import BenchmarkRun
 
 
 def test_e2b_benchmark_passes_runtime_envs(monkeypatch) -> None:
@@ -194,3 +194,16 @@ def test_dockerfile_uses_repository_runtime_version(tmp_path) -> None:
     dockerfile = dockerfile_for("go", tmp_path)
     assert dockerfile.startswith("FROM golang:1.22\n")
     assert "ENV GOTOOLCHAIN=go1.26.5+auto\n" in dockerfile
+
+
+def test_rust_dockerfile_ignores_versions_in_toolchain_comments(tmp_path) -> None:
+    (tmp_path / "rust-toolchain.toml").write_text(
+        '# Apache License, Version 2.0\n[toolchain]\nchannel = "stable"\n',
+        encoding="utf-8",
+    )
+    (tmp_path / "Cargo.toml").write_text(
+        '[package]\nname = "demo"\nversion = "0.1.0"\nrust-version = "1.90"\n',
+        encoding="utf-8",
+    )
+
+    assert dockerfile_for("rust", tmp_path).startswith("FROM rust:1.90\n")

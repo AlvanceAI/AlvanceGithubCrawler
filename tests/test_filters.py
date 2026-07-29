@@ -3,6 +3,9 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 
 from alvance_github_crawler.screening.filters import HardFilter
+from alvance_github_crawler.screening.filters import (
+    test_infrastructure_evidence as collect_test_evidence,
+)
 
 
 class FakeGitHub:
@@ -48,6 +51,18 @@ def test_python_marker_must_configure_pytest() -> None:
     assert not result.ok
 
 
+def test_python_accepts_tests_directory() -> None:
+    result = HardFilter(FakeGitHub()).evaluate(
+        repo("Python"), blobs("pyproject.toml", "tests/test_api.py")
+    )
+    assert result.ok
+
+    hidden_tool_tests = HardFilter(FakeGitHub()).evaluate(
+        repo("Python"), blobs("pyproject.toml", ".claude/skills/check/tests/test_tool.py")
+    )
+    assert not hidden_tool_tests.ok
+
+
 def test_javascript_detects_jest_or_vitest() -> None:
     github = FakeGitHub(
         {"package.json": '{"scripts":{"test":"vitest run"},"devDependencies":{"vitest":"1"}}'}
@@ -55,11 +70,20 @@ def test_javascript_detects_jest_or_vitest() -> None:
     result = HardFilter(github).evaluate(repo("TypeScript"), blobs("package.json"))
     assert result.ok
 
+    no_test_script = FakeGitHub({"package.json": '{"devDependencies":{"jest":"1"}}'})
+    result = HardFilter(no_test_script).evaluate(repo("JavaScript"), blobs("package.json"))
+    assert not result.ok
+
 
 def test_rust_requires_dev_dependencies() -> None:
     github = FakeGitHub({"Cargo.toml": "[dev-dependencies]\nproptest = '1'"})
     result = HardFilter(github).evaluate(repo("Rust"), blobs("Cargo.toml"))
     assert result.ok
+
+    evidence = collect_test_evidence(
+        FakeGitHub(), repo("Rust"), "rust", blobs("Cargo.toml", "crates/api/tests/api.rs")
+    )
+    assert evidence == ["file:Cargo.toml", "test_file:crates/api/tests/api.rs"]
 
 
 def test_rejects_inactive_or_non_permissive_repo() -> None:

@@ -1,14 +1,13 @@
 from __future__ import annotations
 
 import shlex
+import threading
 import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
 from ..runtime.build import test_command_for
-from .build_logs import E2BBuildLogBuffer
-from ..runtime.python import python_install_commands
 from ..runtime.profiles import (
     detect_runtime_version,
     execution_user,
@@ -17,6 +16,8 @@ from ..runtime.profiles import (
     runtime_environment,
     runtime_template_alias,
 )
+from ..runtime.python import python_install_commands
+from .build_logs import E2BBuildLogBuffer
 
 
 class RuntimeTemplateBuildError(RuntimeError):
@@ -41,6 +42,8 @@ class E2BEnvironmentResult:
     repository_template_build_s: float
     test_cmd: str
     execution_user: str
+    cpu_count: int
+    memory_mb: int
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -51,12 +54,14 @@ class E2BEnvironmentManager:
         self,
         api_key: str,
         *,
-        cpu_count: int = 2,
-        memory_mb: int = 4_096,
+        cpu_count: int = 1,
+        memory_mb: int = 1_024,
     ) -> None:
         self.api_key = api_key
         self.cpu_count = cpu_count
         self.memory_mb = memory_mb
+        self._alias_locks: dict[str, threading.Lock] = {}
+        self._alias_locks_guard = threading.Lock()
 
     def ensure(
         self,
@@ -73,7 +78,12 @@ class E2BEnvironmentManager:
 
         language = str(repo.get("language") or "").lower()
         runtime_version = detect_runtime_version(language, repo_path)
-        runtime_alias = runtime_template_alias(language, runtime_version)
+        runtime_alias = runtime_template_alias(
+            language,
+            runtime_version,
+            cpu_count=self.cpu_count,
+            memory_mb=self.memory_mb,
+        )
         runtime_cache_hit, runtime_build_s = self._ensure_runtime(
             Template,
             language,
@@ -85,6 +95,8 @@ class E2BEnvironmentManager:
             str(repo["full_name"]),
             base_commit,
             dependency_hash,
+            cpu_count=self.cpu_count,
+            memory_mb=self.memory_mb,
         )
         repository_cache_hit, repository_build_s = self._ensure_repository(
             Template,
@@ -110,6 +122,8 @@ class E2BEnvironmentManager:
             repository_template_build_s=round(repository_build_s, 2),
             test_cmd=test_command_for(language, repo_path),
             execution_user=execution_user(language),
+            cpu_count=self.cpu_count,
+            memory_mb=self.memory_mb,
         )
 
     def _ensure_runtime(
@@ -119,25 +133,26 @@ class E2BEnvironmentManager:
         runtime_version: str,
         runtime_alias: str,
     ) -> tuple[bool, float]:
-        cache_hit = Template.alias_exists(runtime_alias, api_key=self.api_key)
-        if cache_hit:
-            return True, 0.0
-        builder = _runtime_template_builder(Template, language, runtime_version)
-        started = time.monotonic()
-        logs = E2BBuildLogBuffer()
-        try:
-            Template.build(
-                builder,
-                name=runtime_alias,
-                cpu_count=self.cpu_count,
-                memory_mb=self.memory_mb,
-                skip_cache=False,
-                api_key=self.api_key,
-                on_build_logs=logs,
-            )
-        except Exception as exc:
-            raise RuntimeTemplateBuildError(logs.error_message(exc)) from exc
-        return False, time.monotonic() - started
+        with self._alias_lock(runtime_alias):
+            cache_hit = _template_alias_ready(Template, runtime_alias, self.api_key)
+            if cache_hit:
+                return True, 0.0
+            builder = _runtime_template_builder(Template, language, runtime_version)
+            started = time.monotonic()
+            logs = E2BBuildLogBuffer()
+            try:
+                Template.build(
+                    builder,
+                    name=runtime_alias,
+                    cpu_count=self.cpu_count,
+                    memory_mb=self.memory_mb,
+                    skip_cache=False,
+                    api_key=self.api_key,
+                    on_build_logs=logs,
+                )
+            except Exception as exc:
+                raise RuntimeTemplateBuildError(logs.error_message(exc)) from exc
+            return False, time.monotonic() - started
 
     def _ensure_repository(
         self,
@@ -151,38 +166,48 @@ class E2BEnvironmentManager:
         repo_path: Path,
         default_branch: str,
     ) -> tuple[bool, float]:
-        cache_hit = Template.alias_exists(repository_alias, api_key=self.api_key)
-        if cache_hit:
-            return True, 0.0
-        builder = (
-            Template()
-            .from_template(runtime_alias)
-            .set_envs(runtime_environment(language, runtime_version))
-            .set_workdir("/")
-        )
-        builder = _add_repository_build_steps(
-            builder,
-            language,
-            full_name,
-            base_commit,
-            repo_path=repo_path,
-            default_branch=default_branch,
-        )
-        started = time.monotonic()
-        logs = E2BBuildLogBuffer()
-        try:
-            Template.build(
-                builder,
-                name=repository_alias,
-                cpu_count=self.cpu_count,
-                memory_mb=self.memory_mb,
-                skip_cache=False,
-                api_key=self.api_key,
-                on_build_logs=logs,
+        with self._alias_lock(repository_alias):
+            cache_hit = _template_alias_ready(Template, repository_alias, self.api_key)
+            if cache_hit:
+                return True, 0.0
+            builder = (
+                Template()
+                .from_template(runtime_alias)
+                .set_envs(runtime_environment(language, runtime_version))
+                .set_workdir("/")
             )
-        except Exception as exc:
-            raise RepositoryTemplateBuildError(logs.error_message(exc)) from exc
-        return False, time.monotonic() - started
+            builder = _add_repository_build_steps(
+                builder,
+                language,
+                full_name,
+                base_commit,
+                repo_path=repo_path,
+                default_branch=default_branch,
+            )
+            started = time.monotonic()
+            logs = E2BBuildLogBuffer()
+            try:
+                Template.build(
+                    builder,
+                    name=repository_alias,
+                    cpu_count=self.cpu_count,
+                    memory_mb=self.memory_mb,
+                    skip_cache=False,
+                    api_key=self.api_key,
+                    on_build_logs=logs,
+                )
+            except Exception as exc:
+                raise RepositoryTemplateBuildError(logs.error_message(exc)) from exc
+            return False, time.monotonic() - started
+
+    def _alias_lock(self, alias: str) -> threading.Lock:
+        with self._alias_locks_guard:
+            return self._alias_locks.setdefault(alias, threading.Lock())
+
+
+def _template_alias_ready(Template: Any, alias: str, api_key: str) -> bool:
+    # Failed E2B builds can leave an unlaunchable bare alias without a usable tag.
+    return bool(Template.alias_exists(f"{alias}:default", api_key=api_key))
 
 
 def _add_repository_build_steps(

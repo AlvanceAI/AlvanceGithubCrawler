@@ -1,24 +1,82 @@
 from __future__ import annotations
 
+import json
 import logging
+import re
 from collections import Counter
 from collections.abc import Iterable
+from pathlib import Path
 from typing import Any
 
-from .runtime.build import DockerBuildVerifier
-from .pending.registration import CandidateRegistrar
-from .e2b.verification import E2BCandidateVerifier
+from .catalog.harbor_packaging import HarborPackager
 from .config import PipelineConfig
+from .e2b.verification import E2BCandidateVerifier
+from .github import GitHubClient, GitHubError
+from .pending.queue import PendingQueue, build_pending_candidate
+from .pending.registration import CandidateRegistrar
+from .registry import JsonlRegistry
+from .runtime.build import DockerBuildVerifier
 from .screening.direction import DirectionChecker, OpenAIDirectionJudge, PublicImplementationSearch
 from .screening.filters import HardFilter
-from .github import GitHubClient, GitHubError
-from .catalog.harbor_packaging import HarborPackager
-from .pending.queue import PendingQueue, build_pending_candidate
-from .registry import JsonlRegistry
 from .screening.scoring import LanguageQuota, SoftScorer
 from .workspace import cloned_repository, tree_summary
 
 LOGGER = logging.getLogger(__name__)
+COMMIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
+
+
+def load_crawl_candidates(
+    path: Path,
+    *,
+    repositories: Iterable[str] | None = None,
+) -> list[dict[str, Any]]:
+    """Load validated, immutable candidates emitted by the `crawl` command."""
+    if not path.is_file():
+        raise ValueError(f"candidate input file does not exist: {path}")
+
+    candidates: dict[str, dict[str, Any]] = {}
+    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not raw_line.strip():
+            continue
+        try:
+            candidate = json.loads(raw_line)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"invalid JSON in {path}:{line_number}") from exc
+        if not isinstance(candidate, dict):
+            raise ValueError(f"candidate in {path}:{line_number} must be an object")
+
+        full_name = str(candidate.get("repo") or "").strip()
+        base_commit = str(candidate.get("base_commit") or "").strip()
+        language = str(candidate.get("language") or "").lower()
+        if not full_name or "/" not in full_name:
+            raise ValueError(f"candidate in {path}:{line_number} has no valid repo")
+        if not COMMIT_SHA_RE.fullmatch(base_commit):
+            raise ValueError(
+                f"candidate {full_name} in {path}:{line_number} has no full commit SHA"
+            )
+        if not language:
+            raise ValueError(f"candidate {full_name} in {path}:{line_number} has no language")
+        if full_name in candidates:
+            raise ValueError(f"duplicate candidate repo in {path}: {full_name}")
+        candidates[full_name] = candidate
+
+    if repositories is None:
+        return list(candidates.values())
+
+    selected: list[dict[str, Any]] = []
+    selected_names: set[str] = set()
+    for raw_name in repositories:
+        full_name = raw_name.strip()
+        if not full_name:
+            continue
+        if full_name in selected_names:
+            raise ValueError(f"duplicate --repository value: {full_name}")
+        try:
+            selected.append(candidates[full_name])
+        except KeyError as exc:
+            raise ValueError(f"repository is not present in candidate input: {full_name}") from exc
+        selected_names.add(full_name)
+    return selected
 
 
 class Pipeline:
@@ -38,7 +96,11 @@ class Pipeline:
         self.registry = JsonlRegistry(config.candidates_path, config.rejections_path)
         self.quota = LanguageQuota(config.candidates_path)
         self.hard_filter = HardFilter(self.github)
-        self.soft_scorer = SoftScorer(self.github, self.quota)
+        self.soft_scorer = SoftScorer(
+            self.github,
+            self.quota,
+            enforce_language_quota=config.language_quota_enabled,
+        )
         judge = OpenAIDirectionJudge(
             config.openai_api_key,
             config.openai_model,
@@ -67,7 +129,12 @@ class Pipeline:
         self.harbor_packager = (
             None
             if skip_e2b or defer_e2b
-            else HarborPackager(config.e2b_api_key, config.catalog_dir)
+            else HarborPackager(
+                config.e2b_api_key,
+                config.catalog_dir,
+                cpu_count=config.e2b_cpu_count,
+                memory_mb=config.e2b_memory_mb,
+            )
         )
         self.registrar = CandidateRegistrar(
             self.registry,
@@ -121,11 +188,110 @@ class Pipeline:
                 stats[outcome] += 1
         return dict(stats)
 
+    def run_crawl_candidates(
+        self,
+        path: Path,
+        *,
+        max_repos: int | None = None,
+        repositories: Iterable[str] | None = None,
+    ) -> dict[str, int]:
+        """Process exact commits from a prior `crawl` JSONL output.
+
+        The crawl record remains the provenance source for immutable candidate fields.
+        A lightweight repository API lookup is only used for data not included in that
+        record, notably the reported repository size used by Stage 2.
+        """
+        candidates = load_crawl_candidates(path, repositories=repositories)
+        stats: Counter[str] = Counter(input_total=len(candidates))
+        seen = self.registry.existing_repos()
+        seen |= self.pending.known_repos()
+        if not self.retry_rejected:
+            seen |= self.registry.terminal_rejections()
+
+        for candidate in candidates:
+            full_name = str(candidate["repo"])
+            if full_name in seen:
+                stats["duplicate"] += 1
+                continue
+            if max_repos is not None and stats["processed"] >= max_repos:
+                break
+            seen.add(full_name)
+            stats["processed"] += 1
+            LOGGER.info("processing crawled candidate %s@%s", full_name, candidate["base_commit"])
+            try:
+                repo = self._repository_from_crawl_candidate(candidate)
+            except ValueError as exc:
+                self.registry.reject(
+                    {"full_name": full_name},
+                    "candidate_input",
+                    "invalid_candidate",
+                    error=str(exc)[:2_000],
+                )
+                stats["rejected"] += 1
+                continue
+            except Exception as exc:
+                LOGGER.exception("could not hydrate crawled candidate %s", full_name)
+                self.registry.reject(
+                    {"full_name": full_name},
+                    "candidate_input",
+                    "stage_error",
+                    error_type=type(exc).__name__,
+                    error=str(exc)[:2_000],
+                )
+                stats["error"] += 1
+                continue
+
+            outcome = self._process_repo(repo)
+            stats[outcome] += 1
+        return dict(stats)
+
+    def _repository_from_crawl_candidate(self, candidate: dict[str, Any]) -> dict[str, Any]:
+        """Combine a crawl record with current non-provenance repository metadata."""
+        full_name = str(candidate["repo"])
+        base_commit = str(candidate["base_commit"])
+        repo = self.github.get_repository(full_name)
+        source_tree = self.github.get_commit_tree(full_name, base_commit)
+        expected_tree = str(candidate.get("source_tree") or "")
+        if expected_tree and source_tree != expected_tree:
+            raise ValueError(
+                f"source tree mismatch for {full_name}@{base_commit}: "
+                f"expected {expected_tree}, got {source_tree}"
+            )
+
+        # Keep eligibility and provenance tied to the original crawl snapshot rather
+        # than allowing a later default-branch update to silently change the task.
+        repo.update(
+            {
+                "full_name": full_name,
+                "html_url": str(candidate.get("html_url") or repo.get("html_url") or ""),
+                "name": full_name.rsplit("/", 1)[-1],
+                "language": str(candidate.get("language") or repo.get("language") or ""),
+                "stargazers_count": int(candidate.get("stars") or 0),
+                "license": {"spdx_id": str(candidate.get("license") or "NOASSERTION")},
+                "description": str(candidate.get("description") or ""),
+                "topics": list(candidate.get("topics") or []),
+                "default_branch": str(candidate.get("default_branch") or "main"),
+                "pushed_at": str(candidate.get("pushed_at") or ""),
+                "fork": bool(candidate.get("fork", False)),
+                "archived": bool(candidate.get("archived", False)),
+                "mirror_url": "https://mirror.invalid" if candidate.get("mirror") else None,
+                "base_commit": base_commit,
+                "source_tree": source_tree,
+                "crawl_time": str(candidate.get("crawl_time") or ""),
+                "crawl_test_evidence": list(candidate.get("test_evidence") or []),
+            }
+        )
+        return repo
+
     def _process_repo(self, repo: dict[str, Any]) -> str:
         stage = "stage1_hard_filter"
         try:
-            base_commit = self.github.get_head_sha(repo)
-            repo["base_commit"] = base_commit
+            base_commit = str(repo.get("base_commit") or "")
+            if not base_commit:
+                base_commit = self.github.get_head_sha(repo)
+                repo["base_commit"] = base_commit
+            elif not repo.get("source_tree"):
+                repo["source_tree"] = self.github.get_commit_tree(repo["full_name"], base_commit)
             tree = self.github.get_tree(repo["full_name"], base_commit)
             hard = self.hard_filter.evaluate(repo, tree)
             if not hard.ok:
