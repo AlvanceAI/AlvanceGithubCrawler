@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from .build import test_command_for
+from .e2b_build_logs import E2BBuildLogBuffer
 from .python_install import python_install_commands
 from .runtime_profiles import (
     detect_runtime_version,
@@ -123,6 +124,7 @@ class E2BEnvironmentManager:
             return True, 0.0
         builder = _runtime_template_builder(Template, language, runtime_version)
         started = time.monotonic()
+        logs = E2BBuildLogBuffer()
         try:
             Template.build(
                 builder,
@@ -131,9 +133,10 @@ class E2BEnvironmentManager:
                 memory_mb=self.memory_mb,
                 skip_cache=False,
                 api_key=self.api_key,
+                on_build_logs=logs,
             )
         except Exception as exc:
-            raise RuntimeTemplateBuildError(str(exc)) from exc
+            raise RuntimeTemplateBuildError(logs.error_message(exc)) from exc
         return False, time.monotonic() - started
 
     def _ensure_repository(
@@ -166,6 +169,7 @@ class E2BEnvironmentManager:
             default_branch=default_branch,
         )
         started = time.monotonic()
+        logs = E2BBuildLogBuffer()
         try:
             Template.build(
                 builder,
@@ -174,9 +178,10 @@ class E2BEnvironmentManager:
                 memory_mb=self.memory_mb,
                 skip_cache=False,
                 api_key=self.api_key,
+                on_build_logs=logs,
             )
         except Exception as exc:
-            raise RepositoryTemplateBuildError(str(exc)) from exc
+            raise RepositoryTemplateBuildError(logs.error_message(exc)) from exc
         return False, time.monotonic() - started
 
 
