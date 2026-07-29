@@ -94,6 +94,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--search-pages", type=int, default=None, help="GitHub result pages per query"
     )
     parser.add_argument(
+        "--prescreen-concurrency",
+        type=int,
+        default=None,
+        help="parallel repository checkout and direction workers (1-20)",
+    )
+    parser.add_argument(
         "--skip-e2b",
         action="store_true",
         help="stop after Docker offline verification and register status=offline_verified",
@@ -150,6 +156,7 @@ def doctor(config: PipelineConfig) -> dict[str, object]:
         "e2b_memory_mb": config.e2b_memory_mb,
         "e2b_concurrency_per_key": config.e2b_concurrency,
         "e2b_total_concurrency": config.e2b_total_concurrency,
+        "prescreen_concurrency": config.prescreen_concurrency,
         "language_quota_enabled": config.language_quota_enabled,
         "git": shutil.which("git") is not None,
         "docker": shutil.which("docker") is not None,
@@ -170,6 +177,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.search_pages < 1:
             raise SystemExit("--search-pages must be >= 1")
         config.search_pages = args.search_pages
+    if args.prescreen_concurrency is not None:
+        config.prescreen_concurrency = args.prescreen_concurrency
     if args.max_repos is not None and args.max_repos < 1:
         raise SystemExit("--max-repos must be >= 1")
 

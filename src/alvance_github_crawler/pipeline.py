@@ -5,6 +5,7 @@ import logging
 import re
 from collections import Counter
 from collections.abc import Iterable
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -224,42 +225,55 @@ class Pipeline:
         if not self.retry_rejected:
             seen |= self.registry.terminal_rejections()
 
+        selected: list[dict[str, Any]] = []
         for candidate in candidates:
             full_name = str(candidate["repo"])
             if full_name in seen:
                 stats["duplicate"] += 1
                 continue
-            if max_repos is not None and stats["processed"] >= max_repos:
+            if max_repos is not None and len(selected) >= max_repos:
                 break
             seen.add(full_name)
-            stats["processed"] += 1
-            LOGGER.info("processing crawled candidate %s@%s", full_name, candidate["base_commit"])
-            try:
-                repo = self._repository_from_crawl_candidate(candidate)
-            except ValueError as exc:
-                self.registry.reject(
-                    {"full_name": full_name},
-                    "candidate_input",
-                    "invalid_candidate",
-                    error=str(exc)[:2_000],
-                )
-                stats["rejected"] += 1
-                continue
-            except Exception as exc:
-                LOGGER.exception("could not hydrate crawled candidate %s", full_name)
-                self.registry.reject(
-                    {"full_name": full_name},
-                    "candidate_input",
-                    "stage_error",
-                    error_type=type(exc).__name__,
-                    error=str(exc)[:2_000],
-                )
-                stats["error"] += 1
-                continue
+            selected.append(candidate)
 
-            outcome = self._process_repo(repo)
-            stats[outcome] += 1
+        stats["processed"] = len(selected)
+        if self.config.prescreen_concurrency == 1:
+            outcomes = map(self._process_crawl_candidate, selected)
+            for outcome in outcomes:
+                stats[outcome] += 1
+        else:
+            with ThreadPoolExecutor(
+                max_workers=self.config.prescreen_concurrency,
+                thread_name_prefix="prescreen",
+            ) as pool:
+                for outcome in pool.map(self._process_crawl_candidate, selected):
+                    stats[outcome] += 1
         return dict(stats)
+
+    def _process_crawl_candidate(self, candidate: dict[str, Any]) -> str:
+        full_name = str(candidate["repo"])
+        LOGGER.info("processing crawled candidate %s@%s", full_name, candidate["base_commit"])
+        try:
+            repo = self._repository_from_crawl_candidate(candidate)
+        except ValueError as exc:
+            self.registry.reject(
+                {"full_name": full_name},
+                "candidate_input",
+                "invalid_candidate",
+                error=str(exc)[:2_000],
+            )
+            return "rejected"
+        except Exception as exc:
+            LOGGER.exception("could not hydrate crawled candidate %s", full_name)
+            self.registry.reject(
+                {"full_name": full_name},
+                "candidate_input",
+                "stage_error",
+                error_type=type(exc).__name__,
+                error=str(exc)[:2_000],
+            )
+            return "error"
+        return self._process_repo(repo)
 
     def _repository_from_crawl_candidate(self, candidate: dict[str, Any]) -> dict[str, Any]:
         """Combine a crawl record with current non-provenance repository metadata."""

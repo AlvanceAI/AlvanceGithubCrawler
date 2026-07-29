@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import threading
 import time
 from typing import Any, Protocol
 
@@ -79,12 +80,25 @@ class PublicImplementationSearch:
         self.github = github
         self.timeout = timeout
         self._last_grep_request = 0.0
-        self.last_secondary_provider = "grep.app"
+        self._grep_lock = threading.Lock()
+        self._thread_state = threading.local()
+
+    @property
+    def last_secondary_provider(self) -> str:
+        return str(getattr(self._thread_state, "secondary_provider", "grep.app"))
+
+    @last_secondary_provider.setter
+    def last_secondary_provider(self, value: str) -> None:
+        self._thread_state.secondary_provider = value
 
     def github_count(self, keywords: list[str]) -> int:
         return self.github.code_search_count(keywords)
 
     def grep_app_count(self, keywords: list[str]) -> int:
+        with self._grep_lock:
+            return self._grep_app_count(keywords)
+
+    def _grep_app_count(self, keywords: list[str]) -> int:
         query = " ".join(keyword.strip() for keyword in keywords if keyword.strip())
         if not query:
             return 0

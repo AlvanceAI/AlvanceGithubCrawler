@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+import threading
 import time
 from typing import Any
 from urllib.parse import quote
@@ -36,6 +37,7 @@ class GitHubClient:
         self.retry_count = 0
         self.rate_limits: dict[str, dict[str, int | str]] = {}
         self._last_request_at = 0.0
+        self._request_lock = threading.Lock()
         self.session = requests.Session()
         headers = {
             "Accept": "application/vnd.github+json",
@@ -62,6 +64,22 @@ class GitHubClient:
         )
 
     def _get_url(
+        self,
+        url: str,
+        *,
+        params: dict[str, Any] | None = None,
+        allow_not_found: bool = False,
+        error_path: str | None = None,
+    ) -> requests.Response:
+        with self._request_lock:
+            return self._get_url_serialized(
+                url,
+                params=params,
+                allow_not_found=allow_not_found,
+                error_path=error_path,
+            )
+
+    def _get_url_serialized(
         self,
         url: str,
         *,

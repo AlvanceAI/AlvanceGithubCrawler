@@ -6,6 +6,7 @@ cd "$repo_root"
 
 publish_branch=${PUBLISH_BRANCH:-XBY}
 per_key_concurrency=${E2B_CONCURRENCY:-20}
+prescreen_concurrency=${PRESCREEN_CONCURRENCY:-8}
 batch_per_language=${BATCH_PER_LANGUAGE:-100}
 max_per_language=${MAX_PER_LANGUAGE:-1000}
 run_id=${PIPELINE_RUN_ID:-github-mass-production-$(date -u +%Y%m%dT%H%M%SZ)}
@@ -29,6 +30,10 @@ if [[ ! $run_id =~ ^[A-Za-z0-9._-]+$ ]]; then
 fi
 if (( per_key_concurrency < 1 || per_key_concurrency > 20 )); then
     echo "E2B_CONCURRENCY must be between 1 and 20 per key" >&2
+    exit 2
+fi
+if (( prescreen_concurrency < 1 || prescreen_concurrency > 20 )); then
+    echo "PRESCREEN_CONCURRENCY must be between 1 and 20" >&2
     exit 2
 fi
 if (( batch_per_language < 1 || max_per_language < 1 || max_per_language > 1000 )); then
@@ -148,8 +153,10 @@ produce_candidates() {
             env \
                 PIPELINE_OUTPUT_DIR="$production_dir" \
                 PIPELINE_LANGUAGE_QUOTA_ENABLED=false \
+                PIPELINE_PRESCREEN_CONCURRENCY="$prescreen_concurrency" \
                 uv run alvance-github-crawler produce \
                 --input "$crawl_dir/accepted_repositories.jsonl" \
+                --prescreen-concurrency "$prescreen_concurrency" \
                 --defer-e2b \
                 --verbose || return $?
         current=$next

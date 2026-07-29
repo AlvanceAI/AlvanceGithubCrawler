@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 import json
+import threading
+import time
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -56,6 +59,57 @@ def test_catalog_repositories_ignores_invalid_records(tmp_path: Path) -> None:
     )
 
     assert catalog_repositories(catalog) == {"owner/already-packaged"}
+
+
+def test_crawl_candidates_use_configured_prescreen_concurrency(tmp_path: Path) -> None:
+    accepted = tmp_path / "accepted.jsonl"
+    accepted.write_text(
+        "\n".join(json.dumps(crawl_candidate(f"owner/repo-{index}")) for index in range(6)),
+        encoding="utf-8",
+    )
+
+    class Registry:
+        @staticmethod
+        def existing_repos() -> set[str]:
+            return set()
+
+        @staticmethod
+        def terminal_rejections() -> set[str]:
+            return set()
+
+    class Pending:
+        @staticmethod
+        def known_repos() -> set[str]:
+            return set()
+
+    pipeline = object.__new__(Pipeline)
+    pipeline.registry = Registry()
+    pipeline.pending = Pending()
+    pipeline.retry_rejected = False
+    pipeline.config = SimpleNamespace(
+        catalog_dir=tmp_path / "catalog",
+        prescreen_concurrency=3,
+    )
+    lock = threading.Lock()
+    active = 0
+    maximum = 0
+
+    def process(candidate):
+        nonlocal active, maximum
+        with lock:
+            active += 1
+            maximum = max(maximum, active)
+        time.sleep(0.03)
+        with lock:
+            active -= 1
+        return "queued"
+
+    pipeline._process_crawl_candidate = process
+
+    stats = pipeline.run_crawl_candidates(accepted)
+
+    assert maximum == 3
+    assert stats == {"input_total": 6, "processed": 6, "queued": 6}
 
 
 class _PinnedGitHub:

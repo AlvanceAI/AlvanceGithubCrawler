@@ -65,6 +65,7 @@ class PipelineConfig:
     e2b_cpu_count: int = 1
     e2b_memory_mb: int = 1_024
     e2b_concurrency: int = 20
+    prescreen_concurrency: int = 1
     language_quota_enabled: bool = False
     max_tree_entries: int = 1_500
     max_tree_chars: int = 18_000
@@ -130,6 +131,7 @@ class PipelineConfig:
             e2b_cpu_count=int(value("PIPELINE_E2B_CPU_COUNT") or "1"),
             e2b_memory_mb=int(value("PIPELINE_E2B_MEMORY_MB") or "1024"),
             e2b_concurrency=int(value("PIPELINE_E2B_CONCURRENCY") or "20"),
+            prescreen_concurrency=int(value("PIPELINE_PRESCREEN_CONCURRENCY") or "1"),
             language_quota_enabled=parse_env_bool(
                 value("PIPELINE_LANGUAGE_QUOTA_ENABLED"), default=False
             ),
@@ -152,6 +154,8 @@ class PipelineConfig:
             raise ValueError("PIPELINE_E2B_MEMORY_MB must be >= 128")
         if not 1 <= self.e2b_concurrency <= 20:
             raise ValueError("PIPELINE_E2B_CONCURRENCY must be between 1 and 20 per key")
+        if not 1 <= self.prescreen_concurrency <= 20:
+            raise ValueError("PIPELINE_PRESCREEN_CONCURRENCY must be between 1 and 20")
 
     @property
     def e2b_total_concurrency(self) -> int:

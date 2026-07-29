@@ -107,5 +107,9 @@ PIPELINE_RUN_ID=github-mass-production-20260729 \
 task 会自动提交并推送到 `XBY`；原始日志、阶段耗时、最终指标和 Markdown 统计保存在
 `outputs/production-runs/<RUN_ID>/`。
 
+持续入口默认用 8 个 prescreen worker 并行 clone、评分和方向判断；GitHub HTTP 请求仍在
+进程内串行限速，避免并发 worker 突破单 Token 配额。可通过
+`PRESCREEN_CONCURRENCY` 调整为 1–20。
+
 任一 Key 额度耗尽后，其未完成任务会转交另一 Key；两个 Key 都耗尽时脚本以退出码 4
 停止并保留 pending checkpoint。日志只显示 Key 槽编号，不包含密钥值。

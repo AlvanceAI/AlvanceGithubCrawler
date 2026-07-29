@@ -48,6 +48,7 @@ def test_e2b_resource_and_concurrency_config(monkeypatch) -> None:
     monkeypatch.setenv("PIPELINE_E2B_CPU_COUNT", "1")
     monkeypatch.setenv("PIPELINE_E2B_MEMORY_MB", "1024")
     monkeypatch.setenv("PIPELINE_E2B_CONCURRENCY", "20")
+    monkeypatch.setenv("PIPELINE_PRESCREEN_CONCURRENCY", "8")
     monkeypatch.setenv("PIPELINE_LANGUAGE_QUOTA_ENABLED", "false")
 
     config = PipelineConfig.from_env()
@@ -55,6 +56,7 @@ def test_e2b_resource_and_concurrency_config(monkeypatch) -> None:
     assert config.e2b_cpu_count == 1
     assert config.e2b_memory_mb == 1024
     assert config.e2b_concurrency == 20
+    assert config.prescreen_concurrency == 8
     assert config.language_quota_enabled is False
     config.validate(require_e2b=False)
 
