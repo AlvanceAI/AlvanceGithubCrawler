@@ -1,0 +1,17 @@
+[2026-07-29T18:54:53Z] stage=verify-default-20260729T185453Z run_id=github-mass-production-XBY-20260729
+command= env PIPELINE_OUTPUT_DIR=outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-29 18:54:55,170 INFO alvance_github_crawler.pending.verification: verifying pending candidate xhd2015/xgo key_slot=1
+2026-07-29 18:54:55,171 INFO alvance_github_crawler.pending.verification: verifying pending candidate bluesky-social/indigo key_slot=2
+2026-07-29 18:55:10,827 INFO alvance_github_crawler.pending.verification: pending candidate xhd2015/xgo finished outcome=error key_slot=1 processed=1 in_flight=1
+2026-07-29 19:04:56,213 INFO alvance_github_crawler.pending.verification: pending candidate bluesky-social/indigo finished outcome=rejected key_slot=2 processed=2 in_flight=0
+{
+  "error": 1,
+  "key_slot_1_error": 1,
+  "key_slot_1_processed": 1,
+  "key_slot_2_processed": 1,
+  "key_slot_2_rejected": 1,
+  "processed": 2,
+  "rejected": 1,
+  "remaining": 1
+}
+[2026-07-29T19:04:56Z] stage=verify-default-20260729T185453Z exit_code=0 duration_s=603

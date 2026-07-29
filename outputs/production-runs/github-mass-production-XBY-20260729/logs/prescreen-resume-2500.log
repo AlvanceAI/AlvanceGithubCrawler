@@ -1,0 +1,36 @@
+[2026-07-29T15:59:30Z] stage=prescreen-resume-2500 run_id=github-mass-production-XBY-20260729
+command= env PIPELINE_OUTPUT_DIR=outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=8 uv run alvance-github-crawler produce --input outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 8 --defer-e2b --verbose
+2026-07-29 15:59:32,463 INFO alvance_github_crawler.pipeline: processing crawled candidate vllm-project/vllm-omni@925347332f8190d172dfa8ac0c307a5cfa2320cb
+2026-07-29 15:59:32,464 INFO alvance_github_crawler.pipeline: processing crawled candidate huggingface/huggingface_hub@59df95f9441872aa3d32ac0a2059fedb7df9ad73
+2026-07-29 15:59:32,465 INFO alvance_github_crawler.pipeline: processing crawled candidate tslearn-team/tslearn@4cf2840eb1e7e02ee3f4b44a01a0c9859a34a017
+2026-07-29 15:59:32,466 INFO alvance_github_crawler.pipeline: processing crawled candidate blackjax-devs/blackjax@b12bedcf29ea88ba3469acab92324e56908c797c
+2026-07-29 15:59:32,466 INFO alvance_github_crawler.pipeline: processing crawled candidate lervag/apy@b5d34141c9595432b4118bb35ce13b2409c7ddb9
+2026-07-29 15:59:32,468 INFO alvance_github_crawler.pipeline: processing crawled candidate volcengine/agentkit-sdk-python@052a1cde5740cee64155dddffe364480fe7d4648
+2026-07-29 15:59:32,469 INFO alvance_github_crawler.pipeline: processing crawled candidate Modalities/modalities@eadfd44295f2aa0939fa6a0ca0834453f1ff7bae
+2026-07-29 15:59:32,469 INFO alvance_github_crawler.pipeline: processing crawled candidate kyegomez/swarms@c69e6b0dc1cdeb2df5f946c99580a10707be614d
+2026-07-29 15:59:38,587 INFO alvance_github_crawler.pipeline: processing crawled candidate langroid/langroid@786c4fe39a3fd7b595d3220a08676e9af78f4143
+2026-07-29 15:59:39,905 INFO alvance_github_crawler.pipeline: processing crawled candidate truera/trulens@10a071b9a03a6130784b861fe15aff0531cc87c9
+2026-07-29 15:59:42,664 INFO alvance_github_crawler.pipeline: processing crawled candidate fossasia/eventyay-socialmedia@485983f00c3d8c97360d82c88013a5337a48cdbe
+2026-07-29 15:59:43,581 INFO alvance_github_crawler.pipeline: processing crawled candidate AgileRL/AgileRL@306327ccc63da4e68007411f475003101ea2ad0d
+2026-07-29 15:59:46,903 INFO alvance_github_crawler.pipeline: processing crawled candidate UKGovernmentBEIS/inspect_evals@596a0ff9a197ad0a8a79a5ec96be1230dfa0c493
+2026-07-29 15:59:48,082 INFO alvance_github_crawler.pipeline: processing crawled candidate igerber/diff-diff@686bed30aacde6c68837b611a887c7ccaf7b4f1b
+2026-07-29 15:59:51,409 INFO alvance_github_crawler.pipeline: processing crawled candidate karolswdev/HoldSpeak@01c6cf38c867e8ed609dc1f8a289ffc8c66ab2ce
+2026-07-29 15:59:53,148 INFO alvance_github_crawler.pipeline: processing crawled candidate biao994/DocPaws@c5ca73b745be7008cc23ebf269f97edd17f71b10
+2026-07-29 15:59:54,062 INFO alvance_github_crawler.pipeline: processing crawled candidate Quiet-Signals-Lab/RAG-Assistant-for-Zotero@7de91bcf970c2c333fcfaf4242a6bf35f536cb4b
+2026-07-29 15:59:58,436 INFO alvance_github_crawler.pipeline: processing crawled candidate jupyter-naas/abi@010cd1fdab513610549e70c225ccdf024d096caf
+2026-07-29 16:00:01,478 INFO alvance_github_crawler.pipeline: processing crawled candidate XPolicyLab/XPolicyLab@72b3a52f2b069220088ef824ade5890885858379
+2026-07-29 16:00:05,155 INFO alvance_github_crawler.pipeline: processing crawled candidate NCAS-CMS/pyfive@667c4681685ac32d5528c93a4058c733914dadb4
+2026-07-29 16:00:07,146 INFO alvance_github_crawler.pipeline: processing crawled candidate mozilla/addons-server@421ee5de05227af299a5727990182ac065792f11
+2026-07-29 16:00:08,955 INFO alvance_github_crawler.pipeline: processing crawled candidate taketwo/llm-ollama@c0ddce42c24f9a6de93bf011599512a75f3acbcc
+2026-07-29 16:00:10,917 INFO alvance_github_crawler.pipeline: processing crawled candidate aws/mcp-proxy-for-aws@b467d18f9b805d11a40cf73a61092d7d0414650e
+2026-07-29 16:00:14,322 INFO alvance_github_crawler.pipeline: processing crawled candidate CronusL-1141/AI-company@011b57935aed11064732647aa194a9126c992426
+2026-07-29 16:00:15,795 INFO alvance_github_crawler.pipeline: processing crawled candidate mholzi/beatify@829c161c791926ab6b26e1136a846a20a570ab57
+2026-07-29 16:00:21,043 INFO alvance_github_crawler.pipeline: processing crawled candidate yusong652/itasca-mcp@5a17b36d19ce6187c2b88fc92a86d8b1c80ec536
+{
+  "duplicate": 959,
+  "input_total": 985,
+  "processed": 26,
+  "queued": 5,
+  "rejected": 21
+}
+[2026-07-29T16:01:36Z] stage=prescreen-resume-2500 exit_code=0 duration_s=126

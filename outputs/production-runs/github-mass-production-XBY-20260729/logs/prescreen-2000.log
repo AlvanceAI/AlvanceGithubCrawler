@@ -1,0 +1,23 @@
+[2026-07-29T15:03:35Z] stage=prescreen-2000 run_id=github-mass-production-XBY-20260729
+command= env PIPELINE_OUTPUT_DIR=outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=8 uv run alvance-github-crawler produce --input outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 8 --defer-e2b --verbose
+2026-07-29 15:03:37,354 INFO alvance_github_crawler.pipeline: processing crawled candidate EverMind-AI/Raven@a740baae02a4ac5410ac88e8f35dec051b82abc6
+2026-07-29 15:03:37,355 INFO alvance_github_crawler.pipeline: processing crawled candidate oraios/serena@a61765ecc83cc6be39596d1985b0c6039e566c03
+2026-07-29 15:03:37,357 INFO alvance_github_crawler.pipeline: processing crawled candidate google/adk-python@6bab08fc803d26853417c4d6e71704b1a72e035e
+2026-07-29 15:03:37,358 INFO alvance_github_crawler.pipeline: processing crawled candidate redis/redis-py@dfe590c2bb6b52cc35ac31be12512756ccccf7e8
+2026-07-29 15:03:37,359 INFO alvance_github_crawler.pipeline: processing crawled candidate MervinPraison/PraisonAI@2e5632c202ec8f3b9e721adf35aec88d0f1fdc9d
+2026-07-29 15:03:37,362 INFO alvance_github_crawler.pipeline: processing crawled candidate strands-agents/harness-sdk@f383c11ab89ca653313c41994a98af5b443d5eee
+2026-07-29 15:03:37,363 INFO alvance_github_crawler.pipeline: processing crawled candidate mesa/mesa@d1fd5b3cbc871954305fd1fa3f7bb06bcd7905dc
+2026-07-29 15:03:37,364 INFO alvance_github_crawler.pipeline: processing crawled candidate IBM/AssetOpsBench@1e1886f3f619c46b6226911b360afe438e1cd406
+2026-07-29 15:03:45,283 INFO alvance_github_crawler.pipeline: processing crawled candidate openonion/connectonion@b737536bebf1150e719dd6498366d9270db1e506
+2026-07-29 15:03:55,465 INFO alvance_github_crawler.pipeline: processing crawled candidate fuyuxiang/echo-agent@2c779cdac2b439c56a6027bbfba7718b4e671154
+2026-07-29 15:04:00,619 INFO alvance_github_crawler.pipeline: processing crawled candidate probabl-ai/skore@d8291628406f3f52ef74775e695405154ea2f60c
+2026-07-29 15:04:03,292 INFO alvance_github_crawler.pipeline: processing crawled candidate Point72/csp@f6410ed8c2f564a51efd2a4337109d351b7347b2
+2026-07-29 15:04:08,012 INFO alvance_github_crawler.pipeline: processing crawled candidate yanyongyu/githubkit@0e823b7ad30a26de2b062b5438987e2c3f7762aa
+2026-07-29 15:04:13,829 INFO alvance_github_crawler.pipeline: processing crawled candidate justoneapi/justoneapi-python@e6f61e8b5facbf230ded12cdbabee06f4697062f
+2026-07-29 15:04:17,175 INFO alvance_github_crawler.pipeline: processing crawled candidate aramis-lab/clinicadl@244d59226460a1ead52c7c105696c08dea03738b
+2026-07-29 15:04:18,146 INFO alvance_github_crawler.pipeline: processing crawled candidate browniebroke/deezer-python@d32d77b41042f688813e30f982c44664269f4ae6
+2026-07-29 15:04:23,313 INFO alvance_github_crawler.pipeline: processing crawled candidate fzi-forschungszentrum-informatik/ros2_ros_bt_py@74a134b98e6b7e5c3d4963dc61c2095fd8e204c4
+2026-07-29 15:04:27,109 INFO alvance_github_crawler.pipeline: processing crawled candidate Genesis-Embodied-AI/genesis-world@084e9a43a43c735cf02727938766107a613101ea
+2026-07-29 15:04:27,998 INFO alvance_github_crawler.pipeline: processing crawled candidate netbox-community/netbox@10ac9ffe8d0520059307a4b1bf32a6faabc615be
+2026-07-29 15:04:29,067 INFO alvance_github_crawler.pipeline: processing crawled candidate suitenumerique/docs@eed828d8c7df82c47953226ad2cdebd05bd2bfeb
+[2026-07-29T15:05:29Z] stage=prescreen-2000 exit_code=130 duration_s=114

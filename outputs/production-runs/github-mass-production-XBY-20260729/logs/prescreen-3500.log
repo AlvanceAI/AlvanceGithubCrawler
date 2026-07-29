@@ -1,0 +1,476 @@
+[2026-07-29T16:57:46Z] stage=prescreen-3500 run_id=github-mass-production-XBY-20260729
+command= env PIPELINE_OUTPUT_DIR=outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=8 uv run alvance-github-crawler produce --input outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 8 --defer-e2b --verbose
+2026-07-29 16:57:48,125 INFO alvance_github_crawler.pipeline: processing crawled candidate cloudflare/wrangler-action@84c72882ef1dacec6f70cdca9666d4625494e009
+2026-07-29 16:57:48,126 INFO alvance_github_crawler.pipeline: processing crawled candidate wenzhixin/bootstrap-table@95a4e1a8e8e0e3d7b043154813c162672ae6cf8c
+2026-07-29 16:57:48,129 INFO alvance_github_crawler.pipeline: processing crawled candidate commaai/connect@81db773b8d63cd9cc4e4810e38d676381bb74746
+2026-07-29 16:57:48,129 INFO alvance_github_crawler.pipeline: processing crawled candidate kunobi-ninja/kache@941be63a5824100791a49ff5ccf5393b2f875f36
+2026-07-29 16:57:48,130 INFO alvance_github_crawler.pipeline: processing crawled candidate quickwit-oss/tantivy@667132fa7ab4a30e0c1870d791f23902ebfc6152
+2026-07-29 16:57:48,130 INFO alvance_github_crawler.pipeline: processing crawled candidate nyroway/nyro@e06edf102a1e4963427811cbd5ac01ca36315235
+2026-07-29 16:57:48,131 INFO alvance_github_crawler.pipeline: processing crawled candidate voidzero-dev/vite-plus@1c6a54ebcd36b92c626bf5bfcc5bc6b5c2a426d3
+2026-07-29 16:57:48,131 INFO alvance_github_crawler.pipeline: processing crawled candidate godot-rust/gdext@107a87e3cb0d6bc7f4685907524682c8d9ce544e
+2026-07-29 16:58:24,970 INFO alvance_github_crawler.pipeline: processing crawled candidate mooman219/fontdue@2924772fb4439b8aca40b1bffca70088acba5a1b
+2026-07-29 16:58:39,516 INFO alvance_github_crawler.pipeline: processing crawled candidate slothflowlabs/duckle@6fd5d45075203a934ddc801519eb4b1e77b84a77
+2026-07-29 16:58:53,915 INFO alvance_github_crawler.pipeline: processing crawled candidate tmandry/glide@c61eb9dd99d9da9bc8e055f5494bc7ea08d88bcf
+2026-07-29 16:59:08,281 INFO alvance_github_crawler.pipeline: processing crawled candidate mnemox-ai/tradememory-protocol@54b22e0c320415c91dbc649d4f73e6b0353e798a
+2026-07-29 16:59:11,653 INFO alvance_github_crawler.pipeline: processing crawled candidate dynamiq-ai/dynamiq@26c3915693564680cfc95dfe6ddae06e7e92ea2c
+2026-07-29 16:59:15,693 INFO alvance_github_crawler.pipeline: processing crawled candidate nominal-io/instro@f00ff08bb44e4398dd92b4253f25e5bfd5a3c1cc
+2026-07-29 16:59:20,607 INFO alvance_github_crawler.pipeline: processing crawled candidate dialoguemd/fastapi-sqla@d5961ee8249cdefcead346877137db61a050295d
+2026-07-29 16:59:23,474 INFO alvance_github_crawler.pipeline: processing crawled candidate galaxyproject/bioblend@7cd6a0afcc59dab0fe2dd06b96f0bb99e01c1edf
+2026-07-29 16:59:35,747 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=quickwit-oss/tantivy attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 16:59:35,749 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=mooman219/fontdue attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 16:59:35,750 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=tmandry/glide attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 16:59:35,752 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=galaxyproject/bioblend attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 16:59:35,753 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=cloudflare/wrangler-action attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 16:59:35,754 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=nominal-io/instro attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 16:59:38,090 INFO alvance_github_crawler.pipeline: processing crawled candidate HKUDS/LightRAG@e66173cec29e33d093bbd89427861068c2268621
+2026-07-29 16:59:39,061 INFO alvance_github_crawler.pipeline: processing crawled candidate prowler-cloud/prowler@17f726f8168a4ffb750add78314d6efb9ddb8cef
+2026-07-29 16:59:40,424 INFO alvance_github_crawler.pipeline: processing crawled candidate google/adk-samples@efd468766c858b2139d8eb682af82e0eda994230
+2026-07-29 16:59:41,528 INFO alvance_github_crawler.pipeline: processing crawled candidate spesmilo/electrum@997cf237dffc2e89a44f7c932c9ac783b2d72502
+2026-07-29 16:59:45,715 INFO alvance_github_crawler.pipeline: processing crawled candidate opensquilla/opensquilla@62588765bba3d92b2f6b34fec7b5166704ef3ea1
+2026-07-29 16:59:46,662 INFO alvance_github_crawler.pipeline: processing crawled candidate Q00/ouroboros@debb9d079e53cee94124e049dcd591d7ca001cbf
+2026-07-29 16:59:49,315 INFO alvance_github_crawler.pipeline: processing crawled candidate modoboa/modoboa@ef11490e8c1b3903a35201ba0925f2bb820b27d6
+2026-07-29 17:00:35,811 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=quickwit-oss/tantivy attempt=2/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:00:36,267 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=mooman219/fontdue attempt=2/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:00:36,778 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=tmandry/glide attempt=2/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:00:37,271 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=galaxyproject/bioblend attempt=2/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:00:37,816 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=cloudflare/wrangler-action attempt=2/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:00:38,297 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=nominal-io/instro attempt=2/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:00:38,792 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Q00/ouroboros attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:00:39,282 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=modoboa/modoboa attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:01:51,153 INFO alvance_github_crawler.pipeline: processing crawled candidate PyPSA/PyPSA@e1f99601fd1fda222287606220a2773e99c75f71
+2026-07-29 17:01:55,729 INFO alvance_github_crawler.pipeline: processing crawled candidate erocarrera/pefile@3ba3d07136fadfde40ea25e172db7397b3e63f42
+2026-07-29 17:01:56,533 INFO alvance_github_crawler.pipeline: processing crawled candidate Simpleyyt/ai-manus@6569189ab67a326d1393709a93585b26fcd21095
+2026-07-29 17:02:33,214 INFO alvance_github_crawler.pipeline: processing crawled candidate osprey-oss/deptry@fd3ba7df511cd12960e4e810a02e034fd2bd41bd
+2026-07-29 17:02:49,095 INFO alvance_github_crawler.pipeline: processing crawled candidate datalayer/jupyter-mcp-server@f12417eef7b3675972bc50b7e982bea588b1881e
+2026-07-29 17:02:52,696 INFO alvance_github_crawler.pipeline: processing crawled candidate muscriptor/muscriptor@5e6f4ee531354ff0837f185b60ede8f40daf3357
+2026-07-29 17:02:55,049 INFO alvance_github_crawler.pipeline: processing crawled candidate pytorch/helion@22a8377e51cff41fc24c2415f678f5df33957d2b
+2026-07-29 17:03:11,145 INFO alvance_github_crawler.pipeline: processing crawled candidate arm/metis@c2bfb29769812b093e769283113d9c41bc550519
+2026-07-29 17:03:14,093 INFO alvance_github_crawler.pipeline: processing crawled candidate wecode-ai/Wegent@cfd8708eaf997df11eff5576efd6ab65a515f1ff
+2026-07-29 17:03:43,480 INFO alvance_github_crawler.pipeline: processing crawled candidate capitalone/datacompy@81d6fc5048d0897b39fed9b0b4dbf694ce7ecb96
+2026-07-29 17:03:47,709 INFO alvance_github_crawler.pipeline: processing crawled candidate CodeAbra/iai-personal-memory-engine@bf3ed757d7ea501c47d951eec59345a33d4f2734
+2026-07-29 17:03:53,594 INFO alvance_github_crawler.pipeline: processing crawled candidate pydantic/genai-prices@d97b2405df3d14f64b1950ef97aa061281526c3c
+2026-07-29 17:03:56,041 INFO alvance_github_crawler.pipeline: processing crawled candidate rossoctl/rossoctl@c684c5f722eea18e7898df180f322cc0b85eb2d5
+2026-07-29 17:04:04,235 INFO alvance_github_crawler.pipeline: processing crawled candidate rubiin/tsumiki@0ed452271867a90d0c7cd63dd7e060ae79b01925
+2026-07-29 17:04:06,962 INFO alvance_github_crawler.pipeline: processing crawled candidate eddmpython/dartlab@60c74c521ee824b6a550f262bb1fb2e5391460e0
+2026-07-29 17:04:08,196 INFO alvance_github_crawler.pipeline: processing crawled candidate ambicuity/New-Grad-Jobs@f3bcb16fd7d889a976b184145309da0e883451e9
+2026-07-29 17:04:08,345 INFO alvance_github_crawler.pipeline: processing crawled candidate UiPath/skills@6ee596df47617bf6c821740a29feb900304dd93b
+2026-07-29 17:04:09,826 INFO alvance_github_crawler.pipeline: processing crawled candidate rpomponio/neuroHarmonize@614f7cbb0eceb1ee13ec62295fbddc5519b5030c
+2026-07-29 17:04:11,223 INFO alvance_github_crawler.pipeline: processing crawled candidate michaeldavie/env_canada@e068b9e09efac0caaeb47f52e28f6bd885baea5d
+2026-07-29 17:04:15,258 INFO alvance_github_crawler.pipeline: processing crawled candidate mozilla-ai/any-guardrail@455ec50ef861d6afae3ec6e1dc07949e046b793a
+2026-07-29 17:04:23,477 INFO alvance_github_crawler.pipeline: processing crawled candidate oumi-ai/oumi@01584896cf56f54bf036b0812a193df57c14a748
+2026-07-29 17:04:23,598 INFO alvance_github_crawler.pipeline: processing crawled candidate homeassistant-ai/ha-mcp@1786ad9609ae192f3a5dbd7c84f83d19c47f6da5
+2026-07-29 17:04:23,869 INFO alvance_github_crawler.pipeline: processing crawled candidate flwrlabs/flower@2f8480094552eb3ebcc31fb2093c1a7b4abb9334
+2026-07-29 17:04:25,374 INFO alvance_github_crawler.pipeline: processing crawled candidate harbor-framework/harbor@e76f7e32f5644fb9f648cd23151aac5c67492ea0
+2026-07-29 17:04:26,826 INFO alvance_github_crawler.pipeline: processing crawled candidate open-telemetry/opentelemetry-python@3381a88ec5a2480a60edbeb4f4441599c97dab1b
+2026-07-29 17:04:33,673 INFO alvance_github_crawler.pipeline: processing crawled candidate MarketSquare/robotframework-robocop@1a3147feea968ff1eef67b0bfb3633cbf29fa681
+2026-07-29 17:04:35,049 INFO alvance_github_crawler.pipeline: processing crawled candidate browser-use/browser-use@f0aa3a8bb03779c71a5aa262d389e3bfe6b77cdc
+2026-07-29 17:04:35,758 INFO alvance_github_crawler.pipeline: processing crawled candidate ray-project/ray@e7086a017ad1aa9ca6b5f1d99a4f4fb9396ba388
+2026-07-29 17:04:37,299 INFO alvance_github_crawler.pipeline: processing crawled candidate browser-use/browser-harness@dbe6f8f22ba65170e2d4b8f17754c704d008fe49
+2026-07-29 17:04:51,755 INFO alvance_github_crawler.pipeline: processing crawled candidate PennyLaneAI/pennylane@cb856b5414e9844a96ca162f809dd2fa188cda55
+2026-07-29 17:04:52,898 INFO alvance_github_crawler.pipeline: processing crawled candidate vitali87/code-graph-rag@67d7958b4f2225c1434e9e64c57608eb525e5ac7
+2026-07-29 17:04:58,966 INFO alvance_github_crawler.pipeline: processing crawled candidate openstack/cinder@8bb9a7f7d1fb0fad7cb26d2aece58014d60e6cd4
+2026-07-29 17:04:59,945 INFO alvance_github_crawler.pipeline: processing crawled candidate usemoss/moss@de26a4b15f7829276d572829c0d30d290fc86772
+2026-07-29 17:05:01,050 INFO alvance_github_crawler.pipeline: processing crawled candidate gobii-ai/gobii-platform@bf84457f57bde650faf7a90f8938107024af754c
+2026-07-29 17:05:02,242 INFO alvance_github_crawler.pipeline: processing crawled candidate dfki-ric/better_launch@916eebe1f85bc035424c0ac9122ba428f18fef30
+2026-07-29 17:05:05,099 INFO alvance_github_crawler.pipeline: processing crawled candidate PCMDI/pcmdi_metrics@be567f136822cfedf62bdca48a1631b36009cf8c
+2026-07-29 17:05:06,802 INFO alvance_github_crawler.pipeline: processing crawled candidate NVIDIA-NeMo/Anonymizer@61764a46fa3ce5c46c524a15208ad0ce17b41246
+2026-07-29 17:05:14,969 INFO alvance_github_crawler.pipeline: processing crawled candidate clld/glottolog3@02d455ee8bd7c851c4f9cb7709e5ddc7aa06ab4f
+2026-07-29 17:05:16,306 INFO alvance_github_crawler.pipeline: processing crawled candidate anchore/syft@476ce60768a86d77c4d286561ca430dd01621e4d
+2026-07-29 17:05:18,336 INFO alvance_github_crawler.pipeline: processing crawled candidate vale-cli/vale@391e3c0b204d88b4e80faa786f2d83b4bb8e0c23
+2026-07-29 17:05:22,968 INFO alvance_github_crawler.pipeline: processing crawled candidate googleapis/google-cloud-go@1297143a4fab4bf58cbd0bd6e44db4653a818c47
+2026-07-29 17:05:24,604 INFO alvance_github_crawler.pipeline: processing crawled candidate google/go-containerregistry@fb196956b1853752ed7fe13d3dd4572c45c16709
+2026-07-29 17:05:29,952 INFO alvance_github_crawler.pipeline: processing crawled candidate status-im/status-go@986045c67f940c6ec081627e347fa2a396aad4e8
+2026-07-29 17:05:31,071 INFO alvance_github_crawler.pipeline: processing crawled candidate CircleCI-Public/circleci-cli@b726fcdd00d9ec404c63c85950c9e190b1b5ad68
+2026-07-29 17:05:47,109 INFO alvance_github_crawler.pipeline: processing crawled candidate gogpu/gg@db4df992811e496ec8b91bd1bd513be05086b609
+2026-07-29 17:05:51,425 INFO alvance_github_crawler.pipeline: processing crawled candidate rclone/rclone@ab930585609009a508fa3f1e0499e344f3b49840
+2026-07-29 17:05:52,287 INFO alvance_github_crawler.pipeline: processing crawled candidate mudler/LocalAI@ecdb32193d88cb80d6c2eb6ef2c2bc8205b53a94
+2026-07-29 17:06:03,142 INFO alvance_github_crawler.pipeline: processing crawled candidate tailscale/tailscale@d4dce809278ecc0bfc50ea2d376459c66f2f3a66
+2026-07-29 17:06:11,876 INFO alvance_github_crawler.pipeline: processing crawled candidate VictoriaMetrics/VictoriaMetrics@f1a9c61ba03d219a1a289ef269be741093c2dadf
+2026-07-29 17:06:13,233 INFO alvance_github_crawler.pipeline: processing crawled candidate dagger/dagger@cb58b9a422a856efe1c37d26d80c1770dbdcce14
+2026-07-29 17:06:14,686 INFO alvance_github_crawler.pipeline: processing crawled candidate golang/tools@d5b12d7337f5db9530cfb614beedf166e2c17e6b
+2026-07-29 17:06:18,393 INFO alvance_github_crawler.pipeline: processing crawled candidate projectcalico/calico@ceb4c2310ffa01cf8402e2d31c9c3a1ad6f88341
+2026-07-29 17:06:19,951 INFO alvance_github_crawler.pipeline: processing crawled candidate ethereum-optimism/optimism@1cf651d344ee213df7139123917d117b90f81391
+2026-07-29 17:06:22,060 INFO alvance_github_crawler.pipeline: processing crawled candidate projectdiscovery/naabu@74609f2a6e1124461a9b98e396bea68b2527a312
+2026-07-29 17:06:22,427 INFO alvance_github_crawler.pipeline: processing crawled candidate uber-go/nilaway@c82f96841a9edc156221a2365661a00f340b764e
+2026-07-29 17:06:26,808 INFO alvance_github_crawler.pipeline: processing crawled candidate superfly/flyctl@92cc8787ea24308129f4c3319822a2bf4acbbb53
+2026-07-29 17:06:32,134 INFO alvance_github_crawler.pipeline: processing crawled candidate centrifugal/centrifuge@98bebb67176d74102127f478a2b10da7eaf9f6e8
+2026-07-29 17:06:37,902 INFO alvance_github_crawler.pipeline: processing crawled candidate umputun/ralphex@ff8bc937c3a3b9e8bc7172ef603576047c488598
+2026-07-29 17:06:42,489 INFO alvance_github_crawler.pipeline: processing crawled candidate getprobo/probo@4960abab9e6976f44f1de012730272f5a7708d01
+2026-07-29 17:06:47,946 INFO alvance_github_crawler.pipeline: processing crawled candidate cisco-ai-defense/defenseclaw@61cbf5183e98cf603d56178a57c79ceeace3c3cd
+2026-07-29 17:06:49,440 INFO alvance_github_crawler.pipeline: processing crawled candidate Azure/azure-storage-azcopy@c950dda3e26f3bc05d95eb1f077ab041c32d7b04
+2026-07-29 17:06:50,473 INFO alvance_github_crawler.pipeline: processing crawled candidate s4wave/spacewave@6fbcf5b808135c35f0b8dc7973a37c3177b3178f
+2026-07-29 17:07:00,653 INFO alvance_github_crawler.pipeline: processing crawled candidate NVIDIA/aicr@81e43cf7d05a658dbf1866fcc095b6e60d80f288
+2026-07-29 17:07:02,344 INFO alvance_github_crawler.pipeline: processing crawled candidate phires/go-guerrilla@e6f6738ef3ecbba55e637b6223c9366c9813f59f
+2026-07-29 17:07:02,868 INFO alvance_github_crawler.pipeline: processing crawled candidate stackitcloud/terraform-provider-stackit@5acf1e88246d07a0a874fd1ba5b3cca13e393fff
+2026-07-29 17:07:35,279 INFO alvance_github_crawler.pipeline: processing crawled candidate fastly/cli@640bdd16b8b41f4cf2723cb9c286bbe63eaeb36f
+2026-07-29 17:07:56,011 INFO alvance_github_crawler.pipeline: processing crawled candidate newrelic/infrastructure-agent@8e0401bd76a6b9a9326de55fbebd8f5ab06dfd35
+2026-07-29 17:08:00,480 INFO alvance_github_crawler.pipeline: processing crawled candidate unxed/f4@1cd2f56adea70cdc5a596c113776cb8bacdc0f8f
+2026-07-29 17:08:03,806 INFO alvance_github_crawler.pipeline: processing crawled candidate newrelic/nri-flex@988ef45e9f87d2081937934970b15122620bebed
+2026-07-29 17:08:07,457 INFO alvance_github_crawler.pipeline: processing crawled candidate cert-manager/webhook-example@4e25bbcc0485d13ddbc007f90aa931c4c5e7bf70
+2026-07-29 17:08:09,470 INFO alvance_github_crawler.pipeline: processing crawled candidate trickstercache/trickster@098522ef3da4d7c8ff468b48e2a58925be191c39
+2026-07-29 17:08:11,745 INFO alvance_github_crawler.pipeline: processing crawled candidate orneryd/NornicDB@071e1466ad80034fe4b0ef419eac61d95e99cdb8
+2026-07-29 17:08:28,404 INFO alvance_github_crawler.pipeline: processing crawled candidate octo-sts/app@46c0cbac05afbbff4eea2088c932452895db6ae9
+2026-07-29 17:08:41,884 INFO alvance_github_crawler.pipeline: processing crawled candidate temporalio/ui-server@8008649c14d22463effe6e303dad9d9a4db10748
+2026-07-29 17:08:43,441 INFO alvance_github_crawler.pipeline: processing crawled candidate kserve/kserve@23ce982d260120b2dd7c835fbe99f1349bd31dd8
+2026-07-29 17:08:44,660 INFO alvance_github_crawler.pipeline: processing crawled candidate stackrox/kube-linter@75b6ee58ac416b4c9579be6e128b651ccee386cb
+2026-07-29 17:08:46,466 INFO alvance_github_crawler.pipeline: processing crawled candidate gogpu/gogpu@7c4c736ae8862fb678752ef0ebe3f6b396706991
+2026-07-29 17:08:50,557 INFO alvance_github_crawler.pipeline: processing crawled candidate jaegertracing/jaeger@922073985e518a0fedc1b553cbb6afdd32bc0c4f
+2026-07-29 17:08:55,702 INFO alvance_github_crawler.pipeline: processing crawled candidate rqlite/rqlite@fa20113319490355fdf3e33f6f7a16bd6aa97137
+2026-07-29 17:08:57,178 INFO alvance_github_crawler.pipeline: processing crawled candidate hatchet-dev/hatchet@071a279abe3d5dd531968bed86985633c2611647
+2026-07-29 17:08:58,544 INFO alvance_github_crawler.pipeline: processing crawled candidate openfga/openfga@168de212f6a624bbe4ee7c1492e91cc4082fd2b1
+2026-07-29 17:09:00,934 INFO alvance_github_crawler.pipeline: processing crawled candidate open-telemetry/opentelemetry-collector-contrib@47b884b4a9aaed5d8f7ec57700cc99330a81a29f
+2026-07-29 17:09:03,120 INFO alvance_github_crawler.pipeline: processing crawled candidate openziti/ziti@465b34d38c85cc0eaa9ff020518cbc0aa0303d15
+2026-07-29 17:09:11,214 INFO alvance_github_crawler.pipeline: processing crawled candidate kubernetes/test-infra@42b6d9883764cca273328279f46cd4ec57c79a07
+2026-07-29 17:09:12,182 INFO alvance_github_crawler.pipeline: processing crawled candidate SpecterOps/BloodHound@7313f152ffc7afd64d541ef6f48951bb7558c258
+2026-07-29 17:09:13,171 INFO alvance_github_crawler.pipeline: processing crawled candidate cozystack/cozystack@3dc0f564775187ac8d05346c5033759ee8744498
+2026-07-29 17:09:20,467 INFO alvance_github_crawler.pipeline: processing crawled candidate grafana/beyla@d0867d4581af91bdb59da4a06207abfa5dd3f1c2
+2026-07-29 17:09:21,652 INFO alvance_github_crawler.pipeline: processing crawled candidate kreuzwerker/terraform-provider-docker@13868746f9e446b3d500b97f57921c2a52118ad3
+2026-07-29 17:09:26,968 INFO alvance_github_crawler.pipeline: processing crawled candidate gocronx-team/gocron@5042d6f670b571eeab783289857aab155b6a9485
+2026-07-29 17:09:32,131 INFO alvance_github_crawler.pipeline: processing crawled candidate luckyPipewrench/pipelock@f651488ef0f21270ae391040d20727f5e81269ba
+2026-07-29 17:09:37,440 INFO alvance_github_crawler.pipeline: processing crawled candidate moov-io/watchman@835a3bdd67f2790e8c32446d81fc961070669beb
+2026-07-29 17:09:40,995 INFO alvance_github_crawler.pipeline: processing crawled candidate gfpcom/free-proxy-list@16426da6e6dbb025ff1de07ba0ef93bc86fc5ab6
+2026-07-29 17:09:42,808 INFO alvance_github_crawler.pipeline: processing crawled candidate gitlabhq/gitlab-runner@c46014f55d5ef5625d57628a0d6f2060dc7d43ba
+2026-07-29 17:09:43,697 INFO alvance_github_crawler.pipeline: processing crawled candidate linode/terraform-provider-linode@ef6379f07ba664f78c22e59776376ea475dbe43f
+2026-07-29 17:09:57,482 INFO alvance_github_crawler.pipeline: processing crawled candidate hangxie/parquet-tools@bfd2125314c8845b3d7f69a17a727dfb79f7662a
+2026-07-29 17:10:13,100 INFO alvance_github_crawler.pipeline: processing crawled candidate strelov1/freehire@72c42978b47a2809f62dc1238fdd324b56421c20
+2026-07-29 17:10:18,477 INFO alvance_github_crawler.pipeline: processing crawled candidate grafana/mcp-grafana@1071e4f1f9b2e42260570a8f85956e9b7365e322
+2026-07-29 17:10:26,513 INFO alvance_github_crawler.pipeline: processing crawled candidate clawbench-dev/clawbench@e63ef5dbd4d33fe78fb0424baae71c4e73df180b
+2026-07-29 17:10:39,692 INFO alvance_github_crawler.pipeline: processing crawled candidate nanocoai/nanoclaw@879835bf8bb882672742f0765747312c4948420f
+2026-07-29 17:10:43,712 INFO alvance_github_crawler.pipeline: processing crawled candidate photon-hq/cli@d2a164e6d9c902c1c59b764b6c52d817e3037d20
+2026-07-29 17:10:46,857 INFO alvance_github_crawler.pipeline: processing crawled candidate jupyterlab/jupyterlab@5f13f8d7dca578db1a1934303a7dc0ba301eaf68
+2026-07-29 17:10:48,062 INFO alvance_github_crawler.pipeline: processing crawled candidate thunderbird/thunderbolt@cd0b56b89c138bc21a48b7bf14f9e43b0e35903d
+2026-07-29 17:10:53,001 INFO alvance_github_crawler.pipeline: processing crawled candidate TypeStrong/ts-loader@4d63185522ce25888414dcbb120dac6ade7449ee
+2026-07-29 17:10:54,927 INFO alvance_github_crawler.pipeline: processing crawled candidate dirac-run/dirac@3ef430bd9bcec6d482d24a1d97281c1f16ec8900
+2026-07-29 17:10:59,977 INFO alvance_github_crawler.pipeline: processing crawled candidate sumup-oss/circuit-ui@c309f4b52c9265b421acad81f70d14e1c00ecfc4
+2026-07-29 17:11:01,368 INFO alvance_github_crawler.pipeline: processing crawled candidate traycerai/traycer@3583b851195246d2fab71be7bbd02e70d213f834
+2026-07-29 17:11:10,270 INFO alvance_github_crawler.pipeline: processing crawled candidate aws/constructs@25eddedf8b531ada4690b9756b0c53fbda1ff4b3
+2026-07-29 17:11:12,649 INFO alvance_github_crawler.pipeline: processing crawled candidate shinpr/mcp-local-rag@cf04e8c5288ea04ce1b67c0bcfec359fc4eb7747
+2026-07-29 17:11:15,060 INFO alvance_github_crawler.pipeline: processing crawled candidate Undertone0809/rudder@99b061c2a0ac6470930716d6e07ec99c41221fab
+2026-07-29 17:11:19,470 INFO alvance_github_crawler.pipeline: processing crawled candidate Sayhi-bzb/AsciiCanvas@d4e218ad54ac0a06df318368a9d4a886a7479b01
+2026-07-29 17:11:23,069 INFO alvance_github_crawler.pipeline: processing crawled candidate Dave-London/Pare@27c06545cf0dcb743091bb322f212de9b06aed14
+2026-07-29 17:11:23,971 INFO alvance_github_crawler.pipeline: processing crawled candidate jitsi/jitsi-meet@92dc6bf1f9bb6c4e8d28a12124b16cb3f0c78b05
+2026-07-29 17:11:26,706 INFO alvance_github_crawler.pipeline: processing crawled candidate StreamerHelper/web-server@7c1b3a4177fc657687fe8bdfca319d6d83bc8e7b
+2026-07-29 17:11:27,300 INFO alvance_github_crawler.pipeline: processing crawled candidate aws/agentcore-cli@77b54a5958fa09da4c1ad6071b065d76d1edf826
+2026-07-29 17:11:40,448 INFO alvance_github_crawler.pipeline: processing crawled candidate levy-street/world-of-claudecraft@a3e5e9596a8e9e7d37b5b23efbbb0f2cd846c0c9
+2026-07-29 17:11:42,223 INFO alvance_github_crawler.pipeline: processing crawled candidate nteract/nteract@a4d55e52baec1fa590740c2eaf3fa53616656207
+2026-07-29 17:11:55,223 INFO alvance_github_crawler.pipeline: processing crawled candidate nrwl/nx@0abf7a4265363d553e7b13a6567ee7e73b3d8819
+2026-07-29 17:11:56,574 INFO alvance_github_crawler.pipeline: processing crawled candidate chakra-ui/zag@2fa60075845ea2e31e8b4da9c7ea797ff193fa0a
+2026-07-29 17:11:57,475 INFO alvance_github_crawler.pipeline: processing crawled candidate Shopify/cli@f45cb512741ce40639543e3100fc369faf9caa3d
+2026-07-29 17:11:59,547 INFO alvance_github_crawler.pipeline: processing crawled candidate darkrishabh/agent-skills-eval@b60eebe3c6edaa917a284e13b9b0e9fa00f1c957
+2026-07-29 17:12:04,217 INFO alvance_github_crawler.pipeline: processing crawled candidate BabylonJS/Babylon.js@9450d49b457da6a9affdd0af735028c829ff5ca5
+2026-07-29 17:12:06,886 INFO alvance_github_crawler.pipeline: processing crawled candidate typescript-eslint/typescript-eslint@4d0f61e283779cba4bc5ab0f864a631939a8be8f
+2026-07-29 17:12:15,772 INFO alvance_github_crawler.pipeline: processing crawled candidate timgit/pg-boss@98e25993d98f9c4e686df6ea28841f44f959174c
+2026-07-29 17:12:36,426 INFO alvance_github_crawler.pipeline: processing crawled candidate spartan-ng/spartan@c838300806e093d77479b07c5c154bbc94ebbc6f
+2026-07-29 17:12:45,817 INFO alvance_github_crawler.pipeline: processing crawled candidate dbos-inc/dbos-transact-ts@e81cd5f2557f040337b4340c1fade1975b156aa0
+2026-07-29 17:12:48,272 INFO alvance_github_crawler.pipeline: processing crawled candidate PaloAltoNetworks/docusaurus-openapi-docs@620a70ffb9439ba2d19aaf99b5a9f504ae97fa66
+2026-07-29 17:12:50,204 INFO alvance_github_crawler.pipeline: processing crawled candidate gravity-ui/uikit@e8594a23cf36459225b4a60529d560dc86f201bb
+2026-07-29 17:12:52,442 INFO alvance_github_crawler.pipeline: processing crawled candidate xiaotianfotos/homerail@377f4e10fa6dff18b2b85e6671530103cb6dbde5
+2026-07-29 17:13:02,748 INFO alvance_github_crawler.pipeline: processing crawled candidate primer/primitives@856b103dc0c15d163b67eaedcfeebfd7b4d0748d
+2026-07-29 17:13:04,120 INFO alvance_github_crawler.pipeline: processing crawled candidate WrongStack/WrongStack@c86278581f2188e57ce4dd0da962db11fbb45a2b
+2026-07-29 17:13:12,076 INFO alvance_github_crawler.pipeline: processing crawled candidate cloudflare/vinext@2c434ed8938f3808217f3fee78a08fafd0aac653
+2026-07-29 17:13:22,382 INFO alvance_github_crawler.pipeline: processing crawled candidate podman-desktop/podman-desktop@84206f439320d5056eeb9d9cfd9c9fab2e202f27
+2026-07-29 17:13:24,096 INFO alvance_github_crawler.pipeline: processing crawled candidate deer-flow/llm-space@d1b000c22251db2501ad8d39e88a9e26d785083a
+2026-07-29 17:13:29,165 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/powerplatform-vscode@c558f38aa852e03bca4ae5c3c145189f5fce23e4
+2026-07-29 17:13:30,444 INFO alvance_github_crawler.pipeline: processing crawled candidate react/react@1724e9ce0aa1db99bcbe2633304b6a0fee2e4e1e
+2026-07-29 17:13:31,837 INFO alvance_github_crawler.pipeline: processing crawled candidate dotenvx/dotenvx@d55f0dbe86e8445c7a7e6f27a4e58dc875b1719e
+2026-07-29 17:13:34,364 INFO alvance_github_crawler.pipeline: processing crawled candidate scality/cloudserver@2cfa00d5ad8cbb53eab3443b6962a12f198b156d
+2026-07-29 17:13:36,172 INFO alvance_github_crawler.pipeline: processing crawled candidate NativeScript/nativescript-cli@f24cc5da0f6b04f8ceb2acf379aba76bff2fb1c2
+2026-07-29 17:13:37,554 INFO alvance_github_crawler.pipeline: processing crawled candidate gildas-lormeau/mhtml-to-html@c701f542c30632c58f2b9698fbbe1648f8f78898
+2026-07-29 17:13:40,837 INFO alvance_github_crawler.pipeline: processing crawled candidate vercel/next.js@91c6309c52ab90a6344f9aba059dabf82e82bc0b
+2026-07-29 17:13:42,883 INFO alvance_github_crawler.pipeline: processing crawled candidate primer/octicons@239bddf353f78a83d59e710f9d21f08abc2880bb
+2026-07-29 17:13:46,389 INFO alvance_github_crawler.pipeline: processing crawled candidate sveltejs/devalue@5b535325523c8c4ad81695a133acb8781f1b72d2
+2026-07-29 17:13:47,663 INFO alvance_github_crawler.pipeline: processing crawled candidate google/site-kit-wp@3283e6239342c6f8e9f84c35e99aa658b5d1b057
+2026-07-29 17:13:49,610 INFO alvance_github_crawler.pipeline: processing crawled candidate nwjs/grunt-nw-builder@07d1584855ae17c238e0397f3c841db7d84af051
+2026-07-29 17:13:49,818 INFO alvance_github_crawler.pipeline: processing crawled candidate NotePlan/plugins@6723ed19aefe8d7fb345ed319949d5c9ab0942a7
+2026-07-29 17:13:51,989 INFO alvance_github_crawler.pipeline: processing crawled candidate QwenAudio/qwen-audio-agent@5203e81ec498271a6baf4a63b4b5de9f0fb88a9a
+2026-07-29 17:13:53,666 INFO alvance_github_crawler.pipeline: processing crawled candidate aplaceforallmystuff/mcp-arr@04bb060e28631a18617e83a3e87fb4e91fc67480
+2026-07-29 17:13:56,994 INFO alvance_github_crawler.pipeline: processing crawled candidate mui/material-ui@319668c95b56b44c53541b48c09a2515d07704f5
+2026-07-29 17:13:57,227 INFO alvance_github_crawler.pipeline: processing crawled candidate webpack/webpack@d22a4d945b9cc21505dfe322cc680d86a8406193
+2026-07-29 17:14:00,727 INFO alvance_github_crawler.pipeline: processing crawled candidate mixpanel/mixpanel-node@cce55018235dfa73b256acd957e67de2ae18c244
+2026-07-29 17:14:03,993 INFO alvance_github_crawler.pipeline: processing crawled candidate mixpanel/mixpanel-react-native@2876bde784a96cfda80f61389e4f9820de30927b
+2026-07-29 17:14:05,178 INFO alvance_github_crawler.pipeline: processing crawled candidate cdk8s-team/cdk8s@412ffdb857310110b7487015a746f125fe510325
+2026-07-29 17:14:06,534 INFO alvance_github_crawler.pipeline: processing crawled candidate prescottprue/react-redux-firebase@3a8d535a6d7517fe04a2cc7997b7c548718b0861
+2026-07-29 17:14:09,359 INFO alvance_github_crawler.pipeline: processing crawled candidate ProjectMirador/mirador@e858bf52b1e7705ed9255fa2a709d05b4b12a5b4
+2026-07-29 17:14:09,864 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=xiaotianfotos/homerail attempt=1/4 delay_s=5.0 error=RateLimitError
+2026-07-29 17:14:15,590 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=spartan-ng/spartan attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:14:15,882 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=darkrishabh/agent-skills-eval attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:14:16,315 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=PaloAltoNetworks/docusaurus-openapi-docs attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:14:51,478 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/security-devops-action@241d09d34a00dc03aad8b1e8cf988a6f66ecd3f5
+2026-07-29 17:15:04,918 INFO alvance_github_crawler.pipeline: processing crawled candidate Javis603/token-monitor@515a0142f99172516fd2b37fda86bd9e00541e0a
+2026-07-29 17:15:17,339 INFO alvance_github_crawler.pipeline: processing crawled candidate metalbear-co/mirrord@b5c6cab6e083259de92f17d4f60fec6df7a6f647
+2026-07-29 17:15:17,355 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=PaloAltoNetworks/docusaurus-openapi-docs attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:17,850 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=scality/cloudserver attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:18,346 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=microsoft/security-devops-action attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:18,854 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Javis603/token-monitor attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:19,340 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ProjectMirador/mirador attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:19,862 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=PaloAltoNetworks/docusaurus-openapi-docs attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:20,339 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=scality/cloudserver attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:20,847 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=microsoft/security-devops-action attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:21,336 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Javis603/token-monitor attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:21,846 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ProjectMirador/mirador attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:22,357 ERROR alvance_github_crawler.pipeline: PaloAltoNetworks/docusaurus-openapi-docs failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 270, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-29 17:15:22,364 INFO alvance_github_crawler.pipeline: processing crawled candidate cloudflare/lol-html@cf6ae5c507f040e9a0e2f342fd8b9b8760afa992
+2026-07-29 17:15:22,851 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=scality/cloudserver attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:23,320 INFO alvance_github_crawler.pipeline: processing crawled candidate ivov/lisette@27cb3bd1cdf27462bbd024e9304bd825eeb8273d
+2026-07-29 17:15:23,359 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=microsoft/security-devops-action attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:23,849 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=metalbear-co/mirrord attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:24,358 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Javis603/token-monitor attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:24,839 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ProjectMirador/mirador attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:25,372 ERROR alvance_github_crawler.pipeline: scality/cloudserver failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 270, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-29 17:15:25,376 INFO alvance_github_crawler.pipeline: processing crawled candidate pop-os/libcosmic@abaa06f10f4c03f6122d984e1bf02496937bb20d
+2026-07-29 17:15:25,862 ERROR alvance_github_crawler.pipeline: microsoft/security-devops-action failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 270, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-29 17:15:25,866 INFO alvance_github_crawler.pipeline: processing crawled candidate Azure/azure-sdk-for-rust@6b24435cde124f8f218208de35f993115ad054bd
+2026-07-29 17:15:26,344 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=metalbear-co/mirrord attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:26,896 ERROR alvance_github_crawler.pipeline: Javis603/token-monitor failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 270, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-29 17:15:26,902 INFO alvance_github_crawler.pipeline: processing crawled candidate jeremychone/rust-genai@4f90a5f34b420abf9c713447ee46a7d09e467d33
+2026-07-29 17:15:27,421 ERROR alvance_github_crawler.pipeline: ProjectMirador/mirador failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 270, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-29 17:15:27,428 INFO alvance_github_crawler.pipeline: processing crawled candidate genomoncology/biomcp@e8b9dd245c0882ad65dc36dc973e4485d9663072
+2026-07-29 17:15:28,093 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=metalbear-co/mirrord attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:29,283 INFO alvance_github_crawler.pipeline: processing crawled candidate kdl-org/kdl-rs@bf1a12dd416b17c2294d1b57896928bb2e30a3c6
+2026-07-29 17:15:29,889 ERROR alvance_github_crawler.pipeline: metalbear-co/mirrord failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 270, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-29 17:15:29,894 INFO alvance_github_crawler.pipeline: processing crawled candidate NomicFoundation/slang@2634862fbf6ac83f4e9b0c6ac9874ee11ba23c07
+2026-07-29 17:15:30,340 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=cloudflare/lol-html attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:15:38,532 INFO alvance_github_crawler.pipeline: processing crawled candidate moq-dev/web-transport@30e7bb3b0c36280d8ac7e92f331bbd5dcab18b24
+2026-07-29 17:15:39,989 INFO alvance_github_crawler.pipeline: processing crawled candidate solana-foundation/kora@03d08e92f57c54a1b3086b553f13b3e5d8937200
+2026-07-29 17:15:43,065 INFO alvance_github_crawler.pipeline: processing crawled candidate gcanat/video_reader-rs@e9da1fa7c90b2c9f9d78096fd3044c46653ad85f
+2026-07-29 17:15:46,465 INFO alvance_github_crawler.pipeline: processing crawled candidate dfinity/icp-cli@4958647ce9f36187f6e756055f73bd63d2d61f08
+2026-07-29 17:15:48,184 INFO alvance_github_crawler.pipeline: processing crawled candidate xmtp/libxmtp@cf3b084d09a2819b0a9b23c9da298c8adbee2e1c
+2026-07-29 17:15:49,902 INFO alvance_github_crawler.pipeline: processing crawled candidate jdx/mise@6f578bbac2ce50903c4ed71dec213064be262e9d
+2026-07-29 17:15:57,417 INFO alvance_github_crawler.pipeline: processing crawled candidate emilk/egui@c69834e65a0681d4fa40c30545b006ce39527034
+2026-07-29 17:16:14,299 INFO alvance_github_crawler.pipeline: processing crawled candidate Automattic/harper@df6d660013d8a7d8ced6ac37f7f075694d8f8ce5
+2026-07-29 17:16:27,786 INFO alvance_github_crawler.pipeline: processing crawled candidate grpc/grpc-rust@56bf368959d8386addd01ca6f8ee057465ba141d
+2026-07-29 17:16:35,917 INFO alvance_github_crawler.pipeline: processing crawled candidate rerun-io/rerun@255060a12e931ebdbd3cb2778424f62dbedcc18e
+2026-07-29 17:16:37,093 INFO alvance_github_crawler.pipeline: processing crawled candidate junhoyeo/tokscale@74d708b65f9900484b931356c546a1a411f23e06
+2026-07-29 17:16:43,175 INFO alvance_github_crawler.pipeline: processing crawled candidate slatedb/slatedb@7db4911082c8af96beb4be3ec2e4f8cbf0b142c8
+2026-07-29 17:17:17,556 INFO alvance_github_crawler.pipeline: processing crawled candidate Mesh-LLM/mesh-llm@cf545777384ed121004a2d64c1ea12b4c862ecc2
+2026-07-29 17:17:38,127 INFO alvance_github_crawler.pipeline: processing crawled candidate kvcache-ai/AgentENV@07e817ab8751e4883e7a5f1c1973228aca843bcd
+2026-07-29 17:17:47,228 INFO alvance_github_crawler.pipeline: processing crawled candidate compio-rs/compio@69c20cc16fd30afa5b86f55223184dde55ace097
+2026-07-29 17:17:52,790 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=compio-rs/compio attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:17:54,558 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=compio-rs/compio attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:17:59,478 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=emilk/egui attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:17:59,657 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Automattic/harper attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:17:59,817 INFO alvance_github_crawler.pipeline: processing crawled candidate jdx/aube@4a96c037140a1f2f9e6a4903faab59be4e49f437
+2026-07-29 17:18:01,235 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=emilk/egui attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-29 17:18:07,131 INFO alvance_github_crawler.pipeline: processing crawled candidate michaelb/sniprun@6c8c89b2979d6fc125d731717aeb1497db8913c9
+2026-07-29 17:18:10,795 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=gcanat/video_reader-rs attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-29 17:18:10,939 INFO alvance_github_crawler.pipeline: processing crawled candidate silverstein/minutes@e5d011372e023b923420ed16799e6224e91aeed5
+2026-07-29 17:18:14,410 INFO alvance_github_crawler.pipeline: processing crawled candidate GCWing/BitFun@b12c8ffae6575725a25172fae723b20aa1ab9baf
+2026-07-29 17:18:15,641 INFO alvance_github_crawler.pipeline: processing crawled candidate COMBINE-lab/salmon@60faaa680ff87993cbd116124b6eb31b324c0f41
+2026-07-29 17:18:16,551 INFO alvance_github_crawler.pipeline: processing crawled candidate artifact-keeper/artifact-keeper@f66a7d7a7a0b9e672cc24a39e04ff168208bbbf5
+2026-07-29 17:18:26,321 INFO alvance_github_crawler.pipeline: processing crawled candidate base/base@a49cb0ad793195349de52b10e564eb0062248c11
+2026-07-29 17:18:27,244 INFO alvance_github_crawler.pipeline: processing crawled candidate fedimint/fedimint@af48f459205c73fae646ed5a366bc8d22eb48b0a
+2026-07-29 17:18:28,269 INFO alvance_github_crawler.pipeline: processing crawled candidate euzu/tuliprox@c47cf99f99a9e3b109a2d9468b14430360d35c6c
+2026-07-29 17:18:40,792 INFO alvance_github_crawler.pipeline: processing crawled candidate diodeinc/pcb@d11d5dfdc32a3dc5fd8171e5cd28a0bdb0902d3e
+2026-07-29 17:18:46,975 INFO alvance_github_crawler.pipeline: processing crawled candidate n0-computer/noq@db9bf72ac4398276d629a825bd2ce7460f9f5d70
+2026-07-29 17:18:49,207 INFO alvance_github_crawler.pipeline: processing crawled candidate makspll/bevy-console@835203d1ed01593b8b5fe7f971a1e60ff8690f2e
+2026-07-29 17:18:51,463 INFO alvance_github_crawler.pipeline: processing crawled candidate typedb/typeql@9bd7d56a907e8bf60ac5a5a7ca609131bf1b24f3
+2026-07-29 17:18:53,607 INFO alvance_github_crawler.pipeline: processing crawled candidate NVIDIA/infra-controller@7ee37cda9e7193d9a652a62072fccd168a02ec8f
+2026-07-29 17:18:53,854 INFO alvance_github_crawler.pipeline: processing crawled candidate prokopyl/clack@3a17119f26eaf7c055aa1d56a94190bfb6daf44e
+2026-07-29 17:18:55,267 INFO alvance_github_crawler.pipeline: processing crawled candidate FlorianUekermann/rustls-acme@c681c35847946244720140ecc8c6ae9fcc90a3f6
+2026-07-29 17:18:58,461 INFO alvance_github_crawler.pipeline: processing crawled candidate amazon-ion/ion-rust@cb0a1e540413eec2ce9d1ff47bef2959323f692b
+2026-07-29 17:18:59,293 INFO alvance_github_crawler.pipeline: processing crawled candidate Michael-A-Kuykendall/crabcamera@d890d22b5ca44a1d79b026b47cf0e0a1151a19a4
+2026-07-29 17:19:03,506 INFO alvance_github_crawler.pipeline: processing crawled candidate binius-zk/binius64@5704b8713d10f6fab91ab8e4648a0e183b51ed58
+2026-07-29 17:19:07,296 INFO alvance_github_crawler.pipeline: processing crawled candidate awslabs/duvet@162dbf692f893844e7fc35ffc955e20523614651
+2026-07-29 17:19:21,829 INFO alvance_github_crawler.pipeline: processing crawled candidate facebookexperimental/rust-shed@eee365bddfb85fac6762dc33068892e37b2c0904
+2026-07-29 17:19:25,291 INFO alvance_github_crawler.pipeline: processing crawled candidate baseballyama/rsvelte@9c77a3e9cc5256c7f6e7c44fab3e878cfea95d6b
+2026-07-29 17:19:34,528 INFO alvance_github_crawler.pipeline: processing crawled candidate nomifun/nomifun-tauri@ae6da3ba7c4bc82acde56a85aa9f8cd2424e1c66
+2026-07-29 17:19:40,462 INFO alvance_github_crawler.pipeline: processing crawled candidate slackhq/hakana@c646c0fe0cba1215de97d2894a3249f33e79145b
+2026-07-29 17:19:44,629 INFO alvance_github_crawler.pipeline: processing crawled candidate atusy/kakehashi@eb189cf47d6d4fc616403793e472282455be803b
+2026-07-29 17:19:52,826 INFO alvance_github_crawler.pipeline: processing crawled candidate typst/typst@146a58329a30f6cd38978c22c6bf0e430d8962a1
+2026-07-29 17:19:53,827 INFO alvance_github_crawler.pipeline: processing crawled candidate PerryTS/perry@df9c7d25c4bd472ea9d3a39a3c5782ce4367c8c5
+2026-07-29 17:19:55,078 INFO alvance_github_crawler.pipeline: processing crawled candidate J-F-Liu/lopdf@4f965848bbd90ed47878b85a1ab4d90ebdeca943
+2026-07-29 17:20:07,882 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=J-F-Liu/lopdf attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-29 17:21:08,794 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=emilk/egui attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-29 17:21:11,202 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=awslabs/duvet attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-29 17:21:22,903 INFO alvance_github_crawler.pipeline: processing crawled candidate foresterre/cargo-msrv@e5e10397ebe0c74541c529889c84f663a22944da
+2026-07-29 17:21:25,478 INFO alvance_github_crawler.pipeline: processing crawled candidate vinhnx/VTCode@3bc7187e89634842e4078b0c31dfc8ac282ad6a2
+2026-07-29 17:21:30,070 INFO alvance_github_crawler.pipeline: processing crawled candidate cowprotocol/services@3c4bb412238e840b7e000bbd5f7f0806ecf15a42
+2026-07-29 17:21:30,136 INFO alvance_github_crawler.pipeline: processing crawled candidate bgpkit/bgpkit-parser@7d9268bff31d426e079d36ec2127f4af0f28218e
+2026-07-29 17:21:33,836 INFO alvance_github_crawler.pipeline: processing crawled candidate astral-sh/uv@ddc1deb0c9f088ee0d6f4086110c0dd159849726
+2026-07-29 17:21:35,534 INFO alvance_github_crawler.pipeline: processing crawled candidate aaif-goose/goose@ca6ba6c4488aebd87cb6588da176d7ee073283bb
+2026-07-29 17:21:37,501 INFO alvance_github_crawler.pipeline: processing crawled candidate lance-format/lance@389fb708e51ca538d7be4b419f1940bc9aa62ccc
+2026-07-29 17:21:38,345 INFO alvance_github_crawler.pipeline: processing crawled candidate makepad/makepad@2e83b7881c57c24a379886cc9bbc01275856fd08
+2026-07-29 17:21:39,873 INFO alvance_github_crawler.pipeline: processing crawled candidate edwardkim/rhwp@9b16aa9e23f476e2b335d7c029fc9f24a199d63c
+2026-07-29 17:21:40,852 INFO alvance_github_crawler.pipeline: processing crawled candidate tox-dev/pipdeptree@b0ebd9db60c04871d63069f00d55e54c78f62128
+2026-07-29 17:21:42,843 INFO alvance_github_crawler.pipeline: processing crawled candidate tracel-ai/cubecl@44c9b3fbfab0a14bb52574f8473c99bd62f1fb88
+2026-07-29 17:21:55,320 INFO alvance_github_crawler.pipeline: processing crawled candidate osprey-oss/migrate-to-uv@8ba0ab3d9d3410187e9a85f639e6f4922cc5f9c0
+2026-07-29 17:21:58,083 INFO alvance_github_crawler.pipeline: processing crawled candidate maneatingape/advent-of-code-rust@4c8375fa5e68123d4a17ee475f45be3e0c5ec114
+2026-07-29 17:22:00,187 INFO alvance_github_crawler.pipeline: processing crawled candidate lance0/xfr@5e9660ec8e09783fd6b5e90636f64c0bc3adfd71
+2026-07-29 17:22:02,118 INFO alvance_github_crawler.pipeline: processing crawled candidate nanvix/nanvix@bf4e2653c8ac947973801d0f45dd3c5b4fb70ad4
+2026-07-29 17:22:03,815 INFO alvance_github_crawler.pipeline: processing crawled candidate yologdev/yoagent@1ade90d15c0032fc73de9c741b67f007f1d5a836
+2026-07-29 17:22:06,174 INFO alvance_github_crawler.pipeline: processing crawled candidate timtoole02/Camelid@2b3eff9c2a6fb81bbc8525fa7a64ef2c6cf090f3
+2026-07-29 17:22:07,445 INFO alvance_github_crawler.pipeline: processing crawled candidate xberg-io/crawlberg@fb4d8cd2ac9a2018b899d1d9b76838296a2bf99b
+2026-07-29 17:22:08,610 INFO alvance_github_crawler.pipeline: processing crawled candidate tangramdotdev/tangram@23d3e7e6c5a6e3ddb696a9aa44b8d8c9603cf71e
+2026-07-29 17:22:11,834 INFO alvance_github_crawler.pipeline: processing crawled candidate linggen/linggen-memory@6d10251f7ba28fcf9f430b5bfada2e1644660c42
+2026-07-29 17:22:12,071 INFO alvance_github_crawler.pipeline: processing crawled candidate PHPantom-dev/phpantom_lsp@be16bfa33d696a81982ad0e39722f5b6a3d96271
+{
+  "duplicate": 1467,
+  "error": 6,
+  "input_total": 1719,
+  "processed": 252,
+  "queued": 73,
+  "rejected": 173
+}
+[2026-07-29T17:23:34Z] stage=prescreen-3500 exit_code=0 duration_s=1548

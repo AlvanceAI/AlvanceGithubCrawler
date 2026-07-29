@@ -1,0 +1,14 @@
+[2026-07-29T14:23:25Z] stage=verify-default-20260729T142325Z run_id=github-mass-production-XBY-20260729
+command= env PIPELINE_OUTPUT_DIR=outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-29 14:23:27,177 INFO alvance_github_crawler.pending.verification: verifying pending candidate HKUDS/nanobot key_slot=1
+2026-07-29 14:23:27,180 INFO alvance_github_crawler.pending.verification: verifying pending candidate omnigent-ai/omnigent key_slot=1
+2026-07-29 14:23:27,185 INFO alvance_github_crawler.pending.verification: verifying pending candidate getsentry/sentry-python key_slot=1
+2026-07-29 14:23:27,186 INFO alvance_github_crawler.pending.verification: verifying pending candidate OpenHands/software-agent-sdk key_slot=1
+2026-07-29 14:23:27,188 INFO alvance_github_crawler.pending.verification: verifying pending candidate mensfeld/code-on-incus key_slot=1
+2026-07-29 14:23:27,191 INFO alvance_github_crawler.pending.verification: verifying pending candidate discopy/discopy key_slot=1
+2026-07-29 14:23:42,694 INFO alvance_github_crawler.pending.verification: pending candidate mensfeld/code-on-incus finished outcome=rejected key_slot=1 processed=1 in_flight=5
+2026-07-29 14:23:49,853 INFO alvance_github_crawler.pending.verification: pending candidate OpenHands/software-agent-sdk finished outcome=rejected key_slot=1 processed=2 in_flight=4
+2026-07-29 14:24:03,351 INFO alvance_github_crawler.pending.verification: pending candidate omnigent-ai/omnigent finished outcome=rejected key_slot=1 processed=3 in_flight=3
+2026-07-29 14:24:13,438 INFO alvance_github_crawler.pending.verification: pending candidate getsentry/sentry-python finished outcome=rejected key_slot=1 processed=4 in_flight=2
+2026-07-29 14:24:14,877 INFO alvance_github_crawler.pending.verification: pending candidate discopy/discopy finished outcome=rejected key_slot=1 processed=5 in_flight=1
+[2026-07-29T14:28:14Z] stage=verify-default-20260729T142325Z exit_code=143 duration_s=289

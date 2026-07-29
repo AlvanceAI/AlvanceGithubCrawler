@@ -1,0 +1,4 @@
+[2026-07-29T18:16:17Z] stage=crawl-5000 run_id=github-mass-production-XBY-20260729
+command= uv run alvance-github-crawler crawl --target-total 5000 --per-language 1000 --max-search-pages 10 --output outputs/github_crawl_500_unquota --request-interval 0.2 --verbose
+python has only 900 raw repositories after exhausting all search windows
+[2026-07-29T18:16:20Z] stage=crawl-5000 exit_code=1 duration_s=3
