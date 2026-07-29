@@ -48,7 +48,7 @@ def pipeline_process() -> tuple[int, str]:
         ["pgrep", "-a", "-f", "alvance-github-crawler"],
         capture_output=True, text=True
     )
-    lines = [l for l in result.stdout.splitlines() if "monitor" not in l]
+    lines = [line for line in result.stdout.splitlines() if "monitor" not in line]
     if lines:
         pid = lines[0].split()[0]
         cmd = " ".join(lines[0].split()[2:])
@@ -157,9 +157,9 @@ def render(layout: Layout) -> None:
         rtable.add_row(f"[{color}]{reason}[/{color}]", str(count))
 
     pending_text = Text()
-    pending_text.append(f"Active pending: ", style="bold")
+    pending_text.append("Active pending: ", style="bold")
     pending_text.append(f"{pstats['active']}\n", style="bold cyan")
-    pending_text.append(f"Total rejections: ", style="bold")
+    pending_text.append("Total rejections: ", style="bold")
     pending_text.append(f"{len(rejections)}\n\n", style="bold red")
     pending_text.append_text(Text.from_markup("[bold]Rejection breakdown:[/bold]\n"))
 
