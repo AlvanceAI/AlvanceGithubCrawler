@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from alvance_github_crawler.filters import HardFilter
 
@@ -20,7 +20,7 @@ def repo(language: str = "Go") -> dict[str, object]:
         "base_commit": "abc",
         "language": language,
         "stargazers_count": 500,
-        "pushed_at": datetime.now(UTC).isoformat(),
+        "pushed_at": datetime.now(timezone.utc).isoformat(),
         "license": {"spdx_id": "MIT"},
     }
 
@@ -64,7 +64,7 @@ def test_rust_requires_dev_dependencies() -> None:
 
 def test_rejects_inactive_or_non_permissive_repo() -> None:
     stale = repo()
-    stale["pushed_at"] = (datetime.now(UTC) - timedelta(days=366)).isoformat()
+    stale["pushed_at"] = (datetime.now(timezone.utc) - timedelta(days=366)).isoformat()
     assert (
         HardFilter(FakeGitHub()).evaluate(stale, blobs("go.mod", "a_test.go")).reason == "inactive"
     )

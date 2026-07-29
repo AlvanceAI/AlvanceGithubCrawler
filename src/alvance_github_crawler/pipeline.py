@@ -35,7 +35,11 @@ class Pipeline:
         self.defer_e2b = defer_e2b
         self.retry_rejected = retry_rejected
         self.github = GitHubClient(config.github_token)
-        self.registry = JsonlRegistry(config.candidates_path, config.rejections_path)
+        self.registry = JsonlRegistry(
+            config.candidates_path,
+            config.rejections_path,
+            config.output_dir / "events.jsonl",
+        )
         self.quota = LanguageQuota(config.candidates_path)
         self.hard_filter = HardFilter(self.github)
         self.soft_scorer = SoftScorer(self.github, self.quota)

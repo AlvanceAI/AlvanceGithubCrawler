@@ -5,6 +5,7 @@ from typing import Any, Protocol
 from .harbor_packaging import HarborPackager
 from .registry import JsonlRegistry
 from .scoring import LanguageQuota
+from .taskability import evaluate_taskability
 
 
 class PackageResult(Protocol):
@@ -61,6 +62,18 @@ class CandidateRegistrar:
             "direction_keywords": direction["keywords"],
             "direction_target_paths": direction["target_paths"],
             "h6_sources": direction.get("h6_sources", []),
+            "taskability": evaluate_taskability(
+                repo,
+                direction=direction,
+                benchmark=benchmark,
+            ),
+            "contamination": {
+                "direction_source": direction.get("source"),
+                "keywords": direction.get("keywords", []),
+                "h6_sources": direction.get("h6_sources", []),
+                "risk": "medium" if str(direction.get("source", "")).startswith("issue#") else "unknown",
+                "notes": "public issue direction is inspiration, not originality proof",
+            },
             "status": status,
         }
         if self.packager is not None:

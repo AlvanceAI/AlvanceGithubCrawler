@@ -1,8 +1,13 @@
 from __future__ import annotations
 
 import shlex
-import tomllib
 from pathlib import Path
+from typing import Any
+
+try:
+    import tomllib  # type: ignore[import-not-found]
+except ModuleNotFoundError:  # pragma: no cover - exercised on Python 3.10
+    tomllib = None  # type: ignore[assignment]
 
 from .python_workspace import python_workspace_install_commands
 
@@ -111,8 +116,70 @@ def has_poetry_dev_group(metadata: dict[str, object]) -> bool:
 def read_pyproject(path: Path) -> dict[str, object]:
     if not path.is_file():
         return {}
+    if tomllib is not None:
+        try:
+            with path.open("rb") as handle:
+                return tomllib.load(handle)
+        except (OSError, tomllib.TOMLDecodeError):
+            return {}
+    return parse_simple_toml(path.read_text(encoding="utf-8"))
+
+
+def parse_simple_toml(text: str) -> dict[str, object]:
+    root: dict[str, Any] = {}
+    current: dict[str, Any] = root
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("[") and line.endswith("]") and not line.startswith("[["):
+            current = root
+            for part in line.strip("[]").split("."):
+                current = current.setdefault(part, {})
+            continue
+        if "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        current[key.strip()] = parse_simple_value(value.strip())
+    return root
+
+
+def parse_simple_value(value: str) -> object:
+    if value.startswith("[") and value.endswith("]"):
+        inner = value[1:-1].strip()
+        if not inner:
+            return []
+        return [parse_simple_value(part.strip()) for part in inner.split(",")]
+    if value.startswith("{") and value.endswith("}"):
+        result: dict[str, object] = {}
+        inner = value[1:-1].strip()
+        if not inner:
+            return result
+        for part in split_top_level(inner):
+            key, nested = part.split("=", 1)
+            result[key.strip()] = parse_simple_value(nested.strip())
+        return result
+    if value in {"true", "false"}:
+        return value == "true"
+    if value.startswith('"') and value.endswith('"'):
+        return value[1:-1]
     try:
-        with path.open("rb") as handle:
-            return tomllib.load(handle)
-    except (OSError, tomllib.TOMLDecodeError):
-        return {}
+        return int(value)
+    except ValueError:
+        return value
+
+
+def split_top_level(text: str) -> list[str]:
+    parts: list[str] = []
+    depth = 0
+    start = 0
+    for index, char in enumerate(text):
+        if char in "[{":
+            depth += 1
+        elif char in "]}":
+            depth -= 1
+        elif char == "," and depth == 0:
+            parts.append(text[start:index].strip())
+            start = index + 1
+    parts.append(text[start:].strip())
+    return [part for part in parts if part]

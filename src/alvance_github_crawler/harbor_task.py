@@ -26,10 +26,24 @@ def task_name(repository: QualifiedRepository) -> str:
 def harbor_template_alias(task_name: str, environment_dir: Path) -> str:
     try:
         from dirhash import dirhash
-    except ImportError as exc:
-        raise RuntimeError("dirhash is required for Harbor packaging") from exc
-    digest = dirhash(environment_dir, "sha256")[:8]
+    except ImportError:
+        digest = _directory_sha256(environment_dir)[:8]
+    else:
+        digest = dirhash(environment_dir, "sha256")[:8]
     return f"{task_name}__{digest}".replace(".", "-")
+
+
+def _directory_sha256(root: Path) -> str:
+    digest = hashlib.sha256()
+    for path in sorted(item for item in root.rglob("*") if item.is_file()):
+        relative = path.relative_to(root).as_posix()
+        digest.update(relative.encode("utf-8"))
+        digest.update(b"\0")
+        with path.open("rb") as handle:
+            for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(chunk)
+        digest.update(b"\0")
+    return digest.hexdigest()
 
 
 def render_environment_dockerfile(repository: QualifiedRepository) -> str:
@@ -46,6 +60,9 @@ def render_environment_dockerfile(repository: QualifiedRepository) -> str:
 def render_instruction(repository: QualifiedRepository) -> str:
     fallback = "Inspect the repository and implement the requested change."
     return (
+        "# Direction scaffold\n\n"
+        "This file is a Crawler-produced direction scaffold, not a locked DeepSWE "
+        "instruction and not an accepted task specification.\n\n"
         f"Repository `{repository.repo}` at commit `{repository.base_commit}` is "
         "preloaded in `/app`.\n\n"
         "Work in `/app`. The validated fuzzy direction is:\n\n"

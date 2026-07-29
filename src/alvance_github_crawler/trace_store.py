@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .harbor_task import (
+    _directory_sha256,
     harbor_template_alias,
     material_id,
     render_environment_dockerfile,
@@ -57,9 +58,10 @@ class TracePackageStore:
         environment_sha256 = alias.rsplit("__", 1)[-1]
         try:
             from dirhash import dirhash
-        except ImportError as exc:
-            raise RuntimeError("dirhash is required for Trace packaging") from exc
-        full_environment_hash = dirhash(task_environment, "sha256")
+        except ImportError:
+            full_environment_hash = _directory_sha256(task_environment)
+        else:
+            full_environment_hash = dirhash(task_environment, "sha256")
         if not full_environment_hash.startswith(environment_sha256):
             raise RuntimeError("Harbor environment hash is inconsistent")
 
@@ -162,7 +164,13 @@ class TracePackageStore:
         test_path.write_text(render_test_script(repository), encoding="utf-8")
         test_path.chmod(0o755)
         solve_path = solution_dir / "solve.sh"
-        solve_path.write_text("#!/bin/sh\nset -eu\nexit 0\n", encoding="utf-8")
+        solve_path.write_text(
+            "#!/bin/sh\n"
+            "set -eu\n"
+            "# Placeholder only. This Crawler task is a direction scaffold, not a reference solution.\n"
+            "exit 0\n",
+            encoding="utf-8",
+        )
         solve_path.chmod(0o755)
 
     def _upsert_package(self, package: dict[str, Any]) -> list[dict[str, Any]]:

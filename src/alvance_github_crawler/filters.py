@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from .github import GitHubClient
@@ -24,7 +24,7 @@ def _parse_github_datetime(value: str) -> datetime:
 class HardFilter:
     def __init__(self, github: GitHubClient, *, now: datetime | None = None) -> None:
         self.github = github
-        self.now = now or datetime.now(UTC)
+        self.now = now or datetime.now(timezone.utc)
 
     def evaluate(self, repo: dict[str, Any], tree: list[dict[str, Any]]) -> HardFilterResult:
         if int(repo.get("stargazers_count", 0)) < 100:

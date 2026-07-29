@@ -5,7 +5,6 @@ import time
 from typing import Any, Protocol
 
 import requests
-from openai import OpenAI
 from pydantic import BaseModel, Field
 
 from .github import GitHubClient
@@ -44,6 +43,10 @@ direction 用一句中文准确概括待实现功能。
         timeout_s: int = 120,
         max_output_tokens: int = 1_000,
     ) -> None:
+        try:
+            from openai import OpenAI
+        except ModuleNotFoundError as exc:
+            raise RuntimeError("openai SDK is required for OpenAIDirectionJudge") from exc
         options = {"api_key": api_key, "timeout": timeout_s, "max_retries": 1}
         if base_url:
             options["base_url"] = base_url.rstrip("/")

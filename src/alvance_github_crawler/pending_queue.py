@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -110,7 +110,7 @@ class PendingQueue:
             "schema_version": PENDING_SCHEMA_VERSION,
             "event": event,
             "key": key,
-            "recorded_at": datetime.now(UTC).isoformat(),
+            "recorded_at": datetime.now(timezone.utc).isoformat(),
             **fields,
         }
         with self.path.open("a", encoding="utf-8") as handle:

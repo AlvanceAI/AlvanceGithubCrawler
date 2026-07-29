@@ -1,15 +1,23 @@
 from __future__ import annotations
 
 import json
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from .production_events import ProductionEventWriter
+
 
 class JsonlRegistry:
-    def __init__(self, candidates_path: Path, rejections_path: Path) -> None:
+    def __init__(
+        self,
+        candidates_path: Path,
+        rejections_path: Path,
+        events_path: Path | None = None,
+    ) -> None:
         self.candidates_path = candidates_path
         self.rejections_path = rejections_path
+        self.events = ProductionEventWriter(events_path)
         candidates_path.parent.mkdir(parents=True, exist_ok=True)
         rejections_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -50,8 +58,14 @@ class JsonlRegistry:
         return {repo for repo, reason in latest.items() if reason not in retryable}
 
     def register(self, record: dict[str, Any]) -> None:
-        payload = {"registered_at": datetime.now(UTC).isoformat(), **record}
+        payload = {"registered_at": datetime.now(timezone.utc).isoformat(), **record}
         self._append(self.candidates_path, payload)
+        self.events.emit(
+            stage="register",
+            event_type="candidate_registered",
+            status="ok",
+            repo=str(record.get("repo") or ""),
+        )
 
     def reject(
         self,
@@ -61,13 +75,20 @@ class JsonlRegistry:
         **details: Any,
     ) -> None:
         payload = {
-            "rejected_at": datetime.now(UTC).isoformat(),
+            "rejected_at": datetime.now(timezone.utc).isoformat(),
             "repo": repo.get("full_name", "unknown"),
             "stage": stage,
             "reason": reason,
             **details,
         }
         self._append(self.rejections_path, payload)
+        self.events.emit(
+            stage=stage,
+            event_type="candidate_rejected",
+            status="rejected",
+            repo=str(repo.get("full_name", "unknown")),
+            reason=reason,
+        )
 
     @staticmethod
     def _append(path: Path, payload: dict[str, Any]) -> None:

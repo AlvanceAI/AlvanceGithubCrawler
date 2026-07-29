@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import json
-import tomllib
 
+from alvance_github_crawler.python_install import read_pyproject
 from alvance_github_crawler.package_models import (
     E2BWrapperReceipt,
     HarborPackageResult,
@@ -91,8 +91,7 @@ def test_trace_store_writes_tiny_native_layout(tmp_path) -> None:
     assert not any(path.name == ".git" for path in tmp_path.rglob(".git"))
     assert sum(path.stat().st_size for path in tmp_path.rglob("*") if path.is_file()) < 30_000
 
-    with (material_dir / "material.toml").open("rb") as handle:
-        material = tomllib.load(handle)
+    material = read_pyproject(material_dir / "material.toml")
     assert material["environment"]["e2b_template"] == "harbor-id"
     assert material["source"]["source_tree"] == "b" * 40
     assert (

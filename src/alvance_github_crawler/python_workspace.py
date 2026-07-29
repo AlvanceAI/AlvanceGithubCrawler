@@ -2,8 +2,12 @@ from __future__ import annotations
 
 import re
 import shlex
-import tomllib
 from pathlib import Path
+
+try:
+    import tomllib  # type: ignore[import-not-found]
+except ModuleNotFoundError:  # pragma: no cover - exercised on Python 3.10
+    tomllib = None  # type: ignore[assignment]
 
 LOCAL_PACKAGE_PATTERN = re.compile(r"(?:^|\s)(?:-e\s+)?(?:\./)?(packages/[^\s;\[]+)")
 NODE_BUILD_MARKERS = ("npm ", "npm\n", "node ", "node\n")
@@ -69,11 +73,17 @@ def referenced_workspace_packages(repo_path: Path, requirement_files: list[str])
 def uv_workspace_packages(repo_path: Path) -> tuple[Path, ...]:
     """Return installable local members declared by uv workspace metadata."""
     pyproject = repo_path / "pyproject.toml"
-    try:
-        with pyproject.open("rb") as handle:
-            metadata = tomllib.load(handle)
-    except (OSError, tomllib.TOMLDecodeError):
-        return ()
+    if tomllib is not None:
+        try:
+            with pyproject.open("rb") as handle:
+                metadata = tomllib.load(handle)
+        except (OSError, tomllib.TOMLDecodeError):
+            return ()
+    else:
+        try:
+            metadata = parse_uv_workspace(pyproject.read_text(encoding="utf-8"))
+        except OSError:
+            return ()
 
     tool = metadata.get("tool") or {}
     uv = tool.get("uv") if isinstance(tool, dict) else None
@@ -92,6 +102,26 @@ def uv_workspace_packages(repo_path: Path) -> tuple[Path, ...]:
             ):
                 packages.add(path.relative_to(repo_path))
     return tuple(sorted(packages, key=lambda path: path.as_posix()))
+
+
+def parse_uv_workspace(text: str) -> dict[str, object]:
+    in_workspace = False
+    members: list[str] = []
+    for raw in text.splitlines():
+        line = raw.strip()
+        if line.startswith("[") and line.endswith("]"):
+            in_workspace = line == "[tool.uv.workspace]"
+            continue
+        if not in_workspace or not line.startswith("members") or "=" not in line:
+            continue
+        value = line.split("=", 1)[1].strip()
+        if value.startswith("[") and value.endswith("]"):
+            members = [
+                item.strip().strip('"').strip("'")
+                for item in value[1:-1].split(",")
+                if item.strip()
+            ]
+    return {"tool": {"uv": {"workspace": {"members": members}}}}
 
 
 def package_requires_node(package_path: Path) -> bool:

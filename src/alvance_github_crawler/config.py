@@ -4,7 +4,7 @@ import os
 import shutil
 import subprocess
 from dataclasses import dataclass, field
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
@@ -84,7 +84,7 @@ class PipelineConfig:
 
     @property
     def queries(self) -> list[str]:
-        cutoff = (datetime.now(UTC) - timedelta(days=365)).date().isoformat()
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=365)).date().isoformat()
         return [
             f"language:{language} stars:100..200000 pushed:>{cutoff} "
             f"size:<{self.max_repo_size_kb} archived:false fork:false"

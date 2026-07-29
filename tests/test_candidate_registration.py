@@ -1,6 +1,11 @@
 from __future__ import annotations
 
+import json
+
 from alvance_github_crawler.candidate_registration import compact_environment
+from alvance_github_crawler.candidate_registration import CandidateRegistrar
+from alvance_github_crawler.registry import JsonlRegistry
+from alvance_github_crawler.scoring import LanguageQuota
 
 
 def test_compact_environment_removes_remote_test_logs() -> None:
@@ -25,3 +30,40 @@ def test_compact_environment_removes_remote_test_logs() -> None:
 
 def test_compact_environment_preserves_none() -> None:
     assert compact_environment(None) is None
+
+
+def test_candidate_registration_persists_taskability_and_contamination(tmp_path) -> None:
+    registry = JsonlRegistry(tmp_path / "candidates.jsonl", tmp_path / "rejections.jsonl")
+    registrar = CandidateRegistrar(registry, LanguageQuota(), packager=None)
+
+    registrar.register(
+        {
+            "full_name": "owner/project",
+            "base_commit": "abcdef",
+            "language": "Python",
+            "description": "CLI parser and config toolkit",
+            "topics": ["parser"],
+            "license": {"spdx_id": "MIT"},
+        },
+        score={"file_count": 12, "total": 80},
+        direction={
+            "source": "issue#123",
+            "direction": "Improve config parser errors.",
+            "keywords": ["config"],
+            "target_paths": ["src/config.py"],
+            "h6_sources": ["README.md"],
+        },
+        build={"test_cmd": "pytest", "image": "local-image"},
+        environment={"offline": {"ok": True, "stdout_tail": "hidden"}},
+        template_id="tmpl-1",
+        benchmark={"test_duration_median_s": 30},
+        adjusted_score=78.5,
+        status="qualified",
+    )
+
+    record = json.loads(
+        (tmp_path / "candidates.jsonl").read_text(encoding="utf-8").splitlines()[0]
+    )
+    assert record["taskability"]["score"] >= 3
+    assert record["contamination"]["risk"] == "medium"
+    assert record["e2b_environment"]["offline"] == {"ok": True}

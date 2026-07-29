@@ -31,7 +31,11 @@ class PendingVerificationRunner:
 
     @classmethod
     def from_config(cls, config: PipelineConfig) -> PendingVerificationRunner:
-        registry = JsonlRegistry(config.candidates_path, config.rejections_path)
+        registry = JsonlRegistry(
+            config.candidates_path,
+            config.rejections_path,
+            config.output_dir / "events.jsonl",
+        )
         quota = LanguageQuota(config.candidates_path)
         registrar = CandidateRegistrar(
             registry,

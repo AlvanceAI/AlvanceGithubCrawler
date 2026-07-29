@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import shlex
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from importlib.metadata import PackageNotFoundError, version
 from typing import Any
 
@@ -103,7 +103,7 @@ def build_e2b_receipt(
 ) -> dict[str, Any]:
     return {
         "schema_version": TRACE_MATERIAL_SCHEMA_VERSION,
-        "validated_at": datetime.now(UTC).isoformat(),
+        "validated_at": datetime.now(timezone.utc).isoformat(),
         "harbor_cli_version": _package_version("harbor"),
         "e2b_sdk_version": _package_version("e2b"),
         "template_id": wrapper.harbor_template_id,
