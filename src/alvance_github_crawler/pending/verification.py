@@ -93,6 +93,7 @@ class PendingVerificationRunner:
             if max_items is not None and len(items) >= max_items:
                 break
             items.append(item)
+        scheduled_keys = {item.key for item in items}
 
         lane_count = len(self.verifiers)
         total_workers = max_workers * lane_count
@@ -106,6 +107,15 @@ class PendingVerificationRunner:
             thread_name_prefix="e2b-verify",
         ) as pool:
             futures: dict[Future[str], tuple[Any, int]] = {}
+
+            def refresh_items() -> None:
+                if max_items is not None:
+                    return
+                for pending_item in self.queue.pending():
+                    if pending_item.key in scheduled_keys:
+                        continue
+                    scheduled_keys.add(pending_item.key)
+                    items.append(pending_item)
 
             def submit_next(lane: int) -> bool:
                 if not items or lane in halted_lanes or lane in exhausted_lanes:
@@ -172,6 +182,7 @@ class PendingVerificationRunner:
                         if lane_count == 1:
                             stats["halted"] = 1
 
+                refresh_items()
                 for lane in range(lane_count):
                     while in_flight[lane] < max_workers and submit_next(lane):
                         pass

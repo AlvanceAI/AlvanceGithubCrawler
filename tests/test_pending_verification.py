@@ -236,3 +236,40 @@ def test_runner_moves_exhausted_key_work_to_remaining_slot(tmp_path, monkeypatch
     assert stats["key_exhausted"] == 1
     assert stats["registered"] == 4
     assert stats["remaining"] == 0
+
+
+def test_runner_absorbs_items_enqueued_while_verification_is_running(
+    tmp_path, monkeypatch
+) -> None:
+    queue = filled_queue(tmp_path, count=1)
+    runner = PendingVerificationRunner(
+        queue, registry=StubRegistry(), verifier=None  # type: ignore[arg-type]
+    )
+    first_started = threading.Event()
+    release_first = threading.Event()
+    verified: list[str] = []
+
+    def verify(repo, candidate):
+        verified.append(repo["full_name"])
+        if len(verified) == 1:
+            first_started.set()
+            assert release_first.wait(timeout=2)
+        return "registered"
+
+    monkeypatch.setattr(runner, "_verify_item", verify)
+    result: dict[str, dict[str, int]] = {}
+
+    def run() -> None:
+        result["stats"] = runner.run(max_workers=2)
+
+    thread = threading.Thread(target=run)
+    thread.start()
+    assert first_started.wait(timeout=2)
+    for index in range(1, 4):
+        queue.enqueue(make_candidate(index))
+    release_first.set()
+    thread.join(timeout=3)
+
+    assert not thread.is_alive()
+    assert len(verified) == 4
+    assert result["stats"] == {"processed": 4, "registered": 4, "remaining": 0}
