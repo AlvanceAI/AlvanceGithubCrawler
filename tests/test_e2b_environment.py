@@ -35,9 +35,10 @@ def test_offline_verifier_passes_envs_and_records_command_failure(monkeypatch) -
         def run(self, command: str, *, user: str, timeout: int):
             assert command.startswith("env ")
             assert "PATH=" in command
+            assert "timeout --signal=TERM --kill-after=10s 600s" in command
             assert "go test ./..." in command
             assert user == "root"
-            assert timeout == 600
+            assert timeout == 630
             raise _CommandFailure
 
     class Sandbox:
@@ -141,6 +142,37 @@ def test_offline_verifier_runs_as_selected_user(monkeypatch) -> None:
     assert result.ok
     assert observed["user"] == "user"
     assert "HOME=/home/user" in str(observed["command"])
+
+
+def test_offline_verifier_classifies_shell_timeout(monkeypatch) -> None:
+    class Result:
+        exit_code = 124
+        stdout = ""
+        stderr = ""
+
+    class Commands:
+        def run(self, command: str, *, user: str, timeout: int):
+            return Result()
+
+    class Sandbox:
+        commands = Commands()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return None
+
+        @classmethod
+        def create(cls, **kwargs):
+            return cls()
+
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Sandbox=Sandbox))
+    result = E2BOfflineVerifier("test-key").verify("repo-template", "pytest")
+
+    assert not result.ok
+    assert result.reason == "offline_test_timeout"
+    assert result.exit_code == 124
 
 
 def test_go_runtime_and_template_recipe(tmp_path) -> None:

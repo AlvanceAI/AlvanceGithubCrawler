@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 
 from .models import BenchmarkResult, BenchmarkRun
-from .runtime_profiles import command_with_environment
+from .runtime_profiles import command_with_environment, command_with_timeout
 
 THRESHOLDS = {
     "cold_start_s": 20.0,
@@ -107,7 +107,8 @@ class E2BBenchmark:
             raise RuntimeError("e2b SDK is not installed; install the project with [e2b]") from exc
 
         runs: list[BenchmarkRun] = []
-        timed_command = f"/usr/bin/time -v -o /tmp/time.log sh -c {shlex.quote(test_cmd)}"
+        bounded_command = command_with_timeout(test_cmd, self.command_timeout_s)
+        timed_command = f"/usr/bin/time -v -o /tmp/time.log sh -c {shlex.quote(bounded_command)}"
         sandbox_command = command_with_environment(timed_command, envs)
         for _ in range(self.runs):
             started = time.monotonic()
@@ -126,7 +127,7 @@ class E2BBenchmark:
                         result = sandbox.commands.run(
                             sandbox_command,
                             user=user,
-                            timeout=self.command_timeout_s,
+                            timeout=self.command_timeout_s + 30,
                         )
                     except Exception as exc:
                         if not hasattr(exc, "exit_code"):

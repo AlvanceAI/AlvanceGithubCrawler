@@ -24,8 +24,9 @@ def test_e2b_benchmark_passes_runtime_envs(monkeypatch) -> None:
         def run(self, command: str, *, user: str, timeout: int):
             assert command.startswith("env ")
             assert "PATH=" in command
+            assert "timeout --signal=TERM --kill-after=10s 600s" in command
             assert user == "root"
-            assert timeout == 600
+            assert timeout == 630
             return Result()
 
     class Files:

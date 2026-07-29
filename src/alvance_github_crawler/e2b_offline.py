@@ -4,7 +4,7 @@ import time
 from dataclasses import asdict, dataclass
 from typing import Any
 
-from .runtime_profiles import command_with_environment
+from .runtime_profiles import command_with_environment, command_with_timeout
 
 
 @dataclass(slots=True)
@@ -48,9 +48,12 @@ class E2BOfflineVerifier:
         ) as sandbox:
             try:
                 result = sandbox.commands.run(
-                    command_with_environment(test_cmd, envs),
+                    command_with_environment(
+                        command_with_timeout(test_cmd, self.timeout_s),
+                        envs,
+                    ),
                     user=user,
-                    timeout=self.timeout_s,
+                    timeout=self.timeout_s + 30,
                 )
             except Exception as exc:
                 if hasattr(exc, "exit_code"):
@@ -67,7 +70,13 @@ class E2BOfflineVerifier:
                     raise
         return OfflineTestResult(
             ok=result.exit_code == 0,
-            reason="ok" if result.exit_code == 0 else "offline_test_fail",
+            reason=(
+                "ok"
+                if result.exit_code == 0
+                else "offline_test_timeout"
+                if result.exit_code == 124
+                else "offline_test_fail"
+            ),
             duration_s=round(time.monotonic() - started, 2),
             exit_code=result.exit_code,
             stdout_tail=(getattr(result, "stdout", "") or "")[-4_000:],

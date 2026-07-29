@@ -180,6 +180,11 @@ def command_as_user(command: str, user: str) -> str:
     return f"runuser -u {shlex.quote(user)} -- {command}"
 
 
+def command_with_timeout(command: str, timeout_s: int) -> str:
+    """Enforce the command budget inside the sandbox, independent of SDK streaming."""
+    return f"timeout --signal=TERM --kill-after=10s {timeout_s}s sh -c {shlex.quote(command)}"
+
+
 def render_runtime_dockerfile(language: str, version: str) -> str:
     """Render the legacy local-Docker runtime description used by tests and fallback."""
     apt = (
