@@ -135,28 +135,31 @@ class PublicImplementationSearch:
         response.raise_for_status()
         final_count = 0
         event = ""
-        for raw_line in response.iter_lines(decode_unicode=True):
-            if not raw_line:
-                continue
-            if raw_line.startswith("event: "):
-                event = raw_line[7:].strip()
-                continue
-            if not raw_line.startswith("data: "):
-                continue
-            try:
-                payload = json.loads(raw_line[6:])
-            except json.JSONDecodeError:
-                continue
-            if event in {"error", "alert"}:
-                raise RuntimeError(
-                    f"Sourcegraph search error: {payload!r}"
-                )
-            if event == "matches" and isinstance(payload, list) and payload:
-                return 1
-            if event == "progress" and isinstance(payload, dict):
-                final_count = max(final_count, int(payload.get("matchCount", 0) or 0))
-                if final_count > 0:
-                    return final_count
+        try:
+            for raw_line in response.iter_lines(decode_unicode=True):
+                if not raw_line:
+                    continue
+                if raw_line.startswith("event: "):
+                    event = raw_line[7:].strip()
+                    continue
+                if not raw_line.startswith("data: "):
+                    continue
+                try:
+                    payload = json.loads(raw_line[6:])
+                except json.JSONDecodeError:
+                    continue
+                if event in {"error", "alert"}:
+                    raise RuntimeError(
+                        f"Sourcegraph search error: {payload!r}"
+                    )
+                if event == "matches" and isinstance(payload, list) and payload:
+                    return 1
+                if event == "progress" and isinstance(payload, dict):
+                    final_count = max(final_count, int(payload.get("matchCount", 0) or 0))
+                    if final_count > 0:
+                        return final_count
+        except requests.RequestException as exc:
+            raise RuntimeError(f"Sourcegraph stream read error: {exc}") from exc
         return final_count
 
 
