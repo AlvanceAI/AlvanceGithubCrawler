@@ -6,9 +6,17 @@ from pathlib import Path
 
 from .python_workspace import python_workspace_install_commands
 
-PREFERRED_EXTRAS = ("test", "tests", "dev", "testing")
+PREFERRED_EXTRAS = (
+    "test",
+    "tests",
+    "dev",
+    "testing",
+    "benchmark",
+    "benchmarks",
+    "benchmarking",
+)
 DYNAMIC_PREFERRED_EXTRAS = (*PREFERRED_EXTRAS, "optional", "all")
-PREFERRED_GROUPS = ("test", "tests", "dev", "testing")
+PREFERRED_GROUPS = PREFERRED_EXTRAS
 REQUIREMENT_FILES = (
     "requirements-test.txt",
     "requirements-dev.txt",

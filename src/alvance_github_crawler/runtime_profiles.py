@@ -9,7 +9,7 @@ from pathlib import Path
 from packaging.specifiers import InvalidSpecifier, SpecifierSet
 
 RUNTIME_RECIPE_VERSION = "v3"
-REPOSITORY_RECIPE_VERSION = "v11"
+REPOSITORY_RECIPE_VERSION = "v12"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
