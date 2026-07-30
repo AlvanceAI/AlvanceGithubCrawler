@@ -1,0 +1,382 @@
+[2026-07-30T09:17:57Z] stage=verify-escalated-20260730T091757Z run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-30 09:17:59,424 INFO alvance_github_crawler.pending.verification: verifying pending candidate Gitlawb/zero key_slot=1
+2026-07-30 09:17:59,428 INFO alvance_github_crawler.pending.verification: verifying pending candidate padok-team/burrito key_slot=2
+2026-07-30 09:17:59,431 INFO alvance_github_crawler.pending.verification: verifying pending candidate juanfont/headscale key_slot=3
+2026-07-30 09:17:59,434 INFO alvance_github_crawler.pending.verification: verifying pending candidate HKUDS/nanobot key_slot=1
+2026-07-30 09:17:59,435 INFO alvance_github_crawler.pending.verification: verifying pending candidate cilium/ebpf key_slot=2
+2026-07-30 09:17:59,440 INFO alvance_github_crawler.pending.verification: verifying pending candidate guacsec/guac key_slot=3
+2026-07-30 09:17:59,442 INFO alvance_github_crawler.pending.verification: verifying pending candidate unicity-sphere/sphere-sdk key_slot=1
+2026-07-30 09:17:59,450 INFO alvance_github_crawler.pending.verification: verifying pending candidate coaxk/subarr key_slot=2
+2026-07-30 09:17:59,455 INFO alvance_github_crawler.pending.verification: verifying pending candidate kimdre/doco-cd key_slot=3
+2026-07-30 09:17:59,458 INFO alvance_github_crawler.pending.verification: verifying pending candidate crossplane-contrib/provider-upjet-azure key_slot=1
+2026-07-30 09:17:59,461 INFO alvance_github_crawler.pending.verification: verifying pending candidate project-copacetic/copacetic key_slot=2
+2026-07-30 09:17:59,472 INFO alvance_github_crawler.pending.verification: verifying pending candidate erpc/erpc key_slot=3
+2026-07-30 09:17:59,474 INFO alvance_github_crawler.pending.verification: verifying pending candidate ConduitIO/conduit key_slot=1
+2026-07-30 09:17:59,479 INFO alvance_github_crawler.pending.verification: verifying pending candidate osscontainertools/kaniko key_slot=2
+2026-07-30 09:17:59,485 INFO alvance_github_crawler.pending.verification: verifying pending candidate elastic/terraform-provider-elasticstack key_slot=3
+2026-07-30 09:17:59,497 INFO alvance_github_crawler.pending.verification: verifying pending candidate google/adk-go key_slot=1
+2026-07-30 09:17:59,505 INFO alvance_github_crawler.pending.verification: verifying pending candidate DataDog/pup key_slot=2
+2026-07-30 09:17:59,506 INFO alvance_github_crawler.pending.verification: verifying pending candidate CodSpeedHQ/codspeed key_slot=3
+2026-07-30 09:17:59,510 INFO alvance_github_crawler.pending.verification: verifying pending candidate okta/terraform-provider-okta key_slot=1
+2026-07-30 09:17:59,522 INFO alvance_github_crawler.pending.verification: verifying pending candidate open-telemetry/opentelemetry-operator key_slot=2
+2026-07-30 09:17:59,532 INFO alvance_github_crawler.pending.verification: verifying pending candidate pion/ice key_slot=3
+2026-07-30 09:17:59,537 INFO alvance_github_crawler.pending.verification: verifying pending candidate dimetron/pi-go key_slot=1
+2026-07-30 09:17:59,551 INFO alvance_github_crawler.pending.verification: verifying pending candidate line/line-bot-sdk-nodejs key_slot=2
+2026-07-30 09:17:59,556 INFO alvance_github_crawler.pending.verification: verifying pending candidate xd009642/tarpaulin key_slot=3
+2026-07-30 09:17:59,584 INFO alvance_github_crawler.pending.verification: verifying pending candidate rune-rs/rune key_slot=1
+2026-07-30 09:17:59,603 INFO alvance_github_crawler.pending.verification: verifying pending candidate microsoft/qdk key_slot=2
+2026-07-30 09:17:59,607 INFO alvance_github_crawler.pending.verification: verifying pending candidate NVIDIA-NeMo/Anonymizer key_slot=3
+2026-07-30 09:17:59,623 INFO alvance_github_crawler.pending.verification: verifying pending candidate jaegertracing/jaeger key_slot=1
+2026-07-30 09:17:59,633 INFO alvance_github_crawler.pending.verification: verifying pending candidate hangxie/parquet-tools key_slot=2
+2026-07-30 09:17:59,641 INFO alvance_github_crawler.pending.verification: verifying pending candidate atusy/kakehashi key_slot=3
+2026-07-30 09:17:59,653 INFO alvance_github_crawler.pending.verification: verifying pending candidate PHPantom-dev/phpantom_lsp key_slot=1
+2026-07-30 09:17:59,656 INFO alvance_github_crawler.pending.verification: verifying pending candidate distribution/distribution key_slot=2
+2026-07-30 09:17:59,662 INFO alvance_github_crawler.pending.verification: verifying pending candidate webjsdev/webjs key_slot=3
+2026-07-30 09:17:59,669 INFO alvance_github_crawler.pending.verification: verifying pending candidate snowflakedb/snowflake-cli key_slot=1
+2026-07-30 09:17:59,670 INFO alvance_github_crawler.pending.verification: verifying pending candidate alibaba/open-code-review key_slot=2
+2026-07-30 09:17:59,675 INFO alvance_github_crawler.pending.verification: verifying pending candidate updatecli/updatecli key_slot=3
+2026-07-30 09:17:59,677 INFO alvance_github_crawler.pending.verification: verifying pending candidate charmbracelet/soft-serve key_slot=1
+2026-07-30 09:17:59,683 INFO alvance_github_crawler.pending.verification: verifying pending candidate ansible/ansible-ui key_slot=2
+2026-07-30 09:17:59,690 INFO alvance_github_crawler.pending.verification: verifying pending candidate fajarhide/omni key_slot=3
+2026-07-30 09:17:59,693 INFO alvance_github_crawler.pending.verification: verifying pending candidate sqlc-dev/sqlc key_slot=1
+2026-07-30 09:17:59,695 INFO alvance_github_crawler.pending.verification: verifying pending candidate turbot/steampipe-plugin-aws key_slot=2
+2026-07-30 09:17:59,699 INFO alvance_github_crawler.pending.verification: verifying pending candidate anchore/grype key_slot=3
+2026-07-30 09:17:59,709 INFO alvance_github_crawler.pending.verification: verifying pending candidate google/osv-scanner key_slot=1
+2026-07-30 09:17:59,718 INFO alvance_github_crawler.pending.verification: verifying pending candidate chainloop-dev/chainloop key_slot=2
+2026-07-30 09:17:59,725 INFO alvance_github_crawler.pending.verification: verifying pending candidate openai/openai-go key_slot=3
+2026-07-30 09:17:59,748 INFO alvance_github_crawler.pending.verification: verifying pending candidate sigstore/sigstore-js key_slot=1
+2026-07-30 09:17:59,762 INFO alvance_github_crawler.pending.verification: verifying pending candidate dprint/dprint key_slot=2
+2026-07-30 09:17:59,777 INFO alvance_github_crawler.pending.verification: verifying pending candidate fluvio-community/fluvio key_slot=3
+2026-07-30 09:17:59,788 INFO alvance_github_crawler.pending.verification: verifying pending candidate alloy-rs/alloy key_slot=1
+2026-07-30 09:17:59,798 INFO alvance_github_crawler.pending.verification: verifying pending candidate josh-project/josh key_slot=2
+2026-07-30 09:17:59,815 INFO alvance_github_crawler.pending.verification: verifying pending candidate tailscale/tailscale-rs key_slot=3
+2026-07-30 09:17:59,821 INFO alvance_github_crawler.pending.verification: verifying pending candidate rtk-ai/icm key_slot=1
+2026-07-30 09:17:59,843 INFO alvance_github_crawler.pending.verification: verifying pending candidate rcieri/glab-tui key_slot=2
+2026-07-30 09:17:59,854 INFO alvance_github_crawler.pending.verification: verifying pending candidate apache/datafusion-python key_slot=3
+2026-07-30 09:17:59,861 INFO alvance_github_crawler.pending.verification: verifying pending candidate getporter/porter key_slot=1
+2026-07-30 09:17:59,879 INFO alvance_github_crawler.pending.verification: verifying pending candidate xataio/pgstream key_slot=2
+2026-07-30 09:17:59,892 INFO alvance_github_crawler.pending.verification: verifying pending candidate temporalio/temporal-worker-controller key_slot=3
+2026-07-30 09:17:59,909 INFO alvance_github_crawler.pending.verification: verifying pending candidate GoogleContainerTools/config-sync key_slot=1
+2026-07-30 09:17:59,923 INFO alvance_github_crawler.pending.verification: verifying pending candidate marmotdata/marmot key_slot=2
+2026-07-30 09:17:59,938 INFO alvance_github_crawler.pending.verification: verifying pending candidate aws-actions/aws-cloudformation-github-deploy key_slot=3
+2026-07-30 09:19:30,536 INFO alvance_github_crawler.pending.verification: pending candidate cilium/ebpf finished outcome=rejected key_slot=2 processed=1 in_flight=59
+2026-07-30 09:19:31,162 INFO alvance_github_crawler.pending.verification: verifying pending candidate rtk-ai/rtk key_slot=2
+2026-07-30 09:20:59,317 INFO alvance_github_crawler.pending.verification: pending candidate rcieri/glab-tui finished outcome=registered key_slot=2 processed=2 in_flight=59
+2026-07-30 09:20:59,907 INFO alvance_github_crawler.pending.verification: verifying pending candidate cot-rs/cot key_slot=2
+2026-07-30 09:21:29,313 INFO alvance_github_crawler.pending.verification: pending candidate rtk-ai/icm finished outcome=rejected key_slot=1 processed=3 in_flight=59
+2026-07-30 09:21:29,825 INFO alvance_github_crawler.pending.verification: verifying pending candidate AtalayaLabs/OxiCloud key_slot=1
+2026-07-30 09:21:31,892 INFO alvance_github_crawler.pending.verification: pending candidate aws-actions/aws-cloudformation-github-deploy finished outcome=registered key_slot=3 processed=4 in_flight=59
+2026-07-30 09:21:32,752 INFO alvance_github_crawler.pending.verification: verifying pending candidate achristmascarl/rainfrog key_slot=3
+2026-07-30 09:22:55,755 INFO alvance_github_crawler.pending.verification: pending candidate jaegertracing/jaeger finished outcome=rejected key_slot=1 processed=5 in_flight=59
+2026-07-30 09:22:56,385 INFO alvance_github_crawler.pending.verification: verifying pending candidate leptos-rs/leptos key_slot=1
+2026-07-30 09:23:16,811 INFO alvance_github_crawler.pending.verification: pending candidate dprint/dprint finished outcome=rejected key_slot=2 processed=6 in_flight=59
+2026-07-30 09:23:17,132 INFO alvance_github_crawler.pending.verification: verifying pending candidate typstyle-rs/typstyle key_slot=2
+2026-07-30 09:23:19,997 INFO alvance_github_crawler.pending.verification: pending candidate rune-rs/rune finished outcome=rejected key_slot=1 processed=7 in_flight=59
+2026-07-30 09:23:20,378 INFO alvance_github_crawler.pending.verification: verifying pending candidate mozilla-services/syncstorage-rs key_slot=1
+2026-07-30 09:23:44,556 INFO alvance_github_crawler.pending.verification: pending candidate rtk-ai/rtk finished outcome=registered key_slot=2 processed=8 in_flight=59
+2026-07-30 09:23:45,246 INFO alvance_github_crawler.pending.verification: verifying pending candidate fluxcd/image-automation-controller key_slot=2
+2026-07-30 09:24:10,094 INFO alvance_github_crawler.pending.verification: pending candidate CodSpeedHQ/codspeed finished outcome=rejected key_slot=3 processed=9 in_flight=59
+2026-07-30 09:24:10,434 INFO alvance_github_crawler.pending.verification: verifying pending candidate FootprintAI/Containarium key_slot=3
+2026-07-30 09:24:45,165 INFO alvance_github_crawler.pending.verification: pending candidate pion/ice finished outcome=rejected key_slot=3 processed=10 in_flight=59
+2026-07-30 09:24:45,493 INFO alvance_github_crawler.pending.verification: verifying pending candidate fluxcd/image-reflector-controller key_slot=3
+2026-07-30 09:24:47,371 INFO alvance_github_crawler.pending.verification: pending candidate openai/openai-go finished outcome=rejected key_slot=3 processed=11 in_flight=59
+2026-07-30 09:24:47,662 INFO alvance_github_crawler.pending.verification: verifying pending candidate cloudpilot-ai/karpenter-provider-gcp key_slot=3
+2026-07-30 09:25:11,488 INFO alvance_github_crawler.pending.verification: pending candidate PHPantom-dev/phpantom_lsp finished outcome=rejected key_slot=1 processed=12 in_flight=59
+2026-07-30 09:25:11,802 INFO alvance_github_crawler.pending.verification: verifying pending candidate safedep/vet key_slot=1
+2026-07-30 09:25:20,171 INFO alvance_github_crawler.pending.verification: pending candidate chainloop-dev/chainloop finished outcome=rejected key_slot=2 processed=13 in_flight=59
+2026-07-30 09:25:20,475 INFO alvance_github_crawler.pending.verification: verifying pending candidate kubestellar/kubeflex key_slot=2
+2026-07-30 09:25:23,820 INFO alvance_github_crawler.pending.verification: pending candidate guacsec/guac finished outcome=rejected key_slot=3 processed=14 in_flight=59
+2026-07-30 09:25:24,171 INFO alvance_github_crawler.pending.verification: verifying pending candidate slackapi/bolt-js key_slot=3
+2026-07-30 09:27:39,430 INFO alvance_github_crawler.pending.verification: pending candidate mozilla-services/syncstorage-rs finished outcome=rejected key_slot=1 processed=15 in_flight=59
+2026-07-30 09:27:39,696 INFO alvance_github_crawler.pending.verification: verifying pending candidate open-feature/js-sdk key_slot=1
+2026-07-30 09:27:49,668 INFO alvance_github_crawler.pending.verification: pending candidate fajarhide/omni finished outcome=rejected key_slot=3 processed=16 in_flight=59
+2026-07-30 09:27:49,905 INFO alvance_github_crawler.pending.verification: verifying pending candidate LukasNiessen/ArchUnitTS key_slot=3
+2026-07-30 09:28:02,640 INFO alvance_github_crawler.pending.verification: pending candidate leptos-rs/leptos finished outcome=rejected key_slot=1 processed=17 in_flight=59
+2026-07-30 09:28:02,970 INFO alvance_github_crawler.pending.verification: verifying pending candidate JhaSourav07/commitpulse key_slot=1
+2026-07-30 09:28:07,498 INFO alvance_github_crawler.pending.verification: pending candidate tailscale/tailscale-rs finished outcome=registered key_slot=3 processed=18 in_flight=59
+2026-07-30 09:28:07,851 INFO alvance_github_crawler.pending.verification: verifying pending candidate pionxzh/wakaru key_slot=3
+2026-07-30 09:28:16,250 INFO alvance_github_crawler.pending.verification: pending candidate fluvio-community/fluvio finished outcome=rejected key_slot=3 processed=19 in_flight=59
+2026-07-30 09:28:16,497 INFO alvance_github_crawler.pending.verification: verifying pending candidate iced-rs/iced key_slot=3
+2026-07-30 09:28:28,762 INFO alvance_github_crawler.pending.verification: pending candidate alloy-rs/alloy finished outcome=rejected key_slot=1 processed=20 in_flight=59
+2026-07-30 09:28:29,141 INFO alvance_github_crawler.pending.verification: verifying pending candidate linebender/xilem key_slot=1
+2026-07-30 09:28:34,614 INFO alvance_github_crawler.pending.verification: pending candidate josh-project/josh finished outcome=registered key_slot=2 processed=21 in_flight=59
+2026-07-30 09:28:34,842 INFO alvance_github_crawler.pending.verification: verifying pending candidate Watfaq/clash-rs key_slot=2
+2026-07-30 09:28:43,137 INFO alvance_github_crawler.pending.verification: pending candidate unicity-sphere/sphere-sdk finished outcome=rejected key_slot=1 processed=22 in_flight=59
+2026-07-30 09:28:43,370 INFO alvance_github_crawler.pending.verification: verifying pending candidate mierak/rmpc key_slot=1
+2026-07-30 09:29:10,082 INFO alvance_github_crawler.pending.verification: pending candidate fluxcd/image-automation-controller finished outcome=rejected key_slot=2 processed=23 in_flight=59
+2026-07-30 09:29:10,329 INFO alvance_github_crawler.pending.verification: verifying pending candidate posit-dev/ark key_slot=2
+2026-07-30 09:29:11,870 INFO alvance_github_crawler.pending.verification: pending candidate webjsdev/webjs finished outcome=rejected key_slot=3 processed=24 in_flight=59
+2026-07-30 09:29:12,156 INFO alvance_github_crawler.pending.verification: verifying pending candidate apollographql/apollo-mcp-server key_slot=3
+2026-07-30 09:29:21,615 INFO alvance_github_crawler.pending.verification: pending candidate padok-team/burrito finished outcome=rejected key_slot=2 processed=25 in_flight=59
+2026-07-30 09:29:22,110 INFO alvance_github_crawler.pending.verification: verifying pending candidate PVDoriginal/firefly key_slot=2
+2026-07-30 09:29:24,551 INFO alvance_github_crawler.pending.verification: pending candidate sigstore/sigstore-js finished outcome=rejected key_slot=1 processed=26 in_flight=59
+2026-07-30 09:29:24,800 INFO alvance_github_crawler.pending.verification: verifying pending candidate mandiant/capa key_slot=1
+2026-07-30 09:29:24,881 INFO alvance_github_crawler.pending.verification: pending candidate line/line-bot-sdk-nodejs finished outcome=rejected key_slot=2 processed=27 in_flight=59
+2026-07-30 09:29:25,232 INFO alvance_github_crawler.pending.verification: verifying pending candidate Binomica-Labs/SpliceCraft key_slot=2
+2026-07-30 09:29:40,380 INFO alvance_github_crawler.pending.verification: pending candidate google/adk-go finished outcome=rejected key_slot=1 processed=28 in_flight=59
+2026-07-30 09:29:40,686 INFO alvance_github_crawler.pending.verification: verifying pending candidate thevahidal/soul key_slot=1
+2026-07-30 09:29:49,855 INFO alvance_github_crawler.pending.verification: pending candidate NVIDIA-NeMo/Anonymizer finished outcome=rejected key_slot=3 processed=29 in_flight=59
+2026-07-30 09:29:50,530 INFO alvance_github_crawler.pending.verification: verifying pending candidate kellnr/kellnr key_slot=3
+2026-07-30 09:29:54,574 INFO alvance_github_crawler.pending.verification: pending candidate fluxcd/image-reflector-controller finished outcome=rejected key_slot=3 processed=30 in_flight=59
+2026-07-30 09:29:54,842 INFO alvance_github_crawler.pending.verification: verifying pending candidate DecapodLabs/decapod key_slot=3
+2026-07-30 09:29:58,042 INFO alvance_github_crawler.pending.verification: pending candidate HKUDS/nanobot finished outcome=rejected key_slot=1 processed=31 in_flight=59
+2026-07-30 09:29:58,313 INFO alvance_github_crawler.pending.verification: verifying pending candidate holon-run/holon key_slot=1
+2026-07-30 09:30:06,758 INFO alvance_github_crawler.pending.verification: pending candidate safedep/vet finished outcome=rejected key_slot=1 processed=32 in_flight=59
+2026-07-30 09:30:07,205 INFO alvance_github_crawler.pending.verification: verifying pending candidate s3s-project/s3s key_slot=1
+2026-07-30 09:30:08,125 INFO alvance_github_crawler.pending.verification: pending candidate coaxk/subarr finished outcome=rejected key_slot=2 processed=33 in_flight=59
+2026-07-30 09:30:08,385 INFO alvance_github_crawler.pending.verification: verifying pending candidate krakend/krakend-ce key_slot=2
+2026-07-30 09:30:14,941 INFO alvance_github_crawler.pending.verification: pending candidate ConduitIO/conduit finished outcome=rejected key_slot=1 processed=34 in_flight=59
+2026-07-30 09:30:15,278 INFO alvance_github_crawler.pending.verification: verifying pending candidate sktime/sktime key_slot=1
+2026-07-30 09:30:32,485 INFO alvance_github_crawler.pending.verification: pending candidate charmbracelet/soft-serve finished outcome=rejected key_slot=1 processed=35 in_flight=59
+2026-07-30 09:30:32,815 INFO alvance_github_crawler.pending.verification: verifying pending candidate scaleway/scaleway-cli key_slot=1
+2026-07-30 09:30:36,693 INFO alvance_github_crawler.pending.verification: pending candidate xd009642/tarpaulin finished outcome=rejected key_slot=3 processed=36 in_flight=59
+2026-07-30 09:30:37,254 INFO alvance_github_crawler.pending.verification: verifying pending candidate kittors/CliRelay key_slot=3
+2026-07-30 09:30:43,223 INFO alvance_github_crawler.pending.verification: pending candidate slackapi/bolt-js finished outcome=registered key_slot=3 processed=37 in_flight=59
+2026-07-30 09:30:43,518 INFO alvance_github_crawler.pending.verification: verifying pending candidate fluxcd/helm-controller key_slot=3
+2026-07-30 09:31:09,174 INFO alvance_github_crawler.pending.verification: pending candidate snowflakedb/snowflake-cli finished outcome=rejected key_slot=1 processed=38 in_flight=59
+2026-07-30 09:31:09,442 INFO alvance_github_crawler.pending.verification: verifying pending candidate fluxcd/source-controller key_slot=1
+2026-07-30 09:31:17,430 INFO alvance_github_crawler.pending.verification: pending candidate xataio/pgstream finished outcome=registered key_slot=2 processed=39 in_flight=59
+2026-07-30 09:31:17,680 INFO alvance_github_crawler.pending.verification: verifying pending candidate XTLS/Xray-core key_slot=2
+2026-07-30 09:31:23,228 INFO alvance_github_crawler.pending.verification: pending candidate PVDoriginal/firefly finished outcome=rejected key_slot=2 processed=40 in_flight=59
+2026-07-30 09:31:23,518 INFO alvance_github_crawler.pending.verification: verifying pending candidate fluxcd/kustomize-controller key_slot=2
+2026-07-30 09:31:23,519 INFO alvance_github_crawler.pending.verification: pending candidate FootprintAI/Containarium finished outcome=rejected key_slot=3 processed=41 in_flight=59
+2026-07-30 09:31:23,772 INFO alvance_github_crawler.pending.verification: verifying pending candidate stackql/stackql key_slot=3
+2026-07-30 09:31:30,960 INFO alvance_github_crawler.pending.verification: pending candidate sktime/sktime finished outcome=rejected key_slot=1 processed=42 in_flight=59
+2026-07-30 09:31:31,309 INFO alvance_github_crawler.pending.verification: verifying pending candidate nspcc-dev/neo-go key_slot=1
+2026-07-30 09:31:34,284 INFO alvance_github_crawler.pending.verification: pending candidate hangxie/parquet-tools finished outcome=rejected key_slot=2 processed=43 in_flight=59
+2026-07-30 09:31:34,587 INFO alvance_github_crawler.pending.verification: verifying pending candidate ogen-go/ogen key_slot=2
+2026-07-30 09:31:49,568 INFO alvance_github_crawler.pending.verification: pending candidate alibaba/open-code-review finished outcome=rejected key_slot=2 processed=44 in_flight=59
+2026-07-30 09:31:50,142 INFO alvance_github_crawler.pending.verification: verifying pending candidate submariner-io/submariner key_slot=2
+2026-07-30 09:31:53,467 INFO alvance_github_crawler.pending.verification: pending candidate cloudpilot-ai/karpenter-provider-gcp finished outcome=rejected key_slot=3 processed=45 in_flight=59
+2026-07-30 09:31:53,728 INFO alvance_github_crawler.pending.verification: verifying pending candidate samwafgo/SamWaf key_slot=3
+2026-07-30 09:31:58,137 INFO alvance_github_crawler.pending.verification: pending candidate elastic/terraform-provider-elasticstack finished outcome=rejected key_slot=3 processed=46 in_flight=59
+2026-07-30 09:31:58,470 INFO alvance_github_crawler.pending.verification: verifying pending candidate SevereCloud/vksdk key_slot=3
+2026-07-30 09:32:11,078 INFO alvance_github_crawler.pending.verification: pending candidate mierak/rmpc finished outcome=registered key_slot=1 processed=47 in_flight=59
+2026-07-30 09:32:11,463 INFO alvance_github_crawler.pending.verification: verifying pending candidate helmfile/helmfile key_slot=1
+2026-07-30 09:32:20,125 INFO alvance_github_crawler.pending.verification: pending candidate marmotdata/marmot finished outcome=registered key_slot=2 processed=48 in_flight=59
+2026-07-30 09:32:20,475 INFO alvance_github_crawler.pending.verification: verifying pending candidate puppeteer/replay key_slot=2
+2026-07-30 09:32:20,495 INFO alvance_github_crawler.pending.verification: pending candidate pionxzh/wakaru finished outcome=rejected key_slot=3 processed=49 in_flight=59
+2026-07-30 09:32:20,797 INFO alvance_github_crawler.pending.verification: verifying pending candidate trunk-rs/trunk key_slot=3
+2026-07-30 09:32:26,276 INFO alvance_github_crawler.pending.verification: pending candidate project-copacetic/copacetic finished outcome=rejected key_slot=2 processed=50 in_flight=59
+2026-07-30 09:32:26,586 INFO alvance_github_crawler.pending.verification: verifying pending candidate puffyCid/artemis key_slot=2
+2026-07-30 09:32:28,310 INFO alvance_github_crawler.pending.verification: pending candidate typstyle-rs/typstyle finished outcome=registered key_slot=2 processed=51 in_flight=59
+2026-07-30 09:32:28,616 INFO alvance_github_crawler.pending.verification: verifying pending candidate mozilla/uniffi-rs key_slot=2
+2026-07-30 09:32:30,300 INFO alvance_github_crawler.pending.verification: pending candidate cot-rs/cot finished outcome=rejected key_slot=2 processed=52 in_flight=59
+2026-07-30 09:32:30,614 INFO alvance_github_crawler.pending.verification: verifying pending candidate Quantco/pixi-pack key_slot=2
+2026-07-30 09:32:54,420 INFO alvance_github_crawler.pending.verification: pending candidate Watfaq/clash-rs finished outcome=rejected key_slot=2 processed=53 in_flight=59
+2026-07-30 09:32:54,790 INFO alvance_github_crawler.pending.verification: verifying pending candidate jennings/jj-spr key_slot=2
+2026-07-30 09:33:03,922 INFO alvance_github_crawler.pending.verification: pending candidate Gitlawb/zero finished outcome=rejected key_slot=1 processed=54 in_flight=59
+2026-07-30 09:33:04,380 INFO alvance_github_crawler.pending.verification: verifying pending candidate zhang-accounting/zhang key_slot=1
+2026-07-30 09:33:21,669 INFO alvance_github_crawler.pending.verification: pending candidate sqlc-dev/sqlc finished outcome=rejected key_slot=1 processed=55 in_flight=59
+2026-07-30 09:33:22,021 INFO alvance_github_crawler.pending.verification: verifying pending candidate Trow-Registry/trow key_slot=1
+2026-07-30 09:33:26,735 INFO alvance_github_crawler.pending.verification: pending candidate LukasNiessen/ArchUnitTS finished outcome=registered key_slot=3 processed=56 in_flight=59
+2026-07-30 09:33:27,087 INFO alvance_github_crawler.pending.verification: verifying pending candidate kanisterio/kanister key_slot=3
+2026-07-30 09:33:33,349 INFO alvance_github_crawler.pending.verification: pending candidate iced-rs/iced finished outcome=registered key_slot=3 processed=57 in_flight=59
+2026-07-30 09:33:33,628 INFO alvance_github_crawler.pending.verification: verifying pending candidate redis/rueidis key_slot=3
+2026-07-30 09:33:45,955 INFO alvance_github_crawler.pending.verification: pending candidate dimetron/pi-go finished outcome=rejected key_slot=1 processed=58 in_flight=59
+2026-07-30 09:33:46,256 INFO alvance_github_crawler.pending.verification: verifying pending candidate dynatrace-oss/dtctl key_slot=1
+2026-07-30 09:34:08,207 INFO alvance_github_crawler.pending.verification: pending candidate apache/datafusion-python finished outcome=rejected key_slot=3 processed=59 in_flight=59
+2026-07-30 09:34:08,481 INFO alvance_github_crawler.pending.verification: verifying pending candidate envoyproxy/ai-gateway key_slot=3
+2026-07-30 09:34:09,242 INFO alvance_github_crawler.pending.verification: pending candidate temporalio/temporal-worker-controller finished outcome=registered key_slot=3 processed=60 in_flight=59
+2026-07-30 09:34:09,547 INFO alvance_github_crawler.pending.verification: verifying pending candidate e-breuninger/terraform-provider-netbox key_slot=3
+2026-07-30 09:34:16,707 INFO alvance_github_crawler.pending.verification: pending candidate ansible/ansible-ui finished outcome=rejected key_slot=2 processed=61 in_flight=59
+2026-07-30 09:34:16,994 INFO alvance_github_crawler.pending.verification: verifying pending candidate stephnangue/warden key_slot=2
+2026-07-30 09:34:25,174 INFO alvance_github_crawler.pending.verification: pending candidate erpc/erpc finished outcome=rejected key_slot=3 processed=62 in_flight=59
+2026-07-30 09:34:25,466 INFO alvance_github_crawler.pending.verification: verifying pending candidate Azure/draft key_slot=3
+2026-07-30 09:34:30,572 INFO alvance_github_crawler.pending.verification: pending candidate GoogleContainerTools/config-sync finished outcome=rejected key_slot=1 processed=63 in_flight=59
+2026-07-30 09:34:30,838 INFO alvance_github_crawler.pending.verification: verifying pending candidate Azure/azure-workload-identity key_slot=1
+2026-07-30 09:35:03,545 INFO alvance_github_crawler.pending.verification: pending candidate helmfile/helmfile finished outcome=rejected key_slot=1 processed=64 in_flight=59
+2026-07-30 09:35:04,219 INFO alvance_github_crawler.pending.verification: verifying pending candidate microsoft/wassette key_slot=1
+2026-07-30 09:35:14,326 INFO alvance_github_crawler.pending.verification: pending candidate posit-dev/ark finished outcome=rejected key_slot=2 processed=65 in_flight=59
+2026-07-30 09:35:14,582 INFO alvance_github_crawler.pending.verification: verifying pending candidate cloudnativelabs/kube-router key_slot=2
+2026-07-30 09:35:24,005 INFO alvance_github_crawler.pending.verification: pending candidate getporter/porter finished outcome=rejected key_slot=1 processed=66 in_flight=59
+2026-07-30 09:35:24,414 INFO alvance_github_crawler.pending.verification: verifying pending candidate fission/fission key_slot=1
+2026-07-30 09:35:27,738 INFO alvance_github_crawler.pending.verification: pending candidate google/osv-scanner finished outcome=rejected key_slot=1 processed=67 in_flight=59
+2026-07-30 09:35:27,997 INFO alvance_github_crawler.pending.verification: verifying pending candidate actions/actions-runner-controller key_slot=1
+2026-07-30 09:35:31,916 INFO alvance_github_crawler.pending.verification: pending candidate jennings/jj-spr finished outcome=rejected key_slot=2 processed=68 in_flight=59
+2026-07-30 09:35:32,505 INFO alvance_github_crawler.pending.verification: verifying pending candidate buildkite/agent-stack-k8s key_slot=2
+2026-07-30 09:35:40,980 INFO alvance_github_crawler.pending.verification: pending candidate kimdre/doco-cd finished outcome=rejected key_slot=3 processed=69 in_flight=59
+2026-07-30 09:35:41,369 INFO alvance_github_crawler.pending.verification: verifying pending candidate oras-project/rust-oci-client key_slot=3
+2026-07-30 09:36:04,922 INFO alvance_github_crawler.pending.verification: pending candidate kubestellar/kubeflex finished outcome=registered key_slot=2 processed=70 in_flight=59
+2026-07-30 09:36:05,313 INFO alvance_github_crawler.pending.verification: verifying pending candidate decentraland/decentraland-dapps key_slot=2
+2026-07-30 09:36:18,175 INFO alvance_github_crawler.pending.verification: pending candidate distribution/distribution finished outcome=rejected key_slot=2 processed=71 in_flight=59
+2026-07-30 09:36:18,508 INFO alvance_github_crawler.pending.verification: verifying pending candidate ClickHouse/clickhouse-rs key_slot=2
+2026-07-30 09:36:26,770 INFO alvance_github_crawler.pending.verification: pending candidate krakend/krakend-ce finished outcome=rejected key_slot=2 processed=72 in_flight=59
+2026-07-30 09:36:27,159 INFO alvance_github_crawler.pending.verification: verifying pending candidate RosLibRust/roslibrust key_slot=2
+2026-07-30 09:36:27,234 INFO alvance_github_crawler.pending.verification: pending candidate kellnr/kellnr finished outcome=rejected key_slot=3 processed=73 in_flight=59
+2026-07-30 09:36:27,481 INFO alvance_github_crawler.pending.verification: verifying pending candidate Karib0u/rustinel key_slot=3
+2026-07-30 09:36:37,451 INFO alvance_github_crawler.pending.verification: pending candidate microsoft/qdk finished outcome=rejected key_slot=2 processed=74 in_flight=59
+2026-07-30 09:36:37,783 INFO alvance_github_crawler.pending.verification: verifying pending candidate mattwparas/steel key_slot=2
+2026-07-30 09:36:55,245 INFO alvance_github_crawler.pending.verification: pending candidate mozilla/uniffi-rs finished outcome=rejected key_slot=2 processed=75 in_flight=59
+2026-07-30 09:36:55,537 INFO alvance_github_crawler.pending.verification: verifying pending candidate gordonmurray/firnflow key_slot=2
+2026-07-30 09:36:56,430 INFO alvance_github_crawler.pending.verification: pending candidate fluxcd/helm-controller finished outcome=rejected key_slot=3 processed=76 in_flight=59
+2026-07-30 09:36:56,747 INFO alvance_github_crawler.pending.verification: verifying pending candidate txpipe/dolos key_slot=3
+2026-07-30 09:37:16,555 INFO alvance_github_crawler.pending.verification: pending candidate XTLS/Xray-core finished outcome=rejected key_slot=2 processed=77 in_flight=59
+2026-07-30 09:37:16,894 INFO alvance_github_crawler.pending.verification: verifying pending candidate googlefonts/fontc key_slot=2
+2026-07-30 09:37:21,805 INFO alvance_github_crawler.pending.verification: pending candidate s3s-project/s3s finished outcome=registered key_slot=1 processed=78 in_flight=59
+2026-07-30 09:37:22,148 INFO alvance_github_crawler.pending.verification: verifying pending candidate marrink-lab/vermouth-martinize key_slot=1
+2026-07-30 09:37:22,641 INFO alvance_github_crawler.pending.verification: pending candidate linebender/xilem finished outcome=rejected key_slot=1 processed=79 in_flight=59
+2026-07-30 09:37:22,879 INFO alvance_github_crawler.pending.verification: verifying pending candidate emiago/diago key_slot=1
+2026-07-30 09:37:23,081 INFO alvance_github_crawler.pending.verification: pending candidate fission/fission finished outcome=rejected key_slot=1 processed=80 in_flight=59
+2026-07-30 09:37:23,322 INFO alvance_github_crawler.pending.verification: verifying pending candidate AnalogJ/scrutiny key_slot=1
+2026-07-30 09:37:26,055 INFO alvance_github_crawler.pending.verification: pending candidate updatecli/updatecli finished outcome=rejected key_slot=3 processed=81 in_flight=59
+2026-07-30 09:37:26,428 INFO alvance_github_crawler.pending.verification: verifying pending candidate parquet-go/parquet-go key_slot=3
+2026-07-30 09:37:41,189 INFO alvance_github_crawler.pending.verification: pending candidate anchore/grype finished outcome=rejected key_slot=3 processed=82 in_flight=59
+2026-07-30 09:37:41,489 INFO alvance_github_crawler.pending.verification: verifying pending candidate hashicorp/terraform-provider-vault key_slot=3
+2026-07-30 09:37:48,504 INFO alvance_github_crawler.pending.verification: pending candidate Azure/azure-workload-identity finished outcome=rejected key_slot=1 processed=83 in_flight=59
+2026-07-30 09:37:49,157 INFO alvance_github_crawler.pending.verification: verifying pending candidate DataDog/orchestrion key_slot=1
+2026-07-30 09:37:52,425 INFO alvance_github_crawler.pending.verification: pending candidate osscontainertools/kaniko finished outcome=rejected key_slot=2 processed=84 in_flight=59
+2026-07-30 09:37:52,740 INFO alvance_github_crawler.pending.verification: verifying pending candidate perber/leafwiki key_slot=2
+2026-07-30 09:38:41,858 INFO alvance_github_crawler.pending.verification: pending candidate juanfont/headscale finished outcome=rejected key_slot=3 processed=85 in_flight=59
+2026-07-30 09:38:42,210 INFO alvance_github_crawler.pending.verification: verifying pending candidate vmware/pinniped key_slot=3
+2026-07-30 09:38:50,882 INFO alvance_github_crawler.pending.verification: pending candidate JhaSourav07/commitpulse finished outcome=rejected key_slot=1 processed=86 in_flight=59
+2026-07-30 09:38:51,399 INFO alvance_github_crawler.pending.verification: verifying pending candidate Azure/fleet key_slot=1
+2026-07-30 09:39:19,341 INFO alvance_github_crawler.pending.verification: pending candidate googlefonts/fontc finished outcome=rejected key_slot=2 processed=87 in_flight=59
+2026-07-30 09:39:19,608 INFO alvance_github_crawler.pending.verification: verifying pending candidate cloudfoundry/bosh-bootloader key_slot=2
+2026-07-30 09:39:23,712 INFO alvance_github_crawler.pending.verification: pending candidate DecapodLabs/decapod finished outcome=rejected key_slot=3 processed=88 in_flight=59
+2026-07-30 09:39:23,982 INFO alvance_github_crawler.pending.verification: verifying pending candidate apache/cordova-lib key_slot=3
+2026-07-30 09:39:37,319 INFO alvance_github_crawler.pending.verification: pending candidate e-breuninger/terraform-provider-netbox finished outcome=registered key_slot=3 processed=89 in_flight=59
+2026-07-30 09:39:37,805 INFO alvance_github_crawler.pending.verification: verifying pending candidate leptos-rs/cargo-leptos key_slot=3
+2026-07-30 09:39:44,764 INFO alvance_github_crawler.pending.verification: pending candidate puffyCid/artemis finished outcome=rejected key_slot=2 processed=90 in_flight=59
+2026-07-30 09:39:45,030 INFO alvance_github_crawler.pending.verification: verifying pending candidate finos/morphir key_slot=2
+2026-07-30 09:39:51,514 INFO alvance_github_crawler.pending.verification: pending candidate ClickHouse/clickhouse-rs finished outcome=rejected key_slot=2 processed=91 in_flight=59
+2026-07-30 09:39:52,107 INFO alvance_github_crawler.pending.verification: verifying pending candidate gepromptet/promptolution key_slot=2
+2026-07-30 09:39:53,466 INFO alvance_github_crawler.pending.verification: pending candidate AnalogJ/scrutiny finished outcome=rejected key_slot=1 processed=92 in_flight=59
+2026-07-30 09:39:53,737 INFO alvance_github_crawler.pending.verification: verifying pending candidate aallan/vera key_slot=1
+2026-07-30 09:39:57,216 INFO alvance_github_crawler.pending.verification: pending candidate Trow-Registry/trow finished outcome=rejected key_slot=1 processed=93 in_flight=59
+2026-07-30 09:39:57,479 INFO alvance_github_crawler.pending.verification: verifying pending candidate Soju06/codex-lb key_slot=1
+2026-07-30 09:39:59,694 INFO alvance_github_crawler.pending.verification: pending candidate Karib0u/rustinel finished outcome=rejected key_slot=3 processed=94 in_flight=59
+2026-07-30 09:39:59,911 INFO alvance_github_crawler.pending.verification: verifying pending candidate bufbuild/buf key_slot=3
+2026-07-30 09:40:01,453 INFO alvance_github_crawler.pending.verification: pending candidate open-feature/js-sdk finished outcome=rejected key_slot=1 processed=95 in_flight=59
+2026-07-30 09:40:02,128 INFO alvance_github_crawler.pending.verification: verifying pending candidate hauler-dev/hauler key_slot=1
+2026-07-30 09:40:08,778 INFO alvance_github_crawler.pending.verification: pending candidate Binomica-Labs/SpliceCraft finished outcome=rejected key_slot=2 processed=96 in_flight=59
+2026-07-30 09:40:09,331 INFO alvance_github_crawler.pending.verification: verifying pending candidate clickvisual/clickvisual key_slot=2
+2026-07-30 09:40:09,630 INFO alvance_github_crawler.pending.verification: pending candidate parquet-go/parquet-go finished outcome=rejected key_slot=3 processed=97 in_flight=59
+2026-07-30 09:40:09,988 INFO alvance_github_crawler.pending.verification: verifying pending candidate sigstore/cosign key_slot=3
+2026-07-30 09:40:15,163 INFO alvance_github_crawler.pending.verification: pending candidate apollographql/apollo-mcp-server finished outcome=registered key_slot=3 processed=98 in_flight=59
+2026-07-30 09:40:15,560 INFO alvance_github_crawler.pending.verification: verifying pending candidate argoproj-labs/terraform-provider-argocd key_slot=3
+2026-07-30 09:40:21,801 INFO alvance_github_crawler.pending.verification: pending candidate samwafgo/SamWaf finished outcome=rejected key_slot=3 processed=99 in_flight=59
+2026-07-30 09:40:22,141 INFO alvance_github_crawler.pending.verification: verifying pending candidate docsifyjs/docsify key_slot=3
+2026-07-30 09:40:28,679 INFO alvance_github_crawler.pending.verification: pending candidate mandiant/capa finished outcome=rejected key_slot=1 processed=100 in_flight=59
+2026-07-30 09:40:28,981 INFO alvance_github_crawler.pending.verification: verifying pending candidate postmanlabs/openapi-to-postman key_slot=1
+2026-07-30 09:40:39,213 INFO alvance_github_crawler.pending.verification: pending candidate SevereCloud/vksdk finished outcome=rejected key_slot=3 processed=101 in_flight=59
+2026-07-30 09:40:39,493 INFO alvance_github_crawler.pending.verification: verifying pending candidate sunng87/pgwire key_slot=3
+2026-07-30 09:40:51,116 INFO alvance_github_crawler.pending.verification: pending candidate stephnangue/warden finished outcome=rejected key_slot=2 processed=102 in_flight=59
+2026-07-30 09:40:51,392 INFO alvance_github_crawler.pending.verification: verifying pending candidate pamburus/hl key_slot=2
+2026-07-30 09:40:52,352 INFO alvance_github_crawler.pending.verification: pending candidate trunk-rs/trunk finished outcome=rejected key_slot=3 processed=103 in_flight=59
+2026-07-30 09:40:52,664 INFO alvance_github_crawler.pending.verification: verifying pending candidate delta-io/delta-rs key_slot=3
+2026-07-30 09:41:04,977 INFO alvance_github_crawler.pending.verification: pending candidate thevahidal/soul finished outcome=rejected key_slot=1 processed=104 in_flight=59
+2026-07-30 09:41:05,505 INFO alvance_github_crawler.pending.verification: verifying pending candidate arlyon/async-stripe key_slot=1
+2026-07-30 09:41:26,567 INFO alvance_github_crawler.pending.verification: pending candidate kittors/CliRelay finished outcome=registered key_slot=3 processed=105 in_flight=59
+2026-07-30 09:41:26,864 INFO alvance_github_crawler.pending.verification: verifying pending candidate tqwewe/kameo key_slot=3
+2026-07-30 09:41:43,492 INFO alvance_github_crawler.pending.verification: pending candidate perber/leafwiki finished outcome=rejected key_slot=2 processed=106 in_flight=59
+2026-07-30 09:41:43,777 INFO alvance_github_crawler.pending.verification: verifying pending candidate koaning/scikit-lego key_slot=2
+2026-07-30 09:41:54,423 INFO alvance_github_crawler.pending.verification: pending candidate Azure/draft finished outcome=rejected key_slot=3 processed=107 in_flight=59
+2026-07-30 09:41:54,693 INFO alvance_github_crawler.pending.verification: verifying pending candidate modelscope/evalscope key_slot=3
+2026-07-30 09:42:02,955 INFO alvance_github_crawler.pending.verification: pending candidate gepromptet/promptolution finished outcome=rejected key_slot=2 processed=108 in_flight=59
+2026-07-30 09:42:03,636 INFO alvance_github_crawler.pending.verification: verifying pending candidate mvm-sh/mvm key_slot=2
+2026-07-30 09:42:03,637 INFO alvance_github_crawler.pending.verification: pending candidate microsoft/wassette finished outcome=rejected key_slot=1 processed=109 in_flight=59
+2026-07-30 09:42:03,960 INFO alvance_github_crawler.pending.verification: verifying pending candidate virtual-kubelet/virtual-kubelet key_slot=1
+2026-07-30 09:42:30,720 INFO alvance_github_crawler.pending.verification: pending candidate turbot/steampipe-plugin-aws finished outcome=rejected key_slot=2 processed=110 in_flight=59
+2026-07-30 09:42:30,965 INFO alvance_github_crawler.pending.verification: verifying pending candidate go-swagger/go-swagger key_slot=2
+2026-07-30 09:42:32,780 INFO alvance_github_crawler.pending.verification: pending candidate fluxcd/kustomize-controller finished outcome=rejected key_slot=2 processed=111 in_flight=59
+2026-07-30 09:42:33,401 INFO alvance_github_crawler.pending.verification: verifying pending candidate netbox-community/netbox-operator key_slot=2
+2026-07-30 09:42:47,899 INFO alvance_github_crawler.pending.verification: pending candidate buildkite/agent-stack-k8s finished outcome=rejected key_slot=2 processed=112 in_flight=59
+2026-07-30 09:42:48,148 INFO alvance_github_crawler.pending.verification: verifying pending candidate burningalchemist/sql_exporter key_slot=2
+2026-07-30 09:42:51,917 INFO alvance_github_crawler.pending.verification: pending candidate stackql/stackql finished outcome=registered key_slot=3 processed=113 in_flight=59
+2026-07-30 09:42:52,168 INFO alvance_github_crawler.pending.verification: verifying pending candidate joyrex2001/kubedock key_slot=3
+2026-07-30 09:43:14,271 INFO alvance_github_crawler.pending.verification: pending candidate puppeteer/replay finished outcome=rejected key_slot=2 processed=114 in_flight=59
+2026-07-30 09:43:14,540 INFO alvance_github_crawler.pending.verification: verifying pending candidate hashicorp/consul-terraform-sync key_slot=2
+2026-07-30 09:43:15,854 INFO alvance_github_crawler.pending.verification: pending candidate ogen-go/ogen finished outcome=rejected key_slot=2 processed=115 in_flight=59
+2026-07-30 09:43:16,524 INFO alvance_github_crawler.pending.verification: verifying pending candidate 0sec-labs/foxguard key_slot=2
+2026-07-30 09:43:16,552 INFO alvance_github_crawler.pending.verification: pending candidate fluxcd/source-controller finished outcome=rejected key_slot=1 processed=116 in_flight=59
+2026-07-30 09:43:16,808 INFO alvance_github_crawler.pending.verification: verifying pending candidate keepsimple1/mdns-sd key_slot=1
+2026-07-30 09:43:16,855 INFO alvance_github_crawler.pending.verification: pending candidate gordonmurray/firnflow finished outcome=rejected key_slot=2 processed=117 in_flight=59
+2026-07-30 09:43:17,138 INFO alvance_github_crawler.pending.verification: verifying pending candidate rayfish/rayfish key_slot=2
+2026-07-30 09:43:19,758 INFO alvance_github_crawler.pending.verification: pending candidate cloudfoundry/bosh-bootloader finished outcome=rejected key_slot=2 processed=118 in_flight=59
+2026-07-30 09:43:20,092 INFO alvance_github_crawler.pending.verification: verifying pending candidate mkeeter/fidget key_slot=2
+2026-07-30 09:43:23,468 INFO alvance_github_crawler.pending.verification: pending candidate modelscope/evalscope finished outcome=rejected key_slot=3 processed=119 in_flight=59
+2026-07-30 09:43:23,743 INFO alvance_github_crawler.pending.verification: verifying pending candidate brioche-dev/brioche key_slot=3
+2026-07-30 09:43:32,210 INFO alvance_github_crawler.pending.verification: pending candidate nspcc-dev/neo-go finished outcome=rejected key_slot=1 processed=120 in_flight=59
+2026-07-30 09:43:32,474 INFO alvance_github_crawler.pending.verification: verifying pending candidate clflushopt/tpchgen-rs key_slot=1
+2026-07-30 09:43:48,175 INFO alvance_github_crawler.pending.verification: pending candidate sunng87/pgwire finished outcome=rejected key_slot=3 processed=121 in_flight=59
+2026-07-30 09:43:48,481 INFO alvance_github_crawler.pending.verification: verifying pending candidate boyter/scc key_slot=3
+2026-07-30 09:44:24,740 INFO alvance_github_crawler.pending.verification: pending candidate finos/morphir finished outcome=rejected key_slot=2 processed=122 in_flight=59
+2026-07-30 09:44:25,095 INFO alvance_github_crawler.pending.verification: verifying pending candidate ncruces/go-sqlite3 key_slot=2
+2026-07-30 09:44:27,290 INFO alvance_github_crawler.pending.verification: pending candidate redis/rueidis finished outcome=rejected key_slot=3 processed=123 in_flight=59
+2026-07-30 09:44:31,878 INFO alvance_github_crawler.pending.verification: pending candidate scaleway/scaleway-cli finished outcome=rejected key_slot=1 processed=124 in_flight=58
+2026-07-30 09:44:41,406 INFO alvance_github_crawler.pending.verification: pending candidate atusy/kakehashi finished outcome=rejected key_slot=3 processed=125 in_flight=57
+2026-07-30 09:44:45,859 INFO alvance_github_crawler.pending.verification: pending candidate marrink-lab/vermouth-martinize finished outcome=rejected key_slot=1 processed=126 in_flight=56
+2026-07-30 09:44:47,887 INFO alvance_github_crawler.pending.verification: pending candidate cloudnativelabs/kube-router finished outcome=registered key_slot=2 processed=127 in_flight=55
+2026-07-30 09:44:50,224 INFO alvance_github_crawler.pending.verification: pending candidate submariner-io/submariner finished outcome=rejected key_slot=2 processed=128 in_flight=54
+2026-07-30 09:45:15,017 INFO alvance_github_crawler.pending.verification: pending candidate mattwparas/steel finished outcome=rejected key_slot=2 processed=129 in_flight=53
+2026-07-30 09:45:25,955 INFO alvance_github_crawler.pending.verification: pending candidate RosLibRust/roslibrust finished outcome=rejected key_slot=2 processed=130 in_flight=52
+2026-07-30 09:45:47,997 INFO alvance_github_crawler.pending.verification: pending candidate txpipe/dolos finished outcome=registered key_slot=3 processed=131 in_flight=51
+2026-07-30 09:45:51,288 INFO alvance_github_crawler.pending.verification: pending candidate pamburus/hl finished outcome=registered key_slot=2 processed=132 in_flight=50
+2026-07-30 09:45:54,269 INFO alvance_github_crawler.pending.verification: pending candidate dynatrace-oss/dtctl finished outcome=rejected key_slot=1 processed=133 in_flight=49
+2026-07-30 09:45:55,964 INFO alvance_github_crawler.pending.verification: pending candidate joyrex2001/kubedock finished outcome=rejected key_slot=3 processed=134 in_flight=48
+2026-07-30 09:45:59,412 INFO alvance_github_crawler.pending.verification: pending candidate oras-project/rust-oci-client finished outcome=rejected key_slot=3 processed=135 in_flight=47
+2026-07-30 09:46:09,657 INFO alvance_github_crawler.pending.verification: pending candidate DataDog/orchestrion finished outcome=rejected key_slot=1 processed=136 in_flight=46
+2026-07-30 09:46:20,976 INFO alvance_github_crawler.pending.verification: pending candidate bufbuild/buf finished outcome=rejected key_slot=3 processed=137 in_flight=45
+2026-07-30 09:46:42,982 INFO alvance_github_crawler.pending.verification: pending candidate boyter/scc finished outcome=registered key_slot=3 processed=138 in_flight=44
+2026-07-30 09:46:51,412 INFO alvance_github_crawler.pending.verification: pending candidate hashicorp/terraform-provider-vault finished outcome=rejected key_slot=3 processed=139 in_flight=43
+2026-07-30 09:46:51,795 INFO alvance_github_crawler.pending.verification: pending candidate actions/actions-runner-controller finished outcome=rejected key_slot=1 processed=140 in_flight=42
+2026-07-30 09:47:10,099 INFO alvance_github_crawler.pending.verification: pending candidate ncruces/go-sqlite3 finished outcome=rejected key_slot=2 processed=141 in_flight=41
+2026-07-30 09:47:14,270 INFO alvance_github_crawler.pending.verification: pending candidate Azure/fleet finished outcome=rejected key_slot=1 processed=142 in_flight=40
+2026-07-30 09:47:16,532 INFO alvance_github_crawler.pending.verification: pending candidate Quantco/pixi-pack finished outcome=rejected key_slot=2 processed=143 in_flight=39
+2026-07-30 09:47:41,125 INFO alvance_github_crawler.pending.verification: pending candidate arlyon/async-stripe finished outcome=registered key_slot=1 processed=144 in_flight=38
+2026-07-30 09:47:43,156 INFO alvance_github_crawler.pending.verification: pending candidate zhang-accounting/zhang finished outcome=rejected key_slot=1 processed=145 in_flight=37
+2026-07-30 09:48:31,611 INFO alvance_github_crawler.pending.verification: pending candidate emiago/diago finished outcome=rejected key_slot=1 processed=146 in_flight=36
+2026-07-30 09:48:43,819 INFO alvance_github_crawler.pending.verification: pending candidate kanisterio/kanister finished outcome=rejected key_slot=3 processed=147 in_flight=35
+2026-07-30 09:48:50,775 INFO alvance_github_crawler.pending.verification: pending candidate koaning/scikit-lego finished outcome=rejected key_slot=2 processed=148 in_flight=34
+2026-07-30 09:48:59,057 INFO alvance_github_crawler.pending.verification: pending candidate decentraland/decentraland-dapps finished outcome=rejected key_slot=2 processed=149 in_flight=33
+2026-07-30 09:49:02,450 INFO alvance_github_crawler.pending.verification: pending candidate tqwewe/kameo finished outcome=registered key_slot=3 processed=150 in_flight=32
+2026-07-30 09:49:26,424 INFO alvance_github_crawler.pending.verification: pending candidate vmware/pinniped finished outcome=rejected key_slot=3 processed=151 in_flight=31
+2026-07-30 09:49:40,415 INFO alvance_github_crawler.pending.verification: pending candidate 0sec-labs/foxguard finished outcome=registered key_slot=2 processed=152 in_flight=30
+2026-07-30 09:49:41,598 INFO alvance_github_crawler.pending.verification: pending candidate apache/cordova-lib finished outcome=rejected key_slot=3 processed=153 in_flight=29
+2026-07-30 09:49:50,889 INFO alvance_github_crawler.pending.verification: pending candidate hauler-dev/hauler finished outcome=rejected key_slot=1 processed=154 in_flight=28
+2026-07-30 09:49:59,726 INFO alvance_github_crawler.pending.verification: pending candidate keepsimple1/mdns-sd finished outcome=registered key_slot=1 processed=155 in_flight=27
+2026-07-30 09:50:04,150 INFO alvance_github_crawler.pending.verification: pending candidate argoproj-labs/terraform-provider-argocd finished outcome=rejected key_slot=3 processed=156 in_flight=26
+2026-07-30 09:50:10,515 INFO alvance_github_crawler.pending.verification: pending candidate burningalchemist/sql_exporter finished outcome=registered key_slot=2 processed=157 in_flight=25
+2026-07-30 09:50:49,414 INFO alvance_github_crawler.pending.verification: pending candidate docsifyjs/docsify finished outcome=rejected key_slot=3 processed=158 in_flight=24
+2026-07-30 09:51:14,422 INFO alvance_github_crawler.pending.verification: pending candidate brioche-dev/brioche finished outcome=rejected key_slot=3 processed=159 in_flight=23
+2026-07-30 09:51:19,970 INFO alvance_github_crawler.pending.verification: pending candidate Soju06/codex-lb finished outcome=rejected key_slot=1 processed=160 in_flight=22
+2026-07-30 09:51:26,168 INFO alvance_github_crawler.pending.verification: pending candidate delta-io/delta-rs finished outcome=rejected key_slot=3 processed=161 in_flight=21
+2026-07-30 09:51:26,389 INFO alvance_github_crawler.pending.verification: pending candidate envoyproxy/ai-gateway finished outcome=rejected key_slot=3 processed=162 in_flight=20
+2026-07-30 09:51:42,313 INFO alvance_github_crawler.pending.verification: pending candidate aallan/vera finished outcome=rejected key_slot=1 processed=163 in_flight=19
+2026-07-30 09:52:32,134 INFO alvance_github_crawler.pending.verification: pending candidate mvm-sh/mvm finished outcome=rejected key_slot=2 processed=164 in_flight=18
+2026-07-30 09:53:01,293 INFO alvance_github_crawler.pending.verification: pending candidate sigstore/cosign finished outcome=rejected key_slot=3 processed=165 in_flight=17
+2026-07-30 09:53:48,255 INFO alvance_github_crawler.pending.verification: pending candidate leptos-rs/cargo-leptos finished outcome=rejected key_slot=3 processed=166 in_flight=16
+2026-07-30 09:54:07,209 INFO alvance_github_crawler.pending.verification: pending candidate go-swagger/go-swagger finished outcome=rejected key_slot=2 processed=167 in_flight=15
+2026-07-30 09:54:48,468 INFO alvance_github_crawler.pending.verification: pending candidate rayfish/rayfish finished outcome=registered key_slot=2 processed=168 in_flight=14
+2026-07-30 09:55:09,145 INFO alvance_github_crawler.pending.verification: pending candidate hashicorp/consul-terraform-sync finished outcome=rejected key_slot=2 processed=169 in_flight=13
+2026-07-30 09:55:44,306 INFO alvance_github_crawler.pending.verification: pending candidate AtalayaLabs/OxiCloud finished outcome=rejected key_slot=1 processed=170 in_flight=12
+2026-07-30 09:56:18,755 INFO alvance_github_crawler.pending.verification: pending candidate postmanlabs/openapi-to-postman finished outcome=rejected key_slot=1 processed=171 in_flight=11
+2026-07-30 09:56:57,925 INFO alvance_github_crawler.pending.verification: pending candidate virtual-kubelet/virtual-kubelet finished outcome=registered key_slot=1 processed=172 in_flight=10
+2026-07-30 09:57:09,462 INFO alvance_github_crawler.pending.verification: pending candidate clickvisual/clickvisual finished outcome=rejected key_slot=2 processed=173 in_flight=9
+2026-07-30 09:57:27,235 INFO alvance_github_crawler.pending.verification: pending candidate mkeeter/fidget finished outcome=rejected key_slot=2 processed=174 in_flight=8
+2026-07-30 09:58:01,761 INFO alvance_github_crawler.pending.verification: pending candidate clflushopt/tpchgen-rs finished outcome=rejected key_slot=1 processed=175 in_flight=7
+2026-07-30 10:11:10,657 INFO alvance_github_crawler.pending.verification: pending candidate netbox-community/netbox-operator finished outcome=rejected key_slot=2 processed=176 in_flight=6
+2026-07-30 10:13:29,135 INFO alvance_github_crawler.pending.verification: pending candidate DataDog/pup finished outcome=rejected key_slot=2 processed=177 in_flight=5
+2026-07-30 10:18:33,070 INFO alvance_github_crawler.pending.verification: pending candidate achristmascarl/rainfrog finished outcome=rejected key_slot=3 processed=178 in_flight=4
+2026-07-30 10:20:19,377 INFO alvance_github_crawler.pending.verification: pending candidate open-telemetry/opentelemetry-operator finished outcome=rejected key_slot=2 processed=179 in_flight=3
+2026-07-30 10:21:39,513 INFO alvance_github_crawler.pending.verification: pending candidate okta/terraform-provider-okta finished outcome=rejected key_slot=1 processed=180 in_flight=2
+2026-07-30 10:25:33,186 INFO alvance_github_crawler.pending.verification: pending candidate crossplane-contrib/provider-upjet-azure finished outcome=rejected key_slot=1 processed=181 in_flight=1
+2026-07-30 10:29:58,336 INFO alvance_github_crawler.pending.verification: pending candidate holon-run/holon finished outcome=rejected key_slot=1 processed=182 in_flight=0
+{
+  "key_slot_1_processed": 57,
+  "key_slot_1_registered": 5,
+  "key_slot_1_rejected": 52,
+  "key_slot_2_processed": 64,
+  "key_slot_2_registered": 12,
+  "key_slot_2_rejected": 52,
+  "key_slot_3_processed": 61,
+  "key_slot_3_registered": 13,
+  "key_slot_3_rejected": 48,
+  "processed": 182,
+  "registered": 30,
+  "rejected": 152,
+  "remaining": 0
+}
+[2026-07-30T10:29:59Z] stage=verify-escalated-20260730T091757Z exit_code=0 duration_s=4322

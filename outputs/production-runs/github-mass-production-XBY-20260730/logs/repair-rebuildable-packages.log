@@ -1,0 +1,51 @@
+[2026-07-30T06:10:24Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260730
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 192,
+  "languages": {
+    "go": 92,
+    "javascript": 16,
+    "python": 32,
+    "rust": 40,
+    "typescript": 12
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 192
+}
+[2026-07-30T06:10:26Z] stage=repair-rebuildable-packages exit_code=0 duration_s=2
+[2026-07-30T07:38:35Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260730
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 227,
+  "languages": {
+    "go": 105,
+    "javascript": 21,
+    "python": 42,
+    "rust": 44,
+    "typescript": 15
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 227
+}
+[2026-07-30T07:38:38Z] stage=repair-rebuildable-packages exit_code=0 duration_s=3
+[2026-07-30T09:16:18Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260730
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 271,
+  "languages": {
+    "go": 119,
+    "javascript": 26,
+    "python": 47,
+    "rust": 61,
+    "typescript": 18
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 271
+}
+[2026-07-30T09:16:21Z] stage=repair-rebuildable-packages exit_code=0 duration_s=3

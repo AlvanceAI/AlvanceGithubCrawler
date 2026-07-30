@@ -1,0 +1,4 @@
+[2026-07-30T08:51:06Z] stage=verify-default-20260730T085106Z run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+missing required environment variables: GITHUB_TOKEN
+[2026-07-30T08:51:09Z] stage=verify-default-20260730T085106Z exit_code=2 duration_s=3
