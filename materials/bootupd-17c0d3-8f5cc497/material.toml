@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bootupd-17c0d3-8f5cc497"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/coreos/bootupd"
+base_commit = "8f5cc4972f31fc00c6b19e3b3547cb2cf18795fd"
+source_tree = "df908e374d86ade4b82fdd78738a20f510ca9a43"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.90.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5a512e2d55ca76ba0cf1afaea6501742792d7f49e5a9b2fa2fff69c640f1622e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bootupd-17c0d3-8f5cc497-v2-env-56bb2374"
+template_id = "k9czmkt0nt36nns6feyj"
+source_template_alias = "5r21uy6cjkg1xzc2ot7s"
+source_template_id = "5r21uy6cjkg1xzc2ot7s"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

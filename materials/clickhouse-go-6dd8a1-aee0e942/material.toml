@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "clickhouse-go-6dd8a1-aee0e942"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.25.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "45725bff6b51b71b6db899e4a0ee9da01037f8e569b37ea6c4970b8824a4d714"
-harbor_template_alias = "alv-clickhouse-go-6dd8a1-aee0e942-v2__45725bff"
-e2b_template = "wigrpgzspboz0rgtreta"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "a70696d234075ca26028691ba45cdad981d0a36b45dadef1fcea1ea5af881a19"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-clickhouse-go-6dd8a1-aee0e942-v2__45725bff"
+template_id = "wigrpgzspboz0rgtreta"
 source_template_alias = "alvance-repo-clickh-5ff0f1e0-aee0e942aa-766c8314bb-c1-m1024-v17"
 source_template_id = "6t5ubvoq1n090azmjjg5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

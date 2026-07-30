@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "embedded-cli-rs-2794f4-1ce2a857"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/funbiscuit/embedded-cli-rs"
+base_commit = "1ce2a8572a3620665b22da9dbbd1c88ec8867b7f"
+source_tree = "543c0e1afa96616b70f63e022188330175e0d815"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "903f746a92dd68a118d1bdc949d4db227ecea8c905b64eb5120e61468c3f9bd2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-embedded-cli-rs-2794f4-1ce2a857-v2-env-c8d84bee"
+template_id = "24l0u3y9umvn4qlsxfea"
+source_template_alias = "2mkxd9602yz2ttpeuzwr"
+source_template_id = "2mkxd9602yz2ttpeuzwr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

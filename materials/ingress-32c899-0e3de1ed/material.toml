@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ingress-32c899-0e3de1ed"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/caddyserver/ingress"
+base_commit = "0e3de1ede38f595224be03d9457826749b1ae546"
+source_tree = "3dd4c251ca679e93ecc22496bda0c1821dee1075"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4f9b7f58de18893154db7567c2257bbe252195ec8631e058d83a7eaf5c7a25b5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ingress-32c899-0e3de1ed-v2-env-d76a8bef"
+template_id = "ef2pflzj5hd47ee8bqa7"
+source_template_alias = "c37z7ob3uiwvtd2pmgx7"
+source_template_id = "c37z7ob3uiwvtd2pmgx7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

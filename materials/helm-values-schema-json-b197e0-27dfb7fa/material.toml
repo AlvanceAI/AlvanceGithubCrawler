@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "helm-values-schema-json-b197e0-27dfb7fa"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/losisin/helm-values-schema-json"
+base_commit = "27dfb7fa5a55f67464b0622bfaedd950e566d396"
+source_tree = "e554c9103b572ac0060ea5033627eca21a8384bc"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0e3a356ed4b365ba78ce689ede9b0c2f85b074996278d9bfc0500a2022bbea8e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-helm-values-schema-j-b197e0-27dfb7fa-v2-env-8d8925e4"
+template_id = "klp6lnkvo8cfw5uetcts"
+source_template_alias = "encinv9k9t3uh5uabx9q"
+source_template_id = "encinv9k9t3uh5uabx9q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

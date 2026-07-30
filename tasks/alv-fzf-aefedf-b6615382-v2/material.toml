@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "fzf-aefedf-b6615382"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/fzf-aefedf-b6615382"
 repository_url = "https://github.com/junegunn/fzf"
 base_commit = "b66153825fa5186ade46a743e1418253482262bd"
 source_tree = "eea55c69342ac2291cea5ed9d11e71fa4e9d4850"
-environment_sha256 = "cc6e33271609c78a02a3d994511a49a2ed66e3dfdbaf4904480f46eb8d0b14dc"
-e2b_template_id = "tnl6xdi58s4gtumdr3rl"
-e2b_template_alias = "alv-fzf-aefedf-b6615382-v2-env-cc6e3327"
+environment_sha256 = "9c82baa8dd0b5ae6a3063b33f2c117a48cd290a25196f5746a7490f3f80e90b7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "tnl6xdi58s4gtumdr3rl"
+template_alias = "alv-fzf-aefedf-b6615382-v2-env-cc6e3327"
+operational_dependency = false

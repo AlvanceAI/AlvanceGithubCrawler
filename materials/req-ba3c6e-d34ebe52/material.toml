@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "req-ba3c6e-d34ebe52"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/imroc/req"
+base_commit = "d34ebe528dad44a04ec5aa53fae24622c1c8b58b"
+source_tree = "fd58386995159fd0ed8ab4ad04aa2b53ef6b7dad"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e1ffc147a46de185fd8b1e4432d6e50091fedbd55bcc547533f240b4c1117a91"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-req-ba3c6e-d34ebe52-v2-env-652c9b48"
+template_id = "0dh9g4rw4v3t9hrhqn29"
+source_template_alias = "swwtxk6msi7frbze0jhw"
+source_template_id = "swwtxk6msi7frbze0jhw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

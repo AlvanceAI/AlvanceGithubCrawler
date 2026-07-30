@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "rama-c20868-89bf2b36"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "rust"
 rust = "1.96.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "c05422de68e309124582bb98320689b1c455ad711fd52cf95a1a7e57137affbb"
-harbor_template_alias = "alv-rama-c20868-89bf2b36-v2-env-c05422de"
-e2b_template = "qswkhxllkkgf81mqm1ya"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "9bc6c6b6b6775237d2e3032d429cdba68b694cb3d9383cc17bd0c1d108a6b143"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rama-c20868-89bf2b36-v2-env-c05422de"
+template_id = "qswkhxllkkgf81mqm1ya"
 source_template_alias = "d7zfrvigial7e6b28lep"
 source_template_id = "d7zfrvigial7e6b28lep"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "provider-sql-8bbcb3-985277d9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/crossplane-contrib/provider-sql"
+base_commit = "985277d98fb9f0ce663c9ca5766c611032e069b0"
+source_tree = "4228d6491d12b3442cfe1428b8eee3a6bb9532a4"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c4c922a6fb8cd3dfb6cad3b1d2427eb56607bd54c0dd696de5bd730f4304a6fe"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-provider-sql-8bbcb3-985277d9-v2-env-23fef034"
+template_id = "j8ff5p9jzc2jhgc7a79v"
+source_template_alias = "s7v4aryed81flpv7k0jg"
+source_template_id = "s7v4aryed81flpv7k0jg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

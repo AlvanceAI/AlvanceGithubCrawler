@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nmrs-c24d93-c51da7d4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/freedesktop-rs/nmrs"
+base_commit = "c51da7d4eadb5dabf987a31ce5595d17738e5915"
+source_tree = "c38c7dde07b171d0e5dbe291c8cf3e1ba528ae51"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "712ef02d71d6d1fe0e5d7038a2488497f417c1321ddb92d80be70e4377c3e27d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nmrs-c24d93-c51da7d4-v2-env-c7aade04"
+template_id = "041sn1yyjropbydmdzek"
+source_template_alias = "pp48n0zkv1rerl9mwhhc"
+source_template_id = "pp48n0zkv1rerl9mwhhc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

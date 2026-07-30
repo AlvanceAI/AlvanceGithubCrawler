@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "grid-engine-64e008-aeb156ed"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/grid-engine-64e008-aeb156ed"
 repository_url = "https://github.com/Annoraaq/grid-engine"
 base_commit = "aeb156ed52a9925354b37933e3901994c8bc7aed"
 source_tree = "cdd28c63d4c0ff75e88f80139c85f679e216e7c8"
-environment_sha256 = "8a4cd39cb66d3100d2cc72fc14bccd8b8e77b244243e11ddb8d641b3496d4032"
-e2b_template_id = "a5g2mi5lc160icxzlxlu"
-e2b_template_alias = "alv-grid-engine-64e008-aeb156ed-v2-env-8a4cd39c"
+environment_sha256 = "4b68720380ba6097767ccaed7fa2fd575ebecc6afdebbb143f0bbf0f3f22cca5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "a5g2mi5lc160icxzlxlu"
+template_alias = "alv-grid-engine-64e008-aeb156ed-v2-env-8a4cd39c"
+operational_dependency = false

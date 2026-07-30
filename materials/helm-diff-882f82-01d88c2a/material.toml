@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "helm-diff-882f82-01d88c2a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/databus23/helm-diff"
+base_commit = "01d88c2a943322246aca885a922f45770793b020"
+source_tree = "ebd13936a7b2bd9cacc7e110dcdb21633cef1ee1"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8554b648469ed2c9c14c948955c5782a85c7ed91fde02786007f748e69baa67b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-helm-diff-882f82-01d88c2a-v2-env-5cb1ff2d"
+template_id = "nfp11a9z72itvuhqgdhy"
+source_template_alias = "xpfx7jazo2v3jzfyh5un"
+source_template_id = "xpfx7jazo2v3jzfyh5un"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

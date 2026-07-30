@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cli-0c2f6d-8657322d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/algolia/cli"
+base_commit = "8657322d35988632a0d57b402e61fd5a8fe9b4e0"
+source_tree = "032cdf54d244c30e44a098121d294be8bfaede46"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "26c2acaf5a78f96746062783d36d949a01d7691a3967af481ff6a8c05f3dcf3c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cli-0c2f6d-8657322d-v2-env-019d676d"
+template_id = "yu3v4qkklu748bmatmhi"
+source_template_alias = "o353jhppni8rbghnivhb"
+source_template_id = "o353jhppni8rbghnivhb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

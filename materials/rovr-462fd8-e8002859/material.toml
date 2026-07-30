@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "rovr-462fd8-e8002859"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.13"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "eedfdd34d2d7f5ada8d7b667db1af931e10c443755e426cd7bdf5e02678876fb"
-harbor_template_alias = "alv-rovr-462fd8-e8002859-v2__eedfdd34"
-e2b_template = "lhe6unk17850tq2cm7ct"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "206b5812e08472891142831111b17c618028b7da323a682f894b52d03c3ca7e7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rovr-462fd8-e8002859-v2__eedfdd34"
+template_id = "lhe6unk17850tq2cm7ct"
 source_template_alias = "alvance-repo-nspc911-rovr-e800285910-415fd10b99-v12"
 source_template_id = "n30s6qrc1kpm56tzz802"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

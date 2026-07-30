@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "ziti-1cf805-465b34d3"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/ziti-1cf805-465b34d3"
 repository_url = "https://github.com/openziti/ziti"
 base_commit = "465b34d38c85cc0eaa9ff020518cbc0aa0303d15"
 source_tree = "19c9b318cdaf1e9fb9680a35d5c3f51a5dd09e6e"
-environment_sha256 = "005cdf4d4641dc8b3c7f95a9ee9d5bb58c2214273a4461f570756c03a18a42c1"
-e2b_template_id = "dsi31wj0gg8awaa2qrsl"
-e2b_template_alias = "alv-ziti-1cf805-465b34d3-v2-env-005cdf4d"
+environment_sha256 = "693d8dadb8531bcd84244e64d3611458ebd1c74cec0279df1188c07fb7c03875"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "dsi31wj0gg8awaa2qrsl"
+template_alias = "alv-ziti-1cf805-465b34d3-v2-env-005cdf4d"
+operational_dependency = false

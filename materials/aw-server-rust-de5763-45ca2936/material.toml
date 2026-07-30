@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aw-server-rust-de5763-45ca2936"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ActivityWatch/aw-server-rust"
+base_commit = "45ca293650420916117a3c9a771d8d27c2d37f25"
+source_tree = "449bcedc0541228788797c6b2148e5848c1fc97b"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "508ebc4e91eda01f1519892df7e514fe1776a88fcc956ee668f17b8d72cccb42"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aw-server-rust-de5763-45ca2936-v2-env-f00353bc"
+template_id = "fkyrjzk1ybamunan0ujr"
+source_template_alias = "w99yil7nv0gu07p7kkf2"
+source_template_id = "w99yil7nv0gu07p7kkf2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

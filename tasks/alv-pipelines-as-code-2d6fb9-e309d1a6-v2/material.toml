@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "pipelines-as-code-2d6fb9-e309d1a6"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/pipelines-as-code-2d6fb9-e309d1a6"
 repository_url = "https://github.com/tektoncd/pipelines-as-code"
 base_commit = "e309d1a679af9684f4540952686fb0ba9971126d"
 source_tree = "1fcc893a316002f49bd8649e30cf5bf652046837"
-environment_sha256 = "68960b770d9be1cb81c7d1a4121de9e008490320d926970c95a363f9e7c19a86"
-e2b_template_id = "w4z7adtl6xspyfd8wjsc"
-e2b_template_alias = "alv-pipelines-as-code-2d6fb9-e309d1a6-v2-env-68960b77"
+environment_sha256 = "dea8d680abee6344cf6a653793172cd36f986d8bc19f346b51a0f158db7bb4cd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "w4z7adtl6xspyfd8wjsc"
+template_alias = "alv-pipelines-as-code-2d6fb9-e309d1a6-v2-env-68960b77"
+operational_dependency = false

@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "mcp-grafana-984281-1071e4f1"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.3"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "4769b952c40683cbce22f0d8bce4e2a03c3453e9c8a245256e17d4ba665f4693"
-harbor_template_alias = "alv-mcp-grafana-984281-1071e4f1-v2-env-4769b952"
-e2b_template = "av7xkbko1rc0ijb2ebr9"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "a3115a50153df9e3905dc4aba0feebd9bf27cab3ac1347e6fdbdc013e9be0904"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mcp-grafana-984281-1071e4f1-v2-env-4769b952"
+template_id = "av7xkbko1rc0ijb2ebr9"
 source_template_alias = "wuao01l623hkv9axb76n"
 source_template_id = "wuao01l623hkv9axb76n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

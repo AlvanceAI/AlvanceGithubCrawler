@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "kdl-rs-fa942e-bf1a12dd"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/kdl-rs-fa942e-bf1a12dd"
 repository_url = "https://github.com/kdl-org/kdl-rs"
 base_commit = "bf1a12dd416b17c2294d1b57896928bb2e30a3c6"
 source_tree = "9008e777794cddf1c6f0c0a81eaacd5463bc31ef"
-environment_sha256 = "37d15d2664e7f6dda23908e3b517aba32196bed04c4e93e5e8faa3f235729509"
-e2b_template_id = "nv7o94o70n6tinf3fm8p"
-e2b_template_alias = "alv-kdl-rs-fa942e-bf1a12dd-v2-env-37d15d26"
+environment_sha256 = "0390195850fb6c48aea9d404951a7d2e9eb07b7a728670a67cf3fce06c668f05"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "nv7o94o70n6tinf3fm8p"
+template_alias = "alv-kdl-rs-fa942e-bf1a12dd-v2-env-37d15d26"
+operational_dependency = false

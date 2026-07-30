@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-express-openapi-vali-f35cd4-03f11113-v2"
+description = "Rebuildable repository task for cdimascio/express-openapi-validator"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-express-openapi-vali-f35cd4-03f11113-v2"
+material_id = "express-openapi-validato-f35cd4-03f11113"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/cdimascio/express-openapi-validator"
+base_commit_hash = "03f11113166ee96aa6594d8c12742dc1419903d1"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "markdown-it-py-df1e31-bff75edc"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "d0542c167a2a1ab6e76275f21468c4e2956e20cebd71a9d18c1f8800202cb0af"
-harbor_template_alias = "alv-markdown-it-py-df1e31-bff75edc-v2__d0542c16"
-e2b_template = "dl66ojj3wo2dzh2nwbbc"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "7de70d774dc89e7ca78155a60838fc530a2a71e95ba227d3f192e1f67e624611"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-markdown-it-py-df1e31-bff75edc-v2__d0542c16"
+template_id = "dl66ojj3wo2dzh2nwbbc"
 source_template_alias = "alvance-repo-executablebooks-markdo-bff75edcd7-1c74b8e3cf-v16"
 source_template_id = "ua8qsjwn092jjccuh5ny"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

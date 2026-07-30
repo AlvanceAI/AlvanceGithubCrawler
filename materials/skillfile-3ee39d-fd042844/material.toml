@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "skillfile-3ee39d-fd042844"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "rust"
 rust = "1.82"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "e37e22025131b696bfb2b04e83b30c3b443bec1b348ef9499380b806cce617ef"
-harbor_template_alias = "alv-skillfile-3ee39d-fd042844-v2__e37e2202"
-e2b_template = "zdxmpo6pmm44losqr6de"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "21e3ee58c7ab5e256286cf956909df7e60a1f85fbfc0b5e76e0008605bc05aee"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-skillfile-3ee39d-fd042844-v2__e37e2202"
+template_id = "zdxmpo6pmm44losqr6de"
 source_template_alias = "alvance-repo-eljuli-3ee39d38-fd04284451-4b0a00dfbd-c1-m1024-v17"
 source_template_id = "8ukqzkqn45ihslwm1a6j"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

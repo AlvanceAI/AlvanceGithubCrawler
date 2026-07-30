@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rampart-f33e18-64754221"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/microsoft/RAMPART"
+base_commit = "6475422180edc38f4f214effbbf980f78e7a3e7a"
+source_tree = "dd48bc62881c7713eae82a6b065f23ea2fac41ca"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3e0854d5ab540b7c91bf9b18e4436c79c6f4fc9d77365dd3bd708b3bac64583f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rampart-f33e18-64754221-v2-env-da80bb62"
+template_id = "yyhsgafl384liaptryfr"
+source_template_alias = "0rz71f7m1bgdtxv1ofiy"
+source_template_id = "0rz71f7m1bgdtxv1ofiy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

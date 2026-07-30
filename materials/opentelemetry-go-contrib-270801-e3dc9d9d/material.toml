@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "opentelemetry-go-contrib-270801-e3dc9d9d"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.25.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "7cc8380ebd214aa790b86d11476362319684100b18c22077cec641e5fb2fac9e"
-harbor_template_alias = "alv-opentelemetry-go-con-270801-e3dc9d9d-v2-env-7cc8380e"
-e2b_template = "z42aubjirlsst3248l8v"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "1a92517286cecfa82026d71a9171f85c23a8f8e609ee6d3c5cb0bc14aba39d26"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-opentelemetry-go-con-270801-e3dc9d9d-v2-env-7cc8380e"
+template_id = "z42aubjirlsst3248l8v"
 source_template_alias = "ernzof9guf7085132x1d"
 source_template_id = "ernzof9guf7085132x1d"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

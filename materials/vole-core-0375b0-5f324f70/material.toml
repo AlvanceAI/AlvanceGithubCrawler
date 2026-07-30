@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vole-core-0375b0-5f324f70"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/allen-cell-animated/vole-core"
+base_commit = "5f324f704b821e322297d204fc17f8b8ea1c9029"
+source_tree = "b0b2aa41248f0563e9e5a68f0c4475947ca76feb"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "49ee28aeb7d65ebaa2a30717379875d5e1d5e6bac20cc3b737b4cecd63185201"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vole-core-0375b0-5f324f70-v2-env-94fcf8b8"
+template_id = "xnvzunisgh1lj3y0u9kk"
+source_template_alias = "x85eg6vb7s6e3c39bpts"
+source_template_id = "x85eg6vb7s6e3c39bpts"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

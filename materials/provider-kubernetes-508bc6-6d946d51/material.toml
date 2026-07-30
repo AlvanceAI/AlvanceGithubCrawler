@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "provider-kubernetes-508bc6-6d946d51"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.5"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "36f394c4610b7db8f0a789ff20fe4b08cf1334309fbd11359fe271cf13c73e22"
-harbor_template_alias = "alv-provider-kubernetes-508bc6-6d946d51-v2__36f394c4"
-e2b_template = "sb9snn0ottkxdlm6gw6z"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "c6a3318633d4993f45dfcb1e6d67d92eee006da5003974a564b4d96a8a917113"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-provider-kubernetes-508bc6-6d946d51-v2__36f394c4"
+template_id = "sb9snn0ottkxdlm6gw6z"
 source_template_alias = "alvance-repo-crossplane-contrib-pro-6d946d51b4-3a204cd500-v7"
 source_template_id = "ueydrt3l9rzhihvl6tfa"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

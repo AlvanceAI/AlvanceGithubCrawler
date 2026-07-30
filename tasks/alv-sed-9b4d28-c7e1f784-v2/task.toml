@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-sed-9b4d28-c7e1f784-v2"
-description = "E2B-backed repository task for uutils/sed"
+description = "Rebuildable repository task for uutils/sed"
 authors = []
-keywords = ["rust", "e2b", "github"]
+keywords = ["rust", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-sed-9b4d28-c7e1f784-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "rust"
 repository_url = "https://github.com/uutils/sed"
 base_commit_hash = "c7e1f78486b0951ad850f3a65dd831da19f62b92"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

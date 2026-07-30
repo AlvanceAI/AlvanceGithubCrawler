@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "grpc-gateway-15b6ef-686c173f"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/grpc-gateway-15b6ef-686c173f"
 repository_url = "https://github.com/grpc-ecosystem/grpc-gateway"
 base_commit = "686c173ffa8149b5e0758483b43b856dd8bc0ab7"
 source_tree = "31496d9959943952dcd64b18edd97b389cbefa81"
-environment_sha256 = "eb5d22f7f6337a8dae9cc871f0a2b3b4108ec3667a9af1d795009133ec0585d0"
-e2b_template_id = "0ha7yrkolwrfbhbl5970"
-e2b_template_alias = "alv-grpc-gateway-15b6ef-686c173f-v2__eb5d22f7"
+environment_sha256 = "8c24581dbc66f1b4200051a3bce3d708688d1a7e696dee3126a02c6b02cea6c9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "0ha7yrkolwrfbhbl5970"
+template_alias = "alv-grpc-gateway-15b6ef-686c173f-v2__eb5d22f7"
+operational_dependency = false

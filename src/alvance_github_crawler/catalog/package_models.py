@@ -4,8 +4,9 @@ from dataclasses import asdict, dataclass
 from typing import Any
 
 from ..runtime.profiles import execution_user, runtime_environment
+from ..runtime.recipes import repository_dependency_commands
 
-PACKAGE_SCHEMA_VERSION = "0.2"
+PACKAGE_SCHEMA_VERSION = "0.3"
 
 
 @dataclass(frozen=True, slots=True)
@@ -20,6 +21,7 @@ class QualifiedRepository:
     test_cmd: str
     direction: str
     source_template_alias: str
+    dependency_commands: tuple[str, ...]
     runtime_env: dict[str, str]
     execution_user: str
     cpu_count: int = 1
@@ -46,6 +48,10 @@ class QualifiedRepository:
             raise ValueError(f"candidate is missing package fields: {', '.join(missing)}")
         language = str(required["language"]).lower()
         runtime_version = str(required["runtime_version"])
+        raw_commands = environment.get("dependency_commands") or []
+        dependency_commands = tuple(
+            str(command) for command in raw_commands if str(command).strip()
+        ) or repository_dependency_commands(language)
         return cls(
             repo=str(required["repo"]),
             base_commit=str(required["base_commit"]),
@@ -57,6 +63,7 @@ class QualifiedRepository:
             test_cmd=str(required["test_cmd"]),
             direction=str(record.get("direction") or ""),
             source_template_alias=str(required["source_template_alias"]),
+            dependency_commands=dependency_commands,
             runtime_env=runtime_environment(language, runtime_version),
             execution_user=str(environment.get("execution_user") or execution_user(language)),
             cpu_count=int(environment.get("cpu_count") or 1),
@@ -131,6 +138,7 @@ def compact_package_record(
         "workdir": "/app",
         "test_cmd": repository.test_cmd,
         "execution_user": repository.execution_user,
+        "dependency_commands": list(repository.dependency_commands),
         "resources": {
             "cpu_count": repository.cpu_count,
             "memory_mb": repository.memory_mb,
@@ -138,16 +146,23 @@ def compact_package_record(
         "material_path": prepared.material_path,
         "task_path": prepared.task_path,
         "environment_sha256": prepared.environment_sha256,
-        "source_template": {
-            "alias": repository.source_template_alias,
-            "template_id": wrapper.source_template_id,
-        },
         "harbor": {
             "task_name": result.task_name,
-            "template_alias": result.harbor_template_alias,
-            "template_id": result.harbor_template_id,
             "launch_command": result.launch_command,
+            "build_source": "environment/Dockerfile",
+            "dockerfile_rebuildable": True,
             "smoke": wrapper.smoke,
+        },
+        "e2b_history": {
+            "source_template": {
+                "alias": repository.source_template_alias,
+                "template_id": wrapper.source_template_id,
+            },
+            "harbor_template": {
+                "alias": result.harbor_template_alias,
+                "template_id": result.harbor_template_id,
+            },
+            "validation_environment_sha256": prepared.environment_sha256,
         },
         "verification": {
             "offline_ok": offline.get("ok"),
@@ -161,6 +176,8 @@ def compact_package_record(
             "local_source": False,
             "local_image": False,
             "local_build_cache": False,
-            "remote_e2b_only": True,
+            "remote_e2b_only": False,
+            "dockerfile_rebuildable": True,
+            "rebuild_network_required": True,
         },
     }

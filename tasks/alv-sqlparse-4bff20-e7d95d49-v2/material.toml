@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "sqlparse-4bff20-e7d95d49"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/sqlparse-4bff20-e7d95d49"
 repository_url = "https://github.com/andialbrecht/sqlparse"
 base_commit = "e7d95d494cebc66fd220198ea2eb2cf94a8bb5fe"
 source_tree = "cc7915a72d1636e7f101426f6a7ea1f9342e962a"
-environment_sha256 = "5ec1067d1a1b34858d507db8032c69ccddda42a4cb8daa9814d3fc3a0400ee28"
-e2b_template_id = "1300n5swat11ru64kx7x"
-e2b_template_alias = "alv-sqlparse-4bff20-e7d95d49-v2__5ec1067d"
+environment_sha256 = "0ac9b84a5d519a6cbdddf4f11f8601ee975fabe97bcc76a0c95cb9cf2ffc433f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "1300n5swat11ru64kx7x"
+template_alias = "alv-sqlparse-4bff20-e7d95d49-v2__5ec1067d"
+operational_dependency = false

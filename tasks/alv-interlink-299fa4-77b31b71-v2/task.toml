@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-interlink-299fa4-77b31b71-v2"
-description = "E2B-backed repository task for interlink-hq/interLink"
+description = "Rebuildable repository task for interlink-hq/interLink"
 authors = []
-keywords = ["go", "e2b", "github"]
+keywords = ["go", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-interlink-299fa4-77b31b71-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "go"
 repository_url = "https://github.com/interlink-hq/interLink"
 base_commit_hash = "77b31b715f22150817def8b2f69451e31327a2d5"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

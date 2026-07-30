@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "rudof-03fbed-b18be6da"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/rudof-03fbed-b18be6da"
 repository_url = "https://github.com/rudof-project/rudof"
 base_commit = "b18be6dadfbb461816a578335ed56edba239f704"
 source_tree = "b67ebaaa1ad1532b04527f9b11e760bb319959c1"
-environment_sha256 = "bf73ac7cd29bfd047c412bdc4462f9954f7a7c26899f7f6ec93c4313f99eba84"
-e2b_template_id = "joxz4gmpocsykl3yo42d"
-e2b_template_alias = "alv-rudof-03fbed-b18be6da-v2-env-bf73ac7c"
+environment_sha256 = "d686cdee28d1ae29b162fa155b75e1e0cc5de7a345e6322cdbf4d75a50b2d3f5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "joxz4gmpocsykl3yo42d"
+template_alias = "alv-rudof-03fbed-b18be6da-v2-env-bf73ac7c"
+operational_dependency = false

@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "sed-9b4d28-c7e1f784"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/sed-9b4d28-c7e1f784"
 repository_url = "https://github.com/uutils/sed"
 base_commit = "c7e1f78486b0951ad850f3a65dd831da19f62b92"
 source_tree = "3ed7dd62a68c1154ad882653ed088f0b72d0c7b8"
-environment_sha256 = "d7b1b47de330e4086c4ef3ec453800b13f0adbe64d68f601f7a6da241e37d808"
-e2b_template_id = "pncgpwpssc1qcqzmepzr"
-e2b_template_alias = "alv-sed-9b4d28-c7e1f784-v2__d7b1b47d"
+environment_sha256 = "8a26178932248c04bf9a78986482cc39b952f9291236c1a351cdd3dc96a7fb50"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "pncgpwpssc1qcqzmepzr"
+template_alias = "alv-sed-9b4d28-c7e1f784-v2__d7b1b47d"
+operational_dependency = false

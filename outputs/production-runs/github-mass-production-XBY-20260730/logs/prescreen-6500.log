@@ -1,0 +1,1108 @@
+[2026-07-30T03:27:37Z] stage=prescreen-6500 run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-07-30 03:27:40,427 INFO alvance_github_crawler.pipeline: processing crawled candidate Andyyyy64/whichllm@0a49590df0df7bbdda250fad064e7ab8688e2e92
+2026-07-30 03:27:40,429 INFO alvance_github_crawler.pipeline: processing crawled candidate SolaceLabs/solace-agent-mesh@00d3417e4a299cb40cc528bf4dc48fce833d4649
+2026-07-30 03:27:40,430 INFO alvance_github_crawler.pipeline: processing crawled candidate anthropics/anthropic-sdk-python@f5c30d0490fb7bcd8e0b65d8d8e63c0e7d1bfe59
+2026-07-30 03:27:40,431 INFO alvance_github_crawler.pipeline: processing crawled candidate pmorissette/ffn@435a44851d8bb7774d9f7738a91cfb41d8eb5c20
+2026-07-30 03:27:40,431 INFO alvance_github_crawler.pipeline: processing crawled candidate widgetti/solara@8227bfa0e237ffccd3555515012feff3da053bcc
+2026-07-30 03:27:40,434 INFO alvance_github_crawler.pipeline: processing crawled candidate can4hou6joeng4/boss-agent-cli@05c70049e2c29c487741956354b62a4627a302e0
+2026-07-30 03:27:40,435 INFO alvance_github_crawler.pipeline: processing crawled candidate wanxingai/LightAgent@27dd8b24b31d4a3cce271c31a5b8e284cfbb4cf3
+2026-07-30 03:27:40,436 INFO alvance_github_crawler.pipeline: processing crawled candidate mr-fatalyst/oxyde@7fa636539cb316c67de763854a84c65da6391a78
+2026-07-30 03:27:40,438 INFO alvance_github_crawler.pipeline: processing crawled candidate scverse/spatialdata@eb4fb3d2398cd59298049dcafb03feda839b7ecd
+2026-07-30 03:27:40,441 INFO alvance_github_crawler.pipeline: processing crawled candidate jax-ml/oryx@bd1a06f31725d309198bdfe13314b9b3d5a20228
+2026-07-30 03:27:40,442 INFO alvance_github_crawler.pipeline: processing crawled candidate biocypher/biocypher@a06abc0fb75c1b4ad1769d88ef103e63bec04866
+2026-07-30 03:27:40,443 INFO alvance_github_crawler.pipeline: processing crawled candidate domainaware/checkdmarc@018ca0f1190bb82d8d784544a39c672b20fb7123
+2026-07-30 03:27:40,444 INFO alvance_github_crawler.pipeline: processing crawled candidate BrianPugh/python-template@b3879c813e3270590124b2f2b6ebfb0ddbe127ae
+2026-07-30 03:27:40,446 INFO alvance_github_crawler.pipeline: processing crawled candidate databento/databento-python@182e2583e6b05c4ee8e58e7d61c8ce5c850ece5f
+2026-07-30 03:27:40,447 INFO alvance_github_crawler.pipeline: processing crawled candidate westpa/westpa@caf4c141ffdd0857620a2d0edc94ef9fb9f4dc82
+2026-07-30 03:27:40,450 INFO alvance_github_crawler.pipeline: processing crawled candidate Ttl/torchbp@3fcafa656b0a33846763a174c971452a02e35ebb
+2026-07-30 03:27:40,451 INFO alvance_github_crawler.pipeline: processing crawled candidate INCATools/ontology-access-kit@5a1570c11b606ff0792e564a6c51704c34b732c5
+2026-07-30 03:27:40,455 INFO alvance_github_crawler.pipeline: processing crawled candidate pycontribs/mk@db4de3f4ede5bbcd0cce4f2b3666027caad3786d
+2026-07-30 03:27:40,457 INFO alvance_github_crawler.pipeline: processing crawled candidate datacommonsorg/agent-toolkit@02acf5c24b3c47df90f89fc18b8292d9bbca6dad
+2026-07-30 03:27:40,458 INFO alvance_github_crawler.pipeline: processing crawled candidate shareAI-lab/learn-claude-code@7b564c3ee6996039cb4e13a53024dfe2d4388d35
+2026-07-30 03:28:04,985 INFO alvance_github_crawler.pipeline: processing crawled candidate ayghri/i-have-adhd@07684c4ab625dd7d1ea6e99e065f60bc0ac6a1ba
+2026-07-30 03:28:18,840 INFO alvance_github_crawler.pipeline: processing crawled candidate mandiant/capa@ee14b11fcdc2d89397f2fbf24586c7a63ad6334a
+2026-07-30 03:28:20,081 INFO alvance_github_crawler.pipeline: processing crawled candidate astral-sh/python-build-standalone@c1991f8fc3eb8774907f0cffb93792f59079cd7a
+2026-07-30 03:28:20,821 INFO alvance_github_crawler.pipeline: processing crawled candidate openstack/swift@05afa6c87f289bb63a76a0e1f882a2eebe66bd79
+2026-07-30 03:28:21,419 INFO alvance_github_crawler.pipeline: processing crawled candidate posit-dev/great-tables@af3e7eaf0d8d3d6d20cb3a8b562bee0d17ba012c
+2026-07-30 03:28:23,040 INFO alvance_github_crawler.pipeline: processing crawled candidate israel-dryer/ttkbootstrap@abc07a3ad71921c6bfedf069b49034c14a3e25e0
+2026-07-30 03:28:24,042 INFO alvance_github_crawler.pipeline: processing crawled candidate e2b-dev/code-interpreter@6904927c7e094b71f4d49159993b0176b32b3de2
+2026-07-30 03:28:24,656 INFO alvance_github_crawler.pipeline: processing crawled candidate google-research/tabfm@b8a8b090c66d1b9e7af278003461582219996b6a
+2026-07-30 03:28:25,291 INFO alvance_github_crawler.pipeline: processing crawled candidate line/line-bot-sdk-python@1f01e2038d4d12c068b92f5729a56334622e5c76
+2026-07-30 03:28:28,573 INFO alvance_github_crawler.pipeline: processing crawled candidate josegonzalez/python-github-backup@d0c81f787c7173eace5ed54d0e771c3d42fb9b76
+2026-07-30 03:28:29,494 INFO alvance_github_crawler.pipeline: processing crawled candidate vllm-project/vllm-metal@b0ff480d37272dd1e5de572e3ad992861d6c0a68
+2026-07-30 03:28:29,718 INFO alvance_github_crawler.pipeline: processing crawled candidate codingjoe/django-health-check@1e09a5a3793363a2ed661bb15b638e479cc976b9
+2026-07-30 03:28:31,445 INFO alvance_github_crawler.pipeline: processing crawled candidate huggingface/optimum-quanto@6b0b7f89467a0f2a5d361f14b433575d6e9b7f1f
+2026-07-30 03:28:32,560 INFO alvance_github_crawler.pipeline: processing crawled candidate pytorch/benchmark@5e0d57f8a121fd3922ae4613cf19b269ed5aee99
+2026-07-30 03:28:42,464 INFO alvance_github_crawler.pipeline: processing crawled candidate fsspec/s3fs@609950a67e1d2f26bd98b5053b016200272a35dd
+2026-07-30 03:28:47,094 INFO alvance_github_crawler.pipeline: processing crawled candidate tobymao/saq@8f1c3a05dfa164597aea9199484354495194592b
+2026-07-30 03:28:49,408 INFO alvance_github_crawler.pipeline: processing crawled candidate amsehili/auditok@7adf4bc1ed9afff637b8b8b9b2b24e72a1afa7ac
+2026-07-30 03:28:50,269 INFO alvance_github_crawler.pipeline: processing crawled candidate sbi-dev/sbi@48dcd35a1213445683dd764a6eda55a69b445851
+2026-07-30 03:28:54,233 INFO alvance_github_crawler.pipeline: processing crawled candidate 15r10nk/inline-snapshot@4fcbf9f95ac3fa47c544132b1ab48f6eb3eb0e7f
+2026-07-30 03:28:56,545 INFO alvance_github_crawler.pipeline: processing crawled candidate Ostorlab/oxo@c3ad9b79e2f661889acd19ed7745a5a9251ba8ab
+2026-07-30 03:29:00,414 INFO alvance_github_crawler.pipeline: processing crawled candidate mindspore-ai/akg@6ec75bdf773a973e6fdbb29079613c440166d4de
+2026-07-30 03:29:00,460 INFO alvance_github_crawler.pipeline: processing crawled candidate maksimzayats/diwire@f0c2b32d37e9032611df8e7fcd8f1d14e6b74d8e
+2026-07-30 03:29:02,408 INFO alvance_github_crawler.pipeline: processing crawled candidate open-quantum-safe/liboqs-python@e7556188f452a17c255b9302514c14fdaabea24f
+2026-07-30 03:29:04,079 INFO alvance_github_crawler.pipeline: processing crawled candidate mlcommons/storage@1a236dc3e00b0578a8c03d7ed81b3f54d0329637
+2026-07-30 03:29:04,155 INFO alvance_github_crawler.pipeline: processing crawled candidate Binomica-Labs/SpliceCraft@20e076ddf5fe7044fbf5fdee672f0c358e1c3a19
+2026-07-30 03:29:04,315 INFO alvance_github_crawler.pipeline: processing crawled candidate svix/python-ksuid@266767ce10cd86c41e314913392f3a09867556a2
+2026-07-30 03:29:04,714 INFO alvance_github_crawler.pipeline: processing crawled candidate isaac-for-healthcare/i4h-workflows@f81569477a514ff1be2380d2071e04d25f306d38
+2026-07-30 03:29:04,887 INFO alvance_github_crawler.pipeline: processing crawled candidate ambient-code/agentready@0247d07574237f9b91a1ebb24bde37747203e779
+2026-07-30 03:29:05,245 INFO alvance_github_crawler.pipeline: processing crawled candidate ecmwf/WeatherGenerator@e869adde960d18885dbff1a870ed22c2c10c6584
+2026-07-30 03:29:06,072 INFO alvance_github_crawler.pipeline: processing crawled candidate Nixtla/datasetsforecast@f6111c0ea79e19a0b8c35c79a37c4a359ce3362a
+2026-07-30 03:29:07,883 INFO alvance_github_crawler.pipeline: processing crawled candidate amd/IRON@826c238e19c5eef5633b70378f5141bfb1b8f06e
+2026-07-30 03:29:07,891 INFO alvance_github_crawler.pipeline: processing crawled candidate msrbuilds/voice-studio@36204c01a63028ad75e26f3674949a9e1606321b
+2026-07-30 03:29:08,062 INFO alvance_github_crawler.pipeline: processing crawled candidate vinta/hal-9000@c92396a6d950a1baf047ef250eec1def369a1a13
+2026-07-30 03:29:09,987 INFO alvance_github_crawler.pipeline: processing crawled candidate guqiong96/Lsglang@b97644b82b4a35a35e717ceacc86d4910cb1bb60
+2026-07-30 03:29:10,908 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/folx@68bb4eb79e5649e58f09b80d912f714671c93f95
+2026-07-30 03:29:26,001 INFO alvance_github_crawler.pipeline: processing crawled candidate DisnakeDev/disnake@c85e0b4ddacaf6e6d2aab7225dba8490235af709
+2026-07-30 03:29:32,941 INFO alvance_github_crawler.pipeline: processing crawled candidate GoogleChrome/chromium-dashboard@675e01dcd32b84d4fcc35eb6a1c2fcdff2a43f00
+2026-07-30 03:29:37,998 INFO alvance_github_crawler.pipeline: processing crawled candidate antonmedv/fx@63eb255ad0149ca84c711e89cc85dd6434055405
+2026-07-30 03:29:38,362 INFO alvance_github_crawler.pipeline: processing crawled candidate ViRb3/wgcf@7947653aaa4b7a793a28603548c5f86449efc615
+2026-07-30 03:29:39,532 INFO alvance_github_crawler.pipeline: processing crawled candidate operator-framework/operator-sdk@299157a814e674f8f40d1b91ee77d64a90e850de
+2026-07-30 03:29:39,820 INFO alvance_github_crawler.pipeline: processing crawled candidate smallstep/cli@44df573722de994a42ca6638b23ab3dd9e799637
+2026-07-30 03:29:42,514 INFO alvance_github_crawler.pipeline: processing crawled candidate knadh/koanf@1aba4edef91717fe1abd4fa70f6a736e126ae4bc
+2026-07-30 03:29:43,888 INFO alvance_github_crawler.pipeline: processing crawled candidate oras-project/oras@25686fd5ad0d070f1ca9107fa1372ad3a8ae4140
+2026-07-30 03:29:44,209 INFO alvance_github_crawler.pipeline: processing crawled candidate ethersphere/bee@f76bb0cdc82fbc7ffac78567fa82c9f360e46c77
+2026-07-30 03:29:46,950 INFO alvance_github_crawler.pipeline: processing crawled candidate kubecolor/kubecolor@f9d850c96bf66362595c8eb50da1b3e4fd7995bc
+2026-07-30 03:29:47,587 INFO alvance_github_crawler.pipeline: processing crawled candidate Nerzal/gocloak@7fe18eea824dde1094be5e3c13255f20df2a1fea
+2026-07-30 03:29:49,210 INFO alvance_github_crawler.pipeline: processing crawled candidate kubeflow/arena@e30882c143cc2be32b7ed767ae0f78681892741b
+2026-07-30 03:29:51,627 INFO alvance_github_crawler.pipeline: processing crawled candidate VictoriaMetrics/metrics@ca1b05d11f437d1f3326ee21805595236d4e5c18
+2026-07-30 03:29:54,152 INFO alvance_github_crawler.pipeline: processing crawled candidate CosmWasm/wasmd@b640bb68f0bf8ed74d0c8779da98a37e0db4bc0d
+2026-07-30 03:29:56,747 INFO alvance_github_crawler.pipeline: processing crawled candidate auth0/auth0-cli@a932991ccbd75b59c2323e89905f9ce71a5770ab
+2026-07-30 03:29:57,408 INFO alvance_github_crawler.pipeline: processing crawled candidate bmf-san/ggc@8f9e863ec3bc352ba594f4c9f36a97b7912871b1
+2026-07-30 03:29:57,636 INFO alvance_github_crawler.pipeline: processing crawled candidate harvard-cns/orla@ad0c2a9d7d83965f2d14a2c6fcadd11420ac2308
+2026-07-30 03:30:08,103 INFO alvance_github_crawler.pipeline: processing crawled candidate edoardottt/pphack@685ae88a01155b901d32ccb734126f080a15e9fe
+2026-07-30 03:30:13,487 INFO alvance_github_crawler.pipeline: processing crawled candidate cloudflare/cbpfc@ca2cb5629cfb7a1c16acfeed3ea89944a0d4418f
+2026-07-30 03:30:17,669 INFO alvance_github_crawler.pipeline: processing crawled candidate pgsty/pig@9111472506dbc189390f5646693baff749072727
+2026-07-30 03:30:18,728 INFO alvance_github_crawler.pipeline: processing crawled candidate yerden/go-dpdk@2b5361371a4ec93d2db87ee1c82a63de07cb4c56
+2026-07-30 03:30:22,999 INFO alvance_github_crawler.pipeline: processing crawled candidate melqtx/tork@1ea215582a0b63d5babec9f520e51792b567755b
+2026-07-30 03:30:23,607 INFO alvance_github_crawler.pipeline: processing crawled candidate goharbor/harbor-cli@2ecf0d8fabe32f189fcd93c167648af6644fc1d9
+2026-07-30 03:30:25,510 INFO alvance_github_crawler.pipeline: processing crawled candidate NVIDIA/topograph@ae7713059e0bc4efc9d0bb69271349f97ac39f96
+2026-07-30 03:30:29,341 INFO alvance_github_crawler.pipeline: processing crawled candidate team-telnyx/telnyx-go@0f580448f6d21ef2b1c002d9127ad6585e277c88
+2026-07-30 03:30:30,379 INFO alvance_github_crawler.pipeline: processing crawled candidate deveshctl/layerx@05de9088fb0f8b8c0343534f33748901b4b10b5e
+2026-07-30 03:30:35,218 INFO alvance_github_crawler.pipeline: processing crawled candidate go-openapi/strfmt@6ba6416e314908a9bae5bd609078c5befa74f002
+2026-07-30 03:30:37,292 INFO alvance_github_crawler.pipeline: processing crawled candidate gastownhall/gastown@649b832b7672bc7a2dbef26f5983aba6198b819b
+2026-07-30 03:30:38,221 INFO alvance_github_crawler.pipeline: processing crawled candidate projectdiscovery/katana@7eaa0c279485accd5860a416de4d94d28e1f6062
+2026-07-30 03:30:41,665 INFO alvance_github_crawler.pipeline: processing crawled candidate nginx-proxy/docker-gen@a2820f10aa1466bf30d430b27c5077a9fa1ceaf2
+2026-07-30 03:30:41,675 INFO alvance_github_crawler.pipeline: processing crawled candidate digitalocean/doctl@ea4b275c5fd3ccae6d3c3b047665fc251173b50e
+2026-07-30 03:30:43,283 INFO alvance_github_crawler.pipeline: processing crawled candidate AdguardTeam/dnsproxy@31e076933155d63d6db3f7d5243cdf2a0e4deae9
+2026-07-30 03:30:45,810 INFO alvance_github_crawler.pipeline: processing crawled candidate krakend/krakend-ce@428ae0a40670c861578f5929957dda128f3565ca
+2026-07-30 03:30:46,686 INFO alvance_github_crawler.pipeline: processing crawled candidate GoogleCloudPlatform/khi@19d0dfe35c26736260bcff1ce22da5f2a181b35c
+2026-07-30 03:30:47,286 INFO alvance_github_crawler.pipeline: processing crawled candidate knative/eventing@d6139ffb2175b4a7387f56a8b2c589a17c631719
+2026-07-30 03:30:48,474 INFO alvance_github_crawler.pipeline: processing crawled candidate hanxi/cups-web@97c42940a57503284e963a1118110bd55f6d2cef
+2026-07-30 03:30:54,415 INFO alvance_github_crawler.pipeline: processing crawled candidate sigstore/rekor@f3299aac1ff4e1c7278bbbde80cde66f279203bc
+2026-07-30 03:30:55,242 INFO alvance_github_crawler.pipeline: processing crawled candidate projectdiscovery/urlfinder@3548dc2722023fa21da9dd9f6d13308f9b06424c
+2026-07-30 03:31:04,451 INFO alvance_github_crawler.pipeline: processing crawled candidate argoproj-labs/argocd-operator@50d0be30404f1ca5f2cd3dd7522aaf0ba8a88a37
+2026-07-30 03:31:04,615 INFO alvance_github_crawler.pipeline: processing crawled candidate fencesandbox/fence@2611d1b01274124845b680571727168073a2711d
+2026-07-30 03:31:05,090 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ViRb3/wgcf attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:05,602 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=mlcommons/storage attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:05,725 INFO alvance_github_crawler.pipeline: processing crawled candidate kubernetes-sigs/controller-tools@e2d03239ec4563457b25b9d684f16d771a712d9b
+2026-07-30 03:31:06,848 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ViRb3/wgcf attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:07,375 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=mlcommons/storage attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:07,383 INFO alvance_github_crawler.pipeline: processing crawled candidate gianlucam76/k8s-cleaner@2e9843030987f20dc1a9087c08cf56b23af6aba4
+2026-07-30 03:31:07,893 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=digitalocean/doctl attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:08,627 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ViRb3/wgcf attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:09,102 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=kubecolor/kubecolor attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:09,612 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=mlcommons/storage attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:10,112 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=digitalocean/doctl attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:10,606 ERROR alvance_github_crawler.pipeline: ViRb3/wgcf failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:10,626 INFO alvance_github_crawler.pipeline: processing crawled candidate ceph/go-ceph@786efc0c8a27d8f19773aa9ae2a4b86ea29b4d10
+2026-07-30 03:31:11,100 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=GoogleChrome/chromium-dashboard attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:11,283 INFO alvance_github_crawler.pipeline: processing crawled candidate vmfunc/sif@a38ba0abd015894d56d8da67536a4a4bd0dcefe5
+2026-07-30 03:31:11,612 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=kubecolor/kubecolor attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:12,274 ERROR alvance_github_crawler.pipeline: mlcommons/storage failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:12,278 INFO alvance_github_crawler.pipeline: processing crawled candidate chainguard-dev/melange@5550831e913a4604b85b1cfd4d2786103f6d7311
+2026-07-30 03:31:12,620 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=digitalocean/doctl attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:13,125 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=sigstore/rekor attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:13,440 INFO alvance_github_crawler.pipeline: processing crawled candidate libp2p/go-libp2p-kad-dht@7571fec1480b3ccc9e9dcfec47253fc8d773a45b
+2026-07-30 03:31:13,597 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=GoogleChrome/chromium-dashboard attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:14,114 INFO alvance_github_crawler.pipeline: processing crawled candidate scionproto/scion@2bd9c299cdbc94fc17c5d0f4fc14efda1304690c
+2026-07-30 03:31:14,135 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=krakend/krakend-ce attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:14,597 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=kubecolor/kubecolor attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:15,279 ERROR alvance_github_crawler.pipeline: digitalocean/doctl failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:15,290 INFO alvance_github_crawler.pipeline: processing crawled candidate edoardottt/csprecon@b32b516dd8c009d16c24aa9ea1dad330b9d833cf
+2026-07-30 03:31:15,599 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=AdguardTeam/dnsproxy attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:16,106 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=sigstore/rekor attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:16,601 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=GoogleChrome/chromium-dashboard attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:17,125 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=GoogleCloudPlatform/khi attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:17,592 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=krakend/krakend-ce attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:18,111 ERROR alvance_github_crawler.pipeline: kubecolor/kubecolor failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:18,117 INFO alvance_github_crawler.pipeline: processing crawled candidate foks-proj/go-foks@85cd3107db713769d597bec9682d32c1e14ca626
+2026-07-30 03:31:18,134 INFO alvance_github_crawler.pipeline: processing crawled candidate paperclipinc/openclaw-operator@8f3a14a93444d74ebcb350e66edc648a7a40b736
+2026-07-30 03:31:18,533 INFO alvance_github_crawler.pipeline: processing crawled candidate kubernetes-sigs/cluster-api-provider-openstack@1cb372b96cec9aa0c967ee5ac7c059c5e02937a6
+2026-07-30 03:31:18,604 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=AdguardTeam/dnsproxy attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:19,101 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=sigstore/rekor attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:19,624 ERROR alvance_github_crawler.pipeline: GoogleChrome/chromium-dashboard failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:19,629 INFO alvance_github_crawler.pipeline: processing crawled candidate rancher/remotedialer@8d459518574bf23ec27b3d56e305961944ac8cd3
+2026-07-30 03:31:20,110 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=hanxi/cups-web attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:20,611 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=GoogleCloudPlatform/khi attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:21,123 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=krakend/krakend-ce attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:21,606 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=AdguardTeam/dnsproxy attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:22,152 ERROR alvance_github_crawler.pipeline: sigstore/rekor failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:22,156 INFO alvance_github_crawler.pipeline: processing crawled candidate FiloSottile/sunlight@3da9ca62a4de447e424367bc90be7bd2e33b88ab
+2026-07-30 03:31:22,535 INFO alvance_github_crawler.pipeline: processing crawled candidate nmstate/kubernetes-nmstate@5245b16f44c19d720474ddf5db57bf7dd1c6ffbe
+2026-07-30 03:31:22,597 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=hanxi/cups-web attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:23,139 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=GoogleCloudPlatform/khi attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:23,624 ERROR alvance_github_crawler.pipeline: krakend/krakend-ce failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:23,628 INFO alvance_github_crawler.pipeline: processing crawled candidate itsubaki/q@f93145043e2a5a7976a1db538a1e963f2bb02e24
+2026-07-30 03:31:24,125 ERROR alvance_github_crawler.pipeline: AdguardTeam/dnsproxy failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:24,129 INFO alvance_github_crawler.pipeline: processing crawled candidate ansel1/merry@acee3c4e6a712c5aa1d342e894c65b884b5b235c
+2026-07-30 03:31:24,307 INFO alvance_github_crawler.pipeline: processing crawled candidate edoardottt/favirecon@2aed3244211ef486ddf6ed27e5a1e69223d16240
+2026-07-30 03:31:24,595 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=hanxi/cups-web attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:25,170 ERROR alvance_github_crawler.pipeline: GoogleCloudPlatform/khi failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:25,177 INFO alvance_github_crawler.pipeline: processing crawled candidate Macmod/ldapx@deef7813ae0c6fd690ef28b289029fdca94c5e8d
+2026-07-30 03:31:26,382 ERROR alvance_github_crawler.pipeline: hanxi/cups-web failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:26,387 INFO alvance_github_crawler.pipeline: processing crawled candidate losisin/helm-values-schema-json@27dfb7fa5a55f67464b0622bfaedd950e566d396
+2026-07-30 03:31:28,726 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ceph/go-ceph attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:30,493 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ceph/go-ceph attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:30,998 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=argoproj-labs/argocd-operator attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:32,256 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ceph/go-ceph attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:32,809 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=argoproj-labs/argocd-operator attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:34,077 ERROR alvance_github_crawler.pipeline: ceph/go-ceph failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:34,084 INFO alvance_github_crawler.pipeline: processing crawled candidate Dynatrace/dynatrace-configuration-as-code@c6590b7c5b83297fc159fd11c275a2794eb7293c
+2026-07-30 03:31:34,557 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=argoproj-labs/argocd-operator attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:36,357 ERROR alvance_github_crawler.pipeline: argoproj-labs/argocd-operator failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:36,364 INFO alvance_github_crawler.pipeline: processing crawled candidate undistro/cel-playground@084eb0cdfd09c12648b01be38589f16fa02d2da3
+2026-07-30 03:31:36,843 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=knative/eventing attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:37,528 INFO alvance_github_crawler.pipeline: processing crawled candidate kubernetes-csi/csi-test@ae8a63a708ab8c9acf451f25f6824f0e3f010046
+2026-07-30 03:31:38,079 INFO alvance_github_crawler.pipeline: processing crawled candidate qydysky/bili_danmu@489789de9852b3c29f45cd7b66adc5658d0c5926
+2026-07-30 03:31:38,602 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=knative/eventing attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:40,204 INFO alvance_github_crawler.pipeline: processing crawled candidate lunarway/shuttle@fd440baf3d1e473c60945d4a0979ec8a28a1f895
+2026-07-30 03:31:40,348 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=knative/eventing attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:40,951 INFO alvance_github_crawler.pipeline: processing crawled candidate stolostron/multicluster-observability-operator@1354ae451c1ac6d9743657c8351fbc444e42b9cc
+2026-07-30 03:31:42,440 ERROR alvance_github_crawler.pipeline: knative/eventing failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:42,450 INFO alvance_github_crawler.pipeline: processing crawled candidate damonto/sigmo@7dfd9e326fb84606761ec6f4f2658ca44c4209f6
+2026-07-30 03:31:42,661 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=vmfunc/sif attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:42,870 INFO alvance_github_crawler.pipeline: processing crawled candidate sapcc/keppel@5507e3bd5962d81c2c17877ed0663069bd2c2a25
+2026-07-30 03:31:44,403 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=vmfunc/sif attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:44,908 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=chainguard-dev/melange attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:45,320 INFO alvance_github_crawler.pipeline: processing crawled candidate leancodebox/GooseForum@d9aba30b18dfa8d5e1b7f76623d6f8807c772e4e
+2026-07-30 03:31:46,162 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=vmfunc/sif attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:46,670 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=chainguard-dev/melange attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:47,948 ERROR alvance_github_crawler.pipeline: vmfunc/sif failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:47,954 INFO alvance_github_crawler.pipeline: processing crawled candidate born-ml/born@994166691a9d3e617c1ccf835697698bcf5cccbc
+2026-07-30 03:31:48,426 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=chainguard-dev/melange attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:49,439 INFO alvance_github_crawler.pipeline: processing crawled candidate knative-extensions/eventing-rabbitmq@c837d9f21c44488a4cea02d5b6a82381fedb5cd6
+2026-07-30 03:31:50,276 ERROR alvance_github_crawler.pipeline: chainguard-dev/melange failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:31:50,282 INFO alvance_github_crawler.pipeline: processing crawled candidate mudler/edgevpn@3a6954aab6383ba3ba9b072a563822c48a3ebf38
+2026-07-30 03:31:50,998 INFO alvance_github_crawler.pipeline: processing crawled candidate oakmound/oak@ae327857d9b97c90bf0e133db5b91616baae9527
+2026-07-30 03:31:52,177 INFO alvance_github_crawler.pipeline: processing crawled candidate hashicorp/terraform-mcp-server@ab3929d44fe2a8c37d3cf8d267335f1a8e4f7f01
+2026-07-30 03:31:52,718 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=paperclipinc/openclaw-operator attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:31:54,261 INFO alvance_github_crawler.pipeline: processing crawled candidate haloydev/haloy@72859783b5e8a809deed5a1df50cdb77e085ae59
+2026-07-30 03:31:54,775 INFO alvance_github_crawler.pipeline: processing crawled candidate kaasops/vector-operator@3c5552e1b7a38cfd750857df4cd482d96398dcc2
+2026-07-30 03:31:56,316 INFO alvance_github_crawler.pipeline: processing crawled candidate arkade-os/arkd@c397cff0f94c9cd5ece8078b452388c6cfcb63ec
+2026-07-30 03:32:02,633 INFO alvance_github_crawler.pipeline: processing crawled candidate stripe/stripe-react-native@01de7732e0b629415223cc9920c92c105f8c78b4
+2026-07-30 03:32:03,118 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=losisin/helm-values-schema-json attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:32:03,226 INFO alvance_github_crawler.pipeline: processing crawled candidate cornerstonejs/cornerstone3D@a35a2b54f4208b66e32168139dcc68a9757d3b84
+2026-07-30 03:32:04,011 INFO alvance_github_crawler.pipeline: processing crawled candidate AnandChowdhary/calendar-link@c0ce9de60721dabeabbad16cedd8a4628937b950
+2026-07-30 03:32:04,882 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=losisin/helm-values-schema-json attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:32:06,637 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=losisin/helm-values-schema-json attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:32:08,478 ERROR alvance_github_crawler.pipeline: losisin/helm-values-schema-json failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:32:08,487 INFO alvance_github_crawler.pipeline: processing crawled candidate zuplo/zudoku@f5c12b500d54c568daefd79bd84a2f485d5ecd89
+2026-07-30 03:32:14,647 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=lunarway/shuttle attempt=1/4 delay_s=60.0 error=InternalServerError
+2026-07-30 03:32:20,582 INFO alvance_github_crawler.pipeline: processing crawled candidate mantinedev/next-pages-template@cf526d38819f357266616f0df06329c6b4326434
+2026-07-30 03:32:23,040 INFO alvance_github_crawler.pipeline: processing crawled candidate amalshaji/dbcooper@79399630ce65c4a35b06a03c683062251a7bccad
+2026-07-30 03:32:24,329 INFO alvance_github_crawler.pipeline: processing crawled candidate fastapi/fastapi-vscode@b2599d485769ff1248ae5d3a4d5cc759961718c7
+2026-07-30 03:32:24,550 INFO alvance_github_crawler.pipeline: processing crawled candidate raysonmeng/agent-bridge@a3e927fcaccd09a49871dde8eabbca8e51bd358c
+2026-07-30 03:32:26,706 INFO alvance_github_crawler.pipeline: processing crawled candidate jsverse/transloco-keys-manager@c67935724d71f9576ad0c2f730a0234b15c5860c
+2026-07-30 03:32:27,668 INFO alvance_github_crawler.pipeline: processing crawled candidate Shopify/theme-tools@6038ace58eae8becaab6f38dd46679e812a3672a
+2026-07-30 03:32:30,420 INFO alvance_github_crawler.pipeline: processing crawled candidate IgniteUI/igniteui-webcomponents@47658b656bf7124a3f8eaddef95ec3586b3492b5
+2026-07-30 03:32:30,619 INFO alvance_github_crawler.pipeline: processing crawled candidate H4ad/serverless-adapter@a44e1077574eb5454256fccc9e783841f7afeb76
+2026-07-30 03:32:31,308 INFO alvance_github_crawler.pipeline: processing crawled candidate Nutlope/llamacoder@d840d878c6ef9dd363868a382a7ff04011037bb4
+2026-07-30 03:32:33,699 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/azure-pipelines-tasks@0e983fe47370f7cbf1f57cf3f1f7d1c5a11e43f7
+2026-07-30 03:32:36,375 INFO alvance_github_crawler.pipeline: processing crawled candidate CookSleep/gpt_image_playground@aa789c3a11f1128e43d759cee2aadbf9afc3bc95
+2026-07-30 03:32:37,658 INFO alvance_github_crawler.pipeline: processing crawled candidate material-extensions/vscode-material-icon-theme@980150ebbfb506d82f6a302bb41ead05d9a5d4d3
+2026-07-30 03:32:38,883 INFO alvance_github_crawler.pipeline: processing crawled candidate mattzcarey/shippie@23e91d0c3ed12950c5de591e9e11d9b0c6dbf3f8
+2026-07-30 03:32:41,451 INFO alvance_github_crawler.pipeline: processing crawled candidate Teradata/covalent@b0dde37554eb9f070e6738fbe68419fc88489cd3
+2026-07-30 03:32:42,970 INFO alvance_github_crawler.pipeline: processing crawled candidate DestinyItemManager/DIM@7e1701f4c5640d1811d7ab28243e355fd1d6c944
+2026-07-30 03:32:43,229 INFO alvance_github_crawler.pipeline: processing crawled candidate hellodigua/code996@b411f44343b20a0d121c37d1fb05d62e728304f2
+2026-07-30 03:32:51,291 INFO alvance_github_crawler.pipeline: processing crawled candidate igordanchenko/yet-another-react-lightbox@d41caf9d3345a589bd46eec90ea5dcb91dadf929
+2026-07-30 03:32:52,604 INFO alvance_github_crawler.pipeline: processing crawled candidate Danilaa1/cuelume@eca7bb489dfe542b267e754e30277c3c2891e16c
+2026-07-30 03:32:54,424 INFO alvance_github_crawler.pipeline: processing crawled candidate themesberg/flowbite-vue@5b4a7357c4e2ea8aa085be6c80c35230c3ee54ea
+2026-07-30 03:32:57,416 INFO alvance_github_crawler.pipeline: processing crawled candidate igordanchenko/react-photo-album@ef133fed8fcb558ada520b3101f60a34de07108f
+2026-07-30 03:32:58,940 INFO alvance_github_crawler.pipeline: processing crawled candidate selemondev/spark-ui@6e5f1fb9d9608012a4e01c0b99b5ce1082b358ca
+2026-07-30 03:33:03,400 INFO alvance_github_crawler.pipeline: processing crawled candidate SuperchupuDev/tinyglobby@f391d0dfa9c39a8c18dc7a45996259e61320a7c8
+2026-07-30 03:33:07,681 INFO alvance_github_crawler.pipeline: processing crawled candidate mrwogu/promptscript@3a754bb73eca059b8a33c9b087910727acfb1baf
+2026-07-30 03:33:11,542 INFO alvance_github_crawler.pipeline: processing crawled candidate awslabs/amazon-guardduty-tester@3ced4a4a53be5690d4fdacfaff38799644daf12f
+2026-07-30 03:33:12,037 INFO alvance_github_crawler.pipeline: processing crawled candidate prisma/prisma-next@e0e739ca6a0e076c97733ef30ec3bf7b1f43a27b
+2026-07-30 03:33:15,400 INFO alvance_github_crawler.pipeline: processing crawled candidate Workday/canvas-kit@23b7a01723b0057b59410a2c3b3bd279d3f6b3aa
+2026-07-30 03:33:17,086 INFO alvance_github_crawler.pipeline: processing crawled candidate zokugun/vscode-sync-settings@7f0d22f2f7ba7d870c8c4b90a89e6736ba3b79df
+2026-07-30 03:33:18,420 INFO alvance_github_crawler.pipeline: processing crawled candidate Norbiros/nuxt-open-fetch@169a53e7cf1ca5cf440ed596048032a4c265af58
+2026-07-30 03:33:20,855 INFO alvance_github_crawler.pipeline: processing crawled candidate cdklabs/construct-hub@a130aec22acc4b949832c9fc1995a751bdd827df
+2026-07-30 03:33:22,426 INFO alvance_github_crawler.pipeline: processing crawled candidate tonyc726/china-administrative-division@e8e6591278b92aec4536d5b2ef011d350a08a727
+2026-07-30 03:33:24,169 INFO alvance_github_crawler.pipeline: processing crawled candidate getsentry/dotagents@bc9b4f6209a7f9d2bdb0708294e6de284c64b2b3
+2026-07-30 03:33:25,028 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/vscode-cosmosdb@91f642463ff5d9f465a1c50732b70a544dc9bce9
+2026-07-30 03:33:28,123 INFO alvance_github_crawler.pipeline: processing crawled candidate csfloat/extension@1265da2674d0a5375b3226e4388617fe9ce291d3
+2026-07-30 03:33:30,144 INFO alvance_github_crawler.pipeline: processing crawled candidate widgetti/ipyreact@3fa9ad55d2d79142dfaba82133d22eda41a84815
+2026-07-30 03:33:30,861 INFO alvance_github_crawler.pipeline: processing crawled candidate TheExGenesis/community-archive@cbe95a30f2c20d36e8c117abf01bc644b17387bb
+2026-07-30 03:33:34,202 INFO alvance_github_crawler.pipeline: processing crawled candidate mozilla/webextension-polyfill@1a2f11f29724e273391e0d9820a643cab0688265
+2026-07-30 03:33:41,483 INFO alvance_github_crawler.pipeline: processing crawled candidate mozilla/addons-linter@de7eb896b4cb58eb04f2f79118904c23c1d9b83d
+2026-07-30 03:33:45,890 INFO alvance_github_crawler.pipeline: processing crawled candidate Kozea/formol@eb7aeb1a0d21e35333971698c95603a6a56cc50d
+2026-07-30 03:33:47,771 INFO alvance_github_crawler.pipeline: processing crawled candidate buxlabs/abstract-syntax-tree@a7feca809ee4d5d9ef465b42c07e528f97fd3ab5
+2026-07-30 03:33:49,171 INFO alvance_github_crawler.pipeline: processing crawled candidate plivo/plivo-node@30311ff8c456371860f13c1b8d86e61053d20974
+2026-07-30 03:33:50,378 INFO alvance_github_crawler.pipeline: processing crawled candidate MagicMirrorOrg/MagicMirror@4b4a59534f7da01e4030e46029fe9dd649a7675e
+2026-07-30 03:33:54,898 INFO alvance_github_crawler.pipeline: processing crawled candidate alexcasalboni/aws-lambda-power-tuning@0e61e6e4a3317907e47c665f6bfddfa852d9fb2e
+2026-07-30 03:33:55,607 INFO alvance_github_crawler.pipeline: processing crawled candidate zxlie/FeHelper@cc3aa4bb7f891a209cfa605ead2b45eb3ba8ad46
+2026-07-30 03:33:56,794 INFO alvance_github_crawler.pipeline: processing crawled candidate PrismarineJS/node-minecraft-protocol@aa23a03964bf84e2f7fe813818a4ec5b7b2a1270
+2026-07-30 03:33:57,414 INFO alvance_github_crawler.pipeline: processing crawled candidate github-community-projects/safe-settings@baac44d37dbc8799d2482492afdb66410ce21b1b
+2026-07-30 03:34:01,498 INFO alvance_github_crawler.pipeline: processing crawled candidate jefflau/jest-fetch-mock@98300a63d311306a47012dff7f8582a85dd90510
+2026-07-30 03:34:01,535 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=TheExGenesis/community-archive attempt=1/4 delay_s=5.0 error=RateLimitError
+2026-07-30 03:34:01,937 INFO alvance_github_crawler.pipeline: processing crawled candidate agsh/onvif@151f96471ebb8bf98ab6d867fb567ae63cba9c9f
+2026-07-30 03:34:06,651 INFO alvance_github_crawler.pipeline: processing crawled candidate tcort/markdown-link-check@0ed023d40f3dc2fefc15ab9fc7405830e623c546
+2026-07-30 03:34:06,665 INFO alvance_github_crawler.pipeline: processing crawled candidate leaferjs/LeaferJS@878537f21e4a171fd38d08eac4580e6019b0519b
+2026-07-30 03:34:07,284 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=TheExGenesis/community-archive attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:07,826 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=stripe/stripe-react-native attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:08,272 INFO alvance_github_crawler.pipeline: processing crawled candidate 5etools-mirror-3/5etools-src@a4ebf073b5f1c91b9ca92e3e6714d47328f7e63e
+2026-07-30 03:34:08,281 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=IgniteUI/igniteui-webcomponents attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:08,446 INFO alvance_github_crawler.pipeline: processing crawled candidate cauenapier/TownSquare@59ab50c398df80011df98f9254fd7593d03589fd
+2026-07-30 03:34:08,603 INFO alvance_github_crawler.pipeline: processing crawled candidate DavidLam-oss/obsidian-wechat-converter@f026923f6b1b927bbc339517da461879a18bfdaf
+2026-07-30 03:34:09,050 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=TheExGenesis/community-archive attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:09,541 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=microsoft/vscode-cosmosdb attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:10,038 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=stripe/stripe-react-native attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:10,673 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=IgniteUI/igniteui-webcomponents attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:10,697 INFO alvance_github_crawler.pipeline: processing crawled candidate CleverCloud/clever-components@f7894f569cd362bdfec7c0a7a196fde0fd82c310
+2026-07-30 03:34:11,048 ERROR alvance_github_crawler.pipeline: TheExGenesis/community-archive failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:34:11,052 INFO alvance_github_crawler.pipeline: processing crawled candidate localnerve/html-snapshots@4dab0986a0461761cd6dfaca5e9956c0c8f8ebe5
+2026-07-30 03:34:11,528 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=MagicMirrorOrg/MagicMirror attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:12,049 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=microsoft/vscode-cosmosdb attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:12,533 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=stripe/stripe-react-native attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:13,086 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=IgniteUI/igniteui-webcomponents attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:13,548 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=MagicMirrorOrg/MagicMirror attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:13,680 INFO alvance_github_crawler.pipeline: processing crawled candidate JayPokale/Chisle@a5486fa112c961f9b25349a29ede38cc9f2a1a5c
+2026-07-30 03:34:14,055 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=microsoft/vscode-cosmosdb attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:34:14,564 ERROR alvance_github_crawler.pipeline: stripe/stripe-react-native failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:34:14,569 INFO alvance_github_crawler.pipeline: processing crawled candidate toomuchdesign/postcss-nested-ancestors@968441fbfddf5329ed44dc8430392f457f21b267
+2026-07-30 03:34:14,858 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=MagicMirrorOrg/MagicMirror attempt=3/4 delay_s=60.0 error=InternalServerError
+2026-07-30 03:34:15,121 ERROR alvance_github_crawler.pipeline: IgniteUI/igniteui-webcomponents failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:34:15,126 INFO alvance_github_crawler.pipeline: processing crawled candidate PrismarineJS/mineflayer@a89e76b7a45e790247be77b5c18e155efd89315d
+2026-07-30 03:34:15,747 INFO alvance_github_crawler.pipeline: processing crawled candidate thevahidal/soul@9fb7494e0a620640ed42fb83ce90394a0be3f080
+2026-07-30 03:34:16,099 ERROR alvance_github_crawler.pipeline: microsoft/vscode-cosmosdb failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:34:16,106 INFO alvance_github_crawler.pipeline: processing crawled candidate Beaver-Notes/Beaver-Notes@3807f3b969f0f9e4b1464cb3a70f524af6e7f799
+2026-07-30 03:34:17,768 INFO alvance_github_crawler.pipeline: processing crawled candidate ristekoss/susunjadwal-frontend@e56bbdd523c677475fa6300107c3975359c90c99
+2026-07-30 03:34:23,922 INFO alvance_github_crawler.pipeline: processing crawled candidate denisidoro/navi@f7330b9ad5bd95b7d1a3c96d00e0a77deb589147
+2026-07-30 03:34:25,643 INFO alvance_github_crawler.pipeline: processing crawled candidate kcl-lang/kcl@fc38d5ab5eb26d2b2169d183c646d3385eb30c4f
+2026-07-30 03:34:26,153 INFO alvance_github_crawler.pipeline: processing crawled candidate tamasfe/taplo@08f343be02ce1b20296470396a42f0fa47820449
+2026-07-30 03:34:30,686 INFO alvance_github_crawler.pipeline: processing crawled candidate prisma/prisma-engines@9bae2a3a63b4f966c4855ad11503f44f50f4db47
+2026-07-30 03:34:33,539 INFO alvance_github_crawler.pipeline: processing crawled candidate rust-pcap/pcap@91300d836f76696d9603347dcfe81f3981a2ddae
+2026-07-30 03:34:36,089 INFO alvance_github_crawler.pipeline: processing crawled candidate prometheus/client_rust@3f40b05e802d9e95bbafd3efb5a28a14d7f7afb2
+2026-07-30 03:34:42,275 INFO alvance_github_crawler.pipeline: processing crawled candidate NLnetLabs/domain@fa52d81acd61876f7a8171522a74d8a049f107d1
+2026-07-30 03:34:42,569 INFO alvance_github_crawler.pipeline: processing crawled candidate awolverp/cachebox@e7c41d54714ae6d3d6567e68d06b82c0db7b062b
+2026-07-30 03:34:43,128 INFO alvance_github_crawler.pipeline: processing crawled candidate raine/anki-llm@a50c5089f4d2518e43a7b2f33dda3c8c8af35a9d
+2026-07-30 03:34:49,181 INFO alvance_github_crawler.pipeline: processing crawled candidate jsinger67/parol@5bb3537a11dba9f016ce2f8d34023f6d7f122fda
+2026-07-30 03:34:51,640 INFO alvance_github_crawler.pipeline: processing crawled candidate driftluo/tentacle@af41acd08355cbf1919bbbe25376888e47231c8a
+2026-07-30 03:34:53,684 INFO alvance_github_crawler.pipeline: processing crawled candidate SoCkEt7/Livediff@c55bfd21a668fcddb4d298f973c8acb694a067e3
+2026-07-30 03:34:55,940 INFO alvance_github_crawler.pipeline: processing crawled candidate spiraldb/fastlanes@b41d2496d9a94387fc3d6f392651bc255dafa12a
+2026-07-30 03:35:01,284 INFO alvance_github_crawler.pipeline: processing crawled candidate paritytech/litep2p@6e21525cb62a4b7ffeb482c9281783d687dc9d59
+2026-07-30 03:35:06,221 INFO alvance_github_crawler.pipeline: processing crawled candidate funbiscuit/embedded-cli-rs@1ce2a8572a3620665b22da9dbbd1c88ec8867b7f
+2026-07-30 03:35:10,062 INFO alvance_github_crawler.pipeline: processing crawled candidate iOfficeAI/aionrs@70d5bee581e3da6e6957448daf2244f39cd7b501
+2026-07-30 03:35:12,047 INFO alvance_github_crawler.pipeline: processing crawled candidate skim-rs/skim@d2ae57625f5dc3615c5e7834c5d115a240041ff1
+2026-07-30 03:35:12,628 INFO alvance_github_crawler.pipeline: processing crawled candidate Nukesor/pueue@b3fe223ef0a3c51d95d5c6128700b79442c54af7
+2026-07-30 03:35:18,672 INFO alvance_github_crawler.pipeline: processing crawled candidate vulkano-rs/vulkano@11ab77902a9a01f93d6c8a60c9ddace4abcef75f
+2026-07-30 03:35:21,488 INFO alvance_github_crawler.pipeline: processing crawled candidate harababurel/gcsf@636b226e1d7a3283129b8e07dc924352237c8fa4
+2026-07-30 03:35:22,908 INFO alvance_github_crawler.pipeline: processing crawled candidate axodotdev/cargo-dist@25b2af882b1641c6ae50bc81c11ec174b8a6e1d8
+2026-07-30 03:35:23,140 INFO alvance_github_crawler.pipeline: processing crawled candidate ricosjp/truck@bd7d550435757df725e5c50118be11fb98fec127
+2026-07-30 03:35:24,163 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Beaver-Notes/Beaver-Notes attempt=1/4 delay_s=5.0 error=RateLimitError
+2026-07-30 03:35:27,129 INFO alvance_github_crawler.pipeline: processing crawled candidate Nukesor/comfy-table@534032bff32d3f45d093113bd1d03f36128c6ef7
+2026-07-30 03:35:29,066 INFO alvance_github_crawler.pipeline: processing crawled candidate starcoinorg/starcoin@0c6fbf4f9b1b711f9106193372dbdf0004522dde
+2026-07-30 03:35:29,519 INFO alvance_github_crawler.pipeline: processing crawled candidate kellnr/kellnr@96242387b50193ac3ecd858f4a2751f7898e1c97
+2026-07-30 03:35:29,926 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Beaver-Notes/Beaver-Notes attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:30,413 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=CleverCloud/clever-components attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:30,905 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=tamasfe/taplo attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:31,417 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=github-community-projects/safe-settings attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:31,788 INFO alvance_github_crawler.pipeline: processing crawled candidate joamag/boytacean@d1ed72404feff6021449f9f8942bea221142dc7a
+2026-07-30 03:35:31,906 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=agsh/onvif attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:32,439 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Beaver-Notes/Beaver-Notes attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:32,914 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=harababurel/gcsf attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:33,418 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=CleverCloud/clever-components attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:33,914 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=tamasfe/taplo attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:34,423 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=github-community-projects/safe-settings attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:34,927 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=agsh/onvif attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:34,930 INFO alvance_github_crawler.pipeline: processing crawled candidate uutils/findutils@3072c3f9ed98138f95a256b8cf3b340b42c9a583
+2026-07-30 03:35:34,958 INFO alvance_github_crawler.pipeline: processing crawled candidate rerun-io/egui_tiles@1e145ced97ce97e608472634a8609d3aab3883c0
+2026-07-30 03:35:35,496 ERROR alvance_github_crawler.pipeline: Beaver-Notes/Beaver-Notes failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:35:35,502 INFO alvance_github_crawler.pipeline: processing crawled candidate powdr-labs/powdr@9f84ab95cc2244731df9058cad170afdde0870ec
+2026-07-30 03:35:35,911 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=kcl-lang/kcl attempt=1/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:36,441 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=harababurel/gcsf attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:36,933 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=CleverCloud/clever-components attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:37,425 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=tamasfe/taplo attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:37,904 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=github-community-projects/safe-settings attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:38,419 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=agsh/onvif attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:38,929 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=kcl-lang/kcl attempt=2/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:39,419 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=harababurel/gcsf attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:39,537 INFO alvance_github_crawler.pipeline: processing crawled candidate ralfbiedert/interoptopus@e802572749d6b3bf6879ab92c5361925250fdc04
+2026-07-30 03:35:40,132 ERROR alvance_github_crawler.pipeline: CleverCloud/clever-components failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:35:40,144 INFO alvance_github_crawler.pipeline: processing crawled candidate crabnebula-dev/cargo-packager@37a538e76608b33eaa3f36f7c57b30b284dfa5a9
+2026-07-30 03:35:40,465 ERROR alvance_github_crawler.pipeline: tamasfe/taplo failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:35:40,471 INFO alvance_github_crawler.pipeline: processing crawled candidate pwnwriter/haylxon@3b3cd05d442612e5e4487225d6da48c9c2873596
+2026-07-30 03:35:40,691 INFO alvance_github_crawler.pipeline: processing crawled candidate posit-dev/air@3c25bc68e88df84c2e8f13c6efbb29ffd920aa7e
+2026-07-30 03:35:40,923 ERROR alvance_github_crawler.pipeline: github-community-projects/safe-settings failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:35:40,927 INFO alvance_github_crawler.pipeline: processing crawled candidate paritytech/polkavm@3df1d0309c4c81a1aad0a755d83570d203bba1d9
+2026-07-30 03:35:41,413 ERROR alvance_github_crawler.pipeline: agsh/onvif failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:35:41,419 INFO alvance_github_crawler.pipeline: processing crawled candidate matrix-org/vodozemac@f978854fc9150d4147b95abb0681f5b82c99f6f2
+2026-07-30 03:35:41,928 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=kcl-lang/kcl attempt=3/4 delay_s=1.0 error=InternalServerError
+2026-07-30 03:35:42,426 ERROR alvance_github_crawler.pipeline: harababurel/gcsf failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:35:42,430 INFO alvance_github_crawler.pipeline: processing crawled candidate altunenes/parakeet-rs@c3901ec6ad3f62a14212e0d85b12a7c9fe80f599
+2026-07-30 03:35:43,970 ERROR alvance_github_crawler.pipeline: kcl-lang/kcl failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1133, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 503 - {'error': {'message': 'Service temporarily unavailable', 'type': 'api_error'}}
+2026-07-30 03:35:43,980 INFO alvance_github_crawler.pipeline: processing crawled candidate getgems-io/ton-grpc@ff10ed522aba0c8bb3776ae23d7270e6ad8bf080
+2026-07-30 03:35:44,135 INFO alvance_github_crawler.pipeline: processing crawled candidate mwemuorg/mwemu@fb1e20cc79ee9f2d8d8a77c9f4d08f5c953c66a3
+2026-07-30 03:35:44,138 INFO alvance_github_crawler.pipeline: processing crawled candidate 7df-lab/devo@782fa2d469ff4cc82a0646ed124638f48fcde934
+2026-07-30 03:35:47,461 INFO alvance_github_crawler.pipeline: processing crawled candidate KonaeAkira/raphael-rs@411168605989d573d89f2d71c01acac9f099e55a
+2026-07-30 03:35:49,431 INFO alvance_github_crawler.pipeline: processing crawled candidate s3s-project/s3s@1c248a36c3a226ef5bffd400f612d8958d197cb1
+2026-07-30 03:35:53,861 INFO alvance_github_crawler.pipeline: processing crawled candidate ozontech/pg_doorman@b8af7caa7bf0c05de38859b00195803d3f2007bd
+2026-07-30 03:35:54,415 INFO alvance_github_crawler.pipeline: processing crawled candidate pkalivas/radiate@f5172b1e7b3b82da5a3aa0c45f629df7889cf488
+2026-07-30 03:35:57,351 INFO alvance_github_crawler.pipeline: processing crawled candidate tinyhumansai/tinycortex@e5753bb0fb60b76bf382f4afbf2bfd81d5d501ba
+2026-07-30 03:35:59,592 INFO alvance_github_crawler.pipeline: processing crawled candidate rsasaki0109/rust_robotics@93af873342b2ee8bf59e1941d47bf2d86baf9f35
+2026-07-30 03:36:01,499 INFO alvance_github_crawler.pipeline: processing crawled candidate DecapodLabs/decapod@8eb27a950320ef3d1a46ea8a49862e8ea5ae54a0
+2026-07-30 03:36:16,620 INFO alvance_github_crawler.pipeline: processing crawled candidate TaceoLabs/co-snarks@cb6d3638bdfdcf0dbe8ae048f9a4321b6a96d832
+2026-07-30 03:36:19,927 INFO alvance_github_crawler.pipeline: processing crawled candidate coreos/bootupd@8f5cc4972f31fc00c6b19e3b3547cb2cf18795fd
+2026-07-30 03:36:20,472 INFO alvance_github_crawler.pipeline: processing crawled candidate kube-rs/kopium@e7a64ac337028c60351cc3e7d4aa270cadc38375
+2026-07-30 03:36:22,125 INFO alvance_github_crawler.pipeline: processing crawled candidate EXboys/skilllite@12010e8efaa9b1e3680a1c2efc807bb024f5630e
+2026-07-30 03:36:22,303 INFO alvance_github_crawler.pipeline: processing crawled candidate Guepard-Corp/gfs@8682b8de88f1bd2f6c7054209228c3bd5efc004c
+2026-07-30 03:36:23,221 INFO alvance_github_crawler.pipeline: processing crawled candidate circlefin/arc-node@90d71dcb6e38c485b7f057fc42f45bff7bbc248f
+2026-07-30 03:36:25,284 INFO alvance_github_crawler.pipeline: processing crawled candidate holon-run/holon@029ca3a94663c616a46b53fa3924ca1d5c5d0ff9
+2026-07-30 03:36:26,128 INFO alvance_github_crawler.pipeline: processing crawled candidate alignoth/alignoth@2507f12640b034580478632aa5f0a09499238c82
+2026-07-30 03:36:26,301 INFO alvance_github_crawler.pipeline: processing crawled candidate nimtable/iceberg-compaction@94e04b1d758b8f2718ebb86f795f3819285716f9
+2026-07-30 03:36:27,176 INFO alvance_github_crawler.pipeline: processing crawled candidate eric-tramel/moraine@9aef0bde62919bce33d1ab559bc393be14bf42b0
+2026-07-30 03:36:29,707 INFO alvance_github_crawler.pipeline: processing crawled candidate djeedai/bevy_hanabi@5331f52aaccfc5c3e699a6d26dc33b7c58db1602
+2026-07-30 03:36:30,466 INFO alvance_github_crawler.pipeline: processing crawled candidate ActivityWatch/aw-server-rust@45ca293650420916117a3c9a771d8d27c2d37f25
+2026-07-30 03:36:32,276 INFO alvance_github_crawler.pipeline: processing crawled candidate jvanbuel/flowrs@f1df675b16767efc1be35b88def1cbded55feadc
+2026-07-30 03:36:34,935 INFO alvance_github_crawler.pipeline: processing crawled candidate svenstaro/dummyhttp@a466ddaf6e57e66bb52e946dd0dddb79a87b48bb
+{
+  "duplicate": 2960,
+  "error": 27,
+  "input_total": 3215,
+  "processed": 255,
+  "queued": 46,
+  "rejected": 182
+}
+[2026-07-30T03:37:39Z] stage=prescreen-6500 exit_code=0 duration_s=602

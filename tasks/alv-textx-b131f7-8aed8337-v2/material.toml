@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "textx-b131f7-8aed8337"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/textx-b131f7-8aed8337"
 repository_url = "https://github.com/textX/textX"
 base_commit = "8aed833726501d8772d0e23ddbdd2a41b3cf9154"
 source_tree = "6c1f3207c484f5ed2ff30715b1776188439ec502"
-environment_sha256 = "cc19eaad90ba803af4e4f98631ec9ce9b0d81f9d69a45327178d07f24b869646"
-e2b_template_id = "g82s0vsjcxwltbj6flnp"
-e2b_template_alias = "alv-textx-b131f7-8aed8337-v2__cc19eaad"
+environment_sha256 = "97f2ef4d79c7c597264e42150898a172a5027d080f1ebbc84a27223d6bb73b87"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "g82s0vsjcxwltbj6flnp"
+template_alias = "alv-textx-b131f7-8aed8337-v2__cc19eaad"
+operational_dependency = false

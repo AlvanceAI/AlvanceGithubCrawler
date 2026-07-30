@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "jsnes-9ac844-b8a45d08"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bfirsh/jsnes"
+base_commit = "b8a45d088e922b6abcd87c4eb1b7237919e9d3d2"
+source_tree = "1209d344b4f40f3bb64b104a895b0a99a5db258f"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c36a4161da6df5db19a5d742ff32926543f757f1d0d749be8791d322f34caf4b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-jsnes-9ac844-b8a45d08-v2-env-d3d7530c"
+template_id = "p5bwb6necpgrz0k4hxyo"
+source_template_alias = "wd6wcbrio3h8vj36tr1z"
+source_template_id = "wd6wcbrio3h8vj36tr1z"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

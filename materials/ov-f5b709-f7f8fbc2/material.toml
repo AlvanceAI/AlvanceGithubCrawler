@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ov-f5b709-f7f8fbc2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/noborus/ov"
+base_commit = "f7f8fbc28ae8e36b0c9547088ae25e936b6dd7a0"
+source_tree = "f27adbc97ab0f871184e4a33369d9c39b1f0ad8f"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5fd94f3d3ef31154d257d3474e38458c103dce2efe36305d2cf685670dc22815"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ov-f5b709-f7f8fbc2-v2-env-1a6f3f51"
+template_id = "g88t5s2fjh74798lk3ww"
+source_template_alias = "76glqolle2yni9umekwh"
+source_template_id = "76glqolle2yni9umekwh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

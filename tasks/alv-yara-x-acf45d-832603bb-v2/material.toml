@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "yara-x-acf45d-832603bb"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/yara-x-acf45d-832603bb"
 repository_url = "https://github.com/VirusTotal/yara-x"
 base_commit = "832603bbf484165d0629339462a2ad364522e564"
 source_tree = "e9c73f048836326f9e2de5241728dba298d6392f"
-environment_sha256 = "2c757e94b359f3788647fc843a2e4c96d7827e0494663870d9f552617d1c2b1e"
-e2b_template_id = "6ahdex7wkowx4tevq5sx"
-e2b_template_alias = "alv-yara-x-acf45d-832603bb-v2-env-2c757e94"
+environment_sha256 = "78b4147560c71c20107a240d595ab0458543225570700ea4310476e98416d19b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "6ahdex7wkowx4tevq5sx"
+template_alias = "alv-yara-x-acf45d-832603bb-v2-env-2c757e94"
+operational_dependency = false

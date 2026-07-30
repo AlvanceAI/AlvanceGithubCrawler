@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "betterleaks-c639e2-b9de7fd8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/betterleaks/betterleaks"
+base_commit = "b9de7fd88f009e9f65f2421370f0d5fbd4b1be5e"
+source_tree = "83b29e88a8791b7b833adb962af80d25dac07025"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c5fbb7f0e3e5755a6cadfa5f33f74b84c3f2ce25c08b4b97746812e180930c1f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-betterleaks-c639e2-b9de7fd8-v2-env-33b78151"
+template_id = "j3jq48q2e2a6qjd8wjiu"
+source_template_alias = "c2gjc5vksm50iufw3i80"
+source_template_id = "c2gjc5vksm50iufw3i80"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

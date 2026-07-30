@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "hcloud-cloud-controller--a2a07e-27253f52"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "70961a01f245469ca3cf6376f96c9829eb218719c7a166b14ae9b54c48f6bc65"
-harbor_template_alias = "alv-hcloud-cloud-control-a2a07e-27253f52-v2__70961a01"
-e2b_template = "hlvk4djnt8zd0x1kwmk1"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "aedabff66a2b67c3a377b99a0f7b1b3a40f65b132ca95d289efd3ac64161fd65"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hcloud-cloud-control-a2a07e-27253f52-v2__70961a01"
+template_id = "hlvk4djnt8zd0x1kwmk1"
 source_template_alias = "alvance-repo-hetznercloud-hcloud-cl-27253f52c3-a102af83f4-v12"
 source_template_id = "odzd96rxamtbpmx7ys1a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

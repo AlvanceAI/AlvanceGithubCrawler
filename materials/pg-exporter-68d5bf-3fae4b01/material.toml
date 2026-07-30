@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "pg-exporter-68d5bf-3fae4b01"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.5"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "f360e1f092b06ecf5626413a114869b9b97798a8365ecfe3f70fd22797a6f628"
-harbor_template_alias = "alv-pg-exporter-68d5bf-3fae4b01-v2__f360e1f0"
-e2b_template = "mn2x3ivb3biom7c13cx1"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "1aab0bb3c5c01ab6a3bcd340711275af7a8def17f98b4d7761799e4907d7328f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pg-exporter-68d5bf-3fae4b01-v2__f360e1f0"
+template_id = "mn2x3ivb3biom7c13cx1"
 source_template_alias = "alvance-repo-pgsty--68d5bf58-3fae4b0166-b6d17e6b63-c1-m1024-v17"
 source_template_id = "87qw4b2ngkyxgw1p1eqr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

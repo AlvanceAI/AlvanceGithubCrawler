@@ -1,0 +1,44 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-metrics-98314a-ca1b05d1-v2"
+description = "Rebuildable repository task for VictoriaMetrics/metrics"
+authors = []
+keywords = ["go", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-metrics-98314a-ca1b05d1-v2"
+material_id = "metrics-98314a-ca1b05d1"
+status = "direction"
+language = "go"
+repository_url = "https://github.com/VictoriaMetrics/metrics"
+base_commit_hash = "ca1b05d11f437d1f3326ee21805595236d4e5c18"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+GOCACHE = "/root/.cache/go-build"
+GOMODCACHE = "/go/pkg/mod"
+GOPATH = "/go"
+GOPROXY = "https://goproxy.cn,direct"
+GOTOOLCHAIN = "go1.24.0+auto"
+HOME = "/root"
+PATH = "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

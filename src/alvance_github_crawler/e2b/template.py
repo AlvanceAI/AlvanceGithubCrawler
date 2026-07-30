@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import shlex
 import threading
 import time
 from dataclasses import asdict, dataclass
@@ -16,7 +15,14 @@ from ..runtime.profiles import (
     runtime_environment,
     runtime_template_alias,
 )
-from ..runtime.python import python_install_commands
+from ..runtime.recipes import (
+    SYSTEM_PACKAGES_COMMAND,
+    repository_checkout_command,
+    repository_dependency_commands,
+    repository_finalize_commands,
+    runtime_base_image,
+    runtime_probe_command,
+)
 from .build_logs import E2BBuildLogBuffer
 
 
@@ -41,6 +47,7 @@ class E2BEnvironmentResult:
     runtime_template_build_s: float
     repository_template_build_s: float
     test_cmd: str
+    dependency_commands: tuple[str, ...]
     execution_user: str
     cpu_count: int
     memory_mb: int
@@ -91,6 +98,7 @@ class E2BEnvironmentManager:
             runtime_alias,
         )
         dependency_hash = hash_dependency_manifests(language, repo_path)
+        dependency_commands = repository_dependency_commands(language, repo_path)
         repository_alias = repository_template_alias(
             str(repo["full_name"]),
             base_commit,
@@ -112,6 +120,8 @@ class E2BEnvironmentManager:
             base_commit,
             repo_path,
             str(repo.get("default_branch") or "main"),
+            str(repo.get("source_tree") or ""),
+            dependency_commands,
         )
         return E2BEnvironmentResult(
             runtime_version=runtime_version,
@@ -125,6 +135,7 @@ class E2BEnvironmentManager:
             runtime_template_build_s=round(runtime_build_s, 2),
             repository_template_build_s=round(repository_build_s, 2),
             test_cmd=test_command_for(language, repo_path),
+            dependency_commands=dependency_commands,
             execution_user=execution_user(language),
             cpu_count=self.cpu_count,
             memory_mb=self.memory_mb,
@@ -170,6 +181,8 @@ class E2BEnvironmentManager:
         base_commit: str,
         repo_path: Path,
         default_branch: str,
+        source_tree: str,
+        dependency_commands: tuple[str, ...],
     ) -> tuple[str, bool, float]:
         with self._alias_lock(repository_alias):
             cache_hit = _template_alias_ready(Template, repository_alias, self.api_key)
@@ -188,6 +201,8 @@ class E2BEnvironmentManager:
                 base_commit,
                 repo_path=repo_path,
                 default_branch=default_branch,
+                source_tree=source_tree,
+                dependency_commands=dependency_commands,
             )
             started = time.monotonic()
             logs = E2BBuildLogBuffer()
@@ -224,71 +239,30 @@ def _add_repository_build_steps(
     *,
     repo_path: Path | None = None,
     default_branch: str = "main",
+    source_tree: str = "",
+    dependency_commands: tuple[str, ...] | None = None,
 ) -> Any:
-    repository_url = shlex.quote(f"https://github.com/{full_name}.git")
-    commit = shlex.quote(base_commit)
-    branch = shlex.quote(default_branch)
     builder = builder.run_cmd(
-        "rm -rf /app && mkdir -p /app && git init /app && cd /app "
-        f"&& git remote add origin {repository_url} "
-        f"&& git fetch --depth=1 origin {commit} "
-        "&& git checkout --detach FETCH_HEAD "
-        "&& git submodule update --init --recursive "
-        f"&& git update-ref refs/remotes/origin/{branch} HEAD",
+        repository_checkout_command(
+            full_name,
+            base_commit,
+            default_branch,
+            source_tree=source_tree,
+        ),
         user="root",
     ).set_workdir("/app")
-    if language == "go":
-        builder = builder.run_cmd("/usr/local/go/bin/go mod download", user="root")
-        builder = builder.run_cmd("/usr/local/go/bin/go build ./...", user="root")
-    elif language in {"typescript", "javascript"}:
-        builder = builder.run_cmd("/usr/local/bin/npm ci", user="root")
-    elif language == "python":
-        if repo_path is None:
-            raise ValueError("repo_path is required for Python repository templates")
-        for command in python_install_commands(repo_path):
-            builder = builder.run_cmd(command, user="root")
-    elif language == "rust":
-        builder = builder.run_cmd(
-            "/usr/local/cargo/bin/cargo build --tests",
-            user="root",
-        )
-    else:
-        raise ValueError(f"unsupported language: {language}")
-    builder = builder.run_cmd('test -z "$(git status --porcelain)"', user="root")
-    if language == "python":
-        builder = builder.run_cmd("chown -R user:user /app", user="root")
+    commands = dependency_commands or repository_dependency_commands(language, repo_path)
+    for command in (*commands, *repository_finalize_commands(language)):
+        builder = builder.run_cmd(command, user="root")
     return builder
 
 
 def _runtime_template_builder(Template: Any, language: str, version: str) -> Any:
-    packages = (
-        "apt-get update && apt-get install -y --no-install-recommends "
-        "time git ca-certificates build-essential && rm -rf /var/lib/apt/lists/*"
-    )
-    image, probe = {
-        "go": ("docker.io/library/golang:1.22", "/usr/local/go/bin/go version"),
-        "python": (
-            f"docker.io/library/python:{version}",
-            "/usr/local/bin/python --version && /usr/local/bin/pip --version",
-        ),
-        "typescript": (
-            f"docker.io/library/node:{version}",
-            "/usr/local/bin/node --version && /usr/local/bin/npm --version",
-        ),
-        "javascript": (
-            f"docker.io/library/node:{version}",
-            "/usr/local/bin/node --version && /usr/local/bin/npm --version",
-        ),
-        "rust": (
-            f"docker.io/library/rust:{version}",
-            "/usr/local/cargo/bin/rustc --version && /usr/local/cargo/bin/cargo --version",
-        ),
-    }[language]
     return (
         Template()
-        .from_image(image)
+        .from_image(runtime_base_image(language, version))
         .set_envs(runtime_environment(language, version))
-        .run_cmd(packages, user="root")
-        .run_cmd(probe, user="root")
+        .run_cmd(SYSTEM_PACKAGES_COMMAND, user="root")
+        .run_cmd(runtime_probe_command(language), user="root")
         .set_workdir("/app")
     )

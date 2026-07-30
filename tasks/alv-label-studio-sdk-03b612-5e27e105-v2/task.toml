@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-label-studio-sdk-03b612-5e27e105-v2"
-description = "E2B-backed repository task for HumanSignal/label-studio-sdk"
+description = "Rebuildable repository task for HumanSignal/label-studio-sdk"
 authors = []
-keywords = ["python", "e2b", "github"]
+keywords = ["python", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-label-studio-sdk-03b612-5e27e105-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "python"
 repository_url = "https://github.com/HumanSignal/label-studio-sdk"
 base_commit_hash = "5e27e1058b49d0ab28d5a72fe03ddef5a1da05a0"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0
@@ -29,8 +31,8 @@ timeout_sec = 5400.0
 
 [environment]
 build_timeout_sec = 3600.0
-cpus = 2
-memory_mb = 4096
+cpus = 1
+memory_mb = 1024
 storage_mb = 10240
 gpus = 0
 allow_internet = true

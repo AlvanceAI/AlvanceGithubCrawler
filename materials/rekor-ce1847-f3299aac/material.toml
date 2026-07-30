@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rekor-ce1847-f3299aac"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sigstore/rekor"
+base_commit = "f3299aac1ff4e1c7278bbbde80cde66f279203bc"
+source_tree = "ba8a22d23b79857325c1643a0b1d90a573c16336"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f0b18016665674029ca359d5981ef637028dc0e5111c154417aae325979d02f6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rekor-ce1847-f3299aac-v2-env-9a1cfbe7"
+template_id = "um967jynu9fgj3yxe8k6"
+source_template_alias = "3vx3pyxqrpkc6arbgr0w"
+source_template_id = "3vx3pyxqrpkc6arbgr0w"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

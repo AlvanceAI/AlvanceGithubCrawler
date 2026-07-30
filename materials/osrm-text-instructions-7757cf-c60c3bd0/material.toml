@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "osrm-text-instructions-7757cf-c60c3bd0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Project-OSRM/osrm-text-instructions"
+base_commit = "c60c3bd0d8ad9441e835a7bf5729cd20ed99f2e9"
+source_tree = "7371bac76c5259cd363906020589b7d948e49301"
+default_branch = "master"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "523804a7761e2fba3a215360c140ee5ede3ca60ad370e152ae5d42d7b74b4a28"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-osrm-text-instructio-7757cf-c60c3bd0-v2-env-0c9d4c80"
+template_id = "58tgmagcybvd1ywtv9cg"
+source_template_alias = "1a21pbzdgc7x24psqpgs"
+source_template_id = "1a21pbzdgc7x24psqpgs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -6,9 +6,17 @@ import re
 from pathlib import Path
 
 from ..runtime.profiles import command_as_user, command_with_environment
+from ..runtime.recipes import (
+    SYSTEM_PACKAGES_COMMAND,
+    repository_checkout_command,
+    repository_finalize_commands,
+    runtime_base_image,
+    runtime_probe_command,
+)
 from .package_models import QualifiedRepository
 
 HARBOR_ENVELOPE_VERSION = "v2"
+DOCKERFILE_RECIPE_VERSION = "v3"
 
 
 def material_id(repository: QualifiedRepository) -> str:
@@ -33,14 +41,46 @@ def harbor_template_alias(task_name: str, environment_dir: Path) -> str:
 
 
 def render_environment_dockerfile(repository: QualifiedRepository) -> str:
-    return (
-        f"# Harbor envelope {HARBOR_ENVELOPE_VERSION}\n"
-        f"# Source E2B template: {repository.source_template_alias}\n"
-        "# This file is an immutable Harbor fingerprint; do not force-build it.\n"
-        "FROM e2bdev/base\n"
-        "USER root\n"
-        "WORKDIR /app\n"
+    lines = [
+        f"# Harbor rebuildable envelope {HARBOR_ENVELOPE_VERSION}",
+        f"# Dockerfile recipe {DOCKERFILE_RECIPE_VERSION}",
+        "# E2B aliases are optional caches; this file is the durable build source.",
+        f"FROM {runtime_base_image(repository.language, repository.runtime_version)}",
+        "USER root",
+    ]
+    lines.extend(
+        f"ENV {key}={json.dumps(value)}" for key, value in sorted(repository.runtime_env.items())
     )
+    lines.extend(
+        [
+            f"RUN {SYSTEM_PACKAGES_COMMAND}",
+            f"RUN {runtime_probe_command(repository.language)}",
+        ]
+    )
+    if repository.execution_user == "user":
+        lines.append(
+            "RUN id -u user >/dev/null 2>&1 "
+            "|| useradd --create-home --shell /bin/bash user"
+        )
+    lines.extend(
+        [
+            "WORKDIR /",
+            "RUN "
+            + repository_checkout_command(
+                repository.repo,
+                repository.base_commit,
+                repository.default_branch,
+                source_tree=repository.source_tree,
+            ),
+            "WORKDIR /app",
+        ]
+    )
+    lines.extend(f"RUN {command}" for command in repository.dependency_commands)
+    lines.extend(
+        f"RUN {command}" for command in repository_finalize_commands(repository.language)
+    )
+    lines.extend(["USER root", "WORKDIR /app", ""])
+    return "\n".join(lines)
 
 
 def render_instruction(repository: QualifiedRepository) -> str:
@@ -60,9 +100,9 @@ def render_task_toml(repository: QualifiedRepository, task: str, material: str) 
         "",
         "[task]",
         f"name = {_toml_string(f'alvance/{task}')}",
-        f"description = {_toml_string(f'E2B-backed repository task for {repository.repo}')}",
+        f"description = {_toml_string(f'Rebuildable repository task for {repository.repo}')}",
         "authors = []",
-        f'keywords = [{_toml_string(repository.language)}, "e2b", "github"]',
+        f'keywords = [{_toml_string(repository.language)}, "dockerfile", "github"]',
         "",
         "[metadata]",
         f"task_id = {_toml_string(task)}",
@@ -71,7 +111,9 @@ def render_task_toml(repository: QualifiedRepository, task: str, material: str) 
         f"language = {_toml_string(repository.language)}",
         f"repository_url = {_toml_string(repository.repository_url)}",
         f"base_commit_hash = {_toml_string(repository.base_commit)}",
-        'storage_mode = "e2b-only"',
+        'storage_mode = "dockerfile-rebuildable"',
+        "dockerfile_rebuildable = true",
+        "rebuild_network_required = true",
         "",
         "[verifier]",
         "timeout_sec = 600.0",
@@ -130,7 +172,8 @@ def render_task_material_toml(
     template_id: str,
     template_alias: str,
 ) -> str:
-    values = {
+    values: dict[str, object] = {
+        "schema_version": "0.3",
         "material_id": material,
         "catalog": "catalog/repo-materials.toml",
         "material_path": material_path,
@@ -138,10 +181,21 @@ def render_task_material_toml(
         "base_commit": repository.base_commit,
         "source_tree": repository.source_tree,
         "environment_sha256": environment_sha256,
-        "e2b_template_id": template_id,
-        "e2b_template_alias": template_alias,
+        "dockerfile_rebuildable": True,
+        "rebuild_network_required": True,
     }
-    return "".join(f"{key} = {_toml_string(value)}\n" for key, value in values.items())
+    lines = [f"{key} = {_toml_value(value)}" for key, value in values.items()]
+    lines.extend(
+        [
+            "",
+            "[e2b_history]",
+            f"template_id = {_toml_string(template_id)}",
+            f"template_alias = {_toml_string(template_alias)}",
+            "operational_dependency = false",
+            "",
+        ]
+    )
+    return "\n".join(lines)
 
 
 def _slug(value: str, *, limit: int) -> str:
@@ -150,3 +204,9 @@ def _slug(value: str, *, limit: int) -> str:
 
 def _toml_string(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
+
+
+def _toml_value(value: object) -> str:
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    return _toml_string(str(value))

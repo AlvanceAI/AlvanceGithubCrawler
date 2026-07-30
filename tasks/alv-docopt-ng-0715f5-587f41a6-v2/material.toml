@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "docopt-ng-0715f5-587f41a6"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/docopt-ng-0715f5-587f41a6"
 repository_url = "https://github.com/jazzband/docopt-ng"
 base_commit = "587f41a61437b680b4215de1874fb6975d8a49d6"
 source_tree = "f9675d6e9147d19b6c6e11dc9aefcae5090e123e"
-environment_sha256 = "0b55e4941bb93aa093931d5c08e5a994c3b2979ac8d1c956be19c9a80509cc78"
-e2b_template_id = "mlsyxq6fpzm1so4ci9qu"
-e2b_template_alias = "alv-docopt-ng-0715f5-587f41a6-v2__0b55e494"
+environment_sha256 = "9f9d0b5d794ff1deacae16c335732bec68ffdb37ee50a6694d51992a30c140aa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "mlsyxq6fpzm1so4ci9qu"
+template_alias = "alv-docopt-ng-0715f5-587f41a6-v2__0b55e494"
+operational_dependency = false

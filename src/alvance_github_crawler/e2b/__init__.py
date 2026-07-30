@@ -11,6 +11,14 @@ from ..runtime.profiles import (
     runtime_template_alias,
     select_python_runtime,
 )
+from ..runtime.recipes import (
+    SYSTEM_PACKAGES_COMMAND,
+    repository_checkout_command,
+    repository_dependency_commands,
+    repository_finalize_commands,
+    runtime_base_image,
+    runtime_probe_command,
+)
 from .offline import E2BOfflineVerifier, OfflineTestResult
 from .template import (
     E2BEnvironmentManager,
@@ -28,6 +36,7 @@ __all__ = [
     "RepositoryTemplateBuildError",
     "RuntimeTemplateBuildError",
     "_add_repository_build_steps",
+    "SYSTEM_PACKAGES_COMMAND",
     "command_with_environment",
     "detect_runtime_version",
     "execution_user",
@@ -37,4 +46,9 @@ __all__ = [
     "select_python_runtime",
     "runtime_environment",
     "runtime_template_alias",
+    "repository_checkout_command",
+    "repository_dependency_commands",
+    "repository_finalize_commands",
+    "runtime_base_image",
+    "runtime_probe_command",
 ]

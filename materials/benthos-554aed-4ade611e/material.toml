@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "benthos-554aed-4ade611e"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.4"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "696f1d61174d10692cc0e29dd7875e89cc687d644c21fee863b8fc5d01fc49ff"
-harbor_template_alias = "alv-benthos-554aed-4ade611e-v2-env-696f1d61"
-e2b_template = "8d66mlnioszceuh83a84"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "4a2e4ed5a12216a20c073a2360ed49f34af3c016913a5839a2cfbb3b0da46d93"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-benthos-554aed-4ade611e-v2-env-696f1d61"
+template_id = "8d66mlnioszceuh83a84"
 source_template_alias = "5fnrj7fk9l8ydv5yhxyq"
 source_template_id = "5fnrj7fk9l8ydv5yhxyq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

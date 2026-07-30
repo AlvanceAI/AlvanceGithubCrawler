@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "ai-dial-chat-bc1bf2-3c644131"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "typescript"
 node = "24"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "2c5252b316d480dc5de6313775af3019d9a856f6552dc42f5539e10fe756041b"
-harbor_template_alias = "alv-ai-dial-chat-bc1bf2-3c644131-v2-env-2c5252b3"
-e2b_template = "yuwyzqaxs0knxbuzk9p4"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "2620465b2ba67b90e2dab8fb5a2a6c0fb8d6a466e981519c4a809a469efefde5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ai-dial-chat-bc1bf2-3c644131-v2-env-2c5252b3"
+template_id = "yuwyzqaxs0knxbuzk9p4"
 source_template_alias = "jlpn77sy2c4omnv0bv05"
 source_template_id = "jlpn77sy2c4omnv0bv05"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

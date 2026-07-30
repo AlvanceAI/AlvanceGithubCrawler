@@ -1,0 +1,5 @@
+Repository `hashicorp/go-bexpr` at commit `667dc3de34aef34fab3bbd64ed06cb419291bf4c` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为布尔表达式 DSL 增加 SQL 风格的集合成员运算符，使 `foo.Y in ("a", "b", "c")` 可被解析、构建 AST 并按成员关系求值。

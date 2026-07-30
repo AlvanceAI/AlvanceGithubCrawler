@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "thriftpy2-10ab0c-29e05a21"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Thriftpy/thriftpy2"
+base_commit = "29e05a213d1edb2429042d02ced1b29c0522a87a"
+source_tree = "5e8609b5f3f3b8c36ba393d8cf92d71a8eb6fb8b"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d9d3907b1e12188972851556191644953a9b75b51acdba4df438c99fa7a647e5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-thriftpy2-10ab0c-29e05a21-v2-env-40a991da"
+template_id = "7ri2zhhcu3xkzzzuonn5"
+source_template_alias = "39k517rzbf9l7dalt6w1"
+source_template_id = "39k517rzbf9l7dalt6w1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "guigui-1177d9-d6f6d12b"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/guigui-1177d9-d6f6d12b"
 repository_url = "https://github.com/guigui-gui/guigui"
 base_commit = "d6f6d12b38ad9d19e069a5d89d1973600cabcb73"
 source_tree = "4ec14533b21ecb86b57313d93d835382a3027b73"
-environment_sha256 = "e3ad00bca92a25575074beaa0dcccabf6e0689f3e17b3d76dc4aeb1e35fc8e35"
-e2b_template_id = "u1kjhpvh7tfqs7ym1j9s"
-e2b_template_alias = "alv-guigui-1177d9-d6f6d12b-v2__e3ad00bc"
+environment_sha256 = "8e6b9bb249fb66bd03857aeac5c8ceb2dcb3052ab3adb495af50e66cb4c1eeed"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "u1kjhpvh7tfqs7ym1j9s"
+template_alias = "alv-guigui-1177d9-d6f6d12b-v2__e3ad00bc"
+operational_dependency = false

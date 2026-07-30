@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "local-path-provisioner-48a860-62e0594d"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/local-path-provisioner-48a860-62e0594d"
 repository_url = "https://github.com/rancher/local-path-provisioner"
 base_commit = "62e0594d2dd56fa480c8084cb807efddb340400a"
 source_tree = "5510a3b3edb3298d8b90cecb95b6de4655874625"
-environment_sha256 = "3b895e511524d88fe61cca0d66e3828d1615e78a8b8efba5cc9b292c14295a9c"
-e2b_template_id = "f35y16h29iuyz89ov4nf"
-e2b_template_alias = "alv-local-path-provision-48a860-62e0594d-v2-env-3b895e51"
+environment_sha256 = "e7cdb1a8b8c6056899abc5998b463cdd8a67a0c7a269adfda3357084a3e2caef"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "f35y16h29iuyz89ov4nf"
+template_alias = "alv-local-path-provision-48a860-62e0594d-v2-env-3b895e51"
+operational_dependency = false

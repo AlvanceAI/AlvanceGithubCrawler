@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "github-mcp-server-ee5439-456fae9d"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/github-mcp-server-ee5439-456fae9d"
 repository_url = "https://github.com/github/github-mcp-server"
 base_commit = "456fae9d0464944b946a288aed152dbb0c369a76"
 source_tree = "5871f4bf9efa42caf4a60dcfd96c526e581e5c97"
-environment_sha256 = "76d02cf58dbb9ce6be25e04f388703c1cbfa8eca17790673467064ebc40f0127"
-e2b_template_id = "uxq3mx39qm96u75kbodh"
-e2b_template_alias = "alv-github-mcp-server-ee5439-456fae9d-v2__76d02cf5"
+environment_sha256 = "a0b53e9ccd656ffcde5aae7a83f19c7f855d80acdebc3680c15f32d1e3df822a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "uxq3mx39qm96u75kbodh"
+template_alias = "alv-github-mcp-server-ee5439-456fae9d-v2__76d02cf5"
+operational_dependency = false

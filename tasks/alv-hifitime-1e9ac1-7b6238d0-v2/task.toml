@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-hifitime-1e9ac1-7b6238d0-v2"
-description = "E2B-backed repository task for nyx-space/hifitime"
+description = "Rebuildable repository task for nyx-space/hifitime"
 authors = []
-keywords = ["rust", "e2b", "github"]
+keywords = ["rust", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-hifitime-1e9ac1-7b6238d0-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "rust"
 repository_url = "https://github.com/nyx-space/hifitime"
 base_commit_hash = "7b6238d0bfdfee940dca49e217f3a59c9234e6ab"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

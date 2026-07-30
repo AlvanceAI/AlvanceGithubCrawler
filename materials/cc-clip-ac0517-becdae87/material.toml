@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cc-clip-ac0517-becdae87"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ShunmeiCho/cc-clip"
+base_commit = "becdae87cb6a982927ef54938c3e9fdea3edf699"
+source_tree = "f6f1d1fee5db44aa03229f9d23647189e41379f5"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d78c8a4ccda269fb57491848800f0a274d48a9103203b64b73648f8479568e4f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cc-clip-ac0517-becdae87-v2-env-ae312037"
+template_id = "ima6gftyy86fd3m29y5g"
+source_template_alias = "jglfxnch682ddvmcu97v"
+source_template_id = "jglfxnch682ddvmcu97v"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "opendal-reqsign-06eb54-79e2ba6f"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/opendal-reqsign-06eb54-79e2ba6f"
 repository_url = "https://github.com/apache/opendal-reqsign"
 base_commit = "79e2ba6f0db7776578bd7de67948a5eb53cf8a75"
 source_tree = "41d7e074ce96ca0b223f0046bb9d72906e075dd6"
-environment_sha256 = "b11dafe698ecb3a385c7ef8cf80ee0610e6c005549ba96fbba5626ad21f82a9c"
-e2b_template_id = "2srva7pxrbgkee1qb2p7"
-e2b_template_alias = "alv-opendal-reqsign-06eb54-79e2ba6f-v2-env-b11dafe6"
+environment_sha256 = "f605b6a8610139617efd438bbb89388732f859d5c75c2763fc973f9231224d75"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "2srva7pxrbgkee1qb2p7"
+template_alias = "alv-opendal-reqsign-06eb54-79e2ba6f-v2-env-b11dafe6"
+operational_dependency = false

@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "nilaway-e546d3-c82f9684"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.25.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "043a0348acf1de680ed6491b1c716dd6eeb74d55629196029c9dc8d9f7a5cd0e"
-harbor_template_alias = "alv-nilaway-e546d3-c82f9684-v2-env-043a0348"
-e2b_template = "35zwd252zqdguwk3kedh"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "f45606a238615621d0d9f3fc3fd0a4b4d16314bd0516963e5883e812b4686cd6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nilaway-e546d3-c82f9684-v2-env-043a0348"
+template_id = "35zwd252zqdguwk3kedh"
 source_template_alias = "28ncycciv3ahmu36od94"
 source_template_id = "28ncycciv3ahmu36od94"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

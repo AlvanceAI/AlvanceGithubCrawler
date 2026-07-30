@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "cloudsplaining-ec719d-a6f3c064"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "javascript"
 node = "20"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "2c496c9734037a3ccf4f6aef7ad21ea6ba8f30f8e38e0a0ae5ddaae23880066d"
-harbor_template_alias = "alv-cloudsplaining-ec719d-a6f3c064-v2-env-2c496c97"
-e2b_template = "fkxp410yv1lobo9oto84"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "8b936ddc2bd7f52c9d37aa860401a1abbe07e5a72e62f7b7006aa74880c02df8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cloudsplaining-ec719d-a6f3c064-v2-env-2c496c97"
+template_id = "fkxp410yv1lobo9oto84"
 source_template_alias = "f2uhasl8hz5fcx7efnkr"
 source_template_id = "f2uhasl8hz5fcx7efnkr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

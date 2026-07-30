@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-bexpr-42908c-667dc3de"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hashicorp/go-bexpr"
+base_commit = "667dc3de34aef34fab3bbd64ed06cb419291bf4c"
+source_tree = "b00e514f0d0fe38791a75bde545342d92d84fd76"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bb6a667328c8624537572834b04bc281873eeb9aca7b00d6f0eb9d3507e54342"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-bexpr-42908c-667dc3de-v2-env-e97f4294"
+template_id = "kpebz6sf864l836wodqh"
+source_template_alias = "9q7xfrcx4p54yh9p1bs6"
+source_template_id = "9q7xfrcx4p54yh9p1bs6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

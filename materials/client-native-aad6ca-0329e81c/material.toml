@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "client-native-aad6ca-0329e81c"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "302f57f78f1adbd5f36ab27a36f7496dd4dfddd9da9182c7924546ad60be7e95"
-harbor_template_alias = "alv-client-native-aad6ca-0329e81c-v2__302f57f7"
-e2b_template = "pknyyyzlg5rs2qnfjr0w"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "b7b37108b0745c7e9aa1f07f00db99c5113a9c2e6060528e09f4d50ff7288a01"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-client-native-aad6ca-0329e81c-v2__302f57f7"
+template_id = "pknyyyzlg5rs2qnfjr0w"
 source_template_alias = "alvance-repo-haprox-aad6ca73-0329e81cc3-f7a87c9d99-c1-m1024-v17"
 source_template_id = "spubklju4zzy1xsmz20o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

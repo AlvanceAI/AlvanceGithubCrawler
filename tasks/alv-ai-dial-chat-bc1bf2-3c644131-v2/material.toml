@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "ai-dial-chat-bc1bf2-3c644131"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/ai-dial-chat-bc1bf2-3c644131"
 repository_url = "https://github.com/epam/ai-dial-chat"
 base_commit = "3c6441318ebe95991d0cbc3965de039df3cc8777"
 source_tree = "6e9f6fff218b1a0630669c5749f7b573ba0eadd3"
-environment_sha256 = "2c5252b316d480dc5de6313775af3019d9a856f6552dc42f5539e10fe756041b"
-e2b_template_id = "yuwyzqaxs0knxbuzk9p4"
-e2b_template_alias = "alv-ai-dial-chat-bc1bf2-3c644131-v2-env-2c5252b3"
+environment_sha256 = "2620465b2ba67b90e2dab8fb5a2a6c0fb8d6a466e981519c4a809a469efefde5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "yuwyzqaxs0knxbuzk9p4"
+template_alias = "alv-ai-dial-chat-bc1bf2-3c644131-v2-env-2c5252b3"
+operational_dependency = false

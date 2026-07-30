@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hermit-ce7852-449e375a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cashapp/hermit"
+base_commit = "449e375aa13fcaa02d16f743f93374e27a2c60aa"
+source_tree = "ec8f26b9b2c703c60d9fe6e157e6931dea2ac3e4"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d469d12b3f0b680d62510d101375817e0bd89e4e085442181f2aca6183dbf161"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hermit-ce7852-449e375a-v2-env-5949bae7"
+template_id = "vap0tmmlrqaypmpo149i"
+source_template_alias = "znjxba39045vfxvasoy5"
+source_template_id = "znjxba39045vfxvasoy5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

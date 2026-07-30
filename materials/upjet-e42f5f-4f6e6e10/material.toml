@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "upjet-e42f5f-4f6e6e10"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/crossplane/upjet"
+base_commit = "4f6e6e10dff292c7bf0410878741e23a97f5c11e"
+source_tree = "685948217afd88f0d6a25ce4f2a52d24e297fd58"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "467b5a4afd6e3034745a5c24ca45d806a6eb7f1179f7e10e06ea3e8fb9cc32c2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-upjet-e42f5f-4f6e6e10-v2-env-4c23fb9e"
+template_id = "iabualr1kb9fcip9iah0"
+source_template_alias = "8s3oxt9v5vo6ufxlahwl"
+source_template_id = "8s3oxt9v5vo6ufxlahwl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

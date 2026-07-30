@@ -1,20 +1,19 @@
 {
   "accepted_by_language": {
-    "go": 601,
-    "javascript": 234,
-    "python": 452,
-    "rust": 535,
-    "typescript": 363
+    "go": 1126,
+    "javascript": 436,
+    "python": 811,
+    "rust": 946,
+    "typescript": 659
   },
-  "accepted_total": 2185,
-  "api_request_count": 7361,
+  "accepted_total": 3978,
+  "api_request_count": 13658,
   "cutoff_time": "2025-07-29T09:08:23.059900+00:00",
-  "deduplicated_total": 4500,
+  "deduplicated_total": 8000,
   "duplicate_results": 0,
-  "duration_seconds": 32877.065,
-  "end_time": "2026-07-29T18:16:20.125627+00:00",
-  "error": "CrawlIncompleteError: python has only 900 raw repositories after exhausting all search windows",
-  "fetched_total": 4500,
+  "duration_seconds": 70786.942,
+  "end_time": "2026-07-30T04:48:10.002477+00:00",
+  "fetched_total": 8000,
   "github_rate_limit_remaining": {
     "actions_runner_registration": 10000,
     "audit_log": 1750,
@@ -31,24 +30,24 @@
     "search": 30,
     "source_import": 100
   },
-  "output_dir": "outputs/github_crawl_500_unquota",
-  "per_language": 1000,
-  "raw_per_language": 1000,
+  "output_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota",
+  "per_language": 1600,
+  "raw_per_language": 1600,
   "rejected_by_reason": {
-    "inactive_head_commit": 1,
-    "no_test_infra": 763,
+    "inactive_head_commit": 19,
+    "no_test_infra": 1402,
     "tree_unavailable": 19,
-    "unsupported_license": 1532
+    "unsupported_license": 2582
   },
-  "rejected_total": 2315,
-  "retry_count": 0,
-  "schema_version": "1.2",
+  "rejected_total": 4022,
+  "retry_count": 1,
+  "schema_version": "1.3",
   "search_pages_fetched": {
-    "go": 16,
-    "javascript": 20,
-    "python": 20,
-    "rust": 16,
-    "typescript": 20
+    "go": 23,
+    "javascript": 28,
+    "python": 27,
+    "rust": 23,
+    "typescript": 27
   },
   "search_windows_used": {
     "go": 2,
@@ -59,7 +58,7 @@
   },
   "selection_semantics": "raw_sample_all_pass_v1",
   "start_time": "2026-07-29T09:08:23.060613+00:00",
-  "status": "incomplete",
-  "target_total": 5000,
+  "status": "completed",
+  "target_total": 8000,
   "validation_errors": []
 }

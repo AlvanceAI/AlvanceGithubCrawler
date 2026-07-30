@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "promkit-91dd76-ba80ea21"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ynqa/promkit"
+base_commit = "ba80ea211085d7984033b7f454364863f7c7c884"
+source_tree = "9b138bdf80c99b017fc4b92b3fc7de3ce1a20082"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7c0c9284a7aa0787e4e0209c0538a72e21bbe142745f95d1b14f8e8741b1e4ac"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-promkit-91dd76-ba80ea21-v2-env-146370cb"
+template_id = "nettrp2ucno9mwvjuva0"
+source_template_alias = "bly6pvhsdpjea84aekgj"
+source_template_id = "bly6pvhsdpjea84aekgj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

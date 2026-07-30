@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kraken-8ba169-a4732524"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/uber/kraken"
+base_commit = "a4732524b1932af4e5c742cdf12a9a9ba4532148"
+source_tree = "4f06c36473187f7f9bacf3acc4f1a9757fb20cfa"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ae1e51168855b25bc51014df07c1a8081da370e95905ebdcc864d7b374c60367"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kraken-8ba169-a4732524-v2-env-4a0b54ef"
+template_id = "htvifovyacqv5bifi3c1"
+source_template_alias = "26qabioijecasj0c9dm0"
+source_template_id = "26qabioijecasj0c9dm0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "hotpdf-5f73e1-cc3d33da"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "db11035ca9d7598443dccd41e51e39d784268f4569bf43f854b3ba4a583713f8"
-harbor_template_alias = "alv-hotpdf-5f73e1-cc3d33da-v2__db11035c"
-e2b_template = "uo1b64l22lzx5dos2rbt"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "c4e040bed487e51d2fb9920d7ed3d80094cc8a1001b8f7e1d51899d07cfd6f69"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hotpdf-5f73e1-cc3d33da-v2__db11035c"
+template_id = "uo1b64l22lzx5dos2rbt"
 source_template_alias = "alvance-repo-weareprestatech-hotpdf-cc3d33da77-b62ed8ab0c-v12"
 source_template_id = "bh1te5fa9qn2b0vsdox6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

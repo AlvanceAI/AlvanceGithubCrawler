@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "easyp-4aa7c8-78168591"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/easyp-tech/easyp"
+base_commit = "781685913af1898c5cd69b739571f8c2b3925466"
+source_tree = "33104b7af2a18091c2bbe121a3874db87fa32929"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "33610f6ceddea01e4c7e0f7fbe2b68c31989132d0b2a0883702423aaed9ad8d9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-easyp-4aa7c8-78168591-v2-env-84d0bf24"
+template_id = "eyd5u7rmzwvjykbhir38"
+source_template_alias = "72up04wkvfrxhhpsqusu"
+source_template_id = "72up04wkvfrxhhpsqusu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

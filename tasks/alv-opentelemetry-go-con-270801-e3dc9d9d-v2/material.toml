@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "opentelemetry-go-contrib-270801-e3dc9d9d"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/opentelemetry-go-contrib-270801-e3dc9d9d"
 repository_url = "https://github.com/open-telemetry/opentelemetry-go-contrib"
 base_commit = "e3dc9d9daf2179c0ce57b86984e4b927022a3279"
 source_tree = "97d7d580ee3cbad66af3331e11442c2f643ce3ba"
-environment_sha256 = "7cc8380ebd214aa790b86d11476362319684100b18c22077cec641e5fb2fac9e"
-e2b_template_id = "z42aubjirlsst3248l8v"
-e2b_template_alias = "alv-opentelemetry-go-con-270801-e3dc9d9d-v2-env-7cc8380e"
+environment_sha256 = "1a92517286cecfa82026d71a9171f85c23a8f8e609ee6d3c5cb0bc14aba39d26"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "z42aubjirlsst3248l8v"
+template_alias = "alv-opentelemetry-go-con-270801-e3dc9d9d-v2-env-7cc8380e"
+operational_dependency = false

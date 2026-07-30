@@ -1,6 +1,21 @@
-# Harbor envelope v2
-# Source E2B template: alvance-repo-jazzband-docopt-ng-587f41a614-716fcad118-v15
-# This file is an immutable Harbor fingerprint; do not force-build it.
-FROM e2bdev/base
+# Harbor rebuildable envelope v2
+# Dockerfile recipe v3
+# E2B aliases are optional caches; this file is the durable build source.
+FROM docker.io/library/python:3.11
+USER root
+ENV HOME="/home/user"
+ENV PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUN apt-get update && apt-get install -y --no-install-recommends time git ca-certificates build-essential && rm -rf /var/lib/apt/lists/*
+RUN /usr/local/bin/python --version && /usr/local/bin/pip --version
+RUN id -u user >/dev/null 2>&1 || useradd --create-home --shell /bin/bash user
+WORKDIR /
+RUN rm -rf /app && mkdir -p /app && git init /app && cd /app && git remote add origin https://github.com/jazzband/docopt-ng.git && git fetch --depth=1 origin 587f41a61437b680b4215de1874fb6975d8a49d6 && git checkout --detach FETCH_HEAD && git submodule update --init --recursive && git update-ref refs/remotes/origin/master HEAD && test "$(git rev-parse HEAD)" = 587f41a61437b680b4215de1874fb6975d8a49d6 && test "$(git rev-parse HEAD^{tree})" = f9675d6e9147d19b6c6e11dc9aefcae5090e123e
+WORKDIR /app
+RUN /usr/local/bin/python -m pip install --no-cache-dir --upgrade 'pip>=25.1'
+RUN /usr/local/bin/pip install --no-cache-dir pytest
+RUN /usr/local/bin/pip install --no-cache-dir --group dev
+RUN /usr/local/bin/pip install --no-cache-dir -e .
+RUN test -z "$(git status --porcelain)"
+RUN chown -R user:user /app
 USER root
 WORKDIR /app

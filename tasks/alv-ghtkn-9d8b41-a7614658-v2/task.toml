@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-ghtkn-9d8b41-a7614658-v2"
-description = "E2B-backed repository task for suzuki-shunsuke/ghtkn"
+description = "Rebuildable repository task for suzuki-shunsuke/ghtkn"
 authors = []
-keywords = ["go", "e2b", "github"]
+keywords = ["go", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-ghtkn-9d8b41-a7614658-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "go"
 repository_url = "https://github.com/suzuki-shunsuke/ghtkn"
 base_commit_hash = "a7614658864ac00c7e80f5f76d2aaa4b5ad66b72"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

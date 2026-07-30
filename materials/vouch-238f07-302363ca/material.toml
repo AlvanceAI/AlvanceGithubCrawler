@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "vouch-238f07-302363ca"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "390da0fd8352da4ecdc0006089b8d8a0421e483db7a1f29042b5a04ada83d8aa"
-harbor_template_alias = "alv-vouch-238f07-302363ca-v2-env-390da0fd"
-e2b_template = "nswusle6ovy0wbrep5uu"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "8324e429bca79a087ede0d24d19a6d5f1d68735db1de1606d02ee2f3ab9687da"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vouch-238f07-302363ca-v2-env-390da0fd"
+template_id = "nswusle6ovy0wbrep5uu"
 source_template_alias = "mtddkikgtpvg1osyu95f"
 source_template_id = "mtddkikgtpvg1osyu95f"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "chroma-go-deaf6e-d475ee2c"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/chroma-go-deaf6e-d475ee2c"
 repository_url = "https://github.com/amikos-tech/chroma-go"
 base_commit = "d475ee2cdd311092518983fa98848f53e1fb8b63"
 source_tree = "0e859750a71a483410e93d39749ca94f32b59fe1"
-environment_sha256 = "54feac23383560d57c16f11b613aaba6df8f312a766848b587920a16e5638a48"
-e2b_template_id = "quxoihocoysjtna88vih"
-e2b_template_alias = "alv-chroma-go-deaf6e-d475ee2c-v2-env-54feac23"
+environment_sha256 = "3bf4da25e306103a3727d7cf26c07e36ebb882808593d55e139ed4bfd168bc5b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "quxoihocoysjtna88vih"
+template_alias = "alv-chroma-go-deaf6e-d475ee2c-v2-env-54feac23"
+operational_dependency = false

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ariadne-codegen-11c5b0-083d1802"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mirumee/ariadne-codegen"
+base_commit = "083d18025137bc3e6359cad61bafb9929563ab75"
+source_tree = "600bfff9cb7b82171573d7492ed5fc2f3524cb23"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6bfae59403a1e6245a9e98057742466865fb70d97e7595effe34cbe79abc8648"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ariadne-codegen-11c5b0-083d1802-v2-env-b8df7bdc"
+template_id = "fu3j9961jsbn0zjpz9x4"
+source_template_alias = "t5cea841kz35bqc1vpba"
+source_template_id = "t5cea841kz35bqc1vpba"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "kube-linter-df4e9b-75b6ee58"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/kube-linter-df4e9b-75b6ee58"
 repository_url = "https://github.com/stackrox/kube-linter"
 base_commit = "75b6ee58ac416b4c9579be6e128b651ccee386cb"
 source_tree = "ad7b1b515664fb3ea5b6a0be011ae2e2c9206394"
-environment_sha256 = "cb31aa9a0d11c271151031a7d01587f75376a92553be9f6dc5830ae1d422d6c0"
-e2b_template_id = "w4k117ig731csh9q7m0z"
-e2b_template_alias = "alv-kube-linter-df4e9b-75b6ee58-v2-env-cb31aa9a"
+environment_sha256 = "f26635cd4cf382e6afbefb5385c3743d7b17f0afcb3da3fc33b139d248b0f731"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "w4k117ig731csh9q7m0z"
+template_alias = "alv-kube-linter-df4e9b-75b6ee58-v2-env-cb31aa9a"
+operational_dependency = false

@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "xsdata-0b6df9-1fda8785"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "f8c4a1300c7e5db2095e379cf416b4ef9b15337235804701f0ae3116f78165c4"
-harbor_template_alias = "alv-xsdata-0b6df9-1fda8785-v2__f8c4a130"
-e2b_template = "7tsbo4y3nghbmg4z9l1a"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "517c2a501b0158bf75bc206e782e0820ba510b9d98ff441d6f364015f3305a31"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-xsdata-0b6df9-1fda8785-v2__f8c4a130"
+template_id = "7tsbo4y3nghbmg4z9l1a"
 source_template_alias = "alvance-repo-tefra-xsdata-1fda8785e8-0549808e98-v17"
 source_template_id = "c0422vb1s5jqq8pqd5qy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

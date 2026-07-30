@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "openyida-23208f-68b772d1"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "javascript"
 node = "20"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "67a81a756a70bf415534c41c3379e57b8e5a2a4ada82fbaa90e9f45fcc7cfbdc"
-harbor_template_alias = "alv-openyida-23208f-68b772d1-v2-env-67a81a75"
-e2b_template = "jyni4vy73k3v9lvc2ivb"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "56e2f7ae434a0548a8d87cfd8b518b7b540168b29245d4cdd6af18eebd830a7b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-openyida-23208f-68b772d1-v2-env-67a81a75"
+template_id = "jyni4vy73k3v9lvc2ivb"
 source_template_alias = "wsoz13ieik1islgbvj4p"
 source_template_id = "wsoz13ieik1islgbvj4p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

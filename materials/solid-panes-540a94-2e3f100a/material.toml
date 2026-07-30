@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "solid-panes-540a94-2e3f100a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/SolidOS/solid-panes"
+base_commit = "2e3f100aa8bf27818545a7024fb5e743cd844273"
+source_tree = "26f77ceeced58f0e8053ea0294292d7ae8365542"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "374d8f907160265459b2b2b0f47343ea551c410f14e6275d2745d258a8793708"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-solid-panes-540a94-2e3f100a-v2-env-a93a44e8"
+template_id = "wmfebci4y97ij5vbi1pc"
+source_template_alias = "gygfxunny6bb4lhiw0sv"
+source_template_id = "gygfxunny6bb4lhiw0sv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

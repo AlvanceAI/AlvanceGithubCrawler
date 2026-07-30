@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "ratel-e95925-caa4bf6f"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "rust"
 rust = "1.97.1"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "f7e3af706950d38f5c2436ab257d1711aaa38a1cba1648511885a28c19a74823"
-harbor_template_alias = "alv-ratel-e95925-caa4bf6f-v2-env-f7e3af70"
-e2b_template = "im2gkota0s5iulkzp0pe"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "4b7f76cf2a9ed336907ff5bbde1243c1cef7648cca5a90455974afae78bc878f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ratel-e95925-caa4bf6f-v2-env-f7e3af70"
+template_id = "im2gkota0s5iulkzp0pe"
 source_template_alias = "a29wewo35odxgpk3756p"
 source_template_id = "a29wewo35odxgpk3756p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

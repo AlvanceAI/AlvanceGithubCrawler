@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-multicalc-rust-9f373b-54cfa52e-v2"
-description = "E2B-backed repository task for kmolan/multicalc-rust"
+description = "Rebuildable repository task for kmolan/multicalc-rust"
 authors = []
-keywords = ["rust", "e2b", "github"]
+keywords = ["rust", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-multicalc-rust-9f373b-54cfa52e-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "rust"
 repository_url = "https://github.com/kmolan/multicalc-rust"
 base_commit_hash = "54cfa52e744040578f26ae80b08cf5ef45213cdd"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

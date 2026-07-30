@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-ical-js-cefd21-cd2ef47d-v2"
+description = "Rebuildable repository task for kewisch/ical.js"
+authors = []
+keywords = ["javascript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-ical-js-cefd21-cd2ef47d-v2"
+material_id = "ical-js-cefd21-cd2ef47d"
+status = "direction"
+language = "javascript"
+repository_url = "https://github.com/kewisch/ical.js"
+base_commit_hash = "cd2ef47d5f1c834680ae4b6fa3ad57daa58edffc"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

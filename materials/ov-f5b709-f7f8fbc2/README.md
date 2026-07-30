@@ -1,0 +1,11 @@
+# ov-f5b709-f7f8fbc2
+
+Rebuildable repository material for `noborus/ov` at
+`f7f8fbc28ae8e36b0c9547088ae25e936b6dd7a0`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
+
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.

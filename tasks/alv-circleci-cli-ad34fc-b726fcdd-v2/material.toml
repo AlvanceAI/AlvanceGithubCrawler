@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "circleci-cli-ad34fc-b726fcdd"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/circleci-cli-ad34fc-b726fcdd"
 repository_url = "https://github.com/CircleCI-Public/circleci-cli"
 base_commit = "b726fcdd00d9ec404c63c85950c9e190b1b5ad68"
 source_tree = "ebb07f9a5349ada41c3e592a184739c3469f9ae8"
-environment_sha256 = "76804dc4de34f6cdb2ace60d05758a528386570ead8dbaafb819b2314cb9f678"
-e2b_template_id = "mgjb0okrha2zqujo4ise"
-e2b_template_alias = "alv-circleci-cli-ad34fc-b726fcdd-v2-env-76804dc4"
+environment_sha256 = "e6f60d2346d04c3613db9ea1f7fca24e8761530f9cbe84ffdfb68850b2a7a53f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "mgjb0okrha2zqujo4ise"
+template_alias = "alv-circleci-cli-ad34fc-b726fcdd-v2-env-76804dc4"
+operational_dependency = false

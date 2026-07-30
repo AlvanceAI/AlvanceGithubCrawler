@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dnspyre-80fbd5-88d3599d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Tantalor93/dnspyre"
+base_commit = "88d3599d10181a30a1f639502429a0ab71351d9d"
+source_tree = "8e29281a2ac8a91dba2124e13e81160f21fe9e7b"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "38ee84d26c2af65925f7c400a2f951f22dc6edb18fd5e49ba83fa6e54b37334b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dnspyre-80fbd5-88d3599d-v2-env-f8c9af3c"
+template_id = "ccd1grxc0juisvlcyy0n"
+source_template_alias = "5dqrejowsy14th32tzyc"
+source_template_id = "5dqrejowsy14th32tzyc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

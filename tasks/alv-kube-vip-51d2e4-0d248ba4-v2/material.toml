@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "kube-vip-51d2e4-0d248ba4"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/kube-vip-51d2e4-0d248ba4"
 repository_url = "https://github.com/kube-vip/kube-vip"
 base_commit = "0d248ba40fd7004050f258b615ed6cfceac932b6"
 source_tree = "d1830f49ef415e9a968c182e8f774f0c3f151fd7"
-environment_sha256 = "3d3fbdd4f83c96c4640d966709448f389e146b34f69cf4ba6fdec7e0f5799a53"
-e2b_template_id = "w5zbttqlbip50phhyv16"
-e2b_template_alias = "alv-kube-vip-51d2e4-0d248ba4-v2__3d3fbdd4"
+environment_sha256 = "57c8857575ffd2dc693a3b0ab947d7364d0d07a6c57ef125e347fb2af9f519c1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "w5zbttqlbip50phhyv16"
+template_alias = "alv-kube-vip-51d2e4-0d248ba4-v2__3d3fbdd4"
+operational_dependency = false

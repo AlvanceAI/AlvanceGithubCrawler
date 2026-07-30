@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "patina-6b5b94-b98b3b03"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/patina-6b5b94-b98b3b03"
 repository_url = "https://github.com/devswha/patina"
 base_commit = "b98b3b03e885e6996750d88f7b851010be6ed912"
 source_tree = "d21379430cef713d9eb2484959a4052e8a0bdaf2"
-environment_sha256 = "996c27d65682cd070f277a4fc3bab27df84f748ba684370fc1055a12c855fab3"
-e2b_template_id = "ecdbdf01r1kpoeynhim8"
-e2b_template_alias = "alv-patina-6b5b94-b98b3b03-v2__996c27d6"
+environment_sha256 = "989cb5dfd437b85f0ce2bcbee53f2274e18186c12687fe62ed8b847505da8f80"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "ecdbdf01r1kpoeynhim8"
+template_alias = "alv-patina-6b5b94-b98b3b03-v2__996c27d6"
+operational_dependency = false

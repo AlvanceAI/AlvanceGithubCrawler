@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "ferron-f40dc5-8d2e31d1"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "rust"
 rust = "1.97.1"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "b36ae8358bb4c5c239cb1fda213eae8ce6390b1551cb12a0d00b9f3804c43fa3"
-harbor_template_alias = "alv-ferron-f40dc5-8d2e31d1-v2-env-b36ae835"
-e2b_template = "26kud633wx1ne35buha1"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "f2a74acb62fb3806ac26c06a1cbd3d3b5fff1e63383b1f9d268c765d970477c4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ferron-f40dc5-8d2e31d1-v2-env-b36ae835"
+template_id = "26kud633wx1ne35buha1"
 source_template_alias = "2ftxnz4qrtbjkqs2yecc"
 source_template_id = "2ftxnz4qrtbjkqs2yecc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

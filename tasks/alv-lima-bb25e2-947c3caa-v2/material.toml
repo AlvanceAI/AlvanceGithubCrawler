@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "lima-bb25e2-947c3caa"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/lima-bb25e2-947c3caa"
 repository_url = "https://github.com/lima-vm/lima"
 base_commit = "947c3caaf08a6958180168f0b9f1289f722a18a8"
 source_tree = "f48e622db063c5aa36903554456092deee24ef68"
-environment_sha256 = "a17408fcb451e9ec8946295d15ae5e384947a5d653081e074c9d9ffa974772b7"
-e2b_template_id = "yhzpu5bczecpqnt8lgl7"
-e2b_template_alias = "alv-lima-bb25e2-947c3caa-v2-env-a17408fc"
+environment_sha256 = "f9df38d839b956cda014eb561ef6a1eaa9fc187fe2dd3188ee60b9fead5e6985"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "yhzpu5bczecpqnt8lgl7"
+template_alias = "alv-lima-bb25e2-947c3caa-v2-env-a17408fc"
+operational_dependency = false

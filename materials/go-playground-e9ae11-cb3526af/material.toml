@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-playground-e9ae11-cb3526af"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/x1unix/go-playground"
+base_commit = "cb3526af1fc084d4a0214878bc4454087e073ca7"
+source_tree = "046db82901800f434b2906c1448067b1e9d4907b"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ec04094d08002f9d8ff4f3c86a4f4df718dffbbd6a63059f064c950ec4f21009"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-playground-e9ae11-cb3526af-v2-env-48e32a7e"
+template_id = "2azn1m4q4veyy0v470nj"
+source_template_alias = "p2gzjepq9tjugkgdq8xy"
+source_template_id = "p2gzjepq9tjugkgdq8xy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

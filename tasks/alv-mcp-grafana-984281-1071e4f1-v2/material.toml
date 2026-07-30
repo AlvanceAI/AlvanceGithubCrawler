@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "mcp-grafana-984281-1071e4f1"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/mcp-grafana-984281-1071e4f1"
 repository_url = "https://github.com/grafana/mcp-grafana"
 base_commit = "1071e4f1f9b2e42260570a8f85956e9b7365e322"
 source_tree = "5675b5c4c2d6cbc7eb0b77f3067b690d30354221"
-environment_sha256 = "4769b952c40683cbce22f0d8bce4e2a03c3453e9c8a245256e17d4ba665f4693"
-e2b_template_id = "av7xkbko1rc0ijb2ebr9"
-e2b_template_alias = "alv-mcp-grafana-984281-1071e4f1-v2-env-4769b952"
+environment_sha256 = "a3115a50153df9e3905dc4aba0feebd9bf27cab3ac1347e6fdbdc013e9be0904"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "av7xkbko1rc0ijb2ebr9"
+template_alias = "alv-mcp-grafana-984281-1071e4f1-v2-env-4769b952"
+operational_dependency = false

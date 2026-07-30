@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "webcmd-1df241-6c439f85"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "javascript"
 node = "20"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "65621e57b46d21a0c1c717267d7ad832e76d1bcb7eb095a644ff96b1fff89777"
-harbor_template_alias = "alv-webcmd-1df241-6c439f85-v2-env-65621e57"
-e2b_template = "ioh0abvkm7a0sm261t0c"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "3d68e6cb3bc87eebe3b63a3a19374fd916a6b2a1e033f23036633f338a2e0cb4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-webcmd-1df241-6c439f85-v2-env-65621e57"
+template_id = "ioh0abvkm7a0sm261t0c"
 source_template_alias = "yja37ep5f0wppc633qrz"
 source_template_id = "yja37ep5f0wppc633qrz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

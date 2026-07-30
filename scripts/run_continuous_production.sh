@@ -7,6 +7,7 @@ cd "$repo_root"
 publish_branch=${PUBLISH_BRANCH:-XBY}
 per_key_concurrency=${E2B_CONCURRENCY:-20}
 prescreen_concurrency=${PRESCREEN_CONCURRENCY:-8}
+package_repair_workers=${PACKAGE_REPAIR_WORKERS:-8}
 batch_per_language=${BATCH_PER_LANGUAGE:-100}
 max_per_language=${MAX_PER_LANGUAGE:-1000}
 run_id=${PIPELINE_RUN_ID:-github-mass-production-$(date -u +%Y%m%dT%H%M%SZ)}
@@ -34,6 +35,10 @@ if (( per_key_concurrency < 1 || per_key_concurrency > 20 )); then
 fi
 if (( prescreen_concurrency < 1 || prescreen_concurrency > 20 )); then
     echo "PRESCREEN_CONCURRENCY must be between 1 and 20" >&2
+    exit 2
+fi
+if (( package_repair_workers < 1 || package_repair_workers > 20 )); then
+    echo "PACKAGE_REPAIR_WORKERS must be between 1 and 20" >&2
     exit 2
 fi
 if (( batch_per_language < 1 || max_per_language < 1 )); then
@@ -275,6 +280,13 @@ total_concurrency=$(jq -r '.e2b_total_concurrency // 0' <<< "$doctor_json")
 if (( key_count != 2 || total_concurrency != per_key_concurrency * 2 )); then
     echo "expected two E2B keys and $((per_key_concurrency * 2)) total slots" >&2
     exit 2
+fi
+
+if [[ -s catalog/e2b-packages.jsonl ]]; then
+    run_stage repair-rebuildable-packages \
+        uv run python scripts/repair_rebuildable_tasks.py \
+        --root "$repo_root" \
+        --workers "$package_repair_workers"
 fi
 
 start_producer

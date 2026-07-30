@@ -1,6 +1,19 @@
-# Harbor envelope v2
-# Source E2B template: 4txknwhcgypzsfgztgn7
-# This file is an immutable Harbor fingerprint; do not force-build it.
-FROM e2bdev/base
+# Harbor rebuildable envelope v2
+# Dockerfile recipe v3
+# E2B aliases are optional caches; this file is the durable build source.
+FROM docker.io/library/python:3.11
+USER root
+ENV HOME="/home/user"
+ENV PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUN apt-get update && apt-get install -y --no-install-recommends time git ca-certificates build-essential && rm -rf /var/lib/apt/lists/*
+RUN /usr/local/bin/python --version && /usr/local/bin/pip --version
+RUN id -u user >/dev/null 2>&1 || useradd --create-home --shell /bin/bash user
+WORKDIR /
+RUN rm -rf /app && mkdir -p /app && git init /app && cd /app && git remote add origin https://github.com/CrowdStrike/falcon-mcp.git && git fetch --depth=1 origin ab97afde87261552b70599561852df1d62d92aff && git checkout --detach FETCH_HEAD && git submodule update --init --recursive && git update-ref refs/remotes/origin/main HEAD && test "$(git rev-parse HEAD)" = ab97afde87261552b70599561852df1d62d92aff && test "$(git rev-parse HEAD^{tree})" = 72c3db4a906127967aeb3e5a439d88e493fca687
+WORKDIR /app
+RUN /usr/local/bin/pip install --no-cache-dir pytest
+RUN /usr/local/bin/pip install --no-cache-dir -e '.[dev]'
+RUN test -z "$(git status --porcelain)"
+RUN chown -R user:user /app
 USER root
 WORKDIR /app

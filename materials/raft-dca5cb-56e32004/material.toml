@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "raft-dca5cb-56e32004"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/etcd-io/raft"
+base_commit = "56e32004b1af3a4cb625fbfe5dbca24fb6023d09"
+source_tree = "23977b35d37ae99f12419cef01364ad83540f069"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9557fddd70efafd1ea5e0286c484d7fc9ba8b3db40e29e94db79f76f0f6a323f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-raft-dca5cb-56e32004-v2-env-2841bffb"
+template_id = "coiabudu8j5eteny2fab"
+source_template_alias = "7e5vepr7o8lr1y9h2sjy"
+source_template_id = "7e5vepr7o8lr1y9h2sjy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

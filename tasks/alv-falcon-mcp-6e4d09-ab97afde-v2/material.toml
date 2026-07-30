@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "falcon-mcp-6e4d09-ab97afde"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/falcon-mcp-6e4d09-ab97afde"
 repository_url = "https://github.com/CrowdStrike/falcon-mcp"
 base_commit = "ab97afde87261552b70599561852df1d62d92aff"
 source_tree = "72c3db4a906127967aeb3e5a439d88e493fca687"
-environment_sha256 = "99567fe48464e2dab2a39312d7cab69198fcab7f2e1dae4a31e57a5a9c6f87ee"
-e2b_template_id = "k5q24mdomqybzovxkzp5"
-e2b_template_alias = "alv-falcon-mcp-6e4d09-ab97afde-v2-env-99567fe4"
+environment_sha256 = "187e63de22835115970f75be035862ddb342976f789bcdb8c11f1ab1c2e43f70"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "k5q24mdomqybzovxkzp5"
+template_alias = "alv-falcon-mcp-6e4d09-ab97afde-v2-env-99567fe4"
+operational_dependency = false

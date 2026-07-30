@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "node-core-utils-8ffc60-828f4277"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nodejs/node-core-utils"
+base_commit = "828f4277d1d83dafe6e1849ff10c955d59fa7c6d"
+source_tree = "c8eb2515b35255c869ec315537041c80b1bd3f75"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0fd350e6708b59f3a56808f73b420bba52d3a9f3da27f5e35daba2509fbe79a4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-node-core-utils-8ffc60-828f4277-v2-env-10456855"
+template_id = "8d7y3251wta0oywog8m2"
+source_template_alias = "xroxfknlk4cz47q7k8me"
+source_template_id = "xroxfknlk4cz47q7k8me"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

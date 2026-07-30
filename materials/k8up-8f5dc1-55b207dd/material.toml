@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "k8up-8f5dc1-55b207dd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/k8up-io/k8up"
+base_commit = "55b207dddee83c11d8167e973b6c76f3b1493ee8"
+source_tree = "f4861918274d6996e663860a99eec6e1fc0e0553"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a4815954725eb509225ab8f0868614f2511dc80b2393c21d4d992eea5575d274"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-k8up-8f5dc1-55b207dd-v2-env-925db1fd"
+template_id = "zrbnps6vi26d45w6261u"
+source_template_alias = "yv3of9skgjmlkcp7l49h"
+source_template_id = "yv3of9skgjmlkcp7l49h"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

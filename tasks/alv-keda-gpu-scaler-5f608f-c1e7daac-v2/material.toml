@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "keda-gpu-scaler-5f608f-c1e7daac"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/keda-gpu-scaler-5f608f-c1e7daac"
 repository_url = "https://github.com/pmady/keda-gpu-scaler"
 base_commit = "c1e7daacc51acafd62760074b35e215be5e43df3"
 source_tree = "3533ef3f6db1c7524cba95708e77cd17cff7a05b"
-environment_sha256 = "7abb2a8eeaf521a0a9b0f8b94c1e3b8ac27093bdaf803653a7aec6649dcf08aa"
-e2b_template_id = "lj1bq26c1dunu726shqs"
-e2b_template_alias = "alv-keda-gpu-scaler-5f608f-c1e7daac-v2-env-7abb2a8e"
+environment_sha256 = "07a78826362b0b86de924888cc4d69aa3c15415aee3b460b3e1f7b21ab33d03a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "lj1bq26c1dunu726shqs"
+template_alias = "alv-keda-gpu-scaler-5f608f-c1e7daac-v2-env-7abb2a8e"
+operational_dependency = false

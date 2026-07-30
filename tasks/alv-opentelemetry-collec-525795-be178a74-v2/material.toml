@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "opentelemetry-collector-525795-be178a74"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/opentelemetry-collector-525795-be178a74"
 repository_url = "https://github.com/open-telemetry/opentelemetry-collector"
 base_commit = "be178a7479d5a472d6e3fce791c20bf098e1451e"
 source_tree = "9f78d3b3ea693d353df8f4ca748dc8dbcb87bd1f"
-environment_sha256 = "8269ca64078af568f8034e4a5ce9e10f17a8f3d045b4f39e64b5d85ed6b2988d"
-e2b_template_id = "crf2no06bhry54tgq9go"
-e2b_template_alias = "alv-opentelemetry-collec-525795-be178a74-v2__8269ca64"
+environment_sha256 = "edaa3ee5edcd55549001f396737fa2e37b3bc04385d4629594b6ff2d25b40a1a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "crf2no06bhry54tgq9go"
+template_alias = "alv-opentelemetry-collec-525795-be178a74-v2__8269ca64"
+operational_dependency = false

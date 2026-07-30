@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "secrets-store-csi-driver-5e60c7-d5f7cf5b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
+base_commit = "d5f7cf5b598c2eede99ad3683de0ba10f7a8736b"
+source_tree = "799c60650744b6a65f4b7c0b7e9009b6e3108d65"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6296e95c79fb094d9602f9ae9530189dea305a19c0e661f255baa6c8dd0b43c9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-secrets-store-csi-dr-5e60c7-d5f7cf5b-v2-env-7bf9a608"
+template_id = "sguq18bds9d1hhh9qria"
+source_template_alias = "4q7wt34z7i2vkmywjvxf"
+source_template_id = "4q7wt34z7i2vkmywjvxf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

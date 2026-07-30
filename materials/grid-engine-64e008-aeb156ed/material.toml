@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "grid-engine-64e008-aeb156ed"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "typescript"
 node = "20"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "8a4cd39cb66d3100d2cc72fc14bccd8b8e77b244243e11ddb8d641b3496d4032"
-harbor_template_alias = "alv-grid-engine-64e008-aeb156ed-v2-env-8a4cd39c"
-e2b_template = "a5g2mi5lc160icxzlxlu"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "4b68720380ba6097767ccaed7fa2fd575ebecc6afdebbb143f0bbf0f3f22cca5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-grid-engine-64e008-aeb156ed-v2-env-8a4cd39c"
+template_id = "a5g2mi5lc160icxzlxlu"
 source_template_alias = "2s353catn6yv1x3rcj7a"
 source_template_id = "2s353catn6yv1x3rcj7a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

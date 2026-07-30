@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "clickhouse-go-6dd8a1-aee0e942"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/clickhouse-go-6dd8a1-aee0e942"
 repository_url = "https://github.com/ClickHouse/clickhouse-go"
 base_commit = "aee0e942aa21616498a72027b3475fa271b677aa"
 source_tree = "53910ed59dd5fac15085e6a69fa635e6db94566a"
-environment_sha256 = "45725bff6b51b71b6db899e4a0ee9da01037f8e569b37ea6c4970b8824a4d714"
-e2b_template_id = "wigrpgzspboz0rgtreta"
-e2b_template_alias = "alv-clickhouse-go-6dd8a1-aee0e942-v2__45725bff"
+environment_sha256 = "a70696d234075ca26028691ba45cdad981d0a36b45dadef1fcea1ea5af881a19"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "wigrpgzspboz0rgtreta"
+template_alias = "alv-clickhouse-go-6dd8a1-aee0e942-v2__45725bff"
+operational_dependency = false

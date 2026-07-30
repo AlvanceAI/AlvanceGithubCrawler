@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "hifitime-1e9ac1-7b6238d0"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/hifitime-1e9ac1-7b6238d0"
 repository_url = "https://github.com/nyx-space/hifitime"
 base_commit = "7b6238d0bfdfee940dca49e217f3a59c9234e6ab"
 source_tree = "79314d942030974023abe82999e26e922c1e2b6a"
-environment_sha256 = "fcdbe07ccb72690883077c5c9d7cbfce9bd72f944800345daa19210c6adaea5d"
-e2b_template_id = "tdg46armaajfbl1i9rhs"
-e2b_template_alias = "alv-hifitime-1e9ac1-7b6238d0-v2-env-fcdbe07c"
+environment_sha256 = "8d6de91a5e519da30247a869d1a102a951f4f96b5ef2368f850afbf4437537a6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "tdg46armaajfbl1i9rhs"
+template_alias = "alv-hifitime-1e9ac1-7b6238d0-v2-env-fcdbe07c"
+operational_dependency = false

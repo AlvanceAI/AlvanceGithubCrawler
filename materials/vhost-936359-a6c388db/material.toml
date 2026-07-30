@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vhost-936359-a6c388db"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rust-vmm/vhost"
+base_commit = "a6c388db1870d52cbd8ebb5c9a0b115ae68b1dfd"
+source_tree = "41f49aba4a76f03f1b46682f44e4816b7259bb42"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c34a52547506021ace1d8975e857a1f505b307b5082f1e7c0010afa5b2db3db3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vhost-936359-a6c388db-v2-env-4582e528"
+template_id = "5qzmxuoa8tbst9dp3j0k"
+source_template_alias = "bfai1ghbsllcgdcql1nm"
+source_template_id = "bfai1ghbsllcgdcql1nm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

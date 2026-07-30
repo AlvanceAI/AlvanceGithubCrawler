@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "xsdata-0b6df9-1fda8785"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/xsdata-0b6df9-1fda8785"
 repository_url = "https://github.com/tefra/xsdata"
 base_commit = "1fda8785e884fd0ce8da214b9d69d5cbb88b89be"
 source_tree = "b8ca38966a1ad078875766d0b173d49920531c4f"
-environment_sha256 = "f8c4a1300c7e5db2095e379cf416b4ef9b15337235804701f0ae3116f78165c4"
-e2b_template_id = "7tsbo4y3nghbmg4z9l1a"
-e2b_template_alias = "alv-xsdata-0b6df9-1fda8785-v2__f8c4a130"
+environment_sha256 = "517c2a501b0158bf75bc206e782e0820ba510b9d98ff441d6f364015f3305a31"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "7tsbo4y3nghbmg4z9l1a"
+template_alias = "alv-xsdata-0b6df9-1fda8785-v2__f8c4a130"
+operational_dependency = false

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "clawbench-e34f0f-86fdd307"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/TIGER-AI-Lab/ClawBench"
+base_commit = "86fdd307b5d6f44c1ec85439fc4b7a6eea24b066"
+source_tree = "c2dd9e32b471514b78fd092a1b276520b41b7459"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2e4631cc8e715374fff58d470e24264e01a5ff2b9bb4881eccde3af91314fadc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-clawbench-e34f0f-86fdd307-v2-env-3cd45f11"
+template_id = "71qsd03t7ruj9n875hme"
+source_template_alias = "ahm08gzqx2uihcpons6y"
+source_template_id = "ahm08gzqx2uihcpons6y"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

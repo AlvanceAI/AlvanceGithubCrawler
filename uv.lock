@@ -12,6 +12,7 @@ dependencies = [
     { name = "packaging" },
     { name = "pydantic" },
     { name = "requests" },
+    { name = "rich" },
 ]
 
 [package.optional-dependencies]
@@ -34,6 +35,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5.0" },
     { name = "requests", specifier = ">=2.31,<3" },
+    { name = "rich", specifier = ">=13,<16" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.9" },
 ]
 provides-extras = ["e2b", "dev"]

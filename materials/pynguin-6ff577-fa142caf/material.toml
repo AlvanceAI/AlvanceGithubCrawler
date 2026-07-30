@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "pynguin-6ff577-fa142caf"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "6e5a697872875bb808b7c13cc0eebc234ff71d1f8bafe545089690589fab2be2"
-harbor_template_alias = "alv-pynguin-6ff577-fa142caf-v2-env-6e5a6978"
-e2b_template = "gcseljlabmrio6roptce"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "22bb57c48f6ff61d43e943931189e6db1cc7b9020a108b09b041aad835032c66"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pynguin-6ff577-fa142caf-v2-env-6e5a6978"
+template_id = "gcseljlabmrio6roptce"
 source_template_alias = "niqvxxuwqetdm25nunrj"
 source_template_id = "niqvxxuwqetdm25nunrj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

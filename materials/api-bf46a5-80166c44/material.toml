@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "api-bf46a5-80166c44"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/readmeio/api"
+base_commit = "80166c444cbf7d60d0b9f4616fb4023ba2908f17"
+source_tree = "60729923ee437ab52519a5a8d6f0c611d4b7432f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e42ea4161e0cc36af018b0c346a5c2102523a375807d5a3ca625c551c41ad6cf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-api-bf46a5-80166c44-v2-env-f15a60ee"
+template_id = "4v0v3hmxvme0fuunslpv"
+source_template_alias = "sdssxr4e26zzbj92gca0"
+source_template_id = "sdssxr4e26zzbj92gca0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

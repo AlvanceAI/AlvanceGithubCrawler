@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "muffet-a3d0b2-d23fa291"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.25.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "c1bea6ec9618a45bf88f6a68f514118805ce48c7dfbf16b15659f3474637a4b4"
-harbor_template_alias = "alv-muffet-a3d0b2-d23fa291-v2-env-c1bea6ec"
-e2b_template = "z6lu4q52w1fdhestvzkd"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "484e85365e8a90b0b4ecabdf746bc10105b6be42001f12824f5e0f20e0b6b041"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-muffet-a3d0b2-d23fa291-v2-env-c1bea6ec"
+template_id = "z6lu4q52w1fdhestvzkd"
 source_template_alias = "mqz0znandt629iblk6yi"
 source_template_id = "mqz0znandt629iblk6yi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

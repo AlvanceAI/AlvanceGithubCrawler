@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "provider-kubernetes-508bc6-6d946d51"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/provider-kubernetes-508bc6-6d946d51"
 repository_url = "https://github.com/crossplane-contrib/provider-kubernetes"
 base_commit = "6d946d51b467058a56023bd806977589735749bd"
 source_tree = "ad319e3fc923df378fe5dfc52a42266a091a87ce"
-environment_sha256 = "36f394c4610b7db8f0a789ff20fe4b08cf1334309fbd11359fe271cf13c73e22"
-e2b_template_id = "sb9snn0ottkxdlm6gw6z"
-e2b_template_alias = "alv-provider-kubernetes-508bc6-6d946d51-v2__36f394c4"
+environment_sha256 = "c6a3318633d4993f45dfcb1e6d67d92eee006da5003974a564b4d96a8a917113"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "sb9snn0ottkxdlm6gw6z"
+template_alias = "alv-provider-kubernetes-508bc6-6d946d51-v2__36f394c4"
+operational_dependency = false

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nginx-sso-c311c7-499f0129"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Luzifer/nginx-sso"
+base_commit = "499f01298ecddd7ddfff7b289bab8b45b4f763e3"
+source_tree = "99bb075ac6cee55ba724f5bef813d35fd613c845"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e4917dfe36d5e45130958b94303d88059a862e0b97f87033655af983e7dbd946"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nginx-sso-c311c7-499f0129-v2-env-0f0af157"
+template_id = "3cpqwwum9t79zfpexx9k"
+source_template_alias = "b5yhzrycqwm0jijf2ebg"
+source_template_id = "b5yhzrycqwm0jijf2ebg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rasusa-1106d3-1d8a9830"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mbhall88/rasusa"
+base_commit = "1d8a98301cc2c6d37c6beb82589f5e59092a792c"
+source_tree = "aee644c2483da69319d00ec665f7ef8b8a1605dc"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b02ee1e469152563c901ff36ac6dbb3090e6f180ad5aa53156fffb5c4c38c88d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rasusa-1106d3-1d8a9830-v2-env-2c513e56"
+template_id = "xmqagqt11w07rpqmhfro"
+source_template_alias = "4c36mvl9zgcdctrw7a60"
+source_template_id = "4c36mvl9zgcdctrw7a60"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

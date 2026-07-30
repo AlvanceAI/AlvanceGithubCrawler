@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-lifecycled-4c85f1-0a944f09-v2"
-description = "E2B-backed repository task for buildkite/lifecycled"
+description = "Rebuildable repository task for buildkite/lifecycled"
 authors = []
-keywords = ["go", "e2b", "github"]
+keywords = ["go", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-lifecycled-4c85f1-0a944f09-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "go"
 repository_url = "https://github.com/buildkite/lifecycled"
 base_commit_hash = "0a944f09a9b6cf96e8c92e8a3ceb915dbebfd46f"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

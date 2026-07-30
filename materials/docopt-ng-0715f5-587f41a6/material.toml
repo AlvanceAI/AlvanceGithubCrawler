@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "docopt-ng-0715f5-587f41a6"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "0b55e4941bb93aa093931d5c08e5a994c3b2979ac8d1c956be19c9a80509cc78"
-harbor_template_alias = "alv-docopt-ng-0715f5-587f41a6-v2__0b55e494"
-e2b_template = "mlsyxq6fpzm1so4ci9qu"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "9f9d0b5d794ff1deacae16c335732bec68ffdb37ee50a6694d51992a30c140aa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-docopt-ng-0715f5-587f41a6-v2__0b55e494"
+template_id = "mlsyxq6fpzm1so4ci9qu"
 source_template_alias = "alvance-repo-jazzband-docopt-ng-587f41a614-716fcad118-v15"
 source_template_id = "farq4a8jn94kw40glhrt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

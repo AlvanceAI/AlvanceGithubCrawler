@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "oasdiff-81085b-e5236e58"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "effb020723f106eabea13dc42dd2aeb9fc040f5c5ed168de0a67e35985050636"
-harbor_template_alias = "alv-oasdiff-81085b-e5236e58-v2__effb0207"
-e2b_template = "34fa08qsalxlrsrg022n"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "cbc13fa3fb6f8f72472661888682f6c9cf83c099cbfa9ad423840a9aeecd1e91"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-oasdiff-81085b-e5236e58-v2__effb0207"
+template_id = "34fa08qsalxlrsrg022n"
 source_template_alias = "alvance-repo-oasdif-81085ba1-e5236e5866-a637fda86e-c1-m1024-v17"
 source_template_id = "yy29jho6ibo40khb7ka9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

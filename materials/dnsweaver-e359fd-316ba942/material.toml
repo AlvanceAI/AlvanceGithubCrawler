@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dnsweaver-e359fd-316ba942"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/maxfield-allison/dnsweaver"
+base_commit = "316ba942857319dd2e394fa422a4d16221df07ef"
+source_tree = "fcfbe12b43ce525619557f3d6b85578f6c879a71"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4bd3968a561da87c5bde3ac8fff97898459dac3a059a0a0a6c7772fc29b54f36"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dnsweaver-e359fd-316ba942-v2-env-64ab3b8b"
+template_id = "ed7ni9xyhbyebrwerblo"
+source_template_alias = "qvopn5ikjwzz6ljpt95h"
+source_template_id = "qvopn5ikjwzz6ljpt95h"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

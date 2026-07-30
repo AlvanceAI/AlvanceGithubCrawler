@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "guigui-1177d9-d6f6d12b"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.25.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "e3ad00bca92a25575074beaa0dcccabf6e0689f3e17b3d76dc4aeb1e35fc8e35"
-harbor_template_alias = "alv-guigui-1177d9-d6f6d12b-v2__e3ad00bc"
-e2b_template = "u1kjhpvh7tfqs7ym1j9s"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "8e6b9bb249fb66bd03857aeac5c8ceb2dcb3052ab3adb495af50e66cb4c1eeed"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-guigui-1177d9-d6f6d12b-v2__e3ad00bc"
+template_id = "u1kjhpvh7tfqs7ym1j9s"
 source_template_alias = "alvance-repo-guigui-gui-guigui-d6f6d12b38-96440fd533-v7"
 source_template_id = "lusg1p6w1mecmlripmsb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

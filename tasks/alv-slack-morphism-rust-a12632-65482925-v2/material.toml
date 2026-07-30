@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "slack-morphism-rust-a12632-65482925"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/slack-morphism-rust-a12632-65482925"
 repository_url = "https://github.com/abdolence/slack-morphism-rust"
 base_commit = "65482925407ce3eec04f040b8bd4ecdb608e709c"
 source_tree = "7254368241b5d05994598c82065fa6c75db49a77"
-environment_sha256 = "bc0dce7229a750e615c71973af6241ea649df30580fa140215cb07a861ebc15d"
-e2b_template_id = "3ctak4oog9ylb65eadto"
-e2b_template_alias = "alv-slack-morphism-rust-a12632-65482925-v2-env-bc0dce72"
+environment_sha256 = "c4b4b16208fa75024e9e5f5d8cb115f4e84ea48606c0ab21a59f1e16f3d34550"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "3ctak4oog9ylb65eadto"
+template_alias = "alv-slack-morphism-rust-a12632-65482925-v2-env-bc0dce72"
+operational_dependency = false

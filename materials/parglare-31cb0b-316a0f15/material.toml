@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "parglare-31cb0b-316a0f15"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "58b2b06ccdc6cead0882fde9e1346ba2e79da0f5b9bafaffc5a2570740aade6e"
-harbor_template_alias = "alv-parglare-31cb0b-316a0f15-v2__58b2b06c"
-e2b_template = "qnyzfr2xb3fk2y8s9rif"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "2a9a43eb5913c88f5ec3850985ee98a36bf3d4349affab5856fb83490d2bd598"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-parglare-31cb0b-316a0f15-v2__58b2b06c"
+template_id = "qnyzfr2xb3fk2y8s9rif"
 source_template_alias = "alvance-repo-igordejanovic-parglare-316a0f15fb-4328837521-v17"
 source_template_id = "cy2p7m2axl5g9dor9b41"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "k8sgpt-e85776-3cf40988"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.3"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "7fb7549872679676f7fc01c49f12545f3bd976dc9ac32255ca1c58d31686bc29"
-harbor_template_alias = "alv-k8sgpt-e85776-3cf40988-v2-env-7fb75498"
-e2b_template = "xtv69wstg1f689hl86xq"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "4aba0bb7bdfc869a71c2147ff69dcd4ca8b622aed039210af6c3d2960f06f65a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-k8sgpt-e85776-3cf40988-v2-env-7fb75498"
+template_id = "xtv69wstg1f689hl86xq"
 source_template_alias = "a1hxzqgtz5kqqr1bz1lp"
 source_template_id = "a1hxzqgtz5kqqr1bz1lp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

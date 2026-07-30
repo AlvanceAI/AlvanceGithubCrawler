@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "pylatexenc-c3412b-22f719a4"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "f13d2286a99af7fed995f574ea0a3187253877e26923e69d5ecf21ac8ac7950e"
-harbor_template_alias = "alv-pylatexenc-c3412b-22f719a4-v2__f13d2286"
-e2b_template = "68vdjjg1vj4prrxps50p"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "2473daf7475035542906a4e985111a7c440cf917b04acd85238875ad5c757a15"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pylatexenc-c3412b-22f719a4-v2__f13d2286"
+template_id = "68vdjjg1vj4prrxps50p"
 source_template_alias = "alvance-repo-phfaist-pylatexenc-22f719a406-dd1812ace7-v11"
 source_template_id = "u3hx2f4o9w7x4fg8f95a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

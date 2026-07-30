@@ -1,6 +1,22 @@
-# Harbor envelope v2
-# Source E2B template: alvance-repo-haprox-aad6ca73-0329e81cc3-f7a87c9d99-c1-m1024-v17
-# This file is an immutable Harbor fingerprint; do not force-build it.
-FROM e2bdev/base
+# Harbor rebuildable envelope v2
+# Dockerfile recipe v3
+# E2B aliases are optional caches; this file is the durable build source.
+FROM docker.io/library/golang:1.22
+USER root
+ENV GOCACHE="/root/.cache/go-build"
+ENV GOMODCACHE="/go/pkg/mod"
+ENV GOPATH="/go"
+ENV GOPROXY="https://goproxy.cn,direct"
+ENV GOTOOLCHAIN="go1.26.0+auto"
+ENV HOME="/root"
+ENV PATH="/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUN apt-get update && apt-get install -y --no-install-recommends time git ca-certificates build-essential && rm -rf /var/lib/apt/lists/*
+RUN /usr/local/go/bin/go version
+WORKDIR /
+RUN rm -rf /app && mkdir -p /app && git init /app && cd /app && git remote add origin https://github.com/haproxytech/client-native.git && git fetch --depth=1 origin 0329e81cc3c6367544f9adbbb57b9374936aafae && git checkout --detach FETCH_HEAD && git submodule update --init --recursive && git update-ref refs/remotes/origin/master HEAD && test "$(git rev-parse HEAD)" = 0329e81cc3c6367544f9adbbb57b9374936aafae && test "$(git rev-parse HEAD^{tree})" = a669de201231916ebb2b780ebe8dd277f400725c
+WORKDIR /app
+RUN /usr/local/go/bin/go mod download
+RUN /usr/local/go/bin/go build ./...
+RUN test -z "$(git status --porcelain)"
 USER root
 WORKDIR /app

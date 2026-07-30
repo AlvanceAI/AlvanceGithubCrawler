@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cog-9f8897-9e62719b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/grafana/cog"
+base_commit = "9e62719b740ae3306ad987657bcd63d0af1858f7"
+source_tree = "4b1f2672d5a4c38631d030810b6f395dc2779bb8"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "053c1483e9a31d11e109b0db057d69a9ca8f73b3e8ba0c956d7988dacbdaf950"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cog-9f8897-9e62719b-v2-env-39e1717d"
+template_id = "gtiaaybmp30xb50mhsml"
+source_template_alias = "3lh59fx8fqmicw03l9r1"
+source_template_id = "3lh59fx8fqmicw03l9r1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

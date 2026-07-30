@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "github-exporter-86d4cf-7815e7a9"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/github-exporter-86d4cf-7815e7a9"
 repository_url = "https://github.com/promhippie/github_exporter"
 base_commit = "7815e7a913864746073236537e8f5fc133a87ab9"
 source_tree = "27279f2ebfe1f9c611d00b74c5bbaeb97414d3fe"
-environment_sha256 = "594a181941bad62957fb030863fb81c5884c44c3c249cc93f9017e43f081d318"
-e2b_template_id = "nofc94765wfw8x1i0fce"
-e2b_template_alias = "alv-github-exporter-86d4cf-7815e7a9-v2-env-594a1819"
+environment_sha256 = "a89501b959f26480557e37f374cddd4a70f068591f72a6b4efba88bb4370ce39"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "nofc94765wfw8x1i0fce"
+template_alias = "alv-github-exporter-86d4cf-7815e7a9-v2-env-594a1819"
+operational_dependency = false

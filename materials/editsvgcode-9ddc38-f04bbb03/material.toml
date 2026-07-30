@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "editsvgcode-9ddc38-f04bbb03"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nbelyh/editsvgcode"
+base_commit = "f04bbb03814677ce70e12920b879c3ce173d793e"
+source_tree = "66417d11d36eda374fa93f01c7d91b9beae32d84"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "024b419c29ad62166606675accfa4143bcd742fb18e86a5cc6b604e374ede52b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-editsvgcode-9ddc38-f04bbb03-v2-env-0715c900"
+template_id = "dlonm4j9at0yhnspwrau"
+source_template_alias = "787dbqg9yqhkljei8ebf"
+source_template_id = "787dbqg9yqhkljei8ebf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

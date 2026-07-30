@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "provider-terraform-8957df-cde09999"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/provider-terraform-8957df-cde09999"
 repository_url = "https://github.com/crossplane-contrib/provider-terraform"
 base_commit = "cde0999907e7f49df3e4af031545a9348b0cccdd"
 source_tree = "ad7df96cff7ee14bac3043b0076800ba817243b9"
-environment_sha256 = "359d8f63ecebbbd3ae86c94f86c9ba8610cc2b15b87155dece0f3ba7ff7deabd"
-e2b_template_id = "3l5a5u0otdbbd8u6ck77"
-e2b_template_alias = "alv-provider-terraform-8957df-cde09999-v2-env-359d8f63"
+environment_sha256 = "1c98d978c169426f295f6d18e9359681210bec434215a204007ede357f86fd98"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "3l5a5u0otdbbd8u6ck77"
+template_alias = "alv-provider-terraform-8957df-cde09999-v2-env-359d8f63"
+operational_dependency = false

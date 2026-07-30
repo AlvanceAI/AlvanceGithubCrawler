@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "smartcore-54886c-3febb4ce"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/smartcorelib/smartcore"
+base_commit = "3febb4cee5ec81fd8e8220192eeac3103d2c55fb"
+source_tree = "155b1de504fcea2200ba22f5aad0c5e956159bab"
+default_branch = "development"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3573316ad5da08bdae2db2f8f1536715cba9ef1519467b64d6edf32e2131e5bf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-smartcore-54886c-3febb4ce-v2-env-c7fb04b1"
+template_id = "35ut3q3az72u6e4g8c6i"
+source_template_alias = "m9jdwzpapquspde0frx9"
+source_template_id = "m9jdwzpapquspde0frx9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

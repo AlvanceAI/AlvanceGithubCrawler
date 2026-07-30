@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "conductor-7f512b-ff7ed5ad"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.12"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "7cef4f9aba330e8d2c131fa5c2301b4212c2c2b0a8e50d6355a476a2f76182a0"
-harbor_template_alias = "alv-conductor-7f512b-ff7ed5ad-v2__7cef4f9a"
-e2b_template = "umza8s62onqbyspemtkr"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "9456253c67a5882825568576bdde39ae90d8782032074e1b31a53e7c6bf7c443"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-conductor-7f512b-ff7ed5ad-v2__7cef4f9a"
+template_id = "umza8s62onqbyspemtkr"
 source_template_alias = "alvance-repo-microsoft-conductor-ff7ed5ad30-9ee06a367b-v11"
 source_template_id = "pf18hcx0kn78kalopfyt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

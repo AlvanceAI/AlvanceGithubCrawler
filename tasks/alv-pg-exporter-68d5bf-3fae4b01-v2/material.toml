@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "pg-exporter-68d5bf-3fae4b01"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/pg-exporter-68d5bf-3fae4b01"
 repository_url = "https://github.com/pgsty/pg_exporter"
 base_commit = "3fae4b0166decd6c13372603f7455e6cb39ed9bb"
 source_tree = "4d6f5fc704d3b671d213c27938defb5a504b8450"
-environment_sha256 = "f360e1f092b06ecf5626413a114869b9b97798a8365ecfe3f70fd22797a6f628"
-e2b_template_id = "mn2x3ivb3biom7c13cx1"
-e2b_template_alias = "alv-pg-exporter-68d5bf-3fae4b01-v2__f360e1f0"
+environment_sha256 = "1aab0bb3c5c01ab6a3bcd340711275af7a8def17f98b4d7761799e4907d7328f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "mn2x3ivb3biom7c13cx1"
+template_alias = "alv-pg-exporter-68d5bf-3fae4b01-v2__f360e1f0"
+operational_dependency = false

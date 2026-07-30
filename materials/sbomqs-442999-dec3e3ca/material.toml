@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sbomqs-442999-dec3e3ca"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/interlynk-io/sbomqs"
+base_commit = "dec3e3ca06f87f1629140af68024dfcb0a76316d"
+source_tree = "ef7f04716cea95a86d898850daabcebfdb31b7be"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ae6280bfbcc5c861febfe510c45480a9552a33f5f5bce23735f77d7bd12dbb38"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sbomqs-442999-dec3e3ca-v2-env-5367831f"
+template_id = "yxnfc5roizoq2840cjqf"
+source_template_alias = "2n4wkv7f06axne1btja7"
+source_template_id = "2n4wkv7f06axne1btja7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

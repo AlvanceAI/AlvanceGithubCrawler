@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "fontdue-2c0a13-2924772f"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/fontdue-2c0a13-2924772f"
 repository_url = "https://github.com/mooman219/fontdue"
 base_commit = "2924772fb4439b8aca40b1bffca70088acba5a1b"
 source_tree = "4147849d27eb9256c9206ee265899b6ad02c76cb"
-environment_sha256 = "da0b977aa7baf71faa4909b61312baf0073f762be5bbaf34ab4c340466bdb783"
-e2b_template_id = "nb5eclsx9gqag7ww1r2i"
-e2b_template_alias = "alv-fontdue-2c0a13-2924772f-v2-env-da0b977a"
+environment_sha256 = "fcfbf409a1fddfadc9fa0f682531425a99b15767a693132b7292186ea6f383fa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "nb5eclsx9gqag7ww1r2i"
+template_alias = "alv-fontdue-2c0a13-2924772f-v2-env-da0b977a"
+operational_dependency = false

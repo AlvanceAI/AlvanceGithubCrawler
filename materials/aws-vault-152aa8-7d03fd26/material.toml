@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aws-vault-152aa8-7d03fd26"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ByteNess/aws-vault"
+base_commit = "7d03fd265228717069000df70e797df70d47c6a6"
+source_tree = "9ffbbbbfa0defaf0ed7bcbf963026f28f7ec05ef"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "13ddb14baed2b7673e5cfaea97cb00cd2fb8244fa72c0215e30a6302657d7682"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aws-vault-152aa8-7d03fd26-v2-env-1f45b823"
+template_id = "a88t34wcpq3rcfuvb43r"
+source_template_alias = "9uqfd9sygvuuzzx9nnaj"
+source_template_id = "9uqfd9sygvuuzzx9nnaj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

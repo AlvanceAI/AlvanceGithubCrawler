@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "metrics-98314a-ca1b05d1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/VictoriaMetrics/metrics"
+base_commit = "ca1b05d11f437d1f3326ee21805595236d4e5c18"
+source_tree = "78eb07a852c06c787a1e3f578ac98c154dfd8fd5"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "619dccb8567cc3d2654e032ddcf42b5bab58721fdf675804458c919d32828f22"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-metrics-98314a-ca1b05d1-v2-env-9a7bd3ad"
+template_id = "0rjomwex4eisfiwu4lk9"
+source_template_alias = "g65f1pjym92uo9h1c46l"
+source_template_id = "g65f1pjym92uo9h1c46l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "navidrome-lyrics-plugin-f72dbc-e940b1dc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/J0R6IT0/navidrome-lyrics-plugin"
+base_commit = "e940b1dca6f4e1ca05e443c105fe25e9512bfc08"
+source_tree = "e4d4b0dc41a46f9ae197fd337d552ff598a7ef84"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d249529d1b97c029d9e75be96db301634b99ccd2009013c8165a12970c4ecfb9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-navidrome-lyrics-plu-f72dbc-e940b1dc-v2-env-20eceda1"
+template_id = "ov7te3awdcduefdrcuwn"
+source_template_alias = "rldxid4clksakpc8sbpt"
+source_template_id = "rldxid4clksakpc8sbpt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

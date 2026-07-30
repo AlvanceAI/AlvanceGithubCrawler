@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "sealed-secrets-2ab4a1-fb7da1e9"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.4"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "619bb778968d0208c0a9c32c918a05ef6d5ffbe872e726a91522699ed53a0659"
-harbor_template_alias = "alv-sealed-secrets-2ab4a1-fb7da1e9-v2__619bb778"
-e2b_template = "tjbammmjq81w6c5l4jkg"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "826060f1755c11421a2499fb13380b33f97ee8df568803ca12e8a3d621e6ba08"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sealed-secrets-2ab4a1-fb7da1e9-v2__619bb778"
+template_id = "tjbammmjq81w6c5l4jkg"
 source_template_alias = "alvance-repo-bitnami-sealed-secrets-fb7da1e9ba-f593748575-v12"
 source_template_id = "wgsrvapc8524yfgq3sz7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

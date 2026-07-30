@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-grpc-gateway-15b6ef-686c173f-v2"
-description = "E2B-backed repository task for grpc-ecosystem/grpc-gateway"
+description = "Rebuildable repository task for grpc-ecosystem/grpc-gateway"
 authors = []
-keywords = ["go", "e2b", "github"]
+keywords = ["go", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-grpc-gateway-15b6ef-686c173f-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "go"
 repository_url = "https://github.com/grpc-ecosystem/grpc-gateway"
 base_commit_hash = "686c173ffa8149b5e0758483b43b856dd8bc0ab7"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

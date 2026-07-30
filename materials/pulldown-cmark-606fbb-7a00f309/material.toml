@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pulldown-cmark-606fbb-7a00f309"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pulldown-cmark/pulldown-cmark"
+base_commit = "7a00f309a5b8d8b2193cfa2ceea77a7be05013a0"
+source_tree = "b49ae7a9f93d7431ef02d2a9b2a23d63eb0bc8d5"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "736646851f7ae155a3515fcc3b863eae83081850172442232c82619e63f5e351"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pulldown-cmark-606fbb-7a00f309-v2-env-c71b2dae"
+template_id = "4imxy5wc8nnip9161trt"
+source_template_alias = "ic5ag8ipyrjxt3ukhkp2"
+source_template_id = "ic5ag8ipyrjxt3ukhkp2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

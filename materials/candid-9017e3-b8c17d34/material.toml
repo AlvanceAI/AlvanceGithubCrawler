@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "candid-9017e3-b8c17d34"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/dfinity/candid"
+base_commit = "b8c17d34316352c6eef864b6c49b23a4bcb10421"
+source_tree = "9d513ebae7b50f8d619d457571022ee5dcd38149"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.78.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "365ac0d9b43efe8423bc321ba180ae7658519e3d6e3a04a03ad938889ed16993"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-candid-9017e3-b8c17d34-v2-env-8cefb123"
+template_id = "lys8dfsvzut7mx56k1c3"
+source_template_alias = "7peipb0fz0kq1v9yk1dq"
+source_template_id = "7peipb0fz0kq1v9yk1dq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

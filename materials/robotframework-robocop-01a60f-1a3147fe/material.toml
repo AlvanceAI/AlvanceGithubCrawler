@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "robotframework-robocop-01a60f-1a3147fe"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "3debcdfbe758844cc65fd15c6a3cdd1c5d3b115861aec18c99794f0830d51ea8"
-harbor_template_alias = "alv-robotframework-roboc-01a60f-1a3147fe-v2-env-3debcdfb"
-e2b_template = "07psev7zq80qmxujykht"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "576ad150868a4dc3da8bf1f257c612fd2022243a1a079e8129b7cda403374a07"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-robotframework-roboc-01a60f-1a3147fe-v2-env-3debcdfb"
+template_id = "07psev7zq80qmxujykht"
 source_template_alias = "9jw6d1z9pn12n0dxz0hn"
 source_template_id = "9jw6d1z9pn12n0dxz0hn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

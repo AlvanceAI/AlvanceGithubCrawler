@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "falcon-mcp-6e4d09-ab97afde"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "99567fe48464e2dab2a39312d7cab69198fcab7f2e1dae4a31e57a5a9c6f87ee"
-harbor_template_alias = "alv-falcon-mcp-6e4d09-ab97afde-v2-env-99567fe4"
-e2b_template = "k5q24mdomqybzovxkzp5"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "187e63de22835115970f75be035862ddb342976f789bcdb8c11f1ab1c2e43f70"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-falcon-mcp-6e4d09-ab97afde-v2-env-99567fe4"
+template_id = "k5q24mdomqybzovxkzp5"
 source_template_alias = "4txknwhcgypzsfgztgn7"
 source_template_id = "4txknwhcgypzsfgztgn7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

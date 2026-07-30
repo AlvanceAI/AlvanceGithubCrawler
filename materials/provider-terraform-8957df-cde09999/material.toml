@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "provider-terraform-8957df-cde09999"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.25.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "359d8f63ecebbbd3ae86c94f86c9ba8610cc2b15b87155dece0f3ba7ff7deabd"
-harbor_template_alias = "alv-provider-terraform-8957df-cde09999-v2-env-359d8f63"
-e2b_template = "3l5a5u0otdbbd8u6ck77"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "1c98d978c169426f295f6d18e9359681210bec434215a204007ede357f86fd98"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-provider-terraform-8957df-cde09999-v2-env-359d8f63"
+template_id = "3l5a5u0otdbbd8u6ck77"
 source_template_alias = "aa2lbd0kau92rmbe7op5"
 source_template_id = "aa2lbd0kau92rmbe7op5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

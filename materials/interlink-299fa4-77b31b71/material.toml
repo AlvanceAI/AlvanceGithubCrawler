@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "interlink-299fa4-77b31b71"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.0"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "eea1b33d58ff831e2d5d0abc60d2ab9169104ba0dddfbe0f0a1ccdd490f5286c"
-harbor_template_alias = "alv-interlink-299fa4-77b31b71-v2-env-eea1b33d"
-e2b_template = "db9i7x9yl4h7tdw2xqtj"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "af9916bb1c5462c64bf626e51648852de701adda0d43343557c255618d607590"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-interlink-299fa4-77b31b71-v2-env-eea1b33d"
+template_id = "db9i7x9yl4h7tdw2xqtj"
 source_template_alias = "6f6y16oz4ck4pow0pcg7"
 source_template_id = "6f6y16oz4ck4pow0pcg7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

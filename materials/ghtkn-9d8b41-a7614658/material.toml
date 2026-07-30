@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "ghtkn-9d8b41-a7614658"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.5"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "991a72d853b92b54a6b10c27d569caa179f124adee0bb27d15efb284744f2494"
-harbor_template_alias = "alv-ghtkn-9d8b41-a7614658-v2__991a72d8"
-e2b_template = "ej6ioiuy6d21wczf1dz8"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "bea44fdc0b4a76cb8e409aac19a62cc35de1860a4efba914b64b32748df6dee3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ghtkn-9d8b41-a7614658-v2__991a72d8"
+template_id = "ej6ioiuy6d21wczf1dz8"
 source_template_alias = "alvance-repo-suzuki-9d8b4186-a761465886-b29ba02fb5-c1-m1024-v17"
 source_template_id = "fyl81wjq3hfwtx5aoyws"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

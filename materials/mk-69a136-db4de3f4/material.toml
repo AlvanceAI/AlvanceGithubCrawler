@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mk-69a136-db4de3f4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pycontribs/mk"
+base_commit = "db4de3f4ede5bbcd0cce4f2b3666027caad3786d"
+source_tree = "083670f094c19f9a088e1a98fb67964814746647"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6c1034711bda2058c2f43a239ca8dec86bec25dd7cf861f7509e6ba1e2fcb203"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mk-69a136-db4de3f4-v2-env-f4e6f0a1"
+template_id = "hc0ve6w0fhkd3lh85s7e"
+source_template_alias = "vgkh1b32g1wf1d38pl9j"
+source_template_id = "vgkh1b32g1wf1d38pl9j"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "serverless-adapter-24caf7-a44e1077"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/H4ad/serverless-adapter"
+base_commit = "a44e1077574eb5454256fccc9e783841f7afeb76"
+source_tree = "0312a3370e2db8ce48762533f39d4560a915cea4"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "14a1ac32229ff4cb097c32b3b3b69d03767d8dd8bcd5ef584078b81096e3f5fe"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-serverless-adapter-24caf7-a44e1077-v2-env-64683d75"
+template_id = "bovoth1pngsm55swtww6"
+source_template_alias = "jjrtu9nxpsxa1sogl0a4"
+source_template_id = "jjrtu9nxpsxa1sogl0a4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

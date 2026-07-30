@@ -96,7 +96,10 @@ def test_trace_store_writes_tiny_native_layout(tmp_path) -> None:
 
     with (material_dir / "material.toml").open("rb") as handle:
         material = tomllib.load(handle)
-    assert material["environment"]["e2b_template"] == "harbor-id"
+    assert material["environment"]["mode"] == "dockerfile-rebuildable"
+    assert material["environment"]["dockerfile_rebuildable"] is True
+    assert material["e2b_history"]["template_id"] == "harbor-id"
+    assert material["e2b_history"]["operational_dependency"] is False
     assert material["source"]["source_tree"] == "b" * 40
     assert (
         "runuser -u user -- env HOME=/home/user"
@@ -137,5 +140,8 @@ def test_compact_package_omits_test_logs(tmp_path) -> None:
     payload = compact_package_record(record, repository, prepared, wrapper, result)
     serialized = json.dumps(payload)
     assert "large log" not in serialized
-    assert payload["storage"]["remote_e2b_only"] is True
+    assert payload["storage"]["remote_e2b_only"] is False
+    assert payload["storage"]["dockerfile_rebuildable"] is True
+    assert payload["harbor"]["build_source"] == "environment/Dockerfile"
+    assert payload["e2b_history"]["harbor_template"]["template_id"] == "harbor-id"
     assert payload["execution_user"] == "user"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "conveyor-0c9fa2-aeaf5d98"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/open-ug/conveyor"
+base_commit = "aeaf5d98ba49d00809b4496b43507573fef19ab8"
+source_tree = "beeab227ddcf30e7181a95df755eba99ae1428f8"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "69976109e41a380bcec48be921dceaea390d4ffc64c0c9bf1fa107014baa10da"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-conveyor-0c9fa2-aeaf5d98-v2-env-02ba8ed5"
+template_id = "isjgou4x3arqmegtm2t8"
+source_template_alias = "vycfpze8g01uw616cnrs"
+source_template_id = "vycfpze8g01uw616cnrs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-pynguin-6ff577-fa142caf-v2"
-description = "E2B-backed repository task for se2p/pynguin"
+description = "Rebuildable repository task for se2p/pynguin"
 authors = []
-keywords = ["python", "e2b", "github"]
+keywords = ["python", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-pynguin-6ff577-fa142caf-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "python"
 repository_url = "https://github.com/se2p/pynguin"
 base_commit_hash = "fa142caffd7d00288ae96c180697acdf6a28e916"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

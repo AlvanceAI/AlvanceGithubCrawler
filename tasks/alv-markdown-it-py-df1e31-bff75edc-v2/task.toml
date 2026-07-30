@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-markdown-it-py-df1e31-bff75edc-v2"
-description = "E2B-backed repository task for executablebooks/markdown-it-py"
+description = "Rebuildable repository task for executablebooks/markdown-it-py"
 authors = []
-keywords = ["python", "e2b", "github"]
+keywords = ["python", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-markdown-it-py-df1e31-bff75edc-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "python"
 repository_url = "https://github.com/executablebooks/markdown-it-py"
 base_commit_hash = "bff75edcd7e6ce68f417803361d6e9f1223ad373"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0
@@ -29,8 +31,8 @@ timeout_sec = 5400.0
 
 [environment]
 build_timeout_sec = 3600.0
-cpus = 2
-memory_mb = 4096
+cpus = 1
+memory_mb = 1024
 storage_mb = 10240
 gpus = 0
 allow_internet = true

@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "pylatexenc-c3412b-22f719a4"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/pylatexenc-c3412b-22f719a4"
 repository_url = "https://github.com/phfaist/pylatexenc"
 base_commit = "22f719a4063610bdc6ff819a0a6084e344308a0f"
 source_tree = "dabab30b683541af4b2656d7a4fce770f979a1bf"
-environment_sha256 = "f13d2286a99af7fed995f574ea0a3187253877e26923e69d5ecf21ac8ac7950e"
-e2b_template_id = "68vdjjg1vj4prrxps50p"
-e2b_template_alias = "alv-pylatexenc-c3412b-22f719a4-v2__f13d2286"
+environment_sha256 = "2473daf7475035542906a4e985111a7c440cf917b04acd85238875ad5c757a15"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "68vdjjg1vj4prrxps50p"
+template_alias = "alv-pylatexenc-c3412b-22f719a4-v2__f13d2286"
+operational_dependency = false

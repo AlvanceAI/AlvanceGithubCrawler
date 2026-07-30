@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tinymongo-991055-a7d53044"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/schapman1974/tinymongo"
+base_commit = "a7d530442e0bbcee3b7e331ce3d1397766ddf218"
+source_tree = "ecc74e55d02a4e328b0e32f42b60792a5a5cdbc1"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0fddeddbfa6e922496172dac9c8869ca470ae5a919fd641496bc1afb11ee53d8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tinymongo-991055-a7d53044-v2-env-369ed119"
+template_id = "ex3td7s89xt0zufp60y3"
+source_template_alias = "fxzb26wl4h71hgu0q03u"
+source_template_id = "fxzb26wl4h71hgu0q03u"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nylon-3b0942-a52885cd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/encodeous/nylon"
+base_commit = "a52885cd7090af18e54dcd586ce268efb64605ab"
+source_tree = "ff59cea9ceb49dbbbda0c3272ebc6b6c7955be58"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b6e5fedd9b901f2440ca126c34ce0e2707e35a305f77f84c931113a2d6e073c2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nylon-3b0942-a52885cd-v2-env-fbaed28f"
+template_id = "qj1l7dfbz3f7x7egpkk0"
+source_template_alias = "fj8h2f8sh7lrd9cbazis"
+source_template_id = "fj8h2f8sh7lrd9cbazis"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -9,7 +9,7 @@ from typing import Any
 from ..runtime.profiles import command_as_user, command_with_environment
 from .package_models import E2BWrapperReceipt, QualifiedRepository
 
-TRACE_MATERIAL_SCHEMA_VERSION = "0.2"
+TRACE_MATERIAL_SCHEMA_VERSION = "0.3"
 
 
 def render_material_toml(
@@ -42,16 +42,20 @@ language = {_toml_string(repository.language)}
 {runtime_key} = {_toml_string(repository.runtime_version)}
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
 environment_sha256 = {_toml_string(environment_sha256)}
-harbor_template_alias = {_toml_string(wrapper.harbor_template_alias)}
-e2b_template = {_toml_string(wrapper.harbor_template_id)}
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = {_toml_string(wrapper.harbor_template_alias)}
+template_id = {_toml_string(wrapper.harbor_template_id)}
 source_template_alias = {_toml_string(repository.source_template_alias)}
 source_template_id = {_toml_string(wrapper.source_template_id)}
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"
@@ -66,14 +70,15 @@ artifact = "/logs/artifacts/model.patch"
 def render_material_readme(repository: QualifiedRepository, material_id: str) -> str:
     return f"""# {material_id}
 
-Immutable E2B-only repository material for `{repository.repo}` at
-`{repository.base_commit}`. Source, dependency caches, compiler caches, and images are
-stored only in the persistent E2B templates recorded by `material.toml` and
-`receipts/e2b.json`.
+Rebuildable repository material for `{repository.repo}` at
+`{repository.base_commit}`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
 
-This directory intentionally contains no checkout, direction, instruction, verifier,
-solution, model credential, or rollout output. Do not force-build the fingerprint
-Dockerfile; Harbor must reuse the recorded ready template alias.
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.
 """
 
 
@@ -131,6 +136,8 @@ def render_catalog(packages: list[dict[str, Any]]) -> str:
             "\n[[materials]]\n"
             f"id = {_toml_string(str(package['material_id']))}\n"
             'status = "qualified"\n'
+            "dockerfile_rebuildable = true\n"
+            "rebuild_network_required = true\n"
             f"path = {_toml_string(str(package['material_path']))}\n"
             f"repository_url = {_toml_string(str(package['repository_url']))}\n"
             f"base_commit = {_toml_string(str(package['base_commit']))}\n"

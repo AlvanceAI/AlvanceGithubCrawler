@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "measureme-443bd6-e52be739"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/measureme-443bd6-e52be739"
 repository_url = "https://github.com/rust-lang/measureme"
 base_commit = "e52be7399403fab879ed034cf0b6bdba431d39b5"
 source_tree = "49c6ab1eeb65d0bd101ddecadca414ed1909a867"
-environment_sha256 = "fb8676f7d4501f4c69c3e0ac550332b2d46546713972dc08f2db9f725b629c4b"
-e2b_template_id = "vid3ppz1hqd66kn0fqrv"
-e2b_template_alias = "alv-measureme-443bd6-e52be739-v2-env-fb8676f7"
+environment_sha256 = "4b065b4fd1f564022a988ecf163537fd822ce15b2d89198036d1498e7b3484be"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "vid3ppz1hqd66kn0fqrv"
+template_alias = "alv-measureme-443bd6-e52be739-v2-env-fb8676f7"
+operational_dependency = false

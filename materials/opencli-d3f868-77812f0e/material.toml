@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "opencli-d3f868-77812f0e"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "javascript"
 node = "20"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "417777c5dd5baea6e9316f61df05435f991c296d6f26b23e55445445873f679b"
-harbor_template_alias = "alv-opencli-d3f868-77812f0e-v2__417777c5"
-e2b_template = "oeoziymy6um5av2x73v0"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "40d1a802dc9faa0a0b3d8dea602ddafc512ed1bf2117b6b86c58c5acc92551d3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-opencli-d3f868-77812f0e-v2__417777c5"
+template_id = "oeoziymy6um5av2x73v0"
 source_template_alias = "alvance-repo-jackwe-89a046bb-77812f0e3d-d8a04f7176-c1-m1024-v17"
 source_template_id = "6ju9evqwgph8bai3vq36"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

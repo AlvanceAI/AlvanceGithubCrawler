@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "huma-17c347-198225ea"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/huma-17c347-198225ea"
 repository_url = "https://github.com/danielgtaylor/huma"
 base_commit = "198225eaac0c8be4aaa1962d5a9a075d3a6fd062"
 source_tree = "8d2f809ffc649c514aa31500d17e54a73a4437f0"
-environment_sha256 = "09bb589eca256654ff53447cf49a25fdf657c6809ffd13674020483bd30bfd69"
-e2b_template_id = "p0m2503h9flsjvdp5wag"
-e2b_template_alias = "alv-huma-17c347-198225ea-v2-env-09bb589e"
+environment_sha256 = "5423e3c1e29dec766d54ed8dc7cf3c3a15441b710153a8eac599883c21d7add3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "p0m2503h9flsjvdp5wag"
+template_alias = "alv-huma-17c347-198225ea-v2-env-09bb589e"
+operational_dependency = false

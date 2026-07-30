@@ -1,6 +1,18 @@
-# Harbor envelope v2
-# Source E2B template: nmjhc7qhycntk4ozif7e
-# This file is an immutable Harbor fingerprint; do not force-build it.
-FROM e2bdev/base
+# Harbor rebuildable envelope v2
+# Dockerfile recipe v3
+# E2B aliases are optional caches; this file is the durable build source.
+FROM docker.io/library/rust:1.97.1
+USER root
+ENV CARGO_HOME="/usr/local/cargo"
+ENV HOME="/root"
+ENV PATH="/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV RUSTUP_HOME="/usr/local/rustup"
+RUN apt-get update && apt-get install -y --no-install-recommends time git ca-certificates build-essential && rm -rf /var/lib/apt/lists/*
+RUN /usr/local/cargo/bin/rustc --version && /usr/local/cargo/bin/cargo --version
+WORKDIR /
+RUN rm -rf /app && mkdir -p /app && git init /app && cd /app && git remote add origin https://github.com/rust-lang/measureme.git && git fetch --depth=1 origin e52be7399403fab879ed034cf0b6bdba431d39b5 && git checkout --detach FETCH_HEAD && git submodule update --init --recursive && git update-ref refs/remotes/origin/master HEAD && test "$(git rev-parse HEAD)" = e52be7399403fab879ed034cf0b6bdba431d39b5 && test "$(git rev-parse HEAD^{tree})" = 49c6ab1eeb65d0bd101ddecadca414ed1909a867
+WORKDIR /app
+RUN /usr/local/cargo/bin/cargo build --tests
+RUN test -z "$(git status --porcelain)"
 USER root
 WORKDIR /app

@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "go-containerregistry-13a8c1-fb196956"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/go-containerregistry-13a8c1-fb196956"
 repository_url = "https://github.com/google/go-containerregistry"
 base_commit = "fb196956b1853752ed7fe13d3dd4572c45c16709"
 source_tree = "57de6e7e57bb56287a956e23c264ce76e51e11de"
-environment_sha256 = "df4bc15a5eaf67ab80725c970033d4362add7f5d8f65688e0db5eb19cd232a1a"
-e2b_template_id = "yi19ywiqqcnbauileyj9"
-e2b_template_alias = "alv-go-containerregistry-13a8c1-fb196956-v2-env-df4bc15a"
+environment_sha256 = "0f449a878b18e6facbe9c45edb335b494fbc7a18537ba8d5cdc4b2882617434e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "yi19ywiqqcnbauileyj9"
+template_alias = "alv-go-containerregistry-13a8c1-fb196956-v2-env-df4bc15a"
+operational_dependency = false

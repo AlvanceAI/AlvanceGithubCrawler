@@ -1,0 +1,41 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-aw-server-rust-de5763-45ca2936-v2"
+description = "Rebuildable repository task for ActivityWatch/aw-server-rust"
+authors = []
+keywords = ["rust", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-aw-server-rust-de5763-45ca2936-v2"
+material_id = "aw-server-rust-de5763-45ca2936"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/ActivityWatch/aw-server-rust"
+base_commit_hash = "45ca293650420916117a3c9a771d8d27c2d37f25"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

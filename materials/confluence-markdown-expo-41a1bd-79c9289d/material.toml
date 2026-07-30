@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "confluence-markdown-expo-41a1bd-79c9289d"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "python"
 python = "3.11"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "16aa489fff9a10b02b57c6da01edac57a20698e52ee5912e01fcb6cbe6686d3d"
-harbor_template_alias = "alv-confluence-markdown--41a1bd-79c9289d-v2-env-16aa489f"
-e2b_template = "ahbr6xj4ypsxe4b7fkh2"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "24a2c72171480235bb1260c2774907f08d435381d7d7dd89ac3a731befa8ec2d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-confluence-markdown--41a1bd-79c9289d-v2-env-16aa489f"
+template_id = "ahbr6xj4ypsxe4b7fkh2"
 source_template_alias = "uor9he7xki69hfkr6mir"
 source_template_id = "uor9he7xki69hfkr6mir"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

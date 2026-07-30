@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "coolify-mcp-cbb913-fcff9518"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "typescript"
 node = "20"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "fa6feaecb9dc41b61272330671cab7809ec6d0fe2d77cf615e9470a54da02935"
-harbor_template_alias = "alv-coolify-mcp-cbb913-fcff9518-v2__fa6feaec"
-e2b_template = "sfzto9quz2aqvo0n7kjt"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "aedae2f1d7e9ee6bd1593a7849ac9a44c806612a4a71d76a5fbf1a36ba057eb5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-coolify-mcp-cbb913-fcff9518-v2__fa6feaec"
+template_id = "sfzto9quz2aqvo0n7kjt"
 source_template_alias = "alvance-repo-stumas-f8ddcbbd-fcff951833-b36edbc18d-c1-m1024-v17"
 source_template_id = "f2yxk6dfml1uns4k1dab"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

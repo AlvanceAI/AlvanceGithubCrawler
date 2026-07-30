@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "fontations-f03436-7255a6a7"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "rust"
 rust = "1.89"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "d1c864ae8747062763a2f5c2e7258be7093d82b644689a669db1ac0a7e8ab396"
-harbor_template_alias = "alv-fontations-f03436-7255a6a7-v2-env-d1c864ae"
-e2b_template = "x89gobm73bziclpen91h"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "50652892f99efcec2134ad9cb519a3f238a3620b38740ef94661e94331c8f2a2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fontations-f03436-7255a6a7-v2-env-d1c864ae"
+template_id = "x89gobm73bziclpen91h"
 source_template_alias = "rwd9u3c1vfk8qmeaub2p"
 source_template_id = "rwd9u3c1vfk8qmeaub2p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

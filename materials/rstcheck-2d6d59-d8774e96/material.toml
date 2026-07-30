@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rstcheck-2d6d59-d8774e96"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rstcheck/rstcheck"
+base_commit = "d8774e96810795967ed9603f445b4e751e7b313f"
+source_tree = "ddcf37f4244f2324666b0b912a7a93b14c7d3040"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7649fdf5b00535f3bbab43cba7613f277a6c5f04235d491b53114bb71cd03f40"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rstcheck-2d6d59-d8774e96-v2-env-d5781884"
+template_id = "6jv536isi10y84iy366v"
+source_template_alias = "8fnobhcv1swyctk58msk"
+source_template_id = "8fnobhcv1swyctk58msk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

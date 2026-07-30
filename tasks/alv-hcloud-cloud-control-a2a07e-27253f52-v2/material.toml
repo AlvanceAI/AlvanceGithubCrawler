@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "hcloud-cloud-controller--a2a07e-27253f52"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/hcloud-cloud-controller--a2a07e-27253f52"
 repository_url = "https://github.com/hetznercloud/hcloud-cloud-controller-manager"
 base_commit = "27253f52c336e71fcac8441845ab0ff6e418ce60"
 source_tree = "63368b1564f36c761d986b2462e40a725f31a67a"
-environment_sha256 = "70961a01f245469ca3cf6376f96c9829eb218719c7a166b14ae9b54c48f6bc65"
-e2b_template_id = "hlvk4djnt8zd0x1kwmk1"
-e2b_template_alias = "alv-hcloud-cloud-control-a2a07e-27253f52-v2__70961a01"
+environment_sha256 = "aedabff66a2b67c3a377b99a0f7b1b3a40f65b132ca95d289efd3ac64161fd65"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "hlvk4djnt8zd0x1kwmk1"
+template_alias = "alv-hcloud-cloud-control-a2a07e-27253f52-v2__70961a01"
+operational_dependency = false

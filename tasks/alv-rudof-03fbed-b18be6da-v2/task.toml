@@ -3,9 +3,9 @@ schema_version = "1.3"
 
 [task]
 name = "alvance/alv-rudof-03fbed-b18be6da-v2"
-description = "E2B-backed repository task for rudof-project/rudof"
+description = "Rebuildable repository task for rudof-project/rudof"
 authors = []
-keywords = ["rust", "e2b", "github"]
+keywords = ["rust", "dockerfile", "github"]
 
 [metadata]
 task_id = "alv-rudof-03fbed-b18be6da-v2"
@@ -14,7 +14,9 @@ status = "direction"
 language = "rust"
 repository_url = "https://github.com/rudof-project/rudof"
 base_commit_hash = "b18be6dadfbb461816a578335ed56edba239f704"
-storage_mode = "e2b-only"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
 
 [verifier]
 timeout_sec = 600.0

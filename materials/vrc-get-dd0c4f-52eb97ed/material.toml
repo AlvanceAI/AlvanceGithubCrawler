@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vrc-get-dd0c4f-52eb97ed"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vrc-get/vrc-get"
+base_commit = "52eb97eddbf27b03772e0137adb74fc7122d8ced"
+source_tree = "9f0fc15c9f143c9b47b7dbacf6248ca7a3f6588c"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "44b6b56701815a181a3da1aa695340b0d2afabb2d56cf3d7afb43467c43f7e9e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vrc-get-dd0c4f-52eb97ed-v2-env-7f29693a"
+template_id = "lsg38e3drx0ui195ug5o"
+source_template_alias = "8wnb4ycv6eruxbzlvwnp"
+source_template_id = "8wnb4ycv6eruxbzlvwnp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "provider-helm-7cc9b5-122e0ce1"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/provider-helm-7cc9b5-122e0ce1"
 repository_url = "https://github.com/crossplane-contrib/provider-helm"
 base_commit = "122e0ce18a46bfd1576e57763679d23e62418391"
 source_tree = "6dbd58d68b4472854dcb33316a30f7ac3e556787"
-environment_sha256 = "1f6cfff4e1d314747b92275be15bb0c0aae06777763dd8b9370ded3dcc074262"
-e2b_template_id = "jjbmd1jbq0c56lyc9ip0"
-e2b_template_alias = "alv-provider-helm-7cc9b5-122e0ce1-v2-env-1f6cfff4"
+environment_sha256 = "442931c483df8325a8261fc35212f6937b157111b80f93fc1a40c3b401b600e1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "jjbmd1jbq0c56lyc9ip0"
+template_alias = "alv-provider-helm-7cc9b5-122e0ce1-v2-env-1f6cfff4"
+operational_dependency = false

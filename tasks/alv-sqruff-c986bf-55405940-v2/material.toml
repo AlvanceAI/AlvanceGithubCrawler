@@ -1,9 +1,15 @@
+schema_version = "0.3"
 material_id = "sqruff-c986bf-55405940"
 catalog = "catalog/repo-materials.toml"
 material_path = "materials/sqruff-c986bf-55405940"
 repository_url = "https://github.com/quarylabs/sqruff"
 base_commit = "554059400962398e03b166ba26f364fa58a25bac"
 source_tree = "70511b3f20fb423ca9fb1f2ccae173c25c53eaab"
-environment_sha256 = "b5c19fe106c41b7433f493b178d70b07588783d9bec69630c20df76b76dceaba"
-e2b_template_id = "5t4ojgqt7or9xe4doz50"
-e2b_template_alias = "alv-sqruff-c986bf-55405940-v2-env-b5c19fe1"
+environment_sha256 = "d450e3a448c48bacbc632ca134557559ec2a078f3acfe280e0a2f417af6f906a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_id = "5t4ojgqt7or9xe4doz50"
+template_alias = "alv-sqruff-c986bf-55405940-v2-env-b5c19fe1"
+operational_dependency = false

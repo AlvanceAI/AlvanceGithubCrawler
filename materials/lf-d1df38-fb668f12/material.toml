@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lf-d1df38-fb668f12"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gokcehan/lf"
+base_commit = "fb668f12be74e98c48ab2d31c3d4aa1bfeb18beb"
+source_tree = "59c89732a27535913b0f1932695edb4144d030a9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "730c4530c9ea2ceb8fbfed9fe5acdbf8321665ec2c8534266a6b9803e9fa53cb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lf-d1df38-fb668f12-v2-env-0fa4cdd5"
+template_id = "mpaf6l4x793hvc35is0b"
+source_template_alias = "6cdb2wmshjlvrowhte5l"
+source_template_id = "6cdb2wmshjlvrowhte5l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

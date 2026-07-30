@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 material_id = "gocron-0b005b-a63867c1"
 status = "qualified"
 
@@ -14,16 +14,20 @@ language = "go"
 go = "1.26.5"
 
 [environment]
-mode = "e2b-only"
+mode = "dockerfile-rebuildable"
 dockerfile = "environment/Dockerfile"
 workdir = "/app"
-environment_sha256 = "099426758f117a99179792a4e79c254d32f72d19e908d9401ea76273058d7262"
-harbor_template_alias = "alv-gocron-0b005b-a63867c1-v2-env-09942675"
-e2b_template = "sidl9az1y646iqeillm2"
-e2b_status = "ready"
-e2b_receipt = "receipts/e2b.json"
+environment_sha256 = "f18f8696a58865673388a11619f4a417c2e7b1eb0ad7167e20c7b7f39529377f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gocron-0b005b-a63867c1-v2-env-09942675"
+template_id = "sidl9az1y646iqeillm2"
 source_template_alias = "qvl7b98naxcht26na9o7"
 source_template_id = "qvl7b98naxcht26na9o7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
 
 [baseline]
 script = "scripts/baseline.sh"

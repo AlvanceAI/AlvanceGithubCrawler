@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "elevenlabs-mcp-9dc48b-a9426ee2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/elevenlabs/elevenlabs-mcp"
+base_commit = "a9426ee256b61ce9a10ad735b620048efd156ea1"
+source_tree = "97bc614778d39981110feddfc85d9187a7025251"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0ec266862cc7776a74ec2fb617dde5e2ff3d0bfd580f792bb6dad98840b16027"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-elevenlabs-mcp-9dc48b-a9426ee2-v2-env-8dfdcf6a"
+template_id = "iauf1nakq9u1h7up9j8k"
+source_template_alias = "n38uy1qtw3260n7t4xwm"
+source_template_id = "n38uy1qtw3260n7t4xwm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ergo-5ae04f-65875b7c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ergochat/ergo"
+base_commit = "65875b7c61c317523da71245045f1a5f0e935e79"
+source_tree = "a0e7e5d00b032d17d99e355cdc8bf473f136f568"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e4ca177c63dab31b259f32188ee98b3d88f9e4eeb31e26f2b4949e14af49e252"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ergo-5ae04f-65875b7c-v2-env-0d89fb58"
+template_id = "85eicas7bja4jcp1h4e1"
+source_template_alias = "wm9wd3ure1t9vffzlvrs"
+source_template_id = "wm9wd3ure1t9vffzlvrs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

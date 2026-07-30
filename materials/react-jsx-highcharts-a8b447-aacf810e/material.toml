@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-jsx-highcharts-a8b447-aacf810e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/whawker/react-jsx-highcharts"
+base_commit = "aacf810e7ae5bb1c546fbc646ad3568dd7df87d8"
+source_tree = "dee5d6992d8f1ce108a4750e6a839f773bad7001"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5e0c47a3a576b8d5d9dd996813390e8cde1384dd7712688ef549bfabb10114ab"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-jsx-highcharts-a8b447-aacf810e-v2-env-1ee267f6"
+template_id = "j0uncqgfdib2kms0d2se"
+source_template_alias = "gw0ccwzbguxsht2rehcp"
+source_template_id = "gw0ccwzbguxsht2rehcp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

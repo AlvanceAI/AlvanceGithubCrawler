@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-environment-tools-742fea-b6181976"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/microsoft/python-environment-tools"
+base_commit = "b618197654e244702af26a74b01d50d5764a3b4d"
+source_tree = "08c719ffce46e39cbd28791a94f3c0e888204633"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "65096e0d7aeb1b515c60614d76b858e4888ec003ea16d2b0d0c56c519d4ae520"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-environment-t-742fea-b6181976-v2-env-08306d5c"
+template_id = "408zc3v6ymbnxz1ruz46"
+source_template_alias = "umhfq4g6ypiyjedwvp91"
+source_template_id = "umhfq4g6ypiyjedwvp91"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

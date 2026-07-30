@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "marp-core-548b21-fb41436e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/marp-team/marp-core"
+base_commit = "fb41436e1db5b43a9f93d288ed361b2550408a0b"
+source_tree = "2d1a8830cf51cb00bda0a8f777aaf2c98b1a2fef"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ef24b7fc8d1e0316b846825578cbebee4e7e9a0c7fd31c85296c6bb2ed84fe60"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-marp-core-548b21-fb41436e-v2-env-3bfd38cd"
+template_id = "6ddg05sl7wygzvhq70lx"
+source_template_alias = "3658wvvgftuahg8ibye2"
+source_template_id = "3658wvvgftuahg8ibye2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
