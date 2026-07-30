@@ -23,7 +23,7 @@ GITHUB_LANGUAGE_NAMES = {
     "javascript": "JavaScript",
     "rust": "Rust",
 }
-CRAWL_STATE_VERSION = "1.2"
+CRAWL_STATE_VERSION = "1.3"
 SELECTION_SEMANTICS = "raw_sample_all_pass_v1"
 FULL_SHA = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
 
@@ -245,6 +245,14 @@ class CandidateCrawler:
             pushed_before.setdefault(language, "")
             windows.setdefault(language, 1)
             pages_fetched.setdefault(language, max(0, int(pages[language]) - 1))
+            # GitHub repository search accepts date precision for `pushed:`.
+            # Older checkpoints stored timestamps, which the API could ignore and
+            # consequently return the same active repositories in every window.
+            boundary = str(pushed_before[language] or "")
+            parsed_boundary = _parse_github_time(boundary)
+            if parsed_boundary is not None and "T" in boundary:
+                pushed_before[language] = parsed_boundary.date().isoformat()
+                pages[language] = 1
         for record in raw_records:
             crawl = record.get("_crawl") or {}
             language = str(crawl.get("query_language") or "").lower()
@@ -457,9 +465,14 @@ class CandidateCrawler:
 
     def _fetch_page(self, language: str, page: int) -> list[dict[str, Any]]:
         pushed_before = str(self.state["pushed_before_by_language"].get(language) or "")
-        pushed_range = f"pushed:>={_github_time(self.cutoff)}"
+        cutoff_date = self.cutoff.date()
+        pushed_range = f"pushed:>={cutoff_date.isoformat()}"
         if pushed_before:
-            pushed_range += f" pushed:<{pushed_before}"
+            boundary = _parse_github_time(pushed_before)
+            if boundary is None:
+                raise CrawlIncompleteError(f"invalid pushed boundary for {language}")
+            upper_date = boundary.date() - timedelta(days=1)
+            pushed_range = f"pushed:{cutoff_date.isoformat()}..{upper_date.isoformat()}"
         query = (
             f"language:{GITHUB_LANGUAGE_NAMES[language]} stars:>=100 "
             f"{pushed_range} archived:false fork:false mirror:false"
@@ -514,12 +527,13 @@ class CandidateCrawler:
             return False
         oldest = min(pushed_times)
         current_boundary = _parse_github_time(current_before)
-        if oldest <= self.cutoff or (
-            current_boundary is not None and oldest >= current_boundary
-        ):
+        boundary_date = oldest.date()
+        if current_boundary is not None and boundary_date >= current_boundary.date():
+            boundary_date = current_boundary.date() - timedelta(days=1)
+        if boundary_date <= self.cutoff.date():
             return False
 
-        boundary = _github_time(oldest)
+        boundary = boundary_date.isoformat()
         self.state["pushed_before_by_language"][language] = boundary
         self.state["next_page_by_language"][language] = 1
         self.state["search_windows_by_language"][language] += 1
@@ -747,7 +761,3 @@ def _parse_github_time(value: str) -> datetime | None:
 
 def _utc_now() -> str:
     return datetime.now(UTC).isoformat()
-
-
-def _github_time(value: datetime) -> str:
-    return value.astimezone(UTC).isoformat().replace("+00:00", "Z")

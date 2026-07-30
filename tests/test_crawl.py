@@ -191,7 +191,7 @@ def test_crawl_advances_to_older_search_windows(tmp_path: Path) -> None:
             language = next(
                 key for key, name in LANGUAGE_NAMES.items() if f"language:{name}" in query
             )
-            older_window = "pushed:<" in query
+            older_window = ".." in query
             window = "older" if older_window else "newer"
             pushed_at = "2026-06-20T00:00:00Z" if older_window else "2026-07-20T00:00:00Z"
             items = [
@@ -216,4 +216,46 @@ def test_crawl_advances_to_older_search_windows(tmp_path: Path) -> None:
     assert summary["fetched_total"] == 15
     assert summary["search_windows_used"] == {language: 2 for language in LANGUAGE_NAMES}
     assert github.search_calls == 10
-    assert sum("pushed:<" in query for query in github.queries) == 5
+    older_queries = [query for query in github.queries if ".." in query]
+    assert len(older_queries) == 5
+    assert all(query.count("pushed:") == 1 for query in older_queries)
+    assert all("T" not in query.split("pushed:", 1)[1] for query in older_queries)
+
+
+def test_crawl_migrates_timestamp_search_boundaries(tmp_path: Path) -> None:
+    state = {
+        "schema_version": "1.2",
+        "selection_semantics": "raw_sample_all_pass_v1",
+        "target_total": 5,
+        "per_language": 1,
+        "started_at": "2026-07-29T09:08:23Z",
+        "cutoff_time": "2025-07-29T09:08:23Z",
+        "next_page_by_language": {language: 7 for language in LANGUAGE_NAMES},
+        "pushed_before_by_language": {
+            language: "2026-07-29T12:47:08Z" for language in LANGUAGE_NAMES
+        },
+        "search_windows_by_language": {language: 2 for language in LANGUAGE_NAMES},
+        "search_pages_fetched_by_language": {language: 16 for language in LANGUAGE_NAMES},
+        "api_request_count": 100,
+        "retry_count": 0,
+        "completed": False,
+    }
+    (tmp_path / "crawl_state.json").write_text(json.dumps(state), encoding="utf-8")
+    crawler = CandidateCrawler(
+        FakeGitHub(),
+        tmp_path,
+        target_total=10,
+        per_language=2,
+        max_search_pages=10,
+        now=datetime(2026, 7, 30, tzinfo=UTC),
+    )
+
+    migrated = crawler._load_state([])
+
+    assert migrated["schema_version"] == "1.3"
+    assert migrated["pushed_before_by_language"] == {
+        language: "2026-07-29" for language in LANGUAGE_NAMES
+    }
+    assert migrated["next_page_by_language"] == {
+        language: 1 for language in LANGUAGE_NAMES
+    }
