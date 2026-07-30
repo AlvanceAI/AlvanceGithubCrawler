@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gitbackup-968e92-c7c1d75b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/amitsaha/gitbackup"
+base_commit = "c7c1d75bf231295ae374c4d0cae1b56bbdd5ee13"
+source_tree = "b4bb4e476117fa037e12d02c056352e721b80b5d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d81577dbd8b36f04fbe9d0bbeae120f4bc284b699b8e6cbc75a4a9d35b9778f0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gitbackup-968e92-c7c1d75b-v2-env-d81577db"
+template_id = "6zjeynyhvh8vutqcan4u"
+source_template_alias = "qz20goe8upq6qczvotc8"
+source_template_id = "qz20goe8upq6qczvotc8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

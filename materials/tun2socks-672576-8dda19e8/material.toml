@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tun2socks-672576-8dda19e8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/xjasonlyu/tun2socks"
+base_commit = "8dda19e8e4613e014f0b12f3e624fdff5e5f23b3"
+source_tree = "88171fb6e8eb453cb5025e51ca367129a7460248"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "179bceb5f840a52713c35f0147244a21a475fb14a8cf44a2e500875ef2d3d028"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tun2socks-672576-8dda19e8-v2-env-179bceb5"
+template_id = "nqjb7rc8516tw6wkla2y"
+source_template_alias = "34fet156bbaqxf3ypb2a"
+source_template_id = "34fet156bbaqxf3ypb2a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hcl-rs-476d73-2f0b1f87"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/martinohmann/hcl-rs"
+base_commit = "2f0b1f87fbb43d6ebe61afe26e954a23242d5d1f"
+source_tree = "c16f1fee48aeb23de7759641c44f35ce10d81ccc"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "83e4b54fe0bd4f6524b00bdb44c6afdd5b77e371e703ed50fa10a7df0ad590d4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hcl-rs-476d73-2f0b1f87-v2-env-83e4b54f"
+template_id = "2mjzokgumkryvbwzirhb"
+source_template_alias = "b7in6to4fo0av44i0ex5"
+source_template_id = "b7in6to4fo0av44i0ex5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

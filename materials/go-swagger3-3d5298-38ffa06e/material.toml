@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-swagger3-3d5298-38ffa06e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/parvez3019/go-swagger3"
+base_commit = "38ffa06e310898ae46f5ac171e06ba5d33d39c20"
+source_tree = "3010620761f3f99d8ade651d4247c3a89c2d4d4f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "92fcde03236c99feb04c433124cbe73e654fe4ef8c52b555f2739f73eba581f6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-swagger3-3d5298-38ffa06e-v2-env-92fcde03"
+template_id = "27b2d3q8alw7af9pnr7r"
+source_template_alias = "j0pkt0x8wn08dzcad55r"
+source_template_id = "j0pkt0x8wn08dzcad55r"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

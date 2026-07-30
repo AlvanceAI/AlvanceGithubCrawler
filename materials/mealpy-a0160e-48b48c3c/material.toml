@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mealpy-a0160e-48b48c3c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/thieu1995/mealpy"
+base_commit = "48b48c3c6696fca077b5aaf278ba6ccdefb021b9"
+source_tree = "68af8c2546e91dfa797c9157c118177f5884574f"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "73d79e46c040ebd0afc39a53992e662fed5300556eec6740fb07b8e3c80741a2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mealpy-a0160e-48b48c3c-v2-env-73d79e46"
+template_id = "48pvqwuwk56vcvykpxh6"
+source_template_alias = "4qsudwufbzci081n2adw"
+source_template_id = "4qsudwufbzci081n2adw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

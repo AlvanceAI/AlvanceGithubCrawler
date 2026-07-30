@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "compose2nix-ffb526-d1ca6403"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/aksiksi/compose2nix"
+base_commit = "d1ca640306419bdcffca8a2e8490ccdf970706f6"
+source_tree = "d3cda0325b8f4cf2fadf3ea2966633ead0a8a381"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7c67116459db0d194e087d0e26d8cb555da6ff2920b9f56474f7aff6c0d9f746"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-compose2nix-ffb526-d1ca6403-v2-env-7c671164"
+template_id = "9hvry6tazaibtfmrgupq"
+source_template_alias = "e3kwtsxvh40d9yp5gfr9"
+source_template_id = "e3kwtsxvh40d9yp5gfr9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

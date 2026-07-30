@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kafka-rust-a2fa2f-6681c81e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kafka-rust/kafka-rust"
+base_commit = "6681c81e0f7a84547e972ec545f3ed278d2ecfec"
+source_tree = "41547181114823c467b215e9ac2144dda1a365f7"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.85.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f02ab89625a853cf20a16f6aa2bfdf6eac2a3c8b6db5e8b761eeef13dc0bb03f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kafka-rust-a2fa2f-6681c81e-v2-env-f02ab896"
+template_id = "6d512gcelyciiv7bif14"
+source_template_alias = "w3r8p1jiqoar7hvw8tnk"
+source_template_id = "w3r8p1jiqoar7hvw8tnk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

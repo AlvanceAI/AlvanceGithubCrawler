@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "caddy-dynamicdns-016bb0-a5890c9d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mholt/caddy-dynamicdns"
+base_commit = "a5890c9df68cb7ed603f552a624f6123a5fad2ff"
+source_tree = "bd3dfa1092eec47ea102ab4183ae17dbf8af6333"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a149c928c5ba1da8dd2b42252138885b154a866f167b26af83acc5cd23e729d2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-caddy-dynamicdns-016bb0-a5890c9d-v2-env-a149c928"
+template_id = "7sxqc70zwx563pkzozxo"
+source_template_alias = "nxm0xte7hbkwq1yapuc8"
+source_template_id = "nxm0xte7hbkwq1yapuc8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
