@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cloud-forensics-utils-b7db57-4d451a5c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/google/cloud-forensics-utils"
+base_commit = "4d451a5c205d256be1ba5a3bbf515a8f54a4f295"
+source_tree = "10d59f8193b8dc9fbe36bd216f37b20c2625d5b3"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3f5f0a9d035ea3852479fafa899e12fac4335c212a040e7ff99b9a794922b01b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cloud-forensics-util-b7db57-4d451a5c-v2-env-3f5f0a9d"
+template_id = "kvqy5v5fo2bbx8kytd42"
+source_template_alias = "p9x8xx1q6kddammlxr4f"
+source_template_id = "p9x8xx1q6kddammlxr4f"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
