@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aparte-6a9c84-2af76459"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/paulfariello/aparte"
+base_commit = "2af7645942d431a6d02ca5c13a519e6ca6e70f0f"
+source_tree = "c7c36063657a30ebaac2d7ed5ff639ac8230d199"
+default_branch = "develop"
+license = "MPL-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "28bee3f0587d38b25d91c2bef87020dce44cc4814a9e8073e6b83e02226e84cf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aparte-6a9c84-2af76459-v2-env-28bee3f0"
+template_id = "kt2802who4gjlaoeoxog"
+source_template_alias = "0k7q9jad1hurqzz395a1"
+source_template_id = "0k7q9jad1hurqzz395a1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

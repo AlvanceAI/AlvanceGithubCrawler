@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tile38-133e68-7caa4c81"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tidwall/tile38"
+base_commit = "7caa4c810ce77e8dfb30d4776cae8a68f9a2e209"
+source_tree = "8170229cc7a91ae0b5a649e4157a8824c477b0ec"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "02b165f52511ef982cdd394a79fc562b382334f4c5b8f5ab8d5dda6285750858"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tile38-133e68-7caa4c81-v2-env-02b165f5"
+template_id = "0phwht9txyit6f4lbtbe"
+source_template_alias = "kp0zpzxed552zsyhv3q7"
+source_template_id = "kp0zpzxed552zsyhv3q7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

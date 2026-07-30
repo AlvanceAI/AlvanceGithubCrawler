@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dataplaneapi-b4158a-0cad6130"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/haproxytech/dataplaneapi"
+base_commit = "0cad61307d04c839040578753c2f66b81485a437"
+source_tree = "7dde25630d3f958894d72018c324d041735854e5"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "913f50413dae0522719415fc2fe587b9005a16d0fa841a7f08e0e3aef9eabb29"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dataplaneapi-b4158a-0cad6130-v2-env-913f5041"
+template_id = "ozugid4kp1jurthgks6t"
+source_template_alias = "r24l1mh48arpse1jswop"
+source_template_id = "r24l1mh48arpse1jswop"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "packer-plugin-vsphere-abc531-e13acb5c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vmware/packer-plugin-vsphere"
+base_commit = "e13acb5c9ef9d5c50cf80c8844f1713dcaff32a3"
+source_tree = "eadaa34c98a9f31b5f8af4f594643a9ca6159483"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a6c7665795eccca794538522a6aaea676b04b9c67136ce98f9ffee132a613a54"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-packer-plugin-vspher-abc531-e13acb5c-v2-env-a6c76657"
+template_id = "0b55txr86xhrinmj53hj"
+source_template_alias = "djwfl1sxtjyefq671j5a"
+source_template_id = "djwfl1sxtjyefq671j5a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

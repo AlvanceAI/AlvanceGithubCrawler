@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lightningcss-4615f4-c6a0c3ce"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/parcel-bundler/lightningcss"
+base_commit = "c6a0c3cebf3395635e61075d2c81a96a710d4910"
+source_tree = "0018559c1bcd282d57fbd99aa749f27add77dad9"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.96.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ad7127445d341c8ed523ad388f50bb7048a0f41aa605ecc5e6eaaa51ef8f2411"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lightningcss-4615f4-c6a0c3ce-v2-env-ad712744"
+template_id = "qipfa5r55r3k8ewqt6j1"
+source_template_alias = "cwr8uqa02grrd911zgem"
+source_template_id = "cwr8uqa02grrd911zgem"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

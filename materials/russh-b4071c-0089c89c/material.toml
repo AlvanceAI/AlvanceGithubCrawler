@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "russh-b4071c-0089c89c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Eugeny/russh"
+base_commit = "0089c89c94753bebbec12b956c07a1cd38740379"
+source_tree = "ab3430fac4770d91122c6433124ad1a1563644f7"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "db72727f670887c35399fa4a21b83b44f10f53db44be818f2e02ab8ec6071506"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-russh-b4071c-0089c89c-v2-env-db72727f"
+template_id = "xr52co8wc1trhctqj56s"
+source_template_alias = "muiwapvchl2i1co5ic4n"
+source_template_id = "muiwapvchl2i1co5ic4n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dns-collector-e712c3-5c20d8a8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/dmachard/DNS-collector"
+base_commit = "5c20d8a88ac0ca33c6e2ff4cb01af292a88dc2d8"
+source_tree = "bff1c8760eed43cc5a2dd9ba64de04f7025972ec"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4bc81d4b3aff331c28b599e59a514989001f89c5a1ece4acea202bbda19571f4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dns-collector-e712c3-5c20d8a8-v2-env-4bc81d4b"
+template_id = "yp82xn8lsj68okefdjyr"
+source_template_alias = "mjjl88xw9axyshbkbrj3"
+source_template_id = "mjjl88xw9axyshbkbrj3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

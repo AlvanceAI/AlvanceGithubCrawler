@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pybop-4c6d67-71a05445"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pybop-team/PyBOP"
+base_commit = "71a05445b6d26dd958400e5e3fdef93437331ae3"
+source_tree = "78d751a101a6290e2b0fa862818a494222138e4a"
+default_branch = "develop"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "184982a40d34921d7f4b7c5016831c499320eef453d32c1e53f8c55812701913"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pybop-4c6d67-71a05445-v2-env-184982a4"
+template_id = "3z8e47jbcs2pytne29rv"
+source_template_alias = "zc36c5yncrdfdk3t8mqe"
+source_template_id = "zc36c5yncrdfdk3t8mqe"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "etherparse-597b40-70f72bee"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/JulianSchmid/etherparse"
+base_commit = "70f72bee542ae49efebb8d2106bde64f84f02a43"
+source_tree = "e298179612a110d72d2eaf8998c40f5ca8155627"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9eb3a728c18257a156972b96c154fd7746c5e9487cdf18bd245d3ba37855aaa3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-etherparse-597b40-70f72bee-v2-env-9eb3a728"
+template_id = "ak7i6ko717mfyf27jbx7"
+source_template_alias = "vzyga5nfm0jana9y7gkv"
+source_template_id = "vzyga5nfm0jana9y7gkv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

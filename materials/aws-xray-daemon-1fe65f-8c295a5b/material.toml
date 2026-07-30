@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aws-xray-daemon-1fe65f-8c295a5b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/aws/aws-xray-daemon"
+base_commit = "8c295a5b20dce58bb1ab38cd4a93e84b70449e94"
+source_tree = "e27bc6dff9de36acf562168a8f42773645bfd14c"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2ae8c58da763b42b091fc1c6632a284d6fa3d518dc63d62484919cfac698bb13"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aws-xray-daemon-1fe65f-8c295a5b-v2-env-2ae8c58d"
+template_id = "ki23eqzlsmmpmgwwdbvo"
+source_template_alias = "rrm04fjp4e1hxr726jy7"
+source_template_id = "rrm04fjp4e1hxr726jy7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

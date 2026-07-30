@@ -1,0 +1,11 @@
+# go-carbon-4eb2ab-3acabf21
+
+Rebuildable repository material for `go-graphite/go-carbon` at
+`3acabf21eb31bfadf3fb4bd61f9ce450f223c5ce`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
+
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.

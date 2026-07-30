@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "yet-another-cloudwatch-e-d1418f-1a0ddb1e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/prometheus-community/yet-another-cloudwatch-exporter"
+base_commit = "1a0ddb1efec8b5c2ecac6431c75da5eebc469ed0"
+source_tree = "4a1340da450adb8189799a29f9f3ed516648c2e6"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "59af3afe6f29c58d91b4365b1943db74196762d8415ffb0a33eafdcf42f95a14"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-yet-another-cloudwat-d1418f-1a0ddb1e-v2-env-59af3afe"
+template_id = "cvold09d11tfipgq7wu8"
+source_template_alias = "37e7px5zxlhtgke1xgmw"
+source_template_id = "37e7px5zxlhtgke1xgmw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

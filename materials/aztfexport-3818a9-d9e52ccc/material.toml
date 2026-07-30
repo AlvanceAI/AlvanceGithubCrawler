@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aztfexport-3818a9-d9e52ccc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Azure/aztfexport"
+base_commit = "d9e52ccc6a888175f04d50730551345cf20d92c6"
+source_tree = "f53cc76155d2f8adc85346753bd802874ca4fc5b"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "be3b9da13789a586346cae597e049d11db1a0260e4bf7e9835a3cfd9df6112fb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aztfexport-3818a9-d9e52ccc-v2-env-be3b9da1"
+template_id = "2ekqyvrym75sus3oz7m6"
+source_template_alias = "wr7loqyri13ye5acxtmu"
+source_template_id = "wr7loqyri13ye5acxtmu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

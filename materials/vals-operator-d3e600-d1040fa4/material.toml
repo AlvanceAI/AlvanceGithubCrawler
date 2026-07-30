@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vals-operator-d3e600-d1040fa4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/digitalis-io/vals-operator"
+base_commit = "d1040fa4b9150f84401a9995226188952927a34f"
+source_tree = "6d67f46b6d2065e490da39ab76b45a0dc7d3832a"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "85585a65a637871668d55067265c5e25749a4b6340f1cfc1b483f3b03207006f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vals-operator-d3e600-d1040fa4-v2-env-85585a65"
+template_id = "z8h3a6jht3m88k4l9219"
+source_template_alias = "eokd2kvtwzwyjxch211a"
+source_template_id = "eokd2kvtwzwyjxch211a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "checkout-728eab-f548e57e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/actions/checkout"
+base_commit = "f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a"
+source_tree = "a5f6513df313ae8fa975ea4554fae589ee6390c7"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3e9b178bcfb0005a703fec3c4238374083ff5c8f3d7db52d490c77cb2ce98251"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-checkout-728eab-f548e57e-v2-env-3e9b178b"
+template_id = "wxwy1833dw6h0otcmgje"
+source_template_alias = "1qgdp7q9vzgrclw90u1j"
+source_template_id = "1qgdp7q9vzgrclw90u1j"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ts-rs-9bae26-13b49af9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Aleph-Alpha/ts-rs"
+base_commit = "13b49af94ecf17596122bde4923aae5e4077bf7f"
+source_tree = "7aae07945b38d7e331f539166b6c5f918da65dfc"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7773ae1310a8f93f41ee591fcda351da7f0e3fba513b031591f07cf263e7af4e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ts-rs-9bae26-13b49af9-v2-env-7773ae13"
+template_id = "l2jois7djgtd22sd17x0"
+source_template_alias = "ihoqq0tt7bk3bxduxuzv"
+source_template_id = "ihoqq0tt7bk3bxduxuzv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

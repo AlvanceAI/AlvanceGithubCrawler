@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "claws-b28f94-7a0a8eaf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/clawscli/claws"
+base_commit = "7a0a8eaf1f3538bd63407176b3e4be96012944d4"
+source_tree = "65b14f46fad3d24b8c3be02b1dac1288cb3639f4"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fab183ba3c619b3b5c4efc476dc788b010bf3edaebfbe1a9dac61bf9c5087944"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-claws-b28f94-7a0a8eaf-v2-env-fab183ba"
+template_id = "d912xausi2bbs5w9bbsb"
+source_template_alias = "i4i79zpdhytmk47p3xq7"
+source_template_id = "i4i79zpdhytmk47p3xq7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
