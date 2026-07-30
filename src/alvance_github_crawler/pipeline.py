@@ -107,7 +107,7 @@ class Pipeline:
         self.skip_e2b = skip_e2b
         self.defer_e2b = defer_e2b
         self.retry_rejected = retry_rejected
-        self.github = GitHubClient(config.github_token)
+        self.github = GitHubClient(config.github_tokens)
         self.registry = JsonlRegistry(config.candidates_path, config.rejections_path)
         self.quota = LanguageQuota(config.candidates_path)
         self.hard_filter = HardFilter(self.github)

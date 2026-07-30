@@ -148,6 +148,7 @@ def build_parser() -> argparse.ArgumentParser:
 def doctor(config: PipelineConfig) -> dict[str, object]:
     return {
         "github_token": bool(config.github_token),
+        "github_token_count": len(config.github_tokens),
         "openai_api_key": bool(config.openai_api_key),
         "openai_base_url": bool(config.openai_base_url),
         "openai_model": config.openai_model,
@@ -183,13 +184,16 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit("--max-repos must be >= 1")
 
     if args.command == "crawl":
-        if not config.github_token:
-            print("missing required environment variable: GITHUB_TOKEN", file=sys.stderr)
+        if not config.github_tokens:
+            print(
+                "missing required environment variable: GITHUB_TOKEN or GITHUB_TOKEN1/2",
+                file=sys.stderr,
+            )
             return 2
         try:
             crawler = CandidateCrawler(
                 GitHubClient(
-                    config.github_token,
+                    config.github_tokens,
                     timeout=args.api_timeout,
                     request_interval_s=args.request_interval,
                 ),
@@ -250,7 +254,7 @@ def main(argv: list[str] | None = None) -> int:
                 cpu_count=config.e2b_cpu_count,
                 memory_mb=config.e2b_memory_mb,
             ),
-            GitHubClient(config.github_token),
+            GitHubClient(config.github_tokens),
         )
         print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
         return 0

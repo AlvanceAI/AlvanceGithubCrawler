@@ -88,3 +88,45 @@ def test_get_head_commit_returns_commit_and_tree(monkeypatch) -> None:
         "tree_sha": "b" * 40,
         "committed_at": "2026-07-01T00:00:00Z",
     }
+
+
+def test_github_client_round_robins_token_lanes_and_aggregates_metrics(monkeypatch) -> None:
+    client = GitHubClient(("first-token", "second-token"), max_retries=0)
+    calls: list[str] = []
+
+    def response_for(lane: str, remaining: int) -> FakeResponse:
+        calls.append(lane)
+        return FakeResponse(
+            200,
+            {"full_name": f"owner/{lane}"},
+            headers={
+                "X-RateLimit-Resource": "core",
+                "X-RateLimit-Limit": "5000",
+                "X-RateLimit-Remaining": str(remaining),
+                "X-RateLimit-Used": str(5000 - remaining),
+            },
+        )
+
+    monkeypatch.setattr(
+        client._clients[0].session,
+        "get",
+        lambda *args, **kwargs: response_for("first", 4_999),
+    )
+    monkeypatch.setattr(
+        client._clients[1].session,
+        "get",
+        lambda *args, **kwargs: response_for("second", 4_998),
+    )
+
+    assert client.get_repository("owner/one")["full_name"] == "owner/first"
+    assert client.get_repository("owner/two")["full_name"] == "owner/second"
+    assert client.get_repository("owner/three")["full_name"] == "owner/first"
+
+    assert calls == ["first", "second", "first"]
+    assert client.token_count == 2
+    assert client.request_count == 3
+    assert client.rate_limits["core"] == {
+        "limit": 10_000,
+        "remaining": 9_997,
+        "used": 3,
+    }

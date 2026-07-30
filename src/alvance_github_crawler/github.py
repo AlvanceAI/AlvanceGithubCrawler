@@ -20,7 +20,7 @@ class GitHubClient:
 
     def __init__(
         self,
-        token: str,
+        token: str | tuple[str, ...] | list[str],
         *,
         timeout: float = 30.0,
         request_interval_s: float = 0.0,
@@ -33,21 +33,55 @@ class GitHubClient:
         self.max_retries = max(0, max_retries)
         self.backoff_factor = max(0.0, backoff_factor)
         self.max_rate_limit_wait_s = max(0.0, max_rate_limit_wait_s)
-        self.request_count = 0
-        self.retry_count = 0
-        self.rate_limits: dict[str, dict[str, int | str]] = {}
-        self._last_request_at = 0.0
-        self._request_lock = threading.Lock()
-        self.session = requests.Session()
-        headers = {
-            "Accept": "application/vnd.github+json",
-            "X-GitHub-Api-Version": "2022-11-28",
-            "User-Agent": "alvance-github-crawler/0.1",
-        }
-        if token:
-            headers["Authorization"] = f"Bearer {token}"
-        self.session.headers.update(headers)
-        self.session.mount("https://", HTTPAdapter(max_retries=0))
+        supplied_tokens = (token,) if isinstance(token, str) else tuple(token)
+        self._tokens = tuple(
+            dict.fromkeys(str(value).strip() for value in supplied_tokens if str(value).strip())
+        )
+        if not self._tokens:
+            self._tokens = ("",)
+        self._clients = tuple(
+            _GitHubTokenClient(
+                value,
+                timeout=self.timeout,
+                request_interval_s=self.request_interval_s,
+                max_retries=self.max_retries,
+                backoff_factor=self.backoff_factor,
+                max_rate_limit_wait_s=self.max_rate_limit_wait_s,
+            )
+            for value in self._tokens
+        )
+        # Keep the legacy session attribute for callers/tests that customize a
+        # single-token client. Multi-token requests use each lane's own session.
+        self.session = self._clients[0].session
+        self._selection_lock = threading.Lock()
+        self._next_client_index = 0
+
+    @property
+    def token_count(self) -> int:
+        return len(self._clients)
+
+    @property
+    def request_count(self) -> int:
+        return sum(client.request_count for client in self._clients)
+
+    @property
+    def retry_count(self) -> int:
+        return sum(client.retry_count for client in self._clients)
+
+    @property
+    def rate_limits(self) -> dict[str, dict[str, int | str]]:
+        merged: dict[str, dict[str, int | str]] = {}
+        for client in self._clients:
+            for resource, values in client.rate_limits.items():
+                current = merged.setdefault(resource, {})
+                for name, value in values.items():
+                    if name in {"limit", "remaining", "used"} and isinstance(value, int):
+                        current[name] = int(current.get(name, 0) or 0) + value
+                    elif name == "reset" and isinstance(value, int):
+                        current[name] = max(int(current.get(name, 0) or 0), value)
+                    else:
+                        current.setdefault(name, value)
+        return merged
 
     def _get(
         self,
@@ -71,104 +105,18 @@ class GitHubClient:
         allow_not_found: bool = False,
         error_path: str | None = None,
     ) -> requests.Response:
-        with self._request_lock:
-            return self._get_url_serialized(
-                url,
-                params=params,
-                allow_not_found=allow_not_found,
-                error_path=error_path,
-            )
+        return self._next_client().get(
+            url,
+            params=params,
+            allow_not_found=allow_not_found,
+            error_path=error_path,
+        )
 
-    def _get_url_serialized(
-        self,
-        url: str,
-        *,
-        params: dict[str, Any] | None = None,
-        allow_not_found: bool = False,
-        error_path: str | None = None,
-    ) -> requests.Response:
-        response: requests.Response | None = None
-        last_error: requests.RequestException | None = None
-        for attempt in range(self.max_retries + 1):
-            self._pace_request()
-            self.request_count += 1
-            try:
-                response = self.session.get(url, params=params, timeout=self.timeout)
-                last_error = None
-            except requests.RequestException as exc:
-                last_error = exc
-                if attempt >= self.max_retries:
-                    break
-                self.retry_count += 1
-                time.sleep(self.backoff_factor * (2**attempt))
-                continue
-
-            self._record_rate_limit(response)
-            if response.status_code not in self.retryable_statuses or attempt >= self.max_retries:
-                break
-            self.retry_count += 1
-            time.sleep(self._retry_delay(response, attempt))
-
-        display_path = error_path or url
-        if response is None:
-            message = f"GitHub request failed for {display_path}: {last_error}"
-            raise GitHubError(message) from last_error
-        if allow_not_found and response.status_code == 404:
-            return response
-        if response.status_code >= 400:
-            remaining = response.headers.get("X-RateLimit-Remaining")
-            reset = response.headers.get("X-RateLimit-Reset")
-            detail = response.text[:500]
-            raise GitHubError(
-                f"GitHub API {response.status_code} for {display_path}; "
-                f"remaining={remaining}, reset={reset}, response={detail}"
-            )
-        return response
-
-    def _pace_request(self) -> None:
-        if self.request_interval_s <= 0 or self._last_request_at <= 0:
-            self._last_request_at = time.monotonic()
-            return
-        elapsed = time.monotonic() - self._last_request_at
-        if elapsed < self.request_interval_s:
-            time.sleep(self.request_interval_s - elapsed)
-        self._last_request_at = time.monotonic()
-
-    def _retry_delay(self, response: requests.Response, attempt: int) -> float:
-        retry_after = response.headers.get("Retry-After", "")
-        try:
-            if retry_after:
-                return min(max(0.0, float(retry_after)), self.max_rate_limit_wait_s)
-        except ValueError:
-            pass
-        if response.headers.get("X-RateLimit-Remaining") == "0":
-            reset = response.headers.get("X-RateLimit-Reset", "")
-            try:
-                delay = max(0.0, float(reset) - time.time()) + 1.0
-                return min(delay, self.max_rate_limit_wait_s)
-            except ValueError:
-                pass
-        return min(self.backoff_factor * (2**attempt), self.max_rate_limit_wait_s)
-
-    def _record_rate_limit(self, response: requests.Response) -> None:
-        resource = response.headers.get("X-RateLimit-Resource")
-        if not resource:
-            return
-        values: dict[str, int | str] = {}
-        for name, header in (
-            ("limit", "X-RateLimit-Limit"),
-            ("remaining", "X-RateLimit-Remaining"),
-            ("used", "X-RateLimit-Used"),
-            ("reset", "X-RateLimit-Reset"),
-        ):
-            raw_value = response.headers.get(header)
-            if raw_value is None:
-                continue
-            try:
-                values[name] = int(raw_value)
-            except ValueError:
-                values[name] = raw_value
-        self.rate_limits[resource] = values
+    def _next_client(self) -> _GitHubTokenClient:
+        with self._selection_lock:
+            client = self._clients[self._next_client_index]
+            self._next_client_index = (self._next_client_index + 1) % len(self._clients)
+            return client
 
     def search_repositories_page(
         self, query: str, *, page: int = 1, per_page: int = 100
@@ -295,10 +243,180 @@ class GitHubClient:
         return int(response.json().get("total_count", 0))
 
     def get_rate_limit_status(self) -> dict[str, int]:
-        response = self._get("/rate_limit")
-        resources = response.json().get("resources") or {}
         remaining: dict[str, int] = {}
-        for name, values in resources.items():
-            if isinstance(values, dict) and isinstance(values.get("remaining"), int):
-                remaining[str(name)] = int(values["remaining"])
+        errors: list[GitHubError] = []
+        for client in self._clients:
+            try:
+                resources = client.get(
+                    f"{self.api_url}/rate_limit", error_path="/rate_limit"
+                ).json().get("resources") or {}
+            except GitHubError as exc:
+                errors.append(exc)
+                continue
+            for name, values in resources.items():
+                if isinstance(values, dict) and isinstance(values.get("remaining"), int):
+                    remaining[str(name)] = remaining.get(str(name), 0) + int(
+                        values["remaining"]
+                    )
+        if not remaining and errors:
+            raise errors[0]
         return remaining
+
+
+class _GitHubTokenClient:
+    """One independently rate-limited GitHub credential lane."""
+
+    def __init__(
+        self,
+        token: str,
+        *,
+        timeout: float,
+        request_interval_s: float,
+        max_retries: int,
+        backoff_factor: float,
+        max_rate_limit_wait_s: float,
+    ) -> None:
+        self.timeout = timeout
+        self.request_interval_s = request_interval_s
+        self.max_retries = max_retries
+        self.backoff_factor = backoff_factor
+        self.max_rate_limit_wait_s = max_rate_limit_wait_s
+        self._request_count = 0
+        self._retry_count = 0
+        self._rate_limits: dict[str, dict[str, int | str]] = {}
+        self._last_request_at = 0.0
+        self._state_lock = threading.Lock()
+        self._session_local = threading.local()
+        self._headers = {
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "alvance-github-crawler/0.1",
+        }
+        if token:
+            self._headers["Authorization"] = f"Bearer {token}"
+
+    @property
+    def session(self) -> requests.Session:
+        session = getattr(self._session_local, "session", None)
+        if session is None:
+            session = requests.Session()
+            session.headers.update(self._headers)
+            session.mount(
+                "https://",
+                HTTPAdapter(pool_connections=20, pool_maxsize=20, max_retries=0),
+            )
+            self._session_local.session = session
+        return session
+
+    @property
+    def request_count(self) -> int:
+        with self._state_lock:
+            return self._request_count
+
+    @property
+    def retry_count(self) -> int:
+        with self._state_lock:
+            return self._retry_count
+
+    @property
+    def rate_limits(self) -> dict[str, dict[str, int | str]]:
+        with self._state_lock:
+            return {resource: dict(values) for resource, values in self._rate_limits.items()}
+
+    def get(
+        self,
+        url: str,
+        *,
+        params: dict[str, Any] | None = None,
+        allow_not_found: bool = False,
+        error_path: str | None = None,
+    ) -> requests.Response:
+        response: requests.Response | None = None
+        last_error: requests.RequestException | None = None
+        for attempt in range(self.max_retries + 1):
+            self._pace_request()
+            with self._state_lock:
+                self._request_count += 1
+            try:
+                response = self.session.get(url, params=params, timeout=self.timeout)
+                last_error = None
+            except requests.RequestException as exc:
+                last_error = exc
+                if attempt >= self.max_retries:
+                    break
+                with self._state_lock:
+                    self._retry_count += 1
+                time.sleep(self.backoff_factor * (2**attempt))
+                continue
+
+            self._record_rate_limit(response)
+            if (
+                response.status_code not in GitHubClient.retryable_statuses
+                or attempt >= self.max_retries
+            ):
+                break
+            with self._state_lock:
+                self._retry_count += 1
+            time.sleep(self._retry_delay(response, attempt))
+
+        display_path = error_path or url
+        if response is None:
+            message = f"GitHub request failed for {display_path}: {last_error}"
+            raise GitHubError(message) from last_error
+        if allow_not_found and response.status_code == 404:
+            return response
+        if response.status_code >= 400:
+            remaining = response.headers.get("X-RateLimit-Remaining")
+            reset = response.headers.get("X-RateLimit-Reset")
+            detail = response.text[:500]
+            raise GitHubError(
+                f"GitHub API {response.status_code} for {display_path}; "
+                f"remaining={remaining}, reset={reset}, response={detail}"
+            )
+        return response
+
+    def _pace_request(self) -> None:
+        with self._state_lock:
+            now = time.monotonic()
+            request_at = max(now, self._last_request_at + self.request_interval_s)
+            self._last_request_at = request_at
+        delay = request_at - now
+        if delay > 0:
+            time.sleep(delay)
+
+    def _retry_delay(self, response: requests.Response, attempt: int) -> float:
+        retry_after = response.headers.get("Retry-After", "")
+        try:
+            if retry_after:
+                return min(max(0.0, float(retry_after)), self.max_rate_limit_wait_s)
+        except ValueError:
+            pass
+        if response.headers.get("X-RateLimit-Remaining") == "0":
+            reset = response.headers.get("X-RateLimit-Reset", "")
+            try:
+                delay = max(0.0, float(reset) - time.time()) + 1.0
+                return min(delay, self.max_rate_limit_wait_s)
+            except ValueError:
+                pass
+        return min(self.backoff_factor * (2**attempt), self.max_rate_limit_wait_s)
+
+    def _record_rate_limit(self, response: requests.Response) -> None:
+        resource = response.headers.get("X-RateLimit-Resource")
+        if not resource:
+            return
+        values: dict[str, int | str] = {}
+        for name, header in (
+            ("limit", "X-RateLimit-Limit"),
+            ("remaining", "X-RateLimit-Remaining"),
+            ("used", "X-RateLimit-Used"),
+            ("reset", "X-RateLimit-Reset"),
+        ):
+            raw_value = response.headers.get(header)
+            if raw_value is None:
+                continue
+            try:
+                values[name] = int(raw_value)
+            except ValueError:
+                values[name] = raw_value
+        with self._state_lock:
+            self._rate_limits[resource] = values

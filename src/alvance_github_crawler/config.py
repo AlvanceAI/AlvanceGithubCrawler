@@ -11,6 +11,7 @@ from urllib.parse import urlsplit, urlunsplit
 
 SUPPORTED_LANGUAGES = ("go", "python", "typescript", "javascript", "rust")
 NUMBERED_E2B_KEY = re.compile(r"^E2B_API_KEY(\d+)$")
+NUMBERED_GITHUB_TOKEN = re.compile(r"^GITHUB_TOKEN(\d+)$")
 
 
 def parse_env_bool(value: str, *, default: bool = False) -> bool:
@@ -48,6 +49,7 @@ def load_dotenv(path: Path = Path(".env")) -> None:
 @dataclass(slots=True)
 class PipelineConfig:
     github_token: str = ""
+    github_tokens: tuple[str, ...] = field(default_factory=tuple)
     openai_api_key: str = ""
     openai_base_url: str = ""
     e2b_api_key: str = ""
@@ -75,6 +77,13 @@ class PipelineConfig:
     languages: tuple[str, ...] = field(default_factory=lambda: SUPPORTED_LANGUAGES)
 
     def __post_init__(self) -> None:
+        github_tokens = tuple(dict.fromkeys(token for token in self.github_tokens if token))
+        if not github_tokens and self.github_token:
+            github_tokens = (self.github_token,)
+        self.github_tokens = github_tokens
+        if github_tokens:
+            self.github_token = github_tokens[0]
+
         keys = tuple(dict.fromkeys(key for key in self.e2b_api_keys if key))
         if not keys and self.e2b_api_key:
             keys = (self.e2b_api_key,)
@@ -118,10 +127,31 @@ class PipelineConfig:
                     return (fallback,)
             return ()
 
+        def github_tokens() -> tuple[str, ...]:
+            for source in sources:
+                numbered_values: list[tuple[int, str]] = []
+                for key, raw_value in source.items():
+                    match = NUMBERED_GITHUB_TOKEN.fullmatch(str(key))
+                    token = str(raw_value or "").strip()
+                    if match and token:
+                        numbered_values.append((int(match.group(1)), token))
+                numbered = tuple(
+                    dict.fromkeys(token for _, token in sorted(numbered_values))
+                )
+                if numbered:
+                    return numbered
+                fallback = str(source.get("GITHUB_TOKEN") or "").strip()
+                if fallback:
+                    return (fallback,)
+            fallback = discover_github_token()
+            return (fallback,) if fallback else ()
+
         resolved_e2b_keys = e2b_keys()
+        resolved_github_tokens = github_tokens()
 
         return cls(
-            github_token=value("GITHUB_TOKEN") or discover_github_token(),
+            github_token=resolved_github_tokens[0] if resolved_github_tokens else "",
+            github_tokens=resolved_github_tokens,
             openai_api_key=value("OPENAI_API_KEY", "MODEL_API_KEY"),
             openai_base_url=normalize_openai_base_url(value("OPENAI_BASE_URL", "MODEL_BASE_URL")),
             e2b_api_key=resolved_e2b_keys[0] if resolved_e2b_keys else "",
@@ -144,8 +174,8 @@ class PipelineConfig:
 
     def validate(self, *, require_e2b: bool = True) -> None:
         missing = []
-        if not self.github_token:
-            missing.append("GITHUB_TOKEN")
+        if not self.github_tokens:
+            missing.append("GITHUB_TOKEN or GITHUB_TOKEN1/2")
         if not self.openai_api_key:
             missing.append("OPENAI_API_KEY")
         if require_e2b and not self.e2b_api_keys:

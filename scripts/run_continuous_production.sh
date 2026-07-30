@@ -288,6 +288,7 @@ doctor_json=$(
         uv run alvance-github-crawler --doctor
 )
 github_ready=$(jq -r '.github_token // false' <<< "$doctor_json")
+github_token_count=$(jq -r '.github_token_count // 0' <<< "$doctor_json")
 openai_ready=$(jq -r '.openai_api_key // false' <<< "$doctor_json")
 openai_sdk_ready=$(jq -r '.openai_sdk // false' <<< "$doctor_json")
 e2b_sdk_ready=$(jq -r '.e2b_sdk // false' <<< "$doctor_json")
@@ -295,7 +296,11 @@ key_count=$(jq -r '.e2b_api_key_count // 0' <<< "$doctor_json")
 total_concurrency=$(jq -r '.e2b_total_concurrency // 0' <<< "$doctor_json")
 
 if [[ $github_ready != true ]]; then
-    echo "missing GitHub credentials; set GITHUB_TOKEN in .env or authenticate gh" >&2
+    echo "missing GitHub credentials; set GITHUB_TOKEN1/GITHUB_TOKEN2 (or GITHUB_TOKEN) in .env or authenticate gh" >&2
+    exit 2
+fi
+if (( github_token_count < 1 )); then
+    echo "doctor found no usable GitHub token; set GITHUB_TOKEN1/GITHUB_TOKEN2 in .env" >&2
     exit 2
 fi
 if [[ $openai_ready != true ]]; then
@@ -310,7 +315,7 @@ if (( key_count != required_e2b_keys || total_concurrency != per_key_concurrency
     echo "expected E2B_API_KEY1, E2B_API_KEY2, and E2B_API_KEY3 in .env and $((per_key_concurrency * required_e2b_keys)) total slots" >&2
     exit 2
 fi
-echo "preflight passed: branch=$publish_branch prescreen=$prescreen_concurrency e2b_keys=$key_count e2b_slots=$total_concurrency"
+echo "preflight passed: branch=$publish_branch github_tokens=$github_token_count prescreen=$prescreen_concurrency e2b_keys=$key_count e2b_slots=$total_concurrency"
 
 if [[ -s catalog/e2b-packages.jsonl ]]; then
     run_stage repair-rebuildable-packages \

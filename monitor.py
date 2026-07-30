@@ -12,7 +12,7 @@ import subprocess
 import time
 from collections import Counter
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -73,6 +73,14 @@ def configured_e2b_key_count() -> int:
     """Read the configured numbered E2B slots without exposing their values."""
     try:
         return len(PipelineConfig.from_env().e2b_api_keys)
+    except (OSError, ValueError):
+        return 0
+
+
+def configured_github_token_count() -> int:
+    """Read the configured GitHub token pool size without exposing values."""
+    try:
+        return len(PipelineConfig.from_env().github_tokens)
     except (OSError, ValueError):
         return 0
 
@@ -266,20 +274,83 @@ def rejection_summary(records: list[dict[str, Any]]) -> Counter[str]:
     return Counter(latest.values())
 
 
+def _candidate_identity(record: dict[str, Any], index: int) -> str:
+    package = record.get("harbor_package")
+    task_path = str(package.get("task_path") or "") if isinstance(package, dict) else ""
+    repo = str(record.get("repo") or "")
+    base_commit = str(record.get("base_commit") or "")
+    return task_path or (f"{repo}@{base_commit}" if repo else f"row:{index}")
+
+
 def candidate_summary(records: list[dict[str, Any]]) -> Counter[str]:
     seen: set[str] = set()
     languages: Counter[str] = Counter()
     for index, record in enumerate(records):
-        package = record.get("harbor_package")
-        task_path = str(package.get("task_path") or "") if isinstance(package, dict) else ""
-        repo = str(record.get("repo") or "")
-        base_commit = str(record.get("base_commit") or "")
-        identity = task_path or (f"{repo}@{base_commit}" if repo else f"row:{index}")
+        identity = _candidate_identity(record, index)
         if identity in seen:
             continue
         seen.add(identity)
         languages[str(record.get("language") or "unknown").lower()] += 1
     return languages
+
+
+def _parse_timestamp(value: Any) -> datetime | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    normalized = value.strip()
+    if normalized.endswith("Z"):
+        normalized = f"{normalized[:-1]}+00:00"
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(UTC)
+
+
+def task_rate_summary(
+    records: list[dict[str, Any]],
+    *,
+    now: datetime | None = None,
+) -> dict[str, Any]:
+    """Estimate completed Task throughput from unique registry records.
+
+    Rates are extrapolated from the number of unique Tasks registered in the
+    trailing 15-minute and 60-minute windows. Invalid or missing timestamps do
+    not affect the estimate.
+    """
+    current = now or datetime.now(UTC)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=UTC)
+    current = current.astimezone(UTC)
+
+    seen: set[str] = set()
+    timestamps: list[datetime] = []
+    for index, record in enumerate(records):
+        identity = _candidate_identity(record, index)
+        if identity in seen:
+            continue
+        seen.add(identity)
+        registered_at = _parse_timestamp(record.get("registered_at"))
+        if registered_at is not None:
+            timestamps.append(registered_at)
+
+    def window_stats(window: timedelta) -> tuple[int, float]:
+        cutoff = current - window
+        count = sum(cutoff <= timestamp <= current for timestamp in timestamps)
+        return count, count * 3600.0 / window.total_seconds()
+
+    count_15m, rate_15m = window_stats(timedelta(minutes=15))
+    count_60m, rate_60m = window_stats(timedelta(hours=1))
+    latest = max(timestamps, default=None)
+    return {
+        "last_15m_count": count_15m,
+        "last_15m_per_hour": rate_15m,
+        "last_60m_count": count_60m,
+        "last_60m_per_hour": rate_60m,
+        "latest_at": latest,
+    }
 
 
 def latest_run_dir(run_root: Path) -> Path | None:
@@ -326,6 +397,7 @@ def render(
     prescreen_concurrency: int | None = None,
     e2b_concurrency_per_key: int | None = None,
     e2b_key_count: int = 0,
+    github_token_count: int = 0,
 ) -> None:
     candidates = read_jsonl(state_dir / "candidates.jsonl")
     pending_records = read_jsonl(state_dir / "pending.jsonl")
@@ -333,6 +405,7 @@ def render(
     pstats = pending_stats(pending_records)
     rstats = rejection_summary(rejections)
     cstats = candidate_summary(candidates)
+    rate = task_rate_summary(candidates)
     processes = pipeline_processes()
 
     raw_total = line_count(crawl_dir / "raw_repositories.jsonl")
@@ -410,6 +483,9 @@ def render(
     if ceiling_per_language:
         summary.append("Current crawl ceiling: ", style="bold")
         summary.append(f"{ceiling_per_language * len(LANGUAGE_ORDER):,}\n", style="cyan")
+    if github_token_count:
+        summary.append("GitHub token pool: ", style="bold")
+        summary.append(f"{github_token_count}\n", style="bold cyan")
     if prescreen_concurrency:
         summary.append("Prescreen workers: ", style="bold")
         summary.append(f"{prescreen_concurrency}\n", style="cyan")
@@ -420,6 +496,16 @@ def render(
             f"{e2b_concurrency_per_key}/key x {e2b_key_count} = {total_e2b_workers}\n",
             style="bold cyan",
         )
+    summary.append("Task rate (rolling): ", style="bold")
+    summary.append(
+        f"{rate['last_15m_per_hour']:.1f}/h (15m) | "
+        f"{rate['last_60m_per_hour']:.1f}/h (60m)\n",
+        style="bold green",
+    )
+    if rate["latest_at"] is not None:
+        latest_local = rate["latest_at"].astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
+        summary.append("Latest Task: ", style="bold")
+        summary.append(f"{latest_local}\n", style="dim")
     summary.append("Active pending: ", style="bold")
     summary.append(f"{pstats['active']:,}\n", style="bold cyan")
     summary.append("Rejected repositories: ", style="bold")
@@ -543,6 +629,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     e2b_key_count = configured_e2b_key_count()
+    github_token_count = configured_github_token_count()
     console = Console()
     layout = build_layout()
     if args.once:
@@ -552,6 +639,7 @@ def main(argv: list[str] | None = None) -> int:
             crawl_dir=args.crawl_dir,
             run_root=args.run_root,
             e2b_key_count=e2b_key_count,
+            github_token_count=github_token_count,
         )
         console.print(layout)
         return 0
@@ -639,6 +727,7 @@ def main(argv: list[str] | None = None) -> int:
                         args.e2b_concurrency if not args.monitor_only else None
                     ),
                     e2b_key_count=e2b_key_count,
+                    github_token_count=github_token_count,
                 )
                 if terminal_status:
                     time.sleep(3)
@@ -658,6 +747,7 @@ def main(argv: list[str] | None = None) -> int:
                     prescreen_concurrency=args.prescreen_concurrency,
                     e2b_concurrency_per_key=args.e2b_concurrency,
                     e2b_key_count=e2b_key_count,
+                    github_token_count=github_token_count,
                 )
                 final_code = stop_pipeline(managed)
                 terminal_status = ("■ PIPELINE PAUSED", "bold yellow")
@@ -674,6 +764,7 @@ def main(argv: list[str] | None = None) -> int:
                 prescreen_concurrency=(args.prescreen_concurrency if managed else None),
                 e2b_concurrency_per_key=(args.e2b_concurrency if managed else None),
                 e2b_key_count=e2b_key_count,
+                github_token_count=github_token_count,
             )
         finally:
             if managed:

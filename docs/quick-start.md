@@ -14,7 +14,7 @@
 
 最小可行测试需要：
 
-- GitHub 凭据：`GITHUB_TOKEN`，或已经登录的 `gh auth`；
+- GitHub 凭据：`GITHUB_TOKEN1`/`GITHUB_TOKEN2`（也可只填 `GITHUB_TOKEN`），或已经登录的 `gh auth`；
 - 模型凭据：`OPENAI_API_KEY`；
 - 联网能力：访问 GitHub、模型接口、grep.app/Sourcegraph 和依赖源；
 - 本地离线验证还需要可用的 Docker daemon；
@@ -25,8 +25,10 @@
 先执行 `cp .env.example .env`，再填写 `.env`。不要提交该文件。
 
 ```dotenv
-# 必填；只爬公开仓库时使用只读 fine-grained PAT 即可
+# 必填；推荐填写两个 Token，程序按请求轮询使用；只爬公开仓库时使用只读 fine-grained PAT 即可
 GITHUB_TOKEN=
+GITHUB_TOKEN1=
+GITHUB_TOKEN2=
 
 # 必填；Stage 3 用模型分析 GitHub feature issue
 OPENAI_API_KEY=
@@ -52,9 +54,9 @@ PIPELINE_OUTPUT_DIR=output/test-1
 
 ## GitHub 是否需要 Key
 
-对这个项目而言需要。代码在启动主流程时会校验 `GITHUB_TOKEN`；若未填写，只会尝试
-读取 `gh auth token`。当前主机没有 `gh`，因此现在必须填写 `GITHUB_TOKEN`（或先安装
-并登录 GitHub CLI）。项目只读取公开仓库时无需写权限，也不要授予私有仓库权限。
+对这个项目而言需要。代码在启动主流程时会校验 `GITHUB_TOKEN1`/`GITHUB_TOKEN2` 或
+兼容的 `GITHUB_TOKEN`；若未填写，只会尝试读取 `gh auth token`。当前主机没有 `gh`，因此现在必须填写
+其中一个 Token（或先安装并登录 GitHub CLI）。项目只读取公开仓库时无需写权限，也不要授予私有仓库权限。
 
 Key 的影响很大：
 

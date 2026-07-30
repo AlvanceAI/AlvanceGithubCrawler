@@ -66,3 +66,20 @@ command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu
   "unchanged": 301
 }
 [2026-07-30T10:30:25Z] stage=repair-rebuildable-packages exit_code=0 duration_s=3
+[2026-07-30T15:47:01Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260730
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 463,
+  "languages": {
+    "go": 207,
+    "javascript": 31,
+    "python": 70,
+    "rust": 122,
+    "typescript": 33
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 463
+}
+[2026-07-30T15:47:05Z] stage=repair-rebuildable-packages exit_code=0 duration_s=4

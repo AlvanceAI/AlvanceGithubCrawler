@@ -1,0 +1,29 @@
+[2026-07-30T15:53:37Z] stage=verify-default-20260730T155337Z run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-30 15:53:39,638 INFO alvance_github_crawler.pending.verification: verifying pending candidate binsync/declib key_slot=1
+2026-07-30 15:53:39,639 INFO alvance_github_crawler.pending.verification: verifying pending candidate whyisdifficult/jiratui key_slot=2
+2026-07-30 15:53:39,642 INFO alvance_github_crawler.pending.verification: verifying pending candidate whonore/Coqtail key_slot=3
+2026-07-30 15:53:45,515 INFO alvance_github_crawler.pending.verification: verifying pending candidate magic-wormhole/magic-wormhole key_slot=1
+2026-07-30 15:53:54,218 INFO alvance_github_crawler.pending.verification: pending candidate whonore/Coqtail finished outcome=rejected key_slot=3 processed=1 in_flight=3
+2026-07-30 15:53:58,990 INFO alvance_github_crawler.pending.verification: verifying pending candidate nedbat/dinghy key_slot=3
+2026-07-30 15:54:00,225 INFO alvance_github_crawler.pending.verification: verifying pending candidate la5nta/pat key_slot=2
+2026-07-30 15:54:03,956 INFO alvance_github_crawler.pending.verification: verifying pending candidate prometheus/prom2json key_slot=3
+2026-07-30 15:54:20,707 INFO alvance_github_crawler.pending.verification: pending candidate nedbat/dinghy finished outcome=rejected key_slot=3 processed=2 in_flight=5
+2026-07-30 15:54:20,906 INFO alvance_github_crawler.pending.verification: verifying pending candidate prometheus/node_exporter key_slot=3
+2026-07-30 15:54:20,906 INFO alvance_github_crawler.pending.verification: verifying pending candidate synadia-labs/rita key_slot=1
+2026-07-30 15:54:22,931 INFO alvance_github_crawler.pending.verification: pending candidate magic-wormhole/magic-wormhole finished outcome=rejected key_slot=1 processed=3 in_flight=6
+2026-07-30 15:54:27,080 INFO alvance_github_crawler.pending.verification: pending candidate binsync/declib finished outcome=rejected key_slot=1 processed=4 in_flight=5
+2026-07-30 15:54:27,297 INFO alvance_github_crawler.pending.verification: verifying pending candidate gdamore/tcell key_slot=1
+2026-07-30 15:54:27,314 INFO alvance_github_crawler.pending.verification: pending candidate whyisdifficult/jiratui finished outcome=rejected key_slot=2 processed=5 in_flight=5
+2026-07-30 15:54:43,436 INFO alvance_github_crawler.pending.verification: verifying pending candidate nlewo/comin key_slot=2
+2026-07-30 15:54:50,878 INFO alvance_github_crawler.pending.verification: verifying pending candidate denoland/clawpatrol key_slot=3
+2026-07-30 15:55:00,847 INFO alvance_github_crawler.pending.verification: verifying pending candidate squzy/squzy key_slot=1
+2026-07-30 15:55:18,573 INFO alvance_github_crawler.pending.verification: verifying pending candidate pokanop/nostromo key_slot=2
+2026-07-30 15:55:26,090 INFO alvance_github_crawler.pending.verification: verifying pending candidate zalando-incubator/cluster-lifecycle-manager key_slot=3
+2026-07-30 15:55:27,488 INFO alvance_github_crawler.pending.verification: pending candidate pokanop/nostromo finished outcome=error key_slot=2 processed=6 in_flight=9
+2026-07-30 15:56:09,229 INFO alvance_github_crawler.pending.verification: pending candidate prometheus/prom2json finished outcome=registered key_slot=3 processed=7 in_flight=8
+2026-07-30 15:56:43,333 INFO alvance_github_crawler.pending.verification: pending candidate prometheus/node_exporter finished outcome=rejected key_slot=3 processed=8 in_flight=7
+2026-07-30 15:57:07,146 INFO alvance_github_crawler.pending.verification: pending candidate gdamore/tcell finished outcome=registered key_slot=1 processed=9 in_flight=6
+2026-07-30 15:57:21,192 INFO alvance_github_crawler.pending.verification: pending candidate denoland/clawpatrol finished outcome=rejected key_slot=3 processed=10 in_flight=5
+2026-07-30 15:57:35,587 INFO alvance_github_crawler.pending.verification: pending candidate synadia-labs/rita finished outcome=rejected key_slot=1 processed=11 in_flight=4
+2026-07-30 15:58:50,414 INFO alvance_github_crawler.pending.verification: verifying pending candidate cyanheads/mcp-ts-core key_slot=1

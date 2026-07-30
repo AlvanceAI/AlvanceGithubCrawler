@@ -31,7 +31,9 @@ cp .env.example .env
 `.env` 已被 Git 忽略。
 
 ```dotenv
-GITHUB_TOKEN=github_pat_replace_me
+GITHUB_TOKEN=
+GITHUB_TOKEN1=github_pat_replace_me_1
+GITHUB_TOKEN2=github_pat_replace_me_2
 
 OPENAI_API_KEY=sk_replace_me
 OPENAI_BASE_URL=
@@ -48,7 +50,8 @@ PIPELINE_PRESCREEN_CONCURRENCY=20
 
 字段说明：
 
-- `GITHUB_TOKEN`：GitHub 仓库搜索、内容读取和 code search；
+- `GITHUB_TOKEN1`、`GITHUB_TOKEN2`：GitHub 仓库搜索、内容读取和 code search 的轮询凭据池；
+- `GITHUB_TOKEN`：单 Token 兼容回退配置。编号 Token 存在时优先使用编号池；两个 PAT 若属于同一 GitHub 账号，GitHub 可能仍共享账号级额度；
 - `OPENAI_API_KEY`：Stage 3 issue 方向判定；
 - `OPENAI_MODEL`：可选，默认 `gpt-5-mini`；
 - `OPENAI_BASE_URL`：可选，OpenAI 兼容网关地址；
@@ -56,7 +59,7 @@ PIPELINE_PRESCREEN_CONCURRENCY=20
 - `E2B_API_KEY`：只用于单 Key 命令，双 Key 量产时保持为空。
 
 也支持已有环境的别名 `MODEL_API_KEY`、`MODEL_BASE_URL`、`MODEL_NAME`、`E2B_KEY`，
-并可通过 `PIPELINE_ENV_FILE=/path/to/.env` 加载外部文件。未设置 `GITHUB_TOKEN` 时，
+并可通过 `PIPELINE_ENV_FILE=/path/to/.env` 加载外部文件。未设置任意 GitHub Token 时，
 程序会尝试安全复用当前 `gh auth` 登录态。
 
 环境自检不会输出密钥内容：
@@ -65,7 +68,7 @@ PIPELINE_PRESCREEN_CONCURRENCY=20
 uv run alvance-github-crawler --doctor
 ```
 
-开始量产前应确认输出至少包含：`github_token: true`、`openai_api_key: true`、
+开始量产前应确认输出至少包含：`github_token: true`、`github_token_count: 2`、`openai_api_key: true`、
 `e2b_api_key_count: 3`、`e2b_total_concurrency: 60` 和 `e2b_sdk: true`。
 
 ## 三 Key 并发量产

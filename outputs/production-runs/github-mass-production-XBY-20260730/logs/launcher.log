@@ -29013,3 +29013,1066 @@ command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/git
   "remaining": 0
 }
 [2026-07-30T15:46:42Z] stage=verify-escalated-20260730T153359Z exit_code=0 duration_s=763
+[XBY e5bab86] docs: record github-mass-production-XBY-20260730 production statistics
+ 43 files changed, 45167 insertions(+), 158 deletions(-)
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-10500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-11000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-11500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-12000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-12500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-13000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-13500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-14000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-14500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/crawl-15000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-10500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-11000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-11500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-12000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-12500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-13000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-13500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-14000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-14500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/prescreen-15000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/verify-default-20260730T103708Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/verify-default-20260730T140248Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/verify-default-20260730T141606Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/verify-escalated-20260730T141724Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260730/logs/verify-escalated-20260730T153359Z.log
+remote: warning: See https://gh.io/lfs for more information.        
+remote: warning: File outputs/github_crawl_500_unquota/raw_repositories.jsonl is 84.06 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        
+remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To github.com:AlvanceAI/AlvanceGithubCrawler.git
+   5caeb1c..e5bab86  XBY -> XBY
+continuous production complete: /home/xubingyu/AlvanceGithubCrawler/outputs/production-runs/github-mass-production-XBY-20260730
+
+[2026-07-30T15:46:59.394465+00:00] monitor launch max_per_language=4000 batch_per_language=100 prescreen_concurrency=20 e2b_concurrency_per_key=20
+preflight passed: branch=XBY github_tokens=2 prescreen=20 e2b_keys=3 e2b_slots=60
+[2026-07-30T15:47:01Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260730
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 463,
+  "languages": {
+    "go": 207,
+    "javascript": 31,
+    "python": 70,
+    "rust": 122,
+    "typescript": 33
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 463
+}
+[2026-07-30T15:47:05Z] stage=repair-rebuildable-packages exit_code=0 duration_s=4
+[2026-07-30T15:47:07Z] stage=prescreen-resume-15000 run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+{
+  "duplicate": 7616,
+  "input_total": 7616,
+  "processed": 0
+}
+[2026-07-30T15:47:10Z] stage=prescreen-resume-15000 exit_code=0 duration_s=3
+[2026-07-30T15:47:10Z] stage=crawl-15500 run_id=github-mass-production-XBY-20260730
+command= uv run alvance-github-crawler crawl --target-total 15500 --per-language 3100 --max-search-pages 10 --output /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota --request-interval 0.2 --verbose
+2026-07-30 15:47:16,265 INFO alvance_github_crawler.crawl: fetching python search window 4 page 2
+2026-07-30 15:47:19,642 INFO alvance_github_crawler.crawl: screening The-Pocket/PocketFlow (python)
+2026-07-30 15:47:20,429 INFO alvance_github_crawler.crawl: accepted The-Pocket/PocketFlow (python accepted=1552)
+2026-07-30 15:47:20,429 INFO alvance_github_crawler.crawl: screening lutris/lutris (python)
+2026-07-30 15:47:20,429 INFO alvance_github_crawler.crawl: screening JoshuaC215/agent-service-toolkit (python)
+2026-07-30 15:47:21,112 INFO alvance_github_crawler.crawl: accepted JoshuaC215/agent-service-toolkit (python accepted=1553)
+2026-07-30 15:47:21,112 INFO alvance_github_crawler.crawl: screening Jon-Becker/prediction-market-analysis (python)
+2026-07-30 15:47:21,791 INFO alvance_github_crawler.crawl: accepted Jon-Becker/prediction-market-analysis (python accepted=1554)
+2026-07-30 15:47:21,791 INFO alvance_github_crawler.crawl: screening CravateRouge/bloodyAD (python)
+2026-07-30 15:47:22,410 INFO alvance_github_crawler.crawl: accepted CravateRouge/bloodyAD (python accepted=1555)
+2026-07-30 15:47:22,410 INFO alvance_github_crawler.crawl: screening facebookresearch/ai4animationpy (python)
+2026-07-30 15:47:22,410 INFO alvance_github_crawler.crawl: screening dj-stripe/dj-stripe (python)
+2026-07-30 15:47:23,090 INFO alvance_github_crawler.crawl: accepted dj-stripe/dj-stripe (python accepted=1556)
+2026-07-30 15:47:23,090 INFO alvance_github_crawler.crawl: screening whyisdifficult/jiratui (python)
+2026-07-30 15:47:23,830 INFO alvance_github_crawler.crawl: accepted whyisdifficult/jiratui (python accepted=1557)
+2026-07-30 15:47:23,830 INFO alvance_github_crawler.crawl: screening dfm/emcee (python)
+2026-07-30 15:47:24,468 INFO alvance_github_crawler.crawl: accepted dfm/emcee (python accepted=1558)
+2026-07-30 15:47:24,468 INFO alvance_github_crawler.crawl: screening heurist-network/heurist-agent-framework (python)
+2026-07-30 15:47:24,469 INFO alvance_github_crawler.crawl: screening dimastatz/whisper-flow (python)
+2026-07-30 15:47:25,112 INFO alvance_github_crawler.crawl: accepted dimastatz/whisper-flow (python accepted=1559)
+2026-07-30 15:47:25,112 INFO alvance_github_crawler.crawl: screening buddy-compiler/buddy-mlir (python)
+2026-07-30 15:47:26,042 INFO alvance_github_crawler.crawl: accepted buddy-compiler/buddy-mlir (python accepted=1560)
+2026-07-30 15:47:26,043 INFO alvance_github_crawler.crawl: screening materialyzeai/matgl (python)
+2026-07-30 15:47:26,827 INFO alvance_github_crawler.crawl: accepted materialyzeai/matgl (python accepted=1561)
+2026-07-30 15:47:26,827 INFO alvance_github_crawler.crawl: screening sibson/vncdotool (python)
+2026-07-30 15:47:26,827 INFO alvance_github_crawler.crawl: screening AndrewAnnex/SpiceyPy (python)
+2026-07-30 15:47:27,509 INFO alvance_github_crawler.crawl: accepted AndrewAnnex/SpiceyPy (python accepted=1562)
+2026-07-30 15:47:27,509 INFO alvance_github_crawler.crawl: screening CalebBell/fluids (python)
+2026-07-30 15:47:28,184 INFO alvance_github_crawler.crawl: accepted CalebBell/fluids (python accepted=1563)
+2026-07-30 15:47:28,184 INFO alvance_github_crawler.crawl: screening ahmadvh/octochains (python)
+2026-07-30 15:47:28,185 INFO alvance_github_crawler.crawl: screening jkingsman/Remote-Terminal-for-MeshCore (python)
+2026-07-30 15:47:28,883 INFO alvance_github_crawler.crawl: accepted jkingsman/Remote-Terminal-for-MeshCore (python accepted=1564)
+2026-07-30 15:47:28,883 INFO alvance_github_crawler.crawl: screening Coff0xc/AutoRedTeam-Orchestrator (python)
+2026-07-30 15:47:28,883 INFO alvance_github_crawler.crawl: screening binsync/declib (python)
+2026-07-30 15:47:29,606 INFO alvance_github_crawler.crawl: accepted binsync/declib (python accepted=1565)
+2026-07-30 15:47:29,606 INFO alvance_github_crawler.crawl: screening DASDAE/dascore (python)
+2026-07-30 15:47:29,606 INFO alvance_github_crawler.crawl: screening Ichinga-Samuel/aiomql (python)
+2026-07-30 15:47:30,224 INFO alvance_github_crawler.crawl: accepted Ichinga-Samuel/aiomql (python accepted=1566)
+2026-07-30 15:47:30,224 INFO alvance_github_crawler.crawl: screening Krande/adapy (python)
+2026-07-30 15:47:30,224 INFO alvance_github_crawler.crawl: screening kcjengr/qtpyvcp (python)
+2026-07-30 15:47:30,225 INFO alvance_github_crawler.crawl: screening magic-wormhole/magic-wormhole (python)
+2026-07-30 15:47:31,081 INFO alvance_github_crawler.crawl: accepted magic-wormhole/magic-wormhole (python accepted=1567)
+2026-07-30 15:47:31,081 INFO alvance_github_crawler.crawl: screening idank/explainshell (python)
+2026-07-30 15:47:31,082 INFO alvance_github_crawler.crawl: screening The-PR-Agent/pr-agent (python)
+2026-07-30 15:47:31,721 INFO alvance_github_crawler.crawl: accepted The-PR-Agent/pr-agent (python accepted=1568)
+2026-07-30 15:47:31,721 INFO alvance_github_crawler.crawl: screening Farama-Foundation/Gymnasium (python)
+2026-07-30 15:47:32,358 INFO alvance_github_crawler.crawl: accepted Farama-Foundation/Gymnasium (python accepted=1569)
+2026-07-30 15:47:32,358 INFO alvance_github_crawler.crawl: screening JerBouma/FinanceDatabase (python)
+2026-07-30 15:47:33,049 INFO alvance_github_crawler.crawl: accepted JerBouma/FinanceDatabase (python accepted=1570)
+2026-07-30 15:47:33,049 INFO alvance_github_crawler.crawl: screening ericosiu/ai-marketing-skills (python)
+2026-07-30 15:47:33,609 INFO alvance_github_crawler.crawl: screening yutto-dev/yutto (python)
+2026-07-30 15:47:33,610 INFO alvance_github_crawler.crawl: screening ExtensityAI/symbolicai (python)
+2026-07-30 15:47:34,392 INFO alvance_github_crawler.crawl: accepted ExtensityAI/symbolicai (python accepted=1571)
+2026-07-30 15:47:34,392 INFO alvance_github_crawler.crawl: screening kubeflow/katib (python)
+2026-07-30 15:47:35,412 INFO alvance_github_crawler.crawl: screening jython/jython (python)
+2026-07-30 15:47:35,413 INFO alvance_github_crawler.crawl: screening RayBytes/ChatMock (python)
+2026-07-30 15:47:36,013 INFO alvance_github_crawler.crawl: accepted RayBytes/ChatMock (python accepted=1572)
+2026-07-30 15:47:36,014 INFO alvance_github_crawler.crawl: screening littledivy/mimic (python)
+2026-07-30 15:47:36,732 INFO alvance_github_crawler.crawl: accepted littledivy/mimic (python accepted=1573)
+2026-07-30 15:47:36,732 INFO alvance_github_crawler.crawl: screening ALwrity/ALwrity (python)
+2026-07-30 15:47:36,732 INFO alvance_github_crawler.crawl: screening NeuroTechX/moabb (python)
+2026-07-30 15:47:37,567 INFO alvance_github_crawler.crawl: accepted NeuroTechX/moabb (python accepted=1574)
+2026-07-30 15:47:37,567 INFO alvance_github_crawler.crawl: screening pcrbot/HoshinoBot-plugins-index (python)
+2026-07-30 15:47:37,567 INFO alvance_github_crawler.crawl: screening dfm/corner.py (python)
+2026-07-30 15:47:38,273 INFO alvance_github_crawler.crawl: accepted dfm/corner.py (python accepted=1575)
+2026-07-30 15:47:38,273 INFO alvance_github_crawler.crawl: screening cmu-db/dbdb.io (python)
+2026-07-30 15:47:39,144 INFO alvance_github_crawler.crawl: accepted cmu-db/dbdb.io (python accepted=1576)
+2026-07-30 15:47:39,144 INFO alvance_github_crawler.crawl: screening zabbly/incus (python)
+2026-07-30 15:47:39,785 INFO alvance_github_crawler.crawl: screening lllllllama/RigorPilot-Skills (python)
+2026-07-30 15:47:40,441 INFO alvance_github_crawler.crawl: screening flekschas/jupyter-scatter (python)
+2026-07-30 15:47:41,310 INFO alvance_github_crawler.crawl: accepted flekschas/jupyter-scatter (python accepted=1577)
+2026-07-30 15:47:41,311 INFO alvance_github_crawler.crawl: screening SponsioLabs/Sponsio (python)
+2026-07-30 15:47:42,096 INFO alvance_github_crawler.crawl: accepted SponsioLabs/Sponsio (python accepted=1578)
+2026-07-30 15:47:42,096 INFO alvance_github_crawler.crawl: screening aropan/clist (python)
+2026-07-30 15:47:42,900 INFO alvance_github_crawler.crawl: accepted aropan/clist (python accepted=1579)
+2026-07-30 15:47:42,900 INFO alvance_github_crawler.crawl: screening worldwonderer/video-recap-skills (python)
+2026-07-30 15:47:43,544 INFO alvance_github_crawler.crawl: accepted worldwonderer/video-recap-skills (python accepted=1580)
+2026-07-30 15:47:43,544 INFO alvance_github_crawler.crawl: screening 0xku/leetcode-compensation (python)
+2026-07-30 15:47:44,323 INFO alvance_github_crawler.crawl: accepted 0xku/leetcode-compensation (python accepted=1581)
+2026-07-30 15:47:44,323 INFO alvance_github_crawler.crawl: screening runekaagaard/mcp-alchemy (python)
+2026-07-30 15:47:44,912 INFO alvance_github_crawler.crawl: accepted runekaagaard/mcp-alchemy (python accepted=1582)
+2026-07-30 15:47:44,912 INFO alvance_github_crawler.crawl: screening BAAI-DCAI/SpatialBot (python)
+2026-07-30 15:47:45,832 INFO alvance_github_crawler.crawl: screening dfm/tinygp (python)
+2026-07-30 15:47:46,606 INFO alvance_github_crawler.crawl: accepted dfm/tinygp (python accepted=1583)
+2026-07-30 15:47:46,607 INFO alvance_github_crawler.crawl: screening afewmail/afew (python)
+2026-07-30 15:47:47,338 INFO alvance_github_crawler.crawl: accepted afewmail/afew (python accepted=1584)
+2026-07-30 15:47:47,339 INFO alvance_github_crawler.crawl: screening py-econometrics/pyfixest (python)
+2026-07-30 15:47:48,346 INFO alvance_github_crawler.crawl: accepted py-econometrics/pyfixest (python accepted=1585)
+2026-07-30 15:47:48,346 INFO alvance_github_crawler.crawl: screening whonore/Coqtail (python)
+2026-07-30 15:47:49,050 INFO alvance_github_crawler.crawl: accepted whonore/Coqtail (python accepted=1586)
+2026-07-30 15:47:49,051 INFO alvance_github_crawler.crawl: screening next-state/open-dreamer (python)
+2026-07-30 15:47:49,057 INFO alvance_github_crawler.crawl: screening AorsiniYT/hachimi-tl-es (python)
+2026-07-30 15:47:49,057 INFO alvance_github_crawler.crawl: screening rainbowpigeon/sublime-text-4-patcher (python)
+2026-07-30 15:47:49,057 INFO alvance_github_crawler.crawl: screening mbraak/django-mptt-admin (python)
+2026-07-30 15:47:49,058 INFO alvance_github_crawler.crawl: screening gpu-mode/reference-kernels (python)
+2026-07-30 15:47:49,058 INFO alvance_github_crawler.crawl: screening EasternJournalist/utils3d (python)
+2026-07-30 15:47:49,887 INFO alvance_github_crawler.crawl: screening kaloyaan/reframe (python)
+2026-07-30 15:47:50,508 INFO alvance_github_crawler.crawl: accepted kaloyaan/reframe (python accepted=1587)
+2026-07-30 15:47:50,508 INFO alvance_github_crawler.crawl: screening anishathalye/semlib (python)
+2026-07-30 15:47:51,141 INFO alvance_github_crawler.crawl: accepted anishathalye/semlib (python accepted=1588)
+2026-07-30 15:47:51,141 INFO alvance_github_crawler.crawl: screening LukasNiessen/ArchUnitPython (python)
+2026-07-30 15:47:51,843 INFO alvance_github_crawler.crawl: accepted LukasNiessen/ArchUnitPython (python accepted=1589)
+2026-07-30 15:47:51,843 INFO alvance_github_crawler.crawl: screening robinhad/ukrainian-tts (python)
+2026-07-30 15:47:52,222 INFO alvance_github_crawler.crawl: screening ynkdir/py-win32more (python)
+2026-07-30 15:47:53,581 INFO alvance_github_crawler.crawl: accepted ynkdir/py-win32more (python accepted=1590)
+2026-07-30 15:47:53,581 INFO alvance_github_crawler.crawl: screening ColinKennedy/neovim-ai-plugins (python)
+2026-07-30 15:47:53,582 INFO alvance_github_crawler.crawl: screening OlivOS-Team/OlivOS (python)
+2026-07-30 15:47:53,582 INFO alvance_github_crawler.crawl: screening villasv/ssh-artwork (python)
+2026-07-30 15:47:53,582 INFO alvance_github_crawler.crawl: screening gcobb321/icloud3_v3 (python)
+2026-07-30 15:47:54,394 INFO alvance_github_crawler.crawl: screening peted-davis/WeatherFlow_PiConsole (python)
+2026-07-30 15:47:54,394 INFO alvance_github_crawler.crawl: screening nedbat/dinghy (python)
+2026-07-30 15:47:55,096 INFO alvance_github_crawler.crawl: accepted nedbat/dinghy (python accepted=1591)
+2026-07-30 15:47:55,096 INFO alvance_github_crawler.crawl: screening divyaprakash0426/autoshorts (python)
+2026-07-30 15:47:55,861 INFO alvance_github_crawler.crawl: accepted divyaprakash0426/autoshorts (python accepted=1592)
+2026-07-30 15:47:55,862 INFO alvance_github_crawler.crawl: screening olirice/flupy (python)
+2026-07-30 15:47:55,862 INFO alvance_github_crawler.crawl: screening AcademySoftwareFoundation/aswf-docker (python)
+2026-07-30 15:47:56,535 INFO alvance_github_crawler.crawl: accepted AcademySoftwareFoundation/aswf-docker (python accepted=1593)
+2026-07-30 15:47:56,535 INFO alvance_github_crawler.crawl: screening Scottcjn/grazer-skill (python)
+2026-07-30 15:47:57,358 INFO alvance_github_crawler.crawl: accepted Scottcjn/grazer-skill (python accepted=1594)
+2026-07-30 15:47:57,358 INFO alvance_github_crawler.crawl: screening Trepan-Debuggers/python3-trepan (python)
+2026-07-30 15:47:57,358 INFO alvance_github_crawler.crawl: screening dickloraine/EmbedComicMetadata (python)
+2026-07-30 15:47:57,358 INFO alvance_github_crawler.crawl: screening nothing2obvi/pixelfin (python)
+2026-07-30 15:47:57,359 INFO alvance_github_crawler.crawl: screening juherr/awesome-ev-charging (python)
+2026-07-30 15:47:57,359 INFO alvance_github_crawler.crawl: screening tomate44/CurvesWB (python)
+2026-07-30 15:47:57,359 INFO alvance_github_crawler.crawl: screening TheD0ubleC/QQSafeChat (python)
+2026-07-30 15:47:58,375 INFO alvance_github_crawler.crawl: screening Kamalisk/arkhamdb-json-data (python)
+2026-07-30 15:47:58,375 INFO alvance_github_crawler.crawl: screening PellelNitram/xournalpp_htr (python)
+2026-07-30 15:47:58,375 INFO alvance_github_crawler.crawl: screening pygobject/pgi-docgen (python)
+2026-07-30 15:47:58,376 INFO alvance_github_crawler.crawl: screening winstxnhdw/nllb-api (python)
+2026-07-30 15:47:58,376 INFO alvance_github_crawler.crawl: screening kcjengr/probe_basic (python)
+2026-07-30 15:47:58,376 INFO alvance_github_crawler.crawl: screening nebrass/hve-video-director (python)
+2026-07-30 15:47:59,055 INFO alvance_github_crawler.crawl: screening Pullusb/storytools (python)
+2026-07-30 15:47:59,059 INFO alvance_github_crawler.crawl: screening janushendersonassetallocation/loman (python)
+2026-07-30 15:48:00,050 INFO alvance_github_crawler.crawl: accepted janushendersonassetallocation/loman (python accepted=1595)
+2026-07-30 15:48:00,051 INFO alvance_github_crawler.crawl: screening cjdrake/seqlogic (python)
+2026-07-30 15:48:00,055 INFO alvance_github_crawler.crawl: screening indykoning/PyPi_GrowattServer (python)
+2026-07-30 15:48:00,710 INFO alvance_github_crawler.crawl: accepted indykoning/PyPi_GrowattServer (python accepted=1596)
+2026-07-30 15:48:00,710 INFO alvance_github_crawler.crawl: screening canonn-science/EDMC-Canonn (python)
+2026-07-30 15:48:00,710 INFO alvance_github_crawler.crawl: screening Algieba-dean/AutoVend (python)
+2026-07-30 15:48:00,711 INFO alvance_github_crawler.crawl: screening mailhexu/TB2J (python)
+2026-07-30 15:48:01,381 INFO alvance_github_crawler.crawl: accepted mailhexu/TB2J (python accepted=1597)
+2026-07-30 15:48:01,381 INFO alvance_github_crawler.crawl: screening htdt/godogen (python)
+2026-07-30 15:48:01,941 INFO alvance_github_crawler.crawl: screening xXJSONDeruloXx/Decky-Framegen (python)
+2026-07-30 15:48:01,941 INFO alvance_github_crawler.crawl: screening gcobb321/icloud3 (python)
+2026-07-30 15:48:02,503 INFO alvance_github_crawler.crawl: screening Vladless/Solo_bot (python)
+2026-07-30 15:48:02,504 INFO alvance_github_crawler.crawl: screening eremit4/favihunter (python)
+2026-07-30 15:48:03,440 INFO alvance_github_crawler.crawl: screening VIDAKHOSHPEY22/Atari-Racer (python)
+2026-07-30 15:48:04,041 INFO alvance_github_crawler.crawl: accepted VIDAKHOSHPEY22/Atari-Racer (python accepted=1598)
+2026-07-30 15:48:04,104 INFO alvance_github_crawler.crawl: fetching go search window 4 page 2
+2026-07-30 15:48:08,003 INFO alvance_github_crawler.crawl: screening urfave/cli (go)
+2026-07-30 15:48:08,513 INFO alvance_github_crawler.crawl: accepted urfave/cli (go accepted=2153)
+2026-07-30 15:48:08,513 INFO alvance_github_crawler.crawl: screening ekristen/aws-nuke (go)
+2026-07-30 15:48:09,168 INFO alvance_github_crawler.crawl: accepted ekristen/aws-nuke (go accepted=2154)
+2026-07-30 15:48:09,169 INFO alvance_github_crawler.crawl: screening gosnmp/gosnmp (go)
+2026-07-30 15:48:09,169 INFO alvance_github_crawler.crawl: screening dropbox/dbxcli (go)
+2026-07-30 15:48:09,169 INFO alvance_github_crawler.crawl: screening sunny0826/kubecm (go)
+2026-07-30 15:48:09,814 INFO alvance_github_crawler.crawl: accepted sunny0826/kubecm (go accepted=2155)
+2026-07-30 15:48:09,814 INFO alvance_github_crawler.crawl: screening la5nta/pat (go)
+2026-07-30 15:48:10,526 INFO alvance_github_crawler.crawl: accepted la5nta/pat (go accepted=2156)
+2026-07-30 15:48:10,527 INFO alvance_github_crawler.crawl: screening cli/oauth (go)
+2026-07-30 15:48:11,273 INFO alvance_github_crawler.crawl: accepted cli/oauth (go accepted=2157)
+2026-07-30 15:48:11,273 INFO alvance_github_crawler.crawl: screening shentufoundation/shentu (go)
+2026-07-30 15:48:11,273 INFO alvance_github_crawler.crawl: screening prometheus/prom2json (go)
+2026-07-30 15:48:12,040 INFO alvance_github_crawler.crawl: accepted prometheus/prom2json (go accepted=2158)
+2026-07-30 15:48:12,041 INFO alvance_github_crawler.crawl: screening xuri/excelize-wasm (go)
+2026-07-30 15:48:12,726 INFO alvance_github_crawler.crawl: screening dhth/hours (go)
+2026-07-30 15:48:13,415 INFO alvance_github_crawler.crawl: accepted dhth/hours (go accepted=2159)
+2026-07-30 15:48:13,415 INFO alvance_github_crawler.crawl: screening padok-team/yatas (go)
+2026-07-30 15:48:14,104 INFO alvance_github_crawler.crawl: accepted padok-team/yatas (go accepted=2160)
+2026-07-30 15:48:14,104 INFO alvance_github_crawler.crawl: screening openconfig/ygot (go)
+2026-07-30 15:48:14,765 INFO alvance_github_crawler.crawl: accepted openconfig/ygot (go accepted=2161)
+2026-07-30 15:48:14,765 INFO alvance_github_crawler.crawl: screening Mertcikla/tld (go)
+2026-07-30 15:48:15,482 INFO alvance_github_crawler.crawl: accepted Mertcikla/tld (go accepted=2162)
+2026-07-30 15:48:15,483 INFO alvance_github_crawler.crawl: screening patrickhoefler/dockerfilegraph (go)
+2026-07-30 15:48:16,077 INFO alvance_github_crawler.crawl: accepted patrickhoefler/dockerfilegraph (go accepted=2163)
+2026-07-30 15:48:16,077 INFO alvance_github_crawler.crawl: screening home-assistant/cli (go)
+2026-07-30 15:48:16,791 INFO alvance_github_crawler.crawl: accepted home-assistant/cli (go accepted=2164)
+2026-07-30 15:48:16,792 INFO alvance_github_crawler.crawl: screening vultr/govultr (go)
+2026-07-30 15:48:17,548 INFO alvance_github_crawler.crawl: accepted vultr/govultr (go accepted=2165)
+2026-07-30 15:48:17,548 INFO alvance_github_crawler.crawl: screening JanDeDobbeleer/aliae (go)
+2026-07-30 15:48:18,421 INFO alvance_github_crawler.crawl: screening authzed/zed (go)
+2026-07-30 15:48:19,152 INFO alvance_github_crawler.crawl: accepted authzed/zed (go accepted=2166)
+2026-07-30 15:48:19,153 INFO alvance_github_crawler.crawl: screening unpoller/unifi (go)
+2026-07-30 15:48:19,754 INFO alvance_github_crawler.crawl: accepted unpoller/unifi (go accepted=2167)
+2026-07-30 15:48:19,754 INFO alvance_github_crawler.crawl: screening pokanop/nostromo (go)
+2026-07-30 15:48:20,400 INFO alvance_github_crawler.crawl: accepted pokanop/nostromo (go accepted=2168)
+2026-07-30 15:48:20,400 INFO alvance_github_crawler.crawl: screening baidubce/bce-sdk-go (go)
+2026-07-30 15:48:21,139 INFO alvance_github_crawler.crawl: accepted baidubce/bce-sdk-go (go accepted=2169)
+2026-07-30 15:48:21,139 INFO alvance_github_crawler.crawl: screening openziti/sdk-golang (go)
+2026-07-30 15:48:22,076 INFO alvance_github_crawler.crawl: accepted openziti/sdk-golang (go accepted=2170)
+2026-07-30 15:48:22,076 INFO alvance_github_crawler.crawl: screening planetscale/planetscale-go (go)
+2026-07-30 15:48:22,999 INFO alvance_github_crawler.crawl: accepted planetscale/planetscale-go (go accepted=2171)
+2026-07-30 15:48:22,999 INFO alvance_github_crawler.crawl: screening synadia-labs/rita (go)
+2026-07-30 15:48:23,686 INFO alvance_github_crawler.crawl: accepted synadia-labs/rita (go accepted=2172)
+2026-07-30 15:48:23,686 INFO alvance_github_crawler.crawl: screening AndreasSko/go-library-merger (go)
+2026-07-30 15:48:24,416 INFO alvance_github_crawler.crawl: accepted AndreasSko/go-library-merger (go accepted=2173)
+2026-07-30 15:48:24,416 INFO alvance_github_crawler.crawl: screening google/cadvisor (go)
+2026-07-30 15:48:24,416 INFO alvance_github_crawler.crawl: screening prometheus/node_exporter (go)
+2026-07-30 15:48:25,037 INFO alvance_github_crawler.crawl: accepted prometheus/node_exporter (go accepted=2174)
+2026-07-30 15:48:25,037 INFO alvance_github_crawler.crawl: screening gonum/gonum (go)
+2026-07-30 15:48:25,668 INFO alvance_github_crawler.crawl: accepted gonum/gonum (go accepted=2175)
+2026-07-30 15:48:25,669 INFO alvance_github_crawler.crawl: screening chaos-mesh/chaos-mesh (go)
+2026-07-30 15:48:26,463 INFO alvance_github_crawler.crawl: accepted chaos-mesh/chaos-mesh (go accepted=2176)
+2026-07-30 15:48:26,463 INFO alvance_github_crawler.crawl: screening gdamore/tcell (go)
+2026-07-30 15:48:27,074 INFO alvance_github_crawler.crawl: accepted gdamore/tcell (go accepted=2177)
+2026-07-30 15:48:27,074 INFO alvance_github_crawler.crawl: screening diggerhq/digger (go)
+2026-07-30 15:48:27,751 INFO alvance_github_crawler.crawl: accepted diggerhq/digger (go accepted=2178)
+2026-07-30 15:48:27,751 INFO alvance_github_crawler.crawl: screening sammcj/gollama (go)
+2026-07-30 15:48:28,407 INFO alvance_github_crawler.crawl: accepted sammcj/gollama (go accepted=2179)
+2026-07-30 15:48:28,407 INFO alvance_github_crawler.crawl: screening mikespook/gorbac (go)
+2026-07-30 15:48:29,071 INFO alvance_github_crawler.crawl: accepted mikespook/gorbac (go accepted=2180)
+2026-07-30 15:48:29,072 INFO alvance_github_crawler.crawl: screening FairwindsOps/rbac-manager (go)
+2026-07-30 15:48:29,911 INFO alvance_github_crawler.crawl: accepted FairwindsOps/rbac-manager (go accepted=2181)
+2026-07-30 15:48:29,911 INFO alvance_github_crawler.crawl: screening portapps/portapps (go)
+2026-07-30 15:48:30,570 INFO alvance_github_crawler.crawl: accepted portapps/portapps (go accepted=2182)
+2026-07-30 15:48:30,570 INFO alvance_github_crawler.crawl: screening containerd/cgroups (go)
+2026-07-30 15:48:31,210 INFO alvance_github_crawler.crawl: accepted containerd/cgroups (go accepted=2183)
+2026-07-30 15:48:31,210 INFO alvance_github_crawler.crawl: screening kunchenguid/treehouse (go)
+2026-07-30 15:48:31,755 INFO alvance_github_crawler.crawl: accepted kunchenguid/treehouse (go accepted=2184)
+2026-07-30 15:48:31,755 INFO alvance_github_crawler.crawl: screening jcmoraisjr/haproxy-ingress (go)
+2026-07-30 15:48:32,416 INFO alvance_github_crawler.crawl: accepted jcmoraisjr/haproxy-ingress (go accepted=2185)
+2026-07-30 15:48:32,417 INFO alvance_github_crawler.crawl: screening dkorunic/betteralign (go)
+2026-07-30 15:48:33,102 INFO alvance_github_crawler.crawl: accepted dkorunic/betteralign (go accepted=2186)
+2026-07-30 15:48:33,102 INFO alvance_github_crawler.crawl: screening mdlayher/netlink (go)
+2026-07-30 15:48:33,751 INFO alvance_github_crawler.crawl: accepted mdlayher/netlink (go accepted=2187)
+2026-07-30 15:48:33,751 INFO alvance_github_crawler.crawl: screening harmonycloud/kindling (go)
+2026-07-30 15:48:34,744 INFO alvance_github_crawler.crawl: screening awa/go-iap (go)
+2026-07-30 15:48:35,405 INFO alvance_github_crawler.crawl: accepted awa/go-iap (go accepted=2188)
+2026-07-30 15:48:35,405 INFO alvance_github_crawler.crawl: screening nlewo/comin (go)
+2026-07-30 15:48:36,053 INFO alvance_github_crawler.crawl: accepted nlewo/comin (go accepted=2189)
+2026-07-30 15:48:36,054 INFO alvance_github_crawler.crawl: screening denoland/clawpatrol (go)
+2026-07-30 15:48:36,931 INFO alvance_github_crawler.crawl: accepted denoland/clawpatrol (go accepted=2190)
+2026-07-30 15:48:36,931 INFO alvance_github_crawler.crawl: screening ossf/package-analysis (go)
+2026-07-30 15:48:37,832 INFO alvance_github_crawler.crawl: accepted ossf/package-analysis (go accepted=2191)
+2026-07-30 15:48:37,832 INFO alvance_github_crawler.crawl: screening newrelic/go-agent (go)
+2026-07-30 15:48:38,424 INFO alvance_github_crawler.crawl: screening cloud-ark/kubeplus (go)
+2026-07-30 15:48:39,372 INFO alvance_github_crawler.crawl: screening github/freno (go)
+2026-07-30 15:48:40,115 INFO alvance_github_crawler.crawl: accepted github/freno (go accepted=2192)
+2026-07-30 15:48:40,115 INFO alvance_github_crawler.crawl: screening aurorax-neo/chat2api (go)
+2026-07-30 15:48:40,801 INFO alvance_github_crawler.crawl: accepted aurorax-neo/chat2api (go accepted=2193)
+2026-07-30 15:48:40,801 INFO alvance_github_crawler.crawl: screening grishy/any-sync-bundle (go)
+2026-07-30 15:48:41,661 INFO alvance_github_crawler.crawl: accepted grishy/any-sync-bundle (go accepted=2194)
+2026-07-30 15:48:41,661 INFO alvance_github_crawler.crawl: screening wI2L/jsondiff (go)
+2026-07-30 15:48:42,300 INFO alvance_github_crawler.crawl: accepted wI2L/jsondiff (go accepted=2195)
+2026-07-30 15:48:42,301 INFO alvance_github_crawler.crawl: screening HashLoad/boss (go)
+2026-07-30 15:48:42,956 INFO alvance_github_crawler.crawl: accepted HashLoad/boss (go accepted=2196)
+2026-07-30 15:48:42,956 INFO alvance_github_crawler.crawl: screening Vanilla-OS/apx (go)
+2026-07-30 15:48:42,956 INFO alvance_github_crawler.crawl: screening mrusme/zeit (go)
+2026-07-30 15:48:42,956 INFO alvance_github_crawler.crawl: screening hashicorp/consul-replicate (go)
+2026-07-30 15:48:43,647 INFO alvance_github_crawler.crawl: accepted hashicorp/consul-replicate (go accepted=2197)
+2026-07-30 15:48:43,647 INFO alvance_github_crawler.crawl: screening ahmetb/kubectl-foreach (go)
+2026-07-30 15:48:44,310 INFO alvance_github_crawler.crawl: accepted ahmetb/kubectl-foreach (go accepted=2198)
+2026-07-30 15:48:44,310 INFO alvance_github_crawler.crawl: screening squzy/squzy (go)
+2026-07-30 15:48:45,152 INFO alvance_github_crawler.crawl: accepted squzy/squzy (go accepted=2199)
+2026-07-30 15:48:45,152 INFO alvance_github_crawler.crawl: screening tmccombs/hcl2json (go)
+2026-07-30 15:48:45,819 INFO alvance_github_crawler.crawl: accepted tmccombs/hcl2json (go accepted=2200)
+2026-07-30 15:48:45,820 INFO alvance_github_crawler.crawl: screening fclairamb/ftpserverlib (go)
+2026-07-30 15:48:46,502 INFO alvance_github_crawler.crawl: accepted fclairamb/ftpserverlib (go accepted=2201)
+2026-07-30 15:48:46,502 INFO alvance_github_crawler.crawl: screening ctwj/urldb (go)
+2026-07-30 15:48:46,502 INFO alvance_github_crawler.crawl: screening lavanet/lava (go)
+2026-07-30 15:48:47,363 INFO alvance_github_crawler.crawl: accepted lavanet/lava (go accepted=2202)
+2026-07-30 15:48:47,363 INFO alvance_github_crawler.crawl: screening open-policy-agent/opa-envoy-plugin (go)
+2026-07-30 15:48:48,070 INFO alvance_github_crawler.crawl: accepted open-policy-agent/opa-envoy-plugin (go accepted=2203)
+2026-07-30 15:48:48,070 INFO alvance_github_crawler.crawl: screening moul/golang-repo-template (go)
+2026-07-30 15:48:48,070 INFO alvance_github_crawler.crawl: screening gopacket/gopacket (go)
+2026-07-30 15:48:48,741 INFO alvance_github_crawler.crawl: accepted gopacket/gopacket (go accepted=2204)
+2026-07-30 15:48:48,741 INFO alvance_github_crawler.crawl: screening rfjakob/cshatag (go)
+2026-07-30 15:48:49,433 INFO alvance_github_crawler.crawl: screening tinygo-org/go-llvm (go)
+2026-07-30 15:48:49,433 INFO alvance_github_crawler.crawl: screening aretext/aretext (go)
+2026-07-30 15:48:49,434 INFO alvance_github_crawler.crawl: screening apache/solr-operator (go)
+2026-07-30 15:48:50,135 INFO alvance_github_crawler.crawl: accepted apache/solr-operator (go accepted=2205)
+2026-07-30 15:48:50,135 INFO alvance_github_crawler.crawl: screening nezhahq/agent (go)
+2026-07-30 15:48:50,939 INFO alvance_github_crawler.crawl: accepted nezhahq/agent (go accepted=2206)
+2026-07-30 15:48:50,939 INFO alvance_github_crawler.crawl: screening zalando-incubator/cluster-lifecycle-manager (go)
+2026-07-30 15:48:51,677 INFO alvance_github_crawler.crawl: accepted zalando-incubator/cluster-lifecycle-manager (go accepted=2207)
+2026-07-30 15:48:51,677 INFO alvance_github_crawler.crawl: screening checkpoint-restore/go-criu (go)
+2026-07-30 15:48:52,534 INFO alvance_github_crawler.crawl: accepted checkpoint-restore/go-criu (go accepted=2208)
+2026-07-30 15:48:52,534 INFO alvance_github_crawler.crawl: screening opentracing-contrib/go-stdlib (go)
+2026-07-30 15:48:53,127 INFO alvance_github_crawler.crawl: accepted opentracing-contrib/go-stdlib (go accepted=2209)
+2026-07-30 15:48:53,127 INFO alvance_github_crawler.crawl: screening hay-kot/scaffold (go)
+2026-07-30 15:48:54,045 INFO alvance_github_crawler.crawl: accepted hay-kot/scaffold (go accepted=2210)
+2026-07-30 15:48:54,046 INFO alvance_github_crawler.crawl: screening liushuangls/go-anthropic (go)
+2026-07-30 15:48:54,737 INFO alvance_github_crawler.crawl: accepted liushuangls/go-anthropic (go accepted=2211)
+2026-07-30 15:48:54,737 INFO alvance_github_crawler.crawl: screening sue445/plant_erd (go)
+2026-07-30 15:48:55,453 INFO alvance_github_crawler.crawl: accepted sue445/plant_erd (go accepted=2212)
+2026-07-30 15:48:55,454 INFO alvance_github_crawler.crawl: screening hostinger/fireactions (go)
+2026-07-30 15:48:56,185 INFO alvance_github_crawler.crawl: accepted hostinger/fireactions (go accepted=2213)
+2026-07-30 15:48:56,185 INFO alvance_github_crawler.crawl: screening go-gorm/prometheus (go)
+2026-07-30 15:48:56,588 INFO alvance_github_crawler.crawl: screening ossf/security-baseline (go)
+2026-07-30 15:48:58,436 INFO alvance_github_crawler.crawl: screening liquidmetal-dev/cluster-api-provider-microvm (go)
+2026-07-30 15:48:58,436 INFO alvance_github_crawler.crawl: screening fabiocicerchia/go-proxy-cache (go)
+2026-07-30 15:48:58,437 INFO alvance_github_crawler.crawl: screening mikestefanello/backlite (go)
+2026-07-30 15:48:59,042 INFO alvance_github_crawler.crawl: accepted mikestefanello/backlite (go accepted=2214)
+2026-07-30 15:48:59,043 INFO alvance_github_crawler.crawl: screening matthewhartstonge/argon2 (go)
+2026-07-30 15:48:59,738 INFO alvance_github_crawler.crawl: accepted matthewhartstonge/argon2 (go accepted=2215)
+2026-07-30 15:48:59,738 INFO alvance_github_crawler.crawl: screening 2captcha/2captcha-go (go)
+2026-07-30 15:49:00,577 INFO alvance_github_crawler.crawl: screening mattermost/mattermost-operator (go)
+2026-07-30 15:49:01,190 INFO alvance_github_crawler.crawl: accepted mattermost/mattermost-operator (go accepted=2216)
+2026-07-30 15:49:01,190 INFO alvance_github_crawler.crawl: screening nats-io/nsc (go)
+2026-07-30 15:49:01,908 INFO alvance_github_crawler.crawl: accepted nats-io/nsc (go accepted=2217)
+2026-07-30 15:49:01,909 INFO alvance_github_crawler.crawl: screening foxj77/claudectx (go)
+2026-07-30 15:49:02,671 INFO alvance_github_crawler.crawl: accepted foxj77/claudectx (go accepted=2218)
+2026-07-30 15:49:02,671 INFO alvance_github_crawler.crawl: screening bnb-chain/greenfield (go)
+2026-07-30 15:49:02,671 INFO alvance_github_crawler.crawl: screening protocolbuffers/txtpbfmt (go)
+2026-07-30 15:49:03,329 INFO alvance_github_crawler.crawl: accepted protocolbuffers/txtpbfmt (go accepted=2219)
+2026-07-30 15:49:03,329 INFO alvance_github_crawler.crawl: screening secmon-lab/warren (go)
+2026-07-30 15:49:04,129 INFO alvance_github_crawler.crawl: accepted secmon-lab/warren (go accepted=2220)
+2026-07-30 15:49:04,129 INFO alvance_github_crawler.crawl: screening zmap/zannotate (go)
+2026-07-30 15:49:04,858 INFO alvance_github_crawler.crawl: accepted zmap/zannotate (go accepted=2221)
+2026-07-30 15:49:04,858 INFO alvance_github_crawler.crawl: screening alyraffauf/switchyard (go)
+2026-07-30 15:49:04,858 INFO alvance_github_crawler.crawl: screening netobserv/flowlogs-pipeline (go)
+2026-07-30 15:49:05,919 INFO alvance_github_crawler.crawl: accepted netobserv/flowlogs-pipeline (go accepted=2222)
+2026-07-30 15:49:05,919 INFO alvance_github_crawler.crawl: screening shift/domain_exporter (go)
+2026-07-30 15:49:06,599 INFO alvance_github_crawler.crawl: accepted shift/domain_exporter (go accepted=2223)
+2026-07-30 15:49:06,599 INFO alvance_github_crawler.crawl: screening mjl-/mox (go)
+2026-07-30 15:49:07,606 INFO alvance_github_crawler.crawl: accepted mjl-/mox (go accepted=2224)
+2026-07-30 15:49:07,606 INFO alvance_github_crawler.crawl: screening prometheus/mysqld_exporter (go)
+2026-07-30 15:49:08,294 INFO alvance_github_crawler.crawl: accepted prometheus/mysqld_exporter (go accepted=2225)
+2026-07-30 15:49:08,294 INFO alvance_github_crawler.crawl: screening rodrigo-brito/ninjabot (go)
+2026-07-30 15:49:09,043 INFO alvance_github_crawler.crawl: accepted rodrigo-brito/ninjabot (go accepted=2226)
+2026-07-30 15:49:09,043 INFO alvance_github_crawler.crawl: screening prometheus/collectd_exporter (go)
+2026-07-30 15:49:09,709 INFO alvance_github_crawler.crawl: accepted prometheus/collectd_exporter (go accepted=2227)
+2026-07-30 15:49:09,709 INFO alvance_github_crawler.crawl: screening innogames/slack-bot (go)
+2026-07-30 15:49:10,452 INFO alvance_github_crawler.crawl: accepted innogames/slack-bot (go accepted=2228)
+2026-07-30 15:49:10,452 INFO alvance_github_crawler.crawl: screening muleiwu/dwz-server (go)
+2026-07-30 15:49:10,512 INFO alvance_github_crawler.crawl: fetching typescript search window 4 page 3
+2026-07-30 15:49:13,987 INFO alvance_github_crawler.crawl: screening 1weiho/open-slide (typescript)
+2026-07-30 15:49:15,879 INFO alvance_github_crawler.crawl: accepted 1weiho/open-slide (typescript accepted=1268)
+2026-07-30 15:49:15,879 INFO alvance_github_crawler.crawl: screening gxr404/yuque-dl (typescript)
+2026-07-30 15:49:15,879 INFO alvance_github_crawler.crawl: screening NeoLabHQ/context-engineering-kit (typescript)
+2026-07-30 15:49:15,879 INFO alvance_github_crawler.crawl: screening caliber-ai-org/ai-setup (typescript)
+2026-07-30 15:49:16,753 INFO alvance_github_crawler.crawl: accepted caliber-ai-org/ai-setup (typescript accepted=1269)
+2026-07-30 15:49:16,753 INFO alvance_github_crawler.crawl: screening lupu60/nestjs-toolbox (typescript)
+2026-07-30 15:49:17,800 INFO alvance_github_crawler.crawl: accepted lupu60/nestjs-toolbox (typescript accepted=1270)
+2026-07-30 15:49:17,800 INFO alvance_github_crawler.crawl: screening squirrelchat/smol-toml (typescript)
+2026-07-30 15:49:18,643 INFO alvance_github_crawler.crawl: accepted squirrelchat/smol-toml (typescript accepted=1271)
+2026-07-30 15:49:18,643 INFO alvance_github_crawler.crawl: screening ruru-m07/gitru (typescript)
+2026-07-30 15:49:18,643 INFO alvance_github_crawler.crawl: screening elchininet/isometric (typescript)
+2026-07-30 15:49:19,672 INFO alvance_github_crawler.crawl: screening vivliostyle/vivliostyle-cli (typescript)
+2026-07-30 15:49:19,672 INFO alvance_github_crawler.crawl: screening knowledgecode/date-and-time (typescript)
+2026-07-30 15:49:20,835 INFO alvance_github_crawler.crawl: accepted knowledgecode/date-and-time (typescript accepted=1272)
+2026-07-30 15:49:20,835 INFO alvance_github_crawler.crawl: screening vericontext/vibeframe (typescript)
+2026-07-30 15:49:21,803 INFO alvance_github_crawler.crawl: screening cyanheads/mcp-ts-core (typescript)
+2026-07-30 15:49:22,851 INFO alvance_github_crawler.crawl: accepted cyanheads/mcp-ts-core (typescript accepted=1273)
+2026-07-30 15:49:22,851 INFO alvance_github_crawler.crawl: screening Wangnov/gpt-image-2-skill (typescript)
+2026-07-30 15:49:23,556 INFO alvance_github_crawler.crawl: screening trpc/trpc (typescript)
+2026-07-30 15:49:24,454 INFO alvance_github_crawler.crawl: accepted trpc/trpc (typescript accepted=1274)
+2026-07-30 15:49:24,454 INFO alvance_github_crawler.crawl: screening yamadashy/repomix (typescript)
+2026-07-30 15:49:25,326 INFO alvance_github_crawler.crawl: accepted yamadashy/repomix (typescript accepted=1275)
+2026-07-30 15:49:25,326 INFO alvance_github_crawler.crawl: screening kriasoft/react-starter-kit (typescript)
+2026-07-30 15:49:26,293 INFO alvance_github_crawler.crawl: accepted kriasoft/react-starter-kit (typescript accepted=1276)
+2026-07-30 15:49:26,293 INFO alvance_github_crawler.crawl: screening foambubble/foam (typescript)
+2026-07-30 15:49:26,294 INFO alvance_github_crawler.crawl: screening yoavbls/pretty-ts-errors (typescript)
+2026-07-30 15:49:27,255 INFO alvance_github_crawler.crawl: screening playcanvas/supersplat (typescript)
+2026-07-30 15:49:28,126 INFO alvance_github_crawler.crawl: screening YunYouJun/air-conditioner (typescript)
+2026-07-30 15:49:29,128 INFO alvance_github_crawler.crawl: accepted YunYouJun/air-conditioner (typescript accepted=1277)
+2026-07-30 15:49:29,128 INFO alvance_github_crawler.crawl: screening tale/headplane (typescript)
+2026-07-30 15:49:29,968 INFO alvance_github_crawler.crawl: screening mitsuhiko/agent-stuff (typescript)
+2026-07-30 15:49:30,900 INFO alvance_github_crawler.crawl: screening react-hook-form/resolvers (typescript)
+2026-07-30 15:49:31,852 INFO alvance_github_crawler.crawl: accepted react-hook-form/resolvers (typescript accepted=1278)
+2026-07-30 15:49:31,852 INFO alvance_github_crawler.crawl: screening BraveOPotato/FckSignups (typescript)
+2026-07-30 15:49:31,852 INFO alvance_github_crawler.crawl: screening mcollina/skills (typescript)
+2026-07-30 15:49:32,674 INFO alvance_github_crawler.crawl: accepted mcollina/skills (typescript accepted=1279)
+2026-07-30 15:49:32,674 INFO alvance_github_crawler.crawl: screening cweijan/vscode-office (typescript)
+2026-07-30 15:49:33,781 INFO alvance_github_crawler.crawl: screening Xetera/ghost-cursor (typescript)
+2026-07-30 15:49:34,828 INFO alvance_github_crawler.crawl: accepted Xetera/ghost-cursor (typescript accepted=1280)
+2026-07-30 15:49:34,828 INFO alvance_github_crawler.crawl: screening SSShooter/ebook-to-mindmap (typescript)
+2026-07-30 15:49:35,792 INFO alvance_github_crawler.crawl: screening joBr99/nspanel-lovelace-ui (typescript)
+2026-07-30 15:49:35,792 INFO alvance_github_crawler.crawl: screening caozhiyuan/copilot-api (typescript)
+2026-07-30 15:49:36,655 INFO alvance_github_crawler.crawl: screening redleafnew/zotero-updateifsE (typescript)
+2026-07-30 15:49:36,655 INFO alvance_github_crawler.crawl: screening paulmillr/noble-hashes (typescript)
+2026-07-30 15:49:37,545 INFO alvance_github_crawler.crawl: accepted paulmillr/noble-hashes (typescript accepted=1281)
+2026-07-30 15:49:37,546 INFO alvance_github_crawler.crawl: screening ConardLi/easy-agent (typescript)
+2026-07-30 15:49:37,546 INFO alvance_github_crawler.crawl: screening ianho7/maptoposter-online (typescript)
+2026-07-30 15:49:38,408 INFO alvance_github_crawler.crawl: screening michaelpporter/breadcrumbs (typescript)
+2026-07-30 15:49:39,338 INFO alvance_github_crawler.crawl: accepted michaelpporter/breadcrumbs (typescript accepted=1282)
+2026-07-30 15:49:39,338 INFO alvance_github_crawler.crawl: screening staskobzar/vue-audio-visual (typescript)
+2026-07-30 15:49:40,240 INFO alvance_github_crawler.crawl: screening trpc/examples-next-prisma-starter (typescript)
+2026-07-30 15:49:40,241 INFO alvance_github_crawler.crawl: screening michael/svedit (typescript)
+2026-07-30 15:49:41,286 INFO alvance_github_crawler.crawl: accepted michael/svedit (typescript accepted=1283)
+2026-07-30 15:49:41,286 INFO alvance_github_crawler.crawl: screening RA341/dockman (typescript)
+2026-07-30 15:49:41,287 INFO alvance_github_crawler.crawl: screening ayush-that/codejeet (typescript)
+2026-07-30 15:49:41,287 INFO alvance_github_crawler.crawl: screening FatehAK/vite-plugin-image-optimizer (typescript)
+2026-07-30 15:49:42,138 INFO alvance_github_crawler.crawl: screening trpc/examples-next-prisma-websockets-starter (typescript)
+2026-07-30 15:49:42,141 INFO alvance_github_crawler.crawl: screening codama-idl/codama (typescript)
+2026-07-30 15:49:43,061 INFO alvance_github_crawler.crawl: accepted codama-idl/codama (typescript accepted=1284)
+2026-07-30 15:49:43,061 INFO alvance_github_crawler.crawl: screening maloyan/manim-web (typescript)
+2026-07-30 15:49:44,063 INFO alvance_github_crawler.crawl: accepted maloyan/manim-web (typescript accepted=1285)
+2026-07-30 15:49:44,063 INFO alvance_github_crawler.crawl: screening turbostarter/loading-ui (typescript)
+2026-07-30 15:49:44,937 INFO alvance_github_crawler.crawl: screening ownpilot/OwnPilot (typescript)
+2026-07-30 15:49:45,839 INFO alvance_github_crawler.crawl: accepted ownpilot/OwnPilot (typescript accepted=1286)
+2026-07-30 15:49:45,839 INFO alvance_github_crawler.crawl: screening vlang/vscode-vlang (typescript)
+2026-07-30 15:49:46,839 INFO alvance_github_crawler.crawl: screening turbostarter/extro (typescript)
+2026-07-30 15:49:47,732 INFO alvance_github_crawler.crawl: screening anaralabs/lector (typescript)
+2026-07-30 15:49:48,767 INFO alvance_github_crawler.crawl: screening kqcoxn/MaaPipelineEditor (typescript)
+2026-07-30 15:49:49,776 INFO alvance_github_crawler.crawl: screening homebridge/homebridge-plugin-template (typescript)
+2026-07-30 15:49:50,737 INFO alvance_github_crawler.crawl: screening CodeIntelligenceTesting/jazzer.js (typescript)
+2026-07-30 15:49:51,795 INFO alvance_github_crawler.crawl: accepted CodeIntelligenceTesting/jazzer.js (typescript accepted=1287)
+2026-07-30 15:49:51,795 INFO alvance_github_crawler.crawl: screening spinabot/brigade (typescript)
+2026-07-30 15:49:52,987 INFO alvance_github_crawler.crawl: accepted spinabot/brigade (typescript accepted=1288)
+2026-07-30 15:49:52,987 INFO alvance_github_crawler.crawl: screening ibelick/mesurer (typescript)
+2026-07-30 15:49:52,988 INFO alvance_github_crawler.crawl: screening elchininet/custom-sidebar (typescript)
+2026-07-30 15:49:53,847 INFO alvance_github_crawler.crawl: screening manchenkoff/nuxt-auth-sanctum (typescript)
+2026-07-30 15:49:54,854 INFO alvance_github_crawler.crawl: accepted manchenkoff/nuxt-auth-sanctum (typescript accepted=1289)
+2026-07-30 15:49:54,854 INFO alvance_github_crawler.crawl: screening AnttiHero/lavern (typescript)
+2026-07-30 15:49:55,912 INFO alvance_github_crawler.crawl: accepted AnttiHero/lavern (typescript accepted=1290)
+2026-07-30 15:49:55,912 INFO alvance_github_crawler.crawl: screening YanHaidao/wecom (typescript)
+2026-07-30 15:49:56,900 INFO alvance_github_crawler.crawl: screening 0bCdian/Waypaper-Engine (typescript)
+2026-07-30 15:49:56,901 INFO alvance_github_crawler.crawl: screening hongyuan007/tapword-translator (typescript)
+2026-07-30 15:49:56,901 INFO alvance_github_crawler.crawl: screening radix-ng/primitives (typescript)
+2026-07-30 15:49:58,107 INFO alvance_github_crawler.crawl: screening tariknz/irdashies (typescript)
+2026-07-30 15:49:59,123 INFO alvance_github_crawler.crawl: accepted tariknz/irdashies (typescript accepted=1291)
+2026-07-30 15:49:59,123 INFO alvance_github_crawler.crawl: screening khoj-ai/pipali (typescript)
+2026-07-30 15:50:00,173 INFO alvance_github_crawler.crawl: screening CatsJuice/dockbar (typescript)
+2026-07-30 15:50:01,235 INFO alvance_github_crawler.crawl: screening adoresever/AGI_Ananas (typescript)
+2026-07-30 15:50:02,424 INFO alvance_github_crawler.crawl: screening flipbit/jquery-image-annotate (typescript)
+2026-07-30 15:50:02,425 INFO alvance_github_crawler.crawl: screening marvkr/better-design (typescript)
+2026-07-30 15:50:03,194 INFO alvance_github_crawler.crawl: screening INTO-CPS-Association/DTaaS (typescript)
+2026-07-30 15:50:03,195 INFO alvance_github_crawler.crawl: screening ruisaraiva19/favycon (typescript)
+2026-07-30 15:50:04,145 INFO alvance_github_crawler.crawl: screening orthdron/subatic (typescript)
+2026-07-30 15:50:04,146 INFO alvance_github_crawler.crawl: screening weatherlayers/weatherlayers-gl (typescript)
+2026-07-30 15:50:05,172 INFO alvance_github_crawler.crawl: accepted weatherlayers/weatherlayers-gl (typescript accepted=1292)
+2026-07-30 15:50:05,172 INFO alvance_github_crawler.crawl: screening openhab/openhab-vscode (typescript)
+2026-07-30 15:50:05,172 INFO alvance_github_crawler.crawl: screening github/task-lists-element (typescript)
+2026-07-30 15:50:06,136 INFO alvance_github_crawler.crawl: accepted github/task-lists-element (typescript accepted=1293)
+2026-07-30 15:50:06,137 INFO alvance_github_crawler.crawl: screening LeiShi1313/genshin-aritifact-analyzer (typescript)
+2026-07-30 15:50:06,137 INFO alvance_github_crawler.crawl: screening github/file-attachment-element (typescript)
+2026-07-30 15:50:07,180 INFO alvance_github_crawler.crawl: accepted github/file-attachment-element (typescript accepted=1294)
+2026-07-30 15:50:07,180 INFO alvance_github_crawler.crawl: screening Ethryan/GTNH-Faithful-Textures (typescript)
+2026-07-30 15:50:07,180 INFO alvance_github_crawler.crawl: screening AI45Lab/RouteLens (typescript)
+2026-07-30 15:50:07,181 INFO alvance_github_crawler.crawl: screening bitfocus/companion-satellite (typescript)
+2026-07-30 15:50:08,377 INFO alvance_github_crawler.crawl: accepted bitfocus/companion-satellite (typescript accepted=1295)
+2026-07-30 15:50:08,377 INFO alvance_github_crawler.crawl: screening Tensai75/NZBDonkey (typescript)
+2026-07-30 15:50:09,417 INFO alvance_github_crawler.crawl: screening cropflre/nowen-reader (typescript)
+2026-07-30 15:50:09,417 INFO alvance_github_crawler.crawl: screening bingoYB/ham_home (typescript)
+2026-07-30 15:50:10,480 INFO alvance_github_crawler.crawl: screening Quicksi-CLI/quicksiCLI (typescript)
+2026-07-30 15:50:11,394 INFO alvance_github_crawler.crawl: accepted Quicksi-CLI/quicksiCLI (typescript accepted=1296)
+2026-07-30 15:50:11,394 INFO alvance_github_crawler.crawl: screening mantinedev/ui.mantine.dev (typescript)
+2026-07-30 15:50:12,420 INFO alvance_github_crawler.crawl: accepted mantinedev/ui.mantine.dev (typescript accepted=1297)
+2026-07-30 15:50:12,420 INFO alvance_github_crawler.crawl: screening msgbyte/tianji (typescript)
+2026-07-30 15:50:13,372 INFO alvance_github_crawler.crawl: accepted msgbyte/tianji (typescript accepted=1298)
+2026-07-30 15:50:13,372 INFO alvance_github_crawler.crawl: screening kubewall/kubewall (typescript)
+2026-07-30 15:50:14,131 INFO alvance_github_crawler.crawl: screening arabold/docs-mcp-server (typescript)
+2026-07-30 15:50:14,993 INFO alvance_github_crawler.crawl: accepted arabold/docs-mcp-server (typescript accepted=1299)
+2026-07-30 15:50:14,993 INFO alvance_github_crawler.crawl: screening arpanghosh8453/open-dronelog (typescript)
+2026-07-30 15:50:14,994 INFO alvance_github_crawler.crawl: screening simonlin1212/Vibe-Research (typescript)
+2026-07-30 15:50:15,518 INFO alvance_github_crawler.crawl: screening Ravinou/borgwarehouse (typescript)
+2026-07-30 15:50:15,519 INFO alvance_github_crawler.crawl: screening bitsocialnet/seedit (typescript)
+2026-07-30 15:50:15,520 INFO alvance_github_crawler.crawl: screening kenrick95/c4 (typescript)
+2026-07-30 15:50:16,449 INFO alvance_github_crawler.crawl: screening trpc/examples-next-app-dir (typescript)
+2026-07-30 15:50:16,449 INFO alvance_github_crawler.crawl: screening anszom/rethink (typescript)
+2026-07-30 15:50:16,450 INFO alvance_github_crawler.crawl: screening oxdev03/pm2.web (typescript)
+2026-07-30 15:50:16,450 INFO alvance_github_crawler.crawl: screening gotify/website (typescript)
+2026-07-30 15:50:16,450 INFO alvance_github_crawler.crawl: screening Bartek532/zagrodzki.me (typescript)
+2026-07-30 15:50:16,450 INFO alvance_github_crawler.crawl: screening sharbelxyz/hermes-agent-mission-control (typescript)
+2026-07-30 15:50:16,451 INFO alvance_github_crawler.crawl: screening sundios/SEO-Dashboard (typescript)
+2026-07-30 15:50:16,451 INFO alvance_github_crawler.crawl: screening stefanprodan/cctop (typescript)
+2026-07-30 15:50:17,464 INFO alvance_github_crawler.crawl: accepted stefanprodan/cctop (typescript accepted=1300)
+2026-07-30 15:50:17,464 INFO alvance_github_crawler.crawl: screening trpc/examples-next-sse-chat (typescript)
+2026-07-30 15:50:17,525 INFO alvance_github_crawler.crawl: fetching javascript search window 4 page 4
+2026-07-30 15:50:21,279 INFO alvance_github_crawler.crawl: screening jarrodwatts/claude-hud (javascript)
+2026-07-30 15:50:22,088 INFO alvance_github_crawler.crawl: accepted jarrodwatts/claude-hud (javascript accepted=871)
+2026-07-30 15:50:22,088 INFO alvance_github_crawler.crawl: screening jcubic/lips (javascript)
+2026-07-30 15:50:22,089 INFO alvance_github_crawler.crawl: screening postmanlabs/postman-collection (javascript)
+2026-07-30 15:50:23,075 INFO alvance_github_crawler.crawl: accepted postmanlabs/postman-collection (javascript accepted=872)
+2026-07-30 15:50:23,075 INFO alvance_github_crawler.crawl: screening iyzico/iyzipay-node (javascript)
+2026-07-30 15:50:24,112 INFO alvance_github_crawler.crawl: accepted iyzico/iyzipay-node (javascript accepted=873)
+2026-07-30 15:50:24,112 INFO alvance_github_crawler.crawl: screening lovell/avif-cli (javascript)
+2026-07-30 15:50:25,076 INFO alvance_github_crawler.crawl: screening loopbackio/loopback-connector-mongodb (javascript)
+2026-07-30 15:50:25,077 INFO alvance_github_crawler.crawl: screening reliefeai/browser-relay (javascript)
+2026-07-30 15:50:26,052 INFO alvance_github_crawler.crawl: accepted reliefeai/browser-relay (javascript accepted=874)
+2026-07-30 15:50:26,052 INFO alvance_github_crawler.crawl: screening NationalSecurityAgency/skills-client (javascript)
+2026-07-30 15:50:27,024 INFO alvance_github_crawler.crawl: screening liyupi/ai-guide (javascript)
+2026-07-30 15:50:27,025 INFO alvance_github_crawler.crawl: screening sinonjs/sinon (javascript)
+2026-07-30 15:50:27,025 INFO alvance_github_crawler.crawl: screening timqian/chart.xkcd (javascript)
+2026-07-30 15:50:27,963 INFO alvance_github_crawler.crawl: screening tabulator-tables/tabulator (javascript)
+2026-07-30 15:50:28,937 INFO alvance_github_crawler.crawl: accepted tabulator-tables/tabulator (javascript accepted=875)
+2026-07-30 15:50:28,937 INFO alvance_github_crawler.crawl: screening aisingapore/TagUI (javascript)
+2026-07-30 15:50:29,368 INFO alvance_github_crawler.crawl: screening apocas/dockerode (javascript)
+2026-07-30 15:50:30,334 INFO alvance_github_crawler.crawl: accepted apocas/dockerode (javascript accepted=876)
+2026-07-30 15:50:30,334 INFO alvance_github_crawler.crawl: screening mozilla/source-map (javascript)
+2026-07-30 15:50:30,335 INFO alvance_github_crawler.crawl: screening mourner/rbush (javascript)
+2026-07-30 15:50:31,201 INFO alvance_github_crawler.crawl: accepted mourner/rbush (javascript accepted=877)
+2026-07-30 15:50:31,201 INFO alvance_github_crawler.crawl: screening cthackers/adm-zip (javascript)
+2026-07-30 15:50:32,052 INFO alvance_github_crawler.crawl: accepted cthackers/adm-zip (javascript accepted=878)
+2026-07-30 15:50:32,052 INFO alvance_github_crawler.crawl: screening graphology/graphology (javascript)
+2026-07-30 15:50:33,270 INFO alvance_github_crawler.crawl: accepted graphology/graphology (javascript accepted=879)
+2026-07-30 15:50:33,270 INFO alvance_github_crawler.crawl: screening kuzzleio/kuzzle (javascript)
+2026-07-30 15:50:34,211 INFO alvance_github_crawler.crawl: screening issaafalkattan/React-Landing-Page-Template (javascript)
+2026-07-30 15:50:34,601 INFO alvance_github_crawler.crawl: screening e1ven/Robohash (javascript)
+2026-07-30 15:50:35,687 INFO alvance_github_crawler.crawl: screening marcrobledo/savegame-editors (javascript)
+2026-07-30 15:50:35,688 INFO alvance_github_crawler.crawl: screening micromatch/picomatch (javascript)
+2026-07-30 15:50:36,560 INFO alvance_github_crawler.crawl: accepted micromatch/picomatch (javascript accepted=880)
+2026-07-30 15:50:36,560 INFO alvance_github_crawler.crawl: screening anvilco/spectaql (javascript)
+2026-07-30 15:50:37,562 INFO alvance_github_crawler.crawl: accepted anvilco/spectaql (javascript accepted=881)
+2026-07-30 15:50:37,562 INFO alvance_github_crawler.crawl: screening SchizoDuckie/DuckieTV (javascript)
+2026-07-30 15:50:37,562 INFO alvance_github_crawler.crawl: screening BlueWallet/LndHub (javascript)
+2026-07-30 15:50:37,953 INFO alvance_github_crawler.crawl: screening sindresorhus/normalize-url (javascript)
+2026-07-30 15:50:38,734 INFO alvance_github_crawler.crawl: accepted sindresorhus/normalize-url (javascript accepted=882)
+2026-07-30 15:50:38,734 INFO alvance_github_crawler.crawl: screening sindresorhus/dot-prop (javascript)
+2026-07-30 15:50:39,599 INFO alvance_github_crawler.crawl: accepted sindresorhus/dot-prop (javascript accepted=883)
+2026-07-30 15:50:39,599 INFO alvance_github_crawler.crawl: screening dennisdoomen/CSharpGuidelines (javascript)
+2026-07-30 15:50:39,599 INFO alvance_github_crawler.crawl: screening vueform/builder (javascript)
+2026-07-30 15:50:39,600 INFO alvance_github_crawler.crawl: screening mourner/kdbush (javascript)
+2026-07-30 15:50:40,506 INFO alvance_github_crawler.crawl: screening Hubs-Foundation/Spoke (javascript)
+2026-07-30 15:50:40,507 INFO alvance_github_crawler.crawl: screening gitleaks/gitleaks-action (javascript)
+2026-07-30 15:50:40,507 INFO alvance_github_crawler.crawl: screening mfranzke/loading-attribute-polyfill (javascript)
+2026-07-30 15:50:41,483 INFO alvance_github_crawler.crawl: accepted mfranzke/loading-attribute-polyfill (javascript accepted=884)
+2026-07-30 15:50:41,483 INFO alvance_github_crawler.crawl: screening firebase/friendlyeats-web (javascript)
+2026-07-30 15:50:42,190 INFO alvance_github_crawler.crawl: screening yumata/lampa (javascript)
+2026-07-30 15:50:42,190 INFO alvance_github_crawler.crawl: screening aws-samples/iam-identity-center-team (javascript)
+2026-07-30 15:50:42,190 INFO alvance_github_crawler.crawl: screening huiyan-fe/react-bmap (javascript)
+2026-07-30 15:50:43,156 INFO alvance_github_crawler.crawl: screening open-hand/hzero (javascript)
+2026-07-30 15:50:48,894 INFO alvance_github_crawler.crawl: screening Anil-matcha/Free-AI-Social-Media-Scheduler (javascript)
+2026-07-30 15:50:49,752 INFO alvance_github_crawler.crawl: screening nieldlr/hanzi (javascript)
+2026-07-30 15:50:51,633 INFO alvance_github_crawler.crawl: accepted nieldlr/hanzi (javascript accepted=885)
+2026-07-30 15:50:51,633 INFO alvance_github_crawler.crawl: screening firebase/snippets-node (javascript)
+2026-07-30 15:50:52,467 INFO alvance_github_crawler.crawl: screening 337547038/vue-form-design (javascript)
+2026-07-30 15:50:52,468 INFO alvance_github_crawler.crawl: screening GouvernementFR/dsfr (javascript)
+2026-07-30 15:50:52,468 INFO alvance_github_crawler.crawl: screening ianstormtaylor/is-hotkey (javascript)
+2026-07-30 15:50:53,510 INFO alvance_github_crawler.crawl: accepted ianstormtaylor/is-hotkey (javascript accepted=886)
+2026-07-30 15:50:53,510 INFO alvance_github_crawler.crawl: screening dooshu/shu (javascript)
+2026-07-30 15:50:53,511 INFO alvance_github_crawler.crawl: screening jfromaniello/url-join (javascript)
+2026-07-30 15:50:54,295 INFO alvance_github_crawler.crawl: accepted jfromaniello/url-join (javascript accepted=887)
+2026-07-30 15:50:54,295 INFO alvance_github_crawler.crawl: screening SNStatComp/awesome-official-statistics-software (javascript)
+2026-07-30 15:50:54,295 INFO alvance_github_crawler.crawl: screening bangumi/scripts (javascript)
+2026-07-30 15:50:54,296 INFO alvance_github_crawler.crawl: screening hiwanz/wgs2mars.js (javascript)
+2026-07-30 15:50:54,296 INFO alvance_github_crawler.crawl: screening rational-stars/GitHub-Freshness (javascript)
+2026-07-30 15:50:54,296 INFO alvance_github_crawler.crawl: screening arduino/lab-micropython-editor (javascript)
+2026-07-30 15:50:54,296 INFO alvance_github_crawler.crawl: screening CloudCannon/bookshop (javascript)
+2026-07-30 15:50:54,983 INFO alvance_github_crawler.crawl: screening plainheart/echarts-extension-amap (javascript)
+2026-07-30 15:50:55,941 INFO alvance_github_crawler.crawl: screening sepivip/SeekerClaw (javascript)
+2026-07-30 15:50:56,731 INFO alvance_github_crawler.crawl: screening DDMAL/diva.js (javascript)
+2026-07-30 15:50:56,731 INFO alvance_github_crawler.crawl: screening reviewdog/action-eslint (javascript)
+2026-07-30 15:50:57,593 INFO alvance_github_crawler.crawl: screening razorpay/razorpay-node (javascript)
+2026-07-30 15:50:58,543 INFO alvance_github_crawler.crawl: accepted razorpay/razorpay-node (javascript accepted=888)
+2026-07-30 15:50:58,543 INFO alvance_github_crawler.crawl: screening knowledge-work/eslint-plugin-strict-dependencies (javascript)
+2026-07-30 15:50:59,674 INFO alvance_github_crawler.crawl: accepted knowledge-work/eslint-plugin-strict-dependencies (javascript accepted=889)
+2026-07-30 15:50:59,674 INFO alvance_github_crawler.crawl: screening Rello/audioplayer (javascript)
+2026-07-30 15:50:59,675 INFO alvance_github_crawler.crawl: screening webtorrent/torrent-discovery (javascript)
+2026-07-30 15:51:00,677 INFO alvance_github_crawler.crawl: accepted webtorrent/torrent-discovery (javascript accepted=890)
+2026-07-30 15:51:00,677 INFO alvance_github_crawler.crawl: screening siemens/linux-entra-sso (javascript)
+2026-07-30 15:51:01,377 INFO alvance_github_crawler.crawl: screening benzino77/clamav-rest-api (javascript)
+2026-07-30 15:51:02,298 INFO alvance_github_crawler.crawl: accepted benzino77/clamav-rest-api (javascript accepted=891)
+2026-07-30 15:51:02,298 INFO alvance_github_crawler.crawl: screening EYBlockchain/starlight (javascript)
+2026-07-30 15:51:02,298 INFO alvance_github_crawler.crawl: screening sequelize-transparent-cache/sequelize-transparent-cache (javascript)
+2026-07-30 15:51:02,299 INFO alvance_github_crawler.crawl: screening Amal-David/pagecast (javascript)
+2026-07-30 15:51:03,266 INFO alvance_github_crawler.crawl: accepted Amal-David/pagecast (javascript accepted=892)
+2026-07-30 15:51:03,266 INFO alvance_github_crawler.crawl: screening appium/appium-ios-device (javascript)
+2026-07-30 15:51:04,157 INFO alvance_github_crawler.crawl: accepted appium/appium-ios-device (javascript accepted=893)
+2026-07-30 15:51:04,157 INFO alvance_github_crawler.crawl: screening MacWarrior/clipbucket-v5 (javascript)
+2026-07-30 15:51:04,158 INFO alvance_github_crawler.crawl: screening mammuth/kindle-clippings (javascript)
+2026-07-30 15:51:04,158 INFO alvance_github_crawler.crawl: screening tc39/proposal-await-dictionary (javascript)
+2026-07-30 15:51:05,094 INFO alvance_github_crawler.crawl: screening Replica0110/Lyrico-Plugins (javascript)
+2026-07-30 15:51:05,094 INFO alvance_github_crawler.crawl: screening entrylabs/entryjs (javascript)
+2026-07-30 15:51:06,061 INFO alvance_github_crawler.crawl: accepted entrylabs/entryjs (javascript accepted=894)
+2026-07-30 15:51:06,061 INFO alvance_github_crawler.crawl: screening aws-solutions-library-samples/video-on-demand-on-aws-foundation (javascript)
+2026-07-30 15:51:06,862 INFO alvance_github_crawler.crawl: screening rustykuntz/clideck (javascript)
+2026-07-30 15:51:07,792 INFO alvance_github_crawler.crawl: screening benji6/combinators-js (javascript)
+2026-07-30 15:51:07,792 INFO alvance_github_crawler.crawl: screening rooklift/ogatak (javascript)
+2026-07-30 15:51:07,793 INFO alvance_github_crawler.crawl: screening juliangruber/isarray (javascript)
+2026-07-30 15:51:08,657 INFO alvance_github_crawler.crawl: accepted juliangruber/isarray (javascript accepted=895)
+2026-07-30 15:51:08,657 INFO alvance_github_crawler.crawl: screening lovell/hepburn (javascript)
+2026-07-30 15:51:09,772 INFO alvance_github_crawler.crawl: screening Archeb/peer.as (javascript)
+2026-07-30 15:51:09,772 INFO alvance_github_crawler.crawl: screening guggero/bip-schnorr (javascript)
+2026-07-30 15:51:10,781 INFO alvance_github_crawler.crawl: accepted guggero/bip-schnorr (javascript accepted=896)
+2026-07-30 15:51:10,781 INFO alvance_github_crawler.crawl: screening benji6/church (javascript)
+2026-07-30 15:51:10,782 INFO alvance_github_crawler.crawl: screening jfarmer08/homebridge-wyze-smart-home (javascript)
+2026-07-30 15:51:11,712 INFO alvance_github_crawler.crawl: screening joesaby/astro-mermaid (javascript)
+2026-07-30 15:51:12,603 INFO alvance_github_crawler.crawl: accepted joesaby/astro-mermaid (javascript accepted=897)
+2026-07-30 15:51:12,603 INFO alvance_github_crawler.crawl: screening fish2018/lib (javascript)
+2026-07-30 15:51:12,603 INFO alvance_github_crawler.crawl: screening uloco/theme-bluloco-light (javascript)
+2026-07-30 15:51:12,603 INFO alvance_github_crawler.crawl: screening gristlabs/grist-widget (javascript)
+2026-07-30 15:51:13,615 INFO alvance_github_crawler.crawl: accepted gristlabs/grist-widget (javascript accepted=898)
+2026-07-30 15:51:13,615 INFO alvance_github_crawler.crawl: screening ArbitrumFoundation/docs (javascript)
+2026-07-30 15:51:13,615 INFO alvance_github_crawler.crawl: screening phoenixbf/aton (javascript)
+2026-07-30 15:51:13,616 INFO alvance_github_crawler.crawl: screening haraka/Haraka (javascript)
+2026-07-30 15:51:14,597 INFO alvance_github_crawler.crawl: accepted haraka/Haraka (javascript accepted=899)
+2026-07-30 15:51:14,597 INFO alvance_github_crawler.crawl: screening Anil-matcha/awesome-generative-ai-apps (javascript)
+2026-07-30 15:51:15,401 INFO alvance_github_crawler.crawl: screening sockjs/sockjs-node (javascript)
+2026-07-30 15:51:16,440 INFO alvance_github_crawler.crawl: screening moscajs/aedes (javascript)
+2026-07-30 15:51:17,389 INFO alvance_github_crawler.crawl: accepted moscajs/aedes (javascript accepted=900)
+2026-07-30 15:51:17,389 INFO alvance_github_crawler.crawl: screening Yuan-ManX/ai-game-devtools (javascript)
+2026-07-30 15:51:18,048 INFO alvance_github_crawler.crawl: screening actions/create-github-app-token (javascript)
+2026-07-30 15:51:18,869 INFO alvance_github_crawler.crawl: accepted actions/create-github-app-token (javascript accepted=901)
+2026-07-30 15:51:18,869 INFO alvance_github_crawler.crawl: screening Simpleboy353/REAPER-2.0 (javascript)
+2026-07-30 15:51:18,869 INFO alvance_github_crawler.crawl: screening lloves/CloudPhone (javascript)
+2026-07-30 15:51:18,869 INFO alvance_github_crawler.crawl: screening code-rabi/interactive-brokers-mcp (javascript)
+2026-07-30 15:51:20,115 INFO alvance_github_crawler.crawl: accepted code-rabi/interactive-brokers-mcp (javascript accepted=902)
+2026-07-30 15:51:20,116 INFO alvance_github_crawler.crawl: screening palewire/news-homepages (javascript)
+2026-07-30 15:51:20,116 INFO alvance_github_crawler.crawl: screening pinkpixel-dev/web-scout-mcp (javascript)
+2026-07-30 15:51:20,959 INFO alvance_github_crawler.crawl: screening Ariastarcos/mirasaki-music-bot (javascript)
+2026-07-30 15:51:21,996 INFO alvance_github_crawler.crawl: fetching rust search window 4 page 2
+2026-07-30 15:51:25,334 INFO alvance_github_crawler.crawl: screening extism/extism (rust)
+2026-07-30 15:51:26,081 INFO alvance_github_crawler.crawl: accepted extism/extism (rust accepted=1777)
+2026-07-30 15:51:26,081 INFO alvance_github_crawler.crawl: screening HelixDB/helix-db (rust)
+2026-07-30 15:51:26,768 INFO alvance_github_crawler.crawl: accepted HelixDB/helix-db (rust accepted=1778)
+2026-07-30 15:51:26,768 INFO alvance_github_crawler.crawl: screening jnsahaj/lumen (rust)
+2026-07-30 15:51:27,628 INFO alvance_github_crawler.crawl: accepted jnsahaj/lumen (rust accepted=1779)
+2026-07-30 15:51:27,628 INFO alvance_github_crawler.crawl: screening Xudong-Huang/may (rust)
+2026-07-30 15:51:28,339 INFO alvance_github_crawler.crawl: accepted Xudong-Huang/may (rust accepted=1780)
+2026-07-30 15:51:28,339 INFO alvance_github_crawler.crawl: screening tuna-f1sh/cyme (rust)
+2026-07-30 15:51:28,340 INFO alvance_github_crawler.crawl: screening jprochazk/garde (rust)
+2026-07-30 15:51:29,120 INFO alvance_github_crawler.crawl: accepted jprochazk/garde (rust accepted=1781)
+2026-07-30 15:51:29,120 INFO alvance_github_crawler.crawl: screening ldclabs/anda (rust)
+2026-07-30 15:51:29,847 INFO alvance_github_crawler.crawl: accepted ldclabs/anda (rust accepted=1782)
+2026-07-30 15:51:29,847 INFO alvance_github_crawler.crawl: screening near/borsh-rs (rust)
+2026-07-30 15:51:30,581 INFO alvance_github_crawler.crawl: accepted near/borsh-rs (rust accepted=1783)
+2026-07-30 15:51:30,581 INFO alvance_github_crawler.crawl: screening minio/minio-rs (rust)
+2026-07-30 15:51:31,239 INFO alvance_github_crawler.crawl: accepted minio/minio-rs (rust accepted=1784)
+2026-07-30 15:51:31,239 INFO alvance_github_crawler.crawl: screening fogarecious/iced_tutorial (rust)
+2026-07-30 15:51:31,239 INFO alvance_github_crawler.crawl: screening tonarino/webrtc-audio-processing (rust)
+2026-07-30 15:51:32,162 INFO alvance_github_crawler.crawl: accepted tonarino/webrtc-audio-processing (rust accepted=1785)
+2026-07-30 15:51:32,162 INFO alvance_github_crawler.crawl: screening adwhit/diesel-derive-enum (rust)
+2026-07-30 15:51:32,520 INFO alvance_github_crawler.crawl: screening AdrianEddy/telemetry-parser (rust)
+2026-07-30 15:51:36,081 INFO alvance_github_crawler.crawl: screening Emurgo/cardano-serialization-lib (rust)
+2026-07-30 15:51:36,081 INFO alvance_github_crawler.crawl: screening neplextech/vectorizer (rust)
+2026-07-30 15:51:39,761 INFO alvance_github_crawler.crawl: screening pmpetit/pglinter (rust)
+2026-07-30 15:51:40,820 INFO alvance_github_crawler.crawl: accepted pmpetit/pglinter (rust accepted=1786)
+2026-07-30 15:51:40,821 INFO alvance_github_crawler.crawl: screening qntx/ra2a (rust)
+2026-07-30 15:51:41,942 INFO alvance_github_crawler.crawl: screening reedrosenbluth/oscen (rust)
+2026-07-30 15:51:42,601 INFO alvance_github_crawler.crawl: accepted reedrosenbluth/oscen (rust accepted=1787)
+2026-07-30 15:51:42,602 INFO alvance_github_crawler.crawl: screening Polymarket/rs-clob-client-v2 (rust)
+2026-07-30 15:51:43,189 INFO alvance_github_crawler.crawl: accepted Polymarket/rs-clob-client-v2 (rust accepted=1788)
+2026-07-30 15:51:43,189 INFO alvance_github_crawler.crawl: screening sebosp/s2protocol-rs (rust)
+2026-07-30 15:51:44,713 INFO alvance_github_crawler.crawl: accepted sebosp/s2protocol-rs (rust accepted=1789)
+2026-07-30 15:51:44,713 INFO alvance_github_crawler.crawl: screening 0xMiden/compiler (rust)
+2026-07-30 15:51:45,628 INFO alvance_github_crawler.crawl: accepted 0xMiden/compiler (rust accepted=1790)
+2026-07-30 15:51:45,628 INFO alvance_github_crawler.crawl: screening chevdor/tera-cli (rust)
+2026-07-30 15:51:46,426 INFO alvance_github_crawler.crawl: accepted chevdor/tera-cli (rust accepted=1791)
+2026-07-30 15:51:46,426 INFO alvance_github_crawler.crawl: screening njaremko/samael (rust)
+2026-07-30 15:51:49,879 INFO alvance_github_crawler.crawl: screening gitui-org/gitui (rust)
+2026-07-30 15:51:50,831 INFO alvance_github_crawler.crawl: accepted gitui-org/gitui (rust accepted=1792)
+2026-07-30 15:51:50,831 INFO alvance_github_crawler.crawl: screening elkowar/eww (rust)
+2026-07-30 15:51:51,650 INFO alvance_github_crawler.crawl: screening gyroflow/gyroflow (rust)
+2026-07-30 15:51:51,650 INFO alvance_github_crawler.crawl: screening LaurentMazare/tch-rs (rust)
+2026-07-30 15:51:52,532 INFO alvance_github_crawler.crawl: accepted LaurentMazare/tch-rs (rust accepted=1793)
+2026-07-30 15:51:52,532 INFO alvance_github_crawler.crawl: screening trifectatechfoundation/sudo-rs (rust)
+2026-07-30 15:51:54,637 INFO alvance_github_crawler.crawl: accepted trifectatechfoundation/sudo-rs (rust accepted=1794)
+2026-07-30 15:51:54,637 INFO alvance_github_crawler.crawl: screening zesterer/flume (rust)
+2026-07-30 15:51:55,260 INFO alvance_github_crawler.crawl: accepted zesterer/flume (rust accepted=1795)
+2026-07-30 15:51:55,260 INFO alvance_github_crawler.crawl: screening pythops/bluetui (rust)
+2026-07-30 15:51:55,260 INFO alvance_github_crawler.crawl: screening pythops/oryx (rust)
+2026-07-30 15:51:55,261 INFO alvance_github_crawler.crawl: screening dalek-cryptography/curve25519-dalek (rust)
+2026-07-30 15:51:55,261 INFO alvance_github_crawler.crawl: screening shadow3aaa/fas-rs (rust)
+2026-07-30 15:51:55,261 INFO alvance_github_crawler.crawl: screening rpgp/rpgp (rust)
+2026-07-30 15:51:55,916 INFO alvance_github_crawler.crawl: accepted rpgp/rpgp (rust accepted=1796)
+2026-07-30 15:51:55,916 INFO alvance_github_crawler.crawl: screening peteonrails/voxtype (rust)
+2026-07-30 15:51:56,535 INFO alvance_github_crawler.crawl: accepted peteonrails/voxtype (rust accepted=1797)
+2026-07-30 15:51:56,536 INFO alvance_github_crawler.crawl: screening image-rs/imageproc (rust)
+2026-07-30 15:51:57,716 INFO alvance_github_crawler.crawl: accepted image-rs/imageproc (rust accepted=1798)
+2026-07-30 15:51:57,716 INFO alvance_github_crawler.crawl: screening tobilg/polyglot (rust)
+2026-07-30 15:51:59,299 INFO alvance_github_crawler.crawl: accepted tobilg/polyglot (rust accepted=1799)
+2026-07-30 15:51:59,299 INFO alvance_github_crawler.crawl: screening stratis-storage/stratisd (rust)
+2026-07-30 15:51:59,970 INFO alvance_github_crawler.crawl: accepted stratis-storage/stratisd (rust accepted=1800)
+2026-07-30 15:51:59,970 INFO alvance_github_crawler.crawl: screening RustCrypto/elliptic-curves (rust)
+2026-07-30 15:51:59,970 INFO alvance_github_crawler.crawl: screening dfrg/swash (rust)
+2026-07-30 15:52:04,331 INFO alvance_github_crawler.crawl: screening sandydoo/flux (rust)
+2026-07-30 15:52:05,283 INFO alvance_github_crawler.crawl: screening threathunters-io/laurel (rust)
+2026-07-30 15:52:05,283 INFO alvance_github_crawler.crawl: screening rharish101/ReGreet (rust)
+2026-07-30 15:52:05,283 INFO alvance_github_crawler.crawl: screening r1n7aro/Locus (rust)
+2026-07-30 15:52:05,284 INFO alvance_github_crawler.crawl: screening CasualX/obfstr (rust)
+2026-07-30 15:52:05,886 INFO alvance_github_crawler.crawl: accepted CasualX/obfstr (rust accepted=1801)
+2026-07-30 15:52:05,886 INFO alvance_github_crawler.crawl: screening henriklovhaug/md-tui (rust)
+2026-07-30 15:52:05,887 INFO alvance_github_crawler.crawl: screening rustls/rcgen (rust)
+2026-07-30 15:52:05,887 INFO alvance_github_crawler.crawl: screening boundless-xyz/zeth (rust)
+2026-07-30 15:52:06,552 INFO alvance_github_crawler.crawl: accepted boundless-xyz/zeth (rust accepted=1802)
+2026-07-30 15:52:06,552 INFO alvance_github_crawler.crawl: screening kpcyrd/rebuilderd (rust)
+2026-07-30 15:52:06,552 INFO alvance_github_crawler.crawl: screening FuelLabs/fuel-vm (rust)
+2026-07-30 15:52:06,552 INFO alvance_github_crawler.crawl: screening vizia/morphorm (rust)
+2026-07-30 15:52:07,221 INFO alvance_github_crawler.crawl: accepted vizia/morphorm (rust accepted=1803)
+2026-07-30 15:52:07,221 INFO alvance_github_crawler.crawl: screening rikhuijzer/fx (rust)
+2026-07-30 15:52:07,993 INFO alvance_github_crawler.crawl: accepted rikhuijzer/fx (rust accepted=1804)
+2026-07-30 15:52:07,993 INFO alvance_github_crawler.crawl: screening deniz-blue/mcman (rust)
+2026-07-30 15:52:07,993 INFO alvance_github_crawler.crawl: screening paritytech/trie (rust)
+2026-07-30 15:52:08,908 INFO alvance_github_crawler.crawl: screening mrjackwills/adsbdb (rust)
+2026-07-30 15:52:10,070 INFO alvance_github_crawler.crawl: accepted mrjackwills/adsbdb (rust accepted=1805)
+2026-07-30 15:52:10,070 INFO alvance_github_crawler.crawl: screening cursor/minisqlite (rust)
+2026-07-30 15:52:10,071 INFO alvance_github_crawler.crawl: screening rust-lang/getopts (rust)
+2026-07-30 15:52:10,871 INFO alvance_github_crawler.crawl: accepted rust-lang/getopts (rust accepted=1806)
+2026-07-30 15:52:10,871 INFO alvance_github_crawler.crawl: screening ridiculousfish/regress (rust)
+2026-07-30 15:52:11,751 INFO alvance_github_crawler.crawl: accepted ridiculousfish/regress (rust accepted=1807)
+2026-07-30 15:52:11,751 INFO alvance_github_crawler.crawl: screening yarnpkg/zpm (rust)
+2026-07-30 15:52:11,751 INFO alvance_github_crawler.crawl: screening bytecodealliance/wac (rust)
+2026-07-30 15:52:12,541 INFO alvance_github_crawler.crawl: accepted bytecodealliance/wac (rust accepted=1808)
+2026-07-30 15:52:12,541 INFO alvance_github_crawler.crawl: screening olix0r/kubert (rust)
+2026-07-30 15:52:13,638 INFO alvance_github_crawler.crawl: screening mkrueger/icy_tools (rust)
+2026-07-30 15:52:14,583 INFO alvance_github_crawler.crawl: accepted mkrueger/icy_tools (rust accepted=1809)
+2026-07-30 15:52:14,583 INFO alvance_github_crawler.crawl: screening s00d/tauri-plugin-serialplugin (rust)
+2026-07-30 15:52:15,395 INFO alvance_github_crawler.crawl: accepted s00d/tauri-plugin-serialplugin (rust accepted=1810)
+2026-07-30 15:52:15,395 INFO alvance_github_crawler.crawl: screening cosmic-utils/web-apps (rust)
+2026-07-30 15:52:15,395 INFO alvance_github_crawler.crawl: screening flashbots/rollup-boost (rust)
+2026-07-30 15:52:16,100 INFO alvance_github_crawler.crawl: accepted flashbots/rollup-boost (rust accepted=1811)
+2026-07-30 15:52:16,100 INFO alvance_github_crawler.crawl: screening oxidecomputer/steno (rust)
+2026-07-30 15:52:16,810 INFO alvance_github_crawler.crawl: accepted oxidecomputer/steno (rust accepted=1812)
+2026-07-30 15:52:16,810 INFO alvance_github_crawler.crawl: screening zed-extensions/csharp (rust)
+2026-07-30 15:52:19,595 INFO alvance_github_crawler.crawl: screening diegopacheco/rust-playground (rust)
+2026-07-30 15:52:19,595 INFO alvance_github_crawler.crawl: screening ratatui/bevy_ratatui (rust)
+2026-07-30 15:52:20,627 INFO alvance_github_crawler.crawl: accepted ratatui/bevy_ratatui (rust accepted=1813)
+2026-07-30 15:52:20,627 INFO alvance_github_crawler.crawl: screening Amorter/biliTicker_gt (rust)
+2026-07-30 15:52:20,627 INFO alvance_github_crawler.crawl: screening microsoft/igvm (rust)
+2026-07-30 15:52:21,566 INFO alvance_github_crawler.crawl: screening Rapptz/jimaku (rust)
+2026-07-30 15:52:21,566 INFO alvance_github_crawler.crawl: screening noh-rs/nohrs (rust)
+2026-07-30 15:52:23,610 INFO alvance_github_crawler.crawl: screening 0xMiden/crypto (rust)
+2026-07-30 15:52:24,379 INFO alvance_github_crawler.crawl: accepted 0xMiden/crypto (rust accepted=1814)
+2026-07-30 15:52:24,379 INFO alvance_github_crawler.crawl: screening juliuskreutz/stardb-exporter (rust)
+2026-07-30 15:52:24,379 INFO alvance_github_crawler.crawl: screening ClickHouse/wal-rus (rust)
+2026-07-30 15:52:24,380 INFO alvance_github_crawler.crawl: screening sshwy/pku3b (rust)
+2026-07-30 15:52:28,137 INFO alvance_github_crawler.crawl: screening turbopuffer/alyze (rust)
+2026-07-30 15:52:29,207 INFO alvance_github_crawler.crawl: accepted turbopuffer/alyze (rust accepted=1815)
+2026-07-30 15:52:29,207 INFO alvance_github_crawler.crawl: screening dilluti0n/dpibreak (rust)
+2026-07-30 15:52:29,207 INFO alvance_github_crawler.crawl: screening divviup/libprio-rs (rust)
+2026-07-30 15:52:30,018 INFO alvance_github_crawler.crawl: accepted divviup/libprio-rs (rust accepted=1816)
+2026-07-30 15:52:30,018 INFO alvance_github_crawler.crawl: screening RustCrypto/PAKEs (rust)
+2026-07-30 15:52:30,021 INFO alvance_github_crawler.crawl: screening gyroflow/gyroflow-plugins (rust)
+2026-07-30 15:52:30,022 INFO alvance_github_crawler.crawl: screening SunDoge/simdjson-rust (rust)
+2026-07-30 15:52:30,844 INFO alvance_github_crawler.crawl: accepted SunDoge/simdjson-rust (rust accepted=1817)
+2026-07-30 15:52:30,844 INFO alvance_github_crawler.crawl: screening RustCrypto/KEMs (rust)
+2026-07-30 15:52:30,844 INFO alvance_github_crawler.crawl: screening P3GLEG/tauri-plugin-mcp (rust)
+2026-07-30 15:52:30,844 INFO alvance_github_crawler.crawl: screening metaplex-foundation/mpl-core (rust)
+2026-07-30 15:52:30,844 INFO alvance_github_crawler.crawl: screening hj01857655/kiro-account-manager (rust)
+2026-07-30 15:52:30,845 INFO alvance_github_crawler.crawl: screening spellshift/realm (rust)
+2026-07-30 15:52:30,845 INFO alvance_github_crawler.crawl: screening timokoesters/conduit (rust)
+2026-07-30 15:52:31,815 INFO alvance_github_crawler.crawl: screening kstonekuan/tambourine-voice (rust)
+2026-07-30 15:52:31,815 INFO alvance_github_crawler.crawl: screening tylergraydev/claude-code-tool-manager (rust)
+2026-07-30 15:52:31,815 INFO alvance_github_crawler.crawl: screening CodeZeno/Claude-Code-Usage-Monitor (rust)
+2026-07-30 15:52:35,387 INFO alvance_github_crawler.crawl: screening gavraz/recon (rust)
+2026-07-30 15:52:37,435 INFO alvance_github_crawler.crawl: accepted gavraz/recon (rust accepted=1818)
+2026-07-30 15:52:37,435 INFO alvance_github_crawler.crawl: screening NiceneNerd/UKMM (rust)
+2026-07-30 15:52:37,436 INFO alvance_github_crawler.crawl: screening sburris0/bevy_flycam (rust)
+2026-07-30 15:52:38,346 INFO alvance_github_crawler.crawl: accepted sburris0/bevy_flycam (rust accepted=1819)
+2026-07-30 15:52:38,346 INFO alvance_github_crawler.crawl: screening graelo/pumas (rust)
+2026-07-30 15:52:39,352 INFO alvance_github_crawler.crawl: accepted graelo/pumas (rust accepted=1820)
+2026-07-30 15:52:39,352 INFO alvance_github_crawler.crawl: screening bearcove/dodeca (rust)
+2026-07-30 15:52:40,211 INFO alvance_github_crawler.crawl: accepted bearcove/dodeca (rust accepted=1821)
+2026-07-30 15:52:40,211 INFO alvance_github_crawler.crawl: screening jasonwitty/socktop (rust)
+2026-07-30 15:52:40,937 INFO alvance_github_crawler.crawl: accepted jasonwitty/socktop (rust accepted=1822)
+2026-07-30 15:52:40,937 INFO alvance_github_crawler.crawl: screening bruits/maudit (rust)
+2026-07-30 15:52:41,980 INFO alvance_github_crawler.crawl: accepted bruits/maudit (rust accepted=1823)
+2026-07-30 15:52:41,980 INFO alvance_github_crawler.crawl: screening mattfbacon/typst-bot (rust)
+{
+  "accepted_by_language": {
+    "go": 2228,
+    "javascript": 902,
+    "python": 1598,
+    "rust": 1823,
+    "typescript": 1300
+  },
+  "accepted_total": 7851,
+  "api_request_count": 27760,
+  "cutoff_time": "2025-07-29T09:08:23.059900+00:00",
+  "deduplicated_total": 15500,
+  "duplicate_results": 0,
+  "duration_seconds": 110662.4,
+  "end_time": "2026-07-30T15:52:45.460264+00:00",
+  "fetched_total": 15500,
+  "github_rate_limit_remaining": {
+    "actions_runner_registration": 20000,
+    "audit_log": 3500,
+    "audit_log_streaming": 30,
+    "code_scanning_autofix": 20,
+    "code_search": 20,
+    "copilot_usage_records": 3500,
+    "core": 10000,
+    "dependency_sbom": 200,
+    "dependency_snapshots": 200,
+    "graphql": 9994,
+    "integration_manifest": 10000,
+    "scim": 30000,
+    "search": 60,
+    "source_import": 200
+  },
+  "output_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota",
+  "per_language": 3100,
+  "raw_per_language": 3100,
+  "rejected_by_reason": {
+    "inactive_head_commit": 90,
+    "no_test_infra": 2807,
+    "tree_unavailable": 22,
+    "unsupported_license": 4730
+  },
+  "rejected_total": 7649,
+  "retry_count": 7,
+  "schema_version": "1.3",
+  "search_pages_fetched": {
+    "go": 38,
+    "javascript": 44,
+    "python": 42,
+    "rust": 38,
+    "typescript": 43
+  },
+  "search_windows_used": {
+    "go": 4,
+    "javascript": 4,
+    "python": 4,
+    "rust": 4,
+    "typescript": 4
+  },
+  "selection_semantics": "raw_sample_all_pass_v1",
+  "start_time": "2026-07-29T09:08:23.060613+00:00",
+  "status": "completed",
+  "target_total": 15500,
+  "validation_errors": []
+}
+[2026-07-30T15:52:46Z] stage=crawl-15500 exit_code=0 duration_s=336
+[2026-07-30T15:52:46Z] stage=prescreen-15500 run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-07-30 15:52:48,821 INFO alvance_github_crawler.pipeline: processing crawled candidate The-Pocket/PocketFlow@f74d023f93607b8c3268133339a5e532a949898c
+2026-07-30 15:52:48,822 INFO alvance_github_crawler.pipeline: processing crawled candidate JoshuaC215/agent-service-toolkit@082425dbe927eb593591ff273098acae16cdaffc
+2026-07-30 15:52:48,823 INFO alvance_github_crawler.pipeline: processing crawled candidate Jon-Becker/prediction-market-analysis@0bbdfd76fe5f6e5495f4ba7a231679ab16cc1cbd
+2026-07-30 15:52:48,827 INFO alvance_github_crawler.pipeline: processing crawled candidate CravateRouge/bloodyAD@341fa041736b565f91640af0676970ac6a7dd80f
+2026-07-30 15:52:48,829 INFO alvance_github_crawler.pipeline: processing crawled candidate dj-stripe/dj-stripe@232c6e4162031855dfbb5c5e556772d8c8f0f60c
+2026-07-30 15:52:48,834 INFO alvance_github_crawler.pipeline: processing crawled candidate whyisdifficult/jiratui@2dd4bbeecc63773e97c9a4b3c2e89543b0c090a0
+2026-07-30 15:52:48,838 INFO alvance_github_crawler.pipeline: processing crawled candidate dfm/emcee@636797bcd7d88eca59d2ea3039a82a15aed6a90c
+2026-07-30 15:52:48,839 INFO alvance_github_crawler.pipeline: processing crawled candidate dimastatz/whisper-flow@c629739b61ac821bf3c462478a488595f36bbf78
+2026-07-30 15:52:48,842 INFO alvance_github_crawler.pipeline: processing crawled candidate buddy-compiler/buddy-mlir@d36a3fdaa3cf5e757765da885d51903151df746f
+2026-07-30 15:52:48,844 INFO alvance_github_crawler.pipeline: processing crawled candidate materialyzeai/matgl@35f3ea2d2028febfeb99bb6707f4c6f5223a0851
+2026-07-30 15:52:48,846 INFO alvance_github_crawler.pipeline: processing crawled candidate AndrewAnnex/SpiceyPy@388c219808f5b0dc9ec10acee2ca1b3cbe3c6e47
+2026-07-30 15:52:48,848 INFO alvance_github_crawler.pipeline: processing crawled candidate CalebBell/fluids@5fa218f9c15f62e2a7f864b97991f4837ddeefe7
+2026-07-30 15:52:48,850 INFO alvance_github_crawler.pipeline: processing crawled candidate jkingsman/Remote-Terminal-for-MeshCore@33b3b8d0236f2aebe045d2fc00b256a06f672e1e
+2026-07-30 15:52:48,852 INFO alvance_github_crawler.pipeline: processing crawled candidate binsync/declib@d735fdfe0871f0764f4dca4328d44fd2d55b3c6d
+2026-07-30 15:52:48,854 INFO alvance_github_crawler.pipeline: processing crawled candidate Ichinga-Samuel/aiomql@1aadf1aac4536faa1efba6dfbcf634924752ede5
+2026-07-30 15:52:48,856 INFO alvance_github_crawler.pipeline: processing crawled candidate magic-wormhole/magic-wormhole@b008c71e1c6c157a078e53fcf853a854b1424bed
+2026-07-30 15:52:48,858 INFO alvance_github_crawler.pipeline: processing crawled candidate The-PR-Agent/pr-agent@b249e568e0c0fb6c674ace55fe95d02f62f8f3b3
+2026-07-30 15:52:48,860 INFO alvance_github_crawler.pipeline: processing crawled candidate Farama-Foundation/Gymnasium@6b90bd094c8b84dee17bd24616681f07cb26a7f2
+2026-07-30 15:52:48,862 INFO alvance_github_crawler.pipeline: processing crawled candidate JerBouma/FinanceDatabase@bf839b234a260d2143ca3c6a2b3e9698ca405faf
+2026-07-30 15:52:48,865 INFO alvance_github_crawler.pipeline: processing crawled candidate ExtensityAI/symbolicai@70938edf9ca4530e179bf69e0debfd4c6d21d6b6
+2026-07-30 15:52:49,742 INFO alvance_github_crawler.pipeline: processing crawled candidate RayBytes/ChatMock@ba85f8db5e2fb06a18a3c9f2f0a71d3ab81485ef
+2026-07-30 15:52:49,861 INFO alvance_github_crawler.pipeline: processing crawled candidate littledivy/mimic@8cf998ac0b365806d8e522d34107cc504ecaa345
+2026-07-30 15:52:49,976 INFO alvance_github_crawler.pipeline: processing crawled candidate NeuroTechX/moabb@4be37764cda18bfa7245a7f63be041a3f5cf1d75
+2026-07-30 15:52:50,062 INFO alvance_github_crawler.pipeline: processing crawled candidate dfm/corner.py@cb0987780cb086e423fda55c963888f28f03b785
+2026-07-30 15:52:50,086 INFO alvance_github_crawler.pipeline: processing crawled candidate cmu-db/dbdb.io@4bb7a5f9e347b92faaf3901541f8bf9898d50eab
+2026-07-30 15:52:51,176 INFO alvance_github_crawler.pipeline: processing crawled candidate flekschas/jupyter-scatter@8b4d1eb84ca8b18c4c7f2a259338b3afe94a4693
+2026-07-30 15:52:52,405 INFO alvance_github_crawler.pipeline: processing crawled candidate SponsioLabs/Sponsio@ba5b8ec7ed998c0a1f52dccc515b17ae9ad81f16
+2026-07-30 15:52:58,014 INFO alvance_github_crawler.pipeline: processing crawled candidate aropan/clist@102f49437192017f69bd0cf1e2c5cd1fa61bece8
+2026-07-30 15:52:58,313 INFO alvance_github_crawler.pipeline: processing crawled candidate worldwonderer/video-recap-skills@dc5902041be151ba598ce03ca2d49437f47ff77c
+2026-07-30 15:53:02,133 INFO alvance_github_crawler.pipeline: processing crawled candidate 0xku/leetcode-compensation@9b440639ab249f4b4b43c915237447d278e5ab1f
+2026-07-30 15:53:04,386 INFO alvance_github_crawler.pipeline: processing crawled candidate runekaagaard/mcp-alchemy@c8796ee2924c3f170ec1f888a1f59d90dd4ac808
+2026-07-30 15:53:04,545 INFO alvance_github_crawler.pipeline: processing crawled candidate dfm/tinygp@5302d5a1ae47ad9ff3fe857eee4cbbebbc1c5637
+2026-07-30 15:53:06,075 INFO alvance_github_crawler.pipeline: processing crawled candidate afewmail/afew@8f15cd5f9ae2c6d1dad283102ed05b9f45527b70
+2026-07-30 15:53:07,106 INFO alvance_github_crawler.pipeline: processing crawled candidate py-econometrics/pyfixest@f67c8bcfb4219f46ae73771fa06a381a32f0b1aa
+2026-07-30 15:53:07,266 INFO alvance_github_crawler.pipeline: processing crawled candidate whonore/Coqtail@8e5427f8048ee94acde03c339d7b14a0e8c7cf89
+2026-07-30 15:53:07,977 INFO alvance_github_crawler.pipeline: processing crawled candidate kaloyaan/reframe@5b88b443a9225b7954b57bbb784854c081c6991b
+2026-07-30 15:53:08,139 INFO alvance_github_crawler.pipeline: processing crawled candidate anishathalye/semlib@b0dda7eab6200d964bfc429ac8d133e16942cdcf
+2026-07-30 15:53:10,788 INFO alvance_github_crawler.pipeline: processing crawled candidate LukasNiessen/ArchUnitPython@2aba85e44fcc8a95334efb54c3cc25b1508732c6
+2026-07-30 15:53:11,688 INFO alvance_github_crawler.pipeline: processing crawled candidate ynkdir/py-win32more@5139f09618826e850e2a7b1c4545dc3f3a454b4f
+2026-07-30 15:53:11,961 INFO alvance_github_crawler.pipeline: processing crawled candidate nedbat/dinghy@69f2bb56a6222c6217d394b270d3e4a8696042f6
+2026-07-30 15:53:12,341 INFO alvance_github_crawler.pipeline: processing crawled candidate divyaprakash0426/autoshorts@9785b2197c6116ab0f445a74047c924eaeb59696
+2026-07-30 15:53:13,560 INFO alvance_github_crawler.pipeline: processing crawled candidate AcademySoftwareFoundation/aswf-docker@02322c00d1024161c643f3d84e49740d91cee38d
+2026-07-30 15:53:15,552 INFO alvance_github_crawler.pipeline: processing crawled candidate Scottcjn/grazer-skill@7358dc83003a8dada103231015ed9cccdc43f4fb
+2026-07-30 15:53:15,722 INFO alvance_github_crawler.pipeline: processing crawled candidate janushendersonassetallocation/loman@546ec1094aaa91aaf16c7afe6bc5d539d57f1fa3
+2026-07-30 15:53:17,084 INFO alvance_github_crawler.pipeline: processing crawled candidate indykoning/PyPi_GrowattServer@4261d374587e1a9b081ffb5d349689f7d992f04e
+2026-07-30 15:53:18,000 INFO alvance_github_crawler.pipeline: processing crawled candidate mailhexu/TB2J@2c9ffdff6f7e8bb7720c348579c5a07c9a44617b
+2026-07-30 15:53:19,402 INFO alvance_github_crawler.pipeline: processing crawled candidate VIDAKHOSHPEY22/Atari-Racer@dcf715c2e45ff1e6f974e98684ff88f893b6da35
+2026-07-30 15:53:19,534 INFO alvance_github_crawler.pipeline: processing crawled candidate urfave/cli@c6f4cf7e9223793478cfcde9b8f135cc8f86e78f
+2026-07-30 15:53:22,992 INFO alvance_github_crawler.pipeline: processing crawled candidate ekristen/aws-nuke@bfe693f12ccfb324ef49cf4093994cec6bd6754b
+2026-07-30 15:53:23,176 INFO alvance_github_crawler.pipeline: processing crawled candidate sunny0826/kubecm@7d5ad3187014f6d83f79b1d6661da66559765654
+2026-07-30 15:53:25,662 INFO alvance_github_crawler.pipeline: processing crawled candidate la5nta/pat@2e6a8d14baf0268f4e2aa4d01784a54ca935cf52
+2026-07-30 15:53:25,878 INFO alvance_github_crawler.pipeline: processing crawled candidate cli/oauth@43c05247484b347bc0cbcb78cf276ee223b7d13d
+2026-07-30 15:53:26,170 INFO alvance_github_crawler.pipeline: processing crawled candidate prometheus/prom2json@23454cec4175a4a3c877b8ed4c11631555387f8f
+2026-07-30 15:53:26,204 INFO alvance_github_crawler.pipeline: processing crawled candidate dhth/hours@37a48aac0bf29250eda65d9c53851c6238a07d31
+2026-07-30 15:53:26,958 INFO alvance_github_crawler.pipeline: processing crawled candidate padok-team/yatas@10ffdfe7309ba705e46ef60c099fbc26fe45de5d
+2026-07-30 15:53:28,684 INFO alvance_github_crawler.pipeline: processing crawled candidate openconfig/ygot@6b442f4d02fdd3f835643a030631ea1c9b8d1537
+2026-07-30 15:53:29,703 INFO alvance_github_crawler.pipeline: processing crawled candidate Mertcikla/tld@ace14a10aa6190c3831e9d43ea3b875ae6ba08af
+2026-07-30 15:53:29,884 INFO alvance_github_crawler.pipeline: processing crawled candidate patrickhoefler/dockerfilegraph@ddce49d911ef29f4422bd5f383d1fde5cde8ebce
+2026-07-30 15:53:30,485 INFO alvance_github_crawler.pipeline: processing crawled candidate home-assistant/cli@bf9154aba059fa63715131fb9658997b4bd85573
+2026-07-30 15:53:31,522 INFO alvance_github_crawler.pipeline: processing crawled candidate vultr/govultr@9ee451b0dcec73936d0ed318b847d98d60f986dc
+2026-07-30 15:53:32,812 INFO alvance_github_crawler.pipeline: processing crawled candidate authzed/zed@45bbb9f2e7c138292b538ba8ba0a8672ac8b64aa
+2026-07-30 15:53:33,566 INFO alvance_github_crawler.pipeline: processing crawled candidate unpoller/unifi@03084cfa118451eef559245b22359aef4d648b56
+2026-07-30 15:53:36,162 INFO alvance_github_crawler.pipeline: processing crawled candidate pokanop/nostromo@28c93b7cda47a1fd9b5f42a80943a45d91d6bd5a
+2026-07-30 15:53:36,166 INFO alvance_github_crawler.pipeline: processing crawled candidate baidubce/bce-sdk-go@7ff91c2dff2d62e8da37ba28063a1e2d8de16bcb
+2026-07-30 15:53:36,721 INFO alvance_github_crawler.pipeline: processing crawled candidate openziti/sdk-golang@c505373bc6ac48c5711edce200282bde6ca45b41
+[2026-07-30T15:53:37Z] stage=verify-default-20260730T155337Z run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-30 15:53:39,638 INFO alvance_github_crawler.pending.verification: verifying pending candidate binsync/declib key_slot=1
+2026-07-30 15:53:39,639 INFO alvance_github_crawler.pending.verification: verifying pending candidate whyisdifficult/jiratui key_slot=2
+2026-07-30 15:53:39,642 INFO alvance_github_crawler.pending.verification: verifying pending candidate whonore/Coqtail key_slot=3
+2026-07-30 15:53:40,508 INFO alvance_github_crawler.pipeline: processing crawled candidate planetscale/planetscale-go@fe8b9e81bcdc197472a7b52cb48ce0663326472f
+2026-07-30 15:53:43,570 INFO alvance_github_crawler.pipeline: processing crawled candidate synadia-labs/rita@74e20fd49a77598f47372e5db1175b6d727ece5e
+2026-07-30 15:53:44,596 INFO alvance_github_crawler.pipeline: processing crawled candidate AndreasSko/go-library-merger@339b65999d01a274689e727ca1864b4363195afc
+2026-07-30 15:53:45,515 INFO alvance_github_crawler.pending.verification: verifying pending candidate magic-wormhole/magic-wormhole key_slot=1
+2026-07-30 15:53:54,218 INFO alvance_github_crawler.pending.verification: pending candidate whonore/Coqtail finished outcome=rejected key_slot=3 processed=1 in_flight=3
+2026-07-30 15:53:55,234 INFO alvance_github_crawler.pipeline: processing crawled candidate prometheus/node_exporter@b401dcfc667cee0a5d29232bab51a8ce1c58ec07
+2026-07-30 15:53:56,158 INFO alvance_github_crawler.pipeline: processing crawled candidate gonum/gonum@8d8e8a102004757adcb63cd9b0d7067c226149e2
+2026-07-30 15:53:58,892 INFO alvance_github_crawler.pipeline: processing crawled candidate chaos-mesh/chaos-mesh@37ef27f7e727e8fdb50c410a05c21f8bd924b585
+2026-07-30 15:53:58,973 INFO alvance_github_crawler.pipeline: processing crawled candidate gdamore/tcell@45d70ee4abf221813842b88aba8abae08a992f2f
+2026-07-30 15:53:58,990 INFO alvance_github_crawler.pending.verification: verifying pending candidate nedbat/dinghy key_slot=3
+2026-07-30 15:53:59,832 INFO alvance_github_crawler.pipeline: processing crawled candidate diggerhq/digger@3053cda26247aa3cb94dcd4b8a253ee3cbc78243
+2026-07-30 15:54:00,225 INFO alvance_github_crawler.pending.verification: verifying pending candidate la5nta/pat key_slot=2
+2026-07-30 15:54:00,918 INFO alvance_github_crawler.pipeline: processing crawled candidate sammcj/gollama@a5849dc6cdd368bb6a4aae9eaee3c2545a8f52bb
+2026-07-30 15:54:01,178 INFO alvance_github_crawler.pipeline: processing crawled candidate mikespook/gorbac@ad8eb94907f813d469678206ba2084d1471c297e
+2026-07-30 15:54:03,208 INFO alvance_github_crawler.pipeline: processing crawled candidate FairwindsOps/rbac-manager@14c1018f2b8e8af03b11d2e31a76b8b6835dc977
+2026-07-30 15:54:03,595 INFO alvance_github_crawler.pipeline: processing crawled candidate portapps/portapps@aac12938d84aa75d025e6b74c8e83cf803531748
+2026-07-30 15:54:03,646 INFO alvance_github_crawler.pipeline: processing crawled candidate containerd/cgroups@360fd8b6c2ce402eddcbe6291e2393b0f202e253
+2026-07-30 15:54:03,956 INFO alvance_github_crawler.pending.verification: verifying pending candidate prometheus/prom2json key_slot=3
+2026-07-30 15:54:06,521 INFO alvance_github_crawler.pipeline: processing crawled candidate kunchenguid/treehouse@c0b7f685d4511eec765ab4cbb47583178424eb45
+2026-07-30 15:54:06,823 INFO alvance_github_crawler.pipeline: processing crawled candidate jcmoraisjr/haproxy-ingress@14ea46fba7972eabee71df556cbfe9812403973d
+2026-07-30 15:54:09,955 INFO alvance_github_crawler.pipeline: processing crawled candidate dkorunic/betteralign@34471ff753000cd07c00ea822400ca5a1e48c808
+2026-07-30 15:54:10,183 INFO alvance_github_crawler.pipeline: processing crawled candidate mdlayher/netlink@5fd31d4ee2bee32f7aee176ec13682b07a4a8db4
+2026-07-30 15:54:12,927 INFO alvance_github_crawler.pipeline: processing crawled candidate awa/go-iap@a629e4651c738688f82bfcea92d4714286cc1f8f
+2026-07-30 15:54:13,163 INFO alvance_github_crawler.pipeline: processing crawled candidate nlewo/comin@c32a4e457cd3bc99d6c18631707e9d8294f4b5d0
+2026-07-30 15:54:13,967 INFO alvance_github_crawler.pipeline: processing crawled candidate denoland/clawpatrol@438b1bcd9ddd9ac1cb6ecb6abdb6667f6b035363
+2026-07-30 15:54:15,020 INFO alvance_github_crawler.pipeline: processing crawled candidate ossf/package-analysis@c5c45008da694036d701ba76fe9567fc8a5b9675
+2026-07-30 15:54:20,434 INFO alvance_github_crawler.pipeline: processing crawled candidate github/freno@c8829f27129124333a45df6ad8f22b727489ed14
+2026-07-30 15:54:20,440 INFO alvance_github_crawler.pipeline: processing crawled candidate aurorax-neo/chat2api@dbf6bf39686348449c25de3b6131ca733f448deb
+2026-07-30 15:54:20,707 INFO alvance_github_crawler.pending.verification: pending candidate nedbat/dinghy finished outcome=rejected key_slot=3 processed=2 in_flight=5
+2026-07-30 15:54:20,906 INFO alvance_github_crawler.pending.verification: verifying pending candidate prometheus/node_exporter key_slot=3
+2026-07-30 15:54:20,906 INFO alvance_github_crawler.pending.verification: verifying pending candidate synadia-labs/rita key_slot=1
+2026-07-30 15:54:22,532 INFO alvance_github_crawler.pipeline: processing crawled candidate grishy/any-sync-bundle@a77818d9b57d527eac8d33d84d3f880b147c9bad
+2026-07-30 15:54:22,931 INFO alvance_github_crawler.pending.verification: pending candidate magic-wormhole/magic-wormhole finished outcome=rejected key_slot=1 processed=3 in_flight=6
+2026-07-30 15:54:24,806 INFO alvance_github_crawler.pipeline: processing crawled candidate wI2L/jsondiff@cc662875ff5888a22ab73d512826040d81b67811
+2026-07-30 15:54:26,733 INFO alvance_github_crawler.pipeline: processing crawled candidate HashLoad/boss@4a4ca0454974f2548fc7ad683c502bacfe873f6e
+2026-07-30 15:54:26,841 INFO alvance_github_crawler.pipeline: processing crawled candidate hashicorp/consul-replicate@a0ca54ac2ab9c9911ea2dc6fa17bce8a77fc10d3
+2026-07-30 15:54:27,080 INFO alvance_github_crawler.pending.verification: pending candidate binsync/declib finished outcome=rejected key_slot=1 processed=4 in_flight=5
+2026-07-30 15:54:27,297 INFO alvance_github_crawler.pending.verification: verifying pending candidate gdamore/tcell key_slot=1
+2026-07-30 15:54:27,314 INFO alvance_github_crawler.pending.verification: pending candidate whyisdifficult/jiratui finished outcome=rejected key_slot=2 processed=5 in_flight=5
+2026-07-30 15:54:28,997 INFO alvance_github_crawler.pipeline: processing crawled candidate ahmetb/kubectl-foreach@5692069ef89dea7d5e64b8e6f8f2dc755965c219
+2026-07-30 15:54:31,369 INFO alvance_github_crawler.pipeline: processing crawled candidate squzy/squzy@56ac2ca6fbe358a24f148850bbac747d2372dc1f
+2026-07-30 15:54:33,590 INFO alvance_github_crawler.pipeline: processing crawled candidate tmccombs/hcl2json@3bc0e3118066707a891a92a45e364a46253826a4
+2026-07-30 15:54:35,065 INFO alvance_github_crawler.pipeline: processing crawled candidate fclairamb/ftpserverlib@5ff74bee53c7854ddf1b7215eff0af2d67e329ec
+2026-07-30 15:54:37,120 INFO alvance_github_crawler.pipeline: processing crawled candidate lavanet/lava@abba43e9c83f54fdb4d61de3194cf99293412b93
+2026-07-30 15:54:38,107 INFO alvance_github_crawler.pipeline: processing crawled candidate open-policy-agent/opa-envoy-plugin@0f639d2ecefcb27944da9d5acd48a6e8032aa999
+2026-07-30 15:54:39,200 INFO alvance_github_crawler.pipeline: processing crawled candidate gopacket/gopacket@f87e843120cc0f9c768e090c8a4b0ac06d05be51
+2026-07-30 15:54:42,956 INFO alvance_github_crawler.pipeline: processing crawled candidate apache/solr-operator@ed5c5c7d28a4c1189d19f581259e05385c0d4b20
+2026-07-30 15:54:43,188 INFO alvance_github_crawler.pipeline: processing crawled candidate nezhahq/agent@84e61fca84661503d324ae6ab00ca88e280e00a2
+2026-07-30 15:54:43,436 INFO alvance_github_crawler.pending.verification: verifying pending candidate nlewo/comin key_slot=2
+2026-07-30 15:54:46,488 INFO alvance_github_crawler.pipeline: processing crawled candidate zalando-incubator/cluster-lifecycle-manager@dafe3a581f7f0a1fe15556e30a5becd531756b28
+2026-07-30 15:54:49,663 INFO alvance_github_crawler.pipeline: processing crawled candidate checkpoint-restore/go-criu@a32ed46c233d9a069b3b3a86bf21301555bc1927
+2026-07-30 15:54:50,878 INFO alvance_github_crawler.pending.verification: verifying pending candidate denoland/clawpatrol key_slot=3
+2026-07-30 15:54:53,545 INFO alvance_github_crawler.pipeline: processing crawled candidate opentracing-contrib/go-stdlib@6920a47c507d44ff289937ebeed2886fc2d8c30a
+2026-07-30 15:54:55,443 INFO alvance_github_crawler.pipeline: processing crawled candidate hay-kot/scaffold@946120140678d1210e19dbbdecb1d973dae999eb
+2026-07-30 15:54:59,886 INFO alvance_github_crawler.pipeline: processing crawled candidate liushuangls/go-anthropic@e2315e45ef6a39fd40336e8dcf7ef8809d664b50
+2026-07-30 15:55:00,847 INFO alvance_github_crawler.pending.verification: verifying pending candidate squzy/squzy key_slot=1
+2026-07-30 15:55:02,040 INFO alvance_github_crawler.pipeline: processing crawled candidate sue445/plant_erd@fc0f7e02ad1a174ea4590339bc2138b5e0a14a19
+2026-07-30 15:55:04,080 INFO alvance_github_crawler.pipeline: processing crawled candidate hostinger/fireactions@31de22a3f634370801b98dbc083467227fae75fa
+2026-07-30 15:55:04,176 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=AndrewAnnex/SpiceyPy attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:05,995 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=CalebBell/fluids attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:06,615 INFO alvance_github_crawler.pipeline: processing crawled candidate mikestefanello/backlite@dbe6ff326acde357458ee45014836bb9d0f7e017
+2026-07-30 15:55:08,434 INFO alvance_github_crawler.pipeline: processing crawled candidate matthewhartstonge/argon2@a31b4e25eb82eafadae6e926d29b14bdc61c9733
+2026-07-30 15:55:10,435 INFO alvance_github_crawler.pipeline: processing crawled candidate mattermost/mattermost-operator@8ef3cfa87f46df8313ebec46186d055b7c28c048
+2026-07-30 15:55:13,955 INFO alvance_github_crawler.pipeline: processing crawled candidate nats-io/nsc@c8d67c23c187ed0db496ce5b2b66e96715bb72bf
+2026-07-30 15:55:14,178 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=LukasNiessen/ArchUnitPython attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:17,756 INFO alvance_github_crawler.pipeline: processing crawled candidate foxj77/claudectx@15031473e1800591787fc608606b579ba769fb7e
+2026-07-30 15:55:18,573 INFO alvance_github_crawler.pending.verification: verifying pending candidate pokanop/nostromo key_slot=2
+2026-07-30 15:55:19,908 INFO alvance_github_crawler.pipeline: processing crawled candidate protocolbuffers/txtpbfmt@6d48527148f0f916cc5983289f35e0972e04da75
+2026-07-30 15:55:22,100 INFO alvance_github_crawler.pipeline: processing crawled candidate secmon-lab/warren@e9c3607d0f54c040d60c9e65fb21d1b4981e05a2
+2026-07-30 15:55:25,834 INFO alvance_github_crawler.pipeline: processing crawled candidate zmap/zannotate@9009ee362c11e070c3d4aaaa0543bc8f4f8479e0
+2026-07-30 15:55:26,090 INFO alvance_github_crawler.pending.verification: verifying pending candidate zalando-incubator/cluster-lifecycle-manager key_slot=3
+2026-07-30 15:55:26,521 INFO alvance_github_crawler.pipeline: processing crawled candidate netobserv/flowlogs-pipeline@446800b1cfa9b1caacb591d522588e752b48a60d
+2026-07-30 15:55:27,167 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=buddy-compiler/buddy-mlir attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:27,488 INFO alvance_github_crawler.pending.verification: pending candidate pokanop/nostromo finished outcome=error key_slot=2 processed=6 in_flight=9
+2026-07-30 15:55:27,779 INFO alvance_github_crawler.pipeline: processing crawled candidate shift/domain_exporter@b58716eafe0bd88ec2f2681b02a2941f90ca1f12
+2026-07-30 15:55:29,783 INFO alvance_github_crawler.pipeline: processing crawled candidate mjl-/mox@9bbad6af30ae1c429dde9cdc2d04130532e1fed1
+2026-07-30 15:55:35,403 INFO alvance_github_crawler.pipeline: processing crawled candidate prometheus/mysqld_exporter@2a3850727e5af11873cc715a2b1a31bedce264eb
+2026-07-30 15:55:36,248 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=unpoller/unifi attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:36,255 INFO alvance_github_crawler.pipeline: processing crawled candidate rodrigo-brito/ninjabot@eb7206acd81a678466882a4b88ca3b2b50d037d2
+2026-07-30 15:55:37,953 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dfm/tinygp attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:39,449 INFO alvance_github_crawler.pipeline: processing crawled candidate prometheus/collectd_exporter@fc623c87a273bc46ceef7d16de7c9e5ca37abbc9
+2026-07-30 15:55:41,506 INFO alvance_github_crawler.pipeline: processing crawled candidate innogames/slack-bot@9e6708d2ea9686e260e467005028a469fa040d76
+2026-07-30 15:55:41,570 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dj-stripe/dj-stripe attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:44,789 INFO alvance_github_crawler.pipeline: processing crawled candidate 1weiho/open-slide@35dc46ca27716ea86f8a76710bbd3640e9590628
+2026-07-30 15:55:46,854 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=vultr/govultr attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:58,860 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ekristen/aws-nuke attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:55:59,372 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Mertcikla/tld attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:56:02,805 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dhth/hours attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:56:03,117 INFO alvance_github_crawler.pipeline: processing crawled candidate caliber-ai-org/ai-setup@7950921a722061dfb0c671cc20ecd8632ebec827
+2026-07-30 15:56:04,388 INFO alvance_github_crawler.pipeline: processing crawled candidate lupu60/nestjs-toolbox@7a4cf7f2f04e71265593d26acdb0604fc8ebde0d
+2026-07-30 15:56:07,978 INFO alvance_github_crawler.pipeline: processing crawled candidate squirrelchat/smol-toml@e6017c4fd9e894a33af1545d2c4c51e2b4a7c9ce
+2026-07-30 15:56:09,229 INFO alvance_github_crawler.pending.verification: pending candidate prometheus/prom2json finished outcome=registered key_slot=3 processed=7 in_flight=8
+2026-07-30 15:56:09,256 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=FairwindsOps/rbac-manager attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:56:18,178 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ossf/package-analysis attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:56:31,658 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=github/freno attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:56:39,515 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=HashLoad/boss attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:56:43,333 INFO alvance_github_crawler.pending.verification: pending candidate prometheus/node_exporter finished outcome=rejected key_slot=3 processed=8 in_flight=7
+2026-07-30 15:56:45,799 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=apache/solr-operator attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:56:59,462 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=hay-kot/scaffold attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:57:07,146 INFO alvance_github_crawler.pending.verification: pending candidate gdamore/tcell finished outcome=registered key_slot=1 processed=9 in_flight=6
+2026-07-30 15:57:09,280 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=AndrewAnnex/SpiceyPy attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:57:11,113 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=CalebBell/fluids attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:57:19,241 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=LukasNiessen/ArchUnitPython attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:57:21,192 INFO alvance_github_crawler.pending.verification: pending candidate denoland/clawpatrol finished outcome=rejected key_slot=3 processed=10 in_flight=5
+2026-07-30 15:57:29,961 INFO alvance_github_crawler.pipeline: processing crawled candidate knowledgecode/date-and-time@7de7f02582973966ed8d535521adbab3a942dcb1
+2026-07-30 15:57:32,270 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=buddy-compiler/buddy-mlir attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:57:32,785 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=nats-io/nsc attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:57:33,432 INFO alvance_github_crawler.pipeline: processing crawled candidate cyanheads/mcp-ts-core@08e820e994da7627a07657e5eb414acc70520592
+2026-07-30 15:57:35,587 INFO alvance_github_crawler.pending.verification: pending candidate synadia-labs/rita finished outcome=rejected key_slot=1 processed=11 in_flight=4
+2026-07-30 15:57:41,364 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=unpoller/unifi attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:57:43,078 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dfm/tinygp attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:57:46,650 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dj-stripe/dj-stripe attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:57:51,913 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=vultr/govultr attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:58:03,966 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ekristen/aws-nuke attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:58:04,428 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Mertcikla/tld attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:58:07,849 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dhth/hours attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:58:14,327 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=FairwindsOps/rbac-manager attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:58:23,298 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=ossf/package-analysis attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:58:24,638 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=prometheus/mysqld_exporter attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 15:58:36,782 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=github/freno attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:58:44,609 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=HashLoad/boss attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 15:58:49,294 INFO alvance_github_crawler.pipeline: processing crawled candidate trpc/trpc@dfbafa8ef178a5a3d23ef9461caa9494b3ef7f95
+2026-07-30 15:58:50,414 INFO alvance_github_crawler.pending.verification: verifying pending candidate cyanheads/mcp-ts-core key_slot=1

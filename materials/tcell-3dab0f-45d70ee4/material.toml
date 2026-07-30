@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tcell-3dab0f-45d70ee4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gdamore/tcell"
+base_commit = "45d70ee4abf221813842b88aba8abae08a992f2f"
+source_tree = "9cc7dc281e39c0e26223488eed42aee860855ecb"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2a9116688ca8878d022ed264129de4faf530de26eb02b960229154aeec2014bf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tcell-3dab0f-45d70ee4-v2-env-2a911668"
+template_id = "cn6ayvta7cacaeqfo11x"
+source_template_alias = "dgd679yznc5kvvvepfkr"
+source_template_id = "dgd679yznc5kvvvepfkr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

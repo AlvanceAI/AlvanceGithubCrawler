@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+
 from alvance_github_crawler.config import PipelineConfig, normalize_openai_base_url
 
 
@@ -79,3 +81,23 @@ def test_numbered_e2b_keys_create_independent_concurrency_pools(monkeypatch) -> 
     assert config.e2b_api_key == "first-key"
     assert config.e2b_total_concurrency == 60
     config.validate(require_e2b=True)
+
+
+def test_numbered_github_tokens_are_numeric_ordered_and_preferred(
+    tmp_path,
+    monkeypatch,
+) -> None:
+    for key in tuple(os.environ):
+        if key == "GITHUB_TOKEN" or key.startswith("GITHUB_TOKEN"):
+            monkeypatch.delenv(key, raising=False)
+    monkeypatch.delenv("PIPELINE_ENV_FILE", raising=False)
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("GITHUB_TOKEN", "legacy-token")
+    monkeypatch.setenv("GITHUB_TOKEN10", "first-token")
+    monkeypatch.setenv("GITHUB_TOKEN2", "second-token")
+    monkeypatch.setenv("GITHUB_TOKEN1", "first-token")
+
+    config = PipelineConfig.from_env()
+
+    assert config.github_tokens == ("first-token", "second-token")
+    assert config.github_token == "first-token"

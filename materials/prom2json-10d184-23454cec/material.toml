@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "prom2json-10d184-23454cec"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/prometheus/prom2json"
+base_commit = "23454cec4175a4a3c877b8ed4c11631555387f8f"
+source_tree = "31ede01480414aebd5c8ae4c143dccc505742af7"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8026b616765def5dda485f0e4939e40547ad20a96c5c3834ec6975b94ff5cf30"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-prom2json-10d184-23454cec-v2-env-8026b616"
+template_id = "sdjuhcrre90lt937ei5p"
+source_template_alias = "gduvwjyge70jefniil2l"
+source_template_id = "gduvwjyge70jefniil2l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import runpy
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -12,6 +13,7 @@ launch_pipeline = MONITOR["launch_pipeline"]
 parse_args = MONITOR["parse_args"]
 pending_stats = MONITOR["pending_stats"]
 rejection_summary = MONITOR["rejection_summary"]
+task_rate_summary = MONITOR["task_rate_summary"]
 
 
 def test_pending_stats_replays_append_only_queue() -> None:
@@ -62,6 +64,48 @@ def test_candidate_summary_deduplicates_task_path_not_repository() -> None:
     ]
 
     assert candidate_summary(records) == {"python": 2}
+
+
+def test_task_rate_summary_uses_unique_registered_tasks_in_rolling_windows() -> None:
+    now = datetime(2026, 7, 30, 12, 0, tzinfo=UTC)
+    records = [
+        {
+            "repo": "owner/a",
+            "base_commit": "one",
+            "harbor_package": {"task_path": "tasks/a"},
+            "registered_at": "2026-07-30T11:55:00+00:00",
+        },
+        {
+            "repo": "owner/a",
+            "base_commit": "one",
+            "harbor_package": {"task_path": "tasks/a"},
+            "registered_at": "2026-07-30T11:59:00+00:00",
+        },
+        {
+            "repo": "owner/b",
+            "base_commit": "two",
+            "registered_at": "2026-07-30T11:46:00Z",
+        },
+        {
+            "repo": "owner/c",
+            "base_commit": "three",
+            "registered_at": "2026-07-30T11:30:00+00:00",
+        },
+        {
+            "repo": "owner/d",
+            "base_commit": "four",
+            "registered_at": "2026-07-30T10:50:00+00:00",
+        },
+        {"repo": "owner/bad", "registered_at": "not-a-timestamp"},
+    ]
+
+    summary = task_rate_summary(records, now=now)
+
+    assert summary["last_15m_count"] == 2
+    assert summary["last_15m_per_hour"] == 8.0
+    assert summary["last_60m_count"] == 3
+    assert summary["last_60m_per_hour"] == 3.0
+    assert summary["latest_at"] == datetime(2026, 7, 30, 11, 55, tzinfo=UTC)
 
 
 def launcher_args(tmp_path: Path):
