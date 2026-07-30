@@ -28,6 +28,7 @@ def test_external_env_aliases(tmp_path, monkeypatch) -> None:
         "E2B_API_KEY",
         "E2B_API_KEY1",
         "E2B_API_KEY2",
+        "E2B_API_KEY3",
         "MODEL_API_KEY",
         "MODEL_BASE_URL",
         "MODEL_NAME",
@@ -69,11 +70,12 @@ def test_numbered_e2b_keys_create_independent_concurrency_pools(monkeypatch) -> 
     monkeypatch.delenv("E2B_KEY", raising=False)
     monkeypatch.setenv("E2B_API_KEY1", "first-key")
     monkeypatch.setenv("E2B_API_KEY2", "second-key")
+    monkeypatch.setenv("E2B_API_KEY3", "third-key")
     monkeypatch.setenv("PIPELINE_E2B_CONCURRENCY", "20")
 
     config = PipelineConfig.from_env()
 
-    assert config.e2b_api_keys == ("first-key", "second-key")
+    assert config.e2b_api_keys == ("first-key", "second-key", "third-key")
     assert config.e2b_api_key == "first-key"
-    assert config.e2b_total_concurrency == 40
+    assert config.e2b_total_concurrency == 60
     config.validate(require_e2b=True)

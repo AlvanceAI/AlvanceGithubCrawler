@@ -40,6 +40,7 @@ OPENAI_MODEL=gpt-5-mini
 E2B_API_KEY=
 E2B_API_KEY1=e2b_replace_with_first_key
 E2B_API_KEY2=e2b_replace_with_second_key
+E2B_API_KEY3=e2b_replace_with_third_key
 
 PIPELINE_E2B_CONCURRENCY=20
 PIPELINE_PRESCREEN_CONCURRENCY=20
@@ -51,7 +52,7 @@ PIPELINE_PRESCREEN_CONCURRENCY=20
 - `OPENAI_API_KEY`：Stage 3 issue 方向判定；
 - `OPENAI_MODEL`：可选，默认 `gpt-5-mini`；
 - `OPENAI_BASE_URL`：可选，OpenAI 兼容网关地址；
-- `E2B_API_KEY1`、`E2B_API_KEY2`：两个独立 E2B 并发池，每个 Key 最多 20；
+- `E2B_API_KEY1`、`E2B_API_KEY2`、`E2B_API_KEY3`：三个独立 E2B 并发池，每个 Key 最多 20；
 - `E2B_API_KEY`：只用于单 Key 命令，双 Key 量产时保持为空。
 
 也支持已有环境的别名 `MODEL_API_KEY`、`MODEL_BASE_URL`、`MODEL_NAME`、`E2B_KEY`，
@@ -65,9 +66,9 @@ uv run alvance-github-crawler --doctor
 ```
 
 开始量产前应确认输出至少包含：`github_token: true`、`openai_api_key: true`、
-`e2b_api_key_count: 2`、`e2b_total_concurrency: 40` 和 `e2b_sdk: true`。
+`e2b_api_key_count: 3`、`e2b_total_concurrency: 60` 和 `e2b_sdk: true`。
 
-## 双 Key 并发量产
+## 三 Key 并发量产
 
 量产必须在 `XBY` 分支运行。根目录的一键入口会启动完整的 GitHub 抓取、初筛、方向判断、
 E2B 离线测试、资源升级重试、Dockerfile/Task 生成、日志统计和分批推送，并同时显示终端
@@ -85,12 +86,12 @@ git pull --ff-only origin XBY
 uv run python monitor.py
 ```
 
-默认预筛并发为 20；`E2B_API_KEY1` 和 `E2B_API_KEY2` 各使用 20 个并发槽，总 E2B
-并发最多 40。完成一轮后会继续扩大抓取范围，直到两个 E2B Key 都耗尽、发生不可恢复错误，
+默认预筛并发为 20；`E2B_API_KEY1`、`E2B_API_KEY2` 和 `E2B_API_KEY3` 各使用 20 个并发槽，总 E2B
+并发最多 60。完成一轮后会继续扩大抓取范围，直到三个 E2B Key 都耗尽、发生不可恢复错误，
 或用户按 `Ctrl+C` 安全暂停。断点和完整日志保存在 `outputs/`，生成的 Task、material、
 catalog 和统计文档会自动提交并推送到 `XBY`，不会自动修改 `main`。
 
-启动脚本只检查凭据是否存在，不会输出 Key 内容。若当前不在 `XBY`、缺少两个 E2B Key、
+启动脚本只检查凭据是否存在，不会输出 Key 内容。若当前不在 `XBY`、缺少三个 E2B Key、
 缺少 GitHub/OpenAI 凭据或没有安装 E2B SDK，脚本会在消耗额度前停止并给出修复指令。
 
 ## 运行
@@ -137,7 +138,7 @@ uv run alvance-github-crawler --verify-pending --e2b-concurrency 20
 
 新建 E2B template 默认使用 1 vCPU、1024 MB；并发默认上限为每个 Key 20。可分别通过
 `PIPELINE_E2B_CPU_COUNT`、`PIPELINE_E2B_MEMORY_MB` 和
-`PIPELINE_E2B_CONCURRENCY` 调整。两个编号 Key 可提供 40 个总并发槽。已存在且命中
+`PIPELINE_E2B_CONCURRENCY` 调整。三个编号 Key 可提供 60 个总并发槽。已存在且命中
 alias 的 template 会直接复用原规格。
 语言配额惩罚默认关闭，因此仓库不会因当前语言占比而被淘汰；只有明确设置
 `PIPELINE_LANGUAGE_QUOTA_ENABLED=true` 时才启用原方案中的 S5 配额评分。

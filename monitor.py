@@ -23,6 +23,8 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
+from alvance_github_crawler.config import PipelineConfig
+
 REPO_ROOT = Path(__file__).resolve().parent
 DEFAULT_STATE_DIR = Path(
     os.environ.get("PIPELINE_OUTPUT_DIR", "outputs/github_production_500_unquota")
@@ -65,6 +67,14 @@ class ManagedPipeline:
 def resolve_path(path: Path) -> Path:
     path = path.expanduser()
     return path if path.is_absolute() else REPO_ROOT / path
+
+
+def configured_e2b_key_count() -> int:
+    """Read the configured numbered E2B slots without exposing their values."""
+    try:
+        return len(PipelineConfig.from_env().e2b_api_keys)
+    except (OSError, ValueError):
+        return 0
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -315,7 +325,7 @@ def render(
     ceiling_per_language: int | None = None,
     prescreen_concurrency: int | None = None,
     e2b_concurrency_per_key: int | None = None,
-    e2b_key_count: int = 2,
+    e2b_key_count: int = 0,
 ) -> None:
     candidates = read_jsonl(state_dir / "candidates.jsonl")
     pending_records = read_jsonl(state_dir / "pending.jsonl")
@@ -509,7 +519,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--e2b-concurrency",
         type=int,
         default=int(os.environ.get("E2B_CONCURRENCY", "20")),
-        help="concurrency per E2B key; two keys provide twice this value",
+        help="concurrency per E2B key; each numbered key provides this value",
     )
     args = parser.parse_args(argv)
     if args.interval <= 0:
@@ -532,6 +542,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    e2b_key_count = configured_e2b_key_count()
     console = Console()
     layout = build_layout()
     if args.once:
@@ -540,6 +551,7 @@ def main(argv: list[str] | None = None) -> int:
             state_dir=args.state_dir,
             crawl_dir=args.crawl_dir,
             run_root=args.run_root,
+            e2b_key_count=e2b_key_count,
         )
         console.print(layout)
         return 0
@@ -626,6 +638,7 @@ def main(argv: list[str] | None = None) -> int:
                     e2b_concurrency_per_key=(
                         args.e2b_concurrency if not args.monitor_only else None
                     ),
+                    e2b_key_count=e2b_key_count,
                 )
                 if terminal_status:
                     time.sleep(3)
@@ -644,6 +657,7 @@ def main(argv: list[str] | None = None) -> int:
                     ceiling_per_language=ceiling_per_language,
                     prescreen_concurrency=args.prescreen_concurrency,
                     e2b_concurrency_per_key=args.e2b_concurrency,
+                    e2b_key_count=e2b_key_count,
                 )
                 final_code = stop_pipeline(managed)
                 terminal_status = ("■ PIPELINE PAUSED", "bold yellow")
@@ -659,6 +673,7 @@ def main(argv: list[str] | None = None) -> int:
                 ceiling_per_language=(ceiling_per_language if managed else None),
                 prescreen_concurrency=(args.prescreen_concurrency if managed else None),
                 e2b_concurrency_per_key=(args.e2b_concurrency if managed else None),
+                e2b_key_count=e2b_key_count,
             )
         finally:
             if managed:

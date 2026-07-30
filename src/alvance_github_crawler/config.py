@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import subprocess
 from dataclasses import dataclass, field
@@ -9,6 +10,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
 SUPPORTED_LANGUAGES = ("go", "python", "typescript", "javascript", "rust")
+NUMBERED_E2B_KEY = re.compile(r"^E2B_API_KEY(\d+)$")
 
 
 def parse_env_bool(value: str, *, default: bool = False) -> bool:
@@ -100,12 +102,14 @@ class PipelineConfig:
 
         def e2b_keys() -> tuple[str, ...]:
             for source in sources:
+                numbered_values: list[tuple[int, str]] = []
+                for key, raw_value in source.items():
+                    match = NUMBERED_E2B_KEY.fullmatch(str(key))
+                    value = str(raw_value or "").strip()
+                    if match and value:
+                        numbered_values.append((int(match.group(1)), value))
                 numbered = tuple(
-                    dict.fromkeys(
-                        str(source.get(key) or "").strip()
-                        for key in ("E2B_API_KEY1", "E2B_API_KEY2")
-                        if str(source.get(key) or "").strip()
-                    )
+                    dict.fromkeys(value for _, value in sorted(numbered_values))
                 )
                 if numbered:
                     return numbered
@@ -145,7 +149,7 @@ class PipelineConfig:
         if not self.openai_api_key:
             missing.append("OPENAI_API_KEY")
         if require_e2b and not self.e2b_api_keys:
-            missing.append("E2B_API_KEY or E2B_API_KEY1/2")
+            missing.append("E2B_API_KEY or E2B_API_KEY1/2/3")
         if missing:
             raise ValueError(f"missing required environment variables: {', '.join(missing)}")
         if self.e2b_cpu_count < 1:

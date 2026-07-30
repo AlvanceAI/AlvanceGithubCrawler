@@ -6,6 +6,7 @@ cd "$repo_root"
 
 publish_branch=${PUBLISH_BRANCH:-XBY}
 per_key_concurrency=${E2B_CONCURRENCY:-20}
+required_e2b_keys=3
 prescreen_concurrency=${PRESCREEN_CONCURRENCY:-20}
 package_repair_workers=${PACKAGE_REPAIR_WORKERS:-8}
 batch_per_language=${BATCH_PER_LANGUAGE:-100}
@@ -305,8 +306,8 @@ if [[ $openai_sdk_ready != true || $e2b_sdk_ready != true ]]; then
     echo "missing Python dependencies; run: uv sync --extra e2b --extra dev" >&2
     exit 2
 fi
-if (( key_count != 2 || total_concurrency != per_key_concurrency * 2 )); then
-    echo "expected E2B_API_KEY1 and E2B_API_KEY2 in .env and $((per_key_concurrency * 2)) total slots" >&2
+if (( key_count != required_e2b_keys || total_concurrency != per_key_concurrency * required_e2b_keys )); then
+    echo "expected E2B_API_KEY1, E2B_API_KEY2, and E2B_API_KEY3 in .env and $((per_key_concurrency * required_e2b_keys)) total slots" >&2
     exit 2
 fi
 echo "preflight passed: branch=$publish_branch prescreen=$prescreen_concurrency e2b_keys=$key_count e2b_slots=$total_concurrency"

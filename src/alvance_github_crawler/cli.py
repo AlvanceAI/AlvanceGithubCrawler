@@ -238,7 +238,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.package_existing:
         if not config.e2b_api_keys:
             print(
-                "missing required environment variable: E2B_API_KEY or E2B_API_KEY1/2",
+                "missing required environment variable: E2B_API_KEY or E2B_API_KEY1/2/3",
                 file=sys.stderr,
             )
             return 2

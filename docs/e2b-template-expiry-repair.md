@@ -116,4 +116,4 @@ cd /home/xubingyu/AlvanceGithubCrawler
 uv run python monitor.py
 ```
 
-启动脚本会先审计/修复历史包，然后按现有配置使用每个 E2B key 最多 20 并发；不会在本次修复过程中自动启动生产。
+启动脚本会先审计/修复历史包，然后按现有配置使用每个 E2B key 最多 20 并发；三把 Key 时总并发为 60；不会在本次修复过程中自动启动生产。

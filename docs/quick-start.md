@@ -37,6 +37,7 @@ OPENAI_MODEL=gpt-5-mini
 E2B_API_KEY=
 E2B_API_KEY1=
 E2B_API_KEY2=
+E2B_API_KEY3=
 
 PIPELINE_E2B_CONCURRENCY=20
 PIPELINE_PRESCREEN_CONCURRENCY=20
@@ -124,7 +125,7 @@ Docker 组具有接近 root 的权限，只应为可信用户配置。
    alvance-github-crawler --verify-pending --max-repos 1 --verbose
    ```
 
-持续双 Key 量产必须切换到 `XBY` 分支，并填写 `E2B_API_KEY1`、`E2B_API_KEY2`：
+持续三 Key 量产必须切换到 `XBY` 分支，并填写 `E2B_API_KEY1`、`E2B_API_KEY2`、`E2B_API_KEY3`：
 
 ```bash
 git switch XBY
