@@ -107,7 +107,7 @@ PIPELINE_RUN_ID=github-mass-production-20260729 \
 task 会自动提交并推送到 `XBY`；原始日志、阶段耗时、最终指标和 Markdown 统计保存在
 `outputs/production-runs/<RUN_ID>/`。
 
-持续入口默认用 8 个 prescreen worker 并行 clone、评分和方向判断；GitHub HTTP 请求仍在
+持续入口默认用 20 个 prescreen worker 并行 clone、评分和方向判断；GitHub HTTP 请求仍在
 进程内串行限速，避免并发 worker 突破单 Token 配额。可通过
 `PRESCREEN_CONCURRENCY` 调整为 1–20。
 

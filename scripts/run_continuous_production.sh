@@ -6,7 +6,7 @@ cd "$repo_root"
 
 publish_branch=${PUBLISH_BRANCH:-XBY}
 per_key_concurrency=${E2B_CONCURRENCY:-20}
-prescreen_concurrency=${PRESCREEN_CONCURRENCY:-8}
+prescreen_concurrency=${PRESCREEN_CONCURRENCY:-20}
 package_repair_workers=${PACKAGE_REPAIR_WORKERS:-8}
 batch_per_language=${BATCH_PER_LANGUAGE:-100}
 max_per_language=${MAX_PER_LANGUAGE:-1000}
@@ -24,6 +24,13 @@ report_doc="docs/continuous-production-$run_id.md"
 publish_tasks=${PUBLISH_TASKS:-true}
 publish_run_artifacts=${PUBLISH_RUN_ARTIFACTS:-true}
 producer_pid=""
+
+for command_name in git jq uv; do
+    if ! command -v "$command_name" >/dev/null 2>&1; then
+        echo "missing required command: $command_name" >&2
+        exit 2
+    fi
+done
 
 if [[ ! $run_id =~ ^[A-Za-z0-9._-]+$ ]]; then
     echo "PIPELINE_RUN_ID may contain only letters, digits, dot, underscore, and hyphen" >&2
@@ -274,13 +281,35 @@ trap cleanup EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
 
-doctor_json=$(uv run alvance-github-crawler --doctor)
+doctor_json=$(
+    PIPELINE_E2B_CONCURRENCY="$per_key_concurrency" \
+    PIPELINE_PRESCREEN_CONCURRENCY="$prescreen_concurrency" \
+        uv run alvance-github-crawler --doctor
+)
+github_ready=$(jq -r '.github_token // false' <<< "$doctor_json")
+openai_ready=$(jq -r '.openai_api_key // false' <<< "$doctor_json")
+openai_sdk_ready=$(jq -r '.openai_sdk // false' <<< "$doctor_json")
+e2b_sdk_ready=$(jq -r '.e2b_sdk // false' <<< "$doctor_json")
 key_count=$(jq -r '.e2b_api_key_count // 0' <<< "$doctor_json")
 total_concurrency=$(jq -r '.e2b_total_concurrency // 0' <<< "$doctor_json")
-if (( key_count != 2 || total_concurrency != per_key_concurrency * 2 )); then
-    echo "expected two E2B keys and $((per_key_concurrency * 2)) total slots" >&2
+
+if [[ $github_ready != true ]]; then
+    echo "missing GitHub credentials; set GITHUB_TOKEN in .env or authenticate gh" >&2
     exit 2
 fi
+if [[ $openai_ready != true ]]; then
+    echo "missing model credentials; set OPENAI_API_KEY in .env" >&2
+    exit 2
+fi
+if [[ $openai_sdk_ready != true || $e2b_sdk_ready != true ]]; then
+    echo "missing Python dependencies; run: uv sync --extra e2b --extra dev" >&2
+    exit 2
+fi
+if (( key_count != 2 || total_concurrency != per_key_concurrency * 2 )); then
+    echo "expected E2B_API_KEY1 and E2B_API_KEY2 in .env and $((per_key_concurrency * 2)) total slots" >&2
+    exit 2
+fi
+echo "preflight passed: branch=$publish_branch prescreen=$prescreen_concurrency e2b_keys=$key_count e2b_slots=$total_concurrency"
 
 if [[ -s catalog/e2b-packages.jsonl ]]; then
     run_stage repair-rebuildable-packages \

@@ -33,8 +33,13 @@ OPENAI_API_KEY=
 OPENAI_BASE_URL=
 OPENAI_MODEL=gpt-5-mini
 
-# 完整 E2B 验证必填；--skip-e2b 或 --defer-e2b 时可留空
+# 单 Key 命令的 E2B 凭据；双 Key 持续量产时使用下面的编号配置
 E2B_API_KEY=
+E2B_API_KEY1=
+E2B_API_KEY2=
+
+PIPELINE_E2B_CONCURRENCY=20
+PIPELINE_PRESCREEN_CONCURRENCY=20
 
 # 可选；建议每轮试跑使用独立目录
 PIPELINE_OUTPUT_DIR=output/test-1
@@ -118,6 +123,13 @@ Docker 组具有接近 root 的权限，只应为可信用户配置。
    # 或消费第 2 步产生的队列
    alvance-github-crawler --verify-pending --max-repos 1 --verbose
    ```
+
+持续双 Key 量产必须切换到 `XBY` 分支，并填写 `E2B_API_KEY1`、`E2B_API_KEY2`：
+
+```bash
+git switch XBY
+./run.sh
+```
 
 `--max-repos 1` 表示只处理一个搜索结果，该仓库可能在筛选阶段被拒绝，因此没有候选产物
 并不一定表示运行失败。确认链路正常后再逐步增大数量，避免 GitHub/模型限流以及 E2B 费用。

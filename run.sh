@@ -1,24 +1,12 @@
-#!/bin/bash
-# Continuous pipeline: discover → verify → repeat
-set -euo pipefail
+#!/usr/bin/env bash
+set -Eeuo pipefail
 
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
-LOG="/tmp/alvance-crawler.log"
-BATCH_DISCOVER="${BATCH_DISCOVER:-100}"
-BATCH_VERIFY="${BATCH_VERIFY:-20}"
-SLEEP_BETWEEN="${SLEEP_BETWEEN:-10}"
+repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+cd "$repo_root"
 
-cd "$REPO_DIR"
+if ! command -v uv >/dev/null 2>&1; then
+    echo "uv is required; install it from https://docs.astral.sh/uv/" >&2
+    exit 2
+fi
 
-echo "[$(date)] Starting continuous pipeline (discover=$BATCH_DISCOVER verify=$BATCH_VERIFY)" | tee -a "$LOG"
-
-while true; do
-    echo "[$(date)] === Discover phase ===" | tee -a "$LOG"
-    alvance-github-crawler --defer-e2b --max-repos "$BATCH_DISCOVER" --verbose 2>&1 | tee -a "$LOG"
-
-    echo "[$(date)] === Verify phase ===" | tee -a "$LOG"
-    alvance-github-crawler --verify-pending --max-repos "$BATCH_VERIFY" --verbose 2>&1 | tee -a "$LOG"
-
-    echo "[$(date)] Sleeping ${SLEEP_BETWEEN}s..." | tee -a "$LOG"
-    sleep "$SLEEP_BETWEEN"
-done
+exec uv run python monitor.py "$@"
