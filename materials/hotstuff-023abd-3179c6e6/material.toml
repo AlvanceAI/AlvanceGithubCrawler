@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hotstuff-023abd-3179c6e6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/relab/hotstuff"
+base_commit = "3179c6e62929294961acbfd9bf8445769716a121"
+source_tree = "5b13da0499f3233c71af729bf9b1ab5ae289f35c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.6"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "33b12a5f299345ec224b34b90841b9ac11cbb699e7ccc7310c7e608fc27c4824"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hotstuff-023abd-3179c6e6-v2-env-33b12a5f"
+template_id = "lwigmi1of31n6rd6nid8"
+source_template_alias = "4rs9scp4cfgtg4xvrkgs"
+source_template_id = "4rs9scp4cfgtg4xvrkgs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

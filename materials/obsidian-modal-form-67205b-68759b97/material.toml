@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "obsidian-modal-form-67205b-68759b97"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/danielo515/obsidian-modal-form"
+base_commit = "68759b97965776fdc9571485656f87088088b741"
+source_tree = "5f4975b2ba1048335f260ba7e8bcacfa8e334e04"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eb835f7e6c3298d8d4641582c20e38b10e6513b07a8afd8984963a187c408d99"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-obsidian-modal-form-67205b-68759b97-v2-env-eb835f7e"
+template_id = "lxflzk9gxajwuf7ohakn"
+source_template_alias = "sjsn6d97svhi98wry737"
+source_template_id = "sjsn6d97svhi98wry737"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

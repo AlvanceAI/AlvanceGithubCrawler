@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aws-nuke-593db9-bfe693f1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ekristen/aws-nuke"
+base_commit = "bfe693f12ccfb324ef49cf4093994cec6bd6754b"
+source_tree = "3c6159a42b751e99aea1b297e3bcf42f9a0004a8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a0080682591b4b562e81bf06f9446b57b9f03549d58c9a7bfe6856536f91d04a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aws-nuke-593db9-bfe693f1-v2-env-a0080682"
+template_id = "7bs3sqyf8cwmswmfbaii"
+source_template_alias = "u14y3yqxbknz9jpm2ppw"
+source_template_id = "u14y3yqxbknz9jpm2ppw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nsc-b910e6-c8d67c23"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nats-io/nsc"
+base_commit = "c8d67c23c187ed0db496ce5b2b66e96715bb72bf"
+source_tree = "e3db202dc32b11ed65c1207f18234a0a775aae2c"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7b7e7d712958c24a26971ec93b669978215e645f0c1e624f3fa4e01ffa4a8e8b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nsc-b910e6-c8d67c23-v2-env-7b7e7d71"
+template_id = "iscoky7cks3ecuw06lyg"
+source_template_alias = "yfonvnb0z6evvu90fofu"
+source_template_id = "yfonvnb0z6evvu90fofu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

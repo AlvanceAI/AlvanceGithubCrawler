@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "egui-dock-f1958d-8cc22087"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/anhosh/egui_dock"
+base_commit = "8cc22087c729a10445a8f4727164d53f6a5f479a"
+source_tree = "9fc7668e544c14a9931e20df27fca830b0bd88a8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.92"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a35a47c165d91a3343114724558b0536b87121d2185628136cd8c5748d72a343"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-egui-dock-f1958d-8cc22087-v2-env-a35a47c1"
+template_id = "uvsfakfuhvyz1y43ccoh"
+source_template_alias = "iuqfjz6lkdxxtcr3ljnb"
+source_template_id = "iuqfjz6lkdxxtcr3ljnb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

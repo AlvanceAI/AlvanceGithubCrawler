@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mern-stack-ecommerce-app-c2c9d2-6b1c2146"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hoangsonww/MERN-Stack-Ecommerce-App"
+base_commit = "6b1c21466b192f53724e6ea9d6622b6c0cbb0eed"
+source_tree = "36508d36498936babfe29d236e5a057a6072e15b"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c468164df142190339245c28299c048a9dba374e2faa217cca972112e114bff5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mern-stack-ecommerce-c2c9d2-6b1c2146-v2-env-c468164d"
+template_id = "okz3h3j5kawnswfpizqr"
+source_template_alias = "ikso1ql2iepypyg8e2yj"
+source_template_id = "ikso1ql2iepypyg8e2yj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

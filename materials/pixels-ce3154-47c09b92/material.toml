@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pixels-ce3154-47c09b92"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/parasyte/pixels"
+base_commit = "47c09b923d9a646fe6d71515edcc497156f4f356"
+source_tree = "64a63efd4c2b04f9cfb1c30ea7d262ccb96957a1"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fe8a788846860f0ed60eff21e50c0770132d7b24bb82d7d3037c8569e52eb62d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pixels-ce3154-47c09b92-v2-env-fe8a7888"
+template_id = "8r6m3xgzcg1k6eks5h5h"
+source_template_alias = "arn2wlx2vz1oi83u2bp1"
+source_template_id = "arn2wlx2vz1oi83u2bp1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

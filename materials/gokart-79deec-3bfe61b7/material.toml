@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gokart-79deec-3bfe61b7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/m3dev/gokart"
+base_commit = "3bfe61b732ec9b7986ca360ea4907798494cf5eb"
+source_tree = "ab055c25ce0c1990d4a72c55777bad6e8d989ebc"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c930c3d362a045337c1e6b3ead60462e41a1f2ab064575bc23becd1a7f9ccf15"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gokart-79deec-3bfe61b7-v2-env-c930c3d3"
+template_id = "eo1rwxd9iqq5crrap02s"
+source_template_alias = "blpubklimco9bf9lkh5g"
+source_template_id = "blpubklimco9bf9lkh5g"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

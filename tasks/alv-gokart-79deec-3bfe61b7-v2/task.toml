@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-gokart-79deec-3bfe61b7-v2"
+description = "Rebuildable repository task for m3dev/gokart"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-gokart-79deec-3bfe61b7-v2"
+material_id = "gokart-79deec-3bfe61b7"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/m3dev/gokart"
+base_commit_hash = "3bfe61b732ec9b7986ca360ea4907798494cf5eb"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

@@ -1,0 +1,5 @@
+Repository `synadia-labs/rita` at commit `74e20fd49a77598f47372e5db1175b6d727ece5e` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为事件存储增加状态/视图流支持，使事件追加并导致投影模型变化时，将最新派生状态发布到对应流中。

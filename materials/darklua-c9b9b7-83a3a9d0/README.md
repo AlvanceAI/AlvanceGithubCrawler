@@ -1,0 +1,11 @@
+# darklua-c9b9b7-83a3a9d0
+
+Rebuildable repository material for `seaofvoices/darklua` at
+`83a3a9d0a241fb193140807e4e77e81545f6f60d`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
+
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.

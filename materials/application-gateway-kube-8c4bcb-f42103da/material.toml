@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "application-gateway-kube-8c4bcb-f42103da"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Azure/application-gateway-kubernetes-ingress"
+base_commit = "f42103da8b3dc38acd34c9c0b104aab5622a21a7"
+source_tree = "2681a1ad694b4b34057d6f9aeacb88de87773bb5"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "403fa49b6a16f528b4ff9edc2a9fe72a12f1db0be79a551539088b6e3b72468a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-application-gateway--8c4bcb-f42103da-v2-env-403fa49b"
+template_id = "xxvyd9m0u23nm3vp0vti"
+source_template_alias = "0lpol4dddo7cvswdgfgs"
+source_template_id = "0lpol4dddo7cvswdgfgs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cluster-lifecycle-manage-599421-dafe3a58"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/zalando-incubator/cluster-lifecycle-manager"
+base_commit = "dafe3a581f7f0a1fe15556e30a5becd531756b28"
+source_tree = "c4466624bbaaa26edad7e7ac30e33aa2061d8179"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b1d96fa9df27e433b795a66db3e13efe74c878c32710a7c7653bc74915f6c0ae"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cluster-lifecycle-ma-599421-dafe3a58-v2-env-b1d96fa9"
+template_id = "jmdre6p2p4fx9qvxki1z"
+source_template_alias = "y8sqzhl2kh5a2zvpuuvv"
+source_template_id = "y8sqzhl2kh5a2zvpuuvv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

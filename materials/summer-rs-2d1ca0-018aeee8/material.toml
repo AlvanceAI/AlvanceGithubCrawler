@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "summer-rs-2d1ca0-018aeee8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/summer-rs/summer-rs"
+base_commit = "018aeee8c9b483a0f4851f14e9761c876cb544cc"
+source_tree = "c52d251ff6432708c1a0a11196c759a20e1dcf33"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "abe05df3989daa0fbe85f031c6f3b4861ee3b604c987ebd9b2c60544e39a5394"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-summer-rs-2d1ca0-018aeee8-v2-env-abe05df3"
+template_id = "8qr8xdnm2aslcwv1ist3"
+source_template_alias = "97s8b6j2gozspi4av0ji"
+source_template_id = "97s8b6j2gozspi4av0ji"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

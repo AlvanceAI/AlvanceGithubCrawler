@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "claudectl-544ff8-13bd5b60"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mercurialsolo/claudectl"
+base_commit = "13bd5b6036baf35817f155dc24c0d21676b1111e"
+source_tree = "1e88f5df3ea20d9e5fe7a74eb78525fc74b4db60"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5118ed9909ea963c93416e4106b6692a01268677a90441e95e52b070c6519479"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-claudectl-544ff8-13bd5b60-v2-env-5118ed99"
+template_id = "3mqjncz24lpa5l82m41l"
+source_template_alias = "91o0ubttasyohfiivyxv"
+source_template_id = "91o0ubttasyohfiivyxv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

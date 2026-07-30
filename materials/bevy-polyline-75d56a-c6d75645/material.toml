@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bevy-polyline-75d56a-c6d75645"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/fslabs/bevy_polyline"
+base_commit = "c6d756450adff298182f0ac45ce5d81927990c70"
+source_tree = "f56c141397a0c69cc968ad56ab464b4030196b00"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d5e568280e45428b5f66bd329ec4010b8a64acf52c2bdf660c68fca4a0fde4b0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bevy-polyline-75d56a-c6d75645-v2-env-d5e56828"
+template_id = "dqpfknxy0u33wmnrz4u5"
+source_template_alias = "cro412wu1z8soem60abm"
+source_template_id = "cro412wu1z8soem60abm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

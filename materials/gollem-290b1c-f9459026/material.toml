@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gollem-290b1c-f9459026"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gollem-dev/gollem"
+base_commit = "f9459026b39c98b1ffa0154308892270eb42587e"
+source_tree = "117a23956ebf9ad1302adaea2835ba3cbb6df6c2"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "269a7bd0fe020c0ffddccfe4e4865808ea85b1153fdef4d58a05297934de4caf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gollem-290b1c-f9459026-v2-env-269a7bd0"
+template_id = "ykkls219ndf1z44qp425"
+source_template_alias = "r2o2yli3qairuhi1xtq9"
+source_template_id = "r2o2yli3qairuhi1xtq9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

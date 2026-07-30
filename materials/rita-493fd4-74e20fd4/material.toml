@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rita-493fd4-74e20fd4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/synadia-labs/rita"
+base_commit = "74e20fd49a77598f47372e5db1175b6d727ece5e"
+source_tree = "04efa0018e670742a4669ce117a7c8bc677a8d6e"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9a47bbb473a63527cfb7eac60daf985fcb22297835b4501f273937be9286f176"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rita-493fd4-74e20fd4-v2-env-9a47bbb4"
+template_id = "u3ib3k0bu1k4x97xn8c1"
+source_template_alias = "yx81kudo2jovks4tlbd1"
+source_template_id = "yx81kudo2jovks4tlbd1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

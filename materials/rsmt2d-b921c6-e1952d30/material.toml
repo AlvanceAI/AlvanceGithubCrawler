@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rsmt2d-b921c6-e1952d30"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/celestiaorg/rsmt2d"
+base_commit = "e1952d30108d57f4528f88c4a0b890494d99b6b7"
+source_tree = "e9d89ef590a7776c3cb2e67d3fee21ffe205f880"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "80a55789285550ba61e862cee2fa31a27844f57f5f62b6ddd794076d2d8e3f64"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rsmt2d-b921c6-e1952d30-v2-env-80a55789"
+template_id = "ys8mcddhstxumh0pyzpj"
+source_template_alias = "dosdrg9nfvw15bze03h1"
+source_template_id = "dosdrg9nfvw15bze03h1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wiredoor-4302ce-cbf234e5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wiredoor/wiredoor"
+base_commit = "cbf234e54acbac9636d56b28efd573560e30a608"
+source_tree = "c02a6446ca5637611c4697a148f61d67f3033c42"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2cff3f6fdc71117c73eee5ef7511a6892e580e3a71139fb6633e418a9f3eb2a5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wiredoor-4302ce-cbf234e5-v2-env-2cff3f6f"
+template_id = "ww28r29rvx40rczefl0w"
+source_template_alias = "iw3p2ekqgj25fpqwd4zl"
+source_template_id = "iw3p2ekqgj25fpqwd4zl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

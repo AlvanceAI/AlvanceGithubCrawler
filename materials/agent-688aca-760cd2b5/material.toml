@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "agent-688aca-760cd2b5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/stakpak/agent"
+base_commit = "760cd2b5984d29c2d513bb15ca33e995fae45f17"
+source_tree = "13a686efa036afb85278847d47171752037e46b1"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.94.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "abdb02dc9cd3f6de4e467db8dec94a2a1205aeed87b48dd2373c4e80195ed102"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-agent-688aca-760cd2b5-v2-env-abdb02dc"
+template_id = "3ostpig05kihk0yr9xd8"
+source_template_alias = "zbl777e07tlhin9g6ln6"
+source_template_id = "zbl777e07tlhin9g6ln6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
