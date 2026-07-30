@@ -36,8 +36,8 @@ if (( prescreen_concurrency < 1 || prescreen_concurrency > 20 )); then
     echo "PRESCREEN_CONCURRENCY must be between 1 and 20" >&2
     exit 2
 fi
-if (( batch_per_language < 1 || max_per_language < 1 || max_per_language > 1000 )); then
-    echo "BATCH_PER_LANGUAGE must be positive and MAX_PER_LANGUAGE must be 1..1000" >&2
+if (( batch_per_language < 1 || max_per_language < 1 )); then
+    echo "BATCH_PER_LANGUAGE and MAX_PER_LANGUAGE must be positive" >&2
     exit 2
 fi
 if [[ $(git branch --show-current) != "$publish_branch" ]]; then
@@ -125,11 +125,24 @@ publish_final_report() {
 }
 
 current_per_language() {
-    if [[ ! -f "$crawl_dir/summary.json" ]]; then
+    if [[ ! -f "$crawl_dir/raw_repositories.jsonl" ]]; then
         echo 0
         return
     fi
-    jq -r '.raw_per_language // .per_language // 0' "$crawl_dir/summary.json"
+    jq -sr '
+        reduce .[] as $repo (
+            {};
+            .[$repo._crawl.query_language // "unknown"] += 1
+        )
+        | [
+            .python // 0,
+            .go // 0,
+            .typescript // 0,
+            .javascript // 0,
+            .rust // 0
+        ]
+        | min
+    ' "$crawl_dir/raw_repositories.jsonl"
 }
 
 run_prescreen() {
