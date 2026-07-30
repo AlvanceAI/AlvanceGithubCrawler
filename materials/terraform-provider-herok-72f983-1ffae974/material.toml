@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terraform-provider-herok-72f983-1ffae974"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/heroku/terraform-provider-heroku"
+base_commit = "1ffae9740c16ef9b79d27791bf51fc86f2fb08a9"
+source_tree = "7682fc74a11bdf8934ebb7d20585ff0968eca481"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4750a4b9945bb99fa037e6376d8aa9a67549c9959a41741da6e425486e2674d3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terraform-provider-h-72f983-1ffae974-v2-env-4750a4b9"
+template_id = "94gvue4o7ld7xsj75i9m"
+source_template_alias = "42grko1v9tjxl4ohgn1u"
+source_template_id = "42grko1v9tjxl4ohgn1u"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tgv-89df2b-0f634f9d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/zeqianli/tgv"
+base_commit = "0f634f9de23c47e6724f326bfe4568a381dbaf57"
+source_tree = "a93bd9fdee1c2bd7ee3c3ba3c61cf1812caceda8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a0381dc0aa5e13a9b2ad71f1fbafefb2c12308527b9f8127a87ab90484132a58"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tgv-89df2b-0f634f9d-v2-env-a0381dc0"
+template_id = "f8tcb9ja5ynr0wg2g3lw"
+source_template_alias = "1qo8bvxkpe1p5v7ghys5"
+source_template_id = "1qo8bvxkpe1p5v7ghys5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "polaris-a9c480-4bdf5315"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/FairwindsOps/polaris"
+base_commit = "4bdf5315b6a8d05490070f07262c689d25af02e7"
+source_tree = "5d4987e9dffc342e1edf8391de247e17784e74eb"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3edaf3e589c33dd1868229cc41fbf771bcd5e32a63c4973af1ab62f9c1252e9b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-polaris-a9c480-4bdf5315-v2-env-3edaf3e5"
+template_id = "6ljn6w34jyabevmcz0wk"
+source_template_alias = "10cac3erwa4rb5mg8kvx"
+source_template_id = "10cac3erwa4rb5mg8kvx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

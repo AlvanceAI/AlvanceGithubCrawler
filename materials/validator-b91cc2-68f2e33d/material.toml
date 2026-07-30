@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "validator-b91cc2-68f2e33d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Keats/validator"
+base_commit = "68f2e33d236f579ae7bf42c82cf2ca7986f176f6"
+source_tree = "910c9596433d2441bf8d8feab5c8ecb80bff98d2"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "45115a76d6e745da5de843583e9fdf3c05c5c8b7aa92ec64f2970b9ea1c08f29"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-validator-b91cc2-68f2e33d-v2-env-45115a76"
+template_id = "dx50n4tgsyx4b5gpvfgb"
+source_template_alias = "cq9c2ox1hjuyh6f0o00g"
+source_template_id = "cq9c2ox1hjuyh6f0o00g"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

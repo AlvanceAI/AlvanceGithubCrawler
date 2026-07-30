@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ublockdnsclient-2e2c21-3297261f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ugzv/ublockdnsclient"
+base_commit = "3297261f7a511654d0fe9d10b272ec30fdafca55"
+source_tree = "73bd4f895b03271549d4fe4dd2ed3ddb40294f70"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1f0e3f005530ced2f9387fdbe096aa3abf354c1636a5cc73fe1bf6d854e580b1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ublockdnsclient-2e2c21-3297261f-v2-env-1f0e3f00"
+template_id = "0kb0vj9803rphz0oo6z2"
+source_template_alias = "0xc7tx8odg4zhvl7diki"
+source_template_id = "0xc7tx8odg4zhvl7diki"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

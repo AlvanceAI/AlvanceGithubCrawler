@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lambda-api-ab6995-c7d876f7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jeremydaly/lambda-api"
+base_commit = "c7d876f734c5cad5248d954f997353ca9af72292"
+source_tree = "41fd54395591784c58e1e68700b6e83936091435"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "155fda8dfeccba872c3f4cb976fa22cb8deda401844291794e8a3c0868236ece"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lambda-api-ab6995-c7d876f7-v2-env-155fda8d"
+template_id = "r21elmnl3212tp5p332j"
+source_template_alias = "mf8xemzcll1y3zctx0o4"
+source_template_id = "mf8xemzcll1y3zctx0o4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

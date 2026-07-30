@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cordova-cli-4371d8-f4ecbd1b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/apache/cordova-cli"
+base_commit = "f4ecbd1bf2fc59281eab848b6cbd1976c434ddac"
+source_tree = "edfa4573314be3259834c49f47601e20bc6aa12a"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bf5211ba7a171a81ec5da5ad50a41816348b5f231207bcfce49ca5f614ea4693"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cordova-cli-4371d8-f4ecbd1b-v2-env-bf5211ba"
+template_id = "xzw0kjj1511x35nm9pod"
+source_template_alias = "1aqzq8iakuo5krp3g66f"
+source_template_id = "1aqzq8iakuo5krp3g66f"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

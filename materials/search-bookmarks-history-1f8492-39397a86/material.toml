@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "search-bookmarks-history-1f8492-39397a86"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Fannon/search-bookmarks-history-and-tabs"
+base_commit = "39397a86c99f4403b222a62a5f2c744929a4c3af"
+source_tree = "8fccad66ae3b8eafdfa979663f8cde05f823373c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1bef2a39adbcd12c2bfbd116e16f060369961e9202eff8209202e30e33c8b31f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-search-bookmarks-his-1f8492-39397a86-v2-env-1bef2a39"
+template_id = "yr48ut87guv4atwlrof1"
+source_template_alias = "i1o2mf9gyu9xdcnf23y0"
+source_template_id = "i1o2mf9gyu9xdcnf23y0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

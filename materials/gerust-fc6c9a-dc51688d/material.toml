@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gerust-fc6c9a-dc51688d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mainmatter/gerust"
+base_commit = "dc51688dc87770e15cd634379f9e9118d15637ed"
+source_tree = "97f2d78e5b9e986e58957fe38bb7c790c75a763a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fd8426760495453c2c7ba4a04e33078ce3078f26f0369112b844129371732200"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gerust-fc6c9a-dc51688d-v2-env-fd842676"
+template_id = "x622wprkcd4l1jxgm032"
+source_template_alias = "phsk3qm0t44q5vmnj1uv"
+source_template_id = "phsk3qm0t44q5vmnj1uv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

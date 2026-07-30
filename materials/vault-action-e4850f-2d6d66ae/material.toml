@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vault-action-e4850f-2d6d66ae"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hashicorp/vault-action"
+base_commit = "2d6d66ae680bad91bac6016e160a63c86a3ffe17"
+source_tree = "e75d538851ccfff3a327d4c16c1de1bd99355de6"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9a8196a41d84131356e71c78a45ca6df21886fd10d28ad51c59c01436a697334"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vault-action-e4850f-2d6d66ae-v2-env-9a8196a4"
+template_id = "2v4y5jwlaxv2qyphvzxh"
+source_template_alias = "0sywx4m224czw84sqnz3"
+source_template_id = "0sywx4m224czw84sqnz3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

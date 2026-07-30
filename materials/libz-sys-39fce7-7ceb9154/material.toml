@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "libz-sys-39fce7-7ceb9154"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rust-lang/libz-sys"
+base_commit = "7ceb9154052e9bf5944be78e0e08f2d1b8eaae9b"
+source_tree = "73a46ecd385f227d539e23a5ef6a7df74e2d3aa3"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ad74c1be81a98fbcfd4c152720af06a2db6def6234537a1f39382bf81bd731c0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-libz-sys-39fce7-7ceb9154-v2-env-ad74c1be"
+template_id = "jp1l4l063qynf3nxf7ef"
+source_template_alias = "5ewph2twexxpjzpqju8t"
+source_template_id = "5ewph2twexxpjzpqju8t"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

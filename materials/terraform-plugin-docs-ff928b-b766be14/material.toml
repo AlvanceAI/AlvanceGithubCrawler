@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terraform-plugin-docs-ff928b-b766be14"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hashicorp/terraform-plugin-docs"
+base_commit = "b766be144d675b31f9b8effdf9cfc625d7db740f"
+source_tree = "26256e83eb6ae27ba18885f23787360f1fe20ecb"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d9529e4df0099518a48809880795136ef3989b8087065fcd74a8f857dcb7f4ba"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terraform-plugin-doc-ff928b-b766be14-v2-env-d9529e4d"
+template_id = "gfkm3jv5oqnzb5qxfxv7"
+source_template_alias = "nvnd4xi5nu7e0zx04bs5"
+source_template_id = "nvnd4xi5nu7e0zx04bs5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

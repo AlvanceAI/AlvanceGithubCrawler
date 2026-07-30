@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pinnwand-d8e072-c779e8fd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/supakeen/pinnwand"
+base_commit = "c779e8fd1eaeee44f31ecb186f9d798783cd3ba4"
+source_tree = "9818ce99590bc150e331c3d968c4d6abb7b119e6"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f721d976b8bb41756e34189de7132845dc53653cd2c0616a1a74f1e18a36115e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pinnwand-d8e072-c779e8fd-v2-env-f721d976"
+template_id = "18wtzk2seland8zyyx9g"
+source_template_alias = "tju8lkfrmv3edxankihm"
+source_template_id = "tju8lkfrmv3edxankihm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

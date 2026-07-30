@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "antimeridian-f392be-5280e7fc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gadomski/antimeridian"
+base_commit = "5280e7fcc50868cf940c7f16bdb8cae1201adb3f"
+source_tree = "90edc6197624773b8733a510a92c814f6122e78d"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9a917a9f452e5617b5882ba2f4df312fa53d3bcc127d9bf58c823b58a4894eac"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-antimeridian-f392be-5280e7fc-v2-env-9a917a9f"
+template_id = "r5rflh9dro4jqn54klz3"
+source_template_alias = "7jzuzmm8ia3ff0j2og37"
+source_template_id = "7jzuzmm8ia3ff0j2og37"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

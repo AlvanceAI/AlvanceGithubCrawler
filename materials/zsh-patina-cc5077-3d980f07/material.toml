@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zsh-patina-cc5077-3d980f07"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/michel-kraemer/zsh-patina"
+base_commit = "3d980f076fef130403e5fcccdac9510c234ca6fd"
+source_tree = "ec9d9a1bb4c818b3a67f11cfd54843ea187f9703"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.89"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e7608196772e2bf3adb0925d7de5f405413f70b512e1ef665490eb1b51b3df7a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zsh-patina-cc5077-3d980f07-v2-env-e7608196"
+template_id = "kubuaackhi22t1yrakp5"
+source_template_alias = "v453nw90wvh0xssooyh1"
+source_template_id = "v453nw90wvh0xssooyh1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

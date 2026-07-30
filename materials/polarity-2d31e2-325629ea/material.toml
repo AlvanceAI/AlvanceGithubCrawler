@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "polarity-2d31e2-325629ea"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/polarity-lang/polarity"
+base_commit = "325629ea33fd25905b76f66d502a26dbf5dcc2a9"
+source_tree = "57d88779379dfa1bceba04c27ce5beb6f462db57"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.91"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "294dece8dd9d918d28abc227472924047b83f320365447d210fed2d445a70335"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-polarity-2d31e2-325629ea-v2-env-294dece8"
+template_id = "nulzx6619atf4w0tfa92"
+source_template_alias = "fw7jewgze1ol1v3lucyx"
+source_template_id = "fw7jewgze1ol1v3lucyx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rustyline-787f45-6f20abaa"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kkawakam/rustyline"
+base_commit = "6f20abaa46a10f5317d13b4b5a3caf274ff13774"
+source_tree = "42753fff6ade55d7473022769ab205a08fb0f67e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7afe1c6424a2c92e2fd3921b66a8abfd7f552a1ca3334ab67ac289315a0eb6a0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rustyline-787f45-6f20abaa-v2-env-7afe1c64"
+template_id = "algzzrll57uahn5pxtzb"
+source_template_alias = "7akk7ehtufiu3mkb8lde"
+source_template_id = "7akk7ehtufiu3mkb8lde"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

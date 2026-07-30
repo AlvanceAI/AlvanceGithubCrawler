@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kor-2e923a-7a30ce11"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/yonahd/kor"
+base_commit = "7a30ce11dc4b27bb90a6a70ce96e21cf1872bb71"
+source_tree = "ba5ca405c71577e7233b723da0d873c488a6b710"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b04459e501ec88f6a3301db6dc7fa7ce2a982730ea940e87badf95e6cbdbee6b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kor-2e923a-7a30ce11-v2-env-b04459e5"
+template_id = "h08hfn1727j9oufhyfgl"
+source_template_alias = "6w13h76dual1tse11z5q"
+source_template_id = "6w13h76dual1tse11z5q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

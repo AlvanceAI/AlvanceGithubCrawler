@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "postgres-exporter-384d86-eaa67f02"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/prometheus-community/postgres_exporter"
+base_commit = "eaa67f02559c071cbe41b3111e930c154e8ec315"
+source_tree = "1703501a08c51250809a6ff494b8c1befe861fb6"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "df68f8f844cde881377507f25a447c272fb2a66904a27aa2c6868a550ada67e3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-postgres-exporter-384d86-eaa67f02-v2-env-df68f8f8"
+template_id = "wqpv5mnus5akahrjbznq"
+source_template_alias = "xp3bftzy35yt54ibd48n"
+source_template_id = "xp3bftzy35yt54ibd48n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

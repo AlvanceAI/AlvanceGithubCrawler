@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-httpbin-6d9717-697b6e3b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mccutchen/go-httpbin"
+base_commit = "697b6e3b326edfd8915a3b1c36c4a43f367ea3ac"
+source_tree = "aecd5393fd4c744d2b253018263de56bbd7ca855"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7b5ed0db753780930f9798df783d18e834821cd9b69724c50802e6d25d4ec830"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-httpbin-6d9717-697b6e3b-v2-env-7b5ed0db"
+template_id = "8jy1yow0z72o76lyg9sr"
+source_template_alias = "jucpmpr35k6dvaoee2eu"
+source_template_id = "jucpmpr35k6dvaoee2eu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

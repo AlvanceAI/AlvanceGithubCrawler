@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "geo-e02703-857a528a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/golang/geo"
+base_commit = "857a528af6418dcb67b1d9d4fae1100dcd530fa7"
+source_tree = "b327017480e0ba38f3ea2825bd1eca6103ba61a5"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3d8a966523e9e1ba8ecd9f37292fa6d387dd7886d0354dddd7c9c7a0fe03d63d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-geo-e02703-857a528a-v2-env-3d8a9665"
+template_id = "bm5vzkzu7xfcunkkmcb5"
+source_template_alias = "hl4gks0bk2kkbbd4c8e0"
+source_template_id = "hl4gks0bk2kkbbd4c8e0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "django-unfold-7c5f7e-456ede4b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/unfoldadmin/django-unfold"
+base_commit = "456ede4b723fee185bd0022193e3cfa856e967c3"
+source_tree = "8fdbb3ab55d5db5894f2a8ed75a692c5d2a2f1ee"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "01236e7178fa13f1d43d2eb5a3a86cfcb3ce0eb3eb90e3c14714f877aed1648d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-django-unfold-7c5f7e-456ede4b-v2-env-01236e71"
+template_id = "8x0fv3r8ltfhv4adussd"
+source_template_alias = "1zlkr2bwvxzu3uusvk7t"
+source_template_id = "1zlkr2bwvxzu3uusvk7t"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

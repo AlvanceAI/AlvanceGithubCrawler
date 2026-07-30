@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "seccompiler-84db25-c05f2079"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rust-vmm/seccompiler"
+base_commit = "c05f20798917d8df814d1154aea3135a53f7f944"
+source_tree = "7842cc3636fec41cbacc3ffdbebfec1fd82449bb"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3396d5e70d09376ead69785c5dba8e9b912cd03f6bb2e723c065f4d1b432152f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-seccompiler-84db25-c05f2079-v2-env-3396d5e7"
+template_id = "fs0zf0qs2dwzk6tqwi17"
+source_template_alias = "o98w9398395mqtqxjp9v"
+source_template_id = "o98w9398395mqtqxjp9v"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

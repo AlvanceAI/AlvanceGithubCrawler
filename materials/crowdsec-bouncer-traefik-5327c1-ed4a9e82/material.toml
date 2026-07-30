@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "crowdsec-bouncer-traefik-5327c1-ed4a9e82"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+base_commit = "ed4a9e82628a957824d08b6d08273698b9a246b2"
+source_tree = "72c5e51f1e710e95611de3f3e4c7b82572e3e524"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.22.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dd3bfe662dcac1b6ae9a7d18fff932bd511c9f855b87d787aa2cb5ceeab54441"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-crowdsec-bouncer-tra-5327c1-ed4a9e82-v2-env-dd3bfe66"
+template_id = "x70abks37gpayg2f6kiq"
+source_template_alias = "jqr2gicgvx1grkhaa59o"
+source_template_id = "jqr2gicgvx1grkhaa59o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

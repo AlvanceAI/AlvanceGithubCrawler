@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "midstream-89f6ee-92250c20"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ruvnet/midstream"
+base_commit = "92250c20d8aa3d867fcc8cb75aeabbc95eb1a0cc"
+source_tree = "a6db28b25c4512fd0c2a2b4dc52551a0583c1ccf"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "96adea39e559d400605f8c795008a30d5c8de7875ee95401df894e13829d9369"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-midstream-89f6ee-92250c20-v2-env-96adea39"
+template_id = "w0iptnu1q6hn4dfipu5k"
+source_template_alias = "o5qcvv3l19v35q9ko1ib"
+source_template_id = "o5qcvv3l19v35q9ko1ib"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

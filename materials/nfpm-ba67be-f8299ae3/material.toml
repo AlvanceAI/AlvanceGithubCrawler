@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nfpm-ba67be-f8299ae3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/goreleaser/nfpm"
+base_commit = "f8299ae32461dde806229ad90bf68d1992b4d05a"
+source_tree = "9eedb049a7a9037b9ecf9ccfd4a1c88f67e16c40"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "52a79daec504173947376b0c2b5afab22ca5f9d06729aaa0eb2fe2c0ca4f3cbe"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nfpm-ba67be-f8299ae3-v2-env-52a79dae"
+template_id = "e63xci0woo7jxyvrb9i3"
+source_template_alias = "bjnt9vf39wzbqez75n8u"
+source_template_id = "bjnt9vf39wzbqez75n8u"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

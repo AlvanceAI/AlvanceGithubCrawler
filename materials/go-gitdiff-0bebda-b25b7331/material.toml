@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-gitdiff-0bebda-b25b7331"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bluekeyes/go-gitdiff"
+base_commit = "b25b7331c153cdcfabd5c3940c43bc9d9235749c"
+source_tree = "e9d130ea5c743db3b27dd3273c3af7518614daaf"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "938d098228c8b9057be402f40c0f79c60e45f44b8ad7ad781513ae990db137b7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-gitdiff-0bebda-b25b7331-v2-env-938d0982"
+template_id = "zf352ndwercuyraojvb2"
+source_template_alias = "qangb4v4x0pivvmikjco"
+source_template_id = "qangb4v4x0pivvmikjco"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

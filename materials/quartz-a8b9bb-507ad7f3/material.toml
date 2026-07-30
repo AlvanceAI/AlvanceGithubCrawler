@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "quartz-a8b9bb-507ad7f3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jackyzha0/quartz"
+base_commit = "507ad7f3d4601d83482f61930fccf1c77f42a072"
+source_tree = "8968345edf85ad7fb6820ec6929c20cc537471c4"
+default_branch = "v5"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1e8b65338c51569624b05a3709f91ab21e8e6827ea804fecc1cacab909118b2e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-quartz-a8b9bb-507ad7f3-v2-env-1e8b6533"
+template_id = "wcfadk82kxs90fzpyng3"
+source_template_alias = "z261zdkmojd0oylwkuu1"
+source_template_id = "z261zdkmojd0oylwkuu1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

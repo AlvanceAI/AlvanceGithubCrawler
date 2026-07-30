@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "solo-9bfcd9-835c30f5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/solo-agent/solo"
+base_commit = "835c30f5ce8132dceab5e8da8f8acae94408d284"
+source_tree = "97ca1697f25483040c05f9288cea6d437f5f32d6"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.22.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dbf9d8a77fcec9514b1d81af5bdbb8e3188326c2432f1fc98fae406bf95aec02"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-solo-9bfcd9-835c30f5-v2-env-dbf9d8a7"
+template_id = "kq1rorqwylo7jok50s6t"
+source_template_alias = "bc6blycybsjypa7w2drq"
+source_template_id = "bc6blycybsjypa7w2drq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

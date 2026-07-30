@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "taskdog-831fec-f121db94"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Kohei-Wada/taskdog"
+base_commit = "f121db94017a100c0f792b3810e2591d49db9c39"
+source_tree = "744749fc3eab68ca7ff5b78898c540e53a10fe36"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "309e256e3e3c47d21697c56371d7b4bf49a155d921e6f60100bcd304805e5d73"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-taskdog-831fec-f121db94-v2-env-309e256e"
+template_id = "ht8y34kfn2s6wav5mfkl"
+source_template_alias = "emyul71f3p7o40v9dvdp"
+source_template_id = "emyul71f3p7o40v9dvdp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

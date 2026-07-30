@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "agent-sdk-go-5b059e-3739488a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Ingenimax/agent-sdk-go"
+base_commit = "3739488a85c5671319843f61dd655c2da8fcb0ed"
+source_tree = "9919892df39a12a5d2c46b9cec94436c6b564dae"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "433207563f22caaead3699443430a38cabc7faf0b81bd4f3da8a277509f7c7aa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-agent-sdk-go-5b059e-3739488a-v2-env-43320756"
+template_id = "cqiu3fkuy5rga416xhpg"
+source_template_alias = "v8mmlm9eads0idwmf4zq"
+source_template_id = "v8mmlm9eads0idwmf4zq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

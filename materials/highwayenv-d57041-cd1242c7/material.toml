@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "highwayenv-d57041-cd1242c7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Farama-Foundation/HighwayEnv"
+base_commit = "cd1242c779eef984d532aac3aefbc2ea7fa4c1af"
+source_tree = "6fba5fbeb677ea023d795f9f94ca3acbb2b6b00a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3784d2858495430ac1dd70cc1ac479bb1a21e81e8318c361e83e60e51ccd1d66"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-highwayenv-d57041-cd1242c7-v2-env-3784d285"
+template_id = "zvx6kiw2f7xb5z4eidwi"
+source_template_alias = "tsy5ls2khjjbk2ex8lgm"
+source_template_id = "tsy5ls2khjjbk2ex8lgm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

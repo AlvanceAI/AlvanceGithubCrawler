@@ -1,0 +1,5 @@
+Repository `gadomski/antimeridian` at commit `5280e7fcc50868cf940c7f16bdb8cae1201adb3f` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+新增反向几何操作，将已按反子午线正确拆分的 GeoJSON 几何重新合并为适用于投影坐标系的单一几何，并覆盖线、面、多部件几何及孔洞等情况。

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ida-pro-mcp-1f166b-80d7d36a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mrexodia/ida-pro-mcp"
+base_commit = "80d7d36aab816e4859aad049af563aff48fa6b62"
+source_tree = "1f079ece3959f8b075b7b5716df67604ad071a93"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4914b1a31f2b431dbce1511f143aa3f8d800851ab3eafa452cb669fc555c3d49"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ida-pro-mcp-1f166b-80d7d36a-v2-env-4914b1a3"
+template_id = "uq9rkf3j3gkuhr1jnc1l"
+source_template_alias = "73s2wfhyefdo5hjgqim4"
+source_template_id = "73s2wfhyefdo5hjgqim4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

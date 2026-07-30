@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "openjscad-org-36e7d2-f245ea3a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jscad/OpenJSCAD.org"
+base_commit = "f245ea3a5072024b789f276c6fb9ce6c3eb3fd0d"
+source_tree = "bc0f59b8a6942c93a02f67fb762c716c40fd43ab"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ffce6caacae9d49c507e3b463eeecfd21772b87df7db46ae74ab547eb790dba2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-openjscad-org-36e7d2-f245ea3a-v2-env-ffce6caa"
+template_id = "1x6sciazocvkthplqvt3"
+source_template_alias = "t4166hxp4de7xeh6b94z"
+source_template_id = "t4166hxp4de7xeh6b94z"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

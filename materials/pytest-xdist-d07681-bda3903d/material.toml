@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pytest-xdist-d07681-bda3903d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pytest-dev/pytest-xdist"
+base_commit = "bda3903d384fcb8d06e19ea85bdad5f7c211ca0c"
+source_tree = "918fdeb237148714365a07d349eb468ed804e03b"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9d8f4fd5fb22e1404c887805ea7b6cfe3295a800f536c917f8e18a82424e736b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pytest-xdist-d07681-bda3903d-v2-env-9d8f4fd5"
+template_id = "zj7zdtr0igvatyz6g7z2"
+source_template_alias = "gp6p88vutq0o7brr2xk4"
+source_template_id = "gp6p88vutq0o7brr2xk4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

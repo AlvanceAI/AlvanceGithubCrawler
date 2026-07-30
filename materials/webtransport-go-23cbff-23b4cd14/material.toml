@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "webtransport-go-23cbff-23b4cd14"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/quic-go/webtransport-go"
+base_commit = "23b4cd1439e9ed2d9c9d412f9d869a0e24c5eabf"
+source_tree = "c8b655c2502340b24cd2f9c493ea129fc7bc815e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6f4e4a9c2198105af7f67463152635b376cfa93c948f26c56ddee0971139085b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-webtransport-go-23cbff-23b4cd14-v2-env-6f4e4a9c"
+template_id = "81rhj91fpkkmz32rwmyv"
+source_template_alias = "so1rw29myy7zauencve7"
+source_template_id = "so1rw29myy7zauencve7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "agent-access-eeb57b-9cd303f6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bitwarden/agent-access"
+base_commit = "9cd303f65dc501c19d1d513fb4cf88fe5f44936a"
+source_tree = "8e0eab4fb604392d5e03561653b06a2a40bf332a"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.93"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "52e25181876a623c7e7cead270a5a20ae4b6f16b423c4fa8a079021fd6bf1f2f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-agent-access-eeb57b-9cd303f6-v2-env-52e25181"
+template_id = "bsg9vr4lm8u1g2mz7vwx"
+source_template_alias = "ad320t55ve5752jmkw78"
+source_template_id = "ad320t55ve5752jmkw78"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

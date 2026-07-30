@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "txm-cf5a89-26e6d3cf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/thatmagicalcat/txm"
+base_commit = "26e6d3cfef4d5d040711f4c49d9147aabd350d4d"
+source_tree = "ab660f258c4e074ec637e52ab9d8e8f52f89756a"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4579928082ea41b98400d009f5afbfa3996e82cb17dfa848d76ab6a48db39627"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-txm-cf5a89-26e6d3cf-v2-env-45799280"
+template_id = "fpy22ftcds9xxnc9jy38"
+source_template_alias = "i2h6rdivjsp8qg04zsqw"
+source_template_id = "i2h6rdivjsp8qg04zsqw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

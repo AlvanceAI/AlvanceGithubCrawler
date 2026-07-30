@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "testbeats-6d30e7-003f1fae"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/test-results-reporter/testbeats"
+base_commit = "003f1faecd54e3fa7ee8502d3ca31431a95766e6"
+source_tree = "31d253703dda5ca1e6a9538692eb9dd7b10edcb8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3a928f6b04a11e624b1953f4fcf1ebf482fac2b0cc24740333efde734d6a73c5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-testbeats-6d30e7-003f1fae-v2-env-3a928f6b"
+template_id = "t5cnkpmxuu8rcysucrcj"
+source_template_alias = "4f0q9vsyn97pr7c2ecm3"
+source_template_id = "4f0q9vsyn97pr7c2ecm3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

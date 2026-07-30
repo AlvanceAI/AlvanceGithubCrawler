@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "elm-language-server-9d490f-33bc547c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/elm-tooling/elm-language-server"
+base_commit = "33bc547c259a195e613069d364aae2af88e63432"
+source_tree = "fc2f492c7294b53fa04ec45e93ad0677fda6663c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "02b3e10ba7bcadbc176f9e6cd903aa86c3b33418edcde3565eaa5cee50fde8db"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-elm-language-server-9d490f-33bc547c-v2-env-02b3e10b"
+template_id = "c37t7swjsxf40f7u86mg"
+source_template_alias = "vzp4bf9ellkknbwodulb"
+source_template_id = "vzp4bf9ellkknbwodulb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

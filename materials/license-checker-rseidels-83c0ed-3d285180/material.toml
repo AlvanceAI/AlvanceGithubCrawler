@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "license-checker-rseidels-83c0ed-3d285180"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/RSeidelsohn/license-checker-rseidelsohn"
+base_commit = "3d28518039b2171009109f0a5fc810d29db774fd"
+source_tree = "f83221b020ba2b74a3c3d49a04471e46fc9017d4"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9831c64c2683df996fee7665c6a17ae58856ad495dd5179cea45ef08f68c2b21"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-license-checker-rsei-83c0ed-3d285180-v2-env-9831c64c"
+template_id = "qopk9hkmrldmgbhrtc42"
+source_template_alias = "2de88wleqd8x8tw68xfl"
+source_template_id = "2de88wleqd8x8tw68xfl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

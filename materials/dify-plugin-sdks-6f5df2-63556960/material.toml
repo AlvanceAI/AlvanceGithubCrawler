@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dify-plugin-sdks-6f5df2-63556960"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/langgenius/dify-plugin-sdks"
+base_commit = "635569603f9c1e59b3505d9f5b818da77f46805c"
+source_tree = "8cf80e1c7e3ae8bab1df65ca34771c678a05f413"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "106d2a3704aaffa010edf8f677bf4a203d3df3cb0cd31260b6c35e7d16fa0f3a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dify-plugin-sdks-6f5df2-63556960-v2-env-106d2a37"
+template_id = "y0gb67y4m6e41hamtppc"
+source_template_alias = "lju7g4ayazc9fq054u9j"
+source_template_id = "lju7g4ayazc9fq054u9j"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

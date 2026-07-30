@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "serde-with-a47a40-8c8805c6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jonasbb/serde_with"
+base_commit = "8c8805c644100735bf9c430bc11d0a5443f5b113"
+source_tree = "9788302e035c135a9a1ec5fc6cf871131f717d87"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ff6abf4459a09581b63fc886bc555c81d34e2663e6f9e714e765e122220df396"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-serde-with-a47a40-8c8805c6-v2-env-ff6abf44"
+template_id = "ncvp7ten3q9nyu3bbbnw"
+source_template_alias = "q3t0izxpj7vutisefk1n"
+source_template_id = "q3t0izxpj7vutisefk1n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bottleneck-02c634-a088d385"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pydata/bottleneck"
+base_commit = "a088d3856dc95e79d610394bd532a070a4b814ad"
+source_tree = "30e7d8c2c8d549f33ff473f04ca4720472a52729"
+default_branch = "master"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ee0987f214923cb3d21717240c72debd8c06f46e4e92a4fd349ab53e9117fd4d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bottleneck-02c634-a088d385-v2-env-ee0987f2"
+template_id = "crc7srjmdw2l6jrsxsru"
+source_template_alias = "ok5dk1eg95bz8j9i2x58"
+source_template_id = "ok5dk1eg95bz8j9i2x58"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

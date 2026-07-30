@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mnemon-d2c0f4-39a175e9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mnemon-dev/mnemon"
+base_commit = "39a175e9fd9749832805c0f2750ffe2fb2bdbc00"
+source_tree = "a35c6d8c27e269ca08c3370c1e93a0afb2242fe8"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "68a6cdd619149f09b2b78e97e719a62375ecfb05038f0327500470229f02d511"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mnemon-d2c0f4-39a175e9-v2-env-68a6cdd6"
+template_id = "3g30brdb6vv5g9zhwhgn"
+source_template_alias = "dxfz35dy900zf1fsi6tl"
+source_template_id = "dxfz35dy900zf1fsi6tl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

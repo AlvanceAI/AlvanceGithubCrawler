@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "arazzo-specification-f76518-a77e402c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/OAI/Arazzo-Specification"
+base_commit = "a77e402c73a57012b148cbf6453d0a176871ef23"
+source_tree = "d2f4e6a03a8fec358158f875983687428bc5bfe5"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "02c8530142f7315cc46c05acc0224593dd24e3267ad7e65508569e01c4e65599"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-arazzo-specification-f76518-a77e402c-v2-env-02c85301"
+template_id = "8x638nsp20ez0v8qjvdf"
+source_template_alias = "g1lu7fz3ojzfer43vk8t"
+source_template_id = "g1lu7fz3ojzfer43vk8t"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

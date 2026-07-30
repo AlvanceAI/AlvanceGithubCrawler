@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "livesplit-core-49b9a9-f26195cd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/LiveSplit/livesplit-core"
+base_commit = "f26195cd80e71e3be1a4cec4378180109b910410"
+source_tree = "4fd25102074575ee6dcf298fb050249d884ccf5b"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.95"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0b99af9b881263e91e97ac46daa539ed2863bd201ecdc965764167a45b6531be"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-livesplit-core-49b9a9-f26195cd-v2-env-0b99af9b"
+template_id = "0ur9e50namlykaiq3qw5"
+source_template_alias = "e6qlayu4m0sxow3qdbdf"
+source_template_id = "e6qlayu4m0sxow3qdbdf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

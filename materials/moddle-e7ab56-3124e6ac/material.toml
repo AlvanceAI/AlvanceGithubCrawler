@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "moddle-e7ab56-3124e6ac"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bpmn-io/moddle"
+base_commit = "3124e6ac3d5c06330e2e650973058c02b610df40"
+source_tree = "953f89165610dbdf90fe0b119b1a20d29065f83a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c627babfd52d50b91799a0ef4d4b4b767c6e5baf06d0087233e2520a1257ee51"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-moddle-e7ab56-3124e6ac-v2-env-c627babf"
+template_id = "mhqz9ab712kb0pyu68o9"
+source_template_alias = "molo4a6isft0i6pz3dn4"
+source_template_id = "molo4a6isft0i6pz3dn4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

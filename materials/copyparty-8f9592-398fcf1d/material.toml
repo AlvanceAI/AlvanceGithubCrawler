@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "copyparty-8f9592-398fcf1d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/9001/copyparty"
+base_commit = "398fcf1d18d28a75a9f234765c15b777fbb6bdea"
+source_tree = "640edc3af4db81a0138b628dc98f20bafe20ef30"
+default_branch = "hovudstraum"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "299dc39fc50e1afd08fa257f6d70775e99dcf7ee1128aa736841bda586a07e91"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-copyparty-8f9592-398fcf1d-v2-env-299dc39f"
+template_id = "xtyl5qde1fqhhf1wun4k"
+source_template_alias = "0sk0v5izgtj5s5kq5o0v"
+source_template_id = "0sk0v5izgtj5s5kq5o0v"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

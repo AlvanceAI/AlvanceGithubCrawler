@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "goss-bebd7b-582ab7d7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/goss-org/goss"
+base_commit = "582ab7d72d981dda0be06056be4b4bfa0184b7e0"
+source_tree = "3db5eff5d00795fc162a84996a223b4cfc60c1d9"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "22191ff25286caab2abd691415ae9180fc000faa3648392518fd3ff47198da34"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-goss-bebd7b-582ab7d7-v2-env-22191ff2"
+template_id = "5cx62so6ujain2646e09"
+source_template_alias = "evkjevvlr1v7ac4qamub"
+source_template_id = "evkjevvlr1v7ac4qamub"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

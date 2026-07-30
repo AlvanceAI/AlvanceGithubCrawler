@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "havener-e935fd-a7e56da5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/homeport/havener"
+base_commit = "a7e56da528d61d9dc5eadfcf0833960c5257167e"
+source_tree = "38288a5acf2e0d75059861608847b6479b3c366f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1f3bc536ed06950e314359c6c7ce605a0d2a9e8f488728485ea65a0710bcd5cc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-havener-e935fd-a7e56da5-v2-env-1f3bc536"
+template_id = "29ily2pa7fxxyuorp039"
+source_template_alias = "jbxw3oegdgbo6jpxfvvs"
+source_template_id = "jbxw3oegdgbo6jpxfvvs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

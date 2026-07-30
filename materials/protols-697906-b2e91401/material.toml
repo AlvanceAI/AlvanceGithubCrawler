@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "protols-697906-b2e91401"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/coder3101/protols"
+base_commit = "b2e9140166bf9d174986c4dffc2b385d6b846f21"
+source_tree = "9bd71267600c9df9e7b246c51c42d1db4d557c90"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "631dc92da00ea66d352d3121acf05ae0cb17437cde4b3e3f8a559447ce869128"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-protols-697906-b2e91401-v2-env-631dc92d"
+template_id = "sbvihm7igx7crzgyiqch"
+source_template_alias = "j50dg23br7j3nve1y5yf"
+source_template_id = "j50dg23br7j3nve1y5yf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

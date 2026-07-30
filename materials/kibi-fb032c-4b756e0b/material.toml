@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kibi-fb032c-4b756e0b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ilai-deutel/kibi"
+base_commit = "4b756e0be889037c34e5d6179f440dd8cd414345"
+source_tree = "5e6c02b3d7b975f9a6ce778324174183dbeb6a9e"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.95"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "32e8c827f6bb4a3e85a417371e04553bab2a3c1a35bbdc478663d93c01529da5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kibi-fb032c-4b756e0b-v2-env-32e8c827"
+template_id = "2f48yqlgnfcufndjyfct"
+source_template_alias = "uor60thrztwjyijxqvke"
+source_template_id = "uor60thrztwjyijxqvke"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

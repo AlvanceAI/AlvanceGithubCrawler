@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dss-2d6e9d-f8402882"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/interuss/dss"
+base_commit = "f84028826a587ea7ed28f1cf92c0ec8221404291"
+source_tree = "cfabe9513f4f204e5fec3b4bdaf8185859a2d198"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e80da9ce5bb5b74a182c109b686d7480af67205e66e81844ec510e736c4322b8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dss-2d6e9d-f8402882-v2-env-e80da9ce"
+template_id = "jm40byieyklm7xli7z4y"
+source_template_alias = "sbfrnlqq5wxp9s59gywj"
+source_template_id = "sbfrnlqq5wxp9s59gywj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "starlette-59095f-5174d4c8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Kludex/starlette"
+base_commit = "5174d4c8358a6f06aa8056bafd14c2272dab8dd1"
+source_tree = "ad9c75824a40cd2bb33cadaf02e9d6290355fc25"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "08578003bdca5921f0ab3dd926475fae047a581c651a9e8640b028949ead87cf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-starlette-59095f-5174d4c8-v2-env-08578003"
+template_id = "2evbi4z668f5zdggjg5e"
+source_template_alias = "ppyn4get175shewdu2ch"
+source_template_id = "ppyn4get175shewdu2ch"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

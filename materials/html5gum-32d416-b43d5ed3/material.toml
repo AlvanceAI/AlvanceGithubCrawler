@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "html5gum-32d416-b43d5ed3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/untitaker/html5gum"
+base_commit = "b43d5ed3460f96d7fa9783b4d76a21e6389c3bf0"
+source_tree = "4a61f336bd8efbc12f7ffa349401708b9a1ea0a7"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6e093db05313b94231aa0cd57bf2c073e72e7e13c5bc92b3bd274f47369f977f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-html5gum-32d416-b43d5ed3-v2-env-6e093db0"
+template_id = "awcu3wbbd17hzs2gik3v"
+source_template_alias = "qjeqf1rgo93yzy9dx02w"
+source_template_id = "qjeqf1rgo93yzy9dx02w"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

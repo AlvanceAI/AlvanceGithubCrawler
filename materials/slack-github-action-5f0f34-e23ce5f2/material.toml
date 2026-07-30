@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "slack-github-action-5f0f34-e23ce5f2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/slackapi/slack-github-action"
+base_commit = "e23ce5f2be10b0c1deb2598ea42d365ddce875a6"
+source_tree = "5585a07ddc16068306e18828dd958ffe542e3a33"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ac409491efc5cb9a70d3e533cae824a623dd5f14690bbce1ba806e64324587fd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-slack-github-action-5f0f34-e23ce5f2-v2-env-ac409491"
+template_id = "744egomfnimyj2v74wec"
+source_template_alias = "lyz436ikt3hnxu44woox"
+source_template_id = "lyz436ikt3hnxu44woox"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
