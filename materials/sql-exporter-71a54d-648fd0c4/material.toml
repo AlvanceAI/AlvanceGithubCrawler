@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sql-exporter-71a54d-648fd0c4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/burningalchemist/sql_exporter"
+base_commit = "648fd0c4ac5f1678583c1be206c01fc3a3788efc"
+source_tree = "13464f2f6c293a59d759e7a87718d9f8cf12a868"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "61c0948b9e6e3a6cbf8b0cad9786a97a759b91de1773ae21babcb44d4e1d7dc0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sql-exporter-71a54d-648fd0c4-v2-env-61c0948b"
+template_id = "onrtfo72wuinaqbga0gl"
+source_template_alias = "p23pccrye6j4i0udaaf0"
+source_template_id = "p23pccrye6j4i0udaaf0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

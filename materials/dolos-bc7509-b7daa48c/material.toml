@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dolos-bc7509-b7daa48c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/txpipe/dolos"
+base_commit = "b7daa48cdfdb1a85890faa2b455a22dfd185eb23"
+source_tree = "b25687d1fd4928bdf2da104737fd2eff6f3944ed"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.93"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f365ef9d9e23f9621074767aec1c2d999e41e67d0972eed873c8d30a6b65b709"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dolos-bc7509-b7daa48c-v2-env-f365ef9d"
+template_id = "nex59dd2yer43gss7xod"
+source_template_alias = "xb6elgzqglzkj11aywbn"
+source_template_id = "xb6elgzqglzkj11aywbn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

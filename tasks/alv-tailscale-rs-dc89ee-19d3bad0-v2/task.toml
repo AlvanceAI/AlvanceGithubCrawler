@@ -1,0 +1,41 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-tailscale-rs-dc89ee-19d3bad0-v2"
+description = "Rebuildable repository task for tailscale/tailscale-rs"
+authors = []
+keywords = ["rust", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-tailscale-rs-dc89ee-19d3bad0-v2"
+material_id = "tailscale-rs-dc89ee-19d3bad0"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/tailscale/tailscale-rs"
+base_commit_hash = "19d3bad00a7442cfab57f58cbe56ccd7a206c82d"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

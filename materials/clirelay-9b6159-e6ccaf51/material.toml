@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "clirelay-9b6159-e6ccaf51"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kittors/CliRelay"
+base_commit = "e6ccaf51d65323c524b25ca662c3e742606b3903"
+source_tree = "eda792dd072046565eab9a0872185692590c98e3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eaf93348945158e61216b3e72a458c8b24633d1028194e7fd2e9100d44987dc0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-clirelay-9b6159-e6ccaf51-v2-env-eaf93348"
+template_id = "pzk3jkbltd47qbe25d6a"
+source_template_alias = "h2pvlcqgsfv0sfwznac3"
+source_template_id = "h2pvlcqgsfv0sfwznac3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

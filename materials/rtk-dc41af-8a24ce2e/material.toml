@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rtk-dc41af-8a24ce2e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rtk-ai/rtk"
+base_commit = "8a24ce2e2828117f69ffc31134ed12f36d33fac4"
+source_tree = "84cec5e5fdc77f4f87d9970d2ea8de37746db99d"
+default_branch = "develop"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.91"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "56c410951a2157187fad81bfab434957d4e2006b51395a34cf44280b6946ad4e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rtk-dc41af-8a24ce2e-v2-env-56c41095"
+template_id = "z7zj4nmco310g7se70aq"
+source_template_alias = "qmm9abbkhuck4jf3irvy"
+source_template_id = "qmm9abbkhuck4jf3irvy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "virtual-kubelet-68a94c-4c39a8e1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/virtual-kubelet/virtual-kubelet"
+base_commit = "4c39a8e181182c80b4811e49fb5194626bfcda45"
+source_tree = "a109deed58f306243842e9a5cb5648d859612167"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "79ab795dfc29264e92e8dfe695122dd361b109cef620510e63210268af4cb686"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-virtual-kubelet-68a94c-4c39a8e1-v2-env-79ab795d"
+template_id = "03umx42zxb754rxv1nw9"
+source_template_alias = "6xyqtw7hp51bv8avw89d"
+source_template_id = "6xyqtw7hp51bv8avw89d"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

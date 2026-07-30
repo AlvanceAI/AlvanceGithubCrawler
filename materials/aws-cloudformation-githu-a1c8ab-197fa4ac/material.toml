@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aws-cloudformation-githu-a1c8ab-197fa4ac"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/aws-actions/aws-cloudformation-github-deploy"
+base_commit = "197fa4accdf542111c52b8ebf184e463cf84aa72"
+source_tree = "491346c172f6356961525a9b325249b19a3d7b90"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "880629d27e799a8ac66bb1d2f2ab3068b008e1760ea1673db6efcd311ef840e6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aws-cloudformation-g-a1c8ab-197fa4ac-v2-env-880629d2"
+template_id = "mt357hdoqkb2co9bxtss"
+source_template_alias = "7eufig5he63wak92dhq2"
+source_template_id = "7eufig5he63wak92dhq2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

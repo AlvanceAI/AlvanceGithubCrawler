@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "typstyle-83473d-8a3c6e20"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/typstyle-rs/typstyle"
+base_commit = "8a3c6e200b9548fb0bc22d9cd7470bb55b3667dc"
+source_tree = "e646b06a196fcfd42dc4824bb5e4d0e6530c4c5b"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.92"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "27c936863c0aaad03e6f22f27871b120dea702c5758f9ebfa2a5a17900b5f289"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-typstyle-83473d-8a3c6e20-v2-env-27c93686"
+template_id = "vsd1fag1qcua8s88dzhg"
+source_template_alias = "jcb03dbdj8uno1ilr5ck"
+source_template_id = "jcb03dbdj8uno1ilr5ck"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

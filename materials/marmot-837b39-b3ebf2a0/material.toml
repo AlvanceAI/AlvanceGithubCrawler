@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "marmot-837b39-b3ebf2a0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/marmotdata/marmot"
+base_commit = "b3ebf2a00618bf200be09cb04f5b2b9414eb1d15"
+source_tree = "c6294b85e0a2a7e71d27bbd8e36693a4758ca5c1"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1291792ea0809c9a73499459d18613a2525aa1e1571c41e05e9522b5e0a306bc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-marmot-837b39-b3ebf2a0-v2-env-1291792e"
+template_id = "lpypxzzoeidctbzqyodo"
+source_template_alias = "h4dvp1mcudb0zyyh686s"
+source_template_id = "h4dvp1mcudb0zyyh686s"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

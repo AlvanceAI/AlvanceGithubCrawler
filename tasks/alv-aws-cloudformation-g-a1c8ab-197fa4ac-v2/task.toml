@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-aws-cloudformation-g-a1c8ab-197fa4ac-v2"
+description = "Rebuildable repository task for aws-actions/aws-cloudformation-github-deploy"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-aws-cloudformation-g-a1c8ab-197fa4ac-v2"
+material_id = "aws-cloudformation-githu-a1c8ab-197fa4ac"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/aws-actions/aws-cloudformation-github-deploy"
+base_commit_hash = "197fa4accdf542111c52b8ebf184e463cf84aa72"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

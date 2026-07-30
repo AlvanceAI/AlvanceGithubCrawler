@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tailscale-rs-dc89ee-19d3bad0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tailscale/tailscale-rs"
+base_commit = "19d3bad00a7442cfab57f58cbe56ccd7a206c82d"
+source_tree = "95c8f9ad76194f1ebd58e672d33a2001a95c10e1"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "rust"
+rust = "1.95.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "578c780ba8fefb904546b23ce694bdd9499b415d1be921984d503acd314a56fa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tailscale-rs-dc89ee-19d3bad0-v2-env-578c780b"
+template_id = "f7iilkhkg9tnlksgdiwv"
+source_template_alias = "hrrfmdinjbz7dg26x5jh"
+source_template_id = "hrrfmdinjbz7dg26x5jh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

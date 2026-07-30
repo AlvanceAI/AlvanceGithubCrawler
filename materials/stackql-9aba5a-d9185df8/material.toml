@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "stackql-9aba5a-d9185df8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/stackql/stackql"
+base_commit = "d9185df8f84fedf6b1a4e22a54f46eddb651f5bb"
+source_tree = "56db58c3b23159600db225b4cd08ce9cc76b2e9b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bca8558952e1e3b3f18ee4d0d3b856478e1907d267a7f2e2e271b5c51f2cd0ed"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-stackql-9aba5a-d9185df8-v2-env-bca85589"
+template_id = "zx0jewpnyuio701mht1o"
+source_template_alias = "q0ol1y6sindfe4pz95js"
+source_template_id = "q0ol1y6sindfe4pz95js"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

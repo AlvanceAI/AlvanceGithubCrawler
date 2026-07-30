@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mdns-sd-d203c1-30432c20"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/keepsimple1/mdns-sd"
+base_commit = "30432c20738f8efbf373c7333075e4e4532228ff"
+source_tree = "e7da7ba00a867dd9004baa78ffe2268c97f9b0c3"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.71.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3c6e78983b92a10c124030081f28ea5d7157cd8a506cde23d44c90fa591cfc97"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mdns-sd-d203c1-30432c20-v2-env-3c6e7898"
+template_id = "ondv852mez57mi44s346"
+source_template_alias = "k810w85folv6q79fl7fk"
+source_template_id = "k810w85folv6q79fl7fk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

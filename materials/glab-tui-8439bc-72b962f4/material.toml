@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "glab-tui-8439bc-72b962f4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rcieri/glab-tui"
+base_commit = "72b962f477dc17f7ed41e68a9aea57a3f80a2154"
+source_tree = "e7a75683a2b2aa6d172d0d218b5bf05e62badc7e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "640841743467067ea249622533be6a7dcbe2ddd5317f41615eb4deb580dc265d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-glab-tui-8439bc-72b962f4-v2-env-64084174"
+template_id = "rcinazrttli0qtf55xsh"
+source_template_alias = "grxf4x153095s2xetmwp"
+source_template_id = "grxf4x153095s2xetmwp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

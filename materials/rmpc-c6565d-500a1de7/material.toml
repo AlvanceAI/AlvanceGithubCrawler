@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rmpc-c6565d-500a1de7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mierak/rmpc"
+base_commit = "500a1de72fc74a23f946296e2a96d483ee4fc4d5"
+source_tree = "d3861d8d950214c7d25f4b1ba08802bd616fa34a"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "995c20ed8684517ef30d01c0828a0e17cec7774e296a14519a16cabec55ee326"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rmpc-c6565d-500a1de7-v2-env-995c20ed"
+template_id = "mwlg1wnya59omqthkujf"
+source_template_alias = "a35hxifnoysb09knvto3"
+source_template_id = "a35hxifnoysb09knvto3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

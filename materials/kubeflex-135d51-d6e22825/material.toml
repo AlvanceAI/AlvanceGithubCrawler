@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kubeflex-135d51-d6e22825"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kubestellar/kubeflex"
+base_commit = "d6e2282579189af2fc104ab541faec3076869718"
+source_tree = "c8e983a98a0addded6bfd42f062d0a14a3ddc21f"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ea693756497b5863ca411db3e5b3181f49370ab22675084c6504ebd282172b23"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kubeflex-135d51-d6e22825-v2-env-ea693756"
+template_id = "dg47qsk16xbeve1arjp1"
+source_template_alias = "qqqed3zo6l8h41v58s7l"
+source_template_id = "qqqed3zo6l8h41v58s7l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

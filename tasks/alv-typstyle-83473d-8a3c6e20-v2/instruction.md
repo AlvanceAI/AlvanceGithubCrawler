@@ -1,0 +1,5 @@
+Repository `typstyle-rs/typstyle` at commit `8a3c6e200b9548fb0bc22d9cd7470bb55b3667dc` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为 Typst 的 `if / else if / else` 链实现分支级换行布局，使短分支可各占一行并避免因整条链拼接而产生条件强制加括号或块体拆行。

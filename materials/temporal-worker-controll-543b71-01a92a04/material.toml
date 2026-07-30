@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "temporal-worker-controll-543b71-01a92a04"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/temporalio/temporal-worker-controller"
+base_commit = "01a92a0410bbedf353030fcc5a686d00916ea417"
+source_tree = "d9e9f3e81c47ebabfe935925976121ffcf51416f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "86daa619656b560d1def091788b9eec7b0413f5bc8d0e592be9ba5c08d3586ce"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-temporal-worker-cont-543b71-01a92a04-v2-env-86daa619"
+template_id = "08p3hsqos5w1enqdaenj"
+source_template_alias = "y1fvkdjni58i6531744d"
+source_template_id = "y1fvkdjni58i6531744d"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "foxguard-8a1267-40eeccdc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/0sec-labs/foxguard"
+base_commit = "40eeccdc29460646af714f1a1e9ab2f76d8e4b20"
+source_tree = "3866ea7507d9701475aa536a49127904227392f4"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0fdf7f031ac6eb759c9f093f4ab6b0669a9a57d7615a17ba13f29153effc1e90"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-foxguard-8a1267-40eeccdc-v2-env-0fdf7f03"
+template_id = "ojozfjschv4ch2tri8ir"
+source_template_alias = "mxtp13f7np5kzirnnu69"
+source_template_id = "mxtp13f7np5kzirnnu69"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

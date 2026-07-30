@@ -1,0 +1,11 @@
+# kameo-e8a8d4-b4aaee79
+
+Rebuildable repository material for `tqwewe/kameo` at
+`b4aaee797cc3fd12e8194db406d9d73a6bc021ce`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
+
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.
