@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pytest-bdd-33508c-582f0455"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pytest-dev/pytest-bdd"
+base_commit = "582f045534618756da979433e6db30ce68894002"
+source_tree = "227ffad775c97ed91cc8c002718b3e4cdd718685"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0ca13c8131934c33da3b207576e713fd438f4a5adc68f00c285fcc7ec434ef98"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pytest-bdd-33508c-582f0455-v2-env-0ca13c81"
+template_id = "igr3xpukfjphgvrbn9ge"
+source_template_alias = "u3on1o2q41or6ruqrbfg"
+source_template_id = "u3on1o2q41or6ruqrbfg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "private-mirrors-58ae4d-9a75c326"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/github-community-projects/private-mirrors"
+base_commit = "9a75c326df6abc7ebe44a1dcad4c24334ee8dad0"
+source_tree = "dde2f444313df6d5f8fe294b72eb921ba41fb8fe"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3063320815f112e612233aa49fbe25b1e74c6e77915e44aec17af021b3e1c796"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-private-mirrors-58ae4d-9a75c326-v2-env-30633208"
+template_id = "w1gxu1p0lx6wahnlgi59"
+source_template_alias = "9zpeb4cae66gpln9vb0n"
+source_template_id = "9zpeb4cae66gpln9vb0n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

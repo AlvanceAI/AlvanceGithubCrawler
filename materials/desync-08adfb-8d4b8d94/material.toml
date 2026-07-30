@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "desync-08adfb-8d4b8d94"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/folbricht/desync"
+base_commit = "8d4b8d94e99edd424ea07219cbc5b55446ee7c10"
+source_tree = "0f093b7c49900fc389b8af357d115e009ff933b8"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a1f3f26fa049a4c7826ea80c57937dd3cb4cc16e95fc742ceb7190071f39550d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-desync-08adfb-8d4b8d94-v2-env-a1f3f26f"
+template_id = "sctbvpmmktfw8fbrmelg"
+source_template_alias = "vysc9ai64j0m80l2kfzp"
+source_template_id = "vysc9ai64j0m80l2kfzp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gh-skyline-4498db-5245b2fc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/github/gh-skyline"
+base_commit = "5245b2fc95250075cac37d24a4cd9b09258de5a8"
+source_tree = "e1ff53fd402c0c72862fd9dd2192b8932a796d59"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "47c817f3d770ded68946f0eeee7d6f75032a87290930d69fd3a5f1bd2c477de4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gh-skyline-4498db-5245b2fc-v2-env-47c817f3"
+template_id = "jyt21odnwhner9afriok"
+source_template_alias = "doujuaew9s789i4vm6r7"
+source_template_id = "doujuaew9s789i4vm6r7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

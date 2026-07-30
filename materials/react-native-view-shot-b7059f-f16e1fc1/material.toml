@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-native-view-shot-b7059f-f16e1fc1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gre/react-native-view-shot"
+base_commit = "f16e1fc13d0f3c735b78928f753037a6490d4ae1"
+source_tree = "f9e403981a4da4ab6387513a0f9d556780e2cf12"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "428711be708d5c5c99314068e85518db49a2faf3a64b205a10915b01678e600e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-native-view-sh-b7059f-f16e1fc1-v2-env-428711be"
+template_id = "fgrk942ahz69fai8jeij"
+source_template_alias = "6zm9jhacompisi8xv6yi"
+source_template_id = "6zm9jhacompisi8xv6yi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

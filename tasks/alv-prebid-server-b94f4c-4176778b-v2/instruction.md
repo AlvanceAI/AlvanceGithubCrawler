@@ -1,0 +1,5 @@
+Repository `prebid/prebid-server` at commit `4176778b8febe685f6888528e70f381bf1070fd3` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+实现数据库驱动的动态模块级配置：周期性查询全局模块配置，并将其与账户级模块配置进行 JSON 合并且账户配置优先。

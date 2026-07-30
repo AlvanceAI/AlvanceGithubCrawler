@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nitrogql-43c5a6-8d9f5aff"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/uhyo/nitrogql"
+base_commit = "8d9f5aff1fd6fd18f7190180071772f6aa485c7e"
+source_tree = "14584f2a5480dc5cdae8c66f0fcc58f524032ec9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eefca14bf460de5ff62d08b11ab4572c0db04fb4ecc697f71b345606e55fe595"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nitrogql-43c5a6-8d9f5aff-v2-env-eefca14b"
+template_id = "si2usbqibw909vxv5m8s"
+source_template_alias = "h4sren7riz58gkzwu9d3"
+source_template_id = "h4sren7riz58gkzwu9d3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

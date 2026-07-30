@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "edtui-731461-8ed1ebe1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/preiter93/edtui"
+base_commit = "8ed1ebe19822c944f0a85dc848ca4908184f6c48"
+source_tree = "5dacaada89ba10d405b5c950af293a4772fe01bd"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7164c40e165eb206128dc8c46df1c072d368d3cbfcf252f1041f69bde31f0a70"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-edtui-731461-8ed1ebe1-v2-env-7164c40e"
+template_id = "7bvkq2x0p9o7fwrvtxv3"
+source_template_alias = "bm1h89nw33gjwvjkeb29"
+source_template_id = "bm1h89nw33gjwvjkeb29"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

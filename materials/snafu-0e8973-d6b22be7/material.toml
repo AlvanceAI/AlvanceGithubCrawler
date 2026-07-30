@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "snafu-0e8973-d6b22be7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/shepmaster/snafu"
+base_commit = "d6b22be7e31fdd308bfe637349263781edcaac29"
+source_tree = "3ee9ff9826b68a5583f80e80a43ab9462efea0db"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.65"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d9dc90b71e9056a6c5a1e81c7cdc556a48a5f65178e6b57fd01b484be1a52ba8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-snafu-0e8973-d6b22be7-v2-env-d9dc90b7"
+template_id = "owociha5zkoa5n9zt3l1"
+source_template_alias = "trzs7eedjnjcr33flexh"
+source_template_id = "trzs7eedjnjcr33flexh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

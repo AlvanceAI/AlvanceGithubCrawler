@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "stac-fastapi-f5e429-2565bbef"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/stac-utils/stac-fastapi"
+base_commit = "2565bbef9222fda044a827e88f9f64411f54ddde"
+source_tree = "03b626c76e75935eba04513b43253d2b587c687e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7b87163fb759fd24c6720ea7428cffa912cfa2e3d5917911467a3b9e1fefc3e5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-stac-fastapi-f5e429-2565bbef-v2-env-7b87163f"
+template_id = "hfgf7jcax4y82n4xqh0z"
+source_template_alias = "ykzaj1211vf2l7wgnxnd"
+source_template_id = "ykzaj1211vf2l7wgnxnd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

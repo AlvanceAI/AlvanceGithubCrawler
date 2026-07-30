@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "model-bakery-e2471b-a3d6514e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/model-bakers/model_bakery"
+base_commit = "a3d6514e60a39dadc72ebefcf951737854835300"
+source_tree = "f97cf63d9aa576e43322ddbf8b395a5fd2235523"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c110cdc76d6243bd4e4baba6415e3f1b635f6e95257c3ef4c371d0e5278e1949"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-model-bakery-e2471b-a3d6514e-v2-env-c110cdc7"
+template_id = "pm15sgt5y513n984rt5v"
+source_template_alias = "tias9n0mc6ir5uyh7v5f"
+source_template_id = "tias9n0mc6ir5uyh7v5f"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

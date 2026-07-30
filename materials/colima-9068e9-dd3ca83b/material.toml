@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "colima-9068e9-dd3ca83b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/abiosoft/colima"
+base_commit = "dd3ca83bada3191e1574983660a7a7ce32273cb3"
+source_tree = "37acd84b53e48e40a2a03dae9eec04f0683e1ec7"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ba55eb2dcf8848ddb550432a193509f11feba6a878dbad51e26daca52415fe0a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-colima-9068e9-dd3ca83b-v2-env-ba55eb2d"
+template_id = "f0tez72jdl88j2zd7373"
+source_template_alias = "3485kg6gqa92zp0zit86"
+source_template_id = "3485kg6gqa92zp0zit86"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cbor-09279b-f6a8c43d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/fxamacker/cbor"
+base_commit = "f6a8c43d12cc115492221f2082289cfe742e4f66"
+source_tree = "7badfbc6b34334fbd1956a25b7c0515b2ab331e1"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5a4d30a4d177138821fc47a625e537b4f580e00aba27a65651560a2d0dbdeef1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cbor-09279b-f6a8c43d-v2-env-5a4d30a4"
+template_id = "4hk35pgnqfz05kbxbrpe"
+source_template_alias = "jldrcxpnag02seimkgj1"
+source_template_id = "jldrcxpnag02seimkgj1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

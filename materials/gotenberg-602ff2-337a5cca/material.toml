@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gotenberg-602ff2-337a5cca"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gotenberg/gotenberg"
+base_commit = "337a5cca64883f31faa4087b5df72ef7ca891565"
+source_tree = "5dd38f45b563a397c153754b40a1d22deb6ebfca"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4d24daf5f16f21ae58cebef9abd33229f4410bdb37c19c1c3336f77082a4d124"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gotenberg-602ff2-337a5cca-v2-env-4d24daf5"
+template_id = "z2nplytp8id5t081fgra"
+source_template_alias = "6q86q8w6nrkgc46m5ubj"
+source_template_id = "6q86q8w6nrkgc46m5ubj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

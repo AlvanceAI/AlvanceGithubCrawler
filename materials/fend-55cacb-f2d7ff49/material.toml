@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fend-55cacb-f2d7ff49"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/printfn/fend"
+base_commit = "f2d7ff49feeaaddcdbdbad147e8b152aefcb9e5e"
+source_tree = "629ddeb559593de3139cafef1c7d8bed2c1d7eb6"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8e6b3afc75ef81b7c96c484e9752b0b42c1ae96232f5aa78935ffb38f812ec86"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fend-55cacb-f2d7ff49-v2-env-8e6b3afc"
+template_id = "zgpiv9d4dd3wafkn82ol"
+source_template_alias = "a7r8y9wt09gj044ojazx"
+source_template_id = "a7r8y9wt09gj044ojazx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

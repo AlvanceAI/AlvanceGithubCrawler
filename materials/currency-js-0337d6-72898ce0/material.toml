@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "currency-js-0337d6-72898ce0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/scurker/currency.js"
+base_commit = "72898ce024509ddfbe75d14a07e1a5f4c1bdd03a"
+source_tree = "a9801fb23a9def242f72cb6549fedce9609bbd9d"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2a510425ff3fee982cd8c922f19cee82b5bdebfb5ab299b187a95b4e6184e0fa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-currency-js-0337d6-72898ce0-v2-env-2a510425"
+template_id = "4t0dvxnvlu527rvi3sx2"
+source_template_alias = "dmhkfgfjqhvrs7d6rx4q"
+source_template_id = "dmhkfgfjqhvrs7d6rx4q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "crash-handling-10b1f4-171a88b5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/EmbarkStudios/crash-handling"
+base_commit = "171a88b5a914ffff8607cbe8763d8c4dd59fbd02"
+source_tree = "0f246bcdbaf135dfaa4255626ac4330fdbef68a0"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "30ff344dc2034d4def27861b6f0de73771d2f5459dfe0908a8fc34051c363244"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-crash-handling-10b1f4-171a88b5-v2-env-30ff344d"
+template_id = "qjxij9okec9bmvhvhnud"
+source_template_alias = "x70x7k4ssirv81hj8f7l"
+source_template_id = "x70x7k4ssirv81hj8f7l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

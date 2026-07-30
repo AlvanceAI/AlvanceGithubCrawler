@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "qiskit-addon-cutting-430503-116b7043"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Qiskit/qiskit-addon-cutting"
+base_commit = "116b7043999a96c7d402e09d3675c53f119a52b0"
+source_tree = "370a08352bd8fcc5104e5edbe9cbc2fde9c56b19"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "69f3d7b94f2ed3d381ec1eda674088bcbefbed9bc56f84e61347ac0862a6dd46"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-qiskit-addon-cutting-430503-116b7043-v2-env-69f3d7b9"
+template_id = "1cw03px8akpwmdkkzan8"
+source_template_alias = "5ngi8uvm4vonqffr1ol6"
+source_template_id = "5ngi8uvm4vonqffr1ol6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

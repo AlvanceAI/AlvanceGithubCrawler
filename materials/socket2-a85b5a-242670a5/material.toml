@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "socket2-a85b5a-242670a5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rust-lang/socket2"
+base_commit = "242670a575c37cab6f74e778949417ba1470c8ba"
+source_tree = "1a292f3da50c0e1922bebc0d7dc11d192564cd73"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.70"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "582903a6b8c0ff6d23b50f7c1e8f2c986947b2c1489e80103d547039045c605a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-socket2-a85b5a-242670a5-v2-env-582903a6"
+template_id = "26fmr3xp85kivd8ytxhw"
+source_template_alias = "9duu8zm382s6gsv6oo24"
+source_template_id = "9duu8zm382s6gsv6oo24"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

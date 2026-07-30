@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "eslint-plugin-security-8d6430-886ff6b8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/eslint-community/eslint-plugin-security"
+base_commit = "886ff6b80d5b9e644783519e2f72278aadb80491"
+source_tree = "25daab60cdf2e7e14e77f8911d9f1ebed9e57896"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cb9f7859c4789633fd3c248f88f1ee4e677cde41e4642616a0d96f9f777c6836"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-eslint-plugin-securi-8d6430-886ff6b8-v2-env-cb9f7859"
+template_id = "tifrd68zx2rt5soty38s"
+source_template_alias = "28kmyg0yhhknax2opu73"
+source_template_id = "28kmyg0yhhknax2opu73"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "geoip2-python-ad7237-22de0f36"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/maxmind/GeoIP2-python"
+base_commit = "22de0f36e4f98866d6d154ad2dde74461365220b"
+source_tree = "2e66753257f7474ae28ef5d0ef8bee25423311da"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b3fb58ed7d3d7f2c5da7380269344facb468bef088e10eb75d5fcea40f72fdf5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-geoip2-python-ad7237-22de0f36-v2-env-b3fb58ed"
+template_id = "2ukt3mfyur2xbyp90me2"
+source_template_alias = "5grvsd6r2b8zeh1hae34"
+source_template_id = "5grvsd6r2b8zeh1hae34"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

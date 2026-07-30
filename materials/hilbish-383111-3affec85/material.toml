@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hilbish-383111-3affec85"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sammy-ette/Hilbish"
+base_commit = "3affec856c2216ae1c4856d849367ea557c5dc93"
+source_tree = "6b034be03ecc11d679a58cf049bf197bc639ddfe"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "780b7eb72208786da8f20439b6be01e8c4e6135d50afaa20b30a47445728483c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hilbish-383111-3affec85-v2-env-780b7eb7"
+template_id = "e1fyf0nxyk06n6u77kpc"
+source_template_alias = "iilrfykjkxkl7jt63mjz"
+source_template_id = "iilrfykjkxkl7jt63mjz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

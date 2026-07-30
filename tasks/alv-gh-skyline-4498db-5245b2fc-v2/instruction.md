@@ -1,0 +1,5 @@
+Repository `github/gh-skyline` at commit `5245b2fc95250075cac37d24a4cd9b09258de5a8` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为 STL 几何生成器增加直接解析 SVG/TTF 轮廓并将文字与图标矢量路径挤出为网格的能力，以避免当前栅格化产生的锯齿。

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "barbell-c9a632-3ec062c3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rickbeeloo/barbell"
+base_commit = "3ec062c3b6dc4d7d645974f3d79707f29bb9a0e9"
+source_tree = "cb343d8b3cafbaa4ee9cde7c98ca86e05c7dc2f0"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "429818ac5a6db5a919bfea42175b252402d32d495d6ab5ac9c2e1839a2a3a010"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-barbell-c9a632-3ec062c3-v2-env-429818ac"
+template_id = "n2z68ylz5wllgc0ayla2"
+source_template_alias = "0wlgw5q5aty7brqfjzas"
+source_template_id = "0wlgw5q5aty7brqfjzas"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

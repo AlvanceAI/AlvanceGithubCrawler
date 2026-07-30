@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "volt-3fc409-35e1ad97"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/owenHochwald/volt"
+base_commit = "35e1ad972298896f2d480183e08d4a6142b8ed84"
+source_tree = "adbfb400921062a81de087f67fe6d03c16116303"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cb77a885cd7a85541a9b72f9907bdb2294674ebf0e6e74f57c8142a3331f53ca"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-volt-3fc409-35e1ad97-v2-env-cb77a885"
+template_id = "wb86diuacxfvjm6yraby"
+source_template_alias = "175tz6r29rj27o1stnp1"
+source_template_id = "175tz6r29rj27o1stnp1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "parity-db-0f99b0-4850de71"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/paritytech/parity-db"
+base_commit = "4850de716d3bdf5a1567c99e5776164a8fe8bfea"
+source_tree = "2e10070b59fd08ab5ae343b170367f3452c72206"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b70358577fd63590249f358403644e0eb33af765f83076ac88cb7cbfdd12bcc1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-parity-db-0f99b0-4850de71-v2-env-b7035857"
+template_id = "zg6vup3eh7l5zeztqvmx"
+source_template_alias = "16ea4rtvfz1m2lwqmg8q"
+source_template_id = "16ea4rtvfz1m2lwqmg8q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

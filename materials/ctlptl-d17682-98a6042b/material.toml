@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ctlptl-d17682-98a6042b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tilt-dev/ctlptl"
+base_commit = "98a6042bc12ce538fa84d699d7e94aa3efb479f5"
+source_tree = "1edfc40e2a0a9b01b28339686933f78a86d938f1"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a26e2d04e244aeacee041ff941311a9a14bc6919cfe7e1ae7567fd20b91b9340"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ctlptl-d17682-98a6042b-v2-env-a26e2d04"
+template_id = "ga2rqa6tqzi734zhd11b"
+source_template_alias = "tbeoty2jppcyfccthafv"
+source_template_id = "tbeoty2jppcyfccthafv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

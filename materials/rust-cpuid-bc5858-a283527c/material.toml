@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rust-cpuid-bc5858-a283527c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gz/rust-cpuid"
+base_commit = "a283527c7939b021b8baba26a3c8543db19f6318"
+source_tree = "f597bc666133bd178f923f395def7148a950b913"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b1764a5e9123f089cbd1466e8c6141ced03e87410b4c5d5b6609bbc8a29ad426"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rust-cpuid-bc5858-a283527c-v2-env-b1764a5e"
+template_id = "x4rt5accp91zrquiumx1"
+source_template_alias = "eikb7xkidjvhcubo02ae"
+source_template_id = "eikb7xkidjvhcubo02ae"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

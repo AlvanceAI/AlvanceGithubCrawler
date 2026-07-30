@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "serde-arrow-cb7520-c7405138"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/chmp/serde_arrow"
+base_commit = "c74051388b6ff58277545997c557b0d896c479e1"
+source_tree = "e1ed01e2e4a14b8ea50e2da421898bc9440bbb4f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f53e887c95229c66f7ed7e6826d11b72a5357096e9eae4de92ad418a6cb2ac08"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-serde-arrow-cb7520-c7405138-v2-env-f53e887c"
+template_id = "kvzerbcas7jy52o09oxv"
+source_template_alias = "gw9scxs2rknih8vg23ai"
+source_template_id = "gw9scxs2rknih8vg23ai"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "getty-3480e7-33d84ce3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/AlexStocks/getty"
+base_commit = "33d84ce338b4403e27073b79d9a54fcdc5c2337d"
+source_tree = "c0e7e9af9d2601c990b2ba0a44744b0fa0880dd5"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "abcacfb16c399ddc5d048aa955e14f886ae01023f9cb2b62bfca6d001bd6f367"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-getty-3480e7-33d84ce3-v2-env-abcacfb1"
+template_id = "2nu1rkj2gge5hihfkyt4"
+source_template_alias = "1k9tq05bekd3seqszp5n"
+source_template_id = "1k9tq05bekd3seqszp5n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terraform-provider-fastl-3bce6c-5a0bac50"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/fastly/terraform-provider-fastly"
+base_commit = "5a0bac50e0a57c8bbf470f05ddef8319b4ad0314"
+source_tree = "9cb849ac51facbf525a1b0cbc51afa0b3f3d68cf"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "41f89b9ab61e0caa0c12d48da272010272f12c8419303214fedd32986e8e1b24"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terraform-provider-f-3bce6c-5a0bac50-v2-env-41f89b9a"
+template_id = "k79w2jxjj3y2h97dl8yi"
+source_template_alias = "a5ng6p8k99ls9c5yuby3"
+source_template_id = "a5ng6p8k99ls9c5yuby3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

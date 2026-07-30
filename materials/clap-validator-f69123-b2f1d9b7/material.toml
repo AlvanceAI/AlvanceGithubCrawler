@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "clap-validator-f69123-b2f1d9b7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/free-audio/clap-validator"
+base_commit = "b2f1d9b79b1d264a5747f46707d72b1aa40a02ef"
+source_tree = "74c11da4dc90781ff5e86000e10c89f3b1e60f7c"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.95.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7fdfa3edd523189fe9ebfa1c8cea51f4daccb49e1d8e36e5957f81432a2fa0a1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-clap-validator-f69123-b2f1d9b7-v2-env-7fdfa3ed"
+template_id = "apj4upvjwn4tge0eb58y"
+source_template_alias = "x6m39a8ddnu27f4y2voj"
+source_template_id = "x6m39a8ddnu27f4y2voj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

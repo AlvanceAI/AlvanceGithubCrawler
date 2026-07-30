@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pio-rs-93786b-7dfc5fbf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rp-rs/pio-rs"
+base_commit = "7dfc5fbfbc7d66bfd613454288ccf42f339d7a3a"
+source_tree = "8094c5f0331cf16902c399b20fa88f95e7665bc0"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e6984eaee35da5fc0fa699dba34252d530b3454d554aad0437aef11df8b091de"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pio-rs-93786b-7dfc5fbf-v2-env-e6984eae"
+template_id = "ua7xi8buyaj7m1yjtshz"
+source_template_alias = "a5vvsfyznq77vwnu8w62"
+source_template_id = "a5vvsfyznq77vwnu8w62"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

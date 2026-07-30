@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "eebus-go-f47d6d-363db3c5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/enbility/eebus-go"
+base_commit = "363db3c5c262a4bdb902fa42b602eb9facc1a4a9"
+source_tree = "ac88335206590928539c3fa5d3f29dd452938df2"
+default_branch = "dev"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4f52c51a2d8419ca882acd686f567461930b2b56f5eb17db28aa8f8a433bec29"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-eebus-go-f47d6d-363db3c5-v2-env-4f52c51a"
+template_id = "wuonb6cm00tvtxgzvlmd"
+source_template_alias = "qs3a5d2piewcqthlfl6x"
+source_template_id = "qs3a5d2piewcqthlfl6x"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

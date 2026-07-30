@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cost-xray-25e8b7-5968d868"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tigerless-labs/cost-xray"
+base_commit = "5968d8689864e37fe44985b3568f10440a97989f"
+source_tree = "48abf7fe24ccecef69f149d5032e3997b52d6c4e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e16b071bb7deedb2911ce2e9d49cf3adcb4faa50d89f1d5f9d75ab55bfaefcb1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cost-xray-25e8b7-5968d868-v2-env-e16b071b"
+template_id = "u8jl87j88tnj4i7pbtkh"
+source_template_alias = "z5vrehh8xphexp9dtr04"
+source_template_id = "z5vrehh8xphexp9dtr04"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "page-agent-3f5775-b7401a05"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alibaba/page-agent"
+base_commit = "b7401a051c0ce1b1ec3f2713590a78585adf9ae1"
+source_tree = "268cef64d6a7df77fdea3957e74d27c5c9bf1f67"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "217d4385bbb206968ca77b05febd2d0930627cb88ecc1cd6500721ed4f6ce3fe"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-page-agent-3f5775-b7401a05-v2-env-217d4385"
+template_id = "oub3ljkch8umpaugr4s0"
+source_template_alias = "ftfsotmy0dakxl5zj6qq"
+source_template_id = "ftfsotmy0dakxl5zj6qq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

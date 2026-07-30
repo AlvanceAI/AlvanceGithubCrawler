@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sj-cf7993-7d9fa54a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/BishopFox/sj"
+base_commit = "7d9fa54a58aa48933377575ffa7ba390a58f24a6"
+source_tree = "7129256bfee22e766cc7da829338b6253125ef93"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.22.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8db8ad24e477ac664bc1db8921e017266784993538dcfce7dcb8ababfdb2eded"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sj-cf7993-7d9fa54a-v2-env-8db8ad24"
+template_id = "2ztyndjb3gtbanz1owfs"
+source_template_alias = "qyrzwkymweds3lz1oqej"
+source_template_id = "qyrzwkymweds3lz1oqej"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

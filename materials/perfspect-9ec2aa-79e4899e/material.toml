@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "perfspect-9ec2aa-79e4899e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/intel/PerfSpect"
+base_commit = "79e4899e43be5790b056eec3181c0d152ae8f496"
+source_tree = "ef1c23be9a349dc430835a4018a1cb3914598c04"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "333487ab1a477bc3a287c34c94cc1012b8ca7a7ff7264286448c1360c50165b2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-perfspect-9ec2aa-79e4899e-v2-env-333487ab"
+template_id = "hdgd32d6q2bt07jdou5a"
+source_template_alias = "dvnmevabk5t3itbeym84"
+source_template_id = "dvnmevabk5t3itbeym84"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

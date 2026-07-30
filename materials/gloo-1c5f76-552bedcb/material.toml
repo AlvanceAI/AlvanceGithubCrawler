@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gloo-1c5f76-552bedcb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ranile/gloo"
+base_commit = "552bedcb2ca8c384edc8f66d6bdda6a5e7ec3697"
+source_tree = "b6d1bad6608fd1be5e029ea413c46abc05c37da3"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.85"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "854163a0e71451004be6273fcad451883af26f3c244fd3a06d7b123a33e51e0a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gloo-1c5f76-552bedcb-v2-env-854163a0"
+template_id = "4oldijlo9c1c0o0he8ph"
+source_template_alias = "044qk2zjjvm3esn86r1v"
+source_template_id = "044qk2zjjvm3esn86r1v"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

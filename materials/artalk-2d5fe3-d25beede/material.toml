@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "artalk-2d5fe3-d25beede"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ArtalkJS/Artalk"
+base_commit = "d25beede911d59a571382c6821cb8e7a7c27850a"
+source_tree = "191f0c6a7039bbdece20aa74e2cb6f3f0e2a514e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0cdd95ac05f6f516ddcec1e9f4a52b2b3053db703021e93222720287fae25ff9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-artalk-2d5fe3-d25beede-v2-env-0cdd95ac"
+template_id = "kloy9ity7pu7z76s98cu"
+source_template_alias = "6yle1eb22rkg31cg62fv"
+source_template_id = "6yle1eb22rkg31cg62fv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

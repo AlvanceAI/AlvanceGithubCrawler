@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "otelsql-154be5-9648cf15"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/XSAM/otelsql"
+base_commit = "9648cf15c51dc4cecafb23587acd7d76ec1ffbac"
+source_tree = "59ef998bd246e1cf042d0876c9254d0bfa6ef794"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0694250de5a81a2614067176015562796fe9a44d7f46fa7260137657ea0ab346"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-otelsql-154be5-9648cf15-v2-env-0694250d"
+template_id = "nbm7d2ximzh2e570y57z"
+source_template_alias = "kfs8tquxiw7lmxn735oj"
+source_template_id = "kfs8tquxiw7lmxn735oj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

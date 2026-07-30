@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ai-gateway-6ef415-cd2ecb8d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ferro-labs/ai-gateway"
+base_commit = "cd2ecb8d008618f0bbab761898a823bf5999aeb8"
+source_tree = "22373fb9852ae762aca8bc491338bde3cf3611e1"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "edd646f1f57cd962ce8c3b4c587b4ea6b6447db46ed8cdccfcfb8e30c421f7e0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ai-gateway-6ef415-cd2ecb8d-v2-env-edd646f1"
+template_id = "w0cpw3xjo2jlagd9f8ef"
+source_template_alias = "oprzp7ztgm12w159uk2w"
+source_template_id = "oprzp7ztgm12w159uk2w"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ibind-173ae7-a3d8fe14"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Voyz/ibind"
+base_commit = "a3d8fe146ad4166c8b3e8fbb90f944216ca25e8a"
+source_tree = "75a5616b90d0732b59a747a8224127309181244f"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7ff4668b07d979d451e9834e2fbc71c6eb38a27402a2c9344d7e7022b9e8a3a9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ibind-173ae7-a3d8fe14-v2-env-7ff4668b"
+template_id = "w0wwml17au6n2yo6xydc"
+source_template_alias = "g1l5eajg998mg1brkbw5"
+source_template_id = "g1l5eajg998mg1brkbw5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

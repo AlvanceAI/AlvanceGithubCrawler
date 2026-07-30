@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "google-maps-scraper-c75419-a75a1573"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gosom/google-maps-scraper"
+base_commit = "a75a1573f2113e10c56d6cc309d3138b9bed1dc6"
+source_tree = "7435eec341dbf2c5984cc6ba3f3801767e983785"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "52b6040d406160fc3e454c929c6e861e443027b8d6d5e3756c3612a4badf1b37"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-google-maps-scraper-c75419-a75a1573-v2-env-52b6040d"
+template_id = "lpnhfb07ic7cp7pgro94"
+source_template_alias = "6law2qedyy6xp8o5j3sp"
+source_template_id = "6law2qedyy6xp8o5j3sp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

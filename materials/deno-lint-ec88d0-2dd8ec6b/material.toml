@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "deno-lint-ec88d0-2dd8ec6b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/denoland/deno_lint"
+base_commit = "2dd8ec6b3796d4ae3a455456fa63b22f123e5cab"
+source_tree = "12755b65c2baf017e751c6375b0c3c686a5e1048"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.90.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fbb1e74fd1b8f4234da48f3d34ba0cb45805bbce82a0c910f6189f7b5dbb6799"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-deno-lint-ec88d0-2dd8ec6b-v2-env-fbb1e74f"
+template_id = "avlqlfwmu4w5b9t94qpm"
+source_template_alias = "2hj8mi56g2zlcpv4k7bw"
+source_template_id = "2hj8mi56g2zlcpv4k7bw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "spike-e9d466-42547a7e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/spiffe/spike"
+base_commit = "42547a7e5a0099e47c95046889030b895c0ec430"
+source_tree = "2b37644ce9de2e79b8dbdb6a17f23741aacf0238"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "33f7a68d0e5bbbb0c486faf59348ff1a568a3c704fa67cbd38ecbf9eb1cf6b5f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-spike-e9d466-42547a7e-v2-env-33f7a68d"
+template_id = "wtndmr3ktdu1yy3fvvh1"
+source_template_alias = "2ooytch4aki37tiazrew"
+source_template_id = "2ooytch4aki37tiazrew"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

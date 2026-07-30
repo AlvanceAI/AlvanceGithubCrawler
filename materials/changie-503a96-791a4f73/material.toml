@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "changie-503a96-791a4f73"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/miniscruff/changie"
+base_commit = "791a4f73e5ed4b80384f2a2e2c66d14b7eb0094b"
+source_tree = "5b275c0419928e35d264036030729e3131d1fcd9"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "83fd97df8bc30c29cb8faea1dbb28c8e07bc5b3fe3633bfe0012df775de0b96f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-changie-503a96-791a4f73-v2-env-83fd97df"
+template_id = "33uyjr6afw74lmikkoqv"
+source_template_alias = "ke7zc6gb8ssc3jxff23s"
+source_template_id = "ke7zc6gb8ssc3jxff23s"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

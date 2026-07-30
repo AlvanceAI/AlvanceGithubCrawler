@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lipgloss-a64cd0-5696b280"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/charmbracelet/lipgloss"
+base_commit = "5696b2800bc692e6cc372ee8232da6d3f7e7387f"
+source_tree = "2766266e775d04edd0f9d61c7f944a60222d0244"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bd0d14575643a22dd856896a3dfa890d9077b279a2f49f2ba2b817dfb5880efe"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lipgloss-a64cd0-5696b280-v2-env-bd0d1457"
+template_id = "1woms5iwbssinrzjbv7i"
+source_template_alias = "7b8cjibr10xsjezac1ls"
+source_template_id = "7b8cjibr10xsjezac1ls"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

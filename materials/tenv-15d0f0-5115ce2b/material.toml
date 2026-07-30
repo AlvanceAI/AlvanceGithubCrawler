@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tenv-15d0f0-5115ce2b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tofuutils/tenv"
+base_commit = "5115ce2bcc8cc3c2f61ae0dbe1d4cbef052bb753"
+source_tree = "98c42c28ac5370582c3efdbb54a10b14e3e1e570"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d117b9e43aa95ecf986cc7d51af7944e8256b445c188a2b62c7d2562bbd6a930"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tenv-15d0f0-5115ce2b-v2-env-d117b9e4"
+template_id = "ne87s158f72px2ckr4e8"
+source_template_alias = "198z1afqmicnv9oazlk9"
+source_template_id = "198z1afqmicnv9oazlk9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terraform-docs-009b49-10965cdd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/terraform-docs/terraform-docs"
+base_commit = "10965cddfa169679511f176cfe67dd0189dc935f"
+source_tree = "71b3729037b1174880aaae72c3e44b1d147e3bfc"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "60897b0936d9caf6baa022623c8205505e8405c29d4e7213e5fd38b4b87ab56e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terraform-docs-009b49-10965cdd-v2-env-60897b09"
+template_id = "2n2z2j00fbi92062q9u1"
+source_template_alias = "uj4q2fi02xteptso565o"
+source_template_id = "uj4q2fi02xteptso565o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

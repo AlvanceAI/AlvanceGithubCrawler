@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-sdk-5b4dcd-02b6f874"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/agentclientprotocol/python-sdk"
+base_commit = "02b6f874525927a501daf8004cae8a30f91723a2"
+source_tree = "1f4f7089eaf047a153f63932e5a2d6987c6c7746"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "73e14aa84460741b4e2b15d429b672441741cc10e1f023f7569bd133ca27e460"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-sdk-5b4dcd-02b6f874-v2-env-73e14aa8"
+template_id = "wbmjeloue2koazomgj2c"
+source_template_alias = "a8zfv84j20fpakfmeir9"
+source_template_id = "a8zfv84j20fpakfmeir9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

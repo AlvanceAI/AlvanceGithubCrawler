@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "stylua-145471-5ae6e7a5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/JohnnyMorganz/StyLua"
+base_commit = "5ae6e7a55748414b4be30a832afd895014c65352"
+source_tree = "b81d562445d513b05fe0a65dceebe604d8c9d826"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cb21f06d8ae91055dab8dbbd09b9597d831c7920b5a7bb78760c15514d23270b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-stylua-145471-5ae6e7a5-v2-env-cb21f06d"
+template_id = "9h0nqtvxpw0b488922dk"
+source_template_alias = "3vqmmz647yr3g4nquhf0"
+source_template_id = "3vqmmz647yr3g4nquhf0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

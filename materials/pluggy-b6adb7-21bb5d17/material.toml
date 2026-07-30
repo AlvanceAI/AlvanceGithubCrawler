@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pluggy-b6adb7-21bb5d17"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pytest-dev/pluggy"
+base_commit = "21bb5d175372aa474b44178b8a0577be1822279e"
+source_tree = "1eb6a0c9ec3613ddf38aae86199876d759abae89"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ae85b3ce31349590af2d2a590aef77b49415d911811918cdd351d6ccdf8007d4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pluggy-b6adb7-21bb5d17-v2-env-ae85b3ce"
+template_id = "dlo5xai8zqja7hpgmj6r"
+source_template_alias = "zj6xas02xw6aavcnxn0r"
+source_template_id = "zj6xas02xw6aavcnxn0r"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

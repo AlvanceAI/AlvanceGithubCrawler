@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "backport-action-a62719-ca5c56da"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/korthout/backport-action"
+base_commit = "ca5c56da5a0c130ee110184b95767d7685ceaf8e"
+source_tree = "4cc95d18870c3d1d006f53a5c5a83c9a079bac63"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "68fe5c1386cce96d886232fad7f279a2b2184998259f7121147f1e0914c36b6c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-backport-action-a62719-ca5c56da-v2-env-68fe5c13"
+template_id = "yfku69jivwdhsm9wunpl"
+source_template_alias = "g2018iti83qfsumi5f3b"
+source_template_id = "g2018iti83qfsumi5f3b"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

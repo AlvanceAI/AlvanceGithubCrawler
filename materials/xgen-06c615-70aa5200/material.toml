@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "xgen-06c615-70aa5200"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/xuri/xgen"
+base_commit = "70aa5200fec4731b92709a9541ec9672b7a74335"
+source_tree = "d514ed599fe02c4900c34c54473c0c5d21f58b6b"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "54801fca7a32af840eef5ae8fbf8f93129d45548413705385a77b44dfb6b5721"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-xgen-06c615-70aa5200-v2-env-54801fca"
+template_id = "2xk776418eawk7qcmhcy"
+source_template_alias = "g67n4ywdpc1t7j6ks3xl"
+source_template_id = "g67n4ywdpc1t7j6ks3xl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

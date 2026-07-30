@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "koji-9abedb-0cd148e6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cococonscious/koji"
+base_commit = "0cd148e687aa2b3a01e11b9d8fc16fc6d7a4a72f"
+source_tree = "b47a03af906a37e35f5e9ca8a1398f5867dfe6d6"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3a0516def0c6c00ff27492ae2b37fc090d24821299531b3dbb70178847a58ff9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-koji-9abedb-0cd148e6-v2-env-3a0516de"
+template_id = "5bgapijflif9b9jh0zo6"
+source_template_alias = "2aknkv5003di4crekuwv"
+source_template_id = "2aknkv5003di4crekuwv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

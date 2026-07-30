@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "javascript-algorithms-70f869-85293e3e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/trekhleb/javascript-algorithms"
+base_commit = "85293e3e2b88f4d2ce330d956b139cf628aa1e82"
+source_tree = "3e70a82e1655c0c2ef1659bde094f94cc55eaf4f"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7da6c09b7c1c9d6778e19640084bb36e946265db94212d26e139d7bb0956154b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-javascript-algorithm-70f869-85293e3e-v2-env-7da6c09b"
+template_id = "ph3t6rxnbjxje8cwn6ml"
+source_template_alias = "jssr9mx6s78xrtynuj27"
+source_template_id = "jssr9mx6s78xrtynuj27"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

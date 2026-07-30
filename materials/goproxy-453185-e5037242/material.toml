@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "goproxy-453185-e5037242"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/goproxy/goproxy"
+base_commit = "e503724238386713152b7759d1a9fb804e09248e"
+source_tree = "8bf3c86fe4518e0ce194a02f102306c014203f00"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fa8813b7537de6e8b5a282152bf2856aa4c162bcc364aea5e39552ef9dfea996"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-goproxy-453185-e5037242-v2-env-fa8813b7"
+template_id = "qrl9vaxooozs5rsuraxy"
+source_template_alias = "yl2yo9butvmk4zdkqkx9"
+source_template_id = "yl2yo9butvmk4zdkqkx9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

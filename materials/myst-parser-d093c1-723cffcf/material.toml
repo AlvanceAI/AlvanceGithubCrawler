@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "myst-parser-d093c1-723cffcf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/executablebooks/MyST-Parser"
+base_commit = "723cffcf84213f0cb58695b27eec9ad72052b53a"
+source_tree = "3802c08c48f866e282a11ac2e0bd8120385928c4"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "76b596cf0d9508a6749125d18c8ea6701797f06f9b31009d6de0bc70234068c2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-myst-parser-d093c1-723cffcf-v2-env-76b596cf"
+template_id = "m3s1s3v43hjdbogh28lh"
+source_template_alias = "8b4zuaqc95who53fz9su"
+source_template_id = "8b4zuaqc95who53fz9su"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

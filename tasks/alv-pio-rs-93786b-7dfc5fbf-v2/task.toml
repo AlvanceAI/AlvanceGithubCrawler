@@ -1,0 +1,41 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-pio-rs-93786b-7dfc5fbf-v2"
+description = "Rebuildable repository task for rp-rs/pio-rs"
+authors = []
+keywords = ["rust", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-pio-rs-93786b-7dfc5fbf-v2"
+material_id = "pio-rs-93786b-7dfc5fbf"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/rp-rs/pio-rs"
+base_commit_hash = "7dfc5fbfbc7d66bfd613454288ccf42f339d7a3a"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

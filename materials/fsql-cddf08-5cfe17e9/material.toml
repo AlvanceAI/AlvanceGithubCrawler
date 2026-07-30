@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fsql-cddf08-5cfe17e9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kashav/fsql"
+base_commit = "5cfe17e9b3c69aee6e65cc5d73b7c40cc1ffa87e"
+source_tree = "29e7d8b77341168ff56c4dd46afdf5e2ec23813b"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "634de76416b01326b378328ad7aa4e20b6964666edb69e4fb2e26655a816d897"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fsql-cddf08-5cfe17e9-v2-env-634de764"
+template_id = "5pgbcs479k6hqy7er79a"
+source_template_alias = "pb8yhcqxn2z93ebeczh2"
+source_template_id = "pb8yhcqxn2z93ebeczh2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

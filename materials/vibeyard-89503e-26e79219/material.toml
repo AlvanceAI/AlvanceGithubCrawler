@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vibeyard-89503e-26e79219"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/elirantutia/vibeyard"
+base_commit = "26e79219539ea8b830334d03d4be890fb7ba062b"
+source_tree = "9cbd4a411dc33149c107f5c1a8511af143a878b1"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9591fffb1a6d585d3aef56c0e2e1e7b324fc82655151f505cc24ae7860546ef8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vibeyard-89503e-26e79219-v2-env-9591fffb"
+template_id = "sk8wr3zuecr4mkkjpn3s"
+source_template_alias = "t0uthg05zpe6jvfv0kk4"
+source_template_id = "t0uthg05zpe6jvfv0kk4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

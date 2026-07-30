@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "json-exporter-e3f3dc-4f616656"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/prometheus-community/json_exporter"
+base_commit = "4f616656692d8f14722ce383d3e15d1c8d313f90"
+source_tree = "b2a527fd5129491a94499a872113eb47607fc397"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e669b125cbc993df271389a65f42efba5382069175888f2de228fbdd219fda75"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-json-exporter-e3f3dc-4f616656-v2-env-e669b125"
+template_id = "g4l5ogiunbeqeun4b8gc"
+source_template_alias = "7argpb0pdqd5u2wbxh2c"
+source_template_id = "7argpb0pdqd5u2wbxh2c"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

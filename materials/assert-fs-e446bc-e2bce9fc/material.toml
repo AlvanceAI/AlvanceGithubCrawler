@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "assert-fs-e446bc-e2bce9fc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/assert-rs/assert_fs"
+base_commit = "e2bce9fcc4268a92f30fed0218e8695865dafa15"
+source_tree = "eea1fcd2ae26407882fd67fbc90c5f8cd049dafc"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.85"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f9210c5ae361cb209a608e50a5eb2a1851b0d92ed75def36630745540166c001"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-assert-fs-e446bc-e2bce9fc-v2-env-f9210c5a"
+template_id = "skauk4z66kw6di1st5rs"
+source_template_alias = "aeetsedo1iry20poes1g"
+source_template_id = "aeetsedo1iry20poes1g"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

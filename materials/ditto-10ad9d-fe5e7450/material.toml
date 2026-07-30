@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ditto-10ad9d-fe5e7450"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/arvingarciabtw/ditto"
+base_commit = "fe5e74503cf7825cd24049398eabc804d26cb886"
+source_tree = "3fa670678eb1defc0805b70b0d1af6933e809340"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b8f93b0546b8b9879c737ae7c76d2266da4c3141e06c71dbe026fcf4309c5687"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ditto-10ad9d-fe5e7450-v2-env-b8f93b05"
+template_id = "1jor2nnwpzchmey64kqn"
+source_template_alias = "8pnta5jvq0j2879rradg"
+source_template_id = "8pnta5jvq0j2879rradg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

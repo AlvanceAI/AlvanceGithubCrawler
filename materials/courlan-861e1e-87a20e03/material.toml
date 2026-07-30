@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "courlan-861e1e-87a20e03"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/adbar/courlan"
+base_commit = "87a20e03f7456ce12278048f3281765f9ca9710c"
+source_tree = "126abb3de6c6d64e6cdc41580b0b09b3c78c82dc"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0b8b529146911e0a29ecca27833bc0db49eadffdcc55a55c97bdcddc0f43649c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-courlan-861e1e-87a20e03-v2-env-0b8b5291"
+template_id = "54edbv708kc2m5yv4cad"
+source_template_alias = "6wphrvyh15zxvy4yo98y"
+source_template_id = "6wphrvyh15zxvy4yo98y"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

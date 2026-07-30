@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "env-logger-ea5708-d4aea17c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rust-cli/env_logger"
+base_commit = "d4aea17cff49886eba4da300b06f019134322f90"
+source_tree = "abc9435a0afecc9ec4fc77cf8a27da84676c71e9"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.71"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "55903852acce9713323785abecca7ecf15e928ca9ad14f54035df8156c203b2e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-env-logger-ea5708-d4aea17c-v2-env-55903852"
+template_id = "rgziizlxq6k69ok3qaun"
+source_template_alias = "0b5mma95dniuqy5stvsd"
+source_template_id = "0b5mma95dniuqy5stvsd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

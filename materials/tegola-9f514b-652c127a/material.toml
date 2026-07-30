@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tegola-9f514b-652c127a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-spatial/tegola"
+base_commit = "652c127a057f020715e202e9dd832317a6308a77"
+source_tree = "d7f5cdd7f19834c76c0de9a0a6c674282627e373"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "09611108698003cd16062467bbee1fc7316419d63f7840e4250756efe30c8e11"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tegola-9f514b-652c127a-v2-env-09611108"
+template_id = "5a2bk4emqdulo0b238m4"
+source_template_alias = "lk7tkh98p3mssd6o82k4"
+source_template_id = "lk7tkh98p3mssd6o82k4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

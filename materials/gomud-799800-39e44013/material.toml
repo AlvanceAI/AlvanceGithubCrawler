@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gomud-799800-39e44013"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/GoMudEngine/GoMud"
+base_commit = "39e440131769545b61e37bdb3ea89e64ed424871"
+source_tree = "491dfa0f699961221f587f7b1b6432ea4e370c63"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a3d8cf03a3069efa555b476fb3c011feafb2876e6b449b029eaf2a877b02303e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gomud-799800-39e44013-v2-env-a3d8cf03"
+template_id = "is59fzsk1shprk9g0dp7"
+source_template_alias = "0df3gapx4ikhhk6vzal4"
+source_template_id = "0df3gapx4ikhhk6vzal4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

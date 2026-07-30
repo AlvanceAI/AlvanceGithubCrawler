@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-minifier-78a453-3f4c582d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/dflook/python-minifier"
+base_commit = "3f4c582dd62ec2e1df5b20ff98163e375948ab60"
+source_tree = "55c090e6ae4cfdf553c1dc5cfe2a72571410fdee"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6ddeff99f7adf7ce89b80aa2918d0f7687c842dd6d431708972a78ac79da455c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-minifier-78a453-3f4c582d-v2-env-6ddeff99"
+template_id = "maio048a80vwuvkrtyzt"
+source_template_alias = "lb26bmbgu1nzgyz6fx2j"
+source_template_id = "lb26bmbgu1nzgyz6fx2j"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

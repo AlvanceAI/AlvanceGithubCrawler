@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "protoc-gen-doc-1eca5c-c3022dfc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pseudomuto/protoc-gen-doc"
+base_commit = "c3022dfc79202ffcac753a2f9007103e9d975e2c"
+source_tree = "c88b135f66e17e0a913c66ac106584957dfd8574"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "df9565f6c8d6f192d427a37323347f4de604a72b0a9f2440325ba9297c7e61f5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-protoc-gen-doc-1eca5c-c3022dfc-v2-env-df9565f6"
+template_id = "p2rmyejr2rmnz7v5w9pw"
+source_template_alias = "oj2l4wajvdihv0neqi0k"
+source_template_id = "oj2l4wajvdihv0neqi0k"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

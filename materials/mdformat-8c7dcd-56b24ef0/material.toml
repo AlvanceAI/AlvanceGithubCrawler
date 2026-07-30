@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mdformat-8c7dcd-56b24ef0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hukkin/mdformat"
+base_commit = "56b24ef0c6cfdab501844925971204f858185547"
+source_tree = "b2d99bd627980f7f2d2c40718f4abaa50628fff0"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3ab4ddefb0597232b5ab99396f396a76d486908365d20cb4e41956b3da64e2de"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mdformat-8c7dcd-56b24ef0-v2-env-3ab4ddef"
+template_id = "tir70oiccmp99yx97xhl"
+source_template_alias = "z6507e66cu3vt0z8ieso"
+source_template_id = "z6507e66cu3vt0z8ieso"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-dcp-f3e105-50a71f1c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Trendyol/go-dcp"
+base_commit = "50a71f1c046aa21f8fa631a90e5a4f29b4dd142f"
+source_tree = "ce10d565bad7ad4c3632f0aae5630df28f57214c"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4ec6b169f70ad15d23b8aac11877870c45a5253a081c5a4e0fea22769793f3b7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-dcp-f3e105-50a71f1c-v2-env-4ec6b169"
+template_id = "ec3qizty36caueet29nx"
+source_template_alias = "bgqdhwtbcy5jcez510hf"
+source_template_id = "bgqdhwtbcy5jcez510hf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "siomon-ba8188-5647688b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/level1techs/siomon"
+base_commit = "5647688bdfe011d761b972d8387fa285cd9a4be2"
+source_tree = "e52baeee089ba0599a8b75d86933f2c7ebb37547"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5f2f33a355bd051a5a40b5b759516006287291bbed6f59cf6502ecdc87e60b81"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-siomon-ba8188-5647688b-v2-env-5f2f33a3"
+template_id = "fzsj0b96ztdclbpebz74"
+source_template_alias = "hirv44bul5eeigf3tyfi"
+source_template_id = "hirv44bul5eeigf3tyfi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

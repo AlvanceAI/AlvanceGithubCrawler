@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "readme-renderer-ad089a-5d6e7377"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pypa/readme_renderer"
+base_commit = "5d6e7377d1d811003b7225750fff3a17c16295f5"
+source_tree = "e657d0e32635e545c29f30e1abc4b19eaf9711e3"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9f3985fda291df02d3aba5c512ae0d699d78a88499e39c728d46d76c38c2a1e0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-readme-renderer-ad089a-5d6e7377-v2-env-9f3985fd"
+template_id = "awuw9dfoahvtrnec27p6"
+source_template_alias = "pwd8vbnci9mn9tjynrk6"
+source_template_id = "pwd8vbnci9mn9tjynrk6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

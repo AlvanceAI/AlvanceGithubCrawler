@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "prebid-server-b94f4c-4176778b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/prebid/prebid-server"
+base_commit = "4176778b8febe685f6888528e70f381bf1070fd3"
+source_tree = "2227024128fabfc7d72a20fce5da4955d77ed32e"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cbcf2cb805e0b8a28ff67a25ac975af52fb74032c56e2cef2a994d4fdeeb2f37"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-prebid-server-b94f4c-4176778b-v2-env-cbcf2cb8"
+template_id = "fl2cn70uaoyfakj4ddfr"
+source_template_alias = "rye0qpq8l41rq1z9hbtj"
+source_template_id = "rye0qpq8l41rq1z9hbtj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

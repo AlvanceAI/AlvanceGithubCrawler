@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ls-lint-4a0721-bf316273"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/loeffel-io/ls-lint"
+base_commit = "bf316273fc386ba5219c8a30c5ea2652b8f4c127"
+source_tree = "97d8dcaae5426b4259ecb4d348a526d294058f22"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ad0f5e49c292db7344c7326991834094b7a731ba837dca20d8c6587df4b5763c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ls-lint-4a0721-bf316273-v2-env-ad0f5e49"
+template_id = "iaenpmkf8i88ocqhl0d2"
+source_template_alias = "ci0c96a4zvpwg89g80kr"
+source_template_id = "ci0c96a4zvpwg89g80kr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

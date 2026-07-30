@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "s3-proxy-27341a-830281cd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/oxyno-zeta/s3-proxy"
+base_commit = "830281cdda4b11b181133fe78c9daa72e6021057"
+source_tree = "69a35fbc1c089ad9d1db1595584372793ec78d76"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "80655a61a7110e6adf4ddb8b86cee749c91b374000df2fc1f9cf48dfc3eabb2b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-s3-proxy-27341a-830281cd-v2-env-80655a61"
+template_id = "8k4h9z6b4h8fh5ni66ks"
+source_template_alias = "odeh6rybqqt9amcv6ttu"
+source_template_id = "odeh6rybqqt9amcv6ttu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zvm-d6b085-a5628441"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tristanisham/zvm"
+base_commit = "a5628441289b2a15656f137d9c228a79ef11dcc9"
+source_tree = "262b42ab2ee4a60d6d05fdb6bcdf0b650be69067"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "030cf03c69c14cdcb61084a88f228a62e1b147b13c1d7c9070c90b944f1218de"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zvm-d6b085-a5628441-v2-env-030cf03c"
+template_id = "pei56j9l5rqntkluno0x"
+source_template_alias = "86uhme2ret4j85mols3u"
+source_template_id = "86uhme2ret4j85mols3u"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

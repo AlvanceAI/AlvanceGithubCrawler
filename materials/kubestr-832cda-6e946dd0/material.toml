@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kubestr-832cda-6e946dd0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kastenhq/kubestr"
+base_commit = "6e946dd09b43cf6ad25105bb7e07c72a0491650c"
+source_tree = "1820cbffc3b08cdd81f59e030a19e6c3db0aa271"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8182978ae9a3bf4a973d0daa0e3b897d09c90e52ff2919598c4633d5cc9e5c18"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kubestr-832cda-6e946dd0-v2-env-8182978a"
+template_id = "ku4toa8y67txaioqwq25"
+source_template_alias = "fdniefsmf2pm4t4mb93f"
+source_template_id = "fdniefsmf2pm4t4mb93f"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

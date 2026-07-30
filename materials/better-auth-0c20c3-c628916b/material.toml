@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "better-auth-0c20c3-c628916b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/get-convex/better-auth"
+base_commit = "c628916b451a6b4cff0f5464f134475464b1a6da"
+source_tree = "b9a4866a51a9dd900d6b9143f8ec81299bc10491"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d7abd5a7cbaf531a0155e7dec366d1c4875684346f08d24bf65cd81ae354a65f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-better-auth-0c20c3-c628916b-v2-env-d7abd5a7"
+template_id = "73dkkr0zpgw8si558nzn"
+source_template_alias = "tqjrhx5gkuy9nkgls9xr"
+source_template_id = "tqjrhx5gkuy9nkgls9xr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

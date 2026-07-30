@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fulling-1002e2-f48efced"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/FullAgent/fulling"
+base_commit = "f48efced082a7de3517816267481c04e058672cb"
+source_tree = "904d18053b982c7513a191392160baada8119ffd"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "017ffce9a52c5ceba7a7dd839fcf7b068b6e9fd45f29fda5a977940e6ba3bd3d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fulling-1002e2-f48efced-v2-env-017ffce9"
+template_id = "z50gjpj2ihm60y87i5gd"
+source_template_alias = "jy7m3admhyd1mhnftfs2"
+source_template_id = "jy7m3admhyd1mhnftfs2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

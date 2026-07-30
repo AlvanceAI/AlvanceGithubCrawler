@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-polylith-c2bcea-6dfa0ac2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/DavidVujic/python-polylith"
+base_commit = "6dfa0ac2386342bae4086f08aabd86655aa1f191"
+source_tree = "2058e44c4265693f4d0a2fc3043417535cc983fe"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e6f056af7e519812c4eb8b21f6ba679dd8ddebbb8fb667d53a1d136f382d679b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-polylith-c2bcea-6dfa0ac2-v2-env-e6f056af"
+template_id = "xcv0qg9iacaaa7bhy9oh"
+source_template_alias = "ol6gmhbkv72ohpvsjpwh"
+source_template_id = "ol6gmhbkv72ohpvsjpwh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

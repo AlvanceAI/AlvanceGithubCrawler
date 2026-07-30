@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "authula-a5fd55-ee1387f2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Authula/authula"
+base_commit = "ee1387f25b02f5951c61d66196c046e38f639bed"
+source_tree = "2b5eec178687ed2549ef94b6a14c732888bf20eb"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9f71288ff2802a30f71b5f750af707ada53d1ffafa49ce85e42b7b92216ba096"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-authula-a5fd55-ee1387f2-v2-env-9f71288f"
+template_id = "8gpng0auvl3drx8oher3"
+source_template_alias = "7icvrjas6woulj3z92ii"
+source_template_id = "7icvrjas6woulj3z92ii"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vhs-5e6a47-0a2c15ea"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/charmbracelet/vhs"
+base_commit = "0a2c15eab702062a2044816729ba2c356ab47687"
+source_tree = "1017ef1827cc026a501fdb0e53dca16ec8a7e271"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7b449c587b6332b9279747d2da6611fc63e3bfdd92d81fc1689a2c51c9bf6ffa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vhs-5e6a47-0a2c15ea-v2-env-7b449c58"
+template_id = "153us6tb8l9k347309lq"
+source_template_alias = "3mk86ptvsml9iehuu5ab"
+source_template_id = "3mk86ptvsml9iehuu5ab"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

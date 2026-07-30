@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "serf-2fff86-d8315a33"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hashicorp/serf"
+base_commit = "d8315a3368de1cf5f798f358cded9c7e771d387c"
+source_tree = "932843a784ed822135c1cef0e5f320d98706fb77"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9e600cdd8e99b8d2f848392386321b53c53333e84ee7a3fa1496075a585ebd94"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-serf-2fff86-d8315a33-v2-env-9e600cdd"
+template_id = "7c92vglu8we588mdh37u"
+source_template_alias = "n4pn36j1gx0iijocw05n"
+source_template_id = "n4pn36j1gx0iijocw05n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

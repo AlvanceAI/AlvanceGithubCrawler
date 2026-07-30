@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rig-103da9-1575f185"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/r-lib/rig"
+base_commit = "1575f1854c26d9f8846edba386b94f2b8b063f3f"
+source_tree = "ef77b1864907bd1214b0ae0fd0d6140341211c94"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "665cb3318cca34f1bce8d8b57e7116646de937868442c51539263341d9b2f61e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rig-103da9-1575f185-v2-env-665cb331"
+template_id = "rg6cququpxdqingh8thz"
+source_template_alias = "doqyxjko7yf0j9iih002"
+source_template_id = "doqyxjko7yf0j9iih002"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

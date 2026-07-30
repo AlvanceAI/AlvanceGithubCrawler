@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "openserp-48712a-29c7b0fb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/karust/openserp"
+base_commit = "29c7b0fbe09640160efcfc1f1e04e60e0fbe60e9"
+source_tree = "c83bcfeb03141ecd48a7e5245ad3573e36a6599c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dcd3c8da19469593fd655e77e526cae8f0a5ab20b980080c536db3f99369ef64"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-openserp-48712a-29c7b0fb-v2-env-dcd3c8da"
+template_id = "n552xt4s2wk96nylbte0"
+source_template_alias = "5xjxpa7nzugpdi4lgkws"
+source_template_id = "5xjxpa7nzugpdi4lgkws"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

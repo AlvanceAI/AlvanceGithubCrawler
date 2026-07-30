@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-currency-js-0337d6-72898ce0-v2"
+description = "Rebuildable repository task for scurker/currency.js"
+authors = []
+keywords = ["javascript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-currency-js-0337d6-72898ce0-v2"
+material_id = "currency-js-0337d6-72898ce0"
+status = "direction"
+language = "javascript"
+repository_url = "https://github.com/scurker/currency.js"
+base_commit_hash = "72898ce024509ddfbe75d14a07e1a5f4c1bdd03a"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

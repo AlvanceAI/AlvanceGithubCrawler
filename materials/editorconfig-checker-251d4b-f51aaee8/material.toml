@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "editorconfig-checker-251d4b-f51aaee8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/editorconfig-checker/editorconfig-checker"
+base_commit = "f51aaee82475d83426cde0a3def5186fbd43b9a9"
+source_tree = "6948ec03297d6a02acc18a633189590f11fe7a47"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e72e6a83b05d69e6a64f46955da09ab940638627587bcf03eca68502c2f1993b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-editorconfig-checker-251d4b-f51aaee8-v2-env-e72e6a83"
+template_id = "hjlw5hoo5qf8mjav1y14"
+source_template_alias = "3inkwdg10kfknt5t8lx3"
+source_template_id = "3inkwdg10kfknt5t8lx3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

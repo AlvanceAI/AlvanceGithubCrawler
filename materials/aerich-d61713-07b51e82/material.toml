@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aerich-d61713-07b51e82"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tortoise/aerich"
+base_commit = "07b51e8268c6650130cb005647e6035aec317132"
+source_tree = "4937af1c86818e52e7751b5b1a620913e95a21de"
+default_branch = "dev"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "db10ce3c7799c685bfca0655f16e0567e3efd493dc0c54c4fa400435e1f534c3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aerich-d61713-07b51e82-v2-env-db10ce3c"
+template_id = "9wa9ojch85gd8dmuvcjw"
+source_template_alias = "kzdyhjcv0fsersojfaxo"
+source_template_id = "kzdyhjcv0fsersojfaxo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

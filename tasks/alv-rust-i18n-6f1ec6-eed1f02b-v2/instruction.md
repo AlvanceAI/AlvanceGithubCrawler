@@ -1,0 +1,5 @@
+Repository `longbridge/rust-i18n` at commit `eed1f02b65106f47e347d629489d95614cec132c` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+提供可在编译或 CI 阶段扫描 Rust 源码中的翻译宏调用，并校验其静态消息键在 locale 文件中存在的机制，缺失时以非零状态或编译错误失败。

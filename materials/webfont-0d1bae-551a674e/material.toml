@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "webfont-0d1bae-551a674e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/itgalaxy/webfont"
+base_commit = "551a674eb855d5debcd2d0262e93e22ac1feed62"
+source_tree = "09a35ca5bd6361995b99aef191221973201f5afd"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f490711317816a5ee7e55dfb3b6c1046073f7ea277940e1c6c1601fa7677e05c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-webfont-0d1bae-551a674e-v2-env-f4907113"
+template_id = "chgxu6dycjrg7tojxy0u"
+source_template_alias = "eonuxuh3c2iwahe9m9jm"
+source_template_id = "eonuxuh3c2iwahe9m9jm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

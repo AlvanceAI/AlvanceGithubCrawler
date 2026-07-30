@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "azure-key-vault-to-kuber-165927-ab90b516"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/SparebankenVest/azure-key-vault-to-kubernetes"
+base_commit = "ab90b516419f154407def759491d8c5deda93115"
+source_tree = "6a58db8845052a3032c7bd46c1887a281492455d"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2830290f80c49f465f5811a64c91a9161052a54c625e9705833606c621567c90"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-azure-key-vault-to-k-165927-ab90b516-v2-env-2830290f"
+template_id = "q5c4qctn2qo7pv1spzrk"
+source_template_alias = "jhdzaqq1xj9ot8tqskkc"
+source_template_id = "jhdzaqq1xj9ot8tqskkc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

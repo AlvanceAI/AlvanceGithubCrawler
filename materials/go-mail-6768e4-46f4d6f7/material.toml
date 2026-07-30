@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-mail-6768e4-46f4d6f7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wneessen/go-mail"
+base_commit = "46f4d6f78b2ddca72a7e2b6c78aa0180c6ce4c41"
+source_tree = "7f88700d68da8c7b3d751c9a27eef5d2613e6cc1"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eb3edaf23ed0d311b87ed45c9d7e1fac4dca393a3d27f6e70176ddc4cc4eecd0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-mail-6768e4-46f4d6f7-v2-env-eb3edaf2"
+template_id = "29p5vfkxswm1unpvpr0i"
+source_template_alias = "edhvaqauheqc9lqmyxft"
+source_template_id = "edhvaqauheqc9lqmyxft"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

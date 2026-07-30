@@ -1,0 +1,1 @@
+为 azuredevops_pipeline_authorization 实现状态导入及从已弃用 azuredevops_resource_authorization 跨类型迁移的支持，确保现有授权无需销毁重建。

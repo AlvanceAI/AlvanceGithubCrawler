@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dotenv-linter-07866a-6ff8fb77"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wemake-services/dotenv-linter"
+base_commit = "6ff8fb77ee3948b4a025e1a49bf959750e7bab9d"
+source_tree = "23f53bf5febf9e6d9b9bd81d5985613977eea0e2"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5d5e3bd009b8ce87a5c74dd37cfdd955b0ccca0bd77a74b1f5b0b46dd422e49d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dotenv-linter-07866a-6ff8fb77-v2-env-5d5e3bd0"
+template_id = "xxfutp7o6rc3hqzw90uw"
+source_template_alias = "af4m35875v9wdshif99l"
+source_template_id = "af4m35875v9wdshif99l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

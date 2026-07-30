@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rust-cssparser-8662fa-99b43a01"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/servo/rust-cssparser"
+base_commit = "99b43a015d9a335cbe4765bc8ae80054391a80a5"
+source_tree = "42ad69a45fc8fe87826667b28bb38d1b3a106253"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.71"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "adbc2ffd159c3874660f7dd2035047cd798b821b95a6e52adea30d01d0215579"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rust-cssparser-8662fa-99b43a01-v2-env-adbc2ffd"
+template_id = "o3mh9dbszspg5j2f2dfp"
+source_template_alias = "qpy0hkjjvic6dqw9kvpg"
+source_template_id = "qpy0hkjjvic6dqw9kvpg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

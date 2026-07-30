@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pii-shield-cc5192-6fdf7ebb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pii-shield/pii-shield"
+base_commit = "6fdf7ebb3a88a8d2c56a0b18fbd2a52c3e5cb89b"
+source_tree = "bef129c4be2ec15952bd36bf8008ccd035fa6b09"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f142c0c2a96671b4322057bfe5b878dd854ecf7bcfee8f2aa6d1e7ff17a4a969"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pii-shield-cc5192-6fdf7ebb-v2-env-f142c0c2"
+template_id = "gs3bf7bxdni307jczjgc"
+source_template_alias = "16ukend458aq1fe6jgs0"
+source_template_id = "16ukend458aq1fe6jgs0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

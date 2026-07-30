@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "thriftrw-go-5b2a29-64c324b0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/thriftrw/thriftrw-go"
+base_commit = "64c324b05ada858dd43c927182be0c4266f201c2"
+source_tree = "9380a4009bb07dce7d0785c988247549b4c41aa6"
+default_branch = "dev"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.22.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d223e6e7b30dd287cd3badccf9142ebcf7c51d0acf19bf4cab0347896d462a4a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-thriftrw-go-5b2a29-64c324b0-v2-env-d223e6e7"
+template_id = "c3psp3gcgruwy31movfm"
+source_template_alias = "d4eoev5bmx6edvqfmhl3"
+source_template_id = "d4eoev5bmx6edvqfmhl3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

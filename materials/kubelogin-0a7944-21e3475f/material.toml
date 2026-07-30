@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kubelogin-0a7944-21e3475f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/int128/kubelogin"
+base_commit = "21e3475f3922cfcbdbcef7c3b464a2fb38cbea73"
+source_tree = "b9700ecf87faafb28090a4bc19befa9a0843e0fc"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5a42172f761c3a2c1f4290627b653dbf78ca6cdf813a26ef385cd96c3dd35062"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kubelogin-0a7944-21e3475f-v2-env-5a42172f"
+template_id = "2tb61iem53d3ghkrrofo"
+source_template_alias = "yg55q8ad2uhvjuqh8crn"
+source_template_id = "yg55q8ad2uhvjuqh8crn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

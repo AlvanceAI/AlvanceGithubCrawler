@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cargo-wix-668471-9a8ed948"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/volks73/cargo-wix"
+base_commit = "9a8ed9486637e1fb839f209730eda6c95fd12d88"
+source_tree = "db377a72ae67cf879d408f89f3df2d5e6171241f"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "512f8412c45205a06f83fda90f2faea7df9a1d285c6b4e511d7f6552bf4c9624"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cargo-wix-668471-9a8ed948-v2-env-512f8412"
+template_id = "g3m2upfilnx165nby6uu"
+source_template_alias = "07n65vsd23ybzs4m0yz1"
+source_template_id = "07n65vsd23ybzs4m0yz1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

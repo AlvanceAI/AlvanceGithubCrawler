@@ -1,0 +1,5 @@
+Repository `preiter93/edtui` at commit `8ed1ebe19822c944f0a85dc848ca4908184f6c48` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+实现基于当前显示列计算制表位的动态 Tab 宽度，使 Tab 前进到下一个 tab_width 倍数列，并在渲染、换行、光标移动、选择及命中测试中保持一致。

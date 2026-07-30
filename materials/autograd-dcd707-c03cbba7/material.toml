@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "autograd-dcd707-c03cbba7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/HIPS/autograd"
+base_commit = "c03cbba75db1fcde54fac2210e5be9c63737076c"
+source_tree = "afd5b812a8507597993df0e2fb8271514db5f963"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4794f95a4c877c313ae3910effeef5c2e9d0a969cf186754edd24cacc34bc4d9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-autograd-dcd707-c03cbba7-v2-env-4794f95a"
+template_id = "jav27cpa4a4f99dij6sh"
+source_template_alias = "wb9e8pvkx3mibn8wv9sw"
+source_template_id = "wb9e8pvkx3mibn8wv9sw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
