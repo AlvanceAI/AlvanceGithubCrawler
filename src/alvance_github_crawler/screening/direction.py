@@ -152,10 +152,13 @@ def _openai_retry_delay(error: BaseException, attempt: int, *, base_s: float) ->
 
 
 class PublicImplementationSearch:
+    MAX_ATTEMPTS = 4
+    GREP_REQUEST_INTERVAL_S = 3.0
+
     def __init__(self, github: GitHubClient, *, timeout: float = 30.0) -> None:
         self.github = github
         self.timeout = timeout
-        self._last_grep_request = 0.0
+        self._next_grep_request_at = 0.0
         self._grep_lock = threading.Lock()
         self._thread_state = threading.local()
 
@@ -171,17 +174,14 @@ class PublicImplementationSearch:
         return self.github.code_search_count(keywords)
 
     def grep_app_count(self, keywords: list[str]) -> int:
-        with self._grep_lock:
-            return self._grep_app_count(keywords)
+        return self._grep_app_count(keywords)
 
     def _grep_app_count(self, keywords: list[str]) -> int:
         query = " ".join(keyword.strip() for keyword in keywords if keyword.strip())
         if not query:
             return 0
-        for attempt in range(4):
-            since_last = time.monotonic() - self._last_grep_request
-            if since_last < 3.0:
-                time.sleep(3.0 - since_last)
+        for attempt in range(self.MAX_ATTEMPTS):
+            self._wait_for_grep_request_window()
             try:
                 response = requests.get(
                     "https://grep.app/api/search",
@@ -192,7 +192,6 @@ class PublicImplementationSearch:
             except requests.RequestException:
                 self.last_secondary_provider = "sourcegraph_fallback"
                 return self.sourcegraph_count(keywords)
-            self._last_grep_request = time.monotonic()
             if response.headers.get("X-Vercel-Mitigated", "").lower() == "challenge":
                 self.last_secondary_provider = "sourcegraph_fallback"
                 return self.sourcegraph_count(keywords)
@@ -206,9 +205,27 @@ class PublicImplementationSearch:
                 delay = float(retry_after)
             except ValueError:
                 delay = 5.0 * (2**attempt)
-            time.sleep(min(max(delay, 3.0), 60.0))
+            self._defer_grep_requests(min(max(delay, 3.0), 60.0))
         self.last_secondary_provider = "sourcegraph_fallback"
         return self.sourcegraph_count(keywords)
+
+    def _wait_for_grep_request_window(self) -> None:
+        # Serialize request starts, not the network request and fallback. Holding
+        # this lock across a slow Sourcegraph stream stalls all prescreen workers.
+        with self._grep_lock:
+            now = time.monotonic()
+            request_at = max(now, self._next_grep_request_at)
+            delay = request_at - now
+            if delay > 0:
+                time.sleep(delay)
+            self._next_grep_request_at = request_at + self.GREP_REQUEST_INTERVAL_S
+
+    def _defer_grep_requests(self, delay_s: float) -> None:
+        with self._grep_lock:
+            self._next_grep_request_at = max(
+                self._next_grep_request_at,
+                time.monotonic() + delay_s,
+            )
 
     def sourcegraph_count(self, keywords: list[str]) -> int:
         phrases = " ".join(

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import threading
+from concurrent.futures import ThreadPoolExecutor
 from types import SimpleNamespace
 
 import pytest
@@ -93,6 +94,41 @@ def test_grep_app_timeout_uses_sourcegraph(monkeypatch) -> None:
     monkeypatch.setattr(search, "sourcegraph_count", lambda keywords: 0)
     assert search.grep_app_count(["rare phrase", "another phrase"]) == 0
     assert search.last_secondary_provider == "sourcegraph_fallback"
+
+
+def test_grep_app_does_not_hold_rate_lock_during_network_request(monkeypatch) -> None:
+    class SuccessResponse:
+        status_code = 200
+        headers: dict[str, str] = {}
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict[str, object]:
+            return {"hits": {"total": 0}}
+
+    barrier = threading.Barrier(2)
+
+    def concurrent_response(*args, **kwargs):
+        barrier.wait(timeout=1)
+        return SuccessResponse()
+
+    search = PublicImplementationSearch(FakeGitHub())
+    search.GREP_REQUEST_INTERVAL_S = 0.0
+    monkeypatch.setattr(
+        "alvance_github_crawler.screening.direction.requests.get",
+        concurrent_response,
+    )
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        results = list(
+            executor.map(
+                search.grep_app_count,
+                (["rare phrase", "one"], ["rare phrase", "two"]),
+            )
+        )
+
+    assert results == [0, 0]
 
 
 def test_openai_direction_judge_retries_shared_rate_limit(monkeypatch) -> None:
