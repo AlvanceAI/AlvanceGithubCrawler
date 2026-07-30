@@ -1,0 +1,12 @@
+[2026-07-30T15:33:59Z] stage=verify-escalated-20260730T153359Z run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-30 15:34:01,960 INFO alvance_github_crawler.pending.verification: verifying pending candidate sigstore/fulcio key_slot=1
+2026-07-30 15:46:41,331 INFO alvance_github_crawler.pending.verification: pending candidate sigstore/fulcio finished outcome=rejected key_slot=1 processed=1 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_rejected": 1,
+  "processed": 1,
+  "rejected": 1,
+  "remaining": 0
+}
+[2026-07-30T15:46:42Z] stage=verify-escalated-20260730T153359Z exit_code=0 duration_s=763

@@ -1,0 +1,35 @@
+[2026-07-30T14:02:48Z] stage=verify-default-20260730T140248Z run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-30 14:02:51,171 INFO alvance_github_crawler.pending.verification: verifying pending candidate samber/ro key_slot=1
+2026-07-30 14:02:51,173 INFO alvance_github_crawler.pending.verification: verifying pending candidate EliCDavis/polyform key_slot=2
+2026-07-30 14:02:51,175 INFO alvance_github_crawler.pending.verification: verifying pending candidate apache/casbin key_slot=3
+2026-07-30 14:02:51,181 INFO alvance_github_crawler.pending.verification: verifying pending candidate FairwindsOps/rbac-lookup key_slot=1
+2026-07-30 14:02:51,183 INFO alvance_github_crawler.pending.verification: verifying pending candidate goccy/go-json key_slot=2
+2026-07-30 14:02:51,186 INFO alvance_github_crawler.pending.verification: verifying pending candidate madflojo/tasks key_slot=3
+2026-07-30 14:02:51,191 INFO alvance_github_crawler.pending.verification: verifying pending candidate hashicorp/go-version key_slot=1
+2026-07-30 14:02:51,191 INFO alvance_github_crawler.pending.verification: verifying pending candidate banzaicloud/jwt-to-rbac key_slot=2
+2026-07-30 14:02:51,194 INFO alvance_github_crawler.pending.verification: verifying pending candidate stretchr/testify key_slot=3
+2026-07-30 14:03:00,420 INFO alvance_github_crawler.pending.verification: pending candidate samber/ro finished outcome=error key_slot=1 processed=1 in_flight=8
+2026-07-30 14:03:01,350 INFO alvance_github_crawler.pending.verification: pending candidate madflojo/tasks finished outcome=error key_slot=3 processed=2 in_flight=7
+2026-07-30 14:03:01,546 INFO alvance_github_crawler.pending.verification: pending candidate apache/casbin finished outcome=error key_slot=3 processed=3 in_flight=6
+2026-07-30 14:03:01,551 INFO alvance_github_crawler.pending.verification: pending candidate FairwindsOps/rbac-lookup finished outcome=error key_slot=1 processed=4 in_flight=5
+2026-07-30 14:03:04,527 INFO alvance_github_crawler.pending.verification: pending candidate banzaicloud/jwt-to-rbac finished outcome=error key_slot=2 processed=5 in_flight=4
+2026-07-30 14:03:10,333 INFO alvance_github_crawler.pending.verification: pending candidate stretchr/testify finished outcome=error key_slot=3 processed=6 in_flight=3
+2026-07-30 14:03:10,486 INFO alvance_github_crawler.pending.verification: pending candidate goccy/go-json finished outcome=error key_slot=2 processed=7 in_flight=2
+2026-07-30 14:03:11,263 INFO alvance_github_crawler.pending.verification: pending candidate hashicorp/go-version finished outcome=error key_slot=1 processed=8 in_flight=1
+2026-07-30 14:16:01,164 INFO alvance_github_crawler.pending.verification: pending candidate EliCDavis/polyform finished outcome=registered key_slot=2 processed=9 in_flight=0
+{
+  "error": 8,
+  "key_slot_1_error": 3,
+  "key_slot_1_processed": 3,
+  "key_slot_2_error": 2,
+  "key_slot_2_processed": 3,
+  "key_slot_2_registered": 1,
+  "key_slot_3_error": 3,
+  "key_slot_3_processed": 3,
+  "key_slots_halted": 2,
+  "processed": 9,
+  "registered": 1,
+  "remaining": 8
+}
+[2026-07-30T14:16:02Z] stage=verify-default-20260730T140248Z exit_code=0 duration_s=794
