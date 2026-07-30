@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "goverter-5b36de-8ee67115"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jmattheis/goverter"
+base_commit = "8ee671150d0f50c81102177c6dafcb1482802adf"
+source_tree = "de3156e3a36a70dc6cd7535dbc81644605a48f02"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "13c34b88b23054dcf28cb67dd735b6e9fae9daa463ab19c9d20d270977a5028b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-goverter-5b36de-8ee67115-v2-env-13c34b88"
+template_id = "6ism4c8n1zlg1rf937ie"
+source_template_alias = "brm9yxxccs5p89zjozrh"
+source_template_id = "brm9yxxccs5p89zjozrh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

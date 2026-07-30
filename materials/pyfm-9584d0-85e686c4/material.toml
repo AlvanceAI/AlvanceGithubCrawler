@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pyfm-9584d0-85e686c4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/RobinMagnet/pyFM"
+base_commit = "85e686c49f966f424f08dbcacc9ed6ceab6603ea"
+source_tree = "695af343c09e204cd9607b5df8ee9d114ce47b59"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0e0d3441482ea83b37400005c89b824c695a591013682871c58ae875a4ff2f6a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pyfm-9584d0-85e686c4-v2-env-0e0d3441"
+template_id = "8jkhq1v46fqisi9ouy2m"
+source_template_alias = "m5k8cpq5pg4dljri4w2o"
+source_template_id = "m5k8cpq5pg4dljri4w2o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

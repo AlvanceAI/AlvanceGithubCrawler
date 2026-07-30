@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "comin-a45672-c32a4e45"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nlewo/comin"
+base_commit = "c32a4e457cd3bc99d6c18631707e9d8294f4b5d0"
+source_tree = "39909c6152893762baef5821e8ff298702f0b376"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a4da0eab20a6a83a428c8c98c530281736b5b44cb01ce3b02ca42e2b915f6c1e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-comin-a45672-c32a4e45-v2-env-a4da0eab"
+template_id = "6g92nc2khe93kq03rqm2"
+source_template_alias = "qk3gjzgkgusrvdrq2tzg"
+source_template_id = "qk3gjzgkgusrvdrq2tzg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

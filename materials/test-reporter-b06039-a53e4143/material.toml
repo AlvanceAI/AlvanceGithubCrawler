@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "test-reporter-b06039-a53e4143"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/dorny/test-reporter"
+base_commit = "a53e41438c2381e621dc719a47a57180e30c7075"
+source_tree = "75c9d225cb09d2fee49147aca01388bbf39e10b1"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cb4fb26eebea164352325562bac86425bda5eefc075b84fa91a44530e7c4315f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-test-reporter-b06039-a53e4143-v2-env-cb4fb26e"
+template_id = "uzp3xt88ufybmrumdqx6"
+source_template_alias = "wb4m0wo1qxbrlavbp8ch"
+source_template_id = "wb4m0wo1qxbrlavbp8ch"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

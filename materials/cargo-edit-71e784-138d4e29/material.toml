@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cargo-edit-71e784-138d4e29"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/killercup/cargo-edit"
+base_commit = "138d4e2948ddcbf249c31c584b02e1b161a86221"
+source_tree = "73e0856bb6418ef1bfe63022dad0a1b57490b66e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.92"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "34da436750ff1833e3fa2ab490494e59c5d63432de85718bceb783608fa4ca24"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cargo-edit-71e784-138d4e29-v2-env-34da4367"
+template_id = "8jqu3plivfq1g700hjyg"
+source_template_alias = "8dlkkbn1orlp90pzt12o"
+source_template_id = "8dlkkbn1orlp90pzt12o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

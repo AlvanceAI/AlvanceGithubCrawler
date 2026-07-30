@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sqlite-utils-3cfe30-6a456830"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/simonw/sqlite-utils"
+base_commit = "6a456830ca33eb5edaa634a9b0febe5d71bea2be"
+source_tree = "8820a9d7d3f4862f1b0f3008be586018674313c9"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "84ffa20d2148af673a131b38331ffaffa6bf1c5eaf97dd3bb36efbb4d6434cf9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sqlite-utils-3cfe30-6a456830-v2-env-84ffa20d"
+template_id = "md41mlxir72crjmzxlqg"
+source_template_alias = "ksid1sxxdoxp1bkr91nw"
+source_template_id = "ksid1sxxdoxp1bkr91nw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

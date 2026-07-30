@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "may-8b7221-93314756"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Xudong-Huang/may"
+base_commit = "933147567b62271565d9a719d30eaf42d25c6139"
+source_tree = "065fb5db0914039aea2f7c2119d517abadbd8c5d"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "356c6884b9fc3761edb9ba52d39d5ba782de3a1b7fe49f30c6e2b82a4073f4ed"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-may-8b7221-93314756-v2-env-356c6884"
+template_id = "ozb4puocste77f9e7i8e"
+source_template_alias = "uyofre8iwxfq4izbwy0k"
+source_template_id = "uyofre8iwxfq4izbwy0k"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ifacemaker-be9ca0-e25fd81b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vburenin/ifacemaker"
+base_commit = "e25fd81bd08d2c99b8d39c16ada5a8246bbe80c6"
+source_tree = "d7559cc89b100055f1b908b9b1a8ad8eb22d7337"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "55424ca19d6c3f6f556084b978c969bd49304acd35daffa580577410e5868879"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ifacemaker-be9ca0-e25fd81b-v2-env-55424ca1"
+template_id = "la6zyuweino3ly8czu33"
+source_template_alias = "c9mh2ttnw9b4hj0v4hmh"
+source_template_id = "c9mh2ttnw9b4hj0v4hmh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

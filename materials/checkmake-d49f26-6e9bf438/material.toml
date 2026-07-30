@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "checkmake-d49f26-6e9bf438"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/checkmake/checkmake"
+base_commit = "6e9bf438baca255af7c5f608358d2bf9a15af408"
+source_tree = "d5fad5ea9c7ef0b34940a29b7d73494b0999f080"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4476df91571ba164f41316d1dda1e5b1de91483d7fcdeb7347a98a292f356c51"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-checkmake-d49f26-6e9bf438-v2-env-4476df91"
+template_id = "kqucz8v524n5co1pn4ra"
+source_template_alias = "02hlo1u79q9ojw0murcd"
+source_template_id = "02hlo1u79q9ojw0murcd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gonzo-246e5d-58992105"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/control-theory/gonzo"
+base_commit = "5899210555ed4ecbbed493b7ca0d48436f941505"
+source_tree = "8e72af76a5ac67c02f55a2b77bdfb3a145690dae"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ef2ca002bedc38b062530bc1a51b4c425bf83667f8d2a3ab059bc1f47c50a464"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gonzo-246e5d-58992105-v2-env-ef2ca002"
+template_id = "0gdzvyc92ywkj8z1xrgx"
+source_template_alias = "4md3r5799r6j9d2mh2sh"
+source_template_id = "4md3r5799r6j9d2mh2sh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

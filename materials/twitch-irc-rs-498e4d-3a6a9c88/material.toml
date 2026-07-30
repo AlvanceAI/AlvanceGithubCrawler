@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "twitch-irc-rs-498e4d-3a6a9c88"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/robotty/twitch-irc-rs"
+base_commit = "3a6a9c882f99dbfe5dec04ee68f78b25a68b3f70"
+source_tree = "80ef0dea8c075a6365a5a8cf471cd9f55fdcda99"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f59940f228db615386926eae7285b440c7e668f1ff52506640a51ee053095e22"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-twitch-irc-rs-498e4d-3a6a9c88-v2-env-f59940f2"
+template_id = "stmm58otow2fe512bfuj"
+source_template_alias = "9hzxtgfvachjp1jblm25"
+source_template_id = "9hzxtgfvachjp1jblm25"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

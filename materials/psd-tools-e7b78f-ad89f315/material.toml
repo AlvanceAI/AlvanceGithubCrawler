@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "psd-tools-e7b78f-ad89f315"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/psd-tools/psd-tools"
+base_commit = "ad89f315777866c832bf82e0377226cb13250c36"
+source_tree = "1ec2bb0512685b7090636953d6edb75a67308dfa"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0f629387ad1ecb5a944f5dce5cbace1b201f5309cec43a7fb5670ed20cca9fc0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-psd-tools-e7b78f-ad89f315-v2-env-0f629387"
+template_id = "ewkrnt445hg43m0c5skn"
+source_template_alias = "apojwgrmquqbukso9esc"
+source_template_id = "apojwgrmquqbukso9esc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

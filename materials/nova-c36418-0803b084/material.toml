@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nova-c36418-0803b084"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/FairwindsOps/nova"
+base_commit = "0803b0840d990bbf6518951899fcf8b948acc971"
+source_tree = "febc493f34a97b9e8d68a6b47b5740f9a5a80cc9"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "155efc52be13d2433669129a2f928f81501ea5c6acfa45b36afe2132b8e577d2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nova-c36418-0803b084-v2-env-155efc52"
+template_id = "leehxn1xi1g8zwnko8na"
+source_template_alias = "kkn4bphq7qndaaxlzk7l"
+source_template_id = "kkn4bphq7qndaaxlzk7l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

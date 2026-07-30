@@ -1,0 +1,41 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-dprint-plugin-typesc-cd7685-4a876cf9-v2"
+description = "Rebuildable repository task for dprint/dprint-plugin-typescript"
+authors = []
+keywords = ["rust", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-dprint-plugin-typesc-cd7685-4a876cf9-v2"
+material_id = "dprint-plugin-typescript-cd7685-4a876cf9"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/dprint/dprint-plugin-typescript"
+base_commit_hash = "4a876cf945e60a7834d05f49070ae34662225686"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

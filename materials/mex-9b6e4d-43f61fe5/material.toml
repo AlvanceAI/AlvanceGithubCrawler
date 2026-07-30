@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mex-9b6e4d-43f61fe5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mex-memory/mex"
+base_commit = "43f61fe586095448e681c74c22c5df2e24c79d5b"
+source_tree = "49632cd4e6345e166d198e49a1106f2100c03a6c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4a51c08c134734758baeb26fde586955bd1cd064ab8d432a8a75666b3332fb58"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mex-9b6e4d-43f61fe5-v2-env-4a51c08c"
+template_id = "rdqvg2i9xllh5dqewuik"
+source_template_alias = "tpkrgizqo539zls575yx"
+source_template_id = "tpkrgizqo539zls575yx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

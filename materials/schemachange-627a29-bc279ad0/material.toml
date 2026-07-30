@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "schemachange-627a29-bc279ad0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Snowflake-Labs/schemachange"
+base_commit = "bc279ad068f571fa211db9e2d90555e1d0735df4"
+source_tree = "f2dd5bf814f6c0eff5f010fc68fb653b98be802d"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5513fd4b29af5952fce93e3a670f96b3f176f251b0214d05b9dc24175fac6e43"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-schemachange-627a29-bc279ad0-v2-env-5513fd4b"
+template_id = "852uci4asgerkqy46v3j"
+source_template_alias = "blioxg04my4x8bn4nodw"
+source_template_id = "blioxg04my4x8bn4nodw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

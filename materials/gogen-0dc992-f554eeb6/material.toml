@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gogen-0dc992-f554eeb6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/goplus/gogen"
+base_commit = "f554eeb69e9ef510ee58dfd6e1cbcf2d13ae06c5"
+source_tree = "b7296a89d8e15db271569528c6c34b4a457c9ce2"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d04ddbc1e15c26d22c50677c851535dffc1b4ffd1e95c45484dd36ab07703ab8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gogen-0dc992-f554eeb6-v2-env-d04ddbc1"
+template_id = "kx3dx6bq4uvff2a07n7s"
+source_template_alias = "8fl7ztu644yh1pgm8arv"
+source_template_id = "8fl7ztu644yh1pgm8arv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

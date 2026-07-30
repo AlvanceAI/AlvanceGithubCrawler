@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "koto-dd41c0-4b433e7a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/koto-lang/koto"
+base_commit = "4b433e7a7ce17957aa4564c80fcaaa46b88fadd2"
+source_tree = "e590c2d4e830229f852125f4ec8263c43af24b14"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0fa31ef1fe63e266133d0d7ea51c746cb77bf21c2af5e47269b54683b0e5fde4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-koto-dd41c0-4b433e7a-v2-env-0fa31ef1"
+template_id = "nokm5kbqr15gewrq2syl"
+source_template_alias = "4ealsad4doipf5hi3ehv"
+source_template_id = "4ealsad4doipf5hi3ehv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

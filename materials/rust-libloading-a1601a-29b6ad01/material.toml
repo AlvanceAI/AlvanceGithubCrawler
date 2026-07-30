@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rust-libloading-a1601a-29b6ad01"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nagisa/rust_libloading"
+base_commit = "29b6ad019067e90399593275a1c53d2343d2e6b1"
+source_tree = "8eb3811b9a75b05e10f7392fcbacf605708e82cd"
+default_branch = "master"
+license = "ISC"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "69f8376da24caaf737adce22bc7fa516c4d60fb8e30a44d8b8f98f9a0535b87e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rust-libloading-a1601a-29b6ad01-v2-env-69f8376d"
+template_id = "z8cu0u68l1qf4x8a98vv"
+source_template_alias = "utjqixx2zvgk3b7bkalc"
+source_template_id = "utjqixx2zvgk3b7bkalc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

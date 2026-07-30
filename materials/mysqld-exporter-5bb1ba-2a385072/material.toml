@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mysqld-exporter-5bb1ba-2a385072"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/prometheus/mysqld_exporter"
+base_commit = "2a3850727e5af11873cc715a2b1a31bedce264eb"
+source_tree = "3c83f4f7d9c317ac3ea9a5cd05c4c7e845edd7dc"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "68317c5d2954fd8e01dbe21bdcca6dc1a4058d8215172b782c11bd6055e45edd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mysqld-exporter-5bb1ba-2a385072-v2-env-68317c5d"
+template_id = "irrt4oaki6z2lcvx2qsj"
+source_template_alias = "mqkymp1vcd84kidcgbd3"
+source_template_id = "mqkymp1vcd84kidcgbd3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

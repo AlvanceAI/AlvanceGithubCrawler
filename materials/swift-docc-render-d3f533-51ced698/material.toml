@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "swift-docc-render-d3f533-51ced698"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/swiftlang/swift-docc-render"
+base_commit = "51ced6986059bac136218c53270f2707987f8aa0"
+source_tree = "eb1b60a26df6ba99b4250a31b486e828e020a828"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1e705e6618b1aa34f629f623ce9b2ba3f3b01db33ba17db6d6c2a044c31577a1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-swift-docc-render-d3f533-51ced698-v2-env-1e705e66"
+template_id = "6p9el58cz6diyv7tfap2"
+source_template_alias = "gmkbm05432vr3w9o55df"
+source_template_id = "gmkbm05432vr3w9o55df"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

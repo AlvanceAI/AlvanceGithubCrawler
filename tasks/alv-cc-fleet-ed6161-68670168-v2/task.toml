@@ -1,0 +1,44 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-cc-fleet-ed6161-68670168-v2"
+description = "Rebuildable repository task for ethanhq/cc-fleet"
+authors = []
+keywords = ["go", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-cc-fleet-ed6161-68670168-v2"
+material_id = "cc-fleet-ed6161-68670168"
+status = "direction"
+language = "go"
+repository_url = "https://github.com/ethanhq/cc-fleet"
+base_commit_hash = "686701686f8e367f69a762de9f06fd826ca0d406"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+GOCACHE = "/root/.cache/go-build"
+GOMODCACHE = "/go/pkg/mod"
+GOPATH = "/go"
+GOPROXY = "https://goproxy.cn,direct"
+GOTOOLCHAIN = "go1.25.0+auto"
+HOME = "/root"
+PATH = "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

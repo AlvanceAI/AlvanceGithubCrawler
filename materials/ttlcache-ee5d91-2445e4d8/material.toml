@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ttlcache-ee5d91-2445e4d8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jellydator/ttlcache"
+base_commit = "2445e4d88a4fdb49206f4a45aa9f3df7b7b6d7bf"
+source_tree = "af18971a949f2c2d28901edaee6e63f263660faa"
+default_branch = "v3"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4630fc7eddbc55678948bcc8e6e338f721a88fa558c9ad7817a4ab18e7b5dc1a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ttlcache-ee5d91-2445e4d8-v2-env-4630fc7e"
+template_id = "6p0gl6lx0f5ezkytau3i"
+source_template_alias = "6m3t76c19icpdq1k9cxj"
+source_template_id = "6m3t76c19icpdq1k9cxj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

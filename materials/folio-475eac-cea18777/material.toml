@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "folio-475eac-cea18777"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/carlos7ags/folio"
+base_commit = "cea18777bc558fe446b9b03c7d4dc62368e9d231"
+source_tree = "e9e3ac6a79ab9d0a4064285758ff4aae43f552f0"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f095cd814a696aaa62db12fb357842233bd5697a7bbe24657c5b05857944271c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-folio-475eac-cea18777-v2-env-f095cd81"
+template_id = "7mds46sv8d6fukmgsp9v"
+source_template_alias = "cppe59xf7thqkltwyu9l"
+source_template_id = "cppe59xf7thqkltwyu9l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

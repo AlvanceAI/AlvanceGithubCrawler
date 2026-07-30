@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "jsqubits-645847-cd58d7ee"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/davidbkemp/jsqubits"
+base_commit = "cd58d7ee005b29f679acc9b72c5c4fe09fab316c"
+source_tree = "f3b0ca255ff9d9571d153f3273a3adfff9367c9d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7a5d1c2a6cb6a0b69a313bad47d374163dc448737888d97f574befa755555965"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-jsqubits-645847-cd58d7ee-v2-env-7a5d1c2a"
+template_id = "otz9f3f8w5t3f1ooqwiq"
+source_template_alias = "70eqxlg3jd86lnlm9my1"
+source_template_id = "70eqxlg3jd86lnlm9my1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

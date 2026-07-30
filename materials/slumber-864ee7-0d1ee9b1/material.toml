@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "slumber-864ee7-0d1ee9b1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/LucasPickering/slumber"
+base_commit = "0d1ee9b1896d77274f06329a9ad79a3d7dab6b8d"
+source_tree = "5a6fed895e878715889e0b497a24c9df3992f696"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.90.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8de60506610dbf8dadf58c7b2f9a41b35e93d20c12f7ac8c5a00aee53a5c3fea"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-slumber-864ee7-0d1ee9b1-v2-env-8de60506"
+template_id = "g1knd69e4meg7kd1inpr"
+source_template_alias = "1qle1y2jnyge1ee2yt1k"
+source_template_id = "1qle1y2jnyge1ee2yt1k"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

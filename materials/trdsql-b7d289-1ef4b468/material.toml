@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "trdsql-b7d289-1ef4b468"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/noborus/trdsql"
+base_commit = "1ef4b4685b27bd5c105d9459dfad874f0e43c06d"
+source_tree = "0298d46d971d3ae404d99bc4fb393785e9ae4dd3"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "33566ca7919b7de2c416ba313d8a4bc8a862efb5c528b6d61421f2086ff0b0ca"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-trdsql-b7d289-1ef4b468-v2-env-33566ca7"
+template_id = "afmqxskmdx3gvkg4fzif"
+source_template_alias = "57zgolvljm6q12vn1tn0"
+source_template_id = "57zgolvljm6q12vn1tn0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

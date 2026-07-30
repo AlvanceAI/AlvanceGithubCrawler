@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ldflex-24b069-c7544f6e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/LDflex/LDflex"
+base_commit = "c7544f6e88fa6f8ea00f7977ecdf6391ac1f81eb"
+source_tree = "93a0470b89a8daaf96d92e0d98ba25d53c3df272"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "da29730322b9290846146b35e0ee4d6b95b222c37fe1f2537851a2f0f83674fe"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ldflex-24b069-c7544f6e-v2-env-da297303"
+template_id = "wqoh3n98ledgvfgcip1t"
+source_template_alias = "6q4zngtklv9jj1ud5hvi"
+source_template_id = "6q4zngtklv9jj1ud5hvi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

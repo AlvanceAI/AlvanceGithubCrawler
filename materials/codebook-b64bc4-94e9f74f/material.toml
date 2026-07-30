@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "codebook-b64bc4-94e9f74f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/blopker/codebook"
+base_commit = "94e9f74f9e23db31e7665c5854a06ea4171a7dc2"
+source_tree = "83d2960756a6332bfdab46d4cd5d6dbb84fe0fac"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "84d49e1e360fcb00ee792a16215205044f74252dca8f45fbfea9735a6733da8d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-codebook-b64bc4-94e9f74f-v2-env-84d49e1e"
+template_id = "dzruli0zp1b2btfc1x5r"
+source_template_alias = "tsm5jnj2kpe2gr0r693l"
+source_template_id = "tsm5jnj2kpe2gr0r693l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

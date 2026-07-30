@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cri-dockerd-5b34af-83d711fc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Mirantis/cri-dockerd"
+base_commit = "83d711fce4f8d6803138020da3faac2d81108173"
+source_tree = "cc32bb79770f6323ac71f1248c9fc0fefb5c44b4"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.9"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "093218fa62530a98514119e245ac59455a9786febd656414e66ef168225f8471"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cri-dockerd-5b34af-83d711fc-v2-env-093218fa"
+template_id = "vae1gnk9g17ph0y7vryw"
+source_template_alias = "j34uzs01tm17uybu505x"
+source_template_id = "j34uzs01tm17uybu505x"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

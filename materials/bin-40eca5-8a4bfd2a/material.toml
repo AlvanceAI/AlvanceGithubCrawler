@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bin-40eca5-8a4bfd2a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/marcosnils/bin"
+base_commit = "8a4bfd2a595ae55db07919bd79bef0e239596dd1"
+source_tree = "187a08fa161faa350d51bd85db4841cb000e2acc"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e841912df10240ae9c834bc94610c08b71c1184da4c08a548681b32b38960686"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bin-40eca5-8a4bfd2a-v2-env-e841912d"
+template_id = "mbgnbjpjwmpoo12l7ja1"
+source_template_alias = "409bt5pxrhbtu612pqvo"
+source_template_id = "409bt5pxrhbtu612pqvo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

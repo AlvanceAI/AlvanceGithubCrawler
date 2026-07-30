@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tokio-tungstenite-484442-6ee9b33f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/snapview/tokio-tungstenite"
+base_commit = "6ee9b33f76d35f9cc7125c3c7511bce4b1e829c4"
+source_tree = "8c402bc631624c753bd1f7c88ef5e110f8179f73"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.85"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eb539e9c084ee28f71347db6a533aaf478e4a93d73a4a501cc4445d089d1bd07"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tokio-tungstenite-484442-6ee9b33f-v2-env-eb539e9c"
+template_id = "6qsadyzyr52wrs5eh4i5"
+source_template_alias = "a0hr8q1zhe4hzognk073"
+source_template_id = "a0hr8q1zhe4hzognk073"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

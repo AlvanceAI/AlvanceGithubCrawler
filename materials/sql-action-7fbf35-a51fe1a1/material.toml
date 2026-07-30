@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sql-action-7fbf35-a51fe1a1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Azure/sql-action"
+base_commit = "a51fe1a149c6ec1720555441e70c1d83dddd99b0"
+source_tree = "3215d63acf219dfe41c9fd2cdd0d849a84ed8555"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9f8e8f01f50a18f5124f9b3017842b4eaec9030478aad79558e992987a65f26b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sql-action-7fbf35-a51fe1a1-v2-env-9f8e8f01"
+template_id = "9v3irz2oshjo29oq4oj2"
+source_template_alias = "gl5m753osdqacfzaqns5"
+source_template_id = "gl5m753osdqacfzaqns5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

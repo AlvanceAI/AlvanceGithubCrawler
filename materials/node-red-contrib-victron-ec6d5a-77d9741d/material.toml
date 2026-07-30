@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "node-red-contrib-victron-ec6d5a-77d9741d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/victronenergy/node-red-contrib-victron"
+base_commit = "77d9741d10502723e9dd3aeae2f6c540b0893456"
+source_tree = "386a9d77bbdd5168ad9e8c7a173c92e7c2356aed"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d5a0d47ec2ec0af22841a1b67b99519d5638cfd384f79fb10f9f113468d35dd4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-node-red-contrib-vic-ec6d5a-77d9741d-v2-env-d5a0d47e"
+template_id = "vjqyg1kr9dfmzxuuvfmn"
+source_template_alias = "j0tq05bpi7a4fnavga15"
+source_template_id = "j0tq05bpi7a4fnavga15"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bob-298da4-770c6cec"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/MordechaiHadad/bob"
+base_commit = "770c6cec2e8aa08d7f6c164b2706f749d4398f49"
+source_tree = "f50acf7fafb11f57b1d624d8f00b620f46758857"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.85"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9e1bac36987f4e3b67f50adc9479324dab1210f156f98c99941cce12f9eb59dd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bob-298da4-770c6cec-v2-env-9e1bac36"
+template_id = "6ihp42sk695yvpkepiew"
+source_template_alias = "lhgxfwer2v6ivaclbt4i"
+source_template_id = "lhgxfwer2v6ivaclbt4i"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

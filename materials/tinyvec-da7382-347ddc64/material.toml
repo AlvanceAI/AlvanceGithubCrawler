@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tinyvec-da7382-347ddc64"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Lokathor/tinyvec"
+base_commit = "347ddc6463159eec38d3758a8881a22f44d50373"
+source_tree = "25c51ac64961088db64c036abe6d2915f61fbf26"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8c769b42d6e86104c0a0ad7207cd06927abe9cff2d3404d95c1e4766dfc29123"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tinyvec-da7382-347ddc64-v2-env-8c769b42"
+template_id = "4m4uxoa8u6vxwb02jflq"
+source_template_alias = "004rkbkzantgioynifxu"
+source_template_id = "004rkbkzantgioynifxu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

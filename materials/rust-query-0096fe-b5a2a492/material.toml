@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rust-query-0096fe-b5a2a492"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/LHolten/rust-query"
+base_commit = "b5a2a492c777e378c61072b86cca9e5b01709517"
+source_tree = "0312092e29a743a378831a9537aad5571180bbcb"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.95"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f6172f7f69244dc89a1722f71a5eee4de51be3f271c3131042055668ecd36115"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rust-query-0096fe-b5a2a492-v2-env-f6172f7f"
+template_id = "z0j8wjvzrg1quml0913h"
+source_template_alias = "d0el8wyu16pfbfahjgo8"
+source_template_id = "d0el8wyu16pfbfahjgo8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

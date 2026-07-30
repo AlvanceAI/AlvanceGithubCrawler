@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pgq-50c7c7-ef03827e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/dataddo/pgq"
+base_commit = "ef03827ef6679fb1545e3b93bb758cd9276964d7"
+source_tree = "2472912015a12051f6105fd7d31106c901890cbf"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2ffbb819083ba6392f354c0aa7aa080ae10c8432954969609aa29cd1fb77942a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pgq-50c7c7-ef03827e-v2-env-2ffbb819"
+template_id = "pz9v4f8jbjwfjvo18x6k"
+source_template_alias = "9yd4g985msccx2s209dw"
+source_template_id = "9yd4g985msccx2s209dw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

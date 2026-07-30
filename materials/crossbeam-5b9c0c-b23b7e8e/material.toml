@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "crossbeam-5b9c0c-b23b7e8e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/crossbeam-rs/crossbeam"
+base_commit = "b23b7e8eca2efdad9bdc1ceb1aee1207a852c03b"
+source_tree = "63bfdd0166a256aabcf90f1e5ea6f4c820625d0a"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.74"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ba892fb95b44ce73cbd0b440688b5104e8c58ba3d78de0a945ca8c764304a511"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-crossbeam-5b9c0c-b23b7e8e-v2-env-ba892fb9"
+template_id = "d0kth8ge3yxs2kl8a9wd"
+source_template_alias = "4mq35y76eya0lmn6ru0g"
+source_template_id = "4mq35y76eya0lmn6ru0g"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

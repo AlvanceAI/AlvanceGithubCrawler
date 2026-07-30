@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kube-mgmt-b7d2bd-9257c9fa"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/open-policy-agent/kube-mgmt"
+base_commit = "9257c9fabb6fbe005e65c3f2b6d2b626399b18e7"
+source_tree = "b0ce3044e81fffc0aac45e1d9460492bcab2ea70"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6cc1a66182651825a9360b8531c82304573094316fdc01bab75d313b80e30639"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kube-mgmt-b7d2bd-9257c9fa-v2-env-6cc1a661"
+template_id = "hizici01gk7x8z9053az"
+source_template_alias = "ldgbblpdzc31eiqzemx6"
+source_template_id = "ldgbblpdzc31eiqzemx6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

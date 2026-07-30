@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rbac-manager-920766-14c1018f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/FairwindsOps/rbac-manager"
+base_commit = "14c1018f2b8e8af03b11d2e31a76b8b6835dc977"
+source_tree = "5d2ef2b5c9ee017a740ad8de24f58fc3eb3a6e27"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "13fdf949b32c3d545a674311970b139ffb076de7b31a99fd6dc59eff718f876e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rbac-manager-920766-14c1018f-v2-env-13fdf949"
+template_id = "2mlzm9na88hvnm93kzw2"
+source_template_alias = "mtw4cj9aji6c6v8fs6xe"
+source_template_id = "mtw4cj9aji6c6v8fs6xe"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

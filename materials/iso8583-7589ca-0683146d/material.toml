@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "iso8583-7589ca-0683146d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/moov-io/iso8583"
+base_commit = "0683146d967b5677c02fd976ef262fe38603bbfd"
+source_tree = "9a70283deaa8f311ef6aaa13dea9683b8357a381"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1f7e088fd667139babc468c85aac639f271c588c46162f0f950dc366555dadd2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-iso8583-7589ca-0683146d-v2-env-1f7e088f"
+template_id = "wdim1z67kws9aqa1xdxh"
+source_template_alias = "kgm05o9yo23tpio6yr5o"
+source_template_id = "kgm05o9yo23tpio6yr5o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

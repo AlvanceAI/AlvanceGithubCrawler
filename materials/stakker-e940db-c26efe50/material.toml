@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "stakker-e940db-c26efe50"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/uazu/stakker"
+base_commit = "c26efe5072eb0dfb19d5b59e4d8159fee91c4b60"
+source_tree = "a05e1966b2cf107690d9df14f7ccac1bc8ca2d6b"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.65.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f7cfa8fb53805caf3a796f9dc7b3d16d84cb77c004d9c5224b153150204ba02c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-stakker-e940db-c26efe50-v2-env-f7cfa8fb"
+template_id = "f9jolx0su1q354r2fhhv"
+source_template_alias = "1pi6yfkjib6kcgdyh68y"
+source_template_id = "1pi6yfkjib6kcgdyh68y"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

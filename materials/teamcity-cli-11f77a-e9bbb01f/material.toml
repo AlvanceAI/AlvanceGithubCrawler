@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "teamcity-cli-11f77a-e9bbb01f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/JetBrains/teamcity-cli"
+base_commit = "e9bbb01fe7c5b96790f7a60de9c2ee60138a9a6c"
+source_tree = "a34b502f210ed92894d9e8ae3a858b21fad8f92e"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1f225479f3259df117ce6d1e03cd4e585af24d8a3677ca430564b59a2b111dbf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-teamcity-cli-11f77a-e9bbb01f-v2-env-1f225479"
+template_id = "eviya4l22n4mjxtu107s"
+source_template_alias = "51oqx7ec0zjnocl3w0fj"
+source_template_id = "51oqx7ec0zjnocl3w0fj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

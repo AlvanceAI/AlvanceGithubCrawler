@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wily-6d6beb-24f450b5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tonybaloney/wily"
+base_commit = "24f450b544afead1fb3070259e94d724aec5223e"
+source_tree = "3de10e822c427058e8269b690b79733fa28b04f8"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1eca8985c1cd2ecc2795cce3462929be04b5df032160df634669130f0270127a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wily-6d6beb-24f450b5-v2-env-1eca8985"
+template_id = "6m6fcji5ehh61c0o8u2c"
+source_template_alias = "sd3yiscfah2tspoz6oyy"
+source_template_id = "sd3yiscfah2tspoz6oyy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

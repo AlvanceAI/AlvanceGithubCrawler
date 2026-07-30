@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gum-92b951-716d8b5d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/charmbracelet/gum"
+base_commit = "716d8b5d0221558f944b5a078dbbcca8572534fb"
+source_tree = "21b2cde1723a6afa84504761f647405ffd00a480"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ebd2b39a3b078850a85f09ecf430a45305e0d965768d9c5dd4becd99a88cdc53"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gum-92b951-716d8b5d-v2-env-ebd2b39a"
+template_id = "46a142jc6u2s6mh487pf"
+source_template_alias = "4ljwnx4txd4ng01kiutb"
+source_template_id = "4ljwnx4txd4ng01kiutb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

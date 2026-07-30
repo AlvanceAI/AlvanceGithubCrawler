@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hcl-lang-36c490-ecfa08c1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hashicorp/hcl-lang"
+base_commit = "ecfa08c1a13fdb5c8e225c040c5254a891a80acd"
+source_tree = "3cbfa216eaee623ad26a85786d3522b9890952b7"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "729f8cea906f107e83f0b1c61e2ac394a10d80406aa9105876211ee43021d2d7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hcl-lang-36c490-ecfa08c1-v2-env-729f8cea"
+template_id = "a0qz82prlii2ucig034u"
+source_template_alias = "y7q6dx9cn5yfe77yoltm"
+source_template_id = "y7q6dx9cn5yfe77yoltm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

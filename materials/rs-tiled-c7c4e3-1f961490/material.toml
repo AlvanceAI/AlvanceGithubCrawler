@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rs-tiled-c7c4e3-1f961490"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mapeditor/rs-tiled"
+base_commit = "1f9614905cc2c2337bfaa39ce6c24f0ba6bd5e2e"
+source_tree = "1dfa5377ff4d8b51a54298b290b6df67806d2463"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "05b887ac1f8eea5e3bde027d77b003163f4cf410bab1eb4c495a28e55b0e36ec"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rs-tiled-c7c4e3-1f961490-v2-env-05b887ac"
+template_id = "fsr1eghhke0tgfzrv102"
+source_template_alias = "w58kftip1x4y44zzzdv2"
+source_template_id = "w58kftip1x4y44zzzdv2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "simd-json-91e1a7-c8cece05"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/simd-lite/simd-json"
+base_commit = "c8cece05a69a379ddc229f63e20701e34c87ef59"
+source_tree = "d711b6869a50b90910b6c4cf6a755dfcfb334e76"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "831e892ebfd704f9180a5f2e8c851613a9522f83670ce9f9f8e10486bb8dcaa8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-simd-json-91e1a7-c8cece05-v2-env-831e892e"
+template_id = "b4nvnzg0fo6amthzrnz4"
+source_template_alias = "cganhy8quwh0qyvjgxln"
+source_template_id = "cganhy8quwh0qyvjgxln"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

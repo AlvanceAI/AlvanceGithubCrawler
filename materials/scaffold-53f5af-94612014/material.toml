@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "scaffold-53f5af-94612014"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hay-kot/scaffold"
+base_commit = "946120140678d1210e19dbbdecb1d973dae999eb"
+source_tree = "9236a425bccac7029e1d73b1d9eac9f4d329be67"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "23781e4e8dd448e36c512a165b505075545314e4a78155a8ade97c878b6a63e4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-scaffold-53f5af-94612014-v2-env-23781e4e"
+template_id = "vwds0cfezk115d7djdx3"
+source_template_alias = "g3mlld2izzjc4d4qk2v2"
+source_template_id = "g3mlld2izzjc4d4qk2v2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

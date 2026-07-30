@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terraform-provider-pager-6db274-86fd7379"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/PagerDuty/terraform-provider-pagerduty"
+base_commit = "86fd7379934b24d3964b161bbda463aa691e78a0"
+source_tree = "b798bad15441f748985b3384383a72b24b03e465"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f07fa76747739e372da66e0ded5cccb3dec68f1225b1c6d0101583673f0b66f7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terraform-provider-p-6db274-86fd7379-v2-env-f07fa767"
+template_id = "jj47g1cshzsc8to7u93n"
+source_template_alias = "sd7xjkdopn63hlsxgsrd"
+source_template_id = "sd7xjkdopn63hlsxgsrd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

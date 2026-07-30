@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "peroxide-e44652-53e1717d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Axect/Peroxide"
+base_commit = "53e1717d8eba948791d03802a5494cd94c5e5e76"
+source_tree = "64fb1ab2a80fc992da135302d8daeafcd4bff54b"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6538b687f7509321185468f60ee2fef967d35f32b4b0ee117fe0beb257ff6714"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-peroxide-e44652-53e1717d-v2-env-6538b687"
+template_id = "atf3s59h2nl33b6jk1ov"
+source_template_alias = "44s66yzm7byboiaklstt"
+source_template_id = "44s66yzm7byboiaklstt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

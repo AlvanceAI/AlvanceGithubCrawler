@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "phastft-8b925c-10fe18aa"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/smu160/PhastFT"
+base_commit = "10fe18aaaeed1ab567e794e7ad9ddeaff729b91f"
+source_tree = "6eb3a584ae84add5bd547e1450c319636b2f91b4"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0ad6f4c526cc7a632cbf625583de19492da6bd05411dc874fd95858327fb9fcd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-phastft-8b925c-10fe18aa-v2-env-0ad6f4c5"
+template_id = "7z029s6smms7bhf4rfym"
+source_template_alias = "qdh7ga0oph0wnpfb6fys"
+source_template_id = "qdh7ga0oph0wnpfb6fys"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

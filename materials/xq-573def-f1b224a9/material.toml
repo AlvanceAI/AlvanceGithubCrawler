@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "xq-573def-f1b224a9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/MiSawa/xq"
+base_commit = "f1b224a9b3fd54b37ed17253bd784bedb475f558"
+source_tree = "4047c378b7f55429f53944f5646ad15af207cbf1"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2292aaa001ab5800103bae23d59976f422bb0caaab65bd610313c8760d78e5ae"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-xq-573def-f1b224a9-v2-env-2292aaa0"
+template_id = "c9co85ueq3v1bmjq49vz"
+source_template_alias = "y42ldnllnoufb6kz1z81"
+source_template_id = "y42ldnllnoufb6kz1z81"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

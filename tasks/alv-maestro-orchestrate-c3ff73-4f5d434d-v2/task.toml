@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-maestro-orchestrate-c3ff73-4f5d434d-v2"
+description = "Rebuildable repository task for josstei/maestro-orchestrate"
+authors = []
+keywords = ["javascript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-maestro-orchestrate-c3ff73-4f5d434d-v2"
+material_id = "maestro-orchestrate-c3ff73-4f5d434d"
+status = "direction"
+language = "javascript"
+repository_url = "https://github.com/josstei/maestro-orchestrate"
+base_commit_hash = "4f5d434dded8a5e58808ad60f56c6e410f57cf7e"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

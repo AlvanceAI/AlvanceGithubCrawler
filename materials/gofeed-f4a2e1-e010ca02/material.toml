@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gofeed-f4a2e1-e010ca02"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mmcdole/gofeed"
+base_commit = "e010ca02e0eb28daf544c0447fdd64e4e99d5c5e"
+source_tree = "00080b2de88b29e7315f4662dc289edd1bdf1b55"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "120162154f14197bc49b5fd6ff6724cfc31dbc126871bd4a3d32bc38a166f223"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gofeed-f4a2e1-e010ca02-v2-env-12016215"
+template_id = "qicph056r9lmkck6p4f6"
+source_template_alias = "madzgalykuehlqr90eyq"
+source_template_id = "madzgalykuehlqr90eyq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

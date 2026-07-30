@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nmt-65d354-d79269fe"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/celestiaorg/nmt"
+base_commit = "d79269fe292a382a860d83ca2014f92f72ac93de"
+source_tree = "305481abd22a7806323374d527c6b55f0b0143d1"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6991ea5d39f2ffcbe01b21364dfa87e3d02e91e541237a217344bad58092ee1a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nmt-65d354-d79269fe-v2-env-6991ea5d"
+template_id = "9p0lhy95gb7mvtjnxc9v"
+source_template_alias = "562tlu1gf44l3ir2e50h"
+source_template_id = "562tlu1gf44l3ir2e50h"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

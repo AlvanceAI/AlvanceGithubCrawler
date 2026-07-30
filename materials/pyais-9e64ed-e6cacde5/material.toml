@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pyais-9e64ed-e6cacde5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/M0r13n/pyais"
+base_commit = "e6cacde5692cf4c914ff2ddb882b124d4bfbc52b"
+source_tree = "d59d30278b50b7a77e59dca84f9074e6fa4ef646"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d9c0e3786ca85189f6c43df739e04cd0e62c0c8079cdab397c2d5f93708cf220"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pyais-9e64ed-e6cacde5-v2-env-d9c0e378"
+template_id = "lgys16qho5vq60fu8ysu"
+source_template_alias = "7eaovbfshzcd0kt3juku"
+source_template_id = "7eaovbfshzcd0kt3juku"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

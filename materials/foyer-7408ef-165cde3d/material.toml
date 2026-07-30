@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "foyer-7408ef-165cde3d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/foyer-rs/foyer"
+base_commit = "165cde3d4e638aaf2680384c02f57222b40be128"
+source_tree = "3f7705a299860d383f4256fdef5031ea003eb0ba"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.91.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "451b4f2a011afe79807e8c8e4e2d9f72f6842d84f10a007907e5d7eb7b155549"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-foyer-7408ef-165cde3d-v2-env-451b4f2a"
+template_id = "4l80hru9212mjj4qpjxv"
+source_template_alias = "z4qbtm0uf5uqbwsvl0os"
+source_template_id = "z4qbtm0uf5uqbwsvl0os"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-away-f473c1-4806d28a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/TwiN/go-away"
+base_commit = "4806d28a3299ab6e99d14801197027c36db268b2"
+source_tree = "31913561579a34d9e3d162e0224f92e9b689b8a5"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c320d878a188afe765cb75b9fce0a700cef06e9ba9650ae4165816424ade8db8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-away-f473c1-4806d28a-v2-env-c320d878"
+template_id = "h86r5lquuauczera1xxe"
+source_template_alias = "lk5nksev3zjri8aewt46"
+source_template_id = "lk5nksev3zjri8aewt46"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

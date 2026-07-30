@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "allotment-d177c2-3009fae9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/johnwalley/allotment"
+base_commit = "3009fae979e2f3df04f67b342b8402256ee2d636"
+source_tree = "c911801a853905d62045b1a06a174fe51bf95087"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "83c6f0f6a3d2ac7556da14c8532c24b359a9388c5de3394c65750c7d2f82dab5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-allotment-d177c2-3009fae9-v2-env-83c6f0f6"
+template_id = "u9zkvy40ar5tyaib1eyj"
+source_template_alias = "6ncledtp02e4l3xhn6mi"
+source_template_id = "6ncledtp02e4l3xhn6mi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

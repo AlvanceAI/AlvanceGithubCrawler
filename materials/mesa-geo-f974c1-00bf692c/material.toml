@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mesa-geo-f974c1-00bf692c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mesa/mesa-geo"
+base_commit = "00bf692c0d4bf20c0a67c82df2b56a7230c81de7"
+source_tree = "8a8fea4c6e176f7a978a2b5f807d336f6c4c9fc0"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9bfac87d609277da68e57f93863c7c5aa271729302da1391ade89aa9992bcb4a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mesa-geo-f974c1-00bf692c-v2-env-9bfac87d"
+template_id = "pgwg8zaknj9j4w9hj7qd"
+source_template_alias = "4auhxq60gjn87upt7qfl"
+source_template_id = "4auhxq60gjn87upt7qfl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

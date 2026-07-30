@@ -1,0 +1,44 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-carbonapi-2726f3-8c3305a4-v2"
+description = "Rebuildable repository task for go-graphite/carbonapi"
+authors = []
+keywords = ["go", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-carbonapi-2726f3-8c3305a4-v2"
+material_id = "carbonapi-2726f3-8c3305a4"
+status = "direction"
+language = "go"
+repository_url = "https://github.com/go-graphite/carbonapi"
+base_commit_hash = "8c3305a470fefc9098f9b54c0905b1cf1e83d764"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+GOCACHE = "/root/.cache/go-build"
+GOMODCACHE = "/go/pkg/mod"
+GOPATH = "/go"
+GOPROXY = "https://goproxy.cn,direct"
+GOTOOLCHAIN = "go1.24.0+auto"
+HOME = "/root"
+PATH = "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

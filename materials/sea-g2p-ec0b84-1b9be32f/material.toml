@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sea-g2p-ec0b84-1b9be32f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pnnbao97/sea-g2p"
+base_commit = "1b9be32f47e3d63919daf2025be586b621f81e02"
+source_tree = "41eddc6515e6481772b82f04aa1a2588537c3347"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a9ff38c58e3a61ff74f98e6a6f808567f12d2e48be802a64efe4eb1eb5ab7f45"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sea-g2p-ec0b84-1b9be32f-v2-env-a9ff38c5"
+template_id = "kec62uo9kolvpjg1p0sc"
+source_template_alias = "biw20yvang33fxj1d1cn"
+source_template_id = "biw20yvang33fxj1d1cn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

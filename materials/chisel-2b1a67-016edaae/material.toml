@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "chisel-2b1a67-016edaae"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jpillora/chisel"
+base_commit = "016edaae00d6761bfe67ce184c5f27e6965a301d"
+source_tree = "b9dff966c05b74c49fb31812947cc2c6e5a48b86"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "87d5539348b0f948610ee5529c1786cb9ecec825abe0d688f4d03f6c8cdd1e5b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-chisel-2b1a67-016edaae-v2-env-87d55393"
+template_id = "wlzgjdx1lu991mzj4mie"
+source_template_alias = "5ml50txdpixgtj4ypjzt"
+source_template_id = "5ml50txdpixgtj4ypjzt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

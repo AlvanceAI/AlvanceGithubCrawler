@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "caddy-l4-8982e5-42db5690"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mholt/caddy-l4"
+base_commit = "42db5690dea199f930a6f08005fe2e4aab10dcc9"
+source_tree = "128dda44011a4d7e9facd5ea73be94334f2d7c24"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c3ac7249e5cf7e275b011a514ec4892c07f9cf9f418965aa97b732ab85818c0a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-caddy-l4-8982e5-42db5690-v2-env-c3ac7249"
+template_id = "sxe3rmsvgfgk1rufruuq"
+source_template_alias = "2qdizg10hl6uml9clzbn"
+source_template_id = "2qdizg10hl6uml9clzbn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

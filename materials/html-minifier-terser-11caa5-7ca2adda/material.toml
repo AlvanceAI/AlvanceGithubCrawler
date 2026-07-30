@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "html-minifier-terser-11caa5-7ca2adda"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/terser/html-minifier-terser"
+base_commit = "7ca2adda16a10cb0dff5f82d71394ec10eb49ce9"
+source_tree = "dfe88a8b2bf4552c6faefe7ab66d424766862f2d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1107429d20ac82f2dee2c96b259e001ee69d0c5473e735c2aef6a3ea490def73"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-html-minifier-terser-11caa5-7ca2adda-v2-env-1107429d"
+template_id = "bez984vxbwjva25k6sqa"
+source_template_alias = "56oxfjk8vyscek2a542x"
+source_template_id = "56oxfjk8vyscek2a542x"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

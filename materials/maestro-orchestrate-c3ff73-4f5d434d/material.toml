@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "maestro-orchestrate-c3ff73-4f5d434d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/josstei/maestro-orchestrate"
+base_commit = "4f5d434dded8a5e58808ad60f56c6e410f57cf7e"
+source_tree = "dad1bd6dbc354682a68df6e1dccbe76eaec4d165"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0edf01f8daa32877921a24d76cc5b719b63939ada6554cd3ed867bba96da6cb2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-maestro-orchestrate-c3ff73-4f5d434d-v2-env-0edf01f8"
+template_id = "4xgeo6m5fnfhyhf4fimc"
+source_template_alias = "gtz1u4folqd7fmvoozes"
+source_template_id = "gtz1u4folqd7fmvoozes"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

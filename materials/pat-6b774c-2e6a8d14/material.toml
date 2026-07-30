@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pat-6b774c-2e6a8d14"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/la5nta/pat"
+base_commit = "2e6a8d14baf0268f4e2aa4d01784a54ca935cf52"
+source_tree = "d868da88f0f728a9bdb1078e195ced57c49e5b7d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d51631c4f17e1980a1698d9b94eb6ceb950267d62ebb2dde0cd730b0047a4100"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pat-6b774c-2e6a8d14-v2-env-d51631c4"
+template_id = "8jeo6z5i234gy8ezeqqj"
+source_template_alias = "de2py60slizmchco6gx7"
+source_template_id = "de2py60slizmchco6gx7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

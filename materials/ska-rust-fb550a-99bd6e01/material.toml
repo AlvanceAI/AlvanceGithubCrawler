@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ska-rust-fb550a-99bd6e01"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bacpop/ska.rust"
+base_commit = "99bd6e013dc069320dc94833392efc0e9357d6e8"
+source_tree = "ef72dcaf260cd2b892fca48277169a4977b9cd2c"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "03eeb1dfff5f3c8ab8ce14d532780628c27b74887333e2ed92ec8ca4dfc3644c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ska-rust-fb550a-99bd6e01-v2-env-03eeb1df"
+template_id = "0s03ixyqf0w76ylr0k6k"
+source_template_alias = "3xz4iejrugmj9u4wt04s"
+source_template_id = "3xz4iejrugmj9u4wt04s"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

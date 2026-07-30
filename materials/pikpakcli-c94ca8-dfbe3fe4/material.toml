@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pikpakcli-c94ca8-dfbe3fe4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/52funny/pikpakcli"
+base_commit = "dfbe3fe414d0caccb76348e9e3cd9dae9943f9ad"
+source_tree = "d33af6cdbfe6d30f41ce1b963807382e117fed8d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a2a4b057f11162a265cdd269a3b0c6843ea4830089b87f226e8ee1c39d9838f9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pikpakcli-c94ca8-dfbe3fe4-v2-env-a2a4b057"
+template_id = "7bpud8atuj0fq1w4r098"
+source_template_alias = "crjkqia7sp7hbwn2cyek"
+source_template_id = "crjkqia7sp7hbwn2cyek"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

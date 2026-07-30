@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mcp-server-odoo-710954-b7be7dcc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ivnvxd/mcp-server-odoo"
+base_commit = "b7be7dcc0c422275da2d61a8e422ef5414156abd"
+source_tree = "4cfdd84a00808b8ba6045416b07799cb0d2eb862"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7c5ce50c064f28321927844ecbbb0345136cca3757ab9bd52133e935553927d7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mcp-server-odoo-710954-b7be7dcc-v2-env-7c5ce50c"
+template_id = "n88l75suc2rbczo30ial"
+source_template_alias = "ap1b70f9osytfa0nrjs2"
+source_template_id = "ap1b70f9osytfa0nrjs2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

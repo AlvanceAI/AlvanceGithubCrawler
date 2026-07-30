@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "clean-cast-d041b1-4e515e50"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ikoyhn/clean-cast"
+base_commit = "4e515e5036af32a5df713d1be8050978a5613fb7"
+source_tree = "260a8c97ac53c80626a029deb4b25863199b2977"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4b25bfb7d18d9d71662d911aa647e0a7f59d8e78bcd05045a60e5aeed0829cd2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-clean-cast-d041b1-4e515e50-v2-env-4b25bfb7"
+template_id = "k7ou5oe1y5j7pobfowhe"
+source_template_alias = "jn4kpeq12fu75aiaccq1"
+source_template_id = "jn4kpeq12fu75aiaccq1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

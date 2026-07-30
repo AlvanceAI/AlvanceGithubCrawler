@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "embedded-graphics-fd1425-89164306"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/embedded-graphics/embedded-graphics"
+base_commit = "8916430616f56ce26649cd0aae285e72d9eedf0d"
+source_tree = "e1c7429abd82abf154e9adb261f29fc0de5e13a2"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.81"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a2ee8f06b5fed1eba19e6c8bc7ef79b4333d749135862dca89277bbced93589d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-embedded-graphics-fd1425-89164306-v2-env-a2ee8f06"
+template_id = "jyb4j8vgnkqmbv0odvif"
+source_template_alias = "29wpoblesyl8zfviyar1"
+source_template_id = "29wpoblesyl8zfviyar1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

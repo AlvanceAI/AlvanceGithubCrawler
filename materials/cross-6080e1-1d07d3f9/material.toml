@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cross-6080e1-1d07d3f9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cross-rs/cross"
+base_commit = "1d07d3f9cc465c435256f1aabc1d18024517891a"
+source_tree = "9414f6bdf5ad95546252b6856446d6652c52ba65"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.85.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f6ed38d030868535e915349bc5f21007634b84db51474bd99a64764fbfc7f407"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cross-6080e1-1d07d3f9-v2-env-f6ed38d0"
+template_id = "m30mzltqlhzhr779wto2"
+source_template_alias = "uagjpi690tyxv2krfbqo"
+source_template_id = "uagjpi690tyxv2krfbqo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

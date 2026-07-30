@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-serial-25b0e2-9b9e4a4b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bugst/go-serial"
+base_commit = "9b9e4a4b829f22f53181c84df19915b858599bbb"
+source_tree = "97d63be581968c527ca5f67df7acf64b0798b039"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "20b82c44d641b09a885efa52c1658f386451531564aee74038765ac50aacf437"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-serial-25b0e2-9b9e4a4b-v2-env-20b82c44"
+template_id = "1mb31101nqn5oirxnelo"
+source_template_alias = "1tjssscie5ba6iwvk8eg"
+source_template_id = "1tjssscie5ba6iwvk8eg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "counterfeiter-4b3b48-12304d65"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/maxbrunsfeld/counterfeiter"
+base_commit = "12304d656a72ff0564075fe990207db5cfd82148"
+source_tree = "fdc3e0adf9d1911f2156f735c8d2b6a7b7f4818c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c294ab66e835c917928b85215dcf1589d99cdbfd9fe99a2383029be76babd7f5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-counterfeiter-4b3b48-12304d65-v2-env-c294ab66"
+template_id = "nk56xf035z757vnz6a2k"
+source_template_alias = "sqv7ymmpmkvqnvksdgvi"
+source_template_id = "sqv7ymmpmkvqnvksdgvi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "neomd-b3cda9-2b89c2d7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ssp-data/neomd"
+base_commit = "2b89c2d75f4d992029499fde69f55aa5219fda83"
+source_tree = "d1e79ac8b6e929004d8cb3a1b716d8058f6ee826"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "71011a4fc174234fd2c9e4bf0977fff69b3ec69bbd3f6b2cef8b799225f32760"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-neomd-b3cda9-2b89c2d7-v2-env-71011a4f"
+template_id = "vqetln4xwpuyohayzyex"
+source_template_alias = "xuwk8bdn07a4rhf5xw9q"
+source_template_id = "xuwk8bdn07a4rhf5xw9q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

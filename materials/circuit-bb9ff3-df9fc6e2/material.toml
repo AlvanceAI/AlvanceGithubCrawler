@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "circuit-bb9ff3-df9fc6e2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cep21/circuit"
+base_commit = "df9fc6e22e7683d17ae5bacd49f3dd241540b90e"
+source_tree = "2c48587793e23bd75ac01e498b5104853182e990"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f91d0e59160604e43828c3a61dad47214df06f80ed1441078d41eae4225c0444"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-circuit-bb9ff3-df9fc6e2-v2-env-f91d0e59"
+template_id = "f3rk34b6ufie1i1pl61q"
+source_template_alias = "wmirxvw9nd1zlpkuktto"
+source_template_id = "wmirxvw9nd1zlpkuktto"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

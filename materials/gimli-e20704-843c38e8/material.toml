@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gimli-e20704-843c38e8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gimli-rs/gimli"
+base_commit = "843c38e886f5749cc03b967f37e6d5fb7a85999a"
+source_tree = "6ba234942ea2698114fc80f75c40fa23fc8fac7f"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "155f035788a8b4968e808dcc14b0967bc64914eb61f6cea9e914a3056d7fbbb8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gimli-e20704-843c38e8-v2-env-155f0357"
+template_id = "dl3slzuo8par097jsnnr"
+source_template_alias = "s14rb3l63o58ty3bayoy"
+source_template_id = "s14rb3l63o58ty3bayoy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

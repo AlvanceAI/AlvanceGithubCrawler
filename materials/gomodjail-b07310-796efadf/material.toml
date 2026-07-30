@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gomodjail-b07310-796efadf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/AkihiroSuda/gomodjail"
+base_commit = "796efadf08ddd9bb913a9c48960767b43ab61e80"
+source_tree = "77915b50d980f7d3decf7405502529b88b4f2850"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d54c3f74276356ac760237a0ce40bbfbb78169601eb28b6e22d8a5aee706c43c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gomodjail-b07310-796efadf-v2-env-d54c3f74"
+template_id = "3tyh1uo3l3ztpfk4ngx8"
+source_template_alias = "srzblntywuu4cxkyfr6n"
+source_template_id = "srzblntywuu4cxkyfr6n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

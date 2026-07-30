@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gohbase-2c1498-8b8e010a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tsuna/gohbase"
+base_commit = "8b8e010ab4a7a16a66cac6bea48f861551a18739"
+source_tree = "2496de976e070aabc2131047141016c8a2a3d73d"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ec4d1712a92304321b3691b1b0df232f071993474594941cbd5277dde2f189b9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gohbase-2c1498-8b8e010a-v2-env-ec4d1712"
+template_id = "urxnpkah3u6f8jqjmtus"
+source_template_alias = "eqg9bywhsdjnv0dsrzx5"
+source_template_id = "eqg9bywhsdjnv0dsrzx5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

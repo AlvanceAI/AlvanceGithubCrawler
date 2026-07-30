@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-dropzone-370c9b-4599a84c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/react-dropzone/react-dropzone"
+base_commit = "4599a84cfe483aa5ac38753882cfee9639fb35ba"
+source_tree = "0f97594451e09d7643a69658ea69216863b4ab98"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "085632fd982fa7988625d44813acd75ad8c12234a5b77fc701830e62346c833e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-dropzone-370c9b-4599a84c-v2-env-085632fd"
+template_id = "av5rhhwfwrwwirggp1nt"
+source_template_alias = "qaeqlqci0iajsdis7bqa"
+source_template_id = "qaeqlqci0iajsdis7bqa"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

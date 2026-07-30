@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "archunitpython-1e2e31-2aba85e4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/LukasNiessen/ArchUnitPython"
+base_commit = "2aba85e44fcc8a95334efb54c3cc25b1508732c6"
+source_tree = "cbcb40b9e3fc7931f1c7e25d0955999e35e2b396"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dc25c09dc7141372a129a1c7fc8d51cbf075876cc97ca704cf580927562c0c27"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-archunitpython-1e2e31-2aba85e4-v2-env-dc25c09d"
+template_id = "uyo76avhkklw6j6waa7y"
+source_template_alias = "yl4u0uwqeo01nn822bsw"
+source_template_id = "yl4u0uwqeo01nn822bsw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
