@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "distill-46b985-48a816c5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Siddhant-K-code/distill"
+base_commit = "48a816c5edee15fc6d18edd7872a4d16d6f310cc"
+source_tree = "2f7c8f1dfafc09d09aa20cb9fa94ebbd14da9847"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "561316c480d369ae732f9f290c65f7222bf365b325d52cf115ca268a8955f5ed"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-distill-46b985-48a816c5-v2-env-561316c4"
+template_id = "yiivd7u0rj1ag328zmrm"
+source_template_alias = "fhoaahlznwotqi3e2cr9"
+source_template_id = "fhoaahlznwotqi3e2cr9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

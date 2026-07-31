@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sdk-rust-e19746-54b39e25"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cloudevents/sdk-rust"
+base_commit = "54b39e25e80bbbd618faeb918ed0973b2daec256"
+source_tree = "b91090d31b73de252c5572079647cbc092eec8c7"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b6cff2f6e26cf73e4c2ed54c1d190fe3493c69e5b38476858037ceb3fd04ddd4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sdk-rust-e19746-54b39e25-v2-env-b6cff2f6"
+template_id = "yia66s4lxae9pwlm9prm"
+source_template_alias = "8v33glppiwxsovz35mwn"
+source_template_id = "8v33glppiwxsovz35mwn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

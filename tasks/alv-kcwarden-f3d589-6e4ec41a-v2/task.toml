@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-kcwarden-f3d589-6e4ec41a-v2"
+description = "Rebuildable repository task for iteratec/kcwarden"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-kcwarden-f3d589-6e4ec41a-v2"
+material_id = "kcwarden-f3d589-6e4ec41a"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/iteratec/kcwarden"
+base_commit_hash = "6e4ec41a8b1e0f41985d10aef16ea72ad58fdc72"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

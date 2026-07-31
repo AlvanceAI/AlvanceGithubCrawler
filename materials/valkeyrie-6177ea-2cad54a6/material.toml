@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "valkeyrie-6177ea-2cad54a6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kvtools/valkeyrie"
+base_commit = "2cad54a665830cd3993e0af02f5e370e319af055"
+source_tree = "972ae8b82f4244235b78b3230b6295ec39d1ba18"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.22.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2eb8f3a9e759023f7b0e3deea1e0a1313e31162f0314a9b5564b0a747ff5901a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-valkeyrie-6177ea-2cad54a6-v2-env-2eb8f3a9"
+template_id = "h3y6cmwkrjjasb79r3so"
+source_template_alias = "c1vj0hh4dplo3tp9lebb"
+source_template_id = "c1vj0hh4dplo3tp9lebb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

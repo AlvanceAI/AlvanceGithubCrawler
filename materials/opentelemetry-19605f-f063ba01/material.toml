@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "opentelemetry-19605f-f063ba01"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-gorm/opentelemetry"
+base_commit = "f063ba01bd9e698d16bf0bf8101af87c0e0f16d4"
+source_tree = "4ef712db64db8b094bc2fc1a53388c910d858ea6"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a87d747d949bd50dbce47d20b583a8aca1d4baf883968ac121ead18266e1fb36"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-opentelemetry-19605f-f063ba01-v2-env-a87d747d"
+template_id = "hqrww610cse4bxpva1ra"
+source_template_alias = "utulz4o7nibswzfxhb8w"
+source_template_id = "utulz4o7nibswzfxhb8w"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

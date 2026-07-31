@@ -1,0 +1,1 @@
+为模板选择器与路由装饰器增加路由定义阶段的模板存在性验证：直接模板名和 ComponentHeader 候选项应立即检查，任意 RequestComponentSelector 则允许跳过或通过可选验证接口扩展。

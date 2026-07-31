@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pytest-httpx-8d51de-ee421c32"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Colin-b/pytest_httpx"
+base_commit = "ee421c326460c57ed61374560c20aa6bc9424186"
+source_tree = "49f192084f612eb3f85e1c033e2029ea41abae5b"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bb384254208d697a2961a9119e315461fa1198d08563dd9108468ffc78e310fd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pytest-httpx-8d51de-ee421c32-v2-env-bb384254"
+template_id = "pw9qpku4maciljzujp33"
+source_template_alias = "r6t0021569i57gigksgz"
+source_template_id = "r6t0021569i57gigksgz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

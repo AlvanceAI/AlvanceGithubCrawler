@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hypertext-0feb43-90e1bc42"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vidhanio/hypertext"
+base_commit = "90e1bc427c6efc81f94acbe6c8bce43616f1c417"
+source_tree = "4d3cdca78d2fcca3b6e2b8a359570fb0092d127e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7abac74f8bcd512f2ad0609d219a99a45888a271fed5b94111ecf9512f53d198"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hypertext-0feb43-90e1bc42-v2-env-7abac74f"
+template_id = "xu1wqdz90aengbg7jd3q"
+source_template_alias = "hxb5zl1mejvc6ijvkyf3"
+source_template_id = "hxb5zl1mejvc6ijvkyf3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

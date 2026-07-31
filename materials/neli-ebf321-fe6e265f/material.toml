@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "neli-ebf321-fe6e265f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jbaublitz/neli"
+base_commit = "fe6e265fcf2ef08614c37c94ea178b899890f574"
+source_tree = "1dab7cda362086c8cc94adac927bacf274607946"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1b1237c2679e231d214776cee8d06e4c8c1055de6d7967d6be0ba693b1b48e59"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-neli-ebf321-fe6e265f-v2-env-1b1237c2"
+template_id = "ghzvu06baelxqal2or7o"
+source_template_alias = "h0e83j69wlzrk07ecod3"
+source_template_id = "h0e83j69wlzrk07ecod3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

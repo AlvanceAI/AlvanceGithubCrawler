@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "connect-sdk-js-df504a-3051c7cb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/1Password/connect-sdk-js"
+base_commit = "3051c7cb055958d62fa8a36bf3cc8b7f4a30512c"
+source_tree = "2e7430402a2b12f2c91bdae880255df3029238e3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a994dbef18fbbd90e44d91079ce133dcceefe6ad0d7cebb98c36b01a020f6449"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-connect-sdk-js-df504a-3051c7cb-v2-env-a994dbef"
+template_id = "uj5k5afp2qrkln8dylp4"
+source_template_alias = "jis2nnytrui6zn7ifmpo"
+source_template_id = "jis2nnytrui6zn7ifmpo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

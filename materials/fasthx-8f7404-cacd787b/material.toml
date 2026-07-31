@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fasthx-8f7404-cacd787b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/volfpeter/fasthx"
+base_commit = "cacd787baae36bbae2d54d46b53756e4b9504556"
+source_tree = "1959c02d44302c6d1a44fb9997905bb048c4fcd2"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "636b1af455beb0f67cb6697987610fc7ee4da14a63231790a58e5d43dd589926"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fasthx-8f7404-cacd787b-v2-env-636b1af4"
+template_id = "b6i7z3f0oo9hwth2i3hc"
+source_template_alias = "fbeoa8g0c8fnt0xdofxv"
+source_template_id = "fbeoa8g0c8fnt0xdofxv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

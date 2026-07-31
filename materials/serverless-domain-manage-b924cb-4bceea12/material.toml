@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "serverless-domain-manage-b924cb-4bceea12"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/amplify-education/serverless-domain-manager"
+base_commit = "4bceea12be67d0072ecdbac850484b9acba77574"
+source_tree = "5fb8c7598a50b7e3ee7ca992e2d8a2fb2be70f49"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "929d1cbfe54a94be652f3237daa9da2858edd650ac79433b530c57447ce84581"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-serverless-domain-ma-b924cb-4bceea12-v2-env-929d1cbf"
+template_id = "r8da3afktja8l24sy2hm"
+source_template_alias = "8978317lqzou0c4nsb3o"
+source_template_id = "8978317lqzou0c4nsb3o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

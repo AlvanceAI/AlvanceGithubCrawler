@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gpython-93d7bd-444ae5ed"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-python/gpython"
+base_commit = "444ae5ed29cfbc767b6592a3f27d5d05ca24b609"
+source_tree = "5abf0fc7072e58f37a4e93eae72377590bcd5aae"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8fe97aa109e658ea7cabda301668326e3420ec815ac128f8945f5609581b3398"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gpython-93d7bd-444ae5ed-v2-env-8fe97aa1"
+template_id = "5j20ppazqghbe7hxezao"
+source_template_alias = "e1m7fzkywa6ne3qhyjd3"
+source_template_id = "e1m7fzkywa6ne3qhyjd3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "runtime-c67355-3cd6d637"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/observablehq/runtime"
+base_commit = "3cd6d6371fc2f5fea00309cb74154254cef89947"
+source_tree = "39293cd44b2c10f75dbae0bb01c81b59b57141cc"
+default_branch = "main"
+license = "ISC"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3ae04aecfc2316731e9503a97945b9866872299e54b6e3218b277f8efbb4a934"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-runtime-c67355-3cd6d637-v2-env-3ae04aec"
+template_id = "l5rehb9eoc5dzyjnvi3j"
+source_template_alias = "wo6eufbl3sarq536vj2x"
+source_template_id = "wo6eufbl3sarq536vj2x"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

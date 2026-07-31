@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pyinaturalist-5dd408-f87ea8db"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pyinat/pyinaturalist"
+base_commit = "f87ea8dbde3de85f55c5b1d06e5d46edc85390d1"
+source_tree = "c2be14c6443eea285bcd1f5011746d42b42d99aa"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3c5930e3d49d81baebf814399233d0cbc174e7e6a61beda2fb20b4c8f164dc1e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pyinaturalist-5dd408-f87ea8db-v2-env-3c5930e3"
+template_id = "fcedl70ycebg49ob90fd"
+source_template_alias = "oou223qr9to0r7xd5f8a"
+source_template_id = "oou223qr9to0r7xd5f8a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

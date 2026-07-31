@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gitmal-f27f75-83be9ddc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/antonmedv/gitmal"
+base_commit = "83be9ddcf82e8a90ea50a9d54c1ebfc3e22ace16"
+source_tree = "412a5073064a93a24cf5c15b19784105504164ae"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5320fd3d31317f72b7538fec1abcce288463f1a4011f1fdaec87cd89bac8337f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gitmal-f27f75-83be9ddc-v2-env-5320fd3d"
+template_id = "pe92o9bgx087omg42w0q"
+source_template_alias = "2rsx9wjufpbxinn892i7"
+source_template_id = "2rsx9wjufpbxinn892i7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

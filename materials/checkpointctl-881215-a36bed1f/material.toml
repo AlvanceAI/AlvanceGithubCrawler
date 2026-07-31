@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "checkpointctl-881215-a36bed1f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/checkpoint-restore/checkpointctl"
+base_commit = "a36bed1feb563fcc121917a48e780a4731f5396b"
+source_tree = "0e105fcb4b366160acf7e373687c3b94714e3230"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e166a56fa6d2f539399ff4c514cff6365a4c938a29dc3536e25a3363ec35d885"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-checkpointctl-881215-a36bed1f-v2-env-e166a56f"
+template_id = "cekx7ohxgjfu1fh4nha4"
+source_template_alias = "e9np3p8rjhr1nr05ffvk"
+source_template_id = "e9np3p8rjhr1nr05ffvk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

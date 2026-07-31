@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rel-9a1b39-1d091d7d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-rel/rel"
+base_commit = "1d091d7ddfd47c78cb5aec13c929b2d1da37885d"
+source_tree = "39eac8806a2c5c83a298921f3f56e1809ec72476"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d953f281ad63213927ec95161209ce6ff57c3b8311d381864d18697c3567b757"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rel-9a1b39-1d091d7d-v2-env-d953f281"
+template_id = "hfjfo8lguuda4g647ar3"
+source_template_alias = "rv33dysngm6oyn8n8ptg"
+source_template_id = "rv33dysngm6oyn8n8ptg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

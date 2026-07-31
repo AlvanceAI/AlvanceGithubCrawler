@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "avo-71d9ca-16419356"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mmcloughlin/avo"
+base_commit = "16419356370fdbe6f006c6d4521bdb2c660f9411"
+source_tree = "d978949928134dfae28e669544d6dc0c2793d731"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.23.7"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "68c7fa7c4aded18c72ca2ea719e666f7cab4e061a8c6df67cf03da177f911659"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-avo-71d9ca-16419356-v2-env-68c7fa7c"
+template_id = "9hvb5dyhh2knfs5p8wvg"
+source_template_alias = "pex6pkathzkc3pegxg0k"
+source_template_id = "pex6pkathzkc3pegxg0k"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

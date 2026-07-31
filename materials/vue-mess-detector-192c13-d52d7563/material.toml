@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vue-mess-detector-192c13-d52d7563"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rrd108/vue-mess-detector"
+base_commit = "d52d75632bd49bddf4a090912b7b21a508f6a537"
+source_tree = "379549d3e788f0604fd682e22f02114cff766024"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "902335df6b4f798b02b2676cb2aadc065a44916b7f96af2762fcb680d62baa57"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vue-mess-detector-192c13-d52d7563-v2-env-902335df"
+template_id = "pu4icfxzxnlj9n8fpp6w"
+source_template_alias = "94wk3cjcwz7eebn7eat0"
+source_template_id = "94wk3cjcwz7eebn7eat0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terraform-provider-azure-a1a1a6-c23d6ac5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/aztfmod/terraform-provider-azurecaf"
+base_commit = "c23d6ac52c89bb76e43285124b5afc419ccbc549"
+source_tree = "f67460076b1ba8fed475a91cd8251072bd563f2a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fb108358a03c5fae10b14ee67e4c19d669cf9b95743d3d73b68b5d1d40bbfe79"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terraform-provider-a-a1a1a6-c23d6ac5-v2-env-fb108358"
+template_id = "8qubpg1qbl3eo84nf2wk"
+source_template_alias = "qgoq4bwon4ludlz2uy8t"
+source_template_id = "qgoq4bwon4ludlz2uy8t"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

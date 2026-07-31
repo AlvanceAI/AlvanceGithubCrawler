@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "g-b5607a-8017c46d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/equationzhao/g"
+base_commit = "8017c46d7f61d6286254561e877a5bc907805b63"
+source_tree = "fb122dbad2fbb71a12d2651ed41b7994556a907f"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "025f006769f0b91d0316993e8a604f77f60f83670b488c963a01a1efb51c5e27"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-g-b5607a-8017c46d-v2-env-025f0067"
+template_id = "2pxluth45lz59zcsaqjy"
+source_template_alias = "kh8e14p5eq90k8mwlea7"
+source_template_id = "kh8e14p5eq90k8mwlea7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

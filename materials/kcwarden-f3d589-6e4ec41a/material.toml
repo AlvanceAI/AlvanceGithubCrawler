@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kcwarden-f3d589-6e4ec41a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/iteratec/kcwarden"
+base_commit = "6e4ec41a8b1e0f41985d10aef16ea72ad58fdc72"
+source_tree = "1d541a6b3d9e9e47c9a87f8b4fb3f4bba61a1a79"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "df41e07587f57cfaa693ba4011ea8a81b8e4e54de1f2a9172d25f13678487ece"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kcwarden-f3d589-6e4ec41a-v2-env-df41e075"
+template_id = "ah1x043x7est7qilojh1"
+source_template_alias = "fu1ypmbh70cnoxtrc57l"
+source_template_id = "fu1ypmbh70cnoxtrc57l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

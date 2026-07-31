@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hint-d46e6a-62bfce68"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/webhintio/hint"
+base_commit = "62bfce68b934aab205bd60beb136112a5bfa1da1"
+source_tree = "6fe8c90576fbe9347094559af0d48ad89053a5fd"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "77fb18ff8be8fdaedf47907ff9e3964c3c85c63c6310b82cdb9af85b0ba291c2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hint-d46e6a-62bfce68-v2-env-77fb18ff"
+template_id = "dtgbfc1myey118gu4cb6"
+source_template_alias = "mcwf5qae3jca2qwswx5s"
+source_template_id = "mcwf5qae3jca2qwswx5s"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

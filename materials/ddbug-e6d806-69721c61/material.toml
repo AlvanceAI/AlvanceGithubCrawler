@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ddbug-e6d806-69721c61"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gimli-rs/ddbug"
+base_commit = "69721c61c64115795ea862ff917e8e990f966808"
+source_tree = "8c4ad8ec2c55013a0f8223a2defe8154f59ddfbc"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "67da2168735180ab00a86052a6ace46d5da0ab4f4d9a0c6425beb570522f5e05"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ddbug-e6d806-69721c61-v2-env-67da2168"
+template_id = "xxjm4qdku39k17iuie3b"
+source_template_alias = "58ghq1kpbwkt7ri3eoq3"
+source_template_id = "58ghq1kpbwkt7ri3eoq3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

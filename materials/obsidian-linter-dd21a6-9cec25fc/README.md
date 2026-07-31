@@ -1,0 +1,11 @@
+# obsidian-linter-dd21a6-9cec25fc
+
+Rebuildable repository material for `platers/obsidian-linter` at
+`9cec25fcfd5289076afddc3c58e72b7e57436bf2`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
+
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rlt-de0d6c-1835f6b1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wfxr/rlt"
+base_commit = "1835f6b16668dd688e6b7ba6595286098c055a39"
+source_tree = "e21d62caf1236da4a877b9855c14f876f7988cc0"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.85"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c335c10826033de2ef38c406d03cf3cd92d1ed5a069f39713c50318c2a3dffe3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rlt-de0d6c-1835f6b1-v2-env-c335c108"
+template_id = "xun95qmjcatyfxu6buu3"
+source_template_alias = "azhl3es8uan028w8e3st"
+source_template_id = "azhl3es8uan028w8e3st"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

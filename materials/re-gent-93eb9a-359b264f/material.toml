@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "re-gent-93eb9a-359b264f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/regent-vcs/re_gent"
+base_commit = "359b264fa3bb804dbdf42ea792c759434873d325"
+source_tree = "459dcf0d4b49c0c77f24b30d8089b7c8bceae311"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "194fd0558c431b4dff340057d288cc28481944d8a95b1228c3d04473eafc0b9d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-re-gent-93eb9a-359b264f-v2-env-194fd055"
+template_id = "ykea555799in35b5h2qg"
+source_template_alias = "u05a9rxg5l1q21553mbf"
+source_template_id = "u05a9rxg5l1q21553mbf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

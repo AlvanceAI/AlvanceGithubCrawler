@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "codex-plugin-cc-955cda-db52e28f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/openai/codex-plugin-cc"
+base_commit = "db52e28f4d9ded852ab3942cea316258ae4ef346"
+source_tree = "ba0f37e8a4d7fbda451b96aa462f2446c9f1e511"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8cc4c5053c0a71e7de5da4fa786e56c5002cafc4ae863f1063c0b21b60cef326"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-codex-plugin-cc-955cda-db52e28f-v2-env-8cc4c505"
+template_id = "uaews1xsiobngql1e5px"
+source_template_alias = "mir99sudpkwnfkj38tga"
+source_template_id = "mir99sudpkwnfkj38tga"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

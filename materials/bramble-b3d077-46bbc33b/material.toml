@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bramble-b3d077-46bbc33b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/movio/bramble"
+base_commit = "46bbc33bcc3e87446d2590b0d4dd1719ce77566b"
+source_tree = "364c0859f75af8ee57068c38f2054464bcc59fc4"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "863fb401c2f5f8f313b98ee488a366d18ac1faea1b8000b8949ed1ca1e0b451c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bramble-b3d077-46bbc33b-v2-env-863fb401"
+template_id = "uz9vvbijf9ejboig77d5"
+source_template_alias = "gjamlobzc1dv3jlzf7uc"
+source_template_id = "gjamlobzc1dv3jlzf7uc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-imap-7ad3d9-f68ef419"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/emersion/go-imap"
+base_commit = "f68ef419e622a283e0cf8ddab4498b84f9bd038d"
+source_tree = "b5bb7c0a79c0cca7f0d58fde7bd43e018a2fdba1"
+default_branch = "v2"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6bdb79a900d5685db6930d3b4ef5ce18f570d7f2a60e7477b6e2ac41f5e4794c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-imap-7ad3d9-f68ef419-v2-env-6bdb79a9"
+template_id = "mxzzkkjg9qm5rpwga8yf"
+source_template_alias = "si1o4vydfgbiswv6t5yz"
+source_template_id = "si1o4vydfgbiswv6t5yz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

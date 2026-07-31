@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-i18n-848b8a-94f5f67d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nicksnyder/go-i18n"
+base_commit = "94f5f67df91a966340ef80ce401fa0b4b94b8b4e"
+source_tree = "db6ed04f3a616281a3b6892e918935047a59c0a8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c36834e4ef5f69bf833442babe7c815742e7a5ff8bc74651e63b27e035f76faa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-i18n-848b8a-94f5f67d-v2-env-c36834e4"
+template_id = "e0mq18au00o199vw5op0"
+source_template_alias = "n4p157h1ff3iedzyejxs"
+source_template_id = "n4p157h1ff3iedzyejxs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

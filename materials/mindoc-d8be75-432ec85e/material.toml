@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mindoc-d8be75-432ec85e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mindoc-org/mindoc"
+base_commit = "432ec85e646ba2978f478bfc8f7b8f8f275964fb"
+source_tree = "b04516a2d49547278ae60570a35b1907e1658e35"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bd53bbe8113eba78f9350fc79e9cfffe8b88c7b02e17bc3235f4e6d4683e41f3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mindoc-d8be75-432ec85e-v2-env-bd53bbe8"
+template_id = "fggm3tw3p8m6o47h20vh"
+source_template_alias = "79qduor5ov7xyk2wxbg4"
+source_template_id = "79qduor5ov7xyk2wxbg4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

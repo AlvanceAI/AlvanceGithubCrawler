@@ -1,0 +1,5 @@
+Repository `sqlalchemy/mako` at commit `b14032734c9acb6f84ab684b73b9708554c04e8b` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为 Mako 的词法解析与模板 API 增加可配置的表达式、代码块、注释及行语句分隔符，并支持将模板指令包装在宿主语言注释中而不改变渲染语义。

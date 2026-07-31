@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "obsidian-task-collector-8ab774-b53dd777"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ebullient/obsidian-task-collector"
+base_commit = "b53dd7771d21f33d9afee308805af6ac115520e8"
+source_tree = "fca3df21ab9059be71ff6d9adf79abef835dec42"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8d97d2f638293e78a01f8a9e3e11d69d5c0a018a15afab74b35fc5b1843e3c53"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-obsidian-task-collec-8ab774-b53dd777-v2-env-8d97d2f6"
+template_id = "i0eghbbyjmm1nxu9u2we"
+source_template_alias = "8oy3g44uww1ly8er9m8a"
+source_template_id = "8oy3g44uww1ly8er9m8a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

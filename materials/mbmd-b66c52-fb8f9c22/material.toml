@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mbmd-b66c52-fb8f9c22"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/volkszaehler/mbmd"
+base_commit = "fb8f9c22f1210740ac89064fb55610613bba3f78"
+source_tree = "146caaac0192423942518975ae429e8aadf6830e"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.24.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1597c5621de453b3eafdfffdd9d2f9511d5a553af5208a637d85241c38bbca77"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mbmd-b66c52-fb8f9c22-v2-env-1597c562"
+template_id = "v36hvf0nbqsxugiogcea"
+source_template_alias = "0scdt9qpw8qzsdhoxh91"
+source_template_id = "0scdt9qpw8qzsdhoxh91"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

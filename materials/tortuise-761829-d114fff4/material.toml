@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tortuise-761829-d114fff4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/buildoak/tortuise"
+base_commit = "d114fff4882cd18e9723907fd0b7d63f3e226033"
+source_tree = "e215b1a1d2dd54f0218edecfb57362a3b42e15a4"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.80"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fe75f686c21094963d7ebe738df19849933a5f6f0f434a00167ed4ba02a01ae1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tortuise-761829-d114fff4-v2-env-fe75f686"
+template_id = "ux9q6y8m31ulxnxpvd8m"
+source_template_alias = "b5uh0gey1jh0zez03uk2"
+source_template_id = "b5uh0gey1jh0zez03uk2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

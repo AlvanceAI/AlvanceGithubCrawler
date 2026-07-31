@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mako-2779bd-b1403273"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sqlalchemy/mako"
+base_commit = "b14032734c9acb6f84ab684b73b9708554c04e8b"
+source_tree = "6deaf1383be7598b7d43dde2803f272f48528a78"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "aad9b0342e8f18dc7a383fd8baab1801030f5ec1379ea225b777153dcb070ba9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mako-2779bd-b1403273-v2-env-aad9b034"
+template_id = "4ehj6tludrnphqg26cty"
+source_template_alias = "isfdkq1nx853xzij2brn"
+source_template_id = "isfdkq1nx853xzij2brn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
