@@ -1,0 +1,40 @@
+[2026-07-31T17:10:57Z] stage=verify-escalated-20260731T171057Z run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-31 17:11:00,115 INFO alvance_github_crawler.pending.verification: verifying pending candidate heetch/confita key_slot=1
+2026-07-31 17:11:00,116 INFO alvance_github_crawler.pending.verification: verifying pending candidate erg-lang/erg key_slot=2
+2026-07-31 17:11:00,121 INFO alvance_github_crawler.pending.verification: verifying pending candidate dbcrossbar/dbcrossbar key_slot=3
+2026-07-31 17:11:00,123 INFO alvance_github_crawler.pending.verification: verifying pending candidate un-ts/eslint-plugin-import-x key_slot=1
+2026-07-31 17:11:00,125 INFO alvance_github_crawler.pending.verification: verifying pending candidate metaplex-foundation/sugar key_slot=2
+2026-07-31 17:11:00,127 INFO alvance_github_crawler.pending.verification: verifying pending candidate evmar/n2 key_slot=3
+2026-07-31 17:11:00,130 INFO alvance_github_crawler.pending.verification: verifying pending candidate capy-language/capy key_slot=1
+2026-07-31 17:11:00,132 INFO alvance_github_crawler.pending.verification: verifying pending candidate ConsenSysDiligence/solc-typed-ast key_slot=2
+2026-07-31 17:11:00,135 INFO alvance_github_crawler.pending.verification: verifying pending candidate TutteInstitute/toponymy key_slot=3
+2026-07-31 17:11:00,136 INFO alvance_github_crawler.pending.verification: verifying pending candidate rond-authz/rond key_slot=1
+2026-07-31 17:11:00,139 INFO alvance_github_crawler.pending.verification: verifying pending candidate pkolaczk/latte key_slot=2
+2026-07-31 17:12:08,327 INFO alvance_github_crawler.pending.verification: pending candidate TutteInstitute/toponymy finished outcome=rejected key_slot=3 processed=1 in_flight=10
+2026-07-31 17:12:42,398 INFO alvance_github_crawler.pending.verification: pending candidate erg-lang/erg finished outcome=rejected key_slot=2 processed=2 in_flight=9
+2026-07-31 17:13:55,516 INFO alvance_github_crawler.pending.verification: pending candidate evmar/n2 finished outcome=registered key_slot=3 processed=3 in_flight=8
+2026-07-31 17:14:32,064 INFO alvance_github_crawler.pending.verification: pending candidate pkolaczk/latte finished outcome=registered key_slot=2 processed=4 in_flight=7
+2026-07-31 17:16:11,050 INFO alvance_github_crawler.pending.verification: pending candidate capy-language/capy finished outcome=registered key_slot=1 processed=5 in_flight=6
+2026-07-31 17:16:22,019 INFO alvance_github_crawler.pending.verification: pending candidate metaplex-foundation/sugar finished outcome=registered key_slot=2 processed=6 in_flight=5
+2026-07-31 17:16:51,476 INFO alvance_github_crawler.pending.verification: pending candidate dbcrossbar/dbcrossbar finished outcome=registered key_slot=3 processed=7 in_flight=4
+2026-07-31 17:18:16,524 INFO alvance_github_crawler.pending.verification: pending candidate un-ts/eslint-plugin-import-x finished outcome=rejected key_slot=1 processed=8 in_flight=3
+2026-07-31 17:20:52,374 INFO alvance_github_crawler.pending.verification: pending candidate rond-authz/rond finished outcome=rejected key_slot=1 processed=9 in_flight=2
+2026-07-31 17:22:42,099 INFO alvance_github_crawler.pending.verification: pending candidate heetch/confita finished outcome=rejected key_slot=1 processed=10 in_flight=1
+2026-07-31 17:22:46,327 INFO alvance_github_crawler.pending.verification: pending candidate ConsenSysDiligence/solc-typed-ast finished outcome=rejected key_slot=2 processed=11 in_flight=0
+{
+  "key_slot_1_processed": 4,
+  "key_slot_1_registered": 1,
+  "key_slot_1_rejected": 3,
+  "key_slot_2_processed": 4,
+  "key_slot_2_registered": 2,
+  "key_slot_2_rejected": 2,
+  "key_slot_3_processed": 3,
+  "key_slot_3_registered": 2,
+  "key_slot_3_rejected": 1,
+  "processed": 11,
+  "registered": 5,
+  "rejected": 6,
+  "remaining": 0
+}
+[2026-07-31T17:22:47Z] stage=verify-escalated-20260731T171057Z exit_code=0 duration_s=710

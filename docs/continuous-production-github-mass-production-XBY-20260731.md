@@ -1,22 +1,22 @@
 # Pipeline statistics: github-mass-production-XBY-20260731
 
-- Status: `complete`
-- Generated: `2026-07-31T15:40:18.700883+00:00`
-- Raw GitHub sample: 35000
-- Initial filter accepted: 16425
-- E2B queue: 3300
-- Deliverable tasks: 992
+- Status: `incomplete`
+- Generated: `2026-07-31T17:22:50.412188+00:00`
+- Raw GitHub sample: 38455
+- Initial filter accepted: 17710
+- E2B queue: 3472
+- Deliverable tasks: 1041
 - Pending: 0
 
 ## Language funnel
 
 | Language | Initial accepted | Final tasks |
 |---|---:|---:|
-| python | 3373 | 120 |
-| go | 4688 | 417 |
-| typescript | 2789 | 114 |
-| javascript | 1828 | 82 |
-| rust | 3747 | 259 |
+| python | 3648 | 122 |
+| go | 5045 | 435 |
+| typescript | 3049 | 120 |
+| javascript | 1983 | 85 |
+| rust | 3985 | 279 |
 
 ## Stage timings
 
@@ -180,6 +180,31 @@
 | verify-default-20260731T150346Z | 1061 | 0 |
 | requeue-resource-failures | 28 | 0 |
 | verify-escalated-20260731T152157Z | 1098 | 0 |
+| repair-rebuildable-packages | 8 | 0 |
+| requeue-node-package-manager-v18 | 4 | 0 |
+| requeue-go-runtime-v4 | 3 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 4 | 0 |
+| prescreen-resume-35000 | 5 | 0 |
+| crawl-35500 | 336 | 0 |
+| verify-default-20260731T154740Z | 49 | 0 |
+| prescreen-35500 | 543 | 0 |
+| verify-default-20260731T154933Z | 739 | 0 |
+| crawl-36000 | 414 | 0 |
+| verify-default-20260731T160209Z | 69 | 0 |
+| prescreen-36000 | 246 | 0 |
+| crawl-36500 | 334 | 0 |
+| prescreen-36500 | 205 | 0 |
+| crawl-37000 | 329 | 0 |
+| prescreen-37000 | 187 | 0 |
+| crawl-37500 | 346 | 0 |
+| prescreen-37500 | 318 | 0 |
+| verify-default-20260731T160349Z | 2597 | 0 |
+| crawl-38000 | 1111 | 0 |
+| prescreen-38000 | 188 | 0 |
+| crawl-38500 | 325 | 1 |
+| verify-default-20260731T165429Z | 972 | 0 |
+| requeue-resource-failures | 14 | 0 |
+| verify-escalated-20260731T171057Z | 710 | 0 |
 
 ## E2B task performance
 
@@ -1177,6 +1202,55 @@
 | [alexei-led/spotinfo](https://github.com/alexei-led/spotinfo) | go | 2 CPU / 4096 MB | 0.55 | 99.83 | 1138.4 | `tasks/alv-spotinfo-c8c9e4-ed8d6d0c-v2` |
 | [cosdata/cosdata](https://github.com/cosdata/cosdata) | rust | 2 CPU / 4096 MB | 0.51 | 77.4 | 572.3 | `tasks/alv-cosdata-74e012-1696d073-v2` |
 | [zalando-incubator/kube-ingress-aws-controller](https://github.com/zalando-incubator/kube-ingress-aws-controller) | go | 2 CPU / 4096 MB | 0.54 | 66.83 | 1278.3 | `tasks/alv-kube-ingress-aws-con-b3591f-f8b184bc-v2` |
+| [mwilliamson/mammoth.js](https://github.com/mwilliamson/mammoth.js) | javascript | 1 CPU / 1024 MB | 0.43 | 6.35 | 93.9 | `tasks/alv-mammoth-js-fbfbb7-1a495a98-v2` |
+| [google/mtail](https://github.com/google/mtail) | go | 1 CPU / 1024 MB | 0.58 | 28.78 | 181.0 | `tasks/alv-mtail-88b2b5-4c7e0e11-v2` |
+| [pgaskin/kobopatch](https://github.com/pgaskin/kobopatch) | go | 1 CPU / 1024 MB | 0.54 | 22.8 | 182.3 | `tasks/alv-kobopatch-b59819-6189c542-v2` |
+| [Unibeautify/unibeautify](https://github.com/Unibeautify/unibeautify) | typescript | 1 CPU / 1024 MB | 0.67 | 17.32 | 258.2 | `tasks/alv-unibeautify-dcc9c3-06e30346-v2` |
+| [nakabonne/tstorage](https://github.com/nakabonne/tstorage) | go | 1 CPU / 1024 MB | 0.5 | 23.04 | 169.5 | `tasks/alv-tstorage-99f249-cec3a957-v2` |
+| [obra/claude-session-driver](https://github.com/obra/claude-session-driver) | typescript | 1 CPU / 1024 MB | 0.51 | 17.8 | 123.0 | `tasks/alv-claude-session-drive-99657b-d97d1eb0-v2` |
+| [CrowdStrike/csproto](https://github.com/CrowdStrike/csproto) | go | 1 CPU / 1024 MB | 0.65 | 21.42 | 183.5 | `tasks/alv-csproto-7cd9da-e9cb63f0-v2` |
+| [suites-dev/suites](https://github.com/suites-dev/suites) | typescript | 1 CPU / 1024 MB | 0.4 | 40.01 | 214.0 | `tasks/alv-suites-5d11d9-e2f1bc74-v2` |
+| [twitchdev/twitch-cli](https://github.com/twitchdev/twitch-cli) | go | 1 CPU / 1024 MB | 0.47 | 52.47 | 155.0 | `tasks/alv-twitch-cli-8c4988-fd7dac64-v2` |
+| [meta-pytorch/KernelAgent](https://github.com/meta-pytorch/KernelAgent) | python | 1 CPU / 1024 MB | 0.65 | 6.33 | 111.5 | `tasks/alv-kernelagent-83d8f0-e0647170-v2` |
+| [mibk/dupl](https://github.com/mibk/dupl) | go | 1 CPU / 1024 MB | 0.41 | 6.77 | 99.9 | `tasks/alv-dupl-afb12d-8836f5c0-v2` |
+| [xlab/c-for-go](https://github.com/xlab/c-for-go) | go | 1 CPU / 1024 MB | 0.64 | 22.78 | 163.9 | `tasks/alv-c-for-go-3ae0ac-6dd1c017-v2` |
+| [ikebastuz/wiper](https://github.com/ikebastuz/wiper) | rust | 1 CPU / 1024 MB | 0.42 | 6.15 | 89.1 | `tasks/alv-wiper-c41779-6609ced6-v2` |
+| [mvniekerk/tokio-cron-scheduler](https://github.com/mvniekerk/tokio-cron-scheduler) | rust | 1 CPU / 1024 MB | 0.44 | 13.86 | 307.8 | `tasks/alv-tokio-cron-scheduler-827203-ee987dd3-v2` |
+| [srvaroa/labeler](https://github.com/srvaroa/labeler) | go | 1 CPU / 1024 MB | 0.43 | 13.83 | 155.4 | `tasks/alv-labeler-a20939-e8fbb256-v2` |
+| [fabien0102/ts-to-zod](https://github.com/fabien0102/ts-to-zod) | typescript | 1 CPU / 1024 MB | 0.49 | 40.63 | 290.2 | `tasks/alv-ts-to-zod-87dec4-2b710977-v2` |
+| [asottile/setup-py-upgrade](https://github.com/asottile/setup-py-upgrade) | python | 1 CPU / 1024 MB | 0.47 | 1.19 | 30.3 | `tasks/alv-setup-py-upgrade-0a1c4c-5d4bbf70-v2` |
+| [TeXitoi/keyberon](https://github.com/TeXitoi/keyberon) | rust | 1 CPU / 1024 MB | 0.53 | 6.29 | 122.9 | `tasks/alv-keyberon-61e8a8-362c209f-v2` |
+| [mpolden/echoip](https://github.com/mpolden/echoip) | go | 1 CPU / 1024 MB | 0.39 | 11.12 | 151.2 | `tasks/alv-echoip-02a688-746db5eb-v2` |
+| [Arindam200/cc-lens](https://github.com/Arindam200/cc-lens) | typescript | 1 CPU / 1024 MB | 0.45 | 4.89 | 158.2 | `tasks/alv-cc-lens-1dd812-db90effa-v2` |
+| [thoughtworks/talisman](https://github.com/thoughtworks/talisman) | go | 1 CPU / 1024 MB | 0.43 | 21.7 | 171.3 | `tasks/alv-talisman-9bc4de-efcb1a36-v2` |
+| [duaraghav8/dockershrink](https://github.com/duaraghav8/dockershrink) | go | 1 CPU / 1024 MB | 0.53 | 14.13 | 205.0 | `tasks/alv-dockershrink-c18a98-a7af6799-v2` |
+| [muety/telepush](https://github.com/muety/telepush) | go | 1 CPU / 1024 MB | 0.48 | 14.05 | 133.3 | `tasks/alv-telepush-38e6db-8f832421-v2` |
+| [zapier/prom-aggregation-gateway](https://github.com/zapier/prom-aggregation-gateway) | go | 1 CPU / 1024 MB | 0.54 | 18.67 | 245.5 | `tasks/alv-prom-aggregation-gat-679355-84686bb6-v2` |
+| [lnx-search/lnx](https://github.com/lnx-search/lnx) | rust | 1 CPU / 1024 MB | 0.52 | 8.24 | 139.7 | `tasks/alv-lnx-aa373f-885e6727-v2` |
+| [esoterra/claw-lang](https://github.com/esoterra/claw-lang) | rust | 1 CPU / 1024 MB | 0.46 | 1.68 | 57.8 | `tasks/alv-claw-lang-2af9df-ae22b49f-v2` |
+| [osteele/liquid](https://github.com/osteele/liquid) | go | 1 CPU / 1024 MB | 0.45 | 33.45 | 184.1 | `tasks/alv-liquid-c86220-5d9c036f-v2` |
+| [sstadick/cargo-bundle-licenses](https://github.com/sstadick/cargo-bundle-licenses) | rust | 1 CPU / 1024 MB | 0.46 | 6.26 | 121.7 | `tasks/alv-cargo-bundle-license-55503b-d55425cd-v2` |
+| [udoprog/leaky-bucket](https://github.com/udoprog/leaky-bucket) | rust | 1 CPU / 1024 MB | 0.71 | 22.44 | 207.8 | `tasks/alv-leaky-bucket-a55603-98677e68-v2` |
+| [junkdog/glim](https://github.com/junkdog/glim) | rust | 1 CPU / 1024 MB | 0.55 | 42.4 | 80.9 | `tasks/alv-glim-884be6-cd53dae9-v2` |
+| [okaneco/kmeans-colors](https://github.com/okaneco/kmeans-colors) | rust | 1 CPU / 1024 MB | 0.5 | 6.45 | 143.4 | `tasks/alv-kmeans-colors-9ab295-fa34b68c-v2` |
+| [packwiz/packwiz](https://github.com/packwiz/packwiz) | go | 1 CPU / 1024 MB | 0.47 | 13.54 | 162.2 | `tasks/alv-packwiz-0058ef-dfd8b68a-v2` |
+| [michaelsproul/rust_radix_trie](https://github.com/michaelsproul/rust_radix_trie) | rust | 1 CPU / 1024 MB | 0.47 | 9.08 | 135.7 | `tasks/alv-rust-radix-trie-05bf59-a89f789e-v2` |
+| [yoanlcq/vek](https://github.com/yoanlcq/vek) | rust | 1 CPU / 1024 MB | 0.56 | 73.41 | 329.2 | `tasks/alv-vek-87eb1b-b4c02f9d-v2` |
+| [mediaelement/mediaelement](https://github.com/mediaelement/mediaelement) | javascript | 1 CPU / 1024 MB | 0.52 | 5.45 | 109.2 | `tasks/alv-mediaelement-e950dd-170a1e93-v2` |
+| [ubnt-intrepid/dot.rs](https://github.com/ubnt-intrepid/dot.rs) | rust | 1 CPU / 1024 MB | 0.44 | 4.04 | 82.4 | `tasks/alv-dot-rs-bf26e3-3aba0a6f-v2` |
+| [FirebaseExtended/action-hosting-deploy](https://github.com/FirebaseExtended/action-hosting-deploy) | typescript | 1 CPU / 1024 MB | 0.48 | 9.72 | 342.5 | `tasks/alv-action-hosting-deplo-054603-500ac625-v2` |
+| [MitchelPaulin/Walleye](https://github.com/MitchelPaulin/Walleye) | rust | 1 CPU / 1024 MB | 0.46 | 15.76 | 30.6 | `tasks/alv-walleye-3d5a3b-2cbd6df8-v2` |
+| [nitram509/lib-bpmn-engine](https://github.com/nitram509/lib-bpmn-engine) | go | 1 CPU / 1024 MB | 0.48 | 24.49 | 197.5 | `tasks/alv-lib-bpmn-engine-1809f0-447965fc-v2` |
+| [adnanh/webhook](https://github.com/adnanh/webhook) | go | 1 CPU / 1024 MB | 0.51 | 23.99 | 150.3 | `tasks/alv-webhook-4dadde-857e708f-v2` |
+| [fornwall/rust-script](https://github.com/fornwall/rust-script) | rust | 1 CPU / 1024 MB | 0.46 | 8.36 | 100.5 | `tasks/alv-rust-script-bc1854-99d2c790-v2` |
+| [jfairbank/redux-saga-test-plan](https://github.com/jfairbank/redux-saga-test-plan) | javascript | 1 CPU / 1024 MB | 0.88 | 28.6 | 165.2 | `tasks/alv-redux-saga-test-plan-845377-9199c6cf-v2` |
+| [oleiade/trousseau](https://github.com/oleiade/trousseau) | go | 1 CPU / 1024 MB | 0.49 | 25.63 | 266.9 | `tasks/alv-trousseau-5644d8-49bdaffe-v2` |
+| [LukeMathWalker/wiremock-rs](https://github.com/LukeMathWalker/wiremock-rs) | rust | 1 CPU / 1024 MB | 0.58 | 21.39 | 429.2 | `tasks/alv-wiremock-rs-e1f637-6b193047-v2` |
+| [evmar/n2](https://github.com/evmar/n2) | rust | 2 CPU / 4096 MB | 0.56 | 5.57 | 79.9 | `tasks/alv-n2-0b0faf-b1fead52-v2` |
+| [pkolaczk/latte](https://github.com/pkolaczk/latte) | rust | 2 CPU / 4096 MB | 0.48 | 2.48 | 67.8 | `tasks/alv-latte-f78d29-0eb287f5-v2` |
+| [capy-language/capy](https://github.com/capy-language/capy) | rust | 2 CPU / 4096 MB | 0.47 | 21.36 | 128.1 | `tasks/alv-capy-7e130d-b381c400-v2` |
+| [metaplex-foundation/sugar](https://github.com/metaplex-foundation/sugar) | rust | 2 CPU / 4096 MB | 0.64 | 14.92 | 304.0 | `tasks/alv-sugar-5bfab0-f63f54a7-v2` |
+| [dbcrossbar/dbcrossbar](https://github.com/dbcrossbar/dbcrossbar) | rust | 2 CPU / 4096 MB | 0.7 | 23.19 | 686.6 | `tasks/alv-dbcrossbar-4532b5-9025287d-v2` |
 
 ## Logs
 
