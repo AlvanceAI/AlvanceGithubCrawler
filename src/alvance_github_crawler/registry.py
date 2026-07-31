@@ -7,14 +7,30 @@ from pathlib import Path
 from typing import Any
 
 from .jsonl_io import append_text_locked, read_text_locked
+from .production_events import ProductionEventWriter
+
+RETRYABLE_REJECTION_REASONS = {
+    "stage_error",
+    "build_timeout",
+    "runtime_prep_timeout",
+    "runtime_prep_fail",
+    "infra_error",
+    "e2b_key_exhausted",
+}
 
 
 class JsonlRegistry:
-    def __init__(self, candidates_path: Path, rejections_path: Path) -> None:
+    def __init__(
+        self,
+        candidates_path: Path,
+        rejections_path: Path,
+        events_path: Path | None = None,
+    ) -> None:
         self.candidates_path = candidates_path
         self.rejections_path = rejections_path
         candidates_path.parent.mkdir(parents=True, exist_ok=True)
         rejections_path.parent.mkdir(parents=True, exist_ok=True)
+        self.events = ProductionEventWriter(events_path)
         self._write_lock = threading.Lock()
 
     def existing_repos(self) -> set[str]:
@@ -44,20 +60,23 @@ class JsonlRegistry:
             reason = str(record.get("reason", ""))
             if repo:
                 latest[repo] = reason
-        retryable = {
-            "stage_error",
-            "build_timeout",
-            "runtime_prep_timeout",
-            "runtime_prep_fail",
-            "infra_error",
-            "e2b_key_exhausted",
+        return {
+            repo
+            for repo, reason in latest.items()
+            if reason not in RETRYABLE_REJECTION_REASONS
         }
-        return {repo for repo, reason in latest.items() if reason not in retryable}
 
     def register(self, record: dict[str, Any]) -> None:
         payload = {"registered_at": datetime.now(UTC).isoformat(), **record}
         with self._write_lock:
             self._append(self.candidates_path, payload)
+            self.events.emit(
+                stage="registry",
+                event_type="candidate_registered",
+                status="ok",
+                repo=str(payload.get("repo") or ""),
+                candidate_status=str(payload.get("status") or ""),
+            )
 
     def reject(
         self,
@@ -75,6 +94,14 @@ class JsonlRegistry:
         }
         with self._write_lock:
             self._append(self.rejections_path, payload)
+            self.events.emit(
+                stage=stage,
+                event_type="candidate_rejected",
+                status="rejected",
+                repo=str(payload.get("repo") or ""),
+                reason=reason,
+                retryable=reason in RETRYABLE_REJECTION_REASONS,
+            )
 
     @staticmethod
     def _append(path: Path, payload: dict[str, Any]) -> None:

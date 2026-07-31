@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import threading
 import time
 from typing import Any, Protocol
@@ -62,6 +63,7 @@ direction 用一句中文准确概括待实现功能。
         self.max_output_tokens = max_output_tokens
         self._request_lock = threading.Lock()
         self._next_request_at = 0.0
+        self._responses_api_available = True
 
     def judge(
         self, repo: dict[str, Any], issue: dict[str, Any], repo_tree_summary: str
@@ -73,18 +75,11 @@ direction 用一句中文准确概括待实现功能。
             f"仓库结构:\n{repo_tree_summary}\n\n"
             f"Issue #{issue['number']}: {issue.get('title') or ''}\n{body}"
         )
-        response = None
+        verdict = None
         for attempt in range(self.MAX_ATTEMPTS):
             self._wait_for_request_window()
             try:
-                response = self.client.responses.parse(
-                    model=self.model,
-                    instructions=self.SYSTEM_PROMPT,
-                    input=user_input,
-                    text_format=DirectionVerdict,
-                    max_output_tokens=self.max_output_tokens,
-                    reasoning={"effort": "low"},
-                )
+                verdict = self._request_verdict(user_input)
                 break
             except Exception as exc:
                 if attempt + 1 >= self.MAX_ATTEMPTS or not _is_retryable_openai_error(exc):
@@ -99,10 +94,56 @@ direction 用一句中文准确概括待实现功能。
                     delay,
                     type(exc).__name__,
                 )
-        assert response is not None
+        assert verdict is not None
+        return verdict
+
+    def _request_verdict(self, user_input: str) -> DirectionVerdict:
+        if getattr(self, "_responses_api_available", True):
+            try:
+                return self._judge_with_responses(user_input)
+            except Exception as exc:
+                if not _is_unsupported_responses_api(exc):
+                    raise
+                self._responses_api_available = False
+                LOGGER.info("OpenAI Responses API unavailable; falling back to chat completions")
+        return self._judge_with_chat_completions(user_input)
+
+    def _judge_with_responses(self, user_input: str) -> DirectionVerdict:
+        response = self.client.responses.parse(
+            model=self.model,
+            instructions=self.SYSTEM_PROMPT,
+            input=user_input,
+            text_format=DirectionVerdict,
+            max_output_tokens=self.max_output_tokens,
+            reasoning={"effort": "low"},
+        )
         if response.output_parsed is None:
             raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
         return response.output_parsed
+
+    def _judge_with_chat_completions(self, user_input: str) -> DirectionVerdict:
+        kwargs: dict[str, Any] = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": self.SYSTEM_PROMPT},
+                {"role": "user", "content": user_input},
+            ],
+            "max_tokens": self.max_output_tokens,
+        }
+        try:
+            response = self.client.chat.completions.create(
+                **kwargs,
+                response_format={"type": "json_object"},
+            )
+        except Exception as exc:
+            if not _is_unsupported_json_response_format(exc):
+                raise
+            response = self.client.chat.completions.create(**kwargs)
+
+        content = response.choices[0].message.content
+        if not content:
+            raise RuntimeError("OpenAI chat completion did not contain a direction verdict")
+        return DirectionVerdict.model_validate_json(extract_json_object(content))
 
     def _wait_for_request_window(self) -> None:
         with self._request_lock:
@@ -149,6 +190,49 @@ def _openai_retry_delay(error: BaseException, attempt: int, *, base_s: float) ->
         except (TypeError, ValueError):
             pass
     return min(base_s * (2**attempt), 60.0)
+
+
+def _is_unsupported_responses_api(error: BaseException) -> bool:
+    status_code = getattr(error, "status_code", None)
+    message = str(error).lower()
+    if status_code in {404, 405}:
+        return True
+    return status_code == 400 and any(
+        marker in message
+        for marker in (
+            "responses",
+            "text_format",
+            "unknown parameter",
+            "unsupported",
+        )
+    )
+
+
+def _is_unsupported_json_response_format(error: BaseException) -> bool:
+    status_code = getattr(error, "status_code", None)
+    message = str(error).lower()
+    if status_code not in {400, 422}:
+        return False
+    return any(marker in message for marker in ("response_format", "json_object", "json"))
+
+
+def extract_json_object(content: str) -> str:
+    stripped = content.strip()
+    if stripped.startswith("{"):
+        return stripped
+    fenced = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", stripped, flags=re.DOTALL)
+    if fenced:
+        return fenced.group(1)
+    decoder = json.JSONDecoder()
+    start = stripped.find("{")
+    while start != -1:
+        try:
+            _, end = decoder.raw_decode(stripped[start:])
+        except json.JSONDecodeError:
+            start = stripped.find("{", start + 1)
+            continue
+        return stripped[start : start + end]
+    raise RuntimeError("OpenAI chat completion did not contain a JSON object")
 
 
 class PublicImplementationSearch:

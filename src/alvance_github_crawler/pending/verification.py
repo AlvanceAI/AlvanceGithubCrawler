@@ -38,7 +38,11 @@ class PendingVerificationRunner:
     def from_config(cls, config: PipelineConfig) -> PendingVerificationRunner:
         if not config.e2b_api_keys:
             raise ValueError("at least one E2B API key is required")
-        registry = JsonlRegistry(config.candidates_path, config.rejections_path)
+        registry = JsonlRegistry(
+            config.candidates_path,
+            config.rejections_path,
+            config.output_dir / "events.jsonl",
+        )
         quota = LanguageQuota(config.candidates_path)
         verifiers: list[E2BCandidateVerifier] = []
         for api_key in config.e2b_api_keys:

@@ -121,7 +121,7 @@ def compact_package_record(
     environment = candidate_record.get("e2b_environment") or {}
     offline = environment.get("offline") or {}
     benchmark = candidate_record.get("benchmark") or {}
-    return {
+    payload: dict[str, Any] = {
         "schema_version": PACKAGE_SCHEMA_VERSION,
         "package_id": result.package_id,
         "material_id": result.material_id,
@@ -181,3 +181,30 @@ def compact_package_record(
             "rebuild_network_required": True,
         },
     }
+    quality = compact_quality(candidate_record)
+    if quality:
+        payload["quality"] = quality
+    return payload
+
+
+def compact_quality(candidate_record: dict[str, Any]) -> dict[str, Any]:
+    quality: dict[str, Any] = {}
+    taskability = candidate_record.get("taskability")
+    if taskability:
+        quality["taskability"] = taskability
+    contamination = candidate_record.get("contamination")
+    if contamination:
+        quality["contamination"] = contamination
+    direction = {
+        key: value
+        for key, value in {
+            "source": candidate_record.get("direction_source"),
+            "keywords": candidate_record.get("direction_keywords"),
+            "target_paths": candidate_record.get("direction_target_paths"),
+            "h6_sources": candidate_record.get("h6_sources"),
+        }.items()
+        if value
+    }
+    if direction:
+        quality["direction"] = direction
+    return quality

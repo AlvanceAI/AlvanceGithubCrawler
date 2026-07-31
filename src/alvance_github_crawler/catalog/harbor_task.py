@@ -34,9 +34,10 @@ def task_name(repository: QualifiedRepository) -> str:
 def harbor_template_alias(task_name: str, environment_dir: Path) -> str:
     try:
         from dirhash import dirhash
-    except ImportError as exc:
-        raise RuntimeError("dirhash is required for Harbor packaging") from exc
-    digest = dirhash(environment_dir, "sha256")[:8]
+    except ImportError:
+        digest = _directory_sha256(environment_dir)[:8]
+    else:
+        digest = dirhash(environment_dir, "sha256")[:8]
     return f"{task_name}-env-{digest}".replace(".", "-")
 
 
@@ -86,6 +87,9 @@ def render_environment_dockerfile(repository: QualifiedRepository) -> str:
 def render_instruction(repository: QualifiedRepository) -> str:
     fallback = "Inspect the repository and implement the requested change."
     return (
+        "# Direction scaffold\n\n"
+        "This file is a Crawler-produced direction scaffold, not a locked "
+        "DeepSWE instruction and not an accepted task specification.\n\n"
         f"Repository `{repository.repo}` at commit `{repository.base_commit}` is "
         "preloaded in `/app`.\n\n"
         "Work in `/app`. The validated fuzzy direction is:\n\n"
@@ -200,6 +204,17 @@ def render_task_material_toml(
 
 def _slug(value: str, *, limit: int) -> str:
     return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")[:limit]
+
+
+def _directory_sha256(directory: Path) -> str:
+    hasher = hashlib.sha256()
+    for path in sorted(item for item in directory.rglob("*") if item.is_file()):
+        relative = path.relative_to(directory).as_posix()
+        hasher.update(relative.encode("utf-8"))
+        hasher.update(b"\0")
+        hasher.update(path.read_bytes())
+        hasher.update(b"\0")
+    return hasher.hexdigest()
 
 
 def _toml_string(value: str) -> str:

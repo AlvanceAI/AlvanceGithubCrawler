@@ -145,3 +145,46 @@ def test_compact_package_omits_test_logs(tmp_path) -> None:
     assert payload["harbor"]["build_source"] == "environment/Dockerfile"
     assert payload["e2b_history"]["harbor_template"]["template_id"] == "harbor-id"
     assert payload["execution_user"] == "user"
+
+
+def test_compact_package_preserves_quality_metadata(tmp_path) -> None:
+    record = {
+        **candidate_record(),
+        "direction_source": "issue#42",
+        "direction_keywords": ["parser", "diagnostics"],
+        "direction_target_paths": ["src/parser.py"],
+        "h6_sources": ["github_code_search"],
+        "taskability": {"score": 7, "risk": []},
+        "contamination": {"risk": "medium"},
+    }
+    repository = QualifiedRepository.from_candidate(record)
+    prepared = TracePackageStore(tmp_path / "catalog").prepare(repository)
+    wrapper = E2BWrapperReceipt(
+        source_template_id="source-id",
+        harbor_template_id="harbor-id",
+        harbor_template_alias=prepared.harbor_template_alias,
+        cache_hit=True,
+        build_duration_s=0.0,
+        smoke={"ok": True, "sandbox_destroyed": True},
+    )
+    result = HarborPackageResult(
+        package_id=prepared.material_id,
+        material_id=prepared.material_id,
+        task_name=prepared.task_name,
+        material_path=prepared.material_path,
+        task_path=prepared.task_path,
+        source_template_alias=repository.source_template_alias,
+        source_template_id="source-id",
+        harbor_template_alias=prepared.harbor_template_alias,
+        harbor_template_id="harbor-id",
+        wrapper_cache_hit=True,
+        wrapper_build_s=0.0,
+        smoke_ok=True,
+        launch_command="harbor run",
+    )
+
+    payload = compact_package_record(record, repository, prepared, wrapper, result)
+
+    assert payload["quality"]["taskability"] == {"score": 7, "risk": []}
+    assert payload["quality"]["contamination"] == {"risk": "medium"}
+    assert payload["quality"]["direction"]["target_paths"] == ["src/parser.py"]

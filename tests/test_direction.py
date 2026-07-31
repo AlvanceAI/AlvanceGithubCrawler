@@ -213,3 +213,64 @@ def test_openai_direction_judge_does_not_retry_client_error(monkeypatch) -> None
         )
 
     assert judge.client.responses.calls == 1
+
+
+def test_openai_direction_judge_falls_back_to_chat_completions() -> None:
+    class NotFound(Exception):
+        status_code = 404
+
+    class FakeResponses:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def parse(self, **kwargs):
+            self.calls += 1
+            raise NotFound("404 page not found")
+
+    class FakeCompletions:
+        def __init__(self) -> None:
+            self.calls: list[dict[str, object]] = []
+
+        def create(self, **kwargs):
+            self.calls.append(kwargs)
+            return SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(
+                            content=(
+                                '{"implemented": false, '
+                                '"behavior_boundary_clear": true, '
+                                '"estimated_loc": 320, '
+                                '"keywords": ["streaming checksum", "binary frame codec"], '
+                                '"direction": "增加流式二进制帧编解码", '
+                                '"target_paths": ["src/codec"]}'
+                            )
+                        )
+                    )
+                ]
+            )
+
+    responses = FakeResponses()
+    completions = FakeCompletions()
+    judge = OpenAIDirectionJudge.__new__(OpenAIDirectionJudge)
+    judge.client = SimpleNamespace(
+        responses=responses,
+        chat=SimpleNamespace(completions=completions),
+    )
+    judge.model = "compatible-model"
+    judge.max_output_tokens = 1000
+    judge._request_lock = threading.Lock()
+    judge._next_request_at = 0.0
+    judge._responses_api_available = True
+
+    verdict = judge.judge(
+        {"full_name": "owner/repo", "description": ""},
+        {"number": 1, "title": "feature", "body": "body"},
+        "src/",
+    )
+
+    assert verdict.estimated_loc == 320
+    assert verdict.target_paths == ["src/codec"]
+    assert responses.calls == 1
+    assert completions.calls[0]["response_format"] == {"type": "json_object"}
+    assert judge._responses_api_available is False
