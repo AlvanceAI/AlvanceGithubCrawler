@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -13,6 +14,7 @@ from .deepswe_handoff import export_handoff
 from .diversity_report import write_diversity_report
 from .logging_setup import configure_logging
 from .production_events import ProductionEventWriter, read_events
+from .repo_summary import export_repo_summary
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -58,6 +60,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="write a local candidate diversity report without network access",
     )
     parser.add_argument(
+        "--export-repo-summary",
+        action="store_true",
+        help="export compact candidate metadata for DeepSWE repo-card generation",
+    )
+    parser.add_argument(
         "--record-deepswe-feedback",
         action="store_true",
         help="append one DeepSWE task-production feedback record",
@@ -100,6 +107,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def doctor(config: PipelineConfig) -> dict[str, object]:
+    socks_proxy = socks_proxy_configured()
     return {
         "github_token": bool(config.github_token),
         "openai_api_key": bool(config.openai_api_key),
@@ -110,9 +118,19 @@ def doctor(config: PipelineConfig) -> dict[str, object]:
         "docker": shutil.which("docker") is not None,
         "openai_sdk": importlib.util.find_spec("openai") is not None,
         "e2b_sdk": importlib.util.find_spec("e2b") is not None,
+        "socks_proxy_configured": socks_proxy,
+        "socks_support": importlib.util.find_spec("socks") is not None,
         "output_dir": str(config.output_dir),
         "catalog_dir": str(config.catalog_dir),
     }
+
+
+def socks_proxy_configured() -> bool:
+    for key in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy"):
+        value = os.getenv(key, "").strip().lower()
+        if value.startswith(("socks://", "socks4://", "socks4a://", "socks5://", "socks5h://")):
+            return True
+    return False
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -159,6 +177,25 @@ def main(argv: list[str] | None = None) -> int:
             print(str(exc), file=sys.stderr)
             return 1
         print(json.dumps({"output": str(out)}, ensure_ascii=False, sort_keys=True))
+        return 0
+
+    if args.export_repo_summary:
+        if not args.repo or not args.out:
+            print("--export-repo-summary requires --repo and --out", file=sys.stderr)
+            return 2
+        try:
+            summary = export_repo_summary(config.candidates_path, args.repo, Path(args.out))
+        except (OSError, ValueError) as exc:
+            print(str(exc), file=sys.stderr)
+            return 1
+        ProductionEventWriter(config.output_dir / "events.jsonl").emit(
+            stage="repo_summary_export",
+            event_type="repo_summary_exported",
+            status="ok",
+            repo=args.repo,
+            output=args.out,
+        )
+        print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
 
     if args.record_deepswe_feedback:

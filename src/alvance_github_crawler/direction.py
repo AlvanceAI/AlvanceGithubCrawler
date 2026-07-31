@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import time
 from typing import Any, Protocol
 
@@ -53,6 +54,7 @@ direction 用一句中文准确概括待实现功能。
         self.client = OpenAI(**options)
         self.model = model
         self.max_output_tokens = max_output_tokens
+        self._responses_api_available = True
 
     def judge(
         self, repo: dict[str, Any], issue: dict[str, Any], repo_tree_summary: str
@@ -64,17 +66,98 @@ direction 用一句中文准确概括待实现功能。
             f"仓库结构:\n{repo_tree_summary}\n\n"
             f"Issue #{issue['number']}: {issue.get('title') or ''}\n{body}"
         )
-        response = self.client.responses.parse(
-            model=self.model,
-            instructions=self.SYSTEM_PROMPT,
-            input=user_input,
-            text_format=DirectionVerdict,
-            max_output_tokens=self.max_output_tokens,
-            reasoning={"effort": "low"},
+        if self._responses_api_available:
+            try:
+                response = self.client.responses.parse(
+                    model=self.model,
+                    instructions=self.SYSTEM_PROMPT,
+                    input=user_input,
+                    text_format=DirectionVerdict,
+                    max_output_tokens=self.max_output_tokens,
+                    reasoning={"effort": "low"},
+                )
+                if response.output_parsed is None:
+                    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+                return response.output_parsed
+            except Exception as exc:
+                if not is_unsupported_responses_api(exc):
+                    raise
+                self._responses_api_available = False
+        return self._judge_with_chat_completions(user_input)
+
+    def _judge_with_chat_completions(self, user_input: str) -> DirectionVerdict:
+        prompt = (
+            f"{user_input}\n\n"
+            "只返回一个 JSON object，不要 Markdown，不要解释。JSON schema:\n"
+            "{\n"
+            '  "implemented": boolean,\n'
+            '  "behavior_boundary_clear": boolean,\n'
+            '  "estimated_loc": integer,\n'
+            '  "keywords": string[],\n'
+            '  "direction": string,\n'
+            '  "target_paths": string[]\n'
+            "}\n"
         )
-        if response.output_parsed is None:
-            raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
-        return response.output_parsed
+        messages = [
+            {"role": "system", "content": self.SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ]
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=0,
+                max_tokens=self.max_output_tokens,
+                response_format={"type": "json_object"},
+            )
+        except Exception as exc:
+            if not is_unsupported_json_response_format(exc):
+                raise
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=0,
+                max_tokens=self.max_output_tokens,
+            )
+        content = response.choices[0].message.content
+        if not content:
+            raise RuntimeError("Chat completion did not contain direction verdict JSON")
+        return DirectionVerdict.model_validate(extract_json_object(content))
+
+
+def is_unsupported_responses_api(exc: Exception) -> bool:
+    status_code = getattr(exc, "status_code", None)
+    message = str(exc).lower()
+    return status_code == 404 or "404" in message and "page not found" in message
+
+
+def is_unsupported_json_response_format(exc: Exception) -> bool:
+    status_code = getattr(exc, "status_code", None)
+    message = str(exc).lower()
+    return status_code in {400, 404} and (
+        "response_format" in message
+        or "json_object" in message
+        or "unsupported" in message
+        or "page not found" in message
+    )
+
+
+def extract_json_object(text: str) -> dict[str, Any]:
+    text = text.strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
+        text = re.sub(r"\s*```$", "", text)
+    decoder = json.JSONDecoder()
+    for index, char in enumerate(text):
+        if char != "{":
+            continue
+        try:
+            payload, _ = decoder.raw_decode(text[index:])
+        except json.JSONDecodeError:
+            continue
+        if isinstance(payload, dict):
+            return payload
+    raise RuntimeError("could not parse JSON object from chat completion")
 
 
 class PublicImplementationSearch:

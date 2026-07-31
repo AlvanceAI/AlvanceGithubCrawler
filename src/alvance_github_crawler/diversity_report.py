@@ -14,6 +14,13 @@ def build_diversity_report(candidates_path: Path, *, feedback_path: Path | None 
     languages = Counter(str(record.get("language") or "unknown") for record in records)
     owners = Counter(str(record.get("repo") or "unknown").split("/", 1)[0] for record in records)
     taskability = Counter(_taskability_bucket(record) for record in records)
+    contamination = Counter(_contamination_risk(record) for record in records)
+    target_path_categories = Counter(_target_path_category(record) for record in records)
+    taskability_risks = Counter(
+        str(risk)
+        for record in records
+        for risk in ((record.get("taskability") or {}).get("risk") or [])
+    )
     abandoned = {
         f"{item.get('repo')}@{item.get('base_commit')}"
         for item in feedback
@@ -29,6 +36,14 @@ def build_diversity_report(candidates_path: Path, *, feedback_path: Path | None 
         _render_counter(owners.most_common(20)),
         "\n## Taskability\n\n",
         _render_counter(taskability),
+        "\n## Taskability Risks\n\n",
+        _render_counter(taskability_risks),
+        "\n## Contamination Risk\n\n",
+        _render_counter(contamination),
+        "\n## Target Path Categories\n\n",
+        _render_counter(target_path_categories),
+        "\n## Abandoned Materials\n\n",
+        _render_items(sorted(abandoned)),
         "\n## Warnings\n\n",
     ]
     warnings = []
@@ -36,6 +51,13 @@ def build_diversity_report(candidates_path: Path, *, feedback_path: Path | None 
     for language, count in languages.items():
         if count / total > 0.4:
             warnings.append(f"{language} exceeds 40% of candidates")
+    for risk, count in contamination.items():
+        if risk in {"high", "medium"} and count:
+            warnings.append(f"{risk} contamination risk candidates: {count}")
+    if target_path_categories.get("low_value", 0) / total > 0.2:
+        warnings.append("low-value target paths exceed 20% of candidates")
+    if taskability.get("low", 0) / total > 0.2:
+        warnings.append("low taskability candidates exceed 20%")
     if not warnings:
         warnings.append("none")
     lines.extend(f"- {warning}\n" for warning in warnings)
@@ -73,7 +95,29 @@ def _taskability_bucket(record: dict[str, Any]) -> str:
     return "low"
 
 
+def _contamination_risk(record: dict[str, Any]) -> str:
+    contamination = record.get("contamination") or {}
+    return str(contamination.get("risk") or contamination.get("status") or "unknown").lower()
+
+
+def _target_path_category(record: dict[str, Any]) -> str:
+    paths = [str(path) for path in record.get("direction_target_paths") or []]
+    if not paths:
+        return "unknown"
+    if all(path.startswith(("docs/", "examples/", "example/", "website/", "demo/")) for path in paths):
+        return "low_value"
+    if any(path.startswith(("src/", "pkg/", "lib/", "internal/", "packages/")) for path in paths):
+        return "implementation"
+    if any(path.startswith(("tests/", "test/")) for path in paths):
+        return "tests"
+    return "other"
+
+
 def _render_counter(counter: Counter[str] | list[tuple[str, int]]) -> str:
     items = counter.items() if isinstance(counter, Counter) else counter
     rendered = [f"- `{key}`: {value}\n" for key, value in items]
     return "".join(rendered) if rendered else "- none\n"
+
+
+def _render_items(items: list[str]) -> str:
+    return "".join(f"- `{item}`\n" for item in items) if items else "- none\n"
