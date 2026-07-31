@@ -14640,7 +14640,7 @@
     "target_total": 38500,
     "validation_errors": []
   },
-  "generated_at": "2026-07-31T21:04:13.049866+00:00",
+  "generated_at": "2026-07-31T21:05:05.878423+00:00",
   "paths": {
     "crawl_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota",
     "production_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota",
@@ -27959,6 +27959,54 @@
       "run_id": "github-mass-production-XBY-20260731",
       "stage": "requeue-resource-failures",
       "started_at": "2026-07-31T21:04:08Z"
+    },
+    {
+      "duration_s": 6,
+      "exit_code": 0,
+      "finished_at": "2026-07-31T21:04:31Z",
+      "run_id": "github-mass-production-XBY-20260731",
+      "stage": "repair-rebuildable-packages",
+      "started_at": "2026-07-31T21:04:25Z"
+    },
+    {
+      "duration_s": 3,
+      "exit_code": 0,
+      "finished_at": "2026-07-31T21:04:34Z",
+      "run_id": "github-mass-production-XBY-20260731",
+      "stage": "requeue-node-package-manager-v18",
+      "started_at": "2026-07-31T21:04:31Z"
+    },
+    {
+      "duration_s": 2,
+      "exit_code": 0,
+      "finished_at": "2026-07-31T21:04:36Z",
+      "run_id": "github-mass-production-XBY-20260731",
+      "stage": "requeue-go-runtime-v4",
+      "started_at": "2026-07-31T21:04:34Z"
+    },
+    {
+      "duration_s": 2,
+      "exit_code": 0,
+      "finished_at": "2026-07-31T21:04:39Z",
+      "run_id": "github-mass-production-XBY-20260731",
+      "stage": "requeue-e2b-rate-limit-backoff-v1",
+      "started_at": "2026-07-31T21:04:36Z"
+    },
+    {
+      "duration_s": 9,
+      "exit_code": 1,
+      "finished_at": "2026-07-31T21:04:55Z",
+      "run_id": "github-mass-production-XBY-20260731",
+      "stage": "crawl-38275",
+      "started_at": "2026-07-31T21:04:46Z"
+    },
+    {
+      "duration_s": 3,
+      "exit_code": 0,
+      "finished_at": "2026-07-31T21:05:04Z",
+      "run_id": "github-mass-production-XBY-20260731",
+      "stage": "requeue-resource-failures",
+      "started_at": "2026-07-31T21:05:01Z"
     }
   ],
   "status": "incomplete"
