@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "latte-f78d29-0eb287f5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pkolaczk/latte"
+base_commit = "0eb287f5a67fafc364a2922e0b70e6ca636c6871"
+source_tree = "09cf6b244c0b0786d1a10b9bf1a8b931d96bfc56"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "99565d179d293e89a39404edae5dea81929700071250e901e188d73c6b84bb5c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-latte-f78d29-0eb287f5-v2-env-99565d17"
+template_id = "jd3k8apjowggctl068p8"
+source_template_alias = "yktotff7svvkfw9pc68i"
+source_template_id = "yktotff7svvkfw9pc68i"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

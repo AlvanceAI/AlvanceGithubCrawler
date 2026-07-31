@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "capy-7e130d-b381c400"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/capy-language/capy"
+base_commit = "b381c400d4db4d6058d7579addf04a0b9825e941"
+source_tree = "494ca6f0d81c615fcea4561180717ebbebd193b1"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1b4c8e687aee0f34d1d0c1006075edc56ca271f361983fad889396eb07d350b6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-capy-7e130d-b381c400-v2-env-1b4c8e68"
+template_id = "4sdzn1i001y1blgq0l3u"
+source_template_alias = "o6thuh5ugrdw8prlvhgq"
+source_template_id = "o6thuh5ugrdw8prlvhgq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

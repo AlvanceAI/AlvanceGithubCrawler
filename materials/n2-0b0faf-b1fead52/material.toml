@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "n2-0b0faf-b1fead52"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/evmar/n2"
+base_commit = "b1fead52ccda0c497d816696f23f4099c3e8ec1f"
+source_tree = "b899aa8a8e3ab9bd8ac5de8b5d9744bfef25845f"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.81.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "97d5436a7b7e923090d7a34246e6d404d985fb92d9e5df27d2dec6c8df4b4f2b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-n2-0b0faf-b1fead52-v2-env-97d5436a"
+template_id = "8ybnle14rkcdv835jo47"
+source_template_alias = "hdr34ikkwovg9vaxato1"
+source_template_id = "hdr34ikkwovg9vaxato1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

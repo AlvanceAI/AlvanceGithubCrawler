@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dbcrossbar-4532b5-9025287d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/dbcrossbar/dbcrossbar"
+base_commit = "9025287d6bc8123d87832097d8e46bfbd5a24881"
+source_tree = "e1daa83095f937b1db25bae52a286120feab0b79"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "276eb16f1939afedc9647748ab4a08e7deea9a516d617f1fed268a79d5ef384b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dbcrossbar-4532b5-9025287d-v2-env-276eb16f"
+template_id = "7agyd992h1mdid5blg3b"
+source_template_alias = "movl9m40aunvk2wa3uk7"
+source_template_id = "movl9m40aunvk2wa3uk7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

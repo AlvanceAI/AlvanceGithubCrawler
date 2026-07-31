@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sugar-5bfab0-f63f54a7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/metaplex-foundation/sugar"
+base_commit = "f63f54a73591f7a7befc1a72fc30e9b8070154ed"
+source_tree = "04fc3c01675917023a366b7915617184f1132f8d"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e780d2859217f63002661cf9a65b81be17532a0dc1ab9df3ff6c18069be81fc0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sugar-5bfab0-f63f54a7-v2-env-e780d285"
+template_id = "xyho9xq09qs2y1qolhuy"
+source_template_alias = "ie4fm29q812f8pfr70qb"
+source_template_id = "ie4fm29q812f8pfr70qb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
