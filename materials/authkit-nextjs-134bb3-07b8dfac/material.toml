@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "authkit-nextjs-134bb3-07b8dfac"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/workos/authkit-nextjs"
+base_commit = "07b8dfac63321d2a5f7fdacd033d02728c099ebe"
+source_tree = "2f3a646e5dd6199b5c176a119d8913f5cc3bdbfd"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "50a7312e1dfd71d60e253a49f5e900c685e2f19b4caabff48e2fd1101d69ab6a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-authkit-nextjs-134bb3-07b8dfac-v2-env-50a7312e"
+template_id = "ld3ger7ftpt6jhwphm3w"
+source_template_alias = "8mlsosbdovnaa3dsj0mo"
+source_template_id = "8mlsosbdovnaa3dsj0mo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "detect-gpu-e9dddf-606e2201"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pmndrs/detect-gpu"
+base_commit = "606e22010e790870cc33cd42a9ba356ace608cf3"
+source_tree = "5792678b8931aa851d5b2aa54fefc02a7196ace1"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9f6efc7d1304211b339816351e951f2b15d5a4a99aa66073cab31a3290679c06"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-detect-gpu-e9dddf-606e2201-v2-env-9f6efc7d"
+template_id = "da9d2imwm47hz8bp1gya"
+source_template_alias = "n3bwiqs7ocxle839z5sf"
+source_template_id = "n3bwiqs7ocxle839z5sf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

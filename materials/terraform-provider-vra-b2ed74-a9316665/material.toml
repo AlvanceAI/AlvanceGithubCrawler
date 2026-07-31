@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terraform-provider-vra-b2ed74-a9316665"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vmware/terraform-provider-vra"
+base_commit = "a93166653dd978aaaa64f9f84bf37a4e94e0c7cd"
+source_tree = "935774a94c15232e8ac9e8f1c191d12a66f93e7d"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ac54280044231baa94375e23db12c5205911dcb6895aac3ecf103ccd793cb07f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terraform-provider-v-b2ed74-a9316665-v2-env-ac542800"
+template_id = "0hw6xtwcj1geg7lrh9fn"
+source_template_alias = "wcz9bqe46t0b58kw9heo"
+source_template_id = "wcz9bqe46t0b58kw9heo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

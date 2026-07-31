@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "golang-ical-09fe09-579a4be6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/arran4/golang-ical"
+base_commit = "579a4be6cbce5bd613cdb647b685c2b7b271b266"
+source_tree = "2fb1a2130c353d2dd482b520f395c23b407e64a3"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.20.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "331f7fd32f1762f94977194e5dc329a8db5ba9aff9ea60c762b70c7a57d6c7a2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-golang-ical-09fe09-579a4be6-v2-env-331f7fd3"
+template_id = "4l5bzkjkcn0kh4r0fbbr"
+source_template_alias = "dq4c6lgej1ns4l0fwf8z"
+source_template_id = "dq4c6lgej1ns4l0fwf8z"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "redux-saga-a6214f-6dab0eba"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/redux-saga/redux-saga"
+base_commit = "6dab0ebadf05a54dcda626f1caa9d8dc3279a845"
+source_tree = "d132852e6280e722728070ec13a08cc43996095f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9c30a0ba30d06a88c78fc482e30dd6f066622a2d37126a2c86758b4ed63a4906"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-redux-saga-a6214f-6dab0eba-v2-env-9c30a0ba"
+template_id = "34uxja5wqah88jij10eq"
+source_template_alias = "7nswgvf5v3tzwylitbs1"
+source_template_id = "7nswgvf5v3tzwylitbs1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-side-acc29c-0b02738a-v2"
+description = "Rebuildable repository task for sipe-team/side"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-side-acc29c-0b02738a-v2"
+material_id = "side-acc29c-0b02738a"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/sipe-team/side"
+base_commit_hash = "0b02738aba00d891f270d7f9959bdc0af67e7e08"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

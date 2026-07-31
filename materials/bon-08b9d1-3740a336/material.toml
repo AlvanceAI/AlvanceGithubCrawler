@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bon-08b9d1-3740a336"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/elastio/bon"
+base_commit = "3740a336ae9b7487226378049fcac0dc50ff1446"
+source_tree = "8ad9b0887e875c225dc0b8edd1a779b657e4416e"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.96.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bda30443ff11c2be6c2681cb6836c4f447362d4172d789c8da4b3dde30b8e2b7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bon-08b9d1-3740a336-v2-env-bda30443"
+template_id = "590h1fztmfnx90ltpayg"
+source_template_alias = "7jjy8dg76p7vynknd1i7"
+source_template_id = "7jjy8dg76p7vynknd1i7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,41 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-portablemc-9956f2-c0033996-v2"
+description = "Rebuildable repository task for theorzr/portablemc"
+authors = []
+keywords = ["rust", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-portablemc-9956f2-c0033996-v2"
+material_id = "portablemc-9956f2-c0033996"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/theorzr/portablemc"
+base_commit_hash = "c0033996db6b4b0079099655b5b3600da5610724"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

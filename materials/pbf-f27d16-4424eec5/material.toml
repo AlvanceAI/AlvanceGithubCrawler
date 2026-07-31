@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pbf-f27d16-4424eec5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mapbox/pbf"
+base_commit = "4424eec59eff9a42af187e2a7a647f349e4839b5"
+source_tree = "84eed2abb0da52f32ee2101d553ecdbaa58d1c37"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b2d892e11646a408002e0062301528eaa598b4da0252e500f9e86ac9f877a64b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pbf-f27d16-4424eec5-v2-env-b2d892e1"
+template_id = "kxden4j4ohizl8q35rof"
+source_template_alias = "jig5ay9g3ynbjwrl0dn4"
+source_template_id = "jig5ay9g3ynbjwrl0dn4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-pretty-fbcb9f-db0aac24"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jedib0t/go-pretty"
+base_commit = "db0aac244a22cdef5f46bae37c07b4b3c96aeb58"
+source_tree = "e668a41c00dc0e4220f7169a9b58def5a2fa1bd5"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "26790d35b7ecfc8cb876c1fcad30127fd6cca88243d5746bd493c79282ade4e9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-pretty-fbcb9f-db0aac24-v2-env-26790d35"
+template_id = "fgr8rs96utnpjq4niah0"
+source_template_alias = "kx3qsw7x6rgtj874nlep"
+source_template_id = "kx3qsw7x6rgtj874nlep"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

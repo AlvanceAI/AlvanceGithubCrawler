@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mcpm-sh-2c0c12-6a92e54c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pathintegral-institute/mcpm.sh"
+base_commit = "6a92e54c748766973add4b8c153fcc85738d2d89"
+source_tree = "8d7ec443801f0b4a390da5003dbe7b7c0073df66"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fa19dbcb463a3995cb38cae1f6f0bc52066cdb7605609dbed807238ec1285496"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mcpm-sh-2c0c12-6a92e54c-v2-env-fa19dbcb"
+template_id = "56wr9u7usl828kact0t8"
+source_template_alias = "1kgv3lnygczywoq4wzy0"
+source_template_id = "1kgv3lnygczywoq4wzy0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

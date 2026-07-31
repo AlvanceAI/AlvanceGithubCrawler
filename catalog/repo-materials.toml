@@ -1,6 +1,18 @@
 schema_version = "0.3"
 
 [[materials]]
+id = "8bitcn-ui-c508b7-453ba51a"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/8bitcn-ui-c508b7-453ba51a"
+repository_url = "https://github.com/TheOrcDev/8bitcn-ui"
+base_commit = "453ba51a619a3082302eb507367a31e4c785c331"
+source_tree = "a6dabe100350b3b6748bcf3e60d814f3272119f0"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "a2a-go-d98be9-3d5d8eb2"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -23,6 +35,18 @@ base_commit = "b00987e194e5c2c2ab51e22ab1c97454f3e42681"
 source_tree = "379169d713f2f0dd9b90f2bc4c45b7591b53bb80"
 license = "Apache-2.0"
 language = "go"
+
+[[materials]]
+id = "ad-933543-2df69627"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/ad-933543-2df69627"
+repository_url = "https://github.com/sminez/ad"
+base_commit = "2df6962734785c5099589c89a0b6241ac5836b47"
+source_tree = "52e5c68dbde2a488e966cdf0c8f8d09ac0ae125d"
+license = "MIT"
+language = "rust"
 
 [[materials]]
 id = "adhd-2b5d04-eaeba4e9"
@@ -107,6 +131,18 @@ base_commit = "cd2ecb8d008618f0bbab761898a823bf5999aeb8"
 source_tree = "22373fb9852ae762aca8bc491338bde3cf3611e1"
 license = "Apache-2.0"
 language = "go"
+
+[[materials]]
+id = "ai-tools-13c1a6-64689540"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/ai-tools-13c1a6-64689540"
+repository_url = "https://github.com/sveltejs/ai-tools"
+base_commit = "64689540226112c04c153217c64f584a1d15c643"
+source_tree = "9b0b61325a381c5752a69cfd0020a6db37c0dda4"
+license = "MIT"
+language = "typescript"
 
 [[materials]]
 id = "allotment-d177c2-3009fae9"
@@ -289,6 +325,18 @@ license = "Apache-2.0"
 language = "rust"
 
 [[materials]]
+id = "authkit-nextjs-134bb3-07b8dfac"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/authkit-nextjs-134bb3-07b8dfac"
+repository_url = "https://github.com/workos/authkit-nextjs"
+base_commit = "07b8dfac63321d2a5f7fdacd033d02728c099ebe"
+source_tree = "2f3a646e5dd6199b5c176a119d8913f5cc3bdbfd"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "authula-a5fd55-ee1387f2"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -445,6 +493,18 @@ license = "MPL-2.0"
 language = "go"
 
 [[materials]]
+id = "azure-functions-durable--2841d8-7b23cb1a"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/azure-functions-durable--2841d8-7b23cb1a"
+repository_url = "https://github.com/Azure/azure-functions-durable-js"
+base_commit = "7b23cb1a17f3ee6d421b8cb5c239f80ecb587a54"
+source_tree = "55c18e70586c49250bff0265c89730590c7be089"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "azure-key-vault-to-kuber-165927-ab90b516"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -599,6 +659,18 @@ base_commit = "4f8d888b3e888b087caf5bb195d663081db5ee98"
 source_tree = "3d1970fe358dff8867e2c2271c0debb637a8ccea"
 license = "MIT"
 language = "typescript"
+
+[[materials]]
+id = "bon-08b9d1-3740a336"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/bon-08b9d1-3740a336"
+repository_url = "https://github.com/elastio/bon"
+base_commit = "3740a336ae9b7487226378049fcac0dc50ff1446"
+source_tree = "8ad9b0887e875c225dc0b8edd1a779b657e4416e"
+license = "Apache-2.0"
+language = "rust"
 
 [[materials]]
 id = "bootupd-17c0d3-8f5cc497"
@@ -793,6 +865,30 @@ license = "MIT"
 language = "rust"
 
 [[materials]]
+id = "casbin-b68135-08dab401"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/casbin-b68135-08dab401"
+repository_url = "https://github.com/apache/casbin"
+base_commit = "08dab401f7e78a3af923239fff1fcef20ab78464"
+source_tree = "29f56d68906aca39eb5de49e2aad0b2e03b1e77b"
+license = "Apache-2.0"
+language = "go"
+
+[[materials]]
+id = "cassandra-gocql-driver-42961e-00fc2909"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/cassandra-gocql-driver-42961e-00fc2909"
+repository_url = "https://github.com/apache/cassandra-gocql-driver"
+base_commit = "00fc2909c64a7529fe49fb31b0fa8662342ebe69"
+source_tree = "d659e8dddb24b35dc8f9b2ce3c8c501291c1fd93"
+license = "Apache-2.0"
+language = "go"
+
+[[materials]]
 id = "cbor-09279b-f6a8c43d"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -827,6 +923,18 @@ base_commit = "686701686f8e367f69a762de9f06fd826ca0d406"
 source_tree = "7f1f2a6a9799a44f959309a009f8c9b02fdf5ebf"
 license = "Apache-2.0"
 language = "go"
+
+[[materials]]
+id = "celeste-python-74b840-b3cff101"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/celeste-python-74b840-b3cff101"
+repository_url = "https://github.com/withceleste/celeste-python"
+base_commit = "b3cff101969b0c4455c546258cc4d1902a2f3543"
+source_tree = "5f9186d2242c90c04f0bdfff950344fb3b5dcc73"
+license = "MIT"
+language = "python"
 
 [[materials]]
 id = "cell-eb39e0-c3dd90c2"
@@ -949,6 +1057,18 @@ license = "Apache-2.0"
 language = "go"
 
 [[materials]]
+id = "citty-127f5d-03a9e6da"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/citty-127f5d-03a9e6da"
+repository_url = "https://github.com/unjs/citty"
+base_commit = "03a9e6da871c4da67919ee710f755ca9aadc1b36"
+source_tree = "17b6f3fad3e4cb1f1fbcab20a8a61686fcaa6271"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "clanker-121dde-4d7af4d3"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -1055,6 +1175,18 @@ base_commit = "d441d94d999daf4a1b5727e462ba36691962007e"
 source_tree = "c9aba231e6f51637e09933d28d7c7bd5c6f41c3b"
 license = "Apache-2.0"
 language = "go"
+
+[[materials]]
+id = "click-ui-f2704e-36b39af4"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/click-ui-f2704e-36b39af4"
+repository_url = "https://github.com/ClickHouse/click-ui"
+base_commit = "36b39af4b4efd9f18cfb866c580f1527ac16b3a5"
+source_tree = "e551d1b42d4e112fd03bb96c9f83245ca40b539f"
+license = "Apache-2.0"
+language = "typescript"
 
 [[materials]]
 id = "clickhouse-go-6dd8a1-aee0e942"
@@ -1465,6 +1597,18 @@ license = "Apache-2.0"
 language = "python"
 
 [[materials]]
+id = "cypress-localstorage-com-f8f387-04be2808"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/cypress-localstorage-com-f8f387-04be2808"
+repository_url = "https://github.com/javierbrea/cypress-localstorage-commands"
+base_commit = "04be2808ac64ed870fb55ed03bd75174c2980ee8"
+source_tree = "11216f254409fa9f57bc7a9136cb762c036af229"
+license = "MIT"
+language = "javascript"
+
+[[materials]]
 id = "darklua-c9b9b7-83a3a9d0"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -1475,6 +1619,18 @@ base_commit = "83a3a9d0a241fb193140807e4e77e81545f6f60d"
 source_tree = "44d3a9aeda8e1fc10d239a8a517e015a6866fca2"
 license = "MIT"
 language = "rust"
+
+[[materials]]
+id = "dataloader-108ab7-b70dea3c"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/dataloader-108ab7-b70dea3c"
+repository_url = "https://github.com/graphql/dataloader"
+base_commit = "b70dea3cc72a7e8f941133b0f486aa1840e3f927"
+source_tree = "5023d0ac219278b06aabffd9a0cbe71c5291e031"
+license = "MIT"
+language = "javascript"
 
 [[materials]]
 id = "dataplaneapi-b4158a-0cad6130"
@@ -1523,6 +1679,18 @@ base_commit = "8d4b8d94e99edd424ea07219cbc5b55446ee7c10"
 source_tree = "0f093b7c49900fc389b8af357d115e009ff933b8"
 license = "BSD-3-Clause"
 language = "go"
+
+[[materials]]
+id = "detect-gpu-e9dddf-606e2201"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/detect-gpu-e9dddf-606e2201"
+repository_url = "https://github.com/pmndrs/detect-gpu"
+base_commit = "606e22010e790870cc33cd42a9ba356ace608cf3"
+source_tree = "5792678b8931aa851d5b2aa54fefc02a7196ace1"
+license = "MIT"
+language = "typescript"
 
 [[materials]]
 id = "dexter-72a6d9-53d5129b"
@@ -1861,6 +2029,18 @@ license = "Apache-2.0"
 language = "rust"
 
 [[materials]]
+id = "envconsul-3a4d6c-43f72e27"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/envconsul-3a4d6c-43f72e27"
+repository_url = "https://github.com/hashicorp/envconsul"
+base_commit = "43f72e275f6cf2deb94ea40f179e393e75cd6000"
+source_tree = "b4b1c71b84e071640b8f27ee743bbe4ced0c55c4"
+license = "MPL-2.0"
+language = "go"
+
+[[materials]]
 id = "ergo-5ae04f-65875b7c"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -2173,6 +2353,30 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "gateway-4b8bc0-6f5cec8c"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/gateway-4b8bc0-6f5cec8c"
+repository_url = "https://github.com/nautilus/gateway"
+base_commit = "6f5cec8c7937a0c1aeb3c35763a7042c4f6af13a"
+source_tree = "423553fc5a29f977f3a44dbabd0cdb001cf87369"
+license = "MIT"
+language = "go"
+
+[[materials]]
+id = "gemini-ceb248-d665e04f"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/gemini-ceb248-d665e04f"
+repository_url = "https://github.com/FairwindsOps/gemini"
+base_commit = "d665e04f508c16f381a862b86705d27beae82fd1"
+source_tree = "466ade0a51752c0a68b89827f8def5b49a18f995"
+license = "Apache-2.0"
+language = "go"
+
+[[materials]]
 id = "geo-e02703-857a528a"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -2365,6 +2569,18 @@ license = "Apache-2.0"
 language = "go"
 
 [[materials]]
+id = "gitmesh-65d1ba-ca751f67"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/gitmesh-65d1ba-ca751f67"
+repository_url = "https://github.com/LF-Decentralized-Trust-labs/gitmesh"
+base_commit = "ca751f676ea5f60fcfc3c103fb7f24b8b455d0c0"
+source_tree = "efbd89751ad7eaf43afa45dc6ac3776038311730"
+license = "Apache-2.0"
+language = "typescript"
+
+[[materials]]
 id = "glab-tui-8439bc-72b962f4"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -2449,6 +2665,18 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "go-echarts-827ced-3f3cf957"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/go-echarts-827ced-3f3cf957"
+repository_url = "https://github.com/go-echarts/go-echarts"
+base_commit = "3f3cf9579987d520eef191d3f9b7d8c47d234276"
+source_tree = "494d8f05ba58f74e0f554544f26346bf7095d32e"
+license = "MIT"
+language = "go"
+
+[[materials]]
 id = "go-eth2-client-dff3f9-85ac0f6e"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -2497,6 +2725,18 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "go-json-70b445-f1e75540"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/go-json-70b445-f1e75540"
+repository_url = "https://github.com/goccy/go-json"
+base_commit = "f1e7554014296f3d97b2367c524a14b3b8877ab6"
+source_tree = "485472a4176dadf96e65aaf1764c524ed7f65774"
+license = "MIT"
+language = "go"
+
+[[materials]]
 id = "go-mail-6768e4-46f4d6f7"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -2533,6 +2773,30 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "go-pretty-fbcb9f-db0aac24"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/go-pretty-fbcb9f-db0aac24"
+repository_url = "https://github.com/jedib0t/go-pretty"
+base_commit = "db0aac244a22cdef5f46bae37c07b4b3c96aeb58"
+source_tree = "e668a41c00dc0e4220f7169a9b58def5a2fa1bd5"
+license = "MIT"
+language = "go"
+
+[[materials]]
+id = "go-sdk-3f5268-9d745f76"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/go-sdk-3f5268-9d745f76"
+repository_url = "https://github.com/dapr/go-sdk"
+base_commit = "9d745f76a46e23ae0d022f1abb098132b67603e5"
+source_tree = "6bc48dc498b83a5783400f503f28d0dab9c381ac"
+license = "Apache-2.0"
+language = "go"
+
+[[materials]]
 id = "go-serial-25b0e2-9b9e4a4b"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -2554,6 +2818,18 @@ repository_url = "https://github.com/parvez3019/go-swagger3"
 base_commit = "38ffa06e310898ae46f5ac171e06ba5d33d39c20"
 source_tree = "3010620761f3f99d8ade651d4247c3a89c2d4d4f"
 license = "MIT"
+language = "go"
+
+[[materials]]
+id = "go-version-44bce4-44e3b535"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/go-version-44bce4-44e3b535"
+repository_url = "https://github.com/hashicorp/go-version"
+base_commit = "44e3b535e15c65a04c85e7be057b548aca7dfb90"
+source_tree = "64f4a4b963e9754c7110db1a139e61fb16eeabf3"
+license = "MPL-2.0"
 language = "go"
 
 [[materials]]
@@ -2627,6 +2903,18 @@ base_commit = "3bfe61b732ec9b7986ca360ea4907798494cf5eb"
 source_tree = "ab055c25ce0c1990d4a72c55777bad6e8d989ebc"
 license = "MIT"
 language = "python"
+
+[[materials]]
+id = "golang-ical-09fe09-579a4be6"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/golang-ical-09fe09-579a4be6"
+repository_url = "https://github.com/arran4/golang-ical"
+base_commit = "579a4be6cbce5bd613cdb647b685c2b7b271b266"
+source_tree = "2fb1a2130c353d2dd482b520f395c23b407e64a3"
+license = "Apache-2.0"
+language = "go"
 
 [[materials]]
 id = "golang-rest-api-template-8b8f7f-35c0efe2"
@@ -2881,6 +3169,30 @@ license = "MIT"
 language = "python"
 
 [[materials]]
+id = "hackbrowserdata-99fdad-6502d5ee"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/hackbrowserdata-99fdad-6502d5ee"
+repository_url = "https://github.com/moonD4rk/HackBrowserData"
+base_commit = "6502d5ee14a4e1c84e4b027bac86369ea9475f46"
+source_tree = "8a77e2038546f2f2c51088ee0d12b1e5ec86626e"
+license = "MIT"
+language = "go"
+
+[[materials]]
+id = "harbour-4ffba2-3cc331ca"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/harbour-4ffba2-3cc331ca"
+repository_url = "https://github.com/geekforbrains/harbour"
+base_commit = "3cc331ca1cbcda28996a1effc97ecf0760072fe9"
+source_tree = "4d9ae26c12c7c45888a68bbd6400ee56728a6711"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "havener-e935fd-a7e56da5"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -3049,6 +3361,18 @@ license = "MIT"
 language = "rust"
 
 [[materials]]
+id = "hls-downloader-d3e0fe-408b43f7"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/hls-downloader-d3e0fe-408b43f7"
+repository_url = "https://github.com/puemos/hls-downloader"
+base_commit = "408b43f7c0f73ea7efd4153199f3935e38e657eb"
+source_tree = "e2f8f800d92ccbe4f717d57479621e676bf594da"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "hotpdf-5f73e1-cc3d33da"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -3071,6 +3395,18 @@ base_commit = "3179c6e62929294961acbfd9bf8445769716a121"
 source_tree = "5b13da0499f3233c71af729bf9b1ab5ae289f35c"
 license = "MIT"
 language = "go"
+
+[[materials]]
+id = "hsds-2f2ebb-f91f9e03"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/hsds-2f2ebb-f91f9e03"
+repository_url = "https://github.com/HDFGroup/hsds"
+base_commit = "f91f9e03b0fb12226a42baef78e57c1de629c86d"
+source_tree = "05b4a969bc29dfff523a82e022ef9dcbc3bea19a"
+license = "Apache-2.0"
+language = "python"
 
 [[materials]]
 id = "html-minifier-terser-11caa5-7ca2adda"
@@ -3193,6 +3529,18 @@ license = "MIT"
 language = "typescript"
 
 [[materials]]
+id = "incubator-seata-go-0a5149-2167ed1c"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/incubator-seata-go-0a5149-2167ed1c"
+repository_url = "https://github.com/apache/incubator-seata-go"
+base_commit = "2167ed1cbe765af7a76e3e863c1308f1f489ecfa"
+source_tree = "7b7fbdb9d913cffe9401c46bb163e9ddd48e0b0d"
+license = "Apache-2.0"
+language = "go"
+
+[[materials]]
 id = "influxdb-client-go-0ad950-3ae8aad2"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -3251,6 +3599,18 @@ base_commit = "85293e3e2b88f4d2ce330d956b139cf628aa1e82"
 source_tree = "3e70a82e1655c0c2ef1659bde094f94cc55eaf4f"
 license = "MIT"
 language = "javascript"
+
+[[materials]]
+id = "jellyfin-sdk-typescript-e9fd0c-ade04d01"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/jellyfin-sdk-typescript-e9fd0c-ade04d01"
+repository_url = "https://github.com/jellyfin/jellyfin-sdk-typescript"
+base_commit = "ade04d0103ff250f7746106eff19d745ebf748d0"
+source_tree = "9843d1134e6d8352eff39fac3b84007ea58d6324"
+license = "MPL-2.0"
+language = "typescript"
 
 [[materials]]
 id = "jitar-872bdc-30bbebbe"
@@ -3407,6 +3767,30 @@ base_commit = "4b756e0be889037c34e5d6179f440dd8cd414345"
 source_tree = "5e6c02b3d7b975f9a6ce778324174183dbeb6a9e"
 license = "Apache-2.0"
 language = "rust"
+
+[[materials]]
+id = "kingpin-2287d9-6451cc5d"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/kingpin-2287d9-6451cc5d"
+repository_url = "https://github.com/alecthomas/kingpin"
+base_commit = "6451cc5d2dc7a6fd495db66c025de9987721f4f4"
+source_tree = "8513db92a733b0ae59910bf5dd64daa03df8a422"
+license = "MIT"
+language = "go"
+
+[[materials]]
+id = "kitsu-a85fc9-1ab87395"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/kitsu-a85fc9-1ab87395"
+repository_url = "https://github.com/wopian/kitsu"
+base_commit = "1ab8739506fe6f7aafc6543dfb2a44e6fb9e2071"
+source_tree = "7acd09925fa0656f9db215a291c2b0201200ede4"
+license = "MIT"
+language = "javascript"
 
 [[materials]]
 id = "koji-9abedb-0cd148e6"
@@ -3625,6 +4009,18 @@ license = "MIT"
 language = "python"
 
 [[materials]]
+id = "law-92452d-2f5aaecc"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/law-92452d-2f5aaecc"
+repository_url = "https://github.com/riga/law"
+base_commit = "2f5aaecc2c5f2aa0d64a77d12f8b5945d63928a7"
+source_tree = "ea10ebc9b6c31c7709ef262e169f389dde368f6a"
+license = "BSD-3-Clause"
+language = "python"
+
+[[materials]]
 id = "ldflex-24b069-c7544f6e"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -3721,6 +4117,18 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "liveboat-666f9e-96267263"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/liveboat-666f9e-96267263"
+repository_url = "https://github.com/exaroth/liveboat"
+base_commit = "9626726306f5c5138dc34bfeea336412a1c589ee"
+source_tree = "f1e6d591ab4733f6c0ffbb18538b9ffdfeec1431"
+license = "MIT"
+language = "rust"
+
+[[materials]]
 id = "livesplit-core-49b9a9-f26195cd"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -3757,6 +4165,18 @@ license = "Apache-2.0"
 language = "python"
 
 [[materials]]
+id = "lovelace-multiple-entity-fe26ba-803c4797"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/lovelace-multiple-entity-fe26ba-803c4797"
+repository_url = "https://github.com/benct/lovelace-multiple-entity-row"
+base_commit = "803c4797f017da7192df720475e88b1fd1481b6e"
+source_tree = "b036902e01303952012c3000878d99ecfb5753f6"
+license = "MIT"
+language = "javascript"
+
+[[materials]]
 id = "ls-lint-4a0721-bf316273"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -3791,6 +4211,18 @@ base_commit = "4f5d434dded8a5e58808ad60f56c6e410f57cf7e"
 source_tree = "dad1bd6dbc354682a68df6e1dccbe76eaec4d165"
 license = "Apache-2.0"
 language = "javascript"
+
+[[materials]]
+id = "magic-regexp-dfcf1c-a5c147e4"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/magic-regexp-dfcf1c-a5c147e4"
+repository_url = "https://github.com/unjs/magic-regexp"
+base_commit = "a5c147e45ad344155e202e86d2adf4442fa796f6"
+source_tree = "0a45253be3a6217e4d898d01b16350e37f99a10c"
+license = "MIT"
+language = "typescript"
 
 [[materials]]
 id = "manim-web-5d3999-5124d26f"
@@ -3925,6 +4357,18 @@ license = "Apache-2.0"
 language = "go"
 
 [[materials]]
+id = "mcpm-sh-2c0c12-6a92e54c"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/mcpm-sh-2c0c12-6a92e54c"
+repository_url = "https://github.com/pathintegral-institute/mcpm.sh"
+base_commit = "6a92e54c748766973add4b8c153fcc85738d2d89"
+source_tree = "8d7ec443801f0b4a390da5003dbe7b7c0073df66"
+license = "MIT"
+language = "python"
+
+[[materials]]
 id = "mdbook-katex-05e607-eeac3bbb"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -4045,6 +4489,18 @@ license = "MIT"
 language = "typescript"
 
 [[materials]]
+id = "micromdm-1d8262-c4878e2e"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/micromdm-1d8262-c4878e2e"
+repository_url = "https://github.com/micromdm/micromdm"
+base_commit = "c4878e2e378e5d3ce90483dd60bcbad90c7b997f"
+source_tree = "06eaad859948dd650d0f554137293837d8f6ee7d"
+license = "MIT"
+language = "go"
+
+[[materials]]
 id = "midstream-89f6ee-92250c20"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -4093,6 +4549,18 @@ license = "Apache-2.0"
 language = "go"
 
 [[materials]]
+id = "mockall-9f14e3-fc2c853c"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/mockall-9f14e3-fc2c853c"
+repository_url = "https://github.com/asomers/mockall"
+base_commit = "fc2c853cf7491c49147170d9f442eeb8d7589c2e"
+source_tree = "f151683827b5c26a498c2156728a3f4b72fa224a"
+license = "Apache-2.0"
+language = "rust"
+
+[[materials]]
 id = "moddle-e7ab56-3124e6ac"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -4115,6 +4583,18 @@ base_commit = "a3d6514e60a39dadc72ebefcf951737854835300"
 source_tree = "f97cf63d9aa576e43322ddbf8b395a5fd2235523"
 license = "Apache-2.0"
 language = "python"
+
+[[materials]]
+id = "moize-efad23-559575c6"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/moize-efad23-559575c6"
+repository_url = "https://github.com/planttheidea/moize"
+base_commit = "559575c619ec5792150d6568e3770d43f728f2a7"
+source_tree = "bf07565fd0e1fd7fa52ce2617c066144dcc7035d"
+license = "MIT"
+language = "typescript"
 
 [[materials]]
 id = "muffet-a3d0b2-d23fa291"
@@ -4429,6 +4909,18 @@ license = "MIT"
 language = "typescript"
 
 [[materials]]
+id = "oli-553887-18cf418c"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/oli-553887-18cf418c"
+repository_url = "https://github.com/amrit110/oli"
+base_commit = "18cf418cb0ee5812761c7de664c796dca6ddfabb"
+source_tree = "0f6a47c0edce4c78007093b75ffcd24a4cb87493"
+license = "Apache-2.0"
+language = "rust"
+
+[[materials]]
 id = "onvif-3047d8-151f9647"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -4549,6 +5041,18 @@ license = "MIT"
 language = "typescript"
 
 [[materials]]
+id = "openwiki-cbaa9c-b8c510fc"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/openwiki-cbaa9c-b8c510fc"
+repository_url = "https://github.com/langchain-ai/openwiki"
+base_commit = "b8c510fce4afab5cc855390f67f833137183d646"
+source_tree = "7f7573750603ec17352b08e522bf8b0885b8b100"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "openyida-23208f-68b772d1"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -4597,6 +5101,18 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "oxbuild-bcf349-e545b001"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/oxbuild-bcf349-e545b001"
+repository_url = "https://github.com/DonIsaac/oxbuild"
+base_commit = "e545b0012feb930e98fec0c441fd85958b84b1c3"
+source_tree = "c8a1839671a7c96961d4bd9735d0aeba043e6373"
+license = "MIT"
+language = "rust"
+
+[[materials]]
 id = "oxmgr-7856c0-2f4f0224"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -4641,6 +5157,18 @@ path = "materials/page-agent-3f5775-b7401a05"
 repository_url = "https://github.com/alibaba/page-agent"
 base_commit = "b7401a051c0ce1b1ec3f2713590a78585adf9ae1"
 source_tree = "268cef64d6a7df77fdea3957e74d27c5c9bf1f67"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
+id = "papr-e70d7a-d56eb651"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/papr-e70d7a-d56eb651"
+repository_url = "https://github.com/plexinc/papr"
+base_commit = "d56eb651d7757f71fa8143c9a8630f251f894322"
+source_tree = "7c60139c232f0703dbc54dd841e6eab40a415f5e"
 license = "MIT"
 language = "typescript"
 
@@ -4702,6 +5230,18 @@ repository_url = "https://github.com/devswha/patina"
 base_commit = "b98b3b03e885e6996750d88f7b851010be6ed912"
 source_tree = "d21379430cef713d9eb2484959a4052e8a0bdaf2"
 license = "MIT"
+language = "javascript"
+
+[[materials]]
+id = "pbf-f27d16-4424eec5"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/pbf-f27d16-4424eec5"
+repository_url = "https://github.com/mapbox/pbf"
+base_commit = "4424eec59eff9a42af187e2a7a647f349e4839b5"
+source_tree = "84eed2abb0da52f32ee2101d553ecdbaa58d1c37"
+license = "BSD-3-Clause"
 language = "javascript"
 
 [[materials]]
@@ -4957,6 +5497,18 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "portablemc-9956f2-c0033996"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/portablemc-9956f2-c0033996"
+repository_url = "https://github.com/theorzr/portablemc"
+base_commit = "c0033996db6b4b0079099655b5b3600da5610724"
+source_tree = "ff364fdda8f0254ffe438b67f5156999fc00ad07"
+license = "Apache-2.0"
+language = "rust"
+
+[[materials]]
 id = "postgres-exporter-384d86-eaa67f02"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -4991,6 +5543,18 @@ base_commit = "4176778b8febe685f6888528e70f381bf1070fd3"
 source_tree = "2227024128fabfc7d72a20fce5da4955d77ed32e"
 license = "Apache-2.0"
 language = "go"
+
+[[materials]]
+id = "prismaliser-d22a28-b08a906e"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/prismaliser-d22a28-b08a906e"
+repository_url = "https://github.com/Ovyerus/prismaliser"
+base_commit = "b08a906e6c19738900c7b3b0c699b249b456d07e"
+source_tree = "6fb2ff77af44c4e8bab3c03c23b19a338389a5da"
+license = "MIT"
+language = "typescript"
 
 [[materials]]
 id = "private-mirrors-58ae4d-9a75c326"
@@ -5123,6 +5687,18 @@ base_commit = "7a00f309a5b8d8b2193cfa2ceea77a7be05013a0"
 source_tree = "b49ae7a9f93d7431ef02d2a9b2a23d63eb0bc8d5"
 license = "MIT"
 language = "rust"
+
+[[materials]]
+id = "punq-1b0da3-db84eff6"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/punq-1b0da3-db84eff6"
+repository_url = "https://github.com/bobthemighty/punq"
+base_commit = "db84eff6c53be7e7619400b7999e0aa550b77536"
+source_tree = "b69fe9484d043cdfd8cf1590fb510a6fb973b2b2"
+license = "MIT"
+language = "python"
 
 [[materials]]
 id = "pyais-9e64ed-e6cacde5"
@@ -5329,6 +5905,18 @@ license = "MIT"
 language = "typescript"
 
 [[materials]]
+id = "quickvoice-d6ac06-b7f8ba7c"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/quickvoice-d6ac06-b7f8ba7c"
+repository_url = "https://github.com/allgpt-co/QuickVoice"
+base_commit = "b7f8ba7c4e9df178a716240c732cd9c6cfb41771"
+source_tree = "3acbe98e792598a799be7dacf9805e44119d17ef"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "quinn-4679cd-ba294586"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -5425,6 +6013,18 @@ license = "MPL-2.0"
 language = "rust"
 
 [[materials]]
+id = "rbac-lookup-922df5-46385c50"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/rbac-lookup-922df5-46385c50"
+repository_url = "https://github.com/FairwindsOps/rbac-lookup"
+base_commit = "46385c500f47267607a2cdde63feef59247615f5"
+source_tree = "852b874df0cbaf9382e3a1a2dd24fc5014849170"
+license = "Apache-2.0"
+language = "go"
+
+[[materials]]
 id = "rbac-manager-920766-14c1018f"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -5435,6 +6035,18 @@ base_commit = "14c1018f2b8e8af03b11d2e31a76b8b6835dc977"
 source_tree = "5d2ef2b5c9ee017a740ad8de24f58fc3eb3a6e27"
 license = "Apache-2.0"
 language = "go"
+
+[[materials]]
+id = "react-data-table-compone-e68c1a-c7a8537b"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/react-data-table-compone-e68c1a-c7a8537b"
+repository_url = "https://github.com/jbetancur/react-data-table-component"
+base_commit = "c7a8537bb5e3eafda7593e38c4810e891dd27e3c"
+source_tree = "0770397d12534bc820362698679c4f89bd0bc5c9"
+license = "Apache-2.0"
+language = "typescript"
 
 [[materials]]
 id = "react-dropzone-370c9b-4599a84c"
@@ -5473,6 +6085,18 @@ license = "MIT"
 language = "javascript"
 
 [[materials]]
+id = "react-native-svg-0b04fd-2548502b"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/react-native-svg-0b04fd-2548502b"
+repository_url = "https://github.com/software-mansion/react-native-svg"
+base_commit = "2548502b31fadcd85972a15fb4d964154b5971ef"
+source_tree = "c90c6fef9c8b358e6f6ea79c6765815e1b5542ac"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "react-native-view-shot-b7059f-f16e1fc1"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -5495,6 +6119,18 @@ base_commit = "5d6e7377d1d811003b7225750fff3a17c16295f5"
 source_tree = "e657d0e32635e545c29f30e1abc4b19eaf9711e3"
 license = "Apache-2.0"
 language = "python"
+
+[[materials]]
+id = "redux-saga-a6214f-6dab0eba"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/redux-saga-a6214f-6dab0eba"
+repository_url = "https://github.com/redux-saga/redux-saga"
+base_commit = "6dab0ebadf05a54dcda626f1caa9d8dc3279a845"
+source_tree = "d132852e6280e722728070ec13a08cc43996095f"
+license = "MIT"
+language = "javascript"
 
 [[materials]]
 id = "rekor-ce1847-f3299aac"
@@ -6025,6 +6661,18 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "side-acc29c-0b02738a"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/side-acc29c-0b02738a"
+repository_url = "https://github.com/sipe-team/side"
+base_commit = "0b02738aba00d891f270d7f9959bdc0af67e7e08"
+source_tree = "258a8b7c6649ecbefa89fa8d3157870590239672"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "signalbot-3ed351-e9b1ce41"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -6047,6 +6695,18 @@ base_commit = "c8cece05a69a379ddc229f63e20701e34c87ef59"
 source_tree = "d711b6869a50b90910b6c4cf6a755dfcfb334e76"
 license = "Apache-2.0"
 language = "rust"
+
+[[materials]]
+id = "simple-git-hooks-91ffb7-d513d07f"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/simple-git-hooks-91ffb7-d513d07f"
+repository_url = "https://github.com/toplenboren/simple-git-hooks"
+base_commit = "d513d07f2cde3f26e68605e8336ece3bb524f329"
+source_tree = "bfc96c9810f8fe31799b728c1c383c35b6ff3fce"
+license = "MIT"
+language = "javascript"
 
 [[materials]]
 id = "simpleparsing-f43bec-7a706bee"
@@ -6107,6 +6767,18 @@ base_commit = "fd04284451985cccb94c6161cd81516a654d6d37"
 source_tree = "e1beae5a569e23542a59fa403bf9e697ae2d59b9"
 license = "Apache-2.0"
 language = "rust"
+
+[[materials]]
+id = "skpro-b0b955-a1a0d7fc"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/skpro-b0b955-a1a0d7fc"
+repository_url = "https://github.com/sktime/skpro"
+base_commit = "a1a0d7fcf406d308392bb653ed6d243d017a3d1c"
+source_tree = "3ece1a9725c6d9ae723b4158a0d2c59a9ca59c45"
+license = "BSD-3-Clause"
+language = "python"
 
 [[materials]]
 id = "slack-github-action-5f0f34-e23ce5f2"
@@ -6215,6 +6887,18 @@ base_commit = "835c30f5ce8132dceab5e8da8f8acae94408d284"
 source_tree = "97ca1697f25483040c05f9288cea6d437f5f32d6"
 license = "MIT"
 language = "go"
+
+[[materials]]
+id = "spectaql-750c1a-68dbe695"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/spectaql-750c1a-68dbe695"
+repository_url = "https://github.com/anvilco/spectaql"
+base_commit = "68dbe695f816526c5f5909260b9bd557af7f78dc"
+source_tree = "20788b7b8cca1e6f7dec73ab53f85018611f9128"
+license = "MIT"
+language = "javascript"
 
 [[materials]]
 id = "speedate-7ab6c7-6fafc2c6"
@@ -6385,6 +7069,18 @@ license = "MIT"
 language = "rust"
 
 [[materials]]
+id = "stylist-rs-44c7b7-6686a648"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/stylist-rs-44c7b7-6686a648"
+repository_url = "https://github.com/futursolo/stylist-rs"
+base_commit = "6686a648b4ac954b9e1900746ea0eac7657cfa96"
+source_tree = "10dae97ef76c035fb238593cffa7e742906843bd"
+license = "MIT"
+language = "rust"
+
+[[materials]]
 id = "stylua-145471-5ae6e7a5"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -6467,6 +7163,18 @@ base_commit = "f121db94017a100c0f792b3810e2591d49db9c39"
 source_tree = "744749fc3eab68ca7ff5b78898c540e53a10fe36"
 license = "MIT"
 language = "python"
+
+[[materials]]
+id = "tasks-4fbfe9-95bf0933"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/tasks-4fbfe9-95bf0933"
+repository_url = "https://github.com/madflojo/tasks"
+base_commit = "95bf09333831cdcff2c0852051a25a3fae630e94"
+source_tree = "7714838882842362981a306ae0b85e9c495b5bc6"
+license = "MIT"
+language = "go"
 
 [[materials]]
 id = "tcell-3dab0f-45d70ee4"
@@ -6697,6 +7405,30 @@ license = "MPL-2.0"
 language = "go"
 
 [[materials]]
+id = "terraform-provider-postg-649741-9308ebe9"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/terraform-provider-postg-649741-9308ebe9"
+repository_url = "https://github.com/cyrilgdn/terraform-provider-postgresql"
+base_commit = "9308ebe9b91aceef89b3a06e2d69c3ef7768a849"
+source_tree = "0fadb0a792ecfb3b68848fc6f14aa5c64e6aa09f"
+license = "MPL-2.0"
+language = "go"
+
+[[materials]]
+id = "terraform-provider-vra-b2ed74-a9316665"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/terraform-provider-vra-b2ed74-a9316665"
+repository_url = "https://github.com/vmware/terraform-provider-vra"
+base_commit = "a93166653dd978aaaa64f9f84bf37a4e94e0c7cd"
+source_tree = "935774a94c15232e8ac9e8f1c191d12a66f93e7d"
+license = "MPL-2.0"
+language = "go"
+
+[[materials]]
 id = "terraform-provider-vultr-f9eed4-f670e5bf"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -6743,6 +7475,18 @@ base_commit = "003f1faecd54e3fa7ee8502d3ca31431a95766e6"
 source_tree = "31d253703dda5ca1e6a9538692eb9dd7b10edcb8"
 license = "MIT"
 language = "javascript"
+
+[[materials]]
+id = "testify-b192a8-001eb794"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/testify-b192a8-001eb794"
+repository_url = "https://github.com/stretchr/testify"
+base_commit = "001eb7946baf451879253643e4ce4b38eaa0d4a7"
+source_tree = "e3611846aa20241efab38547c039a47fb8ca5ffe"
+license = "MIT"
+language = "go"
 
 [[materials]]
 id = "textx-b131f7-8aed8337"
@@ -6853,6 +7597,18 @@ license = "MIT"
 language = "javascript"
 
 [[materials]]
+id = "tokenizer-caeb9f-03561209"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/tokenizer-caeb9f-03561209"
+repository_url = "https://github.com/bzick/tokenizer"
+base_commit = "0356120930240678069d72e57a2762d7295e099b"
+source_tree = "7b4455a2cf4d2ea2d22cc0d184ca2048d9e26a43"
+license = "MIT"
+language = "go"
+
+[[materials]]
 id = "tokio-modbus-24983f-75c29f5e"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -6901,6 +7657,18 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "traefik-proxmox-provider-34e192-932f6765"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/traefik-proxmox-provider-34e192-932f6765"
+repository_url = "https://github.com/NX211/traefik-proxmox-provider"
+base_commit = "932f676582707dc3a61cb5c85092a766fef87b53"
+source_tree = "4a8544af75d65d6ef3fc21d0f1e3d1c795596869"
+license = "Apache-2.0"
+language = "go"
+
+[[materials]]
 id = "trdsql-b7d289-1ef4b468"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -6910,6 +7678,18 @@ repository_url = "https://github.com/noborus/trdsql"
 base_commit = "1ef4b4685b27bd5c105d9459dfad874f0e43c06d"
 source_tree = "0298d46d971d3ae404d99bc4fb393785e9ae4dd3"
 license = "MIT"
+language = "go"
+
+[[materials]]
+id = "triage-party-f21dc4-eee71ca8"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/triage-party-f21dc4-eee71ca8"
+repository_url = "https://github.com/google/triage-party"
+base_commit = "eee71ca8dedfd45495cfc5d5f65834df6415f4df"
+source_tree = "5a33ccf895fb62020b73412344d3baa4abb16f71"
+license = "Apache-2.0"
 language = "go"
 
 [[materials]]
@@ -7009,6 +7789,18 @@ license = "Apache-2.0"
 language = "rust"
 
 [[materials]]
+id = "turbolift-333739-d4af02aa"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/turbolift-333739-d4af02aa"
+repository_url = "https://github.com/Skyscanner/turbolift"
+base_commit = "d4af02aacd9a9a016e1389ec71f8a3cc7057b10c"
+source_tree = "30fb86dcad3188f73ed44a0693f410e6f0aa3cb8"
+license = "Apache-2.0"
+language = "go"
+
+[[materials]]
 id = "tutti-2221cf-6b86cca7"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -7081,6 +7873,66 @@ license = "MIT"
 language = "go"
 
 [[materials]]
+id = "unbuild-52db22-cf1c3033"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/unbuild-52db22-cf1c3033"
+repository_url = "https://github.com/unjs/unbuild"
+base_commit = "cf1c30333df2d6b19e6208f67157024975bdba82"
+source_tree = "d298d24bdbe15c3f7d2da04af64268191c137c08"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
+id = "ungh-95511a-d47299db"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/ungh-95511a-d47299db"
+repository_url = "https://github.com/unjs/ungh"
+base_commit = "d47299dbc15e393b4dc3f97e90fdc39bc3079e66"
+source_tree = "d79f1eee6e6d613d5ea0910b2bf97a3131ae108f"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
+id = "unplugin-macros-8463cb-9deb6a2c"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/unplugin-macros-8463cb-9deb6a2c"
+repository_url = "https://github.com/unplugin/unplugin-macros"
+base_commit = "9deb6a2cf20e17aa15dc3fb735768b6b86d3a991"
+source_tree = "6725a7b1bf200c191de006f2b31bfc90706426ac"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
+id = "unplugin-vue-3d0389-d53e3e1b"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/unplugin-vue-3d0389-d53e3e1b"
+repository_url = "https://github.com/unplugin/unplugin-vue"
+base_commit = "d53e3e1b456a6ebafd75434b961c30283ffdcaaf"
+source_tree = "658f45e332a33f19f98e449c3e4679b518e1db81"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
+id = "upgrade-helper-65b1c5-f44a405d"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/upgrade-helper-65b1c5-f44a405d"
+repository_url = "https://github.com/react-native-community/upgrade-helper"
+base_commit = "f44a405d9834c797d527c87dbf05d5b7d636367b"
+source_tree = "7da0ed83fb6a4c2e28b5bcd2f4e557debd497f04"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "upjet-e42f5f-4f6e6e10"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -7137,6 +7989,18 @@ path = "materials/velato-fccc47-69d96473"
 repository_url = "https://github.com/linebender/velato"
 base_commit = "69d9647389f7e47ce7329ab52949d335eef4a41e"
 source_tree = "047f630dd7041670a4068da3fa21521e7aad87b5"
+license = "Apache-2.0"
+language = "rust"
+
+[[materials]]
+id = "vers-c71b6a-2864494b"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/vers-c71b6a-2864494b"
+repository_url = "https://github.com/Cydhra/vers"
+base_commit = "2864494b200f5640de381d91e578db64a3d2a409"
+source_tree = "5cb812c3d1f3adeeaa98eeeb929ee63134c7eee6"
 license = "Apache-2.0"
 language = "rust"
 
@@ -7441,6 +8305,18 @@ license = "Apache-2.0"
 language = "go"
 
 [[materials]]
+id = "zigbee-herdsman-70df8c-8cad7654"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/zigbee-herdsman-70df8c-8cad7654"
+repository_url = "https://github.com/Koenkk/zigbee-herdsman"
+base_commit = "8cad765426016ff935c7cd9f8045882289b73748"
+source_tree = "7f7030bdf4f7be9321984a4708124e3c43a171cd"
+license = "MIT"
+language = "typescript"
+
+[[materials]]
 id = "ziti-1cf805-465b34d3"
 status = "qualified"
 dockerfile_rebuildable = true
@@ -7451,6 +8327,18 @@ base_commit = "465b34d38c85cc0eaa9ff020518cbc0aa0303d15"
 source_tree = "19c9b318cdaf1e9fb9680a35d5c3f51a5dd09e6e"
 license = "Apache-2.0"
 language = "go"
+
+[[materials]]
+id = "zmq-rs-42bfb2-7de9e99f"
+status = "qualified"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+path = "materials/zmq-rs-42bfb2-7de9e99f"
+repository_url = "https://github.com/zeromq/zmq.rs"
+base_commit = "7de9e99f0a810857cfd001134c924c0556a2451a"
+source_tree = "80afacecccd997c54261f772e6cbdbaed3518d72"
+license = "MIT"
+language = "rust"
 
 [[materials]]
 id = "zsh-patina-cc5077-3d980f07"

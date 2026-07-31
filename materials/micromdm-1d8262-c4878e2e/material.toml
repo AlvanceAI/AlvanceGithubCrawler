@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "micromdm-1d8262-c4878e2e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/micromdm/micromdm"
+base_commit = "c4878e2e378e5d3ce90483dd60bcbad90c7b997f"
+source_tree = "06eaad859948dd650d0f554137293837d8f6ee7d"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.17.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a9ec277b6f0afb6a8be489731aa99686f6c596b600489aef105dc2b81fc9fee3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-micromdm-1d8262-c4878e2e-v2-env-a9ec277b"
+template_id = "gx7mp0o59re0xjclol72"
+source_template_alias = "8a5xr7t53vyf2y2ukney"
+source_template_id = "8a5xr7t53vyf2y2ukney"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

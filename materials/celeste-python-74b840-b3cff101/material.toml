@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "celeste-python-74b840-b3cff101"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/withceleste/celeste-python"
+base_commit = "b3cff101969b0c4455c546258cc4d1902a2f3543"
+source_tree = "5f9186d2242c90c04f0bdfff950344fb3b5dcc73"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9ad065e3f28c3fd2755df9a927a65978d586b1ecd53fa63233a9c8c014648897"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-celeste-python-74b840-b3cff101-v2-env-9ad065e3"
+template_id = "laff6prqa6ph3j4y7agd"
+source_template_alias = "ibpr1btlf6ljkej18fav"
+source_template_id = "ibpr1btlf6ljkej18fav"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

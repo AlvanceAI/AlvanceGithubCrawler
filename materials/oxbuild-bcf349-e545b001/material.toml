@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "oxbuild-bcf349-e545b001"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/DonIsaac/oxbuild"
+base_commit = "e545b0012feb930e98fec0c441fd85958b84b1c3"
+source_tree = "c8a1839671a7c96961d4bd9735d0aeba043e6373"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.95.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "95b5858b925db49b2861e139dacb2423473f8d7317f5e8b3c7b9dd8adce90688"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-oxbuild-bcf349-e545b001-v2-env-95b5858b"
+template_id = "683z72zpkvcvbsa73q1e"
+source_template_alias = "v8k7cfbkpgd10xzrjxl5"
+source_template_id = "v8k7cfbkpgd10xzrjxl5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

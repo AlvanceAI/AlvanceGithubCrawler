@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "openwiki-cbaa9c-b8c510fc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/langchain-ai/openwiki"
+base_commit = "b8c510fce4afab5cc855390f67f833137183d646"
+source_tree = "7f7573750603ec17352b08e522bf8b0885b8b100"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fdf25a1d4049b940159611c1276e85d3d38cb44ff590ab81e36af874fad650ab"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-openwiki-cbaa9c-b8c510fc-v2-env-fdf25a1d"
+template_id = "wjknqm7f7jgiw8kta9cg"
+source_template_alias = "2ivhdl42org3nnau5rvw"
+source_template_id = "2ivhdl42org3nnau5rvw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

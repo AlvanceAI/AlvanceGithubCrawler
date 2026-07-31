@@ -1,0 +1,5 @@
+Repository `zeromq/zmq.rs` at commit `7de9e99f0a810857cfd001134c924c0556a2451a` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+实现符合 ØMQ 语义的 PAIR 套接字类型，包括一对一连接、双向消息收发、后端集成及协议合规测试。

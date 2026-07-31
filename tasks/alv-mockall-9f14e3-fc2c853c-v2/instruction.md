@@ -1,0 +1,5 @@
+Repository `asomers/mockall` at commit `fc2c853cf7491c49147170d9f442eeb8d7589c2e` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+扩展 `mock!` 宏，使带生命周期参数的泛型 mock 结构体能够在非泛型构造函数及方法签名中引用该结构体生命周期，并在生成的 mock 类型上保留该生命周期。

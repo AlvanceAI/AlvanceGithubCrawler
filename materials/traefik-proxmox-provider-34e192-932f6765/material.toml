@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "traefik-proxmox-provider-34e192-932f6765"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/NX211/traefik-proxmox-provider"
+base_commit = "932f676582707dc3a61cb5c85092a766fef87b53"
+source_tree = "4a8544af75d65d6ef3fc21d0f1e3d1c795596869"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.6"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0e829f6135e7e994dd6f34f57e26508127e15814b1a2f7a214ecdb7b9bc1e522"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-traefik-proxmox-prov-34e192-932f6765-v2-env-0e829f61"
+template_id = "luqx0abex5rtxp06z84b"
+source_template_alias = "yzvltuwzqbcuojxhxeqv"
+source_template_id = "yzvltuwzqbcuojxhxeqv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

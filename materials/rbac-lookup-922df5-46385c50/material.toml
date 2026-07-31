@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rbac-lookup-922df5-46385c50"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/FairwindsOps/rbac-lookup"
+base_commit = "46385c500f47267607a2cdde63feef59247615f5"
+source_tree = "852b874df0cbaf9382e3a1a2dd24fc5014849170"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.20.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6a13428b06f1261e8485d81cfaae116d040896d6dce0bae70b7c4f56944e06fd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rbac-lookup-922df5-46385c50-v2-env-6a13428b"
+template_id = "8iqo32km396c5ehw9sgl"
+source_template_alias = "lev6veinmzp5m0xhkdze"
+source_template_id = "lev6veinmzp5m0xhkdze"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

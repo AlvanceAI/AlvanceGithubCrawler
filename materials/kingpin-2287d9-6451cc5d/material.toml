@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kingpin-2287d9-6451cc5d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alecthomas/kingpin"
+base_commit = "6451cc5d2dc7a6fd495db66c025de9987721f4f4"
+source_tree = "8513db92a733b0ae59910bf5dd64daa03df8a422"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.17.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "670f2ef2700b5c01102e7854951fcb6e4b98c9970b0287f6b052816a2643ff23"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kingpin-2287d9-6451cc5d-v2-env-670f2ef2"
+template_id = "f7k46zdh4iaylitjonsk"
+source_template_alias = "pjb4l4uycln0ubbfh79z"
+source_template_id = "pjb4l4uycln0ubbfh79z"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "testify-b192a8-001eb794"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/stretchr/testify"
+base_commit = "001eb7946baf451879253643e4ce4b38eaa0d4a7"
+source_tree = "e3611846aa20241efab38547c039a47fb8ca5ffe"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.17.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d2cc9b5e7e561caecfd07a494514726bfc2334947398096ec7110af896445bfb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-testify-b192a8-001eb794-v2-env-d2cc9b5e"
+template_id = "u065kuaap9wej0xv7ajh"
+source_template_alias = "azuvaclhzp34x9wrbl1t"
+source_template_id = "azuvaclhzp34x9wrbl1t"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

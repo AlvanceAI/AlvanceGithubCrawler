@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-data-table-compone-e68c1a-c7a8537b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jbetancur/react-data-table-component"
+base_commit = "c7a8537bb5e3eafda7593e38c4810e891dd27e3c"
+source_tree = "0770397d12534bc820362698679c4f89bd0bc5c9"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "934ce371be8ecec40456a52730f761940ef0f6c13d8b87ac3af0e69b8fe3e8b2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-data-table-com-e68c1a-c7a8537b-v2-env-934ce371"
+template_id = "u2nk4nq17xs5vop568km"
+source_template_alias = "2kkocowr8pup69vj9zoy"
+source_template_id = "2kkocowr8pup69vj9zoy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

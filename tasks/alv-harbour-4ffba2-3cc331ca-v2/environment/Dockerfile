@@ -1,0 +1,16 @@
+# Harbor rebuildable envelope v2
+# Dockerfile recipe v3
+# E2B aliases are optional caches; this file is the durable build source.
+FROM docker.io/library/node:24
+USER root
+ENV HOME="/root"
+ENV PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUN apt-get update && apt-get install -y --no-install-recommends time git ca-certificates build-essential && rm -rf /var/lib/apt/lists/*
+RUN /usr/local/bin/node --version && /usr/local/bin/npm --version
+WORKDIR /
+RUN rm -rf /app && mkdir -p /app && git init /app && cd /app && git remote add origin https://github.com/geekforbrains/harbour.git && git fetch --depth=1 origin 3cc331ca1cbcda28996a1effc97ecf0760072fe9 && git checkout --detach FETCH_HEAD && git submodule update --init --recursive && git update-ref refs/remotes/origin/main HEAD && test "$(git rev-parse HEAD)" = 3cc331ca1cbcda28996a1effc97ecf0760072fe9 && test "$(git rev-parse HEAD^{tree})" = 4d9ae26c12c7c45888a68bbd6400ee56728a6711
+WORKDIR /app
+RUN /usr/local/bin/npm ci
+RUN test -z "$(git status --porcelain)"
+USER root
+WORKDIR /app

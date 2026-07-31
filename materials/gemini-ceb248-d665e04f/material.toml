@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gemini-ceb248-d665e04f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/FairwindsOps/gemini"
+base_commit = "d665e04f508c16f381a862b86705d27beae82fd1"
+source_tree = "466ade0a51752c0a68b89827f8def5b49a18f995"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.20.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "783b8e02a9c3ee198d144d4bbdcf4eaa7d83c23b9d8572eda9d83626b603ffc0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gemini-ceb248-d665e04f-v2-env-783b8e02"
+template_id = "sxkh2eqysnoo267n2lk4"
+source_template_alias = "qkz74q01p4oysf8xoy6e"
+source_template_id = "qkz74q01p4oysf8xoy6e"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

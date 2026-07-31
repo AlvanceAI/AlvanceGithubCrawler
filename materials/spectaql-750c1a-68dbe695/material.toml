@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "spectaql-750c1a-68dbe695"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/anvilco/spectaql"
+base_commit = "68dbe695f816526c5f5909260b9bd557af7f78dc"
+source_tree = "20788b7b8cca1e6f7dec73ab53f85018611f9128"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a231611874924216cfb25c93b9a881cc992d167135fe3c3ecd143fe28250ec26"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-spectaql-750c1a-68dbe695-v2-env-a2316118"
+template_id = "0bx1t28fh2rvxlzd0yq0"
+source_template_alias = "7pvr18cqy3hkp8sroaw4"
+source_template_id = "7pvr18cqy3hkp8sroaw4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

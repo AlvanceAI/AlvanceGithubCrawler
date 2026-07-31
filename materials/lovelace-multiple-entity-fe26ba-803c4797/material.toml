@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lovelace-multiple-entity-fe26ba-803c4797"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/benct/lovelace-multiple-entity-row"
+base_commit = "803c4797f017da7192df720475e88b1fd1481b6e"
+source_tree = "b036902e01303952012c3000878d99ecfb5753f6"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "20c81f315135e8935f6e02d3a09ee466b1df1d2b6da21f6ed4452d99279a8f8b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lovelace-multiple-en-fe26ba-803c4797-v2-env-20c81f31"
+template_id = "uf1mw818te5e91r040pr"
+source_template_alias = "3ktyvcynewxihp7xdry5"
+source_template_id = "3ktyvcynewxihp7xdry5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

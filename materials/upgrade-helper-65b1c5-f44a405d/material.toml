@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "upgrade-helper-65b1c5-f44a405d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/react-native-community/upgrade-helper"
+base_commit = "f44a405d9834c797d527c87dbf05d5b7d636367b"
+source_tree = "7da0ed83fb6a4c2e28b5bcd2f4e557debd497f04"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "82038755d2fd421854027775f2a57675f7a983fc3c7493cbcaed6a5a59c5e1ee"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-upgrade-helper-65b1c5-f44a405d-v2-env-82038755"
+template_id = "kczipmx77liiaawr3jp8"
+source_template_alias = "zrdmiljqhnbm0iv0ndks"
+source_template_id = "zrdmiljqhnbm0iv0ndks"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

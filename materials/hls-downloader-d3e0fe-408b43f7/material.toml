@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hls-downloader-d3e0fe-408b43f7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/puemos/hls-downloader"
+base_commit = "408b43f7c0f73ea7efd4153199f3935e38e657eb"
+source_tree = "e2f8f800d92ccbe4f717d57479621e676bf594da"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "383910492b7daea6e2cfaec580b4b56b400c377efc2528e95a11e2e8aa14e652"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hls-downloader-d3e0fe-408b43f7-v2-env-38391049"
+template_id = "1p92y4wvh0k0d2an841x"
+source_template_alias = "k8pavrx1iamhvlh2b2f1"
+source_template_id = "k8pavrx1iamhvlh2b2f1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

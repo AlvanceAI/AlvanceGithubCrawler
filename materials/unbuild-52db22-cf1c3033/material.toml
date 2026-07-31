@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "unbuild-52db22-cf1c3033"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/unjs/unbuild"
+base_commit = "cf1c30333df2d6b19e6208f67157024975bdba82"
+source_tree = "d298d24bdbe15c3f7d2da04af64268191c137c08"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "37336045023e70fb3bf875b062b6c3a2b05495a0993ddfdc6597aee03ffd5edd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-unbuild-52db22-cf1c3033-v2-env-37336045"
+template_id = "oy5gib9ovimlof0eaj4v"
+source_template_alias = "8yo20a9ss9sz06hf5jmo"
+source_template_id = "8yo20a9ss9sz06hf5jmo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "jellyfin-sdk-typescript-e9fd0c-ade04d01"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jellyfin/jellyfin-sdk-typescript"
+base_commit = "ade04d0103ff250f7746106eff19d745ebf748d0"
+source_tree = "9843d1134e6d8352eff39fac3b84007ea58d6324"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6dc79c3fb4269daec6374da8773b3203d6e491d3d2507d88efaaf56fa7d0473e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-jellyfin-sdk-typescr-e9fd0c-ade04d01-v2-env-6dc79c3f"
+template_id = "s6m58orf749zzdr9ebs8"
+source_template_alias = "mlx2lihqg55p3ym9yh26"
+source_template_id = "mlx2lihqg55p3ym9yh26"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

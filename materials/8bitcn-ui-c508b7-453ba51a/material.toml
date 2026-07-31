@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "8bitcn-ui-c508b7-453ba51a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/TheOrcDev/8bitcn-ui"
+base_commit = "453ba51a619a3082302eb507367a31e4c785c331"
+source_tree = "a6dabe100350b3b6748bcf3e60d814f3272119f0"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bf51b19cd142d9a0540184bf99fbaf7d8ee526a69670e08d675f4bf42dbc84b8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-8bitcn-ui-c508b7-453ba51a-v2-env-bf51b19c"
+template_id = "j645ppuxnatogcemcz89"
+source_template_alias = "krqklcawkazm2oo8oqba"
+source_template_id = "krqklcawkazm2oo8oqba"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

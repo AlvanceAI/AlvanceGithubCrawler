@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vers-c71b6a-2864494b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Cydhra/vers"
+base_commit = "2864494b200f5640de381d91e578db64a3d2a409"
+source_tree = "5cb812c3d1f3adeeaa98eeeb929ee63134c7eee6"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "172ce287acd3cfcd697ab96813d9c57bd544bf82c7fa1ca82482ad4f7a14d419"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vers-c71b6a-2864494b-v2-env-172ce287"
+template_id = "zs07raiexefol3x4g6xo"
+source_template_alias = "du6561wkjarno4holl7m"
+source_template_id = "du6561wkjarno4holl7m"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

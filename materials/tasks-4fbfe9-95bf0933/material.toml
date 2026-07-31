@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tasks-4fbfe9-95bf0933"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/madflojo/tasks"
+base_commit = "95bf09333831cdcff2c0852051a25a3fae630e94"
+source_tree = "7714838882842362981a306ae0b85e9c495b5bc6"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8e2aef90d32b15e198c4cda6e9dc44982eee33242bb21956881b50ee4fcda837"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tasks-4fbfe9-95bf0933-v2-env-8e2aef90"
+template_id = "rfnfbb4z2f1wgyao0lyz"
+source_template_alias = "lmbsey45b0cki0ywp9bn"
+source_template_id = "lmbsey45b0cki0ywp9bn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

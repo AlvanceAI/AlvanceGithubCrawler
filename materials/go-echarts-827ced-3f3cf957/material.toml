@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-echarts-827ced-3f3cf957"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-echarts/go-echarts"
+base_commit = "3f3cf9579987d520eef191d3f9b7d8c47d234276"
+source_tree = "494d8f05ba58f74e0f554544f26346bf7095d32e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "060131cc271ec226e3b9d4606d1630a1405ba918cb15a2e40cf76ef7eef3533d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-echarts-827ced-3f3cf957-v2-env-060131cc"
+template_id = "is1mcks2n0toowy0kdz9"
+source_template_alias = "97bjcxdbfz5b25ah6omf"
+source_template_id = "97bjcxdbfz5b25ah6omf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

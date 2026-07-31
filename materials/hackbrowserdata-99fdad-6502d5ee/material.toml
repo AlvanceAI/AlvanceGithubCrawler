@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hackbrowserdata-99fdad-6502d5ee"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/moonD4rk/HackBrowserData"
+base_commit = "6502d5ee14a4e1c84e4b027bac86369ea9475f46"
+source_tree = "8a77e2038546f2f2c51088ee0d12b1e5ec86626e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.20.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "84cd03bd9eb50faa949bdb3d53a515169359ac462baab76b787b59951ed67e1c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hackbrowserdata-99fdad-6502d5ee-v2-env-84cd03bd"
+template_id = "3jf54pty1u83q8tqz1gh"
+source_template_alias = "oe2nz8zmn7xpfh20sig5"
+source_template_id = "oe2nz8zmn7xpfh20sig5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

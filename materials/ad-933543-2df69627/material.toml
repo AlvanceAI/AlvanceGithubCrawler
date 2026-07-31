@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ad-933543-2df69627"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sminez/ad"
+base_commit = "2df6962734785c5099589c89a0b6241ac5836b47"
+source_tree = "52e5c68dbde2a488e966cdf0c8f8d09ac0ae125d"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "39b2e80f0c2c3cb6f11080d23261ebf5b2ed827f9d6dd4cf0724748201e4b67d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ad-933543-2df69627-v2-env-39b2e80f"
+template_id = "7yyinobgu8xip1xpsoui"
+source_template_alias = "8hss5gmfu3r93d25604p"
+source_template_id = "8hss5gmfu3r93d25604p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

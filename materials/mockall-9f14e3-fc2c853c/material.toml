@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mockall-9f14e3-fc2c853c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/asomers/mockall"
+base_commit = "fc2c853cf7491c49147170d9f442eeb8d7589c2e"
+source_tree = "f151683827b5c26a498c2156728a3f4b72fa224a"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bf23ba4616adf73f2cd3bb1673aef2ff59fb5b407b4949c708e327dcdba0b4eb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mockall-9f14e3-fc2c853c-v2-env-bf23ba46"
+template_id = "ilv77yschvnnguq6zxrr"
+source_template_alias = "bocf805947cywj6uo7uq"
+source_template_id = "bocf805947cywj6uo7uq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

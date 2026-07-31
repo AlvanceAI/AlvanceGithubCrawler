@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "simple-git-hooks-91ffb7-d513d07f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/toplenboren/simple-git-hooks"
+base_commit = "d513d07f2cde3f26e68605e8336ece3bb524f329"
+source_tree = "bfc96c9810f8fe31799b728c1c383c35b6ff3fce"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6ce68a1c0270987ffbc50cad10ef49a9c57035b69f9c9c3f87df1892b964731e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-simple-git-hooks-91ffb7-d513d07f-v2-env-6ce68a1c"
+template_id = "ynffb69nphu9jqzz6m6d"
+source_template_alias = "9lxnxlnectnaypyt3cnk"
+source_template_id = "9lxnxlnectnaypyt3cnk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "side-acc29c-0b02738a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sipe-team/side"
+base_commit = "0b02738aba00d891f270d7f9959bdc0af67e7e08"
+source_tree = "258a8b7c6649ecbefa89fa8d3157870590239672"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1964e9ce3791420174c311fd33881a57b22f68ce1cd9264dbc98943144db50b3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-side-acc29c-0b02738a-v2-env-1964e9ce"
+template_id = "fvczg8mguvmuf46rl11d"
+source_template_alias = "h26pbgcrn2hsfw29rbx3"
+source_template_id = "h26pbgcrn2hsfw29rbx3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

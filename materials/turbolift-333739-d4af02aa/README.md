@@ -1,0 +1,11 @@
+# turbolift-333739-d4af02aa
+
+Rebuildable repository material for `Skyscanner/turbolift` at
+`d4af02aacd9a9a016e1389ec71f8a3cc7057b10c`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
+
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.

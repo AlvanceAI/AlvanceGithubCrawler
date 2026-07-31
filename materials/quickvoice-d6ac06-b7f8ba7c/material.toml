@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "quickvoice-d6ac06-b7f8ba7c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/allgpt-co/QuickVoice"
+base_commit = "b7f8ba7c4e9df178a716240c732cd9c6cfb41771"
+source_tree = "3acbe98e792598a799be7dacf9805e44119d17ef"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b023afa884662a978cc1cddc2d47759895738e28c44c5e7e9786a4f06eb44fb2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-quickvoice-d6ac06-b7f8ba7c-v2-env-b023afa8"
+template_id = "r3iwnfyqfonnxvstjt61"
+source_template_alias = "i2v5co28oa7hmt2djlef"
+source_template_id = "i2v5co28oa7hmt2djlef"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

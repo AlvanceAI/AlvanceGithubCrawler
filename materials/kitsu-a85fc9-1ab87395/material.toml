@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kitsu-a85fc9-1ab87395"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wopian/kitsu"
+base_commit = "1ab8739506fe6f7aafc6543dfb2a44e6fb9e2071"
+source_tree = "7acd09925fa0656f9db215a291c2b0201200ede4"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d6f2e693855df90b9e042574a3a9e0e9f040464c7128c7c54afe4930ea5b3097"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kitsu-a85fc9-1ab87395-v2-env-d6f2e693"
+template_id = "91rd779oy7m3t8tbc0d2"
+source_template_alias = "z4i0aiehmquxu1vj4i0g"
+source_template_id = "z4i0aiehmquxu1vj4i0g"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

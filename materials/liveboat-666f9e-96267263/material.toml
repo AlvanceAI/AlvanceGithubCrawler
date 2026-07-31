@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "liveboat-666f9e-96267263"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/exaroth/liveboat"
+base_commit = "9626726306f5c5138dc34bfeea336412a1c589ee"
+source_tree = "f1e6d591ab4733f6c0ffbb18538b9ffdfeec1431"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9f98651660eb142fdf0edb5908c43cbb6271c164afdf0919a85c61a58c820fb5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-liveboat-666f9e-96267263-v2-env-9f986516"
+template_id = "asqgpi64hxrwq46dwmnf"
+source_template_alias = "494s7widozpiw6sc3dwe"
+source_template_id = "494s7widozpiw6sc3dwe"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

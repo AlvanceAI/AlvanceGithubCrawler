@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "casbin-b68135-08dab401"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/apache/casbin"
+base_commit = "08dab401f7e78a3af923239fff1fcef20ab78464"
+source_tree = "29f56d68906aca39eb5de49e2aad0b2e03b1e77b"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.13.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3949540ff69b57d0324ebdce96cf97655d3801f153f48614bccf7eaea2e16671"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-casbin-b68135-08dab401-v2-env-3949540f"
+template_id = "z05r0nxbacubga7k69it"
+source_template_alias = "jtwdaxwaiuz5a9onik7v"
+source_template_id = "jtwdaxwaiuz5a9onik7v"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

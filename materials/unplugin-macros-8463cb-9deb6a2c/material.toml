@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "unplugin-macros-8463cb-9deb6a2c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/unplugin/unplugin-macros"
+base_commit = "9deb6a2cf20e17aa15dc3fb735768b6b86d3a991"
+source_tree = "6725a7b1bf200c191de006f2b31bfc90706426ac"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7f636bdde6646dc7c1b2b4e75552f6f49c275a4fec3da75b98273eb6351b9ade"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-unplugin-macros-8463cb-9deb6a2c-v2-env-7f636bdd"
+template_id = "2sisxhr9k5pcmz276s3r"
+source_template_alias = "tppjl1um5ssk4lifygp0"
+source_template_id = "tppjl1um5ssk4lifygp0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

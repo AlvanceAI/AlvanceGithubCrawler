@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-redux-saga-a6214f-6dab0eba-v2"
+description = "Rebuildable repository task for redux-saga/redux-saga"
+authors = []
+keywords = ["javascript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-redux-saga-a6214f-6dab0eba-v2"
+material_id = "redux-saga-a6214f-6dab0eba"
+status = "direction"
+language = "javascript"
+repository_url = "https://github.com/redux-saga/redux-saga"
+base_commit_hash = "6dab0ebadf05a54dcda626f1caa9d8dc3279a845"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

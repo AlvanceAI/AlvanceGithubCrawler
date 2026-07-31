@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "prismaliser-d22a28-b08a906e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Ovyerus/prismaliser"
+base_commit = "b08a906e6c19738900c7b3b0c699b249b456d07e"
+source_tree = "6fb2ff77af44c4e8bab3c03c23b19a338389a5da"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1a1cd5e482866d25ebe5526d23cb8044a739f969684fb3a812fcf69c2f389b87"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-prismaliser-d22a28-b08a906e-v2-env-1a1cd5e4"
+template_id = "1j26vs8e0m3x8rwibw3b"
+source_template_alias = "3rjhwayeijm040c42dr7"
+source_template_id = "3rjhwayeijm040c42dr7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

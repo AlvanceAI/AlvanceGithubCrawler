@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "magic-regexp-dfcf1c-a5c147e4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/unjs/magic-regexp"
+base_commit = "a5c147e45ad344155e202e86d2adf4442fa796f6"
+source_tree = "0a45253be3a6217e4d898d01b16350e37f99a10c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "df08bdb6ca5a1ed08dd780cdff4121b34e97319b518482fc92333eb54b8c708a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-magic-regexp-dfcf1c-a5c147e4-v2-env-df08bdb6"
+template_id = "7h35g4luhhig68naekxs"
+source_template_alias = "opgivldbm62ce2c0yyqv"
+source_template_id = "opgivldbm62ce2c0yyqv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

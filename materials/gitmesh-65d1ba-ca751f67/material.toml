@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gitmesh-65d1ba-ca751f67"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/LF-Decentralized-Trust-labs/gitmesh"
+base_commit = "ca751f676ea5f60fcfc3c103fb7f24b8b455d0c0"
+source_tree = "efbd89751ad7eaf43afa45dc6ac3776038311730"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3755b77cb3bcba8a35a3610d0f84f02edcbc99063c03b1a066342121905a7ccb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gitmesh-65d1ba-ca751f67-v2-env-3755b77c"
+template_id = "u454lvtjdgzmqcfwil0z"
+source_template_alias = "z6b2wl4kdy0hpv0upg6o"
+source_template_id = "z6b2wl4kdy0hpv0upg6o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

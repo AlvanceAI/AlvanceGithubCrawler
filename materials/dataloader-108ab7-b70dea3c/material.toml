@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dataloader-108ab7-b70dea3c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/graphql/dataloader"
+base_commit = "b70dea3cc72a7e8f941133b0f486aa1840e3f927"
+source_tree = "5023d0ac219278b06aabffd9a0cbe71c5291e031"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7c4df9398f34dee799c4093696bfaf2ea2ed0651ab8456898f53816feca290bd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dataloader-108ab7-b70dea3c-v2-env-7c4df939"
+template_id = "llp1mtppclrscvircgvx"
+source_template_alias = "jdzyen1nzqh499hr087p"
+source_template_id = "jdzyen1nzqh499hr087p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

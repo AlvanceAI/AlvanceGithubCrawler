@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hsds-2f2ebb-f91f9e03"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/HDFGroup/hsds"
+base_commit = "f91f9e03b0fb12226a42baef78e57c1de629c86d"
+source_tree = "05b4a969bc29dfff523a82e022ef9dcbc3bea19a"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4cfd8012bf64ab4d79a4909b923527ea7f3ef5ae32d08c2fee4628080a30902e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hsds-2f2ebb-f91f9e03-v2-env-4cfd8012"
+template_id = "o3an50qlrczy13yl4cli"
+source_template_alias = "m3p551h62a5b2v4sb05t"
+source_template_id = "m3p551h62a5b2v4sb05t"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
