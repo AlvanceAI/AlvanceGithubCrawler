@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "boxxy-b8340e-4bd93773"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/queer/boxxy"
+base_commit = "4bd93773f0de54902f88292c3c170eab731589f9"
+source_tree = "517ed79283ccc911059f1e14254755a71e4a7d64"
+default_branch = "mistress"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "22489f4c20e3d5303e1e9b6d71bd6316feefd3b6e898e2a3e3b8d83099785e20"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-boxxy-b8340e-4bd93773-v2-env-22489f4c"
+template_id = "i0ekb0dc3pa3zu269exc"
+source_template_alias = "y3fg6ab5jxg5fooihntj"
+source_template_id = "y3fg6ab5jxg5fooihntj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "css-color-component-fbce0a-48af73ca"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/argyleink/css-color-component"
+base_commit = "48af73ca62aaa54c4ec3a086739486efdc9733aa"
+source_tree = "07c89627d3fc74b34639dec0176f4b4a0d265076"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cc973253d47beeb460b38b5c46d72da05681123309097bfb8ccc96bf63da1193"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-css-color-component-fbce0a-48af73ca-v2-env-cc973253"
+template_id = "k6wthnu2j68vqqiuq64m"
+source_template_alias = "a0yu91hdcslxlj8m2mek"
+source_template_id = "a0yu91hdcslxlj8m2mek"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

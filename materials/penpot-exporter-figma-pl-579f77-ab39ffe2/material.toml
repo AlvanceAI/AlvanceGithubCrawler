@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "penpot-exporter-figma-pl-579f77-ab39ffe2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/penpot/penpot-exporter-figma-plugin"
+base_commit = "ab39ffe206bacfae767a58cf45ec92a26ec9eb1e"
+source_tree = "dcdb7512275f16df3156703f0df59185485da74c"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "087177e3507fcaacb796d5255e52c27ba63f14a9a46813b39a1b998678223964"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-penpot-exporter-figm-579f77-ab39ffe2-v2-env-087177e3"
+template_id = "ulfucguul2xsdqrjudgm"
+source_template_alias = "kdr3i1ctbmfanztmjsmp"
+source_template_id = "kdr3i1ctbmfanztmjsmp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

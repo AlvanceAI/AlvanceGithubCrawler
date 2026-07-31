@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zarrita-js-4cd932-152a90b6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/manzt/zarrita.js"
+base_commit = "152a90b67e497fb2dcc44da5c5d0e6938cfe22f1"
+source_tree = "e02d82fbc7727b848fe6b30b7b5744de35d2d453"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "be7892d55c41f52de346e06f2a4d1f6adac383a241e597e7962b391af63b05f5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zarrita-js-4cd932-152a90b6-v2-env-be7892d5"
+template_id = "ktqa8f7gzq8pt42p60fe"
+source_template_alias = "m1zz25yxvjnntzdomn70"
+source_template_id = "m1zz25yxvjnntzdomn70"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

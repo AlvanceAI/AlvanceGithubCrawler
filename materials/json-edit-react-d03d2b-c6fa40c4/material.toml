@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "json-edit-react-d03d2b-c6fa40c4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/CarlosNZ/json-edit-react"
+base_commit = "c6fa40c42bdec242aae64c8a5e620e2200d8a736"
+source_tree = "c237ed2f60d39d8563ed72e541559210d32a7810"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "82f761ba645b30ed832e60f571d8b84b5bf0d0f887ff442842c2d02f1adf293e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-json-edit-react-d03d2b-c6fa40c4-v2-env-82f761ba"
+template_id = "4258p4z2zzpi96mqn7ec"
+source_template_alias = "l4hq2eiv8i41aq3xuo6t"
+source_template_id = "l4hq2eiv8i41aq3xuo6t"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

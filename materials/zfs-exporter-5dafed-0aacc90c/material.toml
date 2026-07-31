@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zfs-exporter-5dafed-0aacc90c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pdf/zfs_exporter"
+base_commit = "0aacc90c6759d8420311fe9b0c21e6058092eae7"
+source_tree = "9ab1e0a7531357993402304f039b07bf0b12ffae"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dc5772c2de30e120d74eea8da8c5d97db3f3d8aa189114cdee580f945af644ab"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zfs-exporter-5dafed-0aacc90c-v2-env-dc5772c2"
+template_id = "li609xzjbc7rezpxwtrw"
+source_template_alias = "yayw9o8uxxdmue60kex2"
+source_template_id = "yayw9o8uxxdmue60kex2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

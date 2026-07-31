@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "glow-62fa6c-394d5359"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-gl/glow"
+base_commit = "394d535962b324f7dd84b9244afbd952a4fe717e"
+source_tree = "5af6cc1f553b03346bd44cecfdbea3c418d67e3d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.12.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "792de826dd86bffba481b0d88e4d3e5abf19175c52e23defe4d3a28e15167efa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-glow-62fa6c-394d5359-v2-env-792de826"
+template_id = "2afd0nnzoq3yuripgxjj"
+source_template_alias = "p899rbt2dckxrlpadr71"
+source_template_id = "p899rbt2dckxrlpadr71"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

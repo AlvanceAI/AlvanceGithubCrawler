@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bookbinder-js-6a0b2b-7df532dc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/momijizukamori/bookbinder-js"
+base_commit = "7df532dc29f6bbf4204d62796f4ff537594f5097"
+source_tree = "979a127a52b670f5276c17335e28895ddeed594f"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "81153ae0033b1d3520f3110245d04855cd05a4dcd749afd6aa49e2d159fd321f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bookbinder-js-6a0b2b-7df532dc-v2-env-81153ae0"
+template_id = "ewv41hj7zk4rsvzaqkmh"
+source_template_alias = "90jrk4ytmyq2whaj3yb3"
+source_template_id = "90jrk4ytmyq2whaj3yb3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

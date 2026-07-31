@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rust-gc-7bc848-b7405c95"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Manishearth/rust-gc"
+base_commit = "b7405c95a1956e930d8e5a26f6b68d7077f5b6f7"
+source_tree = "cd9c405a62945ad0e73d0d466b35560726cf780e"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0d174f8bce7dcd2419b5e55f45023be491934f3ec88e4c04e64e6d2483217b34"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rust-gc-7bc848-b7405c95-v2-env-0d174f8b"
+template_id = "8ty2pirljy01semv4qn1"
+source_template_alias = "15c4mc7r2k78cxfv3tpx"
+source_template_id = "15c4mc7r2k78cxfv3tpx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
