@@ -1,0 +1,22 @@
+[2026-07-31T03:42:03Z] stage=prescreen-resume-20000 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-07-31 03:42:07,244 INFO alvance_github_crawler.pipeline: processing crawled candidate dfm/tinygp@5302d5a1ae47ad9ff3fe857eee4cbbebbc1c5637
+2026-07-31 03:42:07,246 INFO alvance_github_crawler.pipeline: processing crawled candidate rm-hull/luma.core@8d8db09a850d256fca1b26b211eb1d750901bca2
+2026-07-31 03:42:07,247 INFO alvance_github_crawler.pipeline: processing crawled candidate aoout/obsidian-epub-importer@44b664f0d8a28a87434beba62c68959cdd2f7fe8
+2026-07-31 03:42:07,248 INFO alvance_github_crawler.pipeline: processing crawled candidate TransformerOptimus/SuperCoder@54cf9728c5a0b8d63fa294c618b60a5d5519a303
+2026-07-31 03:42:07,251 INFO alvance_github_crawler.pipeline: processing crawled candidate StudentWeis/ropy@ee76c749062b89ead0d678b19d513f8876115774
+2026-07-31 03:42:07,257 INFO alvance_github_crawler.pipeline: processing crawled candidate chromedp/chromedp@7963c203ed5458147d27dc39a5c06d2b12e81664
+2026-07-31 03:42:07,260 INFO alvance_github_crawler.pipeline: processing crawled candidate PrefectHQ/marvin@f604485518a6a90aa72cc2dd257fabbb711aeac9
+2026-07-31 03:42:07,263 INFO alvance_github_crawler.pipeline: processing crawled candidate snakemake/snakefmt@fdfb5d929c2a630a7c705a3d70dbdd69ed44334b
+2026-07-31 03:42:07,264 INFO alvance_github_crawler.pipeline: processing crawled candidate FHPythonUtils/Cli2Gui@20461566e68a6acd66c33d22397f6db4ea422cd7
+2026-07-31 03:42:07,267 INFO alvance_github_crawler.pipeline: processing crawled candidate autoscrape-labs/pydoll@51dd8bd3a94be668dc783464ba109de2aab75361
+2026-07-31 03:42:07,270 INFO alvance_github_crawler.pipeline: processing crawled candidate owasp-dep-scan/dep-scan@c69716236ea7b078e8ccf9c9596da4ace999c68c
+2026-07-31 03:42:07,272 INFO alvance_github_crawler.pipeline: processing crawled candidate intel/gprofiler@a5261f272f35740bcb22684ee1bce71baab08349
+{
+  "duplicate": 9977,
+  "input_total": 9989,
+  "processed": 12,
+  "queued": 5,
+  "rejected": 7
+}
+[2026-07-31T03:43:33Z] stage=prescreen-resume-20000 exit_code=0 duration_s=90

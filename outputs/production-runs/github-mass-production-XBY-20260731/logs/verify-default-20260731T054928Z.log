@@ -1,0 +1,17 @@
+[2026-07-31T05:49:28Z] stage=verify-default-20260731T054928Z run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-31 05:49:31,005 INFO alvance_github_crawler.pending.verification: verifying pending candidate ibraheemdev/papaya key_slot=1
+2026-07-31 05:49:31,011 INFO alvance_github_crawler.pending.verification: verifying pending candidate daydreamsai/lucid-agents key_slot=2
+2026-07-31 05:49:33,204 INFO alvance_github_crawler.pending.verification: pending candidate daydreamsai/lucid-agents finished outcome=rejected key_slot=2 processed=1 in_flight=1
+2026-07-31 05:49:56,790 INFO alvance_github_crawler.pending.verification: pending candidate ibraheemdev/papaya finished outcome=error key_slot=1 processed=2 in_flight=0
+{
+  "error": 1,
+  "key_slot_1_error": 1,
+  "key_slot_1_processed": 1,
+  "key_slot_2_processed": 1,
+  "key_slot_2_rejected": 1,
+  "processed": 2,
+  "rejected": 1,
+  "remaining": 1
+}
+[2026-07-31T05:49:57Z] stage=verify-default-20260731T054928Z exit_code=0 duration_s=29

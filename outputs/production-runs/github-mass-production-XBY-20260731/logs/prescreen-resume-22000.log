@@ -1,0 +1,28 @@
+[2026-07-31T05:04:03Z] stage=prescreen-resume-22000 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-07-31 05:04:06,254 INFO alvance_github_crawler.pipeline: processing crawled candidate yargs/yargs-parser@60f2db5dacde1e94f960ce0941a717f3f422f865
+2026-07-31 05:04:06,256 INFO alvance_github_crawler.pipeline: processing crawled candidate jupyterhub/configurable-http-proxy@0637a668aeeb564d9ba520064fb7f8293026a5d0
+2026-07-31 05:04:06,258 INFO alvance_github_crawler.pipeline: processing crawled candidate red-blox/zap@8cd17ab78192217600eec6f688ed8f8aab18d707
+{
+  "duplicate": 10914,
+  "input_total": 10917,
+  "processed": 3,
+  "queued": 3
+}
+[2026-07-31T05:06:05Z] stage=prescreen-resume-22000 exit_code=0 duration_s=122
+[2026-07-31T06:39:20Z] stage=prescreen-resume-22000 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+{
+  "duplicate": 10917,
+  "input_total": 10917,
+  "processed": 0
+}
+[2026-07-31T06:39:24Z] stage=prescreen-resume-22000 exit_code=0 duration_s=4
+[2026-07-31T07:15:38Z] stage=prescreen-resume-22000 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+{
+  "duplicate": 10917,
+  "input_total": 10917,
+  "processed": 0
+}
+[2026-07-31T07:15:42Z] stage=prescreen-resume-22000 exit_code=0 duration_s=4

@@ -1,0 +1,32 @@
+[2026-07-31T06:39:15Z] stage=verify-default-20260731T063915Z run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-31 06:39:18,747 INFO alvance_github_crawler.pending.verification: verifying pending candidate DataDog/pup key_slot=1
+2026-07-31 06:39:18,749 INFO alvance_github_crawler.pending.verification: verifying pending candidate rune-rs/rune key_slot=2
+2026-07-31 06:39:18,753 INFO alvance_github_crawler.pending.verification: verifying pending candidate netbox-community/netbox-operator key_slot=3
+2026-07-31 06:39:18,755 INFO alvance_github_crawler.pending.verification: verifying pending candidate padok-team/burrito key_slot=1
+2026-07-31 06:39:18,757 INFO alvance_github_crawler.pending.verification: verifying pending candidate favware/graphql-pokemon key_slot=2
+2026-07-31 06:39:18,759 INFO alvance_github_crawler.pending.verification: verifying pending candidate ConduitIO/conduit key_slot=3
+2026-07-31 06:39:18,761 INFO alvance_github_crawler.pending.verification: verifying pending candidate dynatrace-oss/dtctl key_slot=1
+2026-07-31 06:39:18,765 INFO alvance_github_crawler.pending.verification: verifying pending candidate google/osv-scanner key_slot=2
+2026-07-31 06:39:18,766 INFO alvance_github_crawler.pending.verification: verifying pending candidate getporter/porter key_slot=3
+2026-07-31 06:40:35,193 INFO alvance_github_crawler.pending.verification: pending candidate favware/graphql-pokemon finished outcome=rejected key_slot=2 processed=1 in_flight=8
+2026-07-31 06:45:29,210 INFO alvance_github_crawler.pending.verification: pending candidate rune-rs/rune finished outcome=rejected key_slot=2 processed=2 in_flight=7
+2026-07-31 06:51:22,299 INFO alvance_github_crawler.pending.verification: pending candidate DataDog/pup finished outcome=rejected key_slot=1 processed=3 in_flight=6
+2026-07-31 06:52:25,799 INFO alvance_github_crawler.pending.verification: pending candidate netbox-community/netbox-operator finished outcome=rejected key_slot=3 processed=4 in_flight=5
+2026-07-31 06:54:30,793 INFO alvance_github_crawler.pending.verification: pending candidate dynatrace-oss/dtctl finished outcome=rejected key_slot=1 processed=5 in_flight=4
+2026-07-31 06:57:23,360 INFO alvance_github_crawler.pending.verification: pending candidate google/osv-scanner finished outcome=rejected key_slot=2 processed=6 in_flight=3
+2026-07-31 06:57:35,573 INFO alvance_github_crawler.pending.verification: pending candidate ConduitIO/conduit finished outcome=rejected key_slot=3 processed=7 in_flight=2
+2026-07-31 06:59:18,077 INFO alvance_github_crawler.pending.verification: pending candidate getporter/porter finished outcome=rejected key_slot=3 processed=8 in_flight=1
+2026-07-31 07:00:35,390 INFO alvance_github_crawler.pending.verification: pending candidate padok-team/burrito finished outcome=rejected key_slot=1 processed=9 in_flight=0
+{
+  "key_slot_1_processed": 3,
+  "key_slot_1_rejected": 3,
+  "key_slot_2_processed": 3,
+  "key_slot_2_rejected": 3,
+  "key_slot_3_processed": 3,
+  "key_slot_3_rejected": 3,
+  "processed": 9,
+  "rejected": 9,
+  "remaining": 0
+}
+[2026-07-31T07:00:37Z] stage=verify-default-20260731T063915Z exit_code=0 duration_s=1282
