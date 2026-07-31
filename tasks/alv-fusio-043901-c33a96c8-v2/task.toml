@@ -1,0 +1,41 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-fusio-043901-c33a96c8-v2"
+description = "Rebuildable repository task for tonbo-io/fusio"
+authors = []
+keywords = ["rust", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-fusio-043901-c33a96c8-v2"
+material_id = "fusio-043901-c33a96c8"
+status = "direction"
+language = "rust"
+repository_url = "https://github.com/tonbo-io/fusio"
+base_commit_hash = "c33a96c8a124c17500924823658541ec1d4bbfb3"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+CARGO_HOME = "/usr/local/cargo"
+HOME = "/root"
+PATH = "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+RUSTUP_HOME = "/usr/local/rustup"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

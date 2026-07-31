@@ -1,6 +1,3 @@
-# Harbor rebuildable envelope v2
-# Dockerfile recipe v3
-# E2B aliases are optional caches; this file is the durable build source.
 FROM docker.io/library/python:3.11
 USER root
 ENV HOME="/root"

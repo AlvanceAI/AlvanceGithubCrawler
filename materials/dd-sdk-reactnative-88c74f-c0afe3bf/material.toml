@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dd-sdk-reactnative-88c74f-c0afe3bf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/DataDog/dd-sdk-reactnative"
+base_commit = "c0afe3bf819756eab3dd9a32553ec49fae513105"
+source_tree = "c913bd08eeba988d5a983fb761735c59c7b9d78f"
+default_branch = "develop"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1ce657a10f060dbc9af3181b9b28f0512a76ef1530264d541a1be4d3a55bb066"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dd-sdk-reactnative-88c74f-c0afe3bf-v2-env-a0eea6cc"
+template_id = "tp5uqainv3tj0h7ytjdv"
+source_template_alias = "1897j841va863td4pxqw"
+source_template_id = "1897j841va863td4pxqw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

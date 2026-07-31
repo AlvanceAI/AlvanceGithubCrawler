@@ -1,6 +1,3 @@
-# Harbor rebuildable envelope v2
-# Dockerfile recipe v3
-# E2B aliases are optional caches; this file is the durable build source.
 FROM docker.io/library/rust:1.95
 USER root
 ENV CARGO_HOME="/usr/local/cargo"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "siteone-crawler-5d1fe0-b1f333e2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/janreges/siteone-crawler"
+base_commit = "b1f333e226f40935be83ee3977500b2f49cff563"
+source_tree = "923766f86aa7329754e181deca9645e4d0bb37a3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.96.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "daba9be023ad77dbd9a521a4b07c84b3870999c1e3856f477f299ea80880b1c1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-siteone-crawler-5d1fe0-b1f333e2-v2-env-e1a2a304"
+template_id = "eaadracgepxafrl4g28h"
+source_template_alias = "9nfu0ihjp0657aplugqe"
+source_template_id = "9nfu0ihjp0657aplugqe"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

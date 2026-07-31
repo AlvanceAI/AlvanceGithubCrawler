@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ng-packagr-9982cd-89f5bdae"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ng-packagr/ng-packagr"
+base_commit = "89f5bdae3200527c26b3e0efadf0da105437f1b1"
+source_tree = "d5cb518833d0485718f153b7b43b0409c4f866ad"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3272930ca2ee015e331f0ce30aaf7cb471bd3c0234da78f69b2b6fd3f7822b07"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ng-packagr-9982cd-89f5bdae-v2-env-83a82ab9"
+template_id = "z9wj5zw5bxdl8zndho96"
+source_template_alias = "7q5wdskedlykm15enxv2"
+source_template_id = "7q5wdskedlykm15enxv2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

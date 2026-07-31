@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fusio-043901-c33a96c8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tonbo-io/fusio"
+base_commit = "c33a96c8a124c17500924823658541ec1d4bbfb3"
+source_tree = "3124739480ec130583ddac3e5005b9241c63905a"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9ced7aa7acf516cc675cf9f44f83cbe7f162018b095a7a559c295d062cc241d7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fusio-043901-c33a96c8-v2-env-ba5b6d7f"
+template_id = "qz51r9j9jwu78qll521b"
+source_template_alias = "r5m9o5z7u9auazrly8n1"
+source_template_id = "r5m9o5z7u9auazrly8n1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

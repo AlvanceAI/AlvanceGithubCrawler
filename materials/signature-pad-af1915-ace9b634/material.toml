@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "signature-pad-af1915-ace9b634"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/szimek/signature_pad"
+base_commit = "ace9b634c17c7a72d9323a849fbfbfc2e2b3fb35"
+source_tree = "ecf6e00497ec45798febbb9e747b379b862824cf"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d197d1a9339b2bb5395ced70f7eeae330c484b7378b9384ba9f77b562a8a642c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-signature-pad-af1915-ace9b634-v2-env-3a7d7c2c"
+template_id = "r8vxm0u622e0eop1eqg7"
+source_template_alias = "tw6q0rz8gzg4zlmpks2b"
+source_template_id = "tw6q0rz8gzg4zlmpks2b"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

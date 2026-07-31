@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sparrow-f04952-961ec31f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/JeroenGar/sparrow"
+base_commit = "961ec31f576c5817ece779ff73982b4553760a4e"
+source_tree = "cc5f1dcbe42523c087347ada9f9088b3d476a3f1"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "76059f3c08aaeff7c38bad41f1cb5b0edef999647afb96eafcf369a18723979e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sparrow-f04952-961ec31f-v2-env-8688274a"
+template_id = "ojlcvo9664qp83g1p0e0"
+source_template_alias = "vvn87kwrrf77fkyk387e"
+source_template_id = "vvn87kwrrf77fkyk387e"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
