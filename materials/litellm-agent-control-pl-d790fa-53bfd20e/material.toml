@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "litellm-agent-control-pl-d790fa-53bfd20e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/LiteLLM-Labs/litellm-agent-control-plane"
+base_commit = "53bfd20e2fec51fc8f665fb614512c6b138367da"
+source_tree = "07cf1e54b706113c61ce7ea92c771e5db0217c46"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d3ab87295f58eeba121662a41f880d414b0f9dd2dba668cafd04e11818e20aee"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-litellm-agent-contro-d790fa-53bfd20e-v2-env-d3ab8729"
+template_id = "czcm5siaunjvcj2ch1nc"
+source_template_alias = "pgk250xl4dwt24emupjg"
+source_template_id = "pgk250xl4dwt24emupjg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

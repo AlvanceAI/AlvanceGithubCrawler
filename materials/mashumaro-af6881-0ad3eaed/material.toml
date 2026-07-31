@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mashumaro-af6881-0ad3eaed"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Fatal1ty/mashumaro"
+base_commit = "0ad3eaed34f09e4a361613b607aa78e9a51d9999"
+source_tree = "d36c54deeea08f85156433dc754e337f15a677e3"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6ae51168ef28b3b14ed94ab39da3f3520150b7d4fef97f52ee144bd8a30534f9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mashumaro-af6881-0ad3eaed-v2-env-6ae51168"
+template_id = "odpn4r7r5elnaua7wzl7"
+source_template_alias = "cxnetwya65daap6odgii"
+source_template_id = "cxnetwya65daap6odgii"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-mashumaro-af6881-0ad3eaed-v2"
+description = "Rebuildable repository task for Fatal1ty/mashumaro"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-mashumaro-af6881-0ad3eaed-v2"
+material_id = "mashumaro-af6881-0ad3eaed"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/Fatal1ty/mashumaro"
+base_commit_hash = "0ad3eaed34f09e4a361613b607aa78e9a51d9999"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

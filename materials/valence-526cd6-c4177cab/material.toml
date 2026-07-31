@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "valence-526cd6-c4177cab"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/valence-rs/valence"
+base_commit = "c4177cab47ae109c848a431756d5d7c0207c05ed"
+source_tree = "929f7484c535030f332125c093eef6f27dfe49b7"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e4cbdff10f6ef3275b662747c234f398687f8e9fea6632ccb6bb8ccfdd6f9a04"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-valence-526cd6-c4177cab-v2-env-e4cbdff1"
+template_id = "bn6590fuv8n8ltogkq75"
+source_template_alias = "z3yemj0w1ahkjh7kr7kb"
+source_template_id = "z3yemj0w1ahkjh7kr7kb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

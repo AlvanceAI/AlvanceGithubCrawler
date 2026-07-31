@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "testifylint-b9cefe-720065d3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Antonboom/testifylint"
+base_commit = "720065d36f434c616017441aa8f2069e621b5e44"
+source_tree = "e8723034ac6f5fc17949b494d973ff9afc911a40"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c6720c8392af92dcc50efd70770737710568b41075c52322a62194cec829d2b3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-testifylint-b9cefe-720065d3-v2-env-c6720c83"
+template_id = "e7ia6vsh2jwkqof4frf6"
+source_template_alias = "c5yyl8pu4be1wq2k6b2l"
+source_template_id = "c5yyl8pu4be1wq2k6b2l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

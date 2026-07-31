@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-critic-b3028a-325d070a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-critic/go-critic"
+base_commit = "325d070a6839c2f5958f2d587d466730d7ea2e3a"
+source_tree = "11dcfd72f8028460a9df993f3f9de84327f6f82e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b4c31fad6954f362d4dd0cae76034bdcd9747814a41bcc8aed1d78c8da39d220"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-critic-b3028a-325d070a-v2-env-b4c31fad"
+template_id = "hnlvz5g19b366kk2yume"
+source_template_alias = "svd3nf9fg6m6qdhqsf5b"
+source_template_id = "svd3nf9fg6m6qdhqsf5b"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

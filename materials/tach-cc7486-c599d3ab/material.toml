@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tach-cc7486-c599d3ab"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tach-org/tach"
+base_commit = "c599d3ab87361f0d458f286b00a8d8913e2fce8d"
+source_tree = "6eea5f60994889e38badeaf5a4af336ee611efed"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.93"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "749fd886fdc55452edfa8692d5af61ffa0ab9f787abcf6fca3844ca22150213e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tach-cc7486-c599d3ab-v2-env-749fd886"
+template_id = "d004ci6nz9wht2u7kfq1"
+source_template_alias = "7k6fb048ltyfvh9dia7a"
+source_template_id = "7k6fb048ltyfvh9dia7a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
