@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "prism-a0465a-d805f302"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/PrismJS/prism"
+base_commit = "d805f30275e279907cbad8a339a3d899fc0ea8d8"
+source_tree = "5329cbba54447beef86146654a1126873fd232dc"
+default_branch = "v2"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c04dde7763158f0c65cf1fcb365db875184f8ab1ee7c55aea8d436e8d8867e8a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-prism-a0465a-d805f302-v2-env-c04dde77"
+template_id = "wdbqxki42qyrgar8myj4"
+source_template_alias = "aq9fl1k4i6k4blojqkxl"
+source_template_id = "aq9fl1k4i6k4blojqkxl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

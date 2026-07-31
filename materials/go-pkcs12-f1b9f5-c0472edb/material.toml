@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-pkcs12-f1b9f5-c0472edb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/SSLMate/go-pkcs12"
+base_commit = "c0472edb16891765fbc86573ea468365b7fd2197"
+source_tree = "f82dbba6ee0031cf51ba0c015b7292f27d626c07"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.19.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1648fb5ecfdcaf705c0a2fff7784d2b4c2279d133361425a06485c88b7ea6ea6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-pkcs12-f1b9f5-c0472edb-v2-env-1648fb5e"
+template_id = "500n89yv17w067p7fzxq"
+source_template_alias = "6m6ezusznbn73o6viv56"
+source_template_id = "6m6ezusznbn73o6viv56"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "booklit-35015f-51da9ee7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vito/booklit"
+base_commit = "51da9ee7c2688a93a07d11fb2bb3a52d3dc764cf"
+source_tree = "866be78158e8efe1875a743c55808467ed2ae69c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "62e0f58a2dc74c39450c4a72697f0baff36d7c0f274575aefb802ef6199feac8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-booklit-35015f-51da9ee7-v2-env-62e0f58a"
+template_id = "ua4b8x6ym1zvyip32nve"
+source_template_alias = "wslqafg4sgohz7buu0g4"
+source_template_id = "wslqafg4sgohz7buu0g4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

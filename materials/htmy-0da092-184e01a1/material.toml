@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "htmy-0da092-184e01a1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/volfpeter/htmy"
+base_commit = "184e01a188a6c010079eb0dcfc4f8b6dd66a33a7"
+source_tree = "04c75bd6f70853fa177f3f68b9d52fb33c7688be"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "87ac553673d2c8104c75da7dddd952d69059d15a7053f3400adf275e06cd1067"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-htmy-0da092-184e01a1-v2-env-87ac5536"
+template_id = "3k5d3eao5b9vfxdh282x"
+source_template_alias = "c8iuj4oyo07y67qimxkg"
+source_template_id = "c8iuj4oyo07y67qimxkg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sfmc-devtools-55b4a1-6b316b85"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Accenture/sfmc-devtools"
+base_commit = "6b316b85793ed0157d5987a53f0aaecfb46eac1b"
+source_tree = "1ecdc073cb7542037ccafc0fada1daa0360acb60"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0a59859e928174c426959c19a79c0c9c63e1e40f82b610e5c23e532bfc168765"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sfmc-devtools-55b4a1-6b316b85-v2-env-0a59859e"
+template_id = "xj9ykn6t1ndow1zog55e"
+source_template_alias = "5k7b311ni2sx3wls0kqr"
+source_template_id = "5k7b311ni2sx3wls0kqr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

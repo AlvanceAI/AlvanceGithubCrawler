@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dayjs-be833e-98364bce"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/iamkun/dayjs"
+base_commit = "98364bcebc047529345cc8c2bbcc44a6a8c18e79"
+source_tree = "7eac5d558684ae7339d321abe2d15fdeb43ec1d2"
+default_branch = "dev"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c72962563efc52a50ebb3b890b8a6293d644d0d934dd2e15d8f66dc850a168bb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dayjs-be833e-98364bce-v2-env-c7296256"
+template_id = "bbkxm8s117svhov8bhfe"
+source_template_alias = "tmt0nuw1vmq28zvynzp1"
+source_template_id = "tmt0nuw1vmq28zvynzp1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

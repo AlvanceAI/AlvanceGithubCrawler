@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rust-minifb-2f213e-2883497a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/emoon/rust_minifb"
+base_commit = "2883497abb4576e93b7d39e823c67137c2157cdf"
+source_tree = "61916fc9c24ff62da9c5cb2216da41126e8b87f9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a71b8c06594a6d0fb6847e10f6e064fd9567b3f54e641fc1714d9ec0b5c9a5d2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rust-minifb-2f213e-2883497a-v2-env-a71b8c06"
+template_id = "vxhxoc2qyfqusfg84j4p"
+source_template_alias = "wbp9c919e7cl05dokrgh"
+source_template_id = "wbp9c919e7cl05dokrgh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

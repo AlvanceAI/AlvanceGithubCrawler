@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "atrophy-dd5a4d-c2f0ec3d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ashutosh-rath02/atrophy"
+base_commit = "c2f0ec3d6afb6f88ddfc93e5b4756e357db1807e"
+source_tree = "b7b8a269509924cd48613e028d6159d7d33ac62c"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f0d10be15a352ac3e031e729abbfa2b397de6059048d5bfed310dc0c890e9881"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-atrophy-dd5a4d-c2f0ec3d-v2-env-f0d10be1"
+template_id = "v1cowbuxxnpiaea5v2hd"
+source_template_alias = "i3j1vg3zfh743eh22ese"
+source_template_id = "i3j1vg3zfh743eh22ese"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

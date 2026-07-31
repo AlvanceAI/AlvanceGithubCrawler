@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wanakana-e91bd1-63a00b51"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/WaniKani/WanaKana"
+base_commit = "63a00b513979ccc96b530da2f3efb677361d573c"
+source_tree = "433b10e729107ef87d43089423445e29b4fea0b3"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "213efa64a9bfbe147770c4ec31b28739d52fff8271f02cf9fbb9a4b02ba09efe"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wanakana-e91bd1-63a00b51-v2-env-213efa64"
+template_id = "0vhlydhcd4sos5in0erc"
+source_template_alias = "on7ic8c19z4p9cheuca3"
+source_template_id = "on7ic8c19z4p9cheuca3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

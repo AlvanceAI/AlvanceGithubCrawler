@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "otter-87e3ad-8c526307"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/maypok86/otter"
+base_commit = "8c526307556486ea0337280a4211135720bc29cc"
+source_tree = "5c1e2bab04cddf3178ec0d822707b5e04a01ff18"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8922e2987a1c4aba9c9e962419babffd5cb342251384bcc8e05a76bcaa5e5904"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-otter-87e3ad-8c526307-v2-env-8922e298"
+template_id = "3zyrpjq9rkbtgzg6v08x"
+source_template_alias = "2aixo6l6tc3g3v3vxoss"
+source_template_id = "2aixo6l6tc3g3v3vxoss"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

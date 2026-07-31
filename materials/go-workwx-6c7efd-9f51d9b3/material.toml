@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-workwx-6c7efd-9f51d9b3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/xen0n/go-workwx"
+base_commit = "9f51d9b3769679cf58b8618cbaf10a9eb7e7df30"
+source_tree = "c112f08adf0cfe7ef1a212bbebf1c743cbb5bcb5"
+default_branch = "v2"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1abda1b9553961b379deb89b42f66bd944b608814debd692ca52b7d3adec4a62"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-workwx-6c7efd-9f51d9b3-v2-env-1abda1b9"
+template_id = "nwy4lnzd2ctehrnvtmh6"
+source_template_alias = "gl7q7e9zq4lcdvx4pdi4"
+source_template_id = "gl7q7e9zq4lcdvx4pdi4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

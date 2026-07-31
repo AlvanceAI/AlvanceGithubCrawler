@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nanoserde-ab1325-d787368a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/not-fl3/nanoserde"
+base_commit = "d787368af9bdf9762e8d46185fe74be09adbef4b"
+source_tree = "b013c9ae7fa43f6e1364158be69fc17ef53b8778"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.81.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f01cf41daf4fa0b1b76d557d69c4d0ad39f3a5c12e73c66c50ee829ee7413186"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nanoserde-ab1325-d787368a-v2-env-f01cf41d"
+template_id = "t6znszuf65dqk0n0wva2"
+source_template_alias = "qb3d631ayrkitlrt2ef1"
+source_template_id = "qb3d631ayrkitlrt2ef1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

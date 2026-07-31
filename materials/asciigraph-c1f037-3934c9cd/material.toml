@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "asciigraph-c1f037-3934c9cd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/guptarohit/asciigraph"
+base_commit = "3934c9cdf72ac4806f3a2ef77004b62d1e236028"
+source_tree = "48bf3e3efdd6c5daf991eed9417b5ac81d15ec98"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.11.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dc6e2110856049226583a86a4cfa6224fb30116bed98720a98514f7c2e1c7d49"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-asciigraph-c1f037-3934c9cd-v2-env-dc6e2110"
+template_id = "h8qxd6j1wjyifndfvlos"
+source_template_alias = "pb46b3dfg2f2bd461kit"
+source_template_id = "pb46b3dfg2f2bd461kit"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

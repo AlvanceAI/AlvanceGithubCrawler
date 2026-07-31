@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "distro-fabd0d-3fba7d3e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/python-distro/distro"
+base_commit = "3fba7d3e19c84e5bb1f15c22b1a5a6db6e8f07c7"
+source_tree = "e6d4074546bcb2ad10d204d187bff023efe0fe05"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "54f67af89d8054cd81c78c377b65d0f46b24dfe78d9544b9d7f9d7ff230f19f1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-distro-fabd0d-3fba7d3e-v2-env-54f67af8"
+template_id = "worgfaqeozfhnhnapiya"
+source_template_alias = "j2feg2gur3np9j63xt38"
+source_template_id = "j2feg2gur3np9j63xt38"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "flexi-logger-8800ec-060be068"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/emabee/flexi_logger"
+base_commit = "060be0689a88a42f98c1bd88b9b99ad80ace2608"
+source_tree = "4f5c2073cacf9bf8a84a7a953f193a152ce486c1"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.87.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c2f7f531aa5f27b7fe8196b75ba2bdf1366f39428960c3aaaec16ae61dafb9ad"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-flexi-logger-8800ec-060be068-v2-env-c2f7f531"
+template_id = "tntxdd18tr2mmkfbkbgp"
+source_template_alias = "ij8oswkmll34ya1ucnqd"
+source_template_id = "ij8oswkmll34ya1ucnqd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

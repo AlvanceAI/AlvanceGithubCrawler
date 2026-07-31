@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "geobuf-3f3feb-30e3c721"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mapbox/geobuf"
+base_commit = "30e3c72136f1785ebd2d6e88a472f7de9e15806e"
+source_tree = "4bd04a66a1a8e3fcf8a033cfb8a233b27e89a183"
+default_branch = "master"
+license = "ISC"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4657edd286a1e5b029e9cc81b434a59b7c3209bd798a22984b2f4e0630b7bc52"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-geobuf-3f3feb-30e3c721-v2-env-4657edd2"
+template_id = "wm9os95ulknrt359p8uu"
+source_template_alias = "sycttxsprys7m8zbewfe"
+source_template_id = "sycttxsprys7m8zbewfe"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

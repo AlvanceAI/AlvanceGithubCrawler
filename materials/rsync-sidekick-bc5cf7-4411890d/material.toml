@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rsync-sidekick-bc5cf7-4411890d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/m-manu/rsync-sidekick"
+base_commit = "4411890d0d977d9b141913f674b5d40a84dc419b"
+source_tree = "b43d55bc56a784069e11bd2f731383f1ae1790d7"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5bfaac23e8e2e07e558821e22d4dac94667304aa7bc59de4394e33116c8be17d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rsync-sidekick-bc5cf7-4411890d-v2-env-5bfaac23"
+template_id = "h2zv024tg789w7ovqd0g"
+source_template_alias = "ta92bve932sqyw08j9kp"
+source_template_id = "ta92bve932sqyw08j9kp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

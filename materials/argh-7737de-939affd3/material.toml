@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "argh-7737de-939affd3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/google/argh"
+base_commit = "939affd3acc60395bb34749cabb80cc19bcd20eb"
+source_tree = "3cf74677e6678ad464123168555899e638e2e4f3"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "139541c08bd30598ee70a7e228e5444842aba16c68b5e41ac42f33873a4a9d94"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-argh-7737de-939affd3-v2-env-139541c0"
+template_id = "060k1q9f55qwlxaxml4n"
+source_template_alias = "6lqb4d4cyhoiayualx71"
+source_template_id = "6lqb4d4cyhoiayualx71"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

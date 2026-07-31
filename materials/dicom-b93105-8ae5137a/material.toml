@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dicom-b93105-8ae5137a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/suyashkumar/dicom"
+base_commit = "8ae5137aa164e11a1ffb53b10778cba6cd910a87"
+source_tree = "a081d31af3b4d6be3fda6dea1a1b3fba636d9f41"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.22.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1ec83e62a37bdb33a523678901c54564450349344edb8bbbb54b1b7ef33e6969"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dicom-b93105-8ae5137a-v2-env-1ec83e62"
+template_id = "3x0ew6rv3htoscq8ysck"
+source_template_alias = "1xgpj8kyau84bspm6mon"
+source_template_id = "1xgpj8kyau84bspm6mon"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
