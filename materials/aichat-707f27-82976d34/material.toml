@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aichat-707f27-82976d34"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sigoden/aichat"
+base_commit = "82976d349ad97ac9aae0655ad631dace5e2a6385"
+source_tree = "bf587832334991f7c353662a72fca39ed44e2224"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1fa709170792076c9e652e78ff3ffdab6841a9618fd98ba4772aa2e951925b7a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aichat-707f27-82976d34-v2-env-1fa70917"
+template_id = "n6a7izmcljocs8pymnv0"
+source_template_alias = "8x21kv5d8qqm0xu5gfxn"
+source_template_id = "8x21kv5d8qqm0xu5gfxn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rlayers-1f7fe3-98a2862d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mmomtchev/rlayers"
+base_commit = "98a2862d99cdd259c5fd9be3d4784d01b1cfcf95"
+source_tree = "494351513323b41d72e7bd5f715ddfcd74794a12"
+default_branch = "main"
+license = "ISC"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5069d5c90111c4f7b499ab51712a83d62ce7edef9101969b064fd76ac56542b8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rlayers-1f7fe3-98a2862d-v2-env-5069d5c9"
+template_id = "f7whl9u394c000ix4hh4"
+source_template_alias = "d0o0ben2aq0y4ws6goza"
+source_template_id = "d0o0ben2aq0y4ws6goza"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

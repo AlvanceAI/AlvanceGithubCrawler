@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kube-ingress-aws-control-b3591f-f8b184bc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/zalando-incubator/kube-ingress-aws-controller"
+base_commit = "f8b184bca577f5fccce3f0e8eaf01cd8c537ee65"
+source_tree = "940d979d4b86be781279bced2ec02627d9e8082b"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c7142bb9ab9d5f22f69df03877e08d9b205b05a5de0a3d19a30a71218193ad4b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kube-ingress-aws-con-b3591f-f8b184bc-v2-env-c7142bb9"
+template_id = "wo1w8kxp3vgo0hshzklw"
+source_template_alias = "z9dqwp2iap5mlooxfpll"
+source_template_id = "z9dqwp2iap5mlooxfpll"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

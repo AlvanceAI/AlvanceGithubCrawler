@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "spotinfo-c8c9e4-ed8d6d0c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alexei-led/spotinfo"
+base_commit = "ed8d6d0c3722c9e7e40d361c5688ab1bd9e4ffa1"
+source_tree = "2dd565ae2a0bd1011706d7d4be5be3a0615efb02"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3d61bc2c83480c8ec15fee946dc12de8d93f0dc35f07b3ea76c2d6d9b2ad64e8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-spotinfo-c8c9e4-ed8d6d0c-v2-env-3d61bc2c"
+template_id = "rl3i4or2pbvo0i5r5rlk"
+source_template_alias = "4d3r1p3fwdtv4p2y486b"
+source_template_id = "4d3r1p3fwdtv4p2y486b"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
