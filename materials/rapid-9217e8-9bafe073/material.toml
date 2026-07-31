@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rapid-9217e8-9bafe073"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/flyingmutant/rapid"
+base_commit = "9bafe07343742c860ff53bf66075648f8ebb54a5"
+source_tree = "de83e87edf7c611d504188342b2d46bd3833f86c"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "433712cbcc4328a144d87b9a9d514649f5ae27ead57ca45bc83b23a54c93c4ab"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rapid-9217e8-9bafe073-v2-env-433712cb"
+template_id = "lla1l79lyln2ul86fz78"
+source_template_alias = "5c2sfgxb0mgaxpa5razz"
+source_template_id = "5c2sfgxb0mgaxpa5razz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

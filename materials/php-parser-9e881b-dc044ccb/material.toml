@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "php-parser-9e881b-dc044ccb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/glayzzle/php-parser"
+base_commit = "dc044ccbe9ac00e2a88f23eee3093ae24937824a"
+source_tree = "fe6ffadf69ca04ddad516da50079f8806bb734a4"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "43a99100db9a4dc9a5fea9bb6b9df7f1c220f7a1ae51d93dcb3c4045f1d62fc6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-php-parser-9e881b-dc044ccb-v2-env-43a99100"
+template_id = "nzk4qr6tr19ffq6tet79"
+source_template_alias = "l3bh3ifdt6c23hq7qh2u"
+source_template_id = "l3bh3ifdt6c23hq7qh2u"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

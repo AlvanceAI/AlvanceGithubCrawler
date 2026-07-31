@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "retina-89f5fd-6972ac42"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/scottlamb/retina"
+base_commit = "6972ac4261ce7bf5b585da9051606c7b5c0ab82c"
+source_tree = "ea9f315b112771d75680a3c96db54ed4cdb2c3da"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a92f7f5092ccd9601a975830f1c18c44e32b503c2dfcee14d8233cd3e098613e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-retina-89f5fd-6972ac42-v2-env-a92f7f50"
+template_id = "odhu69umny7yeww0yddr"
+source_template_alias = "4p9yu89sh1381935vrtb"
+source_template_id = "4p9yu89sh1381935vrtb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

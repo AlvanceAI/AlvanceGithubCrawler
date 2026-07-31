@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tables-to-go-c4098c-bde2b884"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/fraenky8/tables-to-go"
+base_commit = "bde2b88402a8181782f9ce5e9ee0c0331cf60352"
+source_tree = "6611e05933fea40f66b43f7d379d261854bed2bb"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dceb8c643e2a5dc7d4c63f860f68f0649431806de736978be2911f3fa8fcacab"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tables-to-go-c4098c-bde2b884-v2-env-dceb8c64"
+template_id = "61nnw6l33v6pspqgyoy2"
+source_template_alias = "myb9vueohr2prqsyffwi"
+source_template_id = "myb9vueohr2prqsyffwi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

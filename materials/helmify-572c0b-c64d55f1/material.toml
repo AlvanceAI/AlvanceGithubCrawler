@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "helmify-572c0b-c64d55f1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/arttor/helmify"
+base_commit = "c64d55f12c22f9305898916c9d71e3b443fa45f2"
+source_tree = "390ec0a4ce1caea82e3c60012a39670c8abbd945"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "aeaa3f74328b3bd0302e1bcb5e4fa9750c8b4d11b61d95c2865f6f048f8a7eac"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-helmify-572c0b-c64d55f1-v2-env-aeaa3f74"
+template_id = "ugol1wj5ephcb9yp5met"
+source_template_alias = "p9e061234ybq1thqeiv2"
+source_template_id = "p9e061234ybq1thqeiv2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

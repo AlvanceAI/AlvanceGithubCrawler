@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dotenvy-2ed61f-fa251669"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/allan2/dotenvy"
+base_commit = "fa25166994d6978bd2e002f0ed190c0c39674ebe"
+source_tree = "ef07d17c9a291ae6d76beb79fe0f0d3f097e1bde"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.74.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "475b1b35e526c2f8abb13b8eb6cba82a53232e3ed4cbcb396fce873e44300024"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dotenvy-2ed61f-fa251669-v2-env-475b1b35"
+template_id = "awt6ow41dd37xmmcxi0y"
+source_template_alias = "hzwf6ogyxd6fbot6idiv"
+source_template_id = "hzwf6ogyxd6fbot6idiv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

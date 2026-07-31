@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "placemark-021eaf-09dbfa59"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/placemark/placemark"
+base_commit = "09dbfa59704aa7b7f2836604d06c6fb508875c4f"
+source_tree = "3c8d2134e1ee0e71f405a01d8a6118d55473df9e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c6a3114188ea6be177130950486d0e5ac3099346cb959cffff9f1309fae86438"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-placemark-021eaf-09dbfa59-v2-env-c6a31141"
+template_id = "w4brvqx5td1iuz4ugox2"
+source_template_alias = "ls2ig8xatd165br0vb7v"
+source_template_id = "ls2ig8xatd165br0vb7v"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

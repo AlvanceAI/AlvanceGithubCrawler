@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ddb-importer-4448ba-9f5e3ab5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/MrPrimate/ddb-importer"
+base_commit = "9f5e3ab56d76026720917d9bef72caa02b2b0c8b"
+source_tree = "2284a9de906bdf070b55e5ed34a8244db813f1aa"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "84c1383e35fb20d9d5702a36b9208790369ff8739b2fcf9216601751741acf21"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ddb-importer-4448ba-9f5e3ab5-v2-env-84c1383e"
+template_id = "vcy0g5lqlh888vym32vp"
+source_template_alias = "iulq3u0zv822g96e78d3"
+source_template_id = "iulq3u0zv822g96e78d3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

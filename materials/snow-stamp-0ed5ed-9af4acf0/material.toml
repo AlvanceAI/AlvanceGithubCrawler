@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "snow-stamp-0ed5ed-9af4acf0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vegeta897/snow-stamp"
+base_commit = "9af4acf0efe1991cbed2952685f05cecb5211d7f"
+source_tree = "dc7a55c500e55b1aff19f1cc0e288ab193ebfe8d"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "382f4bbb2fe06f9b4150a199b780d73457e975e596ff19bb5e533a47f047194e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-snow-stamp-0ed5ed-9af4acf0-v2-env-382f4bbb"
+template_id = "vguih9cvc8umzla2rh58"
+source_template_alias = "uwk9yje4a36wgcsygrm1"
+source_template_id = "uwk9yje4a36wgcsygrm1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

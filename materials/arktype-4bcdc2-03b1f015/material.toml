@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "arktype-4bcdc2-03b1f015"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/arktypeio/arktype"
+base_commit = "03b1f015d9b7c5af5dac2caed1aeedefaf705ab3"
+source_tree = "505eb20867385b02c93869e1ea9d37169003d651"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "32d84d593d7861076d28c63257d581ff7ad33f574417e69eb18b70b802a6c384"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-arktype-4bcdc2-03b1f015-v2-env-32d84d59"
+template_id = "0cyyxaiqwasps12c2nyd"
+source_template_alias = "bb1a4ne6hm6lld7r86pj"
+source_template_id = "bb1a4ne6hm6lld7r86pj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

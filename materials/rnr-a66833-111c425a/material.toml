@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rnr-a66833-111c425a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ismaelgv/rnr"
+base_commit = "111c425a8110072e7eae08266ac57df0b6f2b664"
+source_tree = "1f16a13c0780da6cd88bb7b645219e860c0fadf2"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2ebe94a36f0a58574bcd98fa3d65dbb7f8e3a2091c24d5eafdfe08ffb59c33e5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rnr-a66833-111c425a-v2-env-2ebe94a3"
+template_id = "z1edh3y5e00tzxs1415o"
+source_template_alias = "xt2f7p8stck1fxllq69q"
+source_template_id = "xt2f7p8stck1fxllq69q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

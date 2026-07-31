@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-prettier-plugin-clas-94c439-cd8d8f8e-v2"
+description = "Rebuildable repository task for ony3000/prettier-plugin-classnames"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-prettier-plugin-clas-94c439-cd8d8f8e-v2"
+material_id = "prettier-plugin-classnam-94c439-cd8d8f8e"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/ony3000/prettier-plugin-classnames"
+base_commit_hash = "cd8d8f8e7b383d85a28cd7477c71494bab8889e7"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

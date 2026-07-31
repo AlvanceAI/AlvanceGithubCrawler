@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "homebridge-z2m-863400-00070261"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/itavero/homebridge-z2m"
+base_commit = "000702614933a6d307d0208f559b35af6b397eee"
+source_tree = "b748de412991a5738412f02eb0ebba94202942be"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b7a500c8778f4e06c66555e682eeb4764e79afcfc8c690175e5b1b581ab1a8ce"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-homebridge-z2m-863400-00070261-v2-env-b7a500c8"
+template_id = "94bxqb0osy07uf7tomo5"
+source_template_alias = "abfvgbj9ywca3te105bq"
+source_template_id = "abfvgbj9ywca3te105bq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

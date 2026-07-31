@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pongo2-eda136-c0f82578"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/flosch/pongo2"
+base_commit = "c0f82578df571c69ce46d4af5ba2f358d98c98e6"
+source_tree = "bcc8623a6af35cb8f5d3e26efff4f88e351a2fdf"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7113815822a478c81678f80fa4052c786feb3ef0206bf450e61a570dbbaf98c9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pongo2-eda136-c0f82578-v2-env-71138158"
+template_id = "es8sjtm4lnuw9p00p74c"
+source_template_alias = "es0hrfzqhg817t4zhp01"
+source_template_id = "es0hrfzqhg817t4zhp01"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mathcore-927b9b-78141f35"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Nonanti/mathcore"
+base_commit = "78141f35f20a572783fbe60cb4baf5bd0b165358"
+source_tree = "44eef7b40aef52c4026f9aae1bfa5494c60f95c7"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1b5bfff6ece9495fb57bb065b67b441f059330e79b3744fd01c15926050ad9f5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mathcore-927b9b-78141f35-v2-env-1b5bfff6"
+template_id = "8blzqm18sue7qd0uhflv"
+source_template_alias = "1n9ty4ult1xu5ve574nd"
+source_template_id = "1n9ty4ult1xu5ve574nd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

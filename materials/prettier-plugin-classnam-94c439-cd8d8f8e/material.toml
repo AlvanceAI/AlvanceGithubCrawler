@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "prettier-plugin-classnam-94c439-cd8d8f8e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ony3000/prettier-plugin-classnames"
+base_commit = "cd8d8f8e7b383d85a28cd7477c71494bab8889e7"
+source_tree = "4ae0779cf0a4f3cea3f41bb3d5406d1e5e5fab4c"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "24d80170d51895081b040a273c99a192e43152bc0f4c377b3ddc693bcefb828e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-prettier-plugin-clas-94c439-cd8d8f8e-v2-env-24d80170"
+template_id = "t5xy6mxfzxg6izn780aj"
+source_template_alias = "5hyyz5kgjmgbqy1aftzr"
+source_template_id = "5hyyz5kgjmgbqy1aftzr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

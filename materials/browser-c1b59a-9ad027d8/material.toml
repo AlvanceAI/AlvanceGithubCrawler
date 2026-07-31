@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "browser-c1b59a-9ad027d8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/zxing-js/browser"
+base_commit = "9ad027d88d4533bd6d29f9d8d7e517e23cd361ff"
+source_tree = "c9af0e9f6cf23c4e7334ee666715900b25186ede"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d0608cbe5f08feb53f90360abee425efc974938f03fac330043c62139d2ee897"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-browser-c1b59a-9ad027d8-v2-env-d0608cbe"
+template_id = "o2pfhkac83abouve68l9"
+source_template_alias = "u4xzr1re91m1bgiku2wh"
+source_template_id = "u4xzr1re91m1bgiku2wh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

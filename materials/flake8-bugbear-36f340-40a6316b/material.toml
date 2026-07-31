@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "flake8-bugbear-36f340-40a6316b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/PyCQA/flake8-bugbear"
+base_commit = "40a6316bb2018b7e4c8c243186a8f2de0721200b"
+source_tree = "a6036859d47b54fa58cf4d9afb4118cbac677644"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "14388c27e880d28ce1e9f7483c1b08f3f9da2a88a8a09e05486f78f81ef5951d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-flake8-bugbear-36f340-40a6316b-v2-env-14388c27"
+template_id = "mmmx51hh5dr687o0ja96"
+source_template_alias = "08fik3jlhqt6ywndp4ql"
+source_template_id = "08fik3jlhqt6ywndp4ql"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

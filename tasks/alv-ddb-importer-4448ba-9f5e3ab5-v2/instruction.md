@@ -1,0 +1,5 @@
+Repository `MrPrimate/ddb-importer` at commit `9f5e3ab56d76026720917d9bef72caa02b2b0c8b` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+完善职业与职业特性 Munch 导入，使其与角色导入一致地拆分圣武士引导神力、导入牧师领域法术与游侠原始伙伴、生成 Active Effects，并正确区分职业和子职业特性。

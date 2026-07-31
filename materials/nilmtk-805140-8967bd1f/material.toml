@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nilmtk-805140-8967bd1f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nilmtk/nilmtk"
+base_commit = "8967bd1fde24d0c8d89408179dd2499d8e60b4c3"
+source_tree = "b085a9d3191ef2528ac71c94ebb67529775636d5"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "05d64458cc741bc457321b7fc4949a255315b6a7902b27fd2c26c2e361662c51"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nilmtk-805140-8967bd1f-v2-env-05d64458"
+template_id = "tnk0wbfe3f73m27wud2z"
+source_template_alias = "e6xvmjv6f2m3u7hl62hl"
+source_template_id = "e6xvmjv6f2m3u7hl62hl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

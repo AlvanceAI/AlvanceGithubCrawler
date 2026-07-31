@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zap-e056cd-5b81b37b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/uber-go/zap"
+base_commit = "5b81b37b81b8e2ed447a6f57991e372ee4fa5c8f"
+source_tree = "21f2eb1f9477605c73f529cdff7228662e29bb87"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.19.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fe129c47eeb0ef83f32c0d568ade2adc97300a4161efa957667f06b5e01fb573"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zap-e056cd-5b81b37b-v2-env-fe129c47"
+template_id = "ic49jw8hlje3s1udo8yl"
+source_template_alias = "qkmpgymnfobiyn5bzvew"
+source_template_id = "qkmpgymnfobiyn5bzvew"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

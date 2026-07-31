@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-semantic-release-0c4684-c74aa3b9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/python-semantic-release/python-semantic-release"
+base_commit = "c74aa3b99de6d9c721f8bd6d2abfa142298b94c9"
+source_tree = "e540b86d05f23e3e0a39fcc31bcb44829e35f560"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "66d3183c6fa00da98516e808063d04ac7f5e208ae0915da5bce12b1774302a00"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-semantic-rele-0c4684-c74aa3b9-v2-env-66d3183c"
+template_id = "dy6cbmbz3bpa9w5c02fm"
+source_template_alias = "yrryhvk6n5ejzxmmv5fm"
+source_template_id = "yrryhvk6n5ejzxmmv5fm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

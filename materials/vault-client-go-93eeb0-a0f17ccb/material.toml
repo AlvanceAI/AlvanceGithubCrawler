@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vault-client-go-93eeb0-a0f17ccb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hashicorp/vault-client-go"
+base_commit = "a0f17ccb92501f7b7ad1bf5188b404383f08a45f"
+source_tree = "3b0ee97a82ba565c02ecc496ba45bdbacecbf516"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9f35e4d87add63b2563e9d42b06a4a353cc78daa73895bca141ed50af6e441d8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vault-client-go-93eeb0-a0f17ccb-v2-env-9f35e4d8"
+template_id = "dq5412ju855wtadsb5x6"
+source_template_alias = "4yi7dtsad6ssex3z5v1n"
+source_template_id = "4yi7dtsad6ssex3z5v1n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

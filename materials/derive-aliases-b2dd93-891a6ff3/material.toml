@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "derive-aliases-b2dd93-891a6ff3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nik-rev/derive-aliases"
+base_commit = "891a6ff3772118412a9ae42187c4152fcb4fc181"
+source_tree = "e77879187be51ac15277b2238bbb1366c8d35f91"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.75"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d4ff349cc4c8ffb199f18438efba6f3bbfdbb2222c30ef10633fb88746e255a5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-derive-aliases-b2dd93-891a6ff3-v2-env-d4ff349c"
+template_id = "0au4d0pqkf4kz6u9rs8r"
+source_template_alias = "92wwtnjgu9cr1y9tv8xp"
+source_template_id = "92wwtnjgu9cr1y9tv8xp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

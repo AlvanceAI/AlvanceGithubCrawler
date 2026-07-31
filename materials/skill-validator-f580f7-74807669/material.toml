@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "skill-validator-f580f7-74807669"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/agent-ecosystem/skill-validator"
+base_commit = "7480766908955b0ff5b232a7d2e60217732de5cb"
+source_tree = "7807646c2c02c6cfb630095945a30a7566c5bba8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a0c40796faafa8964fe01d14ed47e25185e71210ef5fe51cd82ebf97f9ecbf1f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-skill-validator-f580f7-74807669-v2-env-a0c40796"
+template_id = "3slic5p4np06ip9yxtba"
+source_template_alias = "mkg1bdf2hdrj10ncvhs8"
+source_template_id = "mkg1bdf2hdrj10ncvhs8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

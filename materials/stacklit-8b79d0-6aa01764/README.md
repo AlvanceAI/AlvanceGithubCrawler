@@ -1,0 +1,11 @@
+# stacklit-8b79d0-6aa01764
+
+Rebuildable repository material for `glincker/stacklit` at
+`6aa017643d19ab2718d42f098ee2a65717c2e3b6`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
+
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.

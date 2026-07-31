@@ -1,0 +1,5 @@
+Repository `aws/aws-lambda-go` at commit `87e344b1d4de6b5378079a153603e22ec1c77aa1` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为 Alexa Skills 的 Intent 请求与响应 JSON 协议新增可序列化、反序列化的 Go 事件结构体及样例载荷测试。

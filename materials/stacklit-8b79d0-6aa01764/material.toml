@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "stacklit-8b79d0-6aa01764"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/glincker/stacklit"
+base_commit = "6aa017643d19ab2718d42f098ee2a65717c2e3b6"
+source_tree = "a14357931682e8217f36e6ecd2c03855d72ffc72"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3b94083e96bbbd3168de49ca85fd76f7f3ffbd2bce051edeb25e5fb8ffa0a526"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-stacklit-8b79d0-6aa01764-v2-env-3b94083e"
+template_id = "8rlnljh6urymb0p18yc8"
+source_template_alias = "86haph55x1vjssbyehp3"
+source_template_id = "86haph55x1vjssbyehp3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
