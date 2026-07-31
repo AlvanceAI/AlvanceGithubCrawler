@@ -1,0 +1,76 @@
+[2026-07-30T18:50:20Z] stage=verify-default-20260730T185020Z run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-30 18:50:22,319 INFO alvance_github_crawler.pending.verification: verifying pending candidate pokanop/nostromo key_slot=1
+2026-07-30 18:50:22,320 INFO alvance_github_crawler.pending.verification: verifying pending candidate videolabs/mirrorbits key_slot=2
+2026-07-30 18:50:22,321 INFO alvance_github_crawler.pending.verification: verifying pending candidate github/freno key_slot=3
+2026-07-30 18:50:22,323 INFO alvance_github_crawler.pending.verification: verifying pending candidate silenceper/wechat key_slot=1
+2026-07-30 18:50:22,328 INFO alvance_github_crawler.pending.verification: verifying pending candidate ffuf/ffuf key_slot=2
+2026-07-30 18:50:22,330 INFO alvance_github_crawler.pending.verification: verifying pending candidate go-echarts/go-echarts key_slot=3
+2026-07-30 18:50:22,332 INFO alvance_github_crawler.pending.verification: verifying pending candidate jedib0t/go-pretty key_slot=1
+2026-07-30 18:50:22,334 INFO alvance_github_crawler.pending.verification: verifying pending candidate apache/incubator-seata-go key_slot=2
+2026-07-30 18:50:22,336 INFO alvance_github_crawler.pending.verification: verifying pending candidate moonD4rk/HackBrowserData key_slot=3
+2026-07-30 18:50:22,336 INFO alvance_github_crawler.pending.verification: verifying pending candidate zekroTJA/shinpuru key_slot=1
+2026-07-30 18:50:22,338 INFO alvance_github_crawler.pending.verification: verifying pending candidate GoogleCloudPlatform/solution-acceleration-toolkit key_slot=2
+2026-07-30 18:50:22,341 INFO alvance_github_crawler.pending.verification: verifying pending candidate joelmoss/proscenium key_slot=3
+2026-07-30 18:50:22,342 INFO alvance_github_crawler.pending.verification: verifying pending candidate google/cloud-forensics-utils key_slot=1
+2026-07-30 18:50:22,343 INFO alvance_github_crawler.pending.verification: verifying pending candidate google/rust_icu key_slot=2
+2026-07-30 18:50:22,344 INFO alvance_github_crawler.pending.verification: verifying pending candidate runtimeverification/kontrol key_slot=3
+2026-07-30 18:50:28,607 INFO alvance_github_crawler.pending.verification: verifying pending candidate Effect-TS/language-service key_slot=1
+2026-07-30 18:50:32,525 INFO alvance_github_crawler.pending.verification: pending candidate go-echarts/go-echarts finished outcome=error key_slot=3 processed=1 in_flight=15
+2026-07-30 18:50:32,758 INFO alvance_github_crawler.pending.verification: pending candidate jedib0t/go-pretty finished outcome=error key_slot=1 processed=2 in_flight=14
+2026-07-30 18:50:32,971 INFO alvance_github_crawler.pending.verification: pending candidate videolabs/mirrorbits finished outcome=error key_slot=2 processed=3 in_flight=13
+2026-07-30 18:50:34,439 INFO alvance_github_crawler.pending.verification: pending candidate pokanop/nostromo finished outcome=error key_slot=1 processed=4 in_flight=12
+2026-07-30 18:50:34,694 INFO alvance_github_crawler.pending.verification: pending candidate ffuf/ffuf finished outcome=error key_slot=2 processed=5 in_flight=11
+2026-07-30 18:50:35,347 INFO alvance_github_crawler.pending.verification: pending candidate moonD4rk/HackBrowserData finished outcome=error key_slot=3 processed=6 in_flight=10
+2026-07-30 18:50:37,437 INFO alvance_github_crawler.pending.verification: pending candidate zekroTJA/shinpuru finished outcome=error key_slot=1 processed=7 in_flight=9
+2026-07-30 18:50:38,192 INFO alvance_github_crawler.pending.verification: pending candidate Effect-TS/language-service finished outcome=rejected key_slot=1 processed=8 in_flight=8
+2026-07-30 18:50:38,819 INFO alvance_github_crawler.pending.verification: pending candidate github/freno finished outcome=error key_slot=3 processed=9 in_flight=7
+2026-07-30 18:50:39,095 INFO alvance_github_crawler.pending.verification: pending candidate silenceper/wechat finished outcome=error key_slot=1 processed=10 in_flight=6
+2026-07-30 18:50:39,311 INFO alvance_github_crawler.pending.verification: pending candidate apache/incubator-seata-go finished outcome=error key_slot=2 processed=11 in_flight=5
+2026-07-30 18:50:43,288 INFO alvance_github_crawler.pending.verification: pending candidate GoogleCloudPlatform/solution-acceleration-toolkit finished outcome=error key_slot=2 processed=12 in_flight=4
+2026-07-30 18:50:54,288 INFO alvance_github_crawler.pending.verification: pending candidate google/rust_icu finished outcome=rejected key_slot=2 processed=13 in_flight=3
+2026-07-30 18:51:35,132 INFO alvance_github_crawler.pending.verification: pending candidate runtimeverification/kontrol finished outcome=rejected key_slot=3 processed=14 in_flight=2
+2026-07-30 18:52:52,599 INFO alvance_github_crawler.pending.verification: pending candidate google/cloud-forensics-utils finished outcome=registered key_slot=1 processed=15 in_flight=1
+2026-07-30 18:53:24,462 ERROR alvance_github_crawler.e2b.verification: joelmoss/proscenium failed during stage5_e2b_benchmark
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/benchmark.py", line 140, in run
+    memory_log = sandbox.files.read("/tmp/time.log")
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/sandbox_sync/filesystem/filesystem.py", line 260, in read
+    raise err
+e2b.exceptions.FileNotFoundException: path '/tmp/time.log' does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/verification.py", line 137, in verify
+    benchmark = self.benchmark.run(
+        environment.repository_template,
+    ...<2 lines>...
+        user=environment.execution_user,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/benchmark.py", line 156, in run
+    raise RuntimeError(
+        f"E2B infrastructure error during benchmark run: {exc}"
+    ) from exc
+RuntimeError: E2B infrastructure error during benchmark run: path '/tmp/time.log' does not exist
+2026-07-30 18:53:24,491 INFO alvance_github_crawler.pending.verification: pending candidate joelmoss/proscenium finished outcome=error key_slot=3 processed=16 in_flight=0
+{
+  "error": 12,
+  "halted": 1,
+  "key_slot_1_error": 4,
+  "key_slot_1_processed": 6,
+  "key_slot_1_registered": 1,
+  "key_slot_1_rejected": 1,
+  "key_slot_2_error": 4,
+  "key_slot_2_processed": 5,
+  "key_slot_2_rejected": 1,
+  "key_slot_3_error": 4,
+  "key_slot_3_processed": 5,
+  "key_slot_3_rejected": 1,
+  "key_slots_halted": 3,
+  "processed": 16,
+  "registered": 1,
+  "rejected": 3,
+  "remaining": 24
+}
+[2026-07-30T18:53:25Z] stage=verify-default-20260730T185020Z exit_code=0 duration_s=185

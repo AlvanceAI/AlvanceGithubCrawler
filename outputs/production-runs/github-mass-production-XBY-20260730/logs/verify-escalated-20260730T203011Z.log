@@ -1,0 +1,20 @@
+[2026-07-30T20:30:11Z] stage=verify-escalated-20260730T203011Z run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-30 20:30:13,327 INFO alvance_github_crawler.pending.verification: verifying pending candidate updatecli/updatecli key_slot=1
+2026-07-30 20:30:13,328 INFO alvance_github_crawler.pending.verification: verifying pending candidate rootless-containers/rootlesskit key_slot=2
+2026-07-30 20:30:13,330 INFO alvance_github_crawler.pending.verification: verifying pending candidate theislab/moscot key_slot=3
+2026-07-30 20:40:15,668 INFO alvance_github_crawler.pending.verification: pending candidate rootless-containers/rootlesskit finished outcome=rejected key_slot=2 processed=1 in_flight=2
+2026-07-30 20:40:16,516 INFO alvance_github_crawler.pending.verification: pending candidate updatecli/updatecli finished outcome=rejected key_slot=1 processed=2 in_flight=1
+2026-07-30 20:41:34,074 INFO alvance_github_crawler.pending.verification: pending candidate theislab/moscot finished outcome=rejected key_slot=3 processed=3 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_rejected": 1,
+  "key_slot_2_processed": 1,
+  "key_slot_2_rejected": 1,
+  "key_slot_3_processed": 1,
+  "key_slot_3_rejected": 1,
+  "processed": 3,
+  "rejected": 3,
+  "remaining": 0
+}
+[2026-07-30T20:41:34Z] stage=verify-escalated-20260730T203011Z exit_code=0 duration_s=683

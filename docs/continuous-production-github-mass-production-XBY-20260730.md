@@ -1,22 +1,22 @@
 # Pipeline statistics: github-mass-production-XBY-20260730
 
 - Status: `complete`
-- Generated: `2026-07-30T15:46:43.568823+00:00`
-- Raw GitHub sample: 15000
-- Initial filter accepted: 7616
-- E2B queue: 1848
-- Deliverable tasks: 448
+- Generated: `2026-07-30T20:41:51.294238+00:00`
+- Raw GitHub sample: 20000
+- Initial filter accepted: 9989
+- E2B queue: 2289
+- Deliverable tasks: 599
 - Pending: 0
 
 ## Language funnel
 
 | Language | Initial accepted | Final tasks |
 |---|---:|---:|
-| python | 1551 | 58 |
-| go | 2152 | 204 |
-| typescript | 1267 | 33 |
-| javascript | 870 | 31 |
-| rust | 1776 | 122 |
+| python | 1996 | 73 |
+| go | 2852 | 273 |
+| typescript | 1658 | 46 |
+| javascript | 1145 | 41 |
+| rust | 2338 | 166 |
 
 ## Stage timings
 
@@ -89,6 +89,36 @@
 | requeue-resource-failures | 56 | 0 |
 | verify-escalated-20260730T141724Z | 4592 | 0 |
 | verify-escalated-20260730T153359Z | 763 | 0 |
+| repair-rebuildable-packages | 4 | 0 |
+| prescreen-resume-15000 | 3 | 0 |
+| crawl-15500 | 336 | 0 |
+| prescreen-15500 | 867 | 0 |
+| crawl-16000 | 343 | 0 |
+| prescreen-16000 | 762 | 0 |
+| crawl-16500 | 520 | 0 |
+| prescreen-16500 | 754 | 0 |
+| crawl-17000 | 332 | 0 |
+| prescreen-17000 | 949 | 0 |
+| crawl-17500 | 363 | 0 |
+| prescreen-17500 | 750 | 0 |
+| crawl-18000 | 329 | 0 |
+| prescreen-18000 | 671 | 0 |
+| crawl-18500 | 380 | 0 |
+| prescreen-18500 | 716 | 0 |
+| crawl-19000 | 356 | 0 |
+| prescreen-19000 | 1124 | 0 |
+| crawl-19500 | 355 | 0 |
+| prescreen-19500 | 653 | 0 |
+| crawl-20000 | 375 | 0 |
+| verify-default-20260730T155337Z | 10582 | 0 |
+| verify-default-20260730T185020Z | 185 | 0 |
+| prescreen-20000 | 679 | 0 |
+| verify-default-20260730T185358Z | 1454 | 0 |
+| verify-default-20260730T191815Z | 9 | 0 |
+| verify-default-20260730T191840Z | 7 | 0 |
+| requeue-resource-failures | 53 | 0 |
+| verify-escalated-20260730T191941Z | 4226 | 0 |
+| verify-escalated-20260730T203011Z | 683 | 0 |
 
 ## E2B task performance
 
@@ -542,6 +572,157 @@
 | [bgdnvk/clanker](https://github.com/bgdnvk/clanker) | go | 2 CPU / 4096 MB | 0.54 | 95.92 | 1920.2 | `tasks/alv-clanker-121dde-4d7af4d3-v2` |
 | [azat/chdig](https://github.com/azat/chdig) | rust | 2 CPU / 4096 MB | 0.56 | 51.06 | 226.2 | `tasks/alv-chdig-53fbb1-3e046e4d-v2` |
 | [digitalis-io/vals-operator](https://github.com/digitalis-io/vals-operator) | go | 2 CPU / 4096 MB | 0.45 | 91.99 | 2325.3 | `tasks/alv-vals-operator-d3e600-d1040fa4-v2` |
+| [prometheus/prom2json](https://github.com/prometheus/prom2json) | go | 1 CPU / 1024 MB | 0.37 | 12.15 | 152.6 | `tasks/alv-prom2json-10d184-23454cec-v2` |
+| [gdamore/tcell](https://github.com/gdamore/tcell) | go | 1 CPU / 1024 MB | 0.52 | 23.7 | 105.8 | `tasks/alv-tcell-3dab0f-45d70ee4-v2` |
+| [nlewo/comin](https://github.com/nlewo/comin) | go | 1 CPU / 1024 MB | 0.41 | 51.22 | 264.1 | `tasks/alv-comin-a45672-c32a4e45-v2` |
+| [la5nta/pat](https://github.com/la5nta/pat) | go | 1 CPU / 1024 MB | 0.49 | 119.86 | 198.6 | `tasks/alv-pat-6b774c-2e6a8d14-v2` |
+| [Xudong-Huang/may](https://github.com/Xudong-Huang/may) | rust | 1 CPU / 1024 MB | 0.54 | 27.38 | 159.7 | `tasks/alv-may-8b7221-93314756-v2` |
+| [maloyan/manim-web](https://github.com/maloyan/manim-web) | typescript | 1 CPU / 1024 MB | 0.45 | 119.23 | 674.3 | `tasks/alv-manim-web-5d3999-5124d26f-v2` |
+| [mmcdole/gofeed](https://github.com/mmcdole/gofeed) | go | 1 CPU / 1024 MB | 0.61 | 25.1 | 151.6 | `tasks/alv-gofeed-f4a2e1-e010ca02-v2` |
+| [checkmake/checkmake](https://github.com/checkmake/checkmake) | go | 1 CPU / 1024 MB | 0.45 | 27.56 | 174.7 | `tasks/alv-checkmake-d49f26-6e9bf438-v2` |
+| [tsuna/gohbase](https://github.com/tsuna/gohbase) | go | 1 CPU / 1024 MB | 0.55 | 21.26 | 212.9 | `tasks/alv-gohbase-2c1498-8b8e010a-v2` |
+| [prometheus/statsd_exporter](https://github.com/prometheus/statsd_exporter) | go | 1 CPU / 1024 MB | 0.47 | 18.82 | 203.6 | `tasks/alv-statsd-exporter-ff05d5-ac592b1e-v2` |
+| [charmbracelet/gum](https://github.com/charmbracelet/gum) | go | 1 CPU / 1024 MB | 0.48 | 12.34 | 106.2 | `tasks/alv-gum-92b951-716d8b5d-v2` |
+| [nsqio/nsq](https://github.com/nsqio/nsq) | go | 1 CPU / 1024 MB | 0.57 | 33.54 | 154.9 | `tasks/alv-nsq-a46f72-72ad9b27-v2` |
+| [react-dropzone/react-dropzone](https://github.com/react-dropzone/react-dropzone) | typescript | 1 CPU / 1024 MB | 0.46 | 8.97 | 167.5 | `tasks/alv-react-dropzone-370c9b-4599a84c-v2` |
+| [fengyuanchen/cropperjs](https://github.com/fengyuanchen/cropperjs) | typescript | 1 CPU / 1024 MB | 0.45 | 33.61 | 516.7 | `tasks/alv-cropperjs-195793-8e597a3b-v2` |
+| [ssp-data/neomd](https://github.com/ssp-data/neomd) | go | 1 CPU / 1024 MB | 0.57 | 30.67 | 249.0 | `tasks/alv-neomd-b3cda9-2b89c2d7-v2` |
+| [rhysd/hgrep](https://github.com/rhysd/hgrep) | rust | 1 CPU / 1024 MB | 0.52 | 6.25 | 100.8 | `tasks/alv-hgrep-de3de4-4cef8b44-v2` |
+| [GitoxideLabs/cargo-smart-release](https://github.com/GitoxideLabs/cargo-smart-release) | rust | 1 CPU / 1024 MB | 0.5 | 5.72 | 130.3 | `tasks/alv-cargo-smart-release-8f0d00-86901127-v2` |
+| [PagerDuty/terraform-provider-pagerduty](https://github.com/PagerDuty/terraform-provider-pagerduty) | go | 1 CPU / 1024 MB | 0.57 | 60.59 | 420.5 | `tasks/alv-terraform-provider-p-6db274-86fd7379-v2` |
+| [MordechaiHadad/bob](https://github.com/MordechaiHadad/bob) | rust | 1 CPU / 1024 MB | 0.56 | 1.83 | 77.1 | `tasks/alv-bob-298da4-770c6cec-v2` |
+| [go-graphite/carbonapi](https://github.com/go-graphite/carbonapi) | go | 1 CPU / 1024 MB | 0.49 | 82.37 | 271.4 | `tasks/alv-carbonapi-2726f3-8c3305a4-v2` |
+| [killercup/cargo-edit](https://github.com/killercup/cargo-edit) | rust | 1 CPU / 1024 MB | 0.5 | 27.01 | 421.5 | `tasks/alv-cargo-edit-71e784-138d4e29-v2` |
+| [tonybaloney/wily](https://github.com/tonybaloney/wily) | python | 1 CPU / 1024 MB | 0.72 | 16.1 | 118.5 | `tasks/alv-wily-6d6beb-24f450b5-v2` |
+| [uazu/stakker](https://github.com/uazu/stakker) | rust | 1 CPU / 1024 MB | 0.61 | 9.49 | 197.8 | `tasks/alv-stakker-e940db-c26efe50-v2` |
+| [M0r13n/pyais](https://github.com/M0r13n/pyais) | python | 1 CPU / 1024 MB | 0.43 | 3.87 | 56.8 | `tasks/alv-pyais-9e64ed-e6cacde5-v2` |
+| [swiftlang/swift-docc-render](https://github.com/swiftlang/swift-docc-render) | javascript | 1 CPU / 1024 MB | 0.47 | 118.45 | 462.4 | `tasks/alv-swift-docc-render-d3f533-51ced698-v2` |
+| [LukasNiessen/ArchUnitPython](https://github.com/LukasNiessen/ArchUnitPython) | python | 1 CPU / 1024 MB | 0.54 | 2.41 | 34.8 | `tasks/alv-archunitpython-1e2e31-2aba85e4-v2` |
+| [openconfig/goyang](https://github.com/openconfig/goyang) | go | 1 CPU / 1024 MB | 0.5 | 16.33 | 129.6 | `tasks/alv-goyang-94c058-a80f2799-v2` |
+| [jellydator/ttlcache](https://github.com/jellydator/ttlcache) | go | 1 CPU / 1024 MB | 0.41 | 34.01 | 183.8 | `tasks/alv-ttlcache-ee5d91-2445e4d8-v2` |
+| [goplus/gogen](https://github.com/goplus/gogen) | go | 1 CPU / 1024 MB | 0.53 | 42.59 | 156.7 | `tasks/alv-gogen-0dc992-f554eeb6-v2` |
+| [cross-rs/cross](https://github.com/cross-rs/cross) | rust | 1 CPU / 1024 MB | 0.47 | 5.68 | 119.8 | `tasks/alv-cross-6080e1-1d07d3f9-v2` |
+| [spencermountain/compromise](https://github.com/spencermountain/compromise) | javascript | 1 CPU / 1024 MB | 0.42 | 28.79 | 191.2 | `tasks/alv-compromise-b49670-23f0dd8b-v2` |
+| [simd-lite/simd-json](https://github.com/simd-lite/simd-json) | rust | 1 CPU / 1024 MB | 0.53 | 12.87 | 130.8 | `tasks/alv-simd-json-91e1a7-c8cece05-v2` |
+| [jmattheis/goverter](https://github.com/jmattheis/goverter) | go | 1 CPU / 1024 MB | 0.38 | 65.12 | 227.3 | `tasks/alv-goverter-5b36de-8ee67115-v2` |
+| [zhiburt/tabled](https://github.com/zhiburt/tabled) | rust | 1 CPU / 1024 MB | 0.53 | 62.41 | 170.2 | `tasks/alv-tabled-11678f-9619c06d-v2` |
+| [simonw/sqlite-utils](https://github.com/simonw/sqlite-utils) | python | 1 CPU / 1024 MB | 0.46 | 11.47 | 280.7 | `tasks/alv-sqlite-utils-3cfe30-6a456830-v2` |
+| [ivnvxd/mcp-server-odoo](https://github.com/ivnvxd/mcp-server-odoo) | python | 1 CPU / 1024 MB | 0.46 | 52.89 | 96.7 | `tasks/alv-mcp-server-odoo-710954-b7be7dcc-v2` |
+| [openapistack/openapi-client-axios](https://github.com/openapistack/openapi-client-axios) | typescript | 1 CPU / 1024 MB | 0.52 | 10.78 | 376.8 | `tasks/alv-openapi-client-axios-4fa190-c8c0edbb-v2` |
+| [prometheus-community/fortigate_exporter](https://github.com/prometheus-community/fortigate_exporter) | go | 1 CPU / 1024 MB | 0.45 | 20.27 | 329.3 | `tasks/alv-fortigate-exporter-3d8bf8-2852c735-v2` |
+| [carlos7ags/folio](https://github.com/carlos7ags/folio) | go | 1 CPU / 1024 MB | 0.48 | 56.74 | 460.1 | `tasks/alv-folio-475eac-cea18777-v2` |
+| [crossbeam-rs/crossbeam](https://github.com/crossbeam-rs/crossbeam) | rust | 1 CPU / 1024 MB | 0.52 | 2.66 | 59.9 | `tasks/alv-crossbeam-5b9c0c-b23b7e8e-v2` |
+| [jpillora/chisel](https://github.com/jpillora/chisel) | go | 1 CPU / 1024 MB | 0.53 | 25.74 | 166.4 | `tasks/alv-chisel-2b1a67-016edaae-v2` |
+| [containerd/nri](https://github.com/containerd/nri) | go | 1 CPU / 1024 MB | 0.57 | 44.31 | 265.8 | `tasks/alv-nri-94ab0f-84180b63-v2` |
+| [robotty/twitch-irc-rs](https://github.com/robotty/twitch-irc-rs) | rust | 1 CPU / 1024 MB | 0.59 | 13.85 | 252.6 | `tasks/alv-twitch-irc-rs-498e4d-3a6a9c88-v2` |
+| [ethanhq/cc-fleet](https://github.com/ethanhq/cc-fleet) | go | 1 CPU / 1024 MB | 0.6 | 50.93 | 277.7 | `tasks/alv-cc-fleet-ed6161-68670168-v2` |
+| [gyscos/cursive](https://github.com/gyscos/cursive) | rust | 1 CPU / 1024 MB | 0.56 | 28.76 | 264.9 | `tasks/alv-cursive-ba2477-9c0f983f-v2` |
+| [RobinMagnet/pyFM](https://github.com/RobinMagnet/pyFM) | python | 1 CPU / 1024 MB | 0.57 | 3.02 | 74.0 | `tasks/alv-pyfm-9584d0-85e686c4-v2` |
+| [mesa/mesa-geo](https://github.com/mesa/mesa-geo) | python | 1 CPU / 1024 MB | 0.69 | 14.39 | 355.9 | `tasks/alv-mesa-geo-f974c1-00bf692c-v2` |
+| [t3rm1n4l/go-mega](https://github.com/t3rm1n4l/go-mega) | go | 1 CPU / 1024 MB | 0.46 | 11.37 | 136.9 | `tasks/alv-go-mega-e07918-c6acd6a5-v2` |
+| [celestiaorg/nmt](https://github.com/celestiaorg/nmt) | go | 1 CPU / 1024 MB | 0.59 | 30.32 | 174.7 | `tasks/alv-nmt-65d354-d79269fe-v2` |
+| [Parachord/parachord](https://github.com/Parachord/parachord) | javascript | 1 CPU / 1024 MB | 0.61 | 18.28 | 199.4 | `tasks/alv-parachord-af8258-43bb79bd-v2` |
+| [victronenergy/node-red-contrib-victron](https://github.com/victronenergy/node-red-contrib-victron) | javascript | 1 CPU / 1024 MB | 0.57 | 18.81 | 187.3 | `tasks/alv-node-red-contrib-vic-ec6d5a-77d9741d-v2` |
+| [pnnbao97/sea-g2p](https://github.com/pnnbao97/sea-g2p) | rust | 1 CPU / 1024 MB | 0.54 | 1.07 | 31.0 | `tasks/alv-sea-g2p-ec0b84-1b9be32f-v2` |
+| [JetBrains/teamcity-cli](https://github.com/JetBrains/teamcity-cli) | go | 1 CPU / 1024 MB | 0.55 | 65.76 | 275.4 | `tasks/alv-teamcity-cli-11f77a-e9bbb01f-v2` |
+| [vatesfr/terraform-provider-xenorchestra](https://github.com/vatesfr/terraform-provider-xenorchestra) | go | 1 CPU / 1024 MB | 0.37 | 24.31 | 325.9 | `tasks/alv-terraform-provider-x-a0ff9c-6fb91987-v2` |
+| [snapview/tokio-tungstenite](https://github.com/snapview/tokio-tungstenite) | rust | 1 CPU / 1024 MB | 0.43 | 21.7 | 213.0 | `tasks/alv-tokio-tungstenite-484442-6ee9b33f-v2` |
+| [LHolten/rust-query](https://github.com/LHolten/rust-query) | rust | 1 CPU / 1024 MB | 0.43 | 11.68 | 305.0 | `tasks/alv-rust-query-0096fe-b5a2a492-v2` |
+| [snapview/tungstenite-rs](https://github.com/snapview/tungstenite-rs) | rust | 1 CPU / 1024 MB | 0.44 | 18.7 | 165.8 | `tasks/alv-tungstenite-rs-f6442c-7f4aeaf0-v2` |
+| [Axect/Peroxide](https://github.com/Axect/Peroxide) | rust | 1 CPU / 1024 MB | 0.44 | 56.28 | 159.9 | `tasks/alv-peroxide-e44652-53e1717d-v2` |
+| [TwiN/go-away](https://github.com/TwiN/go-away) | go | 1 CPU / 1024 MB | 0.54 | 9.97 | 101.7 | `tasks/alv-go-away-f473c1-4806d28a-v2` |
+| [hay-kot/scaffold](https://github.com/hay-kot/scaffold) | go | 1 CPU / 1024 MB | 0.64 | 23.8 | 199.8 | `tasks/alv-scaffold-53f5af-94612014-v2` |
+| [foyer-rs/foyer](https://github.com/foyer-rs/foyer) | rust | 1 CPU / 1024 MB | 0.5 | 98.39 | 534.2 | `tasks/alv-foyer-7408ef-165cde3d-v2` |
+| [marcosnils/bin](https://github.com/marcosnils/bin) | go | 1 CPU / 1024 MB | 0.62 | 21.85 | 302.6 | `tasks/alv-bin-40eca5-8a4bfd2a-v2` |
+| [davidbkemp/jsqubits](https://github.com/davidbkemp/jsqubits) | javascript | 1 CPU / 1024 MB | 0.44 | 3.46 | 78.6 | `tasks/alv-jsqubits-645847-cd58d7ee-v2` |
+| [hashicorp/hcl-lang](https://github.com/hashicorp/hcl-lang) | go | 1 CPU / 1024 MB | 0.56 | 19.28 | 460.6 | `tasks/alv-hcl-lang-36c490-ecfa08c1-v2` |
+| [lamoda/gonkey](https://github.com/lamoda/gonkey) | go | 1 CPU / 1024 MB | 0.54 | 26.27 | 203.3 | `tasks/alv-gonkey-cb8736-93311734-v2` |
+| [mex-memory/mex](https://github.com/mex-memory/mex) | typescript | 1 CPU / 1024 MB | 0.46 | 31.41 | 353.9 | `tasks/alv-mex-9b6e4d-43f61fe5-v2` |
+| [noborus/trdsql](https://github.com/noborus/trdsql) | go | 1 CPU / 1024 MB | 0.51 | 52.86 | 767.8 | `tasks/alv-trdsql-b7d289-1ef4b468-v2` |
+| [FairwindsOps/rbac-manager](https://github.com/FairwindsOps/rbac-manager) | go | 1 CPU / 1024 MB | 0.55 | 95.64 | 688.8 | `tasks/alv-rbac-manager-920766-14c1018f-v2` |
+| [Lokathor/tinyvec](https://github.com/Lokathor/tinyvec) | rust | 1 CPU / 1024 MB | 0.47 | 41.53 | 152.7 | `tasks/alv-tinyvec-da7382-347ddc64-v2` |
+| [MiSawa/xq](https://github.com/MiSawa/xq) | rust | 1 CPU / 1024 MB | 0.56 | 6.53 | 120.0 | `tasks/alv-xq-573def-f1b224a9-v2` |
+| [cloudtools/troposphere](https://github.com/cloudtools/troposphere) | python | 1 CPU / 1024 MB | 0.38 | 3.63 | 76.7 | `tasks/alv-troposphere-4a4b12-0c6c1252-v2` |
+| [Snowflake-Labs/schemachange](https://github.com/Snowflake-Labs/schemachange) | python | 1 CPU / 1024 MB | 0.41 | 4.54 | 88.2 | `tasks/alv-schemachange-627a29-bc279ad0-v2` |
+| [cep21/circuit](https://github.com/cep21/circuit) | go | 1 CPU / 1024 MB | 0.46 | 21.56 | 124.5 | `tasks/alv-circuit-bb9ff3-df9fc6e2-v2` |
+| [vburenin/ifacemaker](https://github.com/vburenin/ifacemaker) | go | 1 CPU / 1024 MB | 0.53 | 25.99 | 173.9 | `tasks/alv-ifacemaker-be9ca0-e25fd81b-v2` |
+| [glortho/react-keydown](https://github.com/glortho/react-keydown) | javascript | 1 CPU / 1024 MB | 0.58 | 3.8 | 83.2 | `tasks/alv-react-keydown-4c3380-d8f57dff-v2` |
+| [52funny/pikpakcli](https://github.com/52funny/pikpakcli) | go | 1 CPU / 1024 MB | 0.53 | 14.98 | 142.3 | `tasks/alv-pikpakcli-c94ca8-dfbe3fe4-v2` |
+| [josstei/maestro-orchestrate](https://github.com/josstei/maestro-orchestrate) | javascript | 1 CPU / 1024 MB | 0.48 | 19.89 | 61.3 | `tasks/alv-maestro-orchestrate-c3ff73-4f5d434d-v2` |
+| [moov-io/iso8583](https://github.com/moov-io/iso8583) | go | 1 CPU / 1024 MB | 0.58 | 37.16 | 194.0 | `tasks/alv-iso8583-7589ca-0683146d-v2` |
+| [johnwalley/allotment](https://github.com/johnwalley/allotment) | typescript | 1 CPU / 1024 MB | 0.47 | 9.22 | 309.6 | `tasks/alv-allotment-d177c2-3009fae9-v2` |
+| [HashLoad/boss](https://github.com/HashLoad/boss) | go | 1 CPU / 1024 MB | 0.46 | 50.04 | 248.4 | `tasks/alv-boss-4ac054-4a4ca045-v2` |
+| [embedded-graphics/embedded-graphics](https://github.com/embedded-graphics/embedded-graphics) | rust | 1 CPU / 1024 MB | 0.56 | 18.69 | 112.1 | `tasks/alv-embedded-graphics-fd1425-89164306-v2` |
+| [hashicorp/packer-plugin-proxmox](https://github.com/hashicorp/packer-plugin-proxmox) | go | 1 CPU / 1024 MB | 0.48 | 38.43 | 463.3 | `tasks/alv-packer-plugin-proxmo-b42f17-3d091ba8-v2` |
+| [bacpop/ska.rust](https://github.com/bacpop/ska.rust) | rust | 1 CPU / 1024 MB | 0.52 | 15.61 | 394.8 | `tasks/alv-ska-rust-fb550a-99bd6e01-v2` |
+| [dprint/dprint-plugin-typescript](https://github.com/dprint/dprint-plugin-typescript) | rust | 1 CPU / 1024 MB | 0.45 | 15.15 | 329.9 | `tasks/alv-dprint-plugin-typesc-cd7685-4a876cf9-v2` |
+| [mholt/caddy-l4](https://github.com/mholt/caddy-l4) | go | 1 CPU / 1024 MB | 0.65 | 106.19 | 742.0 | `tasks/alv-caddy-l4-8982e5-42db5690-v2` |
+| [bugst/go-serial](https://github.com/bugst/go-serial) | go | 1 CPU / 1024 MB | 0.45 | 8.87 | 102.2 | `tasks/alv-go-serial-25b0e2-9b9e4a4b-v2` |
+| [dorny/test-reporter](https://github.com/dorny/test-reporter) | typescript | 1 CPU / 1024 MB | 0.44 | 9.93 | 295.6 | `tasks/alv-test-reporter-b06039-a53e4143-v2` |
+| [terser/html-minifier-terser](https://github.com/terser/html-minifier-terser) | javascript | 1 CPU / 1024 MB | 0.53 | 5.79 | 148.4 | `tasks/alv-html-minifier-terser-11caa5-7ca2adda-v2` |
+| [Azure/sql-action](https://github.com/Azure/sql-action) | typescript | 1 CPU / 1024 MB | 0.52 | 8.56 | 250.2 | `tasks/alv-sql-action-7fbf35-a51fe1a1-v2` |
+| [chinedufn/percy](https://github.com/chinedufn/percy) | rust | 1 CPU / 1024 MB | 0.35 | 2.99 | 56.2 | `tasks/alv-percy-ce76dc-8fcb21b6-v2` |
+| [control-theory/gonzo](https://github.com/control-theory/gonzo) | go | 1 CPU / 1024 MB | 0.56 | 61.68 | 713.2 | `tasks/alv-gonzo-246e5d-58992105-v2` |
+| [mapeditor/rs-tiled](https://github.com/mapeditor/rs-tiled) | rust | 1 CPU / 1024 MB | 0.46 | 13.63 | 161.8 | `tasks/alv-rs-tiled-c7c4e3-1f961490-v2` |
+| [imsnif/bandwhich](https://github.com/imsnif/bandwhich) | rust | 1 CPU / 1024 MB | 0.55 | 39.68 | 82.7 | `tasks/alv-bandwhich-75e655-1899870c-v2` |
+| [gimli-rs/gimli](https://github.com/gimli-rs/gimli) | rust | 1 CPU / 1024 MB | 0.64 | 85.0 | 529.8 | `tasks/alv-gimli-e20704-843c38e8-v2` |
+| [blopker/codebook](https://github.com/blopker/codebook) | rust | 1 CPU / 1024 MB | 0.53 | 50.62 | 126.5 | `tasks/alv-codebook-b64bc4-94e9f74f-v2` |
+| [anthropics/claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python) | python | 1 CPU / 1024 MB | 0.49 | 14.44 | 87.8 | `tasks/alv-claude-agent-sdk-pyt-35669d-f8b9ec92-v2` |
+| [prometheus/mysqld_exporter](https://github.com/prometheus/mysqld_exporter) | go | 1 CPU / 1024 MB | 0.46 | 22.05 | 248.3 | `tasks/alv-mysqld-exporter-5bb1ba-2a385072-v2` |
+| [UditAkhourii/adhd](https://github.com/UditAkhourii/adhd) | typescript | 1 CPU / 1024 MB | 0.44 | 2.01 | 87.4 | `tasks/alv-adhd-2b5d04-eaeba4e9-v2` |
+| [scikit-hep/hist](https://github.com/scikit-hep/hist) | python | 1 CPU / 1024 MB | 0.59 | 12.34 | 363.1 | `tasks/alv-hist-d37991-8c31a8f5-v2` |
+| [Facets-cloud/flow](https://github.com/Facets-cloud/flow) | go | 1 CPU / 1024 MB | 0.54 | 34.23 | 735.1 | `tasks/alv-flow-fde287-7ad6e4e1-v2` |
+| [AkihiroSuda/gomodjail](https://github.com/AkihiroSuda/gomodjail) | go | 1 CPU / 1024 MB | 0.59 | 11.33 | 102.6 | `tasks/alv-gomodjail-b07310-796efadf-v2` |
+| [dataddo/pgq](https://github.com/dataddo/pgq) | go | 1 CPU / 1024 MB | 0.66 | 18.34 | 200.0 | `tasks/alv-pgq-50c7c7-ef03827e-v2` |
+| [segmentio/chamber](https://github.com/segmentio/chamber) | go | 1 CPU / 1024 MB | 0.69 | 20.36 | 261.8 | `tasks/alv-chamber-66225b-5f93f5f3-v2` |
+| [nagisa/rust_libloading](https://github.com/nagisa/rust_libloading) | rust | 1 CPU / 1024 MB | 0.45 | 4.73 | 101.7 | `tasks/alv-rust-libloading-a1601a-29b6ad01-v2` |
+| [ratatui/ratzilla](https://github.com/ratatui/ratzilla) | rust | 1 CPU / 1024 MB | 0.47 | 4.79 | 205.4 | `tasks/alv-ratzilla-0811e9-c07436dd-v2` |
+| [LDflex/LDflex](https://github.com/LDflex/LDflex) | javascript | 1 CPU / 1024 MB | 0.4 | 18.11 | 286.9 | `tasks/alv-ldflex-24b069-c7544f6e-v2` |
+| [psd-tools/psd-tools](https://github.com/psd-tools/psd-tools) | python | 1 CPU / 1024 MB | 0.71 | 77.17 | 566.4 | `tasks/alv-psd-tools-e7b78f-ad89f315-v2` |
+| [ikoyhn/clean-cast](https://github.com/ikoyhn/clean-cast) | go | 1 CPU / 1024 MB | 0.59 | 32.94 | 777.5 | `tasks/alv-clean-cast-d041b1-4e515e50-v2` |
+| [LucasPickering/slumber](https://github.com/LucasPickering/slumber) | rust | 1 CPU / 1024 MB | 0.53 | 2.48 | 85.4 | `tasks/alv-slumber-864ee7-0d1ee9b1-v2` |
+| [koto-lang/koto](https://github.com/koto-lang/koto) | rust | 1 CPU / 1024 MB | 0.38 | 54.66 | 219.5 | `tasks/alv-koto-dd41c0-4b433e7a-v2` |
+| [open-policy-agent/kube-mgmt](https://github.com/open-policy-agent/kube-mgmt) | go | 1 CPU / 1024 MB | 0.43 | 54.57 | 698.3 | `tasks/alv-kube-mgmt-b7d2bd-9257c9fa-v2` |
+| [FairwindsOps/nova](https://github.com/FairwindsOps/nova) | go | 1 CPU / 1024 MB | 0.51 | 60.06 | 759.0 | `tasks/alv-nova-c36418-0803b084-v2` |
+| [maxbrunsfeld/counterfeiter](https://github.com/maxbrunsfeld/counterfeiter) | go | 1 CPU / 1024 MB | 0.47 | 94.76 | 736.5 | `tasks/alv-counterfeiter-4b3b48-12304d65-v2` |
+| [smu160/PhastFT](https://github.com/smu160/PhastFT) | rust | 1 CPU / 1024 MB | 0.58 | 69.52 | 719.8 | `tasks/alv-phastft-8b925c-10fe18aa-v2` |
+| [Mirantis/cri-dockerd](https://github.com/Mirantis/cri-dockerd) | go | 1 CPU / 1024 MB | 0.46 | 101.12 | 674.8 | `tasks/alv-cri-dockerd-5b34af-83d711fc-v2` |
+| [google/cloud-forensics-utils](https://github.com/google/cloud-forensics-utils) | python | 1 CPU / 1024 MB | 0.66 | 16.88 | 332.9 | `tasks/alv-cloud-forensics-util-b7db57-4d451a5c-v2` |
+| [parvez3019/go-swagger3](https://github.com/parvez3019/go-swagger3) | go | 1 CPU / 1024 MB | 0.43 | 15.07 | 150.4 | `tasks/alv-go-swagger3-3d5298-38ffa06e-v2` |
+| [aksiksi/compose2nix](https://github.com/aksiksi/compose2nix) | go | 1 CPU / 1024 MB | 0.47 | 14.04 | 157.9 | `tasks/alv-compose2nix-ffb526-d1ca6403-v2` |
+| [amitsaha/gitbackup](https://github.com/amitsaha/gitbackup) | go | 1 CPU / 1024 MB | 0.43 | 20.96 | 249.8 | `tasks/alv-gitbackup-968e92-c7c1d75b-v2` |
+| [xjasonlyu/tun2socks](https://github.com/xjasonlyu/tun2socks) | go | 1 CPU / 1024 MB | 0.48 | 19.49 | 139.7 | `tasks/alv-tun2socks-672576-8dda19e8-v2` |
+| [thieu1995/mealpy](https://github.com/thieu1995/mealpy) | python | 1 CPU / 1024 MB | 0.49 | 47.7 | 177.5 | `tasks/alv-mealpy-a0160e-48b48c3c-v2` |
+| [mholt/caddy-dynamicdns](https://github.com/mholt/caddy-dynamicdns) | go | 1 CPU / 1024 MB | 0.45 | 31.49 | 514.3 | `tasks/alv-caddy-dynamicdns-016bb0-a5890c9d-v2` |
+| [kafka-rust/kafka-rust](https://github.com/kafka-rust/kafka-rust) | rust | 1 CPU / 1024 MB | 0.43 | 16.34 | 189.7 | `tasks/alv-kafka-rust-a2fa2f-6681c81e-v2` |
+| [martinohmann/hcl-rs](https://github.com/martinohmann/hcl-rs) | rust | 1 CPU / 1024 MB | 0.62 | 28.54 | 180.3 | `tasks/alv-hcl-rs-476d73-2f0b1f87-v2` |
+| [whisperfish/rust-phonenumber](https://github.com/whisperfish/rust-phonenumber) | rust | 1 CPU / 1024 MB | 0.49 | 65.39 | 509.0 | `tasks/alv-rust-phonenumber-29ca19-fcc55a69-v2` |
+| [synadia-labs/rita](https://github.com/synadia-labs/rita) | go | 2 CPU / 4096 MB | 0.49 | 12.19 | 241.5 | `tasks/alv-rita-493fd4-74e20fd4-v2` |
+| [celestiaorg/rsmt2d](https://github.com/celestiaorg/rsmt2d) | go | 2 CPU / 4096 MB | 0.55 | 48.83 | 2669.7 | `tasks/alv-rsmt2d-b921c6-e1952d30-v2` |
+| [hyperledger-labs/SmartBFT](https://github.com/hyperledger-labs/SmartBFT) | go | 2 CPU / 4096 MB | 0.48 | 3.19 | 108.3 | `tasks/alv-smartbft-d37346-8e3b064e-v2` |
+| [parasyte/pixels](https://github.com/parasyte/pixels) | rust | 2 CPU / 4096 MB | 0.49 | 13.73 | 280.2 | `tasks/alv-pixels-ce3154-47c09b92-v2` |
+| [MaskingTechnology/jitar](https://github.com/MaskingTechnology/jitar) | typescript | 2 CPU / 4096 MB | 0.41 | 33.23 | 218.1 | `tasks/alv-jitar-872bdc-30bbebbe-v2` |
+| [zalando-incubator/cluster-lifecycle-manager](https://github.com/zalando-incubator/cluster-lifecycle-manager) | go | 2 CPU / 4096 MB | 0.61 | 85.38 | 1399.0 | `tasks/alv-cluster-lifecycle-ma-599421-dafe3a58-v2` |
+| [gollem-dev/gollem](https://github.com/gollem-dev/gollem) | go | 2 CPU / 4096 MB | 0.47 | 25.46 | 402.1 | `tasks/alv-gollem-290b1c-f9459026-v2` |
+| [influxdata/influxdb-client-go](https://github.com/influxdata/influxdb-client-go) | go | 2 CPU / 4096 MB | 0.44 | 13.19 | 154.2 | `tasks/alv-influxdb-client-go-0ad950-3ae8aad2-v2` |
+| [seaofvoices/darklua](https://github.com/seaofvoices/darklua) | rust | 2 CPU / 4096 MB | 0.43 | 31.11 | 444.3 | `tasks/alv-darklua-c9b9b7-83a3a9d0-v2` |
+| [hoangsonww/MERN-Stack-Ecommerce-App](https://github.com/hoangsonww/MERN-Stack-Ecommerce-App) | javascript | 2 CPU / 4096 MB | 0.46 | 89.5 | 1513.5 | `tasks/alv-mern-stack-ecommerce-c2c9d2-6b1c2146-v2` |
+| [typegoose/typegoose](https://github.com/typegoose/typegoose) | typescript | 2 CPU / 4096 MB | 0.44 | 32.81 | 1159.6 | `tasks/alv-typegoose-b40864-421665f9-v2` |
+| [m3dev/gokart](https://github.com/m3dev/gokart) | python | 2 CPU / 4096 MB | 0.69 | 36.86 | 833.4 | `tasks/alv-gokart-79deec-3bfe61b7-v2` |
+| [danielo515/obsidian-modal-form](https://github.com/danielo515/obsidian-modal-form) | typescript | 2 CPU / 4096 MB | 0.46 | 16.39 | 856.2 | `tasks/alv-obsidian-modal-form-67205b-68759b97-v2` |
+| [mercurialsolo/claudectl](https://github.com/mercurialsolo/claudectl) | rust | 2 CPU / 4096 MB | 0.46 | 10.32 | 276.2 | `tasks/alv-claudectl-544ff8-13bd5b60-v2` |
+| [wiredoor/wiredoor](https://github.com/wiredoor/wiredoor) | typescript | 2 CPU / 4096 MB | 0.57 | 41.82 | 1309.8 | `tasks/alv-wiredoor-4302ce-cbf234e5-v2` |
+| [anhosh/egui_dock](https://github.com/anhosh/egui_dock) | rust | 2 CPU / 4096 MB | 0.65 | 37.91 | 1566.8 | `tasks/alv-egui-dock-f1958d-8cc22087-v2` |
+| [Blatko1/wgpu-text](https://github.com/Blatko1/wgpu-text) | rust | 2 CPU / 4096 MB | 0.45 | 32.8 | 1008.6 | `tasks/alv-wgpu-text-bac4c3-3772c2fe-v2` |
+| [Azure/application-gateway-kubernetes-ingress](https://github.com/Azure/application-gateway-kubernetes-ingress) | go | 2 CPU / 4096 MB | 0.45 | 76.9 | 1000.8 | `tasks/alv-application-gateway--8c4bcb-f42103da-v2` |
+| [fslabs/bevy_polyline](https://github.com/fslabs/bevy_polyline) | rust | 2 CPU / 4096 MB | 0.58 | 60.01 | 2758.2 | `tasks/alv-bevy-polyline-75d56a-c6d75645-v2` |
+| [LAA-Software-Engineering/golang-rest-api-template](https://github.com/LAA-Software-Engineering/golang-rest-api-template) | go | 2 CPU / 4096 MB | 0.49 | 61.52 | 432.7 | `tasks/alv-golang-rest-api-temp-8b8f7f-35c0efe2-v2` |
+| [nats-io/nsc](https://github.com/nats-io/nsc) | go | 2 CPU / 4096 MB | 0.59 | 91.5 | 944.7 | `tasks/alv-nsc-b910e6-c8d67c23-v2` |
+| [google/cql](https://github.com/google/cql) | go | 2 CPU / 4096 MB | 0.47 | 22.95 | 407.0 | `tasks/alv-cql-cb9565-8e7225ab-v2` |
+| [relab/hotstuff](https://github.com/relab/hotstuff) | go | 2 CPU / 4096 MB | 0.43 | 8.23 | 213.0 | `tasks/alv-hotstuff-023abd-3179c6e6-v2` |
+| [summer-rs/summer-rs](https://github.com/summer-rs/summer-rs) | rust | 2 CPU / 4096 MB | 0.6 | 47.99 | 637.4 | `tasks/alv-summer-rs-2d1ca0-018aeee8-v2` |
+| [stakpak/agent](https://github.com/stakpak/agent) | rust | 2 CPU / 4096 MB | 0.57 | 16.73 | 143.4 | `tasks/alv-agent-688aca-760cd2b5-v2` |
+| [ekristen/aws-nuke](https://github.com/ekristen/aws-nuke) | go | 2 CPU / 4096 MB | 0.56 | 65.84 | 2141.5 | `tasks/alv-aws-nuke-593db9-bfe693f1-v2` |
 
 ## Logs
 

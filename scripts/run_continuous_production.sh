@@ -26,7 +26,7 @@ publish_tasks=${PUBLISH_TASKS:-true}
 publish_run_artifacts=${PUBLISH_RUN_ARTIFACTS:-true}
 producer_pid=""
 
-for command_name in git jq uv; do
+for command_name in git gzip jq uv; do
     if ! command -v "$command_name" >/dev/null 2>&1; then
         echo "missing required command: $command_name" >&2
         exit 2
@@ -60,6 +60,17 @@ fi
 
 mkdir -p "$crawl_dir" "$production_dir" "$log_dir"
 rm -f "$producer_done" "$producer_status" "$keys_exhausted"
+
+restore_raw_crawl_snapshot() {
+    local raw_path="$crawl_dir/raw_repositories.jsonl"
+    local archive_path="$raw_path.gz"
+    if [[ ! -s $raw_path && -s $archive_path ]]; then
+        echo "restoring local raw crawl checkpoint from $archive_path"
+        gzip -dc -- "$archive_path" > "$raw_path"
+    fi
+}
+
+restore_raw_crawl_snapshot
 
 run_stage() {
     local stage=$1
@@ -129,7 +140,19 @@ publish_completed_tasks() {
 
 publish_final_report() {
     [[ $publish_run_artifacts == true ]] || return 0
-    git add -- "$crawl_dir" "$production_dir" "$run_dir" "$report_doc"
+    local raw_path="$crawl_dir/raw_repositories.jsonl"
+    local raw_archive="$raw_path.gz"
+    if [[ -s $raw_path ]]; then
+        gzip -9c -- "$raw_path" > "$raw_archive"
+    fi
+    # Keep raw API payloads local, while retaining a compact resume snapshot in Git.
+    git rm --cached --ignore-unmatch -- "$raw_path"
+    git add -- \
+        "$crawl_dir" \
+        "$production_dir" \
+        "$run_dir" \
+        "$report_doc" \
+        ":(exclude)$raw_path"
     if git diff --cached --quiet; then
         return 0
     fi

@@ -1,0 +1,1058 @@
+[2026-07-30T18:32:17Z] stage=prescreen-19500 run_id=github-mass-production-XBY-20260730
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-07-30 18:32:19,530 INFO alvance_github_crawler.pipeline: processing crawled candidate dfm/tinygp@5302d5a1ae47ad9ff3fe857eee4cbbebbc1c5637
+2026-07-30 18:32:19,533 INFO alvance_github_crawler.pipeline: processing crawled candidate nats-io/nsc@c8d67c23c187ed0db496ce5b2b66e96715bb72bf
+2026-07-30 18:32:19,536 INFO alvance_github_crawler.pipeline: processing crawled candidate prometheus/mysqld_exporter@2a3850727e5af11873cc715a2b1a31bedce264eb
+2026-07-30 18:32:19,538 INFO alvance_github_crawler.pipeline: processing crawled candidate rm-hull/luma.core@8d8db09a850d256fca1b26b211eb1d750901bca2
+2026-07-30 18:32:19,540 INFO alvance_github_crawler.pipeline: processing crawled candidate bramvdbogaerde/go-scp@4562b51598be10bb2aabc1d55a0e646635b12223
+2026-07-30 18:32:19,542 INFO alvance_github_crawler.pipeline: processing crawled candidate go-debos/debos@76a7b0fa2d7769241fc8053f6397901e7badd195
+2026-07-30 18:32:19,544 INFO alvance_github_crawler.pipeline: processing crawled candidate darwin-containers/rund@eadf862d77f14c40590f5f0edde732a1409f8a88
+2026-07-30 18:32:19,545 INFO alvance_github_crawler.pipeline: processing crawled candidate GoogleCloudPlatform/solution-acceleration-toolkit@3d8d56b01eccee0fa2c7fba129ab69a6b0b4a4d0
+2026-07-30 18:32:19,548 INFO alvance_github_crawler.pipeline: processing crawled candidate anthropics/claude-code-action@be7b93b1907a4abad570368f3c74b6fe3807510b
+2026-07-30 18:32:19,550 INFO alvance_github_crawler.pipeline: processing crawled candidate valentinfrlch/ha-llmvision@85fcb9832888c9f7e350f96b3a17f9c1a1aa7505
+2026-07-30 18:32:19,552 INFO alvance_github_crawler.pipeline: processing crawled candidate GoogleCloudPlatform/kubectl-ai@2c8ff822bacba3009f215df204610a29f5632454
+2026-07-30 18:32:19,696 INFO alvance_github_crawler.pipeline: processing crawled candidate Facets-cloud/flow@7ad6e4e19da5cd31a4a6fb241ce7f32ecb5f7b2a
+2026-07-30 18:32:19,700 INFO alvance_github_crawler.pipeline: processing crawled candidate aoout/obsidian-epub-importer@44b664f0d8a28a87434beba62c68959cdd2f7fe8
+2026-07-30 18:32:19,703 INFO alvance_github_crawler.pipeline: processing crawled candidate google/rust_icu@4bc9b372dfae21f806f72486f8c33f213ef6550d
+2026-07-30 18:32:19,706 INFO alvance_github_crawler.pipeline: processing crawled candidate stakpak/agent@760cd2b5984d29c2d513bb15ca33e995fae45f17
+2026-07-30 18:32:19,708 INFO alvance_github_crawler.pipeline: processing crawled candidate TransformerOptimus/SuperCoder@54cf9728c5a0b8d63fa294c618b60a5d5519a303
+2026-07-30 18:32:19,713 INFO alvance_github_crawler.pipeline: processing crawled candidate StudentWeis/ropy@ee76c749062b89ead0d678b19d513f8876115774
+2026-07-30 18:32:19,717 INFO alvance_github_crawler.pipeline: processing crawled candidate pyecharts/pyecharts@c50da2aa877bb4ce576b15b5be3b2ad0c8aa33c6
+2026-07-30 18:32:19,721 INFO alvance_github_crawler.pipeline: processing crawled candidate anthropics/claude-agent-sdk-python@f8b9ec923982082a02c485924e0f60367949c3a1
+2026-07-30 18:32:19,725 INFO alvance_github_crawler.pipeline: processing crawled candidate tortoise/tortoise-orm@8c12adc46c534a16cd9abf589b94e77d52ecf919
+2026-07-30 18:32:28,148 INFO alvance_github_crawler.pipeline: processing crawled candidate fronzbot/blinkpy@7fb255b639dcf2b66b87c048678daa15719f4e09
+2026-07-30 18:32:31,117 INFO alvance_github_crawler.pipeline: processing crawled candidate mtkennerly/dunamai@7ae1ee0766e4a9cd941cb2b4a88dc80bee62084d
+2026-07-30 18:32:33,883 INFO alvance_github_crawler.pipeline: processing crawled candidate qiboteam/qibo@5c537a0287da99a2590487e45f8b26f42b0cd328
+2026-07-30 18:32:34,069 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoftgraph/msgraph-sdk-python-core@d23507bf38497aa514763f3ffa56b8ed8eceef70
+2026-07-30 18:32:34,999 INFO alvance_github_crawler.pipeline: processing crawled candidate fllesser/nonebot-plugin-parser@bc52ce1b8748b77f89a1f9a109f4fabbcac574d8
+2026-07-30 18:32:37,103 INFO alvance_github_crawler.pipeline: processing crawled candidate piccolo-orm/piccolo_api@2b00f800087c18b4a44382524338eada7adf9b95
+2026-07-30 18:32:44,040 ERROR alvance_github_crawler.pipeline: TransformerOptimus/SuperCoder failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-07-30 18:32:44,044 INFO alvance_github_crawler.pipeline: processing crawled candidate closeio/socketshark@b694ba01672e4acaed1f70b1c6e12c66c019dda6
+2026-07-30 18:32:47,299 INFO alvance_github_crawler.pipeline: processing crawled candidate benbusby/whoogle-search@13e52132e3b45328de4146818762c891b7e3d6f4
+2026-07-30 18:32:50,749 INFO alvance_github_crawler.pipeline: processing crawled candidate kohya-ss/sd-scripts@37a1cbbc5725ed2a3575506e7bd2001c9908ac92
+2026-07-30 18:32:52,366 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/LMOps@4f2a9deb5f08e459fd44c2e4792344d78ca89fc3
+2026-07-30 18:32:53,716 INFO alvance_github_crawler.pipeline: processing crawled candidate Mirix-AI/MIRIX@51f3342d5366b0e215439581f92e0323227146af
+2026-07-30 18:32:55,341 INFO alvance_github_crawler.pipeline: processing crawled candidate jupyterhub/binderhub@1013493a4eaf91d9ad15de0d125cd0e36505d093
+2026-07-30 18:32:57,369 INFO alvance_github_crawler.pipeline: processing crawled candidate anthropics/jacobian-lens@581d398613e5602a5af361e1c34d3a92ea82ba8e
+2026-07-30 18:32:58,626 INFO alvance_github_crawler.pipeline: processing crawled candidate psd-tools/psd-tools@ad89f315777866c832bf82e0377226cb13250c36
+2026-07-30 18:32:58,661 INFO alvance_github_crawler.pipeline: processing crawled candidate johnwmillr/LyricsGenius@cebe8abebc5bd66acde4bfc78dc2a10b3b080347
+2026-07-30 18:32:59,701 INFO alvance_github_crawler.pipeline: processing crawled candidate hanruihua/ir-sim@b2c2e2590b1cf22c64d3f400ffe18257745de709
+2026-07-30 18:33:00,535 INFO alvance_github_crawler.pipeline: processing crawled candidate mammothb/symspellpy@e56d6c5aaf54d2325470aae50743c8d5aeee1510
+2026-07-30 18:33:02,298 INFO alvance_github_crawler.pipeline: processing crawled candidate kitUIN/PicImageSearch@fb89f4ef0d2be9f8538a0bd205451ae9e8209f3e
+2026-07-30 18:33:02,311 INFO alvance_github_crawler.pipeline: processing crawled candidate fastavro/fastavro@6a899992adf428fb443e30cef3332254fc57417a
+2026-07-30 18:33:02,894 INFO alvance_github_crawler.pipeline: processing crawled candidate alisaifee/limits@cb0ff4294d1b713b7892f975443d04cd21d98dfa
+2026-07-30 18:33:04,576 INFO alvance_github_crawler.pipeline: processing crawled candidate SublimeText/PackageDev@7f91570a4fbe975925943a2e5d0e17876da7af6f
+2026-07-30 18:33:05,438 INFO alvance_github_crawler.pipeline: processing crawled candidate notque/vexjoy-agent@b19dacd072f5befd29b525b25dbecc7a1cd86d92
+2026-07-30 18:33:05,537 INFO alvance_github_crawler.pipeline: processing crawled candidate BrickSchema/Brick@6f2acd09c7dac3a2a2d9eaadec47c56ba29fdef0
+2026-07-30 18:33:08,374 INFO alvance_github_crawler.pipeline: processing crawled candidate hysts/pytorch_mpiigaze_demo@7993db777ac0fae4f976213bfc4b1b8741ba164d
+2026-07-30 18:33:08,842 INFO alvance_github_crawler.pipeline: processing crawled candidate 0xku/kon@c0df49fe1ed1946eccfb247a37c0e48aa38be34e
+2026-07-30 18:33:09,248 INFO alvance_github_crawler.pipeline: processing crawled candidate HomebrewML/HeavyBall@e578d5caadf47bead1776340e8a0f7a321f89325
+2026-07-30 18:33:10,889 INFO alvance_github_crawler.pipeline: processing crawled candidate robotocore/robotocore@d4ebe9df518473d857deecba9043a20ec0ff032a
+2026-07-30 18:33:11,886 INFO alvance_github_crawler.pipeline: processing crawled candidate kyl191/ansible-role-openvpn@a4502c6a132a94964cea3b1c330653ed32b3ca14
+2026-07-30 18:33:12,103 INFO alvance_github_crawler.pipeline: processing crawled candidate livekit-examples/agent-starter-python@7c0af539fe065e262f31942715f5f97e1579fd78
+2026-07-30 18:33:13,308 INFO alvance_github_crawler.pipeline: processing crawled candidate zylMozart/ClaudeTeam@8a4442fc1f9fd8f8796b33017c76ba1450c94723
+2026-07-30 18:33:14,164 INFO alvance_github_crawler.pipeline: processing crawled candidate apitally/apitally-py@ae3b61266eba588582afa9bef4b2a3967dded823
+2026-07-30 18:33:16,319 INFO alvance_github_crawler.pipeline: processing crawled candidate Hubs-Foundation/hubs-blender-exporter@f93a7626d82010b8707f226561b40708d1d34611
+2026-07-30 18:33:16,322 INFO alvance_github_crawler.pipeline: processing crawled candidate authlib/joserfc@4dcd3635c65298d26869bac382aaf1435def68e1
+2026-07-30 18:33:16,799 INFO alvance_github_crawler.pipeline: processing crawled candidate bxlab/bx-python@c176153478f54ccf97fa00eaed1dee89682f16df
+2026-07-30 18:33:16,801 INFO alvance_github_crawler.pipeline: processing crawled candidate bmeares/Meerschaum@bb25524a5fd1ffd1a4890ffcf92cae2307d3a90f
+2026-07-30 18:33:17,826 INFO alvance_github_crawler.pipeline: processing crawled candidate openstack/zaqar@36e0796d49327fcd6cfc009ac3cb25327ed92339
+2026-07-30 18:33:19,745 INFO alvance_github_crawler.pipeline: processing crawled candidate scikit-hep/hist@8c31a8f58ee6c642f0f5d6c0693ec6b637d849f8
+2026-07-30 18:33:20,276 INFO alvance_github_crawler.pipeline: processing crawled candidate eyeonus/Trade-Dangerous@069f1e8be12205d707a30bebfee1ce938b128df9
+2026-07-30 18:33:21,192 INFO alvance_github_crawler.pipeline: processing crawled candidate dexmal/opendm@6ce8e7f13e0c46906b141fda1773364f18a577c2
+2026-07-30 18:33:21,767 INFO alvance_github_crawler.pipeline: processing crawled candidate runtimeverification/kontrol@0fe0cc40da2cd2dbd8675ccde68db10f3f6631be
+2026-07-30 18:33:21,770 INFO alvance_github_crawler.pipeline: processing crawled candidate narumiruna/efficientnet-pytorch@48dfa34ad0e37e640155c772db240e5ab0abae8f
+2026-07-30 18:33:23,757 INFO alvance_github_crawler.pipeline: processing crawled candidate NVIDIA-AI-Blueprints/Multi-Agent-Intelligent-Warehouse@e630a2192d2a110bf6d8e2e195c4f54411d0a0c3
+2026-07-30 18:33:24,083 INFO alvance_github_crawler.pipeline: processing crawled candidate catoncat/notion-local-ops-mcp@26982c862c76ec3ecaf6194bb38713403136dd05
+2026-07-30 18:33:24,111 INFO alvance_github_crawler.pipeline: processing crawled candidate AmineDjeghri/personal-os-setup@ef962bf3890a766158cbd193130d844a37778b18
+2026-07-30 18:33:25,519 INFO alvance_github_crawler.pipeline: processing crawled candidate RobThePCGuy/Claude-Patent-Creator@1f8ab279a65628274f465330a61efc376cc408b6
+2026-07-30 18:33:26,670 INFO alvance_github_crawler.pipeline: processing crawled candidate bqbooster/dbt-bigquery-monitoring@4196b204a04334068ad03b09141620c2d8e00823
+2026-07-30 18:33:27,200 INFO alvance_github_crawler.pipeline: processing crawled candidate chromedp/chromedp@7963c203ed5458147d27dc39a5c06d2b12e81664
+2026-07-30 18:33:27,701 INFO alvance_github_crawler.pipeline: processing crawled candidate wazero/wazero@236c2458ed22010150de76c5397eca2c89af3b4f
+2026-07-30 18:33:27,707 INFO alvance_github_crawler.pipeline: processing crawled candidate segmentio/chamber@5f93f5f357740686db56a037935b4dfd9805ca57
+2026-07-30 18:33:31,362 INFO alvance_github_crawler.pipeline: processing crawled candidate jaypipes/ghw@fedd4fe4a350eaaf0b09367c752f5a657314ad56
+2026-07-30 18:33:37,892 INFO alvance_github_crawler.pipeline: processing crawled candidate helm/chart-testing@41d043713ba7b3e65c3faa1076246df9b01d927c
+2026-07-30 18:33:39,435 INFO alvance_github_crawler.pipeline: processing crawled candidate DeedleFake/trayscale@071b4479cb0de03c3e6353434b7daa578d1c29e2
+2026-07-30 18:33:40,860 INFO alvance_github_crawler.pipeline: processing crawled candidate meilisearch/meilisearch-go@31bba01820fd0856a0d0f41fda68c7f1ae27c8e7
+2026-07-30 18:33:53,504 INFO alvance_github_crawler.pipeline: processing crawled candidate digitalocean/clusterlint@9199fb7c13969a6b8f42a7af9d6da8c69f1dcfb9
+2026-07-30 18:33:55,034 INFO alvance_github_crawler.pipeline: processing crawled candidate AppsFlyer/go-sundheit@97462ab36f497879719aa6b5e9eb3ef3b980afb2
+2026-07-30 18:33:58,215 INFO alvance_github_crawler.pipeline: processing crawled candidate gqlgo/gqlgenc@1b348dae750364a7fb5fc12a462bb76b47cd077f
+2026-07-30 18:33:58,506 INFO alvance_github_crawler.pipeline: processing crawled candidate surrealdb/surrealdb.go@2a8a1f1eddbdd006f38daebfb4a6dcd74ef0f933
+2026-07-30 18:34:00,269 INFO alvance_github_crawler.pipeline: processing crawled candidate go-simpler/sloglint@c83e0f7ef15e7499474cc863e774a5f016aa2658
+2026-07-30 18:34:01,447 INFO alvance_github_crawler.pipeline: processing crawled candidate joomcode/redispipe@20c40ffbb497e36b3b41c00c8191d92387b9481d
+2026-07-30 18:34:04,496 INFO alvance_github_crawler.pipeline: processing crawled candidate LAA-Software-Engineering/golang-rest-api-template@35c0efe2609c3877124b4a19c8411e28648a077b
+2026-07-30 18:34:05,305 INFO alvance_github_crawler.pipeline: processing crawled candidate streamnative/function-mesh@7b96320b25562724c47591f45eee7e31c8673c90
+2026-07-30 18:34:11,019 INFO alvance_github_crawler.pipeline: processing crawled candidate martian-lang/martian@c721c9dd687d1b978676fcd132a54bc5cee8f9cd
+2026-07-30 18:34:13,916 INFO alvance_github_crawler.pipeline: processing crawled candidate zalando-incubator/kube-aws-iam-controller@5a874be84fa1209f8eb85050ff5f05ba81870fa4
+2026-07-30 18:34:18,157 INFO alvance_github_crawler.pipeline: processing crawled candidate safchain/ethtool@2499f3b4389e1af279daa580b9856a6d5573cc80
+2026-07-30 18:34:19,610 INFO alvance_github_crawler.pipeline: processing crawled candidate joa23/linear-cli@350bed2f9a6d2db05ed6707427a1e831ab5d3b9f
+2026-07-30 18:34:20,904 INFO alvance_github_crawler.pipeline: processing crawled candidate github/gh-classroom@21eabfca344fbd52e2a34b5b196ca0f486d43507
+2026-07-30 18:34:22,517 INFO alvance_github_crawler.pipeline: processing crawled candidate joelmoss/proscenium@13edf7b8b1ec465d6c4eabe93fea2d3384447c1c
+2026-07-30 18:34:26,991 INFO alvance_github_crawler.pipeline: processing crawled candidate psviderski/unregistry@f379139f9b74317e9862bdcf74ec4927ac7de5c3
+2026-07-30 18:34:30,185 INFO alvance_github_crawler.pipeline: processing crawled candidate mosn/mosn@707d635b77329221203f42b6016cce22eda79141
+2026-07-30 18:34:31,239 INFO alvance_github_crawler.pipeline: processing crawled candidate rubenv/sql-migrate@66d85c159fdb85d8277e6eb5208873e6a41b5de7
+2026-07-30 18:34:32,579 INFO alvance_github_crawler.pipeline: processing crawled candidate zema1/suo5@6904c18e276c2dc36250838d68135a5893c4f66b
+2026-07-30 18:34:36,625 INFO alvance_github_crawler.pipeline: processing crawled candidate lesismal/nbio@8ad01e6461af31d510d27b679f670c3dddbe417c
+2026-07-30 18:34:39,049 INFO alvance_github_crawler.pipeline: processing crawled candidate WireGuard/wireguard-windows@4e6726c23ae9c5cb58e0c9910f3b7515621d133d
+2026-07-30 18:34:39,492 INFO alvance_github_crawler.pipeline: processing crawled candidate SpectoLabs/hoverfly@d68454cbcfea281b6c07a61ec9ab288d485d1fe8
+2026-07-30 18:34:40,901 INFO alvance_github_crawler.pipeline: processing crawled candidate vulcand/oxy@f591234524745d095279d47c4169ddd13c2e60c3
+2026-07-30 18:34:42,559 INFO alvance_github_crawler.pipeline: processing crawled candidate tdewolff/canvas@248e24504c3b08896159bc16067e1b9d3f62af93
+2026-07-30 18:34:43,416 INFO alvance_github_crawler.pipeline: processing crawled candidate Mirantis/cri-dockerd@83d711fce4f8d6803138020da3faac2d81108173
+2026-07-30 18:34:44,318 INFO alvance_github_crawler.pipeline: processing crawled candidate tcnksm/ghr@31b546b98592c62865b9f8701676bcbad6cbef47
+2026-07-30 18:34:46,349 INFO alvance_github_crawler.pipeline: processing crawled candidate aws/amazon-ssm-agent@e5ff032880c19bac9b1a0f37a7448a9b573721de
+2026-07-30 18:34:47,434 INFO alvance_github_crawler.pipeline: processing crawled candidate maxbrunsfeld/counterfeiter@12304d656a72ff0564075fe990207db5cfd82148
+2026-07-30 18:34:47,436 INFO alvance_github_crawler.pipeline: processing crawled candidate FairwindsOps/nova@0803b0840d990bbf6518951899fcf8b948acc971
+2026-07-30 18:34:48,270 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=aoout/obsidian-epub-importer attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:34:55,078 INFO alvance_github_crawler.pipeline: processing crawled candidate lesovsky/noisia@d904a28adb73bc0fa04ee158558b4ec2aedaf5bd
+2026-07-30 18:34:56,252 INFO alvance_github_crawler.pipeline: processing crawled candidate robusta-dev/kubewatch@f73aa0b7c4f13d0ede7744f1bdac60bd3274ddb6
+2026-07-30 18:34:57,270 INFO alvance_github_crawler.pipeline: processing crawled candidate gojuno/minimock@c1c4acef7622f694a1c487c815f7f54f81d7f99c
+2026-07-30 18:34:58,395 INFO alvance_github_crawler.pipeline: processing crawled candidate tinygo-org/drivers@dc6edbb694a3e8e7ebccea427cfe94c1f5c8d5a8
+2026-07-30 18:34:59,369 INFO alvance_github_crawler.pipeline: processing crawled candidate nelhage/llama@cf43f64a3816afc6bfa81e37a40a6db3b43feb56
+2026-07-30 18:35:01,215 INFO alvance_github_crawler.pipeline: processing crawled candidate sterrasec/apk-medit@baad70959a59ff52ae12662698fe4ac0556d18c3
+2026-07-30 18:35:02,308 INFO alvance_github_crawler.pipeline: processing crawled candidate cloudwego/kitex-examples@f8ee9c8f4d8283f541f532c22c0f404e4e8a7a8b
+2026-07-30 18:35:03,828 INFO alvance_github_crawler.pipeline: processing crawled candidate LINBIT/virter@440966e369572ed10fe7a546483388779778eaf9
+2026-07-30 18:35:05,739 INFO alvance_github_crawler.pipeline: processing crawled candidate zonedb/zonedb@d9ad12d5b537d30ffaae92db2d71e9144d90256c
+2026-07-30 18:35:06,147 INFO alvance_github_crawler.pipeline: processing crawled candidate open-policy-agent/kube-mgmt@9257c9fabb6fbe005e65c3f2b6d2b626399b18e7
+2026-07-30 18:35:06,485 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dfm/tinygp attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:35:07,114 INFO alvance_github_crawler.pipeline: processing crawled candidate gcstr/dockform@8b633b2013e8d8df29c485718b2b09cf15f8512d
+2026-07-30 18:35:10,265 INFO alvance_github_crawler.pipeline: processing crawled candidate hyprspace/hyprspace@561d01fc22211b5ac04c8fb382f96875c25aa8af
+2026-07-30 18:35:10,625 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=StudentWeis/ropy attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:35:12,022 INFO alvance_github_crawler.pipeline: processing crawled candidate vibe-coding-labs/JoyCode2Api@176ca9d4d7f98e46a5d979be4cd61b4bc0470b0f
+2026-07-30 18:35:12,310 INFO alvance_github_crawler.pipeline: processing crawled candidate AkihiroSuda/alcless@bd5c98ff44560bcdc2b22ea1a36579869d47af7e
+2026-07-30 18:35:14,672 INFO alvance_github_crawler.pipeline: processing crawled candidate owenrumney/go-lsp@42a05d4cf33599f05c963d28b668baf90410eed7
+2026-07-30 18:35:15,194 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=rm-hull/luma.core attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:35:16,988 INFO alvance_github_crawler.pipeline: processing crawled candidate jsimonetti/rtnetlink@c87a4183a51a6729fb12e9ba012fa8479f64b517
+2026-07-30 18:35:18,519 INFO alvance_github_crawler.pipeline: processing crawled candidate kubesphere/ks-devops@4dc359fd7242eead6d106019104393faf9e89bd7
+2026-07-30 18:35:20,210 INFO alvance_github_crawler.pipeline: processing crawled candidate ariga/atlas-operator@c12040796093e842a140d397071cfb7a4e3febc3
+2026-07-30 18:35:20,970 INFO alvance_github_crawler.pipeline: processing crawled candidate caoyingjunz/pixiu-autoscaler@1a257051ad9694746d69d1b6e5263b784c84810d
+2026-07-30 18:35:21,320 INFO alvance_github_crawler.pipeline: processing crawled candidate tobias-kuendig/hacompanion@4b0d331902224bd23fda28025f17e61f85b20125
+2026-07-30 18:35:22,099 INFO alvance_github_crawler.pipeline: processing crawled candidate AkihiroSuda/gomodjail@796efadf08ddd9bb913a9c48960767b43ab61e80
+2026-07-30 18:35:22,457 INFO alvance_github_crawler.pipeline: processing crawled candidate dataddo/pgq@ef03827ef6679fb1545e3b93bb758cd9276964d7
+2026-07-30 18:35:22,694 INFO alvance_github_crawler.pipeline: processing crawled candidate mazrean/kessoku@f3c1b3b426db8fd9978711381542eaf8050a84b2
+2026-07-30 18:35:23,185 INFO alvance_github_crawler.pipeline: processing crawled candidate ikoyhn/clean-cast@4e515e5036af32a5df713d1be8050978a5613fb7
+2026-07-30 18:35:25,838 INFO alvance_github_crawler.pipeline: processing crawled candidate keybase/go-keybase-chat-bot@406d338a3ba332c019264ea96078e4e06cb58362
+2026-07-30 18:35:26,648 INFO alvance_github_crawler.pipeline: processing crawled candidate good-night-oppie/helios@74ec46b18ef2ac513e60c87610559933768ecba5
+2026-07-30 18:35:27,962 INFO alvance_github_crawler.pipeline: processing crawled candidate peak-scale/sops-operator@ac049074699455d42ba26efbac882fb4a290204a
+2026-07-30 18:35:28,995 INFO alvance_github_crawler.pipeline: processing crawled candidate quay/container-security-operator@8806d68a84925dfd45a1b666bda2c45279c36967
+2026-07-30 18:35:30,063 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=chromedp/chromedp attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:35:30,091 INFO alvance_github_crawler.pipeline: processing crawled candidate KeepShareOrg/keepshare@4864fc4ffd0ca467d0a8f93b0cadb9a2d395b082
+2026-07-30 18:35:30,952 INFO alvance_github_crawler.pipeline: processing crawled candidate ntthanh2603/gemini-web-to-api@9792a984c889a153fea69c8373ab5f13138bc16a
+2026-07-30 18:35:31,062 INFO alvance_github_crawler.pipeline: processing crawled candidate garybowers/bootimus@0dae82963c07703f72ed550ae32aec42cab3be60
+2026-07-30 18:35:33,301 INFO alvance_github_crawler.pipeline: processing crawled candidate crmne/hyprmoncfg@0efc9b02599af83c508fdc151cbafffe07ccc7a9
+2026-07-30 18:35:33,451 INFO alvance_github_crawler.pipeline: processing crawled candidate akshettrj/watgbridge@f5d05fa7eeae09d66b86ac46b23af8c831773dcd
+2026-07-30 18:35:35,614 INFO alvance_github_crawler.pipeline: processing crawled candidate razorpay/razorpay-mcp-server@7950d51d118ca164c32b7cf0cfaa14f34f24849f
+2026-07-30 18:35:35,762 INFO alvance_github_crawler.pipeline: processing crawled candidate cornelk/goscrape@a9c59faa9771f1ffd9544601de622725e1230fd9
+2026-07-30 18:35:35,787 INFO alvance_github_crawler.pipeline: processing crawled candidate aws/aws-app-mesh-controller-for-k8s@7588d122c3c45e1f873d7d016a30922f049764bf
+2026-07-30 18:35:37,914 INFO alvance_github_crawler.pipeline: processing crawled candidate keikoproj/active-monitor@487afaa86a0880ed83fcbec5627ebadfa47cf6f7
+2026-07-30 18:35:37,999 INFO alvance_github_crawler.pipeline: processing crawled candidate sql-formatter-org/sql-formatter@aa8efaefa3596665638457ff0356e66c167ea127
+2026-07-30 18:35:41,657 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=google/rust_icu attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:35:45,199 INFO alvance_github_crawler.pipeline: processing crawled candidate UditAkhourii/adhd@eaeba4e98b388b8d1d31a31572d91ff989e04c00
+2026-07-30 18:35:45,544 INFO alvance_github_crawler.pipeline: processing crawled candidate margelo/react-native-graph@771f431039ce0fc21a497fd7ffbefff82e5ddfa6
+2026-07-30 18:35:56,234 INFO alvance_github_crawler.pipeline: processing crawled candidate google-labs-code/stitch-sdk@575a9fb6319bd9d1ce8175e4a89e5958e024bbfd
+2026-07-30 18:35:59,684 INFO alvance_github_crawler.pipeline: processing crawled candidate ezolenko/rollup-plugin-typescript2@4cff90bbe88a6747d5a0eb52d300cb8bed505277
+2026-07-30 18:36:02,563 INFO alvance_github_crawler.pipeline: processing crawled candidate zhensherlock/watermark-js-plus@e9037f8e749702c3be154975b43e3ef628c14731
+2026-07-30 18:36:02,985 INFO alvance_github_crawler.pipeline: processing crawled candidate yiming-liao/intor@9d1a123087bfbaf3e8d5d8fe48e040db665f9ed5
+2026-07-30 18:36:09,529 INFO alvance_github_crawler.pipeline: processing crawled candidate maptiler/maptiler-sdk-js@c3c2ce1670d347a812eb4258478e1a43ecb612fa
+2026-07-30 18:36:11,092 INFO alvance_github_crawler.pipeline: processing crawled candidate google-labs-code/jules-sdk@19fc117ac5cb961f393257b99d0b939848e75b52
+2026-07-30 18:36:12,530 INFO alvance_github_crawler.pipeline: processing crawled candidate Railgun-Community/wallet@5c9d04c844879b8377d91775052e88c836b48730
+2026-07-30 18:36:15,067 INFO alvance_github_crawler.pipeline: processing crawled candidate getsentry/XcodeBuildMCP@c79f4eb9b7b96680d5a774acb0ae525416d254fb
+2026-07-30 18:36:15,112 INFO alvance_github_crawler.pipeline: processing crawled candidate github/catalyst@916fece92a72316511d5c286f59a1fc2ca34c070
+2026-07-30 18:36:15,620 INFO alvance_github_crawler.pipeline: processing crawled candidate pixel-point/aval@f05472c8e0c6d8a31bf558d3355a11f759817abe
+2026-07-30 18:36:16,381 INFO alvance_github_crawler.pipeline: processing crawled candidate taiga-family/ng-web-apis@c51b3773e31cab157082b270b791619a75a62567
+2026-07-30 18:36:16,386 INFO alvance_github_crawler.pipeline: processing crawled candidate VitorLuizC/brazilian-values@a9a2f058273576024f2c924ec4bdb0764752ffe0
+2026-07-30 18:36:17,571 INFO alvance_github_crawler.pipeline: processing crawled candidate Effect-TS/language-service@f26d5835d6e3d943368c141417374db00f246e9e
+2026-07-30 18:36:18,744 INFO alvance_github_crawler.pipeline: processing crawled candidate akirarika/milkio@fee7f2195c14c97dc473bdda4f274720b899b74a
+2026-07-30 18:36:18,964 INFO alvance_github_crawler.pipeline: processing crawled candidate 1Password/load-secrets-action@eb2efd0703da22a93c467f2d1ffbb6826c11e19c
+2026-07-30 18:36:19,747 INFO alvance_github_crawler.pipeline: processing crawled candidate SuspiciousLookingOwl/youtubei@4a0dda98662f4d8c4d2f307f26d7296ee219abe2
+2026-07-30 18:36:24,052 INFO alvance_github_crawler.pipeline: processing crawled candidate samuelscheit/react-native-skia-list@c313ff9c754524c6a3d848857693c4cffa0184d1
+2026-07-30 18:36:24,216 INFO alvance_github_crawler.pipeline: processing crawled candidate linearis-oss/linearis@cc2a817e5ff1b30b852157799e1c718e907e0c7a
+2026-07-30 18:36:24,469 INFO alvance_github_crawler.pipeline: processing crawled candidate wonderflow-bv/wanda@6ca83888a54251fdf157d47ae3e0e30f6ecdc0d5
+2026-07-30 18:36:24,722 INFO alvance_github_crawler.pipeline: processing crawled candidate mokkiebear/heatmap-tracker@6e535615dc5bc3cc06a8bfd9e18d99587c115cbe
+2026-07-30 18:36:27,834 ERROR alvance_github_crawler.pipeline: Effect-TS/language-service failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-07-30 18:36:27,838 INFO alvance_github_crawler.pipeline: processing crawled candidate cebor/angular-highcharts@0540b2c8fec663c7533ad7911576f3d619a6a8de
+2026-07-30 18:36:28,451 INFO alvance_github_crawler.pipeline: processing crawled candidate feature-hub/feature-hub@68eb6c332d3abf6f6336b95220f1fd6db3014263
+2026-07-30 18:36:30,123 INFO alvance_github_crawler.pipeline: processing crawled candidate tonysamperi/ngx-mat-timepicker@156157d4d257f8745a15bd1e6e2adb510690f6db
+2026-07-30 18:36:30,932 INFO alvance_github_crawler.pipeline: processing crawled candidate amtrack/sfdx-browserforce-plugin@24001bb7413c357a35e9e8538eb31f7a5d476175
+2026-07-30 18:36:31,277 INFO alvance_github_crawler.pipeline: processing crawled candidate jaakkos/winston-logstash@76c0f119a2ff22a6eacd98868304a621e020ff4f
+2026-07-30 18:36:31,687 INFO alvance_github_crawler.pipeline: processing crawled candidate formio/vue@38fecf8051f4ba0abe859bae227c307d8e8cb4e3
+2026-07-30 18:36:32,169 INFO alvance_github_crawler.pipeline: processing crawled candidate Azure/azure-functions-nodejs-worker@e4caa6165f4b687694d852100946279aa6947d6c
+2026-07-30 18:36:32,383 INFO alvance_github_crawler.pipeline: processing crawled candidate jhlee0409/claude-code-history-viewer@2e29912c8743c997f203e903e6ae0054865cb8e3
+2026-07-30 18:36:32,476 INFO alvance_github_crawler.pipeline: processing crawled candidate citizenfx/txAdmin@8a9a41410000fd92a527fe11bae2b8eeeb8b10e0
+2026-07-30 18:36:33,533 INFO alvance_github_crawler.pipeline: processing crawled candidate blueberrycongee/Lumina-Note@df9fbf321263e23123ac1ae88fd3f843b9dddddb
+2026-07-30 18:36:33,898 INFO alvance_github_crawler.pipeline: processing crawled candidate node-formidable/formidable@d9a251a3f48a883c19893e9d7c8bdf3cf5288ca6
+2026-07-30 18:36:34,631 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=runtimeverification/kontrol attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:36:37,550 INFO alvance_github_crawler.pipeline: processing crawled candidate expressjs/session@d209c1f4cd645e514cd7320afd15acf7e7b5fcb6
+2026-07-30 18:36:43,626 INFO alvance_github_crawler.pipeline: processing crawled candidate protofire/solhint@ba5359cbc48db9014e2571352086389b5b53e234
+2026-07-30 18:36:47,268 INFO alvance_github_crawler.pipeline: processing crawled candidate hepsiburada/VoltranJS@3a79a19d3b60be7d8554163388b871a0c7ce0e5e
+2026-07-30 18:36:47,655 INFO alvance_github_crawler.pipeline: processing crawled candidate express-promise-router/express-promise-router@1feaac560d0e670b9a8f4c91ddb9ee435427a992
+2026-07-30 18:36:49,901 INFO alvance_github_crawler.pipeline: processing crawled candidate markdown-it/markdown-it-footnote@f22df33ded9cfb2d8e2ab73d62ef921164f3889a
+2026-07-30 18:36:50,361 INFO alvance_github_crawler.pipeline: processing crawled candidate particle-iot/particle-cli@e2e122948b653851998c21638a3def8b96d7d0c0
+2026-07-30 18:36:50,777 INFO alvance_github_crawler.pipeline: processing crawled candidate derrickreimer/fathom-client@a64a9fe2ac9e0366eb22c83296bbd99b5e55a6bf
+2026-07-30 18:36:52,131 INFO alvance_github_crawler.pipeline: processing crawled candidate webrtc/samples@6e2c5a117aa860d66d874f7c0df0ef9a3e2cd74e
+2026-07-30 18:36:52,994 INFO alvance_github_crawler.pipeline: processing crawled candidate FredrikNoren/ungit@b1df1a168b9208766342070ebd42782036dfd18d
+2026-07-30 18:36:53,373 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=aoout/obsidian-epub-importer attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 18:36:53,948 INFO alvance_github_crawler.pipeline: processing crawled candidate brookhong/Surfingkeys@e4152e9ea5bd4d7381afd7e65c10ff38534fb15b
+2026-07-30 18:36:54,745 INFO alvance_github_crawler.pipeline: processing crawled candidate webpack/css-loader@488cdb1c12c5f75091d4a868342c348fef46bf9f
+2026-07-30 18:36:59,278 INFO alvance_github_crawler.pipeline: processing crawled candidate biuuu/star-rail-warp-export@d68498667980a9a64ddd12c55761eb735efb60d1
+2026-07-30 18:37:01,514 INFO alvance_github_crawler.pipeline: processing crawled candidate webpack/html-loader@bad5dddca451e3f64cd7c7e21bb2ba3276cf2188
+2026-07-30 18:37:04,645 INFO alvance_github_crawler.pipeline: processing crawled candidate aframevr/aframe-inspector@8d87d3e73dce37e805339cd40c96eaedc4bb7ecf
+2026-07-30 18:37:06,660 INFO alvance_github_crawler.pipeline: processing crawled candidate exercism/javascript@295540983b6323edcfd457b3163ad6c63608f2da
+2026-07-30 18:37:09,881 INFO alvance_github_crawler.pipeline: processing crawled candidate microlinkhq/youtube-dl-exec@2b205cbbeff4dddfbdc4ba1cd680f89296287757
+2026-07-30 18:37:11,590 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dfm/tinygp attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 18:37:11,679 INFO alvance_github_crawler.pipeline: processing crawled candidate humanwhocodes/crosspost@086e2c6b7aad10fbad02db01133e2cddd8b26acc
+2026-07-30 18:37:12,518 INFO alvance_github_crawler.pipeline: processing crawled candidate charpeni/react-native-url-polyfill@4598e480a1c7c1093a4cac24990f5dd43203c7a0
+2026-07-30 18:37:13,528 INFO alvance_github_crawler.pipeline: processing crawled candidate microlinkhq/async-ratelimiter@6425f110157de2feb807d5815f943413b01fa87d
+2026-07-30 18:37:13,927 INFO alvance_github_crawler.pipeline: processing crawled candidate alallier/reload@5a3c5fddaf779a9a21a0820f0203410681ca6208
+2026-07-30 18:37:15,652 INFO alvance_github_crawler.pipeline: processing crawled candidate vignesh07/clawdbot-railway-template@b9e2467189d02dfe51a80173c40bad650a58eaf2
+2026-07-30 18:37:15,679 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=StudentWeis/ropy attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 18:37:15,772 INFO alvance_github_crawler.pipeline: processing crawled candidate github/text-expander-element@11b5f1884161a096c8fd476aab72067ea09a3fb8
+2026-07-30 18:37:16,074 INFO alvance_github_crawler.pipeline: processing crawled candidate LDflex/LDflex@c7544f6e88fa6f8ea00f7977ecdf6391ac1f81eb
+2026-07-30 18:37:17,912 INFO alvance_github_crawler.pipeline: processing crawled candidate github/combobox-nav@62372e4c5c92b0941fe79bd2eb301788b9e24066
+2026-07-30 18:37:18,322 INFO alvance_github_crawler.pipeline: processing crawled candidate TA2k/ioBroker.vw-connect@89ccef36c59c5eeae31dffc59b9700f75ed330fa
+2026-07-30 18:37:19,313 INFO alvance_github_crawler.pipeline: processing crawled candidate Acris/hexo-theme-shiro@417329cba818706c989655b55d5c1b6616244637
+2026-07-30 18:37:20,300 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=rm-hull/luma.core attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 18:37:20,491 INFO alvance_github_crawler.pipeline: processing crawled candidate jgilbert01/aws-lambda-stream@49657157b4d61bcd0ae593d3dbc4ef3bc6a40871
+2026-07-30 18:37:21,707 INFO alvance_github_crawler.pipeline: processing crawled candidate daz-codes/helium@5084945c644373ec27304d46995231cb4c9e382a
+2026-07-30 18:37:23,645 INFO alvance_github_crawler.pipeline: processing crawled candidate aws-actions/amazon-ecs-deploy-task-definition@859db6e291f4d96516111881c0d5b62d6db2cb5d
+2026-07-30 18:37:23,890 INFO alvance_github_crawler.pipeline: processing crawled candidate mozilla/restmail.net@fa99ec71511e7a757d8ea8adc685440ff959f050
+2026-07-30 18:37:26,098 INFO alvance_github_crawler.pipeline: processing crawled candidate actix/actix@f4f985a27c5783b137c421daffb0d8d73e3e32c8
+2026-07-30 18:37:26,270 INFO alvance_github_crawler.pipeline: processing crawled candidate tokio-rs/io-uring@a52c1c07ffa7ab64750fd6a39f2f0a922f205815
+2026-07-30 18:37:27,853 INFO alvance_github_crawler.pipeline: processing crawled candidate nagisa/rust_libloading@29b6ad019067e90399593275a1c53d2343d2e6b1
+2026-07-30 18:37:29,091 INFO alvance_github_crawler.pipeline: processing crawled candidate taiki-e/cargo-llvm-cov@511e173dcc78a7f274bd7653416c4a2db2099108
+2026-07-30 18:37:30,118 INFO alvance_github_crawler.pipeline: processing crawled candidate LucasPickering/slumber@0d1ee9b1896d77274f06329a9ad79a3d7dab6b8d
+2026-07-30 18:37:30,497 INFO alvance_github_crawler.pipeline: processing crawled candidate summer-rs/summer-rs@018aeee8c9b483a0f4851f14e9761c876cb544cc
+2026-07-30 18:37:30,742 INFO alvance_github_crawler.pipeline: processing crawled candidate koto-lang/koto@4b433e7a7ce17957aa4564c80fcaaa46b88fadd2
+2026-07-30 18:37:31,940 INFO alvance_github_crawler.pipeline: processing crawled candidate taiki-e/cargo-hack@5178a7b502f699c56b247ee2b36f1e4d7092cca3
+2026-07-30 18:37:34,666 INFO alvance_github_crawler.pipeline: processing crawled candidate jonhoo/rust-imap@9a694379046ba288b9a537e7b844067c5d9ec5aa
+2026-07-30 18:37:35,112 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=chromedp/chromedp attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 18:37:39,272 INFO alvance_github_crawler.pipeline: processing crawled candidate lukaslueg/macro_railroad@c3e80e4fd0ee368fd506c2c10dfafb5b7a4961af
+2026-07-30 18:37:42,129 INFO alvance_github_crawler.pipeline: processing crawled candidate image-rs/image-png@4f873e4a628c0e8dbb4204fb263697298f89eb01
+2026-07-30 18:37:46,748 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=google/rust_icu attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 18:37:49,474 INFO alvance_github_crawler.pipeline: processing crawled candidate fadeevab/cliclack@ae7b17d8ceeea736f7725d494d0f37e4a865cb30
+2026-07-30 18:37:58,737 INFO alvance_github_crawler.pipeline: processing crawled candidate HouraiTeahouse/bevy_steamworks@649838f9fec757703a817b08d6fdfd66ad88cb3c
+2026-07-30 18:38:00,932 INFO alvance_github_crawler.pipeline: processing crawled candidate smu160/PhastFT@10fe18aaaeed1ab567e794e7ad9ddeaff729b91f
+2026-07-30 18:38:08,723 INFO alvance_github_crawler.pipeline: processing crawled candidate erans/pgsqlite@1b1c86e4cc7d8e915b035435a7e4a000770d0277
+2026-07-30 18:38:10,566 INFO alvance_github_crawler.pipeline: processing crawled candidate tock/libtock-rs@39c8cd8894c4164c3c785388e461c41be4cc8d44
+2026-07-30 18:38:12,251 INFO alvance_github_crawler.pipeline: processing crawled candidate jonhoo/stream-cancel@55832750323bb77e29d61dbe688ede35464ec6a6
+2026-07-30 18:38:14,214 INFO alvance_github_crawler.pipeline: processing crawled candidate HaochengLu/contextvc@c60e781078d1028dcb01908ad5719a1288f77ab0
+2026-07-30 18:38:15,593 INFO alvance_github_crawler.pipeline: processing crawled candidate natimerry/repak-rivals@b2a0a4535e1b5923b03619cd13bcb5bc9195c747
+2026-07-30 18:38:17,169 INFO alvance_github_crawler.pipeline: processing crawled candidate YS-L/csvlens@6acf0606df0ff4d58f3bf5d87795dc4cb4a64a5d
+2026-07-30 18:38:18,998 INFO alvance_github_crawler.pipeline: processing crawled candidate lloydmeta/frunk@4b76aa75bc215a5ca401d40d10f5af49d4d092bb
+2026-07-30 18:38:21,950 INFO alvance_github_crawler.pipeline: processing crawled candidate ratatui/ratzilla@c07436dd14fae60a33ce23974e30aa1ef5ed4f96
+2026-07-30 18:38:22,211 INFO alvance_github_crawler.pipeline: processing crawled candidate StarArawn/bevy_ecs_tilemap@6e6c62ca601f94a7cefb4c981f084327d196532e
+2026-07-30 18:38:23,403 INFO alvance_github_crawler.pipeline: processing crawled candidate TimeToogo/tunshell@1f0575b8785d9e8af236a5095b904c93ec08db32
+2026-07-30 18:38:25,236 INFO alvance_github_crawler.pipeline: processing crawled candidate flamestro/deff@2f6a9cffda9ea0218afcabc87df6db426c2598fe
+2026-07-30 18:38:25,850 INFO alvance_github_crawler.pipeline: processing crawled candidate jonhoo/evmap@c88ed4384aeb2f5e86312e795241373e7dd72e0c
+2026-07-30 18:38:27,165 INFO alvance_github_crawler.pipeline: processing crawled candidate KyleMayes/vulkanalia@3fcda51f2950689ae85f4adeb6558b36419be26d
+2026-07-30 18:38:27,898 INFO alvance_github_crawler.pipeline: processing crawled candidate Henauxg/bevy_quinnet@32c2bd995c75d8f214ae7ffdc737a35b9fd0e7e7
+2026-07-30 18:38:28,340 INFO alvance_github_crawler.pipeline: processing crawled candidate bjesus/wttrbar@93ec29cd9d5926626cfeb43a4de4ad03f3519a85
+2026-07-30 18:38:29,978 INFO alvance_github_crawler.pipeline: processing crawled candidate gin66/tui-logger@7a1cccb458d4c447dea55c13bdb744317cbd3da8
+2026-07-30 18:38:31,316 INFO alvance_github_crawler.pipeline: processing crawled candidate typst/ecow@b6b3ff08f35d004d4d36f574d7de451311fd981c
+2026-07-30 18:38:31,413 INFO alvance_github_crawler.pipeline: processing crawled candidate taiki-e/pin-project-lite@3224cc7b5a3a9a5686e9d139c20d349f8acdf4cc
+2026-07-30 18:38:32,167 INFO alvance_github_crawler.pipeline: processing crawled candidate jonhoo/faktory-rs@bcea9699681b20f3653b0feacca23d5bd7db274b
+2026-07-30 18:38:33,548 INFO alvance_github_crawler.pipeline: processing crawled candidate ronnychevalier/cargo-multivers@83fbd6f88f53a211394485f1ab08c21a7fe8674d
+2026-07-30 18:38:34,587 INFO alvance_github_crawler.pipeline: processing crawled candidate jonhoo/haphazard@1797af0fd77d6b31f0d50a491e24f5d7116f72d3
+2026-07-30 18:38:35,344 INFO alvance_github_crawler.pipeline: processing crawled candidate bevyengine/naga_oil@32fc887e548ca9d67ba8a6beeed60abb9fda21b7
+2026-07-30 18:38:35,507 INFO alvance_github_crawler.pipeline: processing crawled candidate MaxenceMaire/audionimbus@9877d2ea8d04c399376a9fbf2af1d6dd8dda6805
+2026-07-30 18:38:36,589 INFO alvance_github_crawler.pipeline: processing crawled candidate andrewhickman/fs-err@b125cccd5f356ee44996f48e9ff9c412e429b466
+2026-07-30 18:38:37,621 INFO alvance_github_crawler.pipeline: processing crawled candidate SnowflakePowered/librashader@87e8a97b50516d997defeaa168173dcd185d4022
+2026-07-30 18:38:37,793 INFO alvance_github_crawler.pipeline: processing crawled candidate petgraph/fixedbitset@111fb2552130f6f4c06a4a1a2e0de7ea6e28b922
+2026-07-30 18:38:39,734 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=runtimeverification/kontrol attempt=2/4 delay_s=10.0 error=APITimeoutError
+2026-07-30 18:38:40,117 INFO alvance_github_crawler.pipeline: processing crawled candidate Leathong/openscad-LSP@c7429656b73d4d8705a3e68e0766a6e250c78890
+2026-07-30 18:38:42,207 INFO alvance_github_crawler.pipeline: processing crawled candidate djc/hashlink@d1f0b937edf52e731447465818575eb3c86812ec
+2026-07-30 18:38:44,055 INFO alvance_github_crawler.pipeline: processing crawled candidate rcore-os/buddy_system_allocator@da68b6d0bd74e539116898f21d44552417966afc
+2026-07-30 18:38:46,223 INFO alvance_github_crawler.pipeline: processing crawled candidate racemap/elevation-service@95e4be946c6e308806fd867890b9850ae1b18a76
+2026-07-30 18:38:49,290 INFO alvance_github_crawler.pipeline: processing crawled candidate matisiekpl/neond@93449b37f4870ff9745f6e3b7cace77c84993157
+2026-07-30 18:38:49,721 INFO alvance_github_crawler.pipeline: processing crawled candidate cuviper/alloc_geiger@177bafb3fdbaed65623a3ab3e6fef0bab024d42b
+2026-07-30 18:38:50,624 INFO alvance_github_crawler.pipeline: processing crawled candidate JohnnyMorganz/wally-package-types@daf5c97bf451e9fed47080769cfaa75d419eb768
+2026-07-30 18:38:51,909 INFO alvance_github_crawler.pipeline: processing crawled candidate jonhoo/atone@f08e2cca1ec5894d5fef92e9f9c5a92f97165f5e
+2026-07-30 18:38:52,667 INFO alvance_github_crawler.pipeline: processing crawled candidate po0uyan/memsafe@704f558a0e796e3b2fb8837ee7aabcb46c3b1250
+2026-07-30 18:38:53,586 INFO alvance_github_crawler.pipeline: processing crawled candidate alloy-rs/rlp@87cd1b72eddd24410b0cf782436ad3ea94262d05
+2026-07-30 18:38:53,723 INFO alvance_github_crawler.pipeline: processing crawled candidate haimgel/display-switch@5d3726a8f839a779c3a94743e0a6be1773270077
+2026-07-30 18:38:54,586 INFO alvance_github_crawler.pipeline: processing crawled candidate simgine/bevy_replicon@50a1ae4a951b0558cc182198e91f5cbf999de958
+2026-07-30 18:38:55,471 INFO alvance_github_crawler.pipeline: processing crawled candidate azdavis/millet@3b2b77d18b1bfe55b0b62d07378a2da425e08029
+2026-07-30 18:38:57,389 INFO alvance_github_crawler.pipeline: processing crawled candidate mlb-rs/mlbt@c359eb417da419523cba271dc3c27961d1b47e5f
+2026-07-30 18:38:59,682 INFO alvance_github_crawler.pipeline: processing crawled candidate ThomasHabets/tarweb@91ffad9e046df6258e3a85bc4a5723e6b54543db
+2026-07-30 18:39:03,453 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=aoout/obsidian-epub-importer attempt=3/4 delay_s=20.0 error=APITimeoutError
+2026-07-30 18:39:21,695 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=dfm/tinygp attempt=3/4 delay_s=20.0 error=APITimeoutError
+2026-07-30 18:39:25,755 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=StudentWeis/ropy attempt=3/4 delay_s=20.0 error=APITimeoutError
+2026-07-30 18:39:30,377 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=rm-hull/luma.core attempt=3/4 delay_s=20.0 error=APITimeoutError
+2026-07-30 18:39:45,157 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=chromedp/chromedp attempt=3/4 delay_s=20.0 error=APITimeoutError
+2026-07-30 18:39:56,830 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=google/rust_icu attempt=3/4 delay_s=20.0 error=APITimeoutError
+2026-07-30 18:40:16,777 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=Azure/azure-functions-nodejs-worker attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:40:28,465 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=aframevr/aframe-inspector attempt=1/4 delay_s=5.0 error=APITimeoutError
+2026-07-30 18:40:49,825 WARNING alvance_github_crawler.screening.direction: direction judge retry repo=runtimeverification/kontrol attempt=3/4 delay_s=20.0 error=APITimeoutError
+2026-07-30 18:41:23,566 ERROR alvance_github_crawler.pipeline: aoout/obsidian-epub-importer failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1065, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 483, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 461, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 990, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1083, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+2026-07-30 18:41:41,789 ERROR alvance_github_crawler.pipeline: dfm/tinygp failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1065, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 483, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 461, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 990, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1083, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+2026-07-30 18:41:45,855 ERROR alvance_github_crawler.pipeline: StudentWeis/ropy failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1065, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 483, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 461, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 990, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1083, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+2026-07-30 18:41:50,468 ERROR alvance_github_crawler.pipeline: rm-hull/luma.core failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1065, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 483, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 461, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 990, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1083, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+2026-07-30 18:42:05,276 ERROR alvance_github_crawler.pipeline: chromedp/chromedp failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1065, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 483, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 461, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 990, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1083, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+2026-07-30 18:42:16,958 ERROR alvance_github_crawler.pipeline: google/rust_icu failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1065, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 483, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 461, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 990, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1083, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+2026-07-30 18:43:09,944 ERROR alvance_github_crawler.pipeline: runtimeverification/kontrol failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1065, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 483, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_client.py", line 461, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 990, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 361, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 80, in judge
+    response = self.client.responses.parse(
+        model=self.model,
+    ...<4 lines>...
+        reasoning={"effort": "low"},
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/resources/responses/responses.py", line 1339, in parse
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<47 lines>...
+        cast_to=cast(Type[ParsedResponse[TextFormatT]], Response),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1360, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1083, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+{
+  "duplicate": 9493,
+  "error": 9,
+  "input_total": 9750,
+  "processed": 257,
+  "queued": 57,
+  "rejected": 191
+}
+[2026-07-30T18:43:10Z] stage=prescreen-19500 exit_code=0 duration_s=653

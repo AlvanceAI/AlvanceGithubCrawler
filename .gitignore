@@ -11,3 +11,8 @@ dist/
 build/
 output/
 .crawler-state/
+
+# Full GitHub search payloads can exceed GitHub's 100 MB object limit. The
+# continuous production script publishes a compressed .jsonl.gz snapshot and
+# restores this local checkpoint before resuming a crawl.
+outputs/**/raw_repositories.jsonl
