@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "glim-884be6-cd53dae9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/junkdog/glim"
+base_commit = "cd53dae9985c16c49172ad0583fc2e4e2fe223dc"
+source_tree = "ca9812e2e268b7e9d640a7d2989bbbbb3e29be0e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fcddbc42e152e57c71930d90f767e83ebb258002cea90bc70c99d8a646d27195"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-glim-884be6-cd53dae9-v2-env-fcddbc42"
+template_id = "mznzwqfw99isqf4151yi"
+source_template_alias = "ky122xgsc1zgwllfj1nr"
+source_template_id = "ky122xgsc1zgwllfj1nr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

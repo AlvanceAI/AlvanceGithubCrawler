@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vek-87eb1b-b4c02f9d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/yoanlcq/vek"
+base_commit = "b4c02f9d339e513fd22d756b0f37efb780c0be73"
+source_tree = "968c274072c019a7a2c328b1e75d3f72c76dbd6e"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "13eee8a17f2c7186d2e1ffba1a93d90f9a818e85329b5bc1b625e802d2b9ba21"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vek-87eb1b-b4c02f9d-v2-env-13eee8a1"
+template_id = "ecqac62jrnu2emjwlesr"
+source_template_alias = "8x57tnhmbrmh52zco4d0"
+source_template_id = "8x57tnhmbrmh52zco4d0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "leaky-bucket-a55603-98677e68"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/udoprog/leaky-bucket"
+base_commit = "98677e68325b07b89634fb6236ad776535267982"
+source_tree = "098d914ee3b5a0dd219390d2abdc7fb28dee269a"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.71"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1ab97a8cef5771d71f55148e01b0f9b10d0b6d19d442617fc9cd76718ec29c45"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-leaky-bucket-a55603-98677e68-v2-env-1ab97a8c"
+template_id = "oxajcob19pzne9s0tcc9"
+source_template_alias = "2u0r55zot6un0wibp0x0"
+source_template_id = "2u0r55zot6un0wibp0x0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

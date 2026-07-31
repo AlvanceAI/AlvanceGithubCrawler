@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "liquid-c86220-5d9c036f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/osteele/liquid"
+base_commit = "5d9c036f526eb1b07e83e33beb6047329d2e7004"
+source_tree = "0c62398176ebb20bb0ab823d4442c8fde30c9b7d"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ea54d26315d09e46cc60eb7c4591f128361e99b35826408b927bc81847ae2b77"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-liquid-c86220-5d9c036f-v2-env-ea54d263"
+template_id = "78ke1uivasqkr03kdzh6"
+source_template_alias = "tejhp2q72minu3z9eq07"
+source_template_id = "tejhp2q72minu3z9eq07"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kmeans-colors-9ab295-fa34b68c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/okaneco/kmeans-colors"
+base_commit = "fa34b68c0c1d62dcae0c0bfefcc27224f560d599"
+source_tree = "81c303bad2f284c97fd2c9448a1d5584a2255192"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bb903bf63a5fe60b5d9a2a74587c075b6bd3311170a9eabf017f06c06dc10a86"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kmeans-colors-9ab295-fa34b68c-v2-env-bb903bf6"
+template_id = "q1wo2l7xyru71vsshwh4"
+source_template_alias = "xd7di970rl4ci5xa7jon"
+source_template_id = "xd7di970rl4ci5xa7jon"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tokio-cron-scheduler-827203-ee987dd3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mvniekerk/tokio-cron-scheduler"
+base_commit = "ee987dd3917fbde8130bd05d6649897dde87523c"
+source_tree = "3ad895c57dfa9a9b83eab1e0f366431efd43eb3e"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "04505911f1e0b1bc36d85fb94d078e42664d6d801f0d02fd93c3ec73fa07925f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tokio-cron-scheduler-827203-ee987dd3-v2-env-04505911"
+template_id = "n8mibo9jpu35s6p11u7u"
+source_template_alias = "m5krsipn7u9nmgzpu9qn"
+source_template_id = "m5krsipn7u9nmgzpu9qn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "setup-py-upgrade-0a1c4c-5d4bbf70"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/asottile/setup-py-upgrade"
+base_commit = "5d4bbf70ca79aefe2386ef637f6c61e0b9fb1003"
+source_tree = "3d8d1120427c4cfc74a5f69cd964261880354701"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "810bca4206455d557ef730108d5e4b5ca0bafb00f4b4d90a1beb0038caac8577"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-setup-py-upgrade-0a1c4c-5d4bbf70-v2-env-810bca42"
+template_id = "k4r2q6cish0o7dtppg3i"
+source_template_alias = "0c00y3hnjb3lakhp9y75"
+source_template_id = "0c00y3hnjb3lakhp9y75"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

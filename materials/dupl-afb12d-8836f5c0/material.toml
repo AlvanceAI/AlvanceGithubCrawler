@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dupl-afb12d-8836f5c0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mibk/dupl"
+base_commit = "8836f5c0e8eacdc5233911754b94e70917cf0dba"
+source_tree = "5a4813fe9b907b5665a295695d60a852b3d1e651"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.14.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6cd3b67d6d39e4e0ee1d7a172e1dde633ded8695ce4d9a70a04441ae17ac5cb7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dupl-afb12d-8836f5c0-v2-env-6cd3b67d"
+template_id = "4yu3ndm8ixvjmp24hx48"
+source_template_alias = "010vxt1d8tkwemi5gvgd"
+source_template_id = "010vxt1d8tkwemi5gvgd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

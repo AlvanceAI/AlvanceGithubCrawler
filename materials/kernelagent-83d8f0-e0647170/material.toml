@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kernelagent-83d8f0-e0647170"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/meta-pytorch/KernelAgent"
+base_commit = "e0647170da36ef9b059ac0bd3d60103aa4ed378b"
+source_tree = "5f55cd296cf3f4d4e9c635b3ad716630a0d16e5d"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e32f4afc132484fdd70d53e0c23978ba7ffc39b6e64105051169c1b6ddc50fd7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kernelagent-83d8f0-e0647170-v2-env-e32f4afc"
+template_id = "d0oig1073mxrbswz5pyz"
+source_template_alias = "urpk8kuq9zdom36gbs8j"
+source_template_id = "urpk8kuq9zdom36gbs8j"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

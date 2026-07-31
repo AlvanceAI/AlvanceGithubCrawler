@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "packwiz-0058ef-dfd8b68a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/packwiz/packwiz"
+base_commit = "dfd8b68a4796c763e25bad50265ea1f1233e24f1"
+source_tree = "a0df9927ceb39a084a9cd328c217e80beda81b44"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.6"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3cbcc0d375eae8ce29597275f63aa95c64dd23dea7fe9d249fb096cd6ff06485"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-packwiz-0058ef-dfd8b68a-v2-env-3cbcc0d3"
+template_id = "gcqhoqzddmbtnbpq8bt2"
+source_template_alias = "069o39z993lcc4klsc1d"
+source_template_id = "069o39z993lcc4klsc1d"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

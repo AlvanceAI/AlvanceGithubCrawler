@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "c-for-go-3ae0ac-6dd1c017"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/xlab/c-for-go"
+base_commit = "6dd1c017f91eea5364499f7926d94583eaddaadb"
+source_tree = "a4893441d69d7e680c7cc44890455fbf26a7ecbe"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.17.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2be97ef349768a0ecdaa687fd2a0c4ee81099b4ac2cba84c5f5b8308e0d57a2f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-c-for-go-3ae0ac-6dd1c017-v2-env-2be97ef3"
+template_id = "7iq769frbvgc2ygjwrg3"
+source_template_alias = "340mp14wa4uoxcp7qgeo"
+source_template_id = "340mp14wa4uoxcp7qgeo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

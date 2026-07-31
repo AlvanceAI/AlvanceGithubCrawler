@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "prom-aggregation-gateway-679355-84686bb6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/zapier/prom-aggregation-gateway"
+base_commit = "84686bb66ba1790dcadc7513c36d233969ea4518"
+source_tree = "ca22dd048e2190b2d74e09d164891a15c7bb1185"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f44872c73dd8efb79ce51c39978c9d52afbcee677bef929969c29abc57afe4be"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-prom-aggregation-gat-679355-84686bb6-v2-env-f44872c7"
+template_id = "1im7wgqni8hkvssftc10"
+source_template_alias = "ryf651uz8yd3us8zgass"
+source_template_id = "ryf651uz8yd3us8zgass"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

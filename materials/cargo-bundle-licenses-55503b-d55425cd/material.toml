@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cargo-bundle-licenses-55503b-d55425cd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sstadick/cargo-bundle-licenses"
+base_commit = "d55425cd47f987360f027620abe85c6503d887a1"
+source_tree = "d538ddad4c1a2061920dab450da286382c170fb0"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.86.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1bb8fc306ef39a95567eef409872cfd8ac89b514ad8073b89a14077d28b83d82"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cargo-bundle-license-55503b-d55425cd-v2-env-1bb8fc30"
+template_id = "chag2dmi3ljrul1u0iw0"
+source_template_alias = "ssw7e29x0p5i8n6okylu"
+source_template_id = "ssw7e29x0p5i8n6okylu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

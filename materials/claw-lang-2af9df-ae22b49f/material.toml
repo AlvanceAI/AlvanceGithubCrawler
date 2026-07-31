@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "claw-lang-2af9df-ae22b49f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/esoterra/claw-lang"
+base_commit = "ae22b49f2a0989cc85bdc1996a541d8308a02c0b"
+source_tree = "5d8115cb03ffa5aaff50192381d45e47d5fe7c19"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cd5fbab7f843d031f2a8ff07e50c0bcc1b5e26445a4ea33a20414baf765ae21d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-claw-lang-2af9df-ae22b49f-v2-env-cd5fbab7"
+template_id = "iscw5s0qzd4g5sdnfpak"
+source_template_alias = "n9d2qdub0ioodrbuoo98"
+source_template_id = "n9d2qdub0ioodrbuoo98"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

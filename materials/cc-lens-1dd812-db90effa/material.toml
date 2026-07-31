@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cc-lens-1dd812-db90effa"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Arindam200/cc-lens"
+base_commit = "db90effa1b4f3452b6660e7ff6896901b1efdc56"
+source_tree = "153b869a10ad252658ac874411fc77723396a94b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "debf3ec5b29f1787f9ef398e5928d15a40928d9c5f66dfe2b904ef1259b19014"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cc-lens-1dd812-db90effa-v2-env-debf3ec5"
+template_id = "tfyxpx0dbbw1l8huw5lm"
+source_template_alias = "r6r3vrk3la3zkurxtpf0"
+source_template_id = "r6r3vrk3la3zkurxtpf0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

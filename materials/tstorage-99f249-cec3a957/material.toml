@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tstorage-99f249-cec3a957"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nakabonne/tstorage"
+base_commit = "cec3a9574c70a6069225b5bce2993bfa9adf00f8"
+source_tree = "9b2a5790823c0930913548e18c501222f9107cf1"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.20.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "28a09be4c7ed54567d8038de9fea80a31d4432b78083e1350621e180af045f96"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tstorage-99f249-cec3a957-v2-env-28a09be4"
+template_id = "rs00gyzg8ma2ead1zozh"
+source_template_alias = "vjvx5u2o5qs8dlhxpeed"
+source_template_id = "vjvx5u2o5qs8dlhxpeed"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "suites-5d11d9-e2f1bc74"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/suites-dev/suites"
+base_commit = "e2f1bc74abd5d14d2817f39880d20ad52989dc1e"
+source_tree = "c9dd84b2aadfe864f89c893420fc042bd3966816"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5347f4aae08e1a93140ed0d596d62d1ec9a7cfecf1caeae35d5194018a321613"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-suites-5d11d9-e2f1bc74-v2-env-5347f4aa"
+template_id = "4rs21kdm0ijojxvn58kv"
+source_template_alias = "dk8edgyt9jre8442gi00"
+source_template_id = "dk8edgyt9jre8442gi00"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

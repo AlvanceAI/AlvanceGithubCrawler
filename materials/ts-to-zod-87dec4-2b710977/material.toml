@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ts-to-zod-87dec4-2b710977"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/fabien0102/ts-to-zod"
+base_commit = "2b71097772ce928cf26695ee1873093e2ced00d1"
+source_tree = "5f0c505427da0d26a0d99010aa417bb4d7510eff"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d6fc2f6568b582d1012154cee13ec76257d3282ac929d3dbe2840e59d21232b8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ts-to-zod-87dec4-2b710977-v2-env-d6fc2f65"
+template_id = "3krnb9w03l4e7c3tbj0l"
+source_template_alias = "a97xkkvexdcn7b8j6jh8"
+source_template_id = "a97xkkvexdcn7b8j6jh8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

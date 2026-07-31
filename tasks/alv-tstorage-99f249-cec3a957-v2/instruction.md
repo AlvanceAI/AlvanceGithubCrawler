@@ -1,0 +1,5 @@
+Repository `nakabonne/tstorage` at commit `cec3a9574c70a6069225b5bce2993bfa9adf00f8` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为存储引擎新增按时间序列标签删除指定时间戳范围内数据的持久化 API，并确保删除后查询、重启恢复及跨分区场景均不再返回这些数据。

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lnx-aa373f-885e6727"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/lnx-search/lnx"
+base_commit = "885e6727196aa1dda9bb88fedcb45d14a9284770"
+source_tree = "afcada4b8e3eb1822d203f19075e70db6d252610"
+default_branch = "0.10.0-lighting-feature"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "428e3279a42055b076259f8985e40f86be15c3eb5b7a532ed6bf9f43cdf57d96"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lnx-aa373f-885e6727-v2-env-428e3279"
+template_id = "1rxb2nqj3boh372ftcp1"
+source_template_alias = "6uv9sf3434nml5n1o0hp"
+source_template_id = "6uv9sf3434nml5n1o0hp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

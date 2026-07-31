@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rust-radix-trie-05bf59-a89f789e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/michaelsproul/rust_radix_trie"
+base_commit = "a89f789e126741a1814109b6ac15fff7c143a077"
+source_tree = "0bac7889632d2b5d6ff72ef29fcb1077b143cfc9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fe36708b53fcaf6a5accae8255792f46fe642d2f85e4c4c633569ad218f876d0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rust-radix-trie-05bf59-a89f789e-v2-env-fe36708b"
+template_id = "rvbrcof0e90q2x3hk9wb"
+source_template_alias = "uguvmeyf1bs8ztb1h1rp"
+source_template_id = "uguvmeyf1bs8ztb1h1rp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

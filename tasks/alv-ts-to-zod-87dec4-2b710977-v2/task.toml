@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-ts-to-zod-87dec4-2b710977-v2"
+description = "Rebuildable repository task for fabien0102/ts-to-zod"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-ts-to-zod-87dec4-2b710977-v2"
+material_id = "ts-to-zod-87dec4-2b710977"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/fabien0102/ts-to-zod"
+base_commit_hash = "2b71097772ce928cf26695ee1873093e2ced00d1"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

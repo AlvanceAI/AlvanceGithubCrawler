@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dockershrink-c18a98-a7af6799"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/duaraghav8/dockershrink"
+base_commit = "a7af6799f2b423efe0499535b7cc388b24184d37"
+source_tree = "f20e3cc5ca103af527cbc49c23c9072756312b9d"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "80835030ab60f174d340e76278d8c81614394278124b8a748701b676d32bd654"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dockershrink-c18a98-a7af6799-v2-env-80835030"
+template_id = "kd6xbjg5gkzhaqpke4sg"
+source_template_alias = "mt1aecvgovvpcak231ak"
+source_template_id = "mt1aecvgovvpcak231ak"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
