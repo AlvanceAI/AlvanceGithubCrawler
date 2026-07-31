@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "figma-context-mcp-af888f-c083d65c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/GLips/Figma-Context-MCP"
+base_commit = "c083d65c7e002923e7cb98f4e3bdafb105e90f6d"
+source_tree = "0c001ca4a63d7d0c1c1c0809e46537676210e78e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b64c4e06f6bca01abc7157917cd3bac0cf43b7d9c0ecc5e60822678c740abf3b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-figma-context-mcp-af888f-c083d65c-v2-env-b64c4e06"
+template_id = "qk6yjhhz2d86iicsugf2"
+source_template_alias = "by015ob6ziu8phftcr4o"
+source_template_id = "by015ob6ziu8phftcr4o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

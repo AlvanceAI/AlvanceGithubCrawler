@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tss-lib-e74efd-3f677ff7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bnb-chain/tss-lib"
+base_commit = "3f677ff761fcf692edb0243a5d812930844d879a"
+source_tree = "f6c0cd61851162aeee79bdbea2a36794c754d57e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3629303df17d11e2a4795bc68ea8e930e601ec00d49466e3f53975c860ac7362"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tss-lib-e74efd-3f677ff7-v2-env-3629303d"
+template_id = "n0tz6e613k95xzx2zn56"
+source_template_alias = "hd08i3mn2hr847v8cjml"
+source_template_id = "hd08i3mn2hr847v8cjml"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

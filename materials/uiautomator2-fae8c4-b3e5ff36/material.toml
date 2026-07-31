@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "uiautomator2-fae8c4-b3e5ff36"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/openatx/uiautomator2"
+base_commit = "b3e5ff36b04b0f30c132288b554e82b65957057f"
+source_tree = "8dc464eba9bcd9b5fdc182873be619cfc0ce798e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "79443706046b2747c38be40ef8896394edc964cd8acc34041c164250617bf8a0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-uiautomator2-fae8c4-b3e5ff36-v2-env-79443706"
+template_id = "p8ood4zxsh69sjkxuzbo"
+source_template_alias = "bp0ttnwe1w8fcr8jz08d"
+source_template_id = "bp0ttnwe1w8fcr8jz08d"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

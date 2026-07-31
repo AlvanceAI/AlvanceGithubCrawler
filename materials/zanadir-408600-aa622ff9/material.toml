@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zanadir-408600-aa622ff9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/MustacheCase/zanadir"
+base_commit = "aa622ff92ae693b2f570ab13266d39cf672617a4"
+source_tree = "742e721776f4eac97faa98b4f794b9bf57f4871e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0f996ae36e585fbbd870cc831e8a67fe0d46b9ff6be9517bc70980eb5c212eba"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zanadir-408600-aa622ff9-v2-env-0f996ae3"
+template_id = "jgxg69x5aulfge1lxjb1"
+source_template_alias = "yncawbef0gpmi7b1vq7q"
+source_template_id = "yncawbef0gpmi7b1vq7q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

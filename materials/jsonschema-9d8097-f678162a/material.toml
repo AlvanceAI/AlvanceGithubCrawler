@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "jsonschema-9d8097-f678162a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/invopop/jsonschema"
+base_commit = "f678162af201cba391c9bf759b429dee5ad5c0bc"
+source_tree = "1e245a0d6943e5781d910cca69600f31a23f5067"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cd6a2f50fbcc2f093ff64708f8fa8efdd7cb4c5a3d0cf376080937cc7dc8240b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-jsonschema-9d8097-f678162a-v2-env-cd6a2f50"
+template_id = "gaqelhfdxycba2ls178y"
+source_template_alias = "ytx0q01j3ud1dvw002rp"
+source_template_id = "ytx0q01j3ud1dvw002rp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

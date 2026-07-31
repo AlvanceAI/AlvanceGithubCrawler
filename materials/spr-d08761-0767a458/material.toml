@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "spr-d08761-0767a458"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ejoffe/spr"
+base_commit = "0767a458e50fa1f7ae203b73e50298ab201c80bb"
+source_tree = "65b360b4fc47a38bcf5c4c54a25848d6ad122126"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6f6234815755d91b839db0455735154b13742a156b8b54031925486a0e087354"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-spr-d08761-0767a458-v2-env-6f623481"
+template_id = "23w70dmp98ad6ojmoakq"
+source_template_alias = "73vy4t74rgbrz18tcbfd"
+source_template_id = "73vy4t74rgbrz18tcbfd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

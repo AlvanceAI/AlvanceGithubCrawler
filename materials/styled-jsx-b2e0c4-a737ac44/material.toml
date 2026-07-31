@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "styled-jsx-b2e0c4-a737ac44"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vercel/styled-jsx"
+base_commit = "a737ac442a9d032f9f824050b23dc9b6d766657e"
+source_tree = "46a21cbd4776398d618f2019bd6cc6e2ff010be5"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bb1c76e29d2b6025d7a3304777efcd5b3fa7b9976df283bb4c3484d6c3af50b7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-styled-jsx-b2e0c4-a737ac44-v2-env-bb1c76e2"
+template_id = "986uwhmw4uxui7wso9ra"
+source_template_alias = "5s1ji771khpeyfaefdmb"
+source_template_id = "5s1ji771khpeyfaefdmb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

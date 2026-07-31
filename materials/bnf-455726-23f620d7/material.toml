@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bnf-455726-23f620d7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/shnewto/bnf"
+base_commit = "23f620d76433dda9069d2d557c92341ae0cec6fd"
+source_tree = "e1d9cb81c9f3637da76ea8afd0754ec64b517959"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a6d85b7b88cca43eb61c3003ab0e3d24e9cb0c001edbbf23ff50543f4e8ef530"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bnf-455726-23f620d7-v2-env-a6d85b7b"
+template_id = "fxxvy8xd968e7h69f68l"
+source_template_alias = "07t9m3shhs6x03zc76yc"
+source_template_id = "07t9m3shhs6x03zc76yc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

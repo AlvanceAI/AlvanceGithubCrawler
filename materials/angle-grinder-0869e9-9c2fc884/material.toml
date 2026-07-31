@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "angle-grinder-0869e9-9c2fc884"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rcoh/angle-grinder"
+base_commit = "9c2fc8846d7e950160579ef0b2d7ca56a76688e9"
+source_tree = "90baef5aeea107f2f7b9198e90dd919af2a8fd3f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2682471f00ed937c5e0d5510b17997a7215eaa81935af57ba4061ebd79d4b4d4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-angle-grinder-0869e9-9c2fc884-v2-env-2682471f"
+template_id = "b2cwvkx05ei75eot6p3r"
+source_template_alias = "nlipsb2atowrp4n2t7ds"
+source_template_id = "nlipsb2atowrp4n2t7ds"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

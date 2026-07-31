@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-uiautomator2-fae8c4-b3e5ff36-v2"
+description = "Rebuildable repository task for openatx/uiautomator2"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-uiautomator2-fae8c4-b3e5ff36-v2"
+material_id = "uiautomator2-fae8c4-b3e5ff36"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/openatx/uiautomator2"
+base_commit_hash = "b3e5ff36b04b0f30c132288b554e82b65957057f"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

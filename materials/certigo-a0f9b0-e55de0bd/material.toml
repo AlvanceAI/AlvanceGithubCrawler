@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "certigo-a0f9b0-e55de0bd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/square/certigo"
+base_commit = "e55de0bdf3a8bf87019dd197504ec27568106a2c"
+source_tree = "db8d6276c833f6c0160a6f9b1f521416aca79c06"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d95e49c2abc671b3e2a6de54219aaeb3ad509a1299be76a105f6a8455a4180f2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-certigo-a0f9b0-e55de0bd-v2-env-d95e49c2"
+template_id = "3oqugkm4m3gmz87r46st"
+source_template_alias = "5htzb7whgopn123ulqqx"
+source_template_id = "5htzb7whgopn123ulqqx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

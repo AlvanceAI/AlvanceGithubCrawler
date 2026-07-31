@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "multipart-778931-a14fdd63"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/defnull/multipart"
+base_commit = "a14fdd637f1a69b6e8db06603489ac495efd1bb2"
+source_tree = "02fe9f605c98f649fa9a74a4754697909871c823"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9c9cee88b78e017cc6dbd0c37179ffdd815c3b68769fea163b6885d9ebb93a24"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-multipart-778931-a14fdd63-v2-env-9c9cee88"
+template_id = "kpin51ajzppookwu8jb7"
+source_template_alias = "3tg35csn0fj5u180o1af"
+source_template_id = "3tg35csn0fj5u180o1af"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

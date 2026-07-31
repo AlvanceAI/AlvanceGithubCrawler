@@ -1,0 +1,11 @@
+# nixery-4ea233-7eb6caf6
+
+Rebuildable repository material for `tazjin/nixery` at
+`7eb6caf6c9de3d760351edaa9cb78debe4221dbd`. The environment is recreated from
+`environment/Dockerfile`; the GitHub commit and package registries are the only
+external build inputs.
+
+The historical E2B template identifiers in `material.toml` and
+`receipts/e2b.json` are optional cache hints only. They are not required to run this
+material and may expire. This directory intentionally contains no checkout, direction,
+instruction, verifier, solution, model credential, or rollout output.

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "android-emulator-runner-884f00-cad32164"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ReactiveCircus/android-emulator-runner"
+base_commit = "cad321644df6d8cf1985a42767272ff068adb9cb"
+source_tree = "cf969939b0003387d367130f5322034142db9e0a"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0393cf78c96ac5335c3d2aa4f71e29786dac5aae0ff785f9b33fd952b6ce0dc7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-android-emulator-run-884f00-cad32164-v2-env-0393cf78"
+template_id = "v6adagoz0ehs7gl82uyp"
+source_template_alias = "o8fums0bhhxz38wqaggs"
+source_template_id = "o8fums0bhhxz38wqaggs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

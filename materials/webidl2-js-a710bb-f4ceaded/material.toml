@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "webidl2-js-a710bb-f4ceaded"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/w3c/webidl2.js"
+base_commit = "f4ceaded4739406321c219bfe889475071b4e34e"
+source_tree = "2ae0fc6c8e5b325c85717f395ff3eff25be8f14f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "19febcb6845aa680e2e0254c1759372a4829fe16578378cc9d178de2f23997bf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-webidl2-js-a710bb-f4ceaded-v2-env-19febcb6"
+template_id = "viz9yjucg64jj54tk5rh"
+source_template_alias = "psyknb5dglx6my6qk3og"
+source_template_id = "psyknb5dglx6my6qk3og"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

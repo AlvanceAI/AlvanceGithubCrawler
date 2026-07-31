@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "yaserde-9937c9-3b45f088"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/luminvent/yaserde"
+base_commit = "3b45f0887a8c8dc1d4c59fc7c0f5700b38df44e0"
+source_tree = "e793e7c74e84c124452e675e2ef64efda7977b0e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c553f2b0167acc5d1f221c3a9d25f012db6a144ee741f2e85df5eac8d72f8d65"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-yaserde-9937c9-3b45f088-v2-env-c553f2b0"
+template_id = "cmo12slzqcgx0d25dijx"
+source_template_alias = "wqsgtqafgr101rwfu13m"
+source_template_id = "wqsgtqafgr101rwfu13m"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

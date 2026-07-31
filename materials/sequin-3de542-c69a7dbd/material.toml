@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sequin-3de542-c69a7dbd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/charmbracelet/sequin"
+base_commit = "c69a7dbd0c3d7c10d350bff30b12b705217aa184"
+source_tree = "dcda0c01a14c7cb762602cbaad069bf91de341df"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1acf9caa9c3782b9f8cf14ac2c2f8c53399bc2fdd36a8f9fed52174b83fdf1d0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sequin-3de542-c69a7dbd-v2-env-1acf9caa"
+template_id = "k4norea9zpzd1djkcdwn"
+source_template_alias = "qmbo2d21ld98nopprqly"
+source_template_id = "qmbo2d21ld98nopprqly"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

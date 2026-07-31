@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "asn1crypto-f1a15e-a767d2da"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wbond/asn1crypto"
+base_commit = "a767d2daa8ef4549d497b67a0304561c2eb4b858"
+source_tree = "c5fd33e451f5fa8ecafd28d00cbdb0aa449ec996"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d0dac254c8b0ea801e68b8f49e9a68fe277e47d17ab36042b0f6a58a0eed99da"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-asn1crypto-f1a15e-a767d2da-v2-env-d0dac254"
+template_id = "79o13dhzsvs06ytwgy47"
+source_template_alias = "wduubxomtmd8eeve813m"
+source_template_id = "wduubxomtmd8eeve813m"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

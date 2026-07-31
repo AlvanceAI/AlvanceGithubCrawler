@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "inframap-e6ebf0-f02f224c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cycloidio/inframap"
+base_commit = "f02f224cb0d0d8f369f001405fa646c206614b21"
+source_tree = "bda3bb22da890a1cf767c8b40afeb3f0ec208dc9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.22.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dfe5e35e29aee5e3d10a2beb62d422409c1f49cc1836f41a4847950c5320776a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-inframap-e6ebf0-f02f224c-v2-env-dfe5e35e"
+template_id = "ortfpvca5qosr8okhyea"
+source_template_alias = "0f4n8t7a3k0bjglqzb4g"
+source_template_id = "0f4n8t7a3k0bjglqzb4g"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

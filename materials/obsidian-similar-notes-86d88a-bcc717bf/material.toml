@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "obsidian-similar-notes-86d88a-bcc717bf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/joybro/obsidian-similar-notes"
+base_commit = "bcc717bf9de70c29aeb14abc3ba83c5bcddd4323"
+source_tree = "918b0181cb77b168689e50a05a3deb566f66d144"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3ad94623189f15b4cdbbea7c6fb347a2e7dcbed31daee99d614c0593bc4a089d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-obsidian-similar-not-86d88a-bcc717bf-v2-env-3ad94623"
+template_id = "i4nyljux70tpbt8t9vzr"
+source_template_alias = "evgsxrjege87ajfqsmnf"
+source_template_id = "evgsxrjege87ajfqsmnf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

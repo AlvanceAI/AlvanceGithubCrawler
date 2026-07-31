@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "unseemly-e7c94e-9f324d51"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/paulstansifer/unseemly"
+base_commit = "9f324d51cdef3b07d2f3678b4fec05343087cf49"
+source_tree = "a25451e69f2cd59136f82841c9f62383693670dc"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.91"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "636ba1f9cf96050a27e1b6e6a1e78de6c66e1b30d0e13ff3d0a73de48dab12a7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-unseemly-e7c94e-9f324d51-v2-env-636ba1f9"
+template_id = "u7q9brrcseaui2j0d4sn"
+source_template_alias = "3gj0f1yr4slpnb07fqz8"
+source_template_id = "3gj0f1yr4slpnb07fqz8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

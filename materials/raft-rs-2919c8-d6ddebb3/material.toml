@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "raft-rs-2919c8-d6ddebb3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/spacewalkhq/raft-rs"
+base_commit = "d6ddebb30a790ca7975c81aa76eef2851ca39d3e"
+source_tree = "9d05e82016f11ea02eaf38f2506c75e49bb21c9f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3f8333de093d8f9fee02c4d93b47682d34e3b45734179bd74c372b9f7cbc0951"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-raft-rs-2919c8-d6ddebb3-v2-env-3f8333de"
+template_id = "b2lbqxj9attdv5tgypdi"
+source_template_alias = "fxz6vqboaiwyzdb17nlg"
+source_template_id = "fxz6vqboaiwyzdb17nlg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

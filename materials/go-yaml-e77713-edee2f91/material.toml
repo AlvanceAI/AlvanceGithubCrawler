@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-yaml-e77713-edee2f91"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/goccy/go-yaml"
+base_commit = "edee2f91616c6d73112a13e7c0dbde72ce938877"
+source_tree = "bf8961b6a657e627e0955a977b3d5151ae3a6971"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7ccd156bb045aac941e3e5ba89765321d9ffb12b83a71b1af83db7495dfffcde"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-yaml-e77713-edee2f91-v2-env-7ccd156b"
+template_id = "wuyqegjazn4b6ylmp9ec"
+source_template_alias = "w0469r5og2g907islttc"
+source_template_id = "w0469r5og2g907islttc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

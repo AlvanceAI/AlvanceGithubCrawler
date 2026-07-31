@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "codespan-9aff1e-b5632935"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/brendanzab/codespan"
+base_commit = "b56329354ce0ecbe4afe7c85f7b76417678a5ef8"
+source_tree = "d9085193dc08d4b14acdb5be4cb8b0652a39fdc1"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1897f5888e25497dd9a26f7b08b4f97cae696204a43b5823b7a7bad421fc216b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-codespan-9aff1e-b5632935-v2-env-1897f588"
+template_id = "xplmmytakx25cjwle43w"
+source_template_alias = "7drsop60fnit1tkv9vgd"
+source_template_id = "7drsop60fnit1tkv9vgd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

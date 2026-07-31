@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vte-775aa2-abeae765"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alacritty/vte"
+base_commit = "abeae765dd546dfff60b278f0757dcc71beb8ab1"
+source_tree = "c8f63677acd0a6c07dfc8d6362dd2db2b4c1a197"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.62.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e111a101090dc346553100763d3915376b1f2b9542639878223fd85f35fdc869"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vte-775aa2-abeae765-v2-env-e111a101"
+template_id = "o75umuw4py5b6uqobg6z"
+source_template_alias = "om8w0eeq4e3j8z5inehh"
+source_template_id = "om8w0eeq4e3j8z5inehh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

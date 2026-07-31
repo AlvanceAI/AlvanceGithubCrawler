@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "coredhcp-fe4311-a0841cb3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/coredhcp/coredhcp"
+base_commit = "a0841cb3038f63e3f93e813648cea8641a3bc5c0"
+source_tree = "68fa58f873abc47c3a2c20a8a8bf795edb2b8729"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fe4915cb64c856f14f4f92b95b59666734c286573449bf967db0f7a0c91213b3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-coredhcp-fe4311-a0841cb3-v2-env-fe4915cb"
+template_id = "63x78irqvv76cpj14g27"
+source_template_alias = "4sjbnerxq0l4fnw3jffu"
+source_template_id = "4sjbnerxq0l4fnw3jffu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

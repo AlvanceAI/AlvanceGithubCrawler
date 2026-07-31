@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "emoji-picker-element-b80c51-5d1c8bfc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nolanlawson/emoji-picker-element"
+base_commit = "5d1c8bfc21e737c03a3cb14e06b4e472e2275ff1"
+source_tree = "6f472068d8e7d21fa5d5bdf755b86b23a3e840b9"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cd3ce52a394fce44f4bc41bd6dd6dcf83c4a6a719f06620c7cbdf46c23639d53"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-emoji-picker-element-b80c51-5d1c8bfc-v2-env-cd3ce52a"
+template_id = "zd6gxgf482a2b4c4cjfc"
+source_template_alias = "y1tbku0bk7guz3g9xmwu"
+source_template_id = "y1tbku0bk7guz3g9xmwu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

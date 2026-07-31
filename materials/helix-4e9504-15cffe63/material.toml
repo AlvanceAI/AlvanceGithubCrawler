@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "helix-4e9504-15cffe63"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nicklaw5/helix"
+base_commit = "15cffe632969bd9f5b99a19fa2fee8e55a13ce2f"
+source_tree = "dd892b49b6f64fd6d46c42c3f9fae28e96728421"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6dc3a47dddda6818e4e4b96637e4b1418841d7d9b8bbc0f6cbef28b3a2fa8aed"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-helix-4e9504-15cffe63-v2-env-6dc3a47d"
+template_id = "hihlkmi4z3kb1agfzuap"
+source_template_alias = "fccdfhygngtime980w0a"
+source_template_id = "fccdfhygngtime980w0a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

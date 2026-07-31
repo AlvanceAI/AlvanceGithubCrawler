@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "penrose-29ec93-5ab890bc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sminez/penrose"
+base_commit = "5ab890bc98a06c450bfec40c405829c3cf68982c"
+source_tree = "ec2ae64ff46cfc8f7c912d4674f165450a3afb54"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5d3f3960a9da48a2f7260e41777bcc777c2147b86a778b72fad47ab65c7ef9b8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-penrose-29ec93-5ab890bc-v2-env-5d3f3960"
+template_id = "u039402q9xprthovo7oh"
+source_template_alias = "ig9w5uv9kq3fb3yqd57o"
+source_template_id = "ig9w5uv9kq3fb3yqd57o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

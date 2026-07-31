@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "karaokeeternal-65c65c-b209d4a9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bhj/KaraokeEternal"
+base_commit = "b209d4a90aee03420eed5c14d0552b56bd7f89c5"
+source_tree = "ddf112adbfc7b4d5a3fac075aa2261c74fce36ed"
+default_branch = "main"
+license = "ISC"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a701e005284d68e6d3de8f77c13d3924b1833e96c744c81e786e03f985b6ce55"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-karaokeeternal-65c65c-b209d4a9-v2-env-a701e005"
+template_id = "m29thpzscn6ym7tqj7z9"
+source_template_alias = "d7mo10jwzqr8ej7wx395"
+source_template_id = "d7mo10jwzqr8ej7wx395"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

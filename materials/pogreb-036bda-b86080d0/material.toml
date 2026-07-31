@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pogreb-036bda-b86080d0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/akrylysov/pogreb"
+base_commit = "b86080d06267f8d12067cd432ffd9e5b6916d354"
+source_tree = "4fb8b70c2c00089923c10bc394d2694e433ee08e"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ead3d8b33a4265ab622edf45c7eea370a93a6470ca74f33d7e42e7fdae6cc696"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pogreb-036bda-b86080d0-v2-env-ead3d8b3"
+template_id = "f2afdw1esngdd8rioluy"
+source_template_alias = "uzhech0y4kn3wq4ndi6l"
+source_template_id = "uzhech0y4kn3wq4ndi6l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

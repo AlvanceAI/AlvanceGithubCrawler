@@ -1,0 +1,1 @@
+扩展 WebIDL 解析器、AST 与序列化器以支持 ExtendedAttributeString、ExtendedAttributeInteger、ExtendedAttributeDecimal 和 ExtendedAttributeIntegerList 四种扩展属性语法。

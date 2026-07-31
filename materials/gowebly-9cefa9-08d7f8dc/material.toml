@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gowebly-9cefa9-08d7f8dc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gowebly/gowebly"
+base_commit = "08d7f8dc1c260eb8f0679b8e90e9fc9512f72380"
+source_tree = "0dcbadc6fb5b3db41455daab5707a4307e047c70"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "770618cf65f4e8aa885001d76fa5d2aeb9290a837216fd30bea44bf86ac0eb02"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gowebly-9cefa9-08d7f8dc-v2-env-770618cf"
+template_id = "r7jynu3s0ar1t2u3azvn"
+source_template_alias = "19fmk9fov9kdypam38ho"
+source_template_id = "19fmk9fov9kdypam38ho"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

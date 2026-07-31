@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gotestsum-046f2f-3cf14356"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gotestyourself/gotestsum"
+base_commit = "3cf14356a16c7931cfeacd7dfee585527618df3d"
+source_tree = "3b365946dfdde8774b3464ae09f97fede2237aaa"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "04b9796444fa8193b118503a4850b51e64a10782dbdf745abfb771832e31a1d1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gotestsum-046f2f-3cf14356-v2-env-04b97964"
+template_id = "40ojd1itmivl2u2r2jfl"
+source_template_alias = "2yzz24kl3eo6s8vbpbml"
+source_template_id = "2yzz24kl3eo6s8vbpbml"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

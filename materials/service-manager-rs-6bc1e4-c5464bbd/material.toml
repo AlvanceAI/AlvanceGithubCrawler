@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "service-manager-rs-6bc1e4-c5464bbd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/chipsenkbeil/service-manager-rs"
+base_commit = "c5464bbd5d9f9b586d49581140ada7e3e9f01c61"
+source_tree = "9cb9fd17ff2c0677612ca216577cec5e9d305831"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e08aeff29f2cf2b85dbe8879ba758f2e50ef7627b737f38c5b4348ea14f08c63"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-service-manager-rs-6bc1e4-c5464bbd-v2-env-e08aeff2"
+template_id = "q7i2g7h5os38zwh9v9oo"
+source_template_alias = "mvshhv1y73o39lmc399a"
+source_template_id = "mvshhv1y73o39lmc399a"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

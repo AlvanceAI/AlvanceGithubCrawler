@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gorilla-0bb45c-66f2bba5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/1dustindavis/gorilla"
+base_commit = "66f2bba5a20224be81598051e6474bf5c9221164"
+source_tree = "62d84561d258e1252058cbd30f45144828b8067d"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b9ff038b6dc2cba940f549d815c028ae878d72eb9d7a52ebb1f5f8f9dcee64ff"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gorilla-0bb45c-66f2bba5-v2-env-b9ff038b"
+template_id = "dzqs8bq0b4kzyfoku45z"
+source_template_alias = "dfskkfki4pfnz4yjp4no"
+source_template_id = "dfskkfki4pfnz4yjp4no"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
