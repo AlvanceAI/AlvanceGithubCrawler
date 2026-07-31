@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lib-bpmn-engine-1809f0-447965fc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nitram509/lib-bpmn-engine"
+base_commit = "447965fc30f55be9ae6c0929a49e24d7ccf4941f"
+source_tree = "a00b96ac3695d6d1eb08df80579e6078ad5e6d25"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d781701eb45b2e896a9f290310e4bd6966ae9f32e7233badda88ca9423c0853f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lib-bpmn-engine-1809f0-447965fc-v2-env-d781701e"
+template_id = "x4vhxrbbo8l776i7bw9x"
+source_template_alias = "yxt2cn3mu67ti23oo8wo"
+source_template_id = "yxt2cn3mu67ti23oo8wo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

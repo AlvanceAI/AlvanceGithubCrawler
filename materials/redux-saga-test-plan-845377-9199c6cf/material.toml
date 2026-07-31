@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "redux-saga-test-plan-845377-9199c6cf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jfairbank/redux-saga-test-plan"
+base_commit = "9199c6cf7b1359a19168eba6b41a56bc4633df18"
+source_tree = "4daa1e4ebb145a85597c9563cc5b57edebc15eea"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a78b2117246544968a75cadab0b5ed74bf2c614220b3441717be720c1e21b016"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-redux-saga-test-plan-845377-9199c6cf-v2-env-a78b2117"
+template_id = "111ld5mv2v4sl09tc9ua"
+source_template_alias = "yu4y7ft5ikdi86j4ev3y"
+source_template_id = "yu4y7ft5ikdi86j4ev3y"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

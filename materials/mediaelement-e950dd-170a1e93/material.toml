@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mediaelement-e950dd-170a1e93"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mediaelement/mediaelement"
+base_commit = "170a1e93594e45a03f8c8ece907f22269eec1e9a"
+source_tree = "a9ea4efbf4d7e06c17ae966d2532e264222a6688"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "68b4f986704177854b5a061ebcd1035e40e92fa5148a7887adae16fb892b6973"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mediaelement-e950dd-170a1e93-v2-env-68b4f986"
+template_id = "6v4jnmhqtkd1oknlii7o"
+source_template_alias = "6nxyo2ikv8ruucx9r0of"
+source_template_id = "6nxyo2ikv8ruucx9r0of"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

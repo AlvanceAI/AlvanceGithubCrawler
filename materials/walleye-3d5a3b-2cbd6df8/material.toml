@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "walleye-3d5a3b-2cbd6df8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/MitchelPaulin/Walleye"
+base_commit = "2cbd6df821e306f3c04d5af9e98b8650cdcb6d79"
+source_tree = "2cf79b40f199de4107f6e9f7dc9a95c3df6906d0"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fcbad34152cf5e823bc72d017cf0b115def5dc91314df0d9bd8cffdea99615e6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-walleye-3d5a3b-2cbd6df8-v2-env-fcbad341"
+template_id = "a24urlwwuk2tu32jzwv2"
+source_template_alias = "54omjj5n9tvo7zjyk3uh"
+source_template_id = "54omjj5n9tvo7zjyk3uh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "action-hosting-deploy-054603-500ac625"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/FirebaseExtended/action-hosting-deploy"
+base_commit = "500ac625ca2dd40cbd15f7659af953801858032a"
+source_tree = "3cba5f5c0905e8c4c72eaf9ac2bec102bdf50cf2"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fe873008720889d25db15a13b7bcc9ca37924f609e37102b435da1a4352a18b2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-action-hosting-deplo-054603-500ac625-v2-env-fe873008"
+template_id = "da0hapwu8cl911xpqilv"
+source_template_alias = "wq0tbajqvvzlj9h4zpuc"
+source_template_id = "wq0tbajqvvzlj9h4zpuc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

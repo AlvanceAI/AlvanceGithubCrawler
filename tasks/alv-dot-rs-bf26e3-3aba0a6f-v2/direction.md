@@ -1,0 +1,1 @@
+为映射配置增加按机器 hostname 选择的 host-specific sections，使仅匹配当前主机名的文件规则生效并定义与通用规则的合并及冲突优先级。

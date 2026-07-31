@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "trousseau-5644d8-49bdaffe"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/oleiade/trousseau"
+base_commit = "49bdaffeb22dceffc691eb8f65f098c36624e336"
+source_tree = "b4f4c92538a071f3e79945adf49abf36b53b7f2a"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "491cd24f7ab40ddab8fca4decdab469fa5a4b401947833d42f13f11020c137bb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-trousseau-5644d8-49bdaffe-v2-env-491cd24f"
+template_id = "eolo9z19yojk0073s2tp"
+source_template_alias = "db66ka2mvvip4hxmh1yt"
+source_template_id = "db66ka2mvvip4hxmh1yt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

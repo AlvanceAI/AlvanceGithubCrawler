@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rust-script-bc1854-99d2c790"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/fornwall/rust-script"
+base_commit = "99d2c790b303c1d75de5cd90499800283e4b9681"
+source_tree = "3b24cded6896b6adca9c6b707db4eed78dc09d29"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.74"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ee082c0b75d2c452a8ce19579802e6658120981cc168204424fcadbfcc93f4b5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rust-script-bc1854-99d2c790-v2-env-ee082c0b"
+template_id = "luprkzusoyehvwb3l5am"
+source_template_alias = "ofpojdf2ty5hhoss5oa4"
+source_template_id = "ofpojdf2ty5hhoss5oa4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
