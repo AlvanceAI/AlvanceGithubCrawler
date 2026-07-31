@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kobopatch-b59819-6189c542"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pgaskin/kobopatch"
+base_commit = "6189c54213a38255c57b8eb0c8015920d79bd70e"
+source_tree = "ef0fcd78f64a7f13447902854c16a1ae22a052f2"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.23.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ebb71e3d670fbdb4af7857abc1e7506ef94e2f1d35ee6f940235624e64c85988"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kobopatch-b59819-6189c542-v2-env-ebb71e3d"
+template_id = "qbzc3s37savpwvxjp8r1"
+source_template_alias = "1jso6q6939e6xadynn4b"
+source_template_id = "1jso6q6939e6xadynn4b"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

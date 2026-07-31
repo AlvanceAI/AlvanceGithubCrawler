@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mammoth-js-fbfbb7-1a495a98"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mwilliamson/mammoth.js"
+base_commit = "1a495a98856180e25d3b166b51319b165e0ce348"
+source_tree = "bac9bcf58540a87279fa9470c44f33b17abfe491"
+default_branch = "master"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0e5c5d5452012f4fc870923082d8960137ff23b12d964fdc463d0c175acabb15"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mammoth-js-fbfbb7-1a495a98-v2-env-0e5c5d54"
+template_id = "nije0x03h32y42rvaa2i"
+source_template_alias = "dbhvqj9gxnnfeyrikcir"
+source_template_id = "dbhvqj9gxnnfeyrikcir"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

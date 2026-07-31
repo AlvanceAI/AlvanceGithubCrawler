@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mtail-88b2b5-4c7e0e11"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/google/mtail"
+base_commit = "4c7e0e1174ac1ead032efe28d86428bbbe0ae145"
+source_tree = "e2fc0942c2c66d55b44fd0872d85feb207433e09"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.21.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1890ff07784b9253e3441f62fb8536d5dbe3cdb148736f44adba3a5d3ecbc6b9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mtail-88b2b5-4c7e0e11-v2-env-1890ff07"
+template_id = "03cy5zkdjeaeyd9w2biu"
+source_template_alias = "uyqhxdzsok6cm7lhhj3i"
+source_template_id = "uyqhxdzsok6cm7lhhj3i"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
