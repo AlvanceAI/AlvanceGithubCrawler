@@ -462,3 +462,7 @@ checkpoint sample size cannot be reduced
 command= uv run alvance-github-crawler crawl --target-total 38275 --per-language 7655 --max-search-pages 10 --output /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota --request-interval 0.2 --verbose
 checkpoint sample size cannot be reduced
 [2026-07-31T19:08:28Z] stage=crawl-38275 exit_code=1 duration_s=10
+[2026-07-31T19:09:12Z] stage=crawl-38275 run_id=github-mass-production-XBY-20260731
+command= uv run alvance-github-crawler crawl --target-total 38275 --per-language 7655 --max-search-pages 10 --output /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota --request-interval 0.2 --verbose
+checkpoint sample size cannot be reduced
+[2026-07-31T19:09:23Z] stage=crawl-38275 exit_code=1 duration_s=11
