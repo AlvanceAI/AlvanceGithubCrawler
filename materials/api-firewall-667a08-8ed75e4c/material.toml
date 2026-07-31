@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "api-firewall-667a08-8ed75e4c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wallarm/api-firewall"
+base_commit = "8ed75e4ca7dc66998265a0cac3d32acd2f167211"
+source_tree = "4ce7b45253f01ea1126a4437656d8532e7c9ec45"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e3e0aaa41a1c923c8087a0cec694a60b011b8f73493d7076810b6eaa14ea45bc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-api-firewall-667a08-8ed75e4c-v2-env-e3e0aaa4"
+template_id = "9lh8eyiiqot17zvxdelp"
+source_template_alias = "4et0whv19bn6uhi62vmj"
+source_template_id = "4et0whv19bn6uhi62vmj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

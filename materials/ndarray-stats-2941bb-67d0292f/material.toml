@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ndarray-stats-2941bb-67d0292f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rust-ndarray/ndarray-stats"
+base_commit = "67d0292f483c90b8afa0c975832d979d24204e95"
+source_tree = "bcae84219b6867038880c32d7daf4bb9ef7a35f5"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.65.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c5d0432e4984d06f1180f5d78dc9a76f9e2cfd7a14be3ffdfee121fae94f80a5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ndarray-stats-2941bb-67d0292f-v2-env-c5d0432e"
+template_id = "ydkzcgza5apht01gmgbn"
+source_template_alias = "xec3jbtwrjge89r31qy8"
+source_template_id = "xec3jbtwrjge89r31qy8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

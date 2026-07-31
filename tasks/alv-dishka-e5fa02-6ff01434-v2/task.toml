@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-dishka-e5fa02-6ff01434-v2"
+description = "Rebuildable repository task for reagento/dishka"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-dishka-e5fa02-6ff01434-v2"
+material_id = "dishka-e5fa02-6ff01434"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/reagento/dishka"
+base_commit_hash = "6ff01434ba4e3cc93d1dab86e79c5bf06d105bfe"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

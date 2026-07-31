@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sphinx-design-f05541-4f66f32e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/executablebooks/sphinx-design"
+base_commit = "4f66f32e160f16d73dee5eed52cd91984935763f"
+source_tree = "61352be91622345dbe0c027f265a319d359b410b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "00f22410f60b178a2649120e1df2564f4161f8463bd68f8f51598eaca333c9e8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sphinx-design-f05541-4f66f32e-v2-env-00f22410"
+template_id = "umvcoiy6rkhp7g7ksebf"
+source_template_alias = "xhidbhzu3e3rilcg15vf"
+source_template_id = "xhidbhzu3e3rilcg15vf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
