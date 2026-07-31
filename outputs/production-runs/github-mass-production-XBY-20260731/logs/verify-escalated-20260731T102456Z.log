@@ -1,0 +1,38 @@
+[2026-07-31T10:24:56Z] stage=verify-escalated-20260731T102456Z run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-31 10:24:58,997 INFO alvance_github_crawler.pending.verification: verifying pending candidate coinbase/mesh-sdk-go key_slot=1
+2026-07-31 10:24:58,998 INFO alvance_github_crawler.pending.verification: verifying pending candidate lmittmann/w3 key_slot=2
+2026-07-31 10:24:58,999 INFO alvance_github_crawler.pending.verification: verifying pending candidate cirruslabs/cirrus-cli key_slot=3
+2026-07-31 10:24:58,999 INFO alvance_github_crawler.pending.verification: verifying pending candidate argoproj/notifications-engine key_slot=1
+2026-07-31 10:24:59,005 INFO alvance_github_crawler.pending.verification: verifying pending candidate mercari/grpc-federation key_slot=2
+2026-07-31 10:24:59,020 INFO alvance_github_crawler.pending.verification: verifying pending candidate looker-open-source/sdk-codegen key_slot=3
+2026-07-31 10:24:59,071 INFO alvance_github_crawler.pending.verification: verifying pending candidate tirr-c/jxl-oxide key_slot=1
+2026-07-31 10:24:59,076 INFO alvance_github_crawler.pending.verification: verifying pending candidate shotover/shotover-proxy key_slot=2
+2026-07-31 10:24:59,080 INFO alvance_github_crawler.pending.verification: verifying pending candidate matchms/matchms key_slot=3
+2026-07-31 10:24:59,081 INFO alvance_github_crawler.pending.verification: verifying pending candidate huggingface/datatrove key_slot=1
+2026-07-31 10:24:59,087 INFO alvance_github_crawler.pending.verification: verifying pending candidate learnsyslab/crazyflow key_slot=2
+2026-07-31 10:24:59,090 INFO alvance_github_crawler.pending.verification: verifying pending candidate pavelzbornik/whisperX-FastAPI key_slot=3
+2026-07-31 10:26:06,473 INFO alvance_github_crawler.pending.verification: pending candidate pavelzbornik/whisperX-FastAPI finished outcome=rejected key_slot=3 processed=1 in_flight=11
+2026-07-31 10:28:24,296 INFO alvance_github_crawler.pending.verification: pending candidate learnsyslab/crazyflow finished outcome=rejected key_slot=2 processed=2 in_flight=10
+2026-07-31 10:31:46,411 INFO alvance_github_crawler.pending.verification: pending candidate coinbase/mesh-sdk-go finished outcome=rejected key_slot=1 processed=3 in_flight=9
+2026-07-31 10:31:48,199 INFO alvance_github_crawler.pending.verification: pending candidate looker-open-source/sdk-codegen finished outcome=rejected key_slot=3 processed=4 in_flight=8
+2026-07-31 10:32:24,285 INFO alvance_github_crawler.pending.verification: pending candidate shotover/shotover-proxy finished outcome=rejected key_slot=2 processed=5 in_flight=7
+2026-07-31 10:34:07,094 INFO alvance_github_crawler.pending.verification: pending candidate argoproj/notifications-engine finished outcome=rejected key_slot=1 processed=6 in_flight=6
+2026-07-31 10:34:34,634 INFO alvance_github_crawler.pending.verification: pending candidate cirruslabs/cirrus-cli finished outcome=rejected key_slot=3 processed=7 in_flight=5
+2026-07-31 10:35:53,151 INFO alvance_github_crawler.pending.verification: pending candidate lmittmann/w3 finished outcome=rejected key_slot=2 processed=8 in_flight=4
+2026-07-31 10:36:23,358 INFO alvance_github_crawler.pending.verification: pending candidate matchms/matchms finished outcome=rejected key_slot=3 processed=9 in_flight=3
+2026-07-31 10:36:55,940 INFO alvance_github_crawler.pending.verification: pending candidate mercari/grpc-federation finished outcome=rejected key_slot=2 processed=10 in_flight=2
+2026-07-31 10:37:25,681 INFO alvance_github_crawler.pending.verification: pending candidate tirr-c/jxl-oxide finished outcome=rejected key_slot=1 processed=11 in_flight=1
+2026-07-31 10:40:15,463 INFO alvance_github_crawler.pending.verification: pending candidate huggingface/datatrove finished outcome=rejected key_slot=1 processed=12 in_flight=0
+{
+  "key_slot_1_processed": 4,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 4,
+  "key_slot_2_rejected": 4,
+  "key_slot_3_processed": 4,
+  "key_slot_3_rejected": 4,
+  "processed": 12,
+  "rejected": 12,
+  "remaining": 0
+}
+[2026-07-31T10:40:16Z] stage=verify-escalated-20260731T102456Z exit_code=0 duration_s=920

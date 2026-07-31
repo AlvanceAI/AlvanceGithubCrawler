@@ -1,19 +1,19 @@
 {
   "accepted_by_language": {
-    "go": 3512,
-    "javascript": 1378,
-    "python": 2466,
-    "rust": 2843,
-    "typescript": 2058
+    "go": 3707,
+    "javascript": 1464,
+    "python": 2617,
+    "rust": 2999,
+    "typescript": 2179
   },
-  "accepted_total": 12257,
-  "api_request_count": 45453,
+  "accepted_total": 12966,
+  "api_request_count": 48338,
   "cutoff_time": "2025-07-29T09:08:23.059900+00:00",
-  "deduplicated_total": 25000,
+  "deduplicated_total": 26499,
   "duplicate_results": 0,
-  "duration_seconds": 170887.68,
-  "end_time": "2026-07-31T08:36:30.740973+00:00",
-  "fetched_total": 25000,
+  "duration_seconds": 177280.104,
+  "end_time": "2026-07-31T10:23:03.164608+00:00",
+  "fetched_total": 26499,
   "github_rate_limit_remaining": {
     "actions_runner_registration": 20000,
     "audit_log": 3500,
@@ -21,33 +21,33 @@
     "code_scanning_autofix": 20,
     "code_search": 20,
     "copilot_usage_records": 3500,
-    "core": 9975,
+    "core": 9936,
     "dependency_sbom": 200,
     "dependency_snapshots": 200,
-    "graphql": 10000,
+    "graphql": 9990,
     "integration_manifest": 10000,
     "scim": 30000,
     "search": 60,
     "source_import": 200
   },
   "output_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota",
-  "per_language": 5000,
-  "raw_per_language": 5000,
+  "per_language": 5300,
+  "raw_per_language": 5300,
   "rejected_by_reason": {
-    "inactive_head_commit": 305,
-    "no_test_infra": 4781,
-    "tree_unavailable": 25,
-    "unsupported_license": 7632
+    "inactive_head_commit": 347,
+    "no_test_infra": 5094,
+    "tree_unavailable": 26,
+    "unsupported_license": 8067
   },
-  "rejected_total": 12743,
+  "rejected_total": 13534,
   "retry_count": 7,
   "schema_version": "1.3",
   "search_pages_fetched": {
-    "go": 57,
-    "javascript": 63,
-    "python": 61,
-    "rust": 57,
-    "typescript": 63
+    "go": 60,
+    "javascript": 66,
+    "python": 64,
+    "rust": 60,
+    "typescript": 66
   },
   "search_windows_used": {
     "go": 6,
@@ -58,7 +58,11 @@
   },
   "selection_semantics": "raw_sample_all_pass_v1",
   "start_time": "2026-07-29T09:08:23.060613+00:00",
-  "status": "completed",
-  "target_total": 25000,
-  "validation_errors": []
+  "status": "incomplete",
+  "target_total": 26500,
+  "validation_errors": [
+    "raw count is 26499, expected 26500",
+    "unique raw count is 26499, expected 26500",
+    "raw typescript count is 5299, expected 5300"
+  ]
 }
