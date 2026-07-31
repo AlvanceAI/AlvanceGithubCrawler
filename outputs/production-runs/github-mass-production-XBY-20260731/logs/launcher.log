@@ -7113,3 +7113,71 @@ command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/git
   "requeued": 0
 }
 [2026-07-31T07:16:29Z] stage=requeue-resource-failures exit_code=0 duration_s=4
+[XBY 7a4a979] docs: record github-mass-production-XBY-20260731 production statistics
+ 12 files changed, 235 insertions(+), 3 deletions(-)
+automatic git push disabled; push manually with: git push origin XBY
+continuous production complete: /home/xubingyu/AlvanceGithubCrawler/outputs/production-runs/github-mass-production-XBY-20260731
+
+[2026-07-31T07:16:38.880393+00:00] monitor launch max_per_language=4000 batch_per_language=100 prescreen_concurrency=20 e2b_concurrency_per_key=20
+preflight passed: branch=XBY github_tokens=2 prescreen=20 e2b_keys=3 e2b_slots=60
+[2026-07-31T07:16:41Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260731
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 705,
+  "languages": {
+    "go": 304,
+    "javascript": 50,
+    "python": 94,
+    "rust": 182,
+    "typescript": 75
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 705
+}
+[2026-07-31T07:16:46Z] stage=repair-rebuildable-packages exit_code=0 duration_s=5
+[2026-07-31T07:16:46Z] stage=requeue-node-package-manager-v18 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason build_fail --failure-contains can\ only\ install\ with\ an\ existing\ package-lock.json --requeue-marker node-package-manager-v18 --verbose
+{
+  "already_registered": 29,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-07-31T07:16:50Z] stage=requeue-node-package-manager-v18 exit_code=0 duration_s=4
+[2026-07-31T07:16:50Z] stage=requeue-go-runtime-v4 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason infra_error --failure-contains toolchain\ not\ available --requeue-marker go-runtime-v4 --verbose
+{
+  "already_registered": 17,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-07-31T07:16:53Z] stage=requeue-go-runtime-v4 exit_code=0 duration_s=3
+[2026-07-31T07:16:53Z] stage=requeue-e2b-rate-limit-backoff-v1 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason infra_error --failure-reason stage_error --failure-contains maximum\ number\ of\ concurrent --requeue-marker e2b-rate-limit-backoff-v1 --verbose
+{
+  "already_registered": 0,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-07-31T07:16:56Z] stage=requeue-e2b-rate-limit-backoff-v1 exit_code=0 duration_s=3
+[2026-07-31T07:17:02Z] stage=prescreen-resume-22000 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+{
+  "duplicate": 10917,
+  "input_total": 10917,
+  "processed": 0
+}
+[2026-07-31T07:17:06Z] stage=prescreen-resume-22000 exit_code=0 duration_s=4
+[2026-07-31T07:17:07Z] stage=requeue-resource-failures run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason e2b_resource_exhausted --failure-reason benchmark_resource_fail --failure-reason offline_test_timeout --requeue-marker resource-escalation-c2-m4096-v1 --verbose
+{
+  "already_registered": 108,
+  "already_requeued": 101,
+  "matched": 101,
+  "requeued": 0
+}
+[2026-07-31T07:17:11Z] stage=requeue-resource-failures exit_code=0 duration_s=4
