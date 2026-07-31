@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vega-lite-api-ae70f4-e577c2db"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vega/vega-lite-api"
+base_commit = "e577c2dbd6c48c442a1e3de1ab9d561067ad839a"
+source_tree = "55094197f5389f3fe605e8ea93d4e32a902724c3"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "edddc2714d616ff7ccc96edad7fe803552da2cc25a944ac8fa416114d9b1fd65"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vega-lite-api-ae70f4-e577c2db-v2-env-edddc271"
+template_id = "wcvoy83qxbjoj8hcvyel"
+source_template_alias = "nrb4umu9bquym99xmdh9"
+source_template_id = "nrb4umu9bquym99xmdh9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

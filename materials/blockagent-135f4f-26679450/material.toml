@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "blockagent-135f4f-26679450"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Zz-er/BlockAgent"
+base_commit = "26679450caeb27b19e9bde2015222f540692619a"
+source_tree = "8509dd3f9d10ab111c79f159b1b25ad330e60043"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "01a8ce3b3c899fc546f71b32ea633c709d4b3324c2c27a96c0c7c9b094c07e87"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-blockagent-135f4f-26679450-v2-env-01a8ce3b"
+template_id = "w1qe0jq76rppfiw4ssam"
+source_template_alias = "3154qr2qcwugmrb3h83v"
+source_template_id = "3154qr2qcwugmrb3h83v"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

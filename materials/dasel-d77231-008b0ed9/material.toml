@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dasel-d77231-008b0ed9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/TomWright/dasel"
+base_commit = "008b0ed9cae7d5d5b0c72e23c84836c5b2f0338b"
+source_tree = "9989135ea52d198897ba5da135e36318e36f9542"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "23d915713d7fb78871d9bbe4efb6fa8009beab394498f1ef0786b0b19f84745b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dasel-d77231-008b0ed9-v2-env-23d91571"
+template_id = "fgyuksf4rz95fwcp375t"
+source_template_alias = "s2lfsv9i5oxps2m4r05g"
+source_template_id = "s2lfsv9i5oxps2m4r05g"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

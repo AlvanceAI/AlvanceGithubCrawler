@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cmd-3ed363-78577dc5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-cmd/cmd"
+base_commit = "78577dc52fb738d17e9c6c49d010142a68bb186a"
+source_tree = "2aa8a883abd39e271fb241670dd8938fbc9cae3d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.20.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9ae07728ed0251577d6f7903c44b0a43c9a74d1dfd02c0eca077da6e9c49bf85"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cmd-3ed363-78577dc5-v2-env-9ae07728"
+template_id = "wmt97141ed1pf49cu5pd"
+source_template_alias = "i7f6sn9yo56bv6upqvba"
+source_template_id = "i7f6sn9yo56bv6upqvba"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

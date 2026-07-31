@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "linfa-d12de3-7fe5c86e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rust-ml/linfa"
+base_commit = "7fe5c86e7f89a17bad9fa096d4b55a28713044c7"
+source_tree = "ad6ab5b878454faa402382598283a33a20899055"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "28bb7209712d71ad3566cffcdc71b3eaeecb15250d09e88681a5c0aca390b79d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-linfa-d12de3-7fe5c86e-v2-env-28bb7209"
+template_id = "qdg4nea5xqta2fpwwg1e"
+source_template_alias = "o37hiocfn7q8tuidbmue"
+source_template_id = "o37hiocfn7q8tuidbmue"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

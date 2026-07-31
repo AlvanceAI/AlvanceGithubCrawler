@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rsa-e48dd7-4a6006f6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/RustCrypto/RSA"
+base_commit = "4a6006f6e78daedf28e160ee3f3745c3f14505d4"
+source_tree = "d15f166f77a0f5745d9ea862b57b7a70f81ec333"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.85"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "de68be5b7bb2bc0fb9075592156989bfc8e2ae4737b81f5be1bebf7985a960e5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rsa-e48dd7-4a6006f6-v2-env-de68be5b"
+template_id = "chsglb06c1lmrdkgoz29"
+source_template_alias = "g181tg1ogut617jd2jfs"
+source_template_id = "g181tg1ogut617jd2jfs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

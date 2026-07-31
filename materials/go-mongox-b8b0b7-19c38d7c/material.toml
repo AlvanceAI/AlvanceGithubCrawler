@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-mongox-b8b0b7-19c38d7c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/chenmingyong0423/go-mongox"
+base_commit = "19c38d7c2edcaf14e958a1e086d1f5e40363c924"
+source_tree = "400abee489897685e8627a93fa18baf2f2457be2"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.19.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "76827c5128ec2c3a056792b264ccf8723470c035fa196cf37dacd9e69953d20b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-mongox-b8b0b7-19c38d7c-v2-env-76827c51"
+template_id = "1pxxtz6ekqhfnlol1qu5"
+source_template_alias = "mfstsfunivq0obxmvqv0"
+source_template_id = "mfstsfunivq0obxmvqv0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

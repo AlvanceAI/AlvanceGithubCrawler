@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "caddy-security-e43bda-b96087fc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/greenpau/caddy-security"
+base_commit = "b96087fc696ada2ed80f4ca81e031878a47d43ac"
+source_tree = "2939dbeea438c070123cba5ea1f77bab58a0a799"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6c9964c8cca996c457f61975a186f93052139d17107dfcbc120e00344482d031"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-caddy-security-e43bda-b96087fc-v2-env-6c9964c8"
+template_id = "nuxeyysqosg4ndt6hwwh"
+source_template_alias = "psq6a8dv6lb05quc250d"
+source_template_id = "psq6a8dv6lb05quc250d"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

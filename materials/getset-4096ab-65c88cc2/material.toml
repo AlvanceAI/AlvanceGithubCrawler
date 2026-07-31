@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "getset-4096ab-65c88cc2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jbaublitz/getset"
+base_commit = "65c88cc2b3e6bdf24c8be912c6a503a6d68d0fa0"
+source_tree = "ab5e528f780eaf596af0520f26e0f3164cf4511e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b77624ab8c162e7cc17068e5bc8b0d17b989a19f6e91b2ff031cc6ce8303aa6d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-getset-4096ab-65c88cc2-v2-env-b77624ab"
+template_id = "xhvzm1834d1sh1tbdocy"
+source_template_alias = "mj7b21bfe9puxsghrlyb"
+source_template_id = "mj7b21bfe9puxsghrlyb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

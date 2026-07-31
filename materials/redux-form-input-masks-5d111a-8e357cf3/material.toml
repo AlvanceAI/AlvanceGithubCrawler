@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "redux-form-input-masks-5d111a-8e357cf3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/renato-bohler/redux-form-input-masks"
+base_commit = "8e357cf3a5060138dfe111b6a84df7d8f1c8ae9d"
+source_tree = "280c94b6935c044f20e37a3407074dd1d4a9a906"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bf7af0f1795fd9ece2296c97f0b3bd84e5ad1fa848d172112d06d79ba957fc13"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-redux-form-input-mas-5d111a-8e357cf3-v2-env-bf7af0f1"
+template_id = "t91qgrsccxhigfx6l3yp"
+source_template_alias = "00ezkajpz1bdqvug814p"
+source_template_id = "00ezkajpz1bdqvug814p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-webdav-945738-c16f8a9a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/emersion/go-webdav"
+base_commit = "c16f8a9a132cc666c5fe387a3d7946d54f8e15aa"
+source_tree = "6a904667a7a194eb10ba486dcda8270b9a3c1859"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.13.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "61eda62d829fba862fc99624ee214fd69b1b585336c83f9d330d37aa79615ae4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-webdav-945738-c16f8a9a-v2-env-61eda62d"
+template_id = "t01pud7bfckto785tpe7"
+source_template_alias = "z5qn8nsr53vgyag42oma"
+source_template_id = "z5qn8nsr53vgyag42oma"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "toml-058033-c6d720d8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/BurntSushi/toml"
+base_commit = "c6d720d83547bb8d7afb067ba9df8bad0323e2d1"
+source_tree = "74a2968b459f938c41d6adc2bab3873f915776ca"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.19.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "082c6f2105806fb23a8a51aa72004470dd78895357649fa0c768ba79a2775c91"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-toml-058033-c6d720d8-v2-env-082c6f21"
+template_id = "cc6d7jg3a5es0hh5tmd0"
+source_template_alias = "77vfriq5n84e0hsv2rmg"
+source_template_id = "77vfriq5n84e0hsv2rmg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

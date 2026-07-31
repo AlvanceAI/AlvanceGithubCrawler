@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "opossum-d4519b-59421c57"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nodeshift/opossum"
+base_commit = "59421c572adf568c9f7dab823801e6618a0759c3"
+source_tree = "dce5fc385587c92acc6002876f35dc516850f1d9"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fde3945add38c3927bd324967d123ab51cd4d85605285584289039a5bc1151e7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-opossum-d4519b-59421c57-v2-env-fde3945a"
+template_id = "opaua754q5fupeyhdiso"
+source_template_alias = "l9t4kqzbayca3lhh87c9"
+source_template_id = "l9t4kqzbayca3lhh87c9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

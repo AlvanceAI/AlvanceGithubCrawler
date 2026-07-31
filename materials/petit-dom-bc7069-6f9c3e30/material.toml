@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "petit-dom-bc7069-6f9c3e30"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/yelouafi/petit-dom"
+base_commit = "6f9c3e30f4a515a470f50df3d3d85944bca66d71"
+source_tree = "d37835eb41c6c09ba8097b6cc0c63ea141c68cf9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e5651c8ba0f2a1b1602df6c8fabffa3428d22848023578918db333efd1992653"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-petit-dom-bc7069-6f9c3e30-v2-env-e5651c8b"
+template_id = "rjt2d14rafaeoxn5msbv"
+source_template_alias = "elr848ivw1a9vt2vyusi"
+source_template_id = "elr848ivw1a9vt2vyusi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
