@@ -42,3 +42,11 @@ command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/git
   "processed": 0
 }
 [2026-07-31T07:17:06Z] stage=prescreen-resume-22000 exit_code=0 duration_s=4
+[2026-07-31T07:17:42Z] stage=prescreen-resume-22000 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+{
+  "duplicate": 10917,
+  "input_total": 10917,
+  "processed": 0
+}
+[2026-07-31T07:17:46Z] stage=prescreen-resume-22000 exit_code=0 duration_s=4
