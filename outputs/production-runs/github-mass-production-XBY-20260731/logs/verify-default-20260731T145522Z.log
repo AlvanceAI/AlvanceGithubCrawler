@@ -1,0 +1,54 @@
+[2026-07-31T14:55:22Z] stage=verify-default-20260731T145522Z run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-07-31 14:55:25,512 INFO alvance_github_crawler.pending.verification: verifying pending candidate CarlosNZ/json-edit-react key_slot=1
+2026-07-31 14:55:29,392 INFO alvance_github_crawler.pending.verification: verifying pending candidate penpot/penpot-exporter-figma-plugin key_slot=2
+2026-07-31 14:55:35,873 INFO alvance_github_crawler.pending.verification: verifying pending candidate pdf/zfs_exporter key_slot=3
+2026-07-31 14:55:39,863 INFO alvance_github_crawler.pending.verification: verifying pending candidate go-gl/glow key_slot=1
+2026-07-31 14:55:45,120 INFO alvance_github_crawler.pending.verification: verifying pending candidate inbucket/inbucket key_slot=2
+2026-07-31 14:55:47,629 INFO alvance_github_crawler.pending.verification: verifying pending candidate avishayil/react-native-restart key_slot=3
+2026-07-31 14:55:50,248 INFO alvance_github_crawler.pending.verification: verifying pending candidate argyleink/css-color-component key_slot=1
+2026-07-31 14:55:52,891 INFO alvance_github_crawler.pending.verification: verifying pending candidate manzt/zarrita.js key_slot=2
+2026-07-31 14:55:58,186 INFO alvance_github_crawler.pending.verification: verifying pending candidate jparkerweb/semantic-chunking key_slot=3
+2026-07-31 14:56:12,943 INFO alvance_github_crawler.pending.verification: verifying pending candidate Manishearth/rust-gc key_slot=1
+2026-07-31 14:56:17,799 INFO alvance_github_crawler.pending.verification: pending candidate jparkerweb/semantic-chunking finished outcome=rejected key_slot=3 processed=1 in_flight=9
+2026-07-31 14:56:18,296 INFO alvance_github_crawler.pending.verification: verifying pending candidate momijizukamori/bookbinder-js key_slot=3
+2026-07-31 14:56:22,177 INFO alvance_github_crawler.pending.verification: verifying pending candidate hawkw/sharded-slab key_slot=2
+2026-07-31 14:56:26,197 INFO alvance_github_crawler.pending.verification: verifying pending candidate r0adkll/upload-google-play key_slot=3
+2026-07-31 14:56:30,082 INFO alvance_github_crawler.pending.verification: verifying pending candidate finnbear/rustrict key_slot=1
+2026-07-31 14:56:32,807 INFO alvance_github_crawler.pending.verification: verifying pending candidate jacobdeichert/mask key_slot=2
+2026-07-31 14:56:39,444 INFO alvance_github_crawler.pending.verification: verifying pending candidate mookid/diffr key_slot=3
+2026-07-31 14:56:39,511 INFO alvance_github_crawler.pending.verification: pending candidate hawkw/sharded-slab finished outcome=error key_slot=2 processed=2 in_flight=14
+2026-07-31 14:56:50,722 INFO alvance_github_crawler.pending.verification: pending candidate r0adkll/upload-google-play finished outcome=rejected key_slot=3 processed=3 in_flight=13
+2026-07-31 14:56:54,881 INFO alvance_github_crawler.pending.verification: pending candidate finnbear/rustrict finished outcome=rejected key_slot=1 processed=4 in_flight=12
+2026-07-31 14:56:56,746 INFO alvance_github_crawler.pending.verification: pending candidate mookid/diffr finished outcome=rejected key_slot=3 processed=5 in_flight=11
+2026-07-31 14:56:58,342 INFO alvance_github_crawler.pending.verification: verifying pending candidate queer/boxxy key_slot=3
+2026-07-31 14:57:11,323 INFO alvance_github_crawler.pending.verification: pending candidate penpot/penpot-exporter-figma-plugin finished outcome=registered key_slot=2 processed=6 in_flight=11
+2026-07-31 14:57:24,332 INFO alvance_github_crawler.pending.verification: pending candidate go-gl/glow finished outcome=registered key_slot=1 processed=7 in_flight=10
+2026-07-31 14:57:25,988 INFO alvance_github_crawler.pending.verification: pending candidate jacobdeichert/mask finished outcome=rejected key_slot=2 processed=8 in_flight=9
+2026-07-31 14:57:42,489 INFO alvance_github_crawler.pending.verification: pending candidate avishayil/react-native-restart finished outcome=rejected key_slot=3 processed=9 in_flight=8
+2026-07-31 14:57:42,953 INFO alvance_github_crawler.pending.verification: pending candidate manzt/zarrita.js finished outcome=registered key_slot=2 processed=10 in_flight=7
+2026-07-31 14:57:43,505 INFO alvance_github_crawler.pending.verification: pending candidate Manishearth/rust-gc finished outcome=registered key_slot=1 processed=11 in_flight=6
+2026-07-31 14:58:25,923 INFO alvance_github_crawler.pending.verification: pending candidate pdf/zfs_exporter finished outcome=registered key_slot=3 processed=12 in_flight=5
+2026-07-31 14:59:02,120 INFO alvance_github_crawler.pending.verification: pending candidate argyleink/css-color-component finished outcome=registered key_slot=1 processed=13 in_flight=4
+2026-07-31 14:59:10,765 INFO alvance_github_crawler.pending.verification: pending candidate queer/boxxy finished outcome=registered key_slot=3 processed=14 in_flight=3
+2026-07-31 14:59:26,625 INFO alvance_github_crawler.pending.verification: pending candidate momijizukamori/bookbinder-js finished outcome=registered key_slot=3 processed=15 in_flight=2
+2026-07-31 14:59:49,425 INFO alvance_github_crawler.pending.verification: pending candidate inbucket/inbucket finished outcome=registered key_slot=2 processed=16 in_flight=1
+2026-07-31 15:01:00,066 INFO alvance_github_crawler.pending.verification: pending candidate CarlosNZ/json-edit-react finished outcome=registered key_slot=1 processed=17 in_flight=0
+{
+  "error": 1,
+  "key_slot_1_processed": 5,
+  "key_slot_1_registered": 4,
+  "key_slot_1_rejected": 1,
+  "key_slot_2_error": 1,
+  "key_slot_2_processed": 5,
+  "key_slot_2_registered": 3,
+  "key_slot_2_rejected": 1,
+  "key_slot_3_processed": 7,
+  "key_slot_3_registered": 3,
+  "key_slot_3_rejected": 4,
+  "processed": 17,
+  "registered": 10,
+  "rejected": 6,
+  "remaining": 1
+}
+[2026-07-31T15:01:01Z] stage=verify-default-20260731T145522Z exit_code=0 duration_s=339

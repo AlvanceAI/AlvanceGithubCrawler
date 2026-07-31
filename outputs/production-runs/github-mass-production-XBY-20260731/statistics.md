@@ -1,22 +1,22 @@
 # Pipeline statistics: github-mass-production-XBY-20260731
 
 - Status: `complete`
-- Generated: `2026-07-31T12:49:25.353244+00:00`
-- Raw GitHub sample: 30000
-- Initial filter accepted: 14433
-- E2B queue: 3017
-- Deliverable tasks: 888
+- Generated: `2026-07-31T15:40:18.700883+00:00`
+- Raw GitHub sample: 35000
+- Initial filter accepted: 16425
+- E2B queue: 3300
+- Deliverable tasks: 992
 - Pending: 0
 
 ## Language funnel
 
 | Language | Initial accepted | Final tasks |
 |---|---:|---:|
-| python | 2935 | 104 |
-| go | 4131 | 379 |
-| typescript | 2428 | 98 |
-| javascript | 1644 | 75 |
-| rust | 3295 | 232 |
+| python | 3373 | 120 |
+| go | 4688 | 417 |
+| typescript | 2789 | 114 |
+| javascript | 1828 | 82 |
+| rust | 3747 | 259 |
 
 ## Stage timings
 
@@ -142,6 +142,44 @@
 | verify-default-20260731T123609Z | 22 | 0 |
 | requeue-resource-failures | 33 | 0 |
 | verify-escalated-20260731T123706Z | 736 | 0 |
+| repair-rebuildable-packages | 8 | 0 |
+| requeue-node-package-manager-v18 | 4 | 0 |
+| requeue-go-runtime-v4 | 3 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 3 | 0 |
+| prescreen-resume-30000 | 4 | 0 |
+| crawl-30500 | 344 | 0 |
+| prescreen-30500 | 291 | 0 |
+| crawl-31000 | 358 | 0 |
+| prescreen-31000 | 304 | 0 |
+| crawl-31500 | 362 | 0 |
+| prescreen-31500 | 258 | 0 |
+| crawl-32000 | 362 | 0 |
+| verify-default-20260731T125658Z | 2844 | 0 |
+| prescreen-32000 | 1419 | 0 |
+| crawl-32500 | 353 | 0 |
+| prescreen-32500 | 257 | 0 |
+| crawl-33000 | 327 | 0 |
+| prescreen-33000 | 295 | 0 |
+| crawl-33500 | 334 | 0 |
+| prescreen-33500 | 316 | 0 |
+| crawl-34000 | 348 | 0 |
+| prescreen-34000 | 278 | 0 |
+| verify-default-20260731T135818Z | 2923 | 0 |
+| verify-default-20260731T144719Z | 39 | 0 |
+| verify-default-20260731T144829Z | 4 | 0 |
+| verify-default-20260731T144919Z | 16 | 0 |
+| crawl-34500 | 1081 | 0 |
+| verify-default-20260731T145224Z | 40 | 0 |
+| prescreen-34500 | 328 | 0 |
+| verify-default-20260731T145522Z | 339 | 0 |
+| verify-default-20260731T150118Z | 17 | 0 |
+| verify-default-20260731T150206Z | 4 | 0 |
+| crawl-35000 | 354 | 0 |
+| verify-default-20260731T150256Z | 18 | 0 |
+| prescreen-35000 | 364 | 0 |
+| verify-default-20260731T150346Z | 1061 | 0 |
+| requeue-resource-failures | 28 | 0 |
+| verify-escalated-20260731T152157Z | 1098 | 0 |
 
 ## E2B task performance
 
@@ -1035,6 +1073,110 @@
 | [snyk/parlay](https://github.com/snyk/parlay) | go | 1 CPU / 1024 MB | 0.43 | 14.69 | 171.1 | `tasks/alv-parlay-2279b5-223fb73e-v2` |
 | [react/react-strict-dom](https://github.com/react/react-strict-dom) | javascript | 2 CPU / 4096 MB | 0.48 | 34.97 | 334.8 | `tasks/alv-react-strict-dom-0d0995-c877f5c1-v2` |
 | [lusingander/stu](https://github.com/lusingander/stu) | rust | 2 CPU / 4096 MB | 0.59 | 4.28 | 97.9 | `tasks/alv-stu-023314-9c396166-v2` |
+| [sclevine/yj](https://github.com/sclevine/yj) | go | 1 CPU / 1024 MB | 0.43 | 8.71 | 100.1 | `tasks/alv-yj-8e3b75-562c8aec-v2` |
+| [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release) | python | 1 CPU / 1024 MB | 0.44 | 22.19 | 124.1 | `tasks/alv-python-semantic-rele-0c4684-c74aa3b9-v2` |
+| [PyCQA/flake8-bugbear](https://github.com/PyCQA/flake8-bugbear) | python | 1 CPU / 1024 MB | 0.47 | 11.67 | 258.5 | `tasks/alv-flake8-bugbear-36f340-40a6316b-v2` |
+| [vegeta897/snow-stamp](https://github.com/vegeta897/snow-stamp) | javascript | 1 CPU / 1024 MB | 0.43 | 4.22 | 102.4 | `tasks/alv-snow-stamp-0ed5ed-9af4acf0-v2` |
+| [microsoft/injectorppforrust](https://github.com/microsoft/injectorppforrust) | rust | 1 CPU / 1024 MB | 0.41 | 7.52 | 130.1 | `tasks/alv-injectorppforrust-ab77c0-95a9d8a0-v2` |
+| [scottlamb/retina](https://github.com/scottlamb/retina) | rust | 1 CPU / 1024 MB | 0.43 | 13.94 | 327.4 | `tasks/alv-retina-89f5fd-6972ac42-v2` |
+| [fraenky8/tables-to-go](https://github.com/fraenky8/tables-to-go) | go | 1 CPU / 1024 MB | 0.7 | 31.88 | 739.2 | `tasks/alv-tables-to-go-c4098c-bde2b884-v2` |
+| [aws/aws-lambda-go](https://github.com/aws/aws-lambda-go) | go | 1 CPU / 1024 MB | 0.49 | 76.61 | 135.4 | `tasks/alv-aws-lambda-go-6526bd-87e344b1-v2` |
+| [MrPrimate/ddb-importer](https://github.com/MrPrimate/ddb-importer) | typescript | 1 CPU / 1024 MB | 0.5 | 58.66 | 306.3 | `tasks/alv-ddb-importer-4448ba-9f5e3ab5-v2` |
+| [AdnaneKhan/gato-x](https://github.com/AdnaneKhan/gato-x) | python | 1 CPU / 1024 MB | 0.63 | 12.0 | 126.9 | `tasks/alv-gato-x-2cca40-d5934667-v2` |
+| [hashicorp/vault-client-go](https://github.com/hashicorp/vault-client-go) | go | 1 CPU / 1024 MB | 0.52 | 14.49 | 188.8 | `tasks/alv-vault-client-go-93eeb0-a0f17ccb-v2` |
+| [kisielk/errcheck](https://github.com/kisielk/errcheck) | go | 1 CPU / 1024 MB | 0.64 | 17.35 | 219.6 | `tasks/alv-errcheck-addbba-6e4cd893-v2` |
+| [placemark/placemark](https://github.com/placemark/placemark) | typescript | 1 CPU / 1024 MB | 0.39 | 28.02 | 247.1 | `tasks/alv-placemark-021eaf-09dbfa59-v2` |
+| [ismaelgv/rnr](https://github.com/ismaelgv/rnr) | rust | 1 CPU / 1024 MB | 0.49 | 1.29 | 42.9 | `tasks/alv-rnr-a66833-111c425a-v2` |
+| [Nonanti/mathcore](https://github.com/Nonanti/mathcore) | rust | 1 CPU / 1024 MB | 0.52 | 9.35 | 168.9 | `tasks/alv-mathcore-927b9b-78141f35-v2` |
+| [Virviil/oci2git](https://github.com/Virviil/oci2git) | rust | 1 CPU / 1024 MB | 0.54 | 14.81 | 279.9 | `tasks/alv-oci2git-ae0e31-b7a955ae-v2` |
+| [nik-rev/derive-aliases](https://github.com/nik-rev/derive-aliases) | rust | 1 CPU / 1024 MB | 0.5 | 46.94 | 327.5 | `tasks/alv-derive-aliases-b2dd93-891a6ff3-v2` |
+| [glincker/stacklit](https://github.com/glincker/stacklit) | go | 1 CPU / 1024 MB | 0.49 | 15.74 | 180.0 | `tasks/alv-stacklit-8b79d0-6aa01764-v2` |
+| [nilmtk/nilmtk](https://github.com/nilmtk/nilmtk) | python | 1 CPU / 1024 MB | 0.54 | 32.38 | 312.7 | `tasks/alv-nilmtk-805140-8967bd1f-v2` |
+| [arktypeio/arktype](https://github.com/arktypeio/arktype) | typescript | 1 CPU / 1024 MB | 0.39 | 10.53 | 303.8 | `tasks/alv-arktype-4bcdc2-03b1f015-v2` |
+| [recatek/gecs](https://github.com/recatek/gecs) | rust | 1 CPU / 1024 MB | 0.47 | 12.41 | 245.6 | `tasks/alv-gecs-16e25b-63b16a88-v2` |
+| [sqlalchemy/alembic](https://github.com/sqlalchemy/alembic) | python | 1 CPU / 1024 MB | 0.51 | 16.0 | 143.7 | `tasks/alv-alembic-07cf13-7b2af57e-v2` |
+| [SalesforceCommerceCloud/sfcc-ci](https://github.com/SalesforceCommerceCloud/sfcc-ci) | javascript | 1 CPU / 1024 MB | 0.46 | 26.7 | 98.4 | `tasks/alv-sfcc-ci-0ead98-8da5884c-v2` |
+| [allan2/dotenvy](https://github.com/allan2/dotenvy) | rust | 1 CPU / 1024 MB | 0.44 | 4.36 | 83.9 | `tasks/alv-dotenvy-2ed61f-fa251669-v2` |
+| [zxing-js/browser](https://github.com/zxing-js/browser) | typescript | 1 CPU / 1024 MB | 0.38 | 8.82 | 256.7 | `tasks/alv-browser-c1b59a-9ad027d8-v2` |
+| [PumpkinSeed/fakeit](https://github.com/PumpkinSeed/fakeit) | rust | 1 CPU / 1024 MB | 0.45 | 4.86 | 159.1 | `tasks/alv-fakeit-9fb402-791a8e30-v2` |
+| [glayzzle/php-parser](https://github.com/glayzzle/php-parser) | javascript | 1 CPU / 1024 MB | 0.53 | 54.77 | 301.1 | `tasks/alv-php-parser-9e881b-dc044ccb-v2` |
+| [uber-go/zap](https://github.com/uber-go/zap) | go | 1 CPU / 1024 MB | 0.57 | 22.7 | 123.6 | `tasks/alv-zap-e056cd-5b81b37b-v2` |
+| [flyingmutant/rapid](https://github.com/flyingmutant/rapid) | go | 1 CPU / 1024 MB | 0.51 | 15.94 | 575.3 | `tasks/alv-rapid-9217e8-9bafe073-v2` |
+| [flosch/pongo2](https://github.com/flosch/pongo2) | go | 1 CPU / 1024 MB | 0.55 | 11.73 | 185.9 | `tasks/alv-pongo2-eda136-c0f82578-v2` |
+| [agent-ecosystem/skill-validator](https://github.com/agent-ecosystem/skill-validator) | go | 1 CPU / 1024 MB | 0.66 | 53.08 | 524.2 | `tasks/alv-skill-validator-f580f7-74807669-v2` |
+| [itavero/homebridge-z2m](https://github.com/itavero/homebridge-z2m) | typescript | 1 CPU / 1024 MB | 0.49 | 59.82 | 214.8 | `tasks/alv-homebridge-z2m-863400-00070261-v2` |
+| [ony3000/prettier-plugin-classnames](https://github.com/ony3000/prettier-plugin-classnames) | typescript | 1 CPU / 1024 MB | 0.46 | 1.91 | 86.4 | `tasks/alv-prettier-plugin-clas-94c439-cd8d8f8e-v2` |
+| [arttor/helmify](https://github.com/arttor/helmify) | go | 1 CPU / 1024 MB | 0.47 | 15.02 | 214.7 | `tasks/alv-helmify-572c0b-c64d55f1-v2` |
+| [openatx/uiautomator2](https://github.com/openatx/uiautomator2) | python | 1 CPU / 1024 MB | 0.51 | 4.79 | 70.6 | `tasks/alv-uiautomator2-fae8c4-b3e5ff36-v2` |
+| [invopop/jsonschema](https://github.com/invopop/jsonschema) | go | 1 CPU / 1024 MB | 0.42 | 22.89 | 181.6 | `tasks/alv-jsonschema-9d8097-f678162a-v2` |
+| [bhj/KaraokeEternal](https://github.com/bhj/KaraokeEternal) | typescript | 1 CPU / 1024 MB | 0.38 | 3.32 | 106.0 | `tasks/alv-karaokeeternal-65c65c-b209d4a9-v2` |
+| [vercel/styled-jsx](https://github.com/vercel/styled-jsx) | javascript | 1 CPU / 1024 MB | 0.56 | 14.75 | 146.7 | `tasks/alv-styled-jsx-b2e0c4-a737ac44-v2` |
+| [charmbracelet/sequin](https://github.com/charmbracelet/sequin) | go | 1 CPU / 1024 MB | 0.6 | 25.59 | 188.3 | `tasks/alv-sequin-3de542-c69a7dbd-v2` |
+| [cycloidio/inframap](https://github.com/cycloidio/inframap) | go | 1 CPU / 1024 MB | 0.45 | 19.55 | 228.5 | `tasks/alv-inframap-e6ebf0-f02f224c-v2` |
+| [humanlogio/humanlog](https://github.com/humanlogio/humanlog) | go | 1 CPU / 1024 MB | 0.41 | 24.13 | 264.7 | `tasks/alv-humanlog-64c946-15d733f9-v2` |
+| [nolanlawson/emoji-picker-element](https://github.com/nolanlawson/emoji-picker-element) | javascript | 1 CPU / 1024 MB | 0.48 | 82.23 | 333.3 | `tasks/alv-emoji-picker-element-b80c51-5d1c8bfc-v2` |
+| [vroonhof/opensteuerauszug](https://github.com/vroonhof/opensteuerauszug) | python | 1 CPU / 1024 MB | 0.56 | 8.65 | 129.8 | `tasks/alv-opensteuerauszug-c5cbb5-9b94c751-v2` |
+| [brendanzab/codespan](https://github.com/brendanzab/codespan) | rust | 1 CPU / 1024 MB | 0.42 | 10.88 | 168.4 | `tasks/alv-codespan-9aff1e-b5632935-v2` |
+| [enuno/unifi-mcp-server](https://github.com/enuno/unifi-mcp-server) | python | 1 CPU / 1024 MB | 0.58 | 16.24 | 129.3 | `tasks/alv-unifi-mcp-server-a22728-35ea7d19-v2` |
+| [rwxrob/bonzai](https://github.com/rwxrob/bonzai) | go | 1 CPU / 1024 MB | 0.46 | 7.49 | 102.2 | `tasks/alv-bonzai-b566e2-236ed3a8-v2` |
+| [ReactiveCircus/android-emulator-runner](https://github.com/ReactiveCircus/android-emulator-runner) | typescript | 1 CPU / 1024 MB | 0.48 | 9.76 | 400.6 | `tasks/alv-android-emulator-run-884f00-cad32164-v2` |
+| [luminvent/yaserde](https://github.com/luminvent/yaserde) | rust | 1 CPU / 1024 MB | 0.69 | 8.49 | 162.8 | `tasks/alv-yaserde-9937c9-3b45f088-v2` |
+| [alacritty/vte](https://github.com/alacritty/vte) | rust | 1 CPU / 1024 MB | 0.48 | 4.72 | 143.0 | `tasks/alv-vte-775aa2-abeae765-v2` |
+| [gowebly/gowebly](https://github.com/gowebly/gowebly) | go | 1 CPU / 1024 MB | 0.53 | 33.51 | 195.2 | `tasks/alv-gowebly-9cefa9-08d7f8dc-v2` |
+| [chipsenkbeil/service-manager-rs](https://github.com/chipsenkbeil/service-manager-rs) | rust | 1 CPU / 1024 MB | 0.61 | 6.75 | 204.0 | `tasks/alv-service-manager-rs-6bc1e4-c5464bbd-v2` |
+| [MustacheCase/zanadir](https://github.com/MustacheCase/zanadir) | go | 1 CPU / 1024 MB | 0.44 | 31.09 | 198.4 | `tasks/alv-zanadir-408600-aa622ff9-v2` |
+| [sminez/penrose](https://github.com/sminez/penrose) | rust | 1 CPU / 1024 MB | 0.62 | 20.97 | 277.8 | `tasks/alv-penrose-29ec93-5ab890bc-v2` |
+| [tbotnz/cisshgo](https://github.com/tbotnz/cisshgo) | go | 1 CPU / 1024 MB | 0.81 | 30.83 | 140.7 | `tasks/alv-cisshgo-8d2b40-03ec41d6-v2` |
+| [paulstansifer/unseemly](https://github.com/paulstansifer/unseemly) | rust | 1 CPU / 1024 MB | 0.6 | 91.12 | 595.9 | `tasks/alv-unseemly-e7c94e-9f324d51-v2` |
+| [jesseduffield/lazydocker](https://github.com/jesseduffield/lazydocker) | go | 1 CPU / 1024 MB | 0.53 | 20.06 | 189.1 | `tasks/alv-lazydocker-25fb77-7e7aadc2-v2` |
+| [spacewalkhq/raft-rs](https://github.com/spacewalkhq/raft-rs) | rust | 1 CPU / 1024 MB | 0.57 | 18.0 | 269.5 | `tasks/alv-raft-rs-2919c8-d6ddebb3-v2` |
+| [ejoffe/spr](https://github.com/ejoffe/spr) | go | 1 CPU / 1024 MB | 0.51 | 16.36 | 136.7 | `tasks/alv-spr-d08761-0767a458-v2` |
+| [datrs/hypercore](https://github.com/datrs/hypercore) | rust | 1 CPU / 1024 MB | 0.66 | 65.5 | 216.3 | `tasks/alv-hypercore-af2a07-12cb1375-v2` |
+| [nicklaw5/helix](https://github.com/nicklaw5/helix) | go | 1 CPU / 1024 MB | 0.48 | 14.38 | 152.2 | `tasks/alv-helix-4e9504-15cffe63-v2` |
+| [w3c/webidl2.js](https://github.com/w3c/webidl2.js) | javascript | 1 CPU / 1024 MB | 0.52 | 11.63 | 169.8 | `tasks/alv-webidl2-js-a710bb-f4ceaded-v2` |
+| [GLips/Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) | typescript | 1 CPU / 1024 MB | 0.54 | 28.77 | 123.0 | `tasks/alv-figma-context-mcp-af888f-c083d65c-v2` |
+| [shnewto/bnf](https://github.com/shnewto/bnf) | rust | 1 CPU / 1024 MB | 0.46 | 10.58 | 128.7 | `tasks/alv-bnf-455726-23f620d7-v2` |
+| [joybro/obsidian-similar-notes](https://github.com/joybro/obsidian-similar-notes) | typescript | 1 CPU / 1024 MB | 0.51 | 27.16 | 110.5 | `tasks/alv-obsidian-similar-not-86d88a-bcc717bf-v2` |
+| [dotenv-linter/dotenv-linter](https://github.com/dotenv-linter/dotenv-linter) | rust | 1 CPU / 1024 MB | 0.55 | 7.44 | 92.0 | `tasks/alv-dotenv-linter-ddc541-36ed5404-v2` |
+| [gotestyourself/gotestsum](https://github.com/gotestyourself/gotestsum) | go | 1 CPU / 1024 MB | 0.52 | 19.47 | 150.1 | `tasks/alv-gotestsum-046f2f-3cf14356-v2` |
+| [coredhcp/coredhcp](https://github.com/coredhcp/coredhcp) | go | 1 CPU / 1024 MB | 0.61 | 22.73 | 170.5 | `tasks/alv-coredhcp-fe4311-a0841cb3-v2` |
+| [rcoh/angle-grinder](https://github.com/rcoh/angle-grinder) | rust | 1 CPU / 1024 MB | 0.49 | 4.76 | 111.1 | `tasks/alv-angle-grinder-0869e9-9c2fc884-v2` |
+| [defnull/multipart](https://github.com/defnull/multipart) | python | 1 CPU / 1024 MB | 0.45 | 1.19 | 34.8 | `tasks/alv-multipart-778931-a14fdd63-v2` |
+| [wbond/asn1crypto](https://github.com/wbond/asn1crypto) | python | 1 CPU / 1024 MB | 0.43 | 2.6 | 61.4 | `tasks/alv-asn1crypto-f1a15e-a767d2da-v2` |
+| [netdevops/hier_config](https://github.com/netdevops/hier_config) | python | 1 CPU / 1024 MB | 0.68 | 3.94 | 65.2 | `tasks/alv-hier-config-7ae15d-32e60767-v2` |
+| [AppThreat/vulnerability-db](https://github.com/AppThreat/vulnerability-db) | python | 1 CPU / 1024 MB | 0.45 | 13.39 | 125.5 | `tasks/alv-vulnerability-db-688ff1-8e660b94-v2` |
+| [goccy/go-yaml](https://github.com/goccy/go-yaml) | go | 1 CPU / 1024 MB | 0.47 | 13.48 | 100.2 | `tasks/alv-go-yaml-e77713-edee2f91-v2` |
+| [akrylysov/pogreb](https://github.com/akrylysov/pogreb) | go | 1 CPU / 1024 MB | 0.51 | 10.83 | 113.5 | `tasks/alv-pogreb-036bda-b86080d0-v2` |
+| [square/certigo](https://github.com/square/certigo) | go | 1 CPU / 1024 MB | 0.52 | 18.31 | 197.0 | `tasks/alv-certigo-a0f9b0-e55de0bd-v2` |
+| [mozilla/webrtc-sdp](https://github.com/mozilla/webrtc-sdp) | rust | 1 CPU / 1024 MB | 0.4 | 6.87 | 139.3 | `tasks/alv-webrtc-sdp-b207e1-30509879-v2` |
+| [1dustindavis/gorilla](https://github.com/1dustindavis/gorilla) | go | 1 CPU / 1024 MB | 0.56 | 27.93 | 148.7 | `tasks/alv-gorilla-0bb45c-66f2bba5-v2` |
+| [tazjin/nixery](https://github.com/tazjin/nixery) | go | 1 CPU / 1024 MB | 0.53 | 21.16 | 304.9 | `tasks/alv-nixery-4ea233-7eb6caf6-v2` |
+| [bnb-chain/tss-lib](https://github.com/bnb-chain/tss-lib) | go | 1 CPU / 1024 MB | 0.88 | 8.58 | 103.6 | `tasks/alv-tss-lib-e74efd-3f677ff7-v2` |
+| [penpot/penpot-exporter-figma-plugin](https://github.com/penpot/penpot-exporter-figma-plugin) | typescript | 1 CPU / 1024 MB | 0.4 | 14.26 | 222.3 | `tasks/alv-penpot-exporter-figm-579f77-ab39ffe2-v2` |
+| [go-gl/glow](https://github.com/go-gl/glow) | go | 1 CPU / 1024 MB | 0.41 | 8.42 | 122.6 | `tasks/alv-glow-62fa6c-394d5359-v2` |
+| [manzt/zarrita.js](https://github.com/manzt/zarrita.js) | typescript | 1 CPU / 1024 MB | 0.51 | 19.6 | 280.4 | `tasks/alv-zarrita-js-4cd932-152a90b6-v2` |
+| [Manishearth/rust-gc](https://github.com/Manishearth/rust-gc) | rust | 1 CPU / 1024 MB | 0.57 | 3.34 | 123.4 | `tasks/alv-rust-gc-7bc848-b7405c95-v2` |
+| [pdf/zfs_exporter](https://github.com/pdf/zfs_exporter) | go | 1 CPU / 1024 MB | 0.5 | 14.02 | 177.3 | `tasks/alv-zfs-exporter-5dafed-0aacc90c-v2` |
+| [argyleink/css-color-component](https://github.com/argyleink/css-color-component) | typescript | 1 CPU / 1024 MB | 0.34 | 32.76 | 278.8 | `tasks/alv-css-color-component-fbce0a-48af73ca-v2` |
+| [queer/boxxy](https://github.com/queer/boxxy) | rust | 1 CPU / 1024 MB | 0.47 | 1.65 | 55.7 | `tasks/alv-boxxy-b8340e-4bd93773-v2` |
+| [momijizukamori/bookbinder-js](https://github.com/momijizukamori/bookbinder-js) | javascript | 1 CPU / 1024 MB | 0.51 | 37.85 | 644.9 | `tasks/alv-bookbinder-js-6a0b2b-7df532dc-v2` |
+| [inbucket/inbucket](https://github.com/inbucket/inbucket) | go | 1 CPU / 1024 MB | 0.55 | 29.03 | 191.5 | `tasks/alv-inbucket-4576c7-e56c6d5f-v2` |
+| [CarlosNZ/json-edit-react](https://github.com/CarlosNZ/json-edit-react) | typescript | 1 CPU / 1024 MB | 0.86 | 74.43 | 502.5 | `tasks/alv-json-edit-react-d03d2b-c6fa40c4-v2` |
+| [reagento/dishka](https://github.com/reagento/dishka) | python | 1 CPU / 1024 MB | 0.57 | 6.04 | 65.5 | `tasks/alv-dishka-e5fa02-6ff01434-v2` |
+| [jupyterhub/oauthenticator](https://github.com/jupyterhub/oauthenticator) | python | 1 CPU / 1024 MB | 0.56 | 10.59 | 131.8 | `tasks/alv-oauthenticator-432094-7d80b000-v2` |
+| [direnv/direnv](https://github.com/direnv/direnv) | go | 1 CPU / 1024 MB | 0.46 | 11.92 | 147.5 | `tasks/alv-direnv-4df07f-b00e451f-v2` |
+| [thomseddon/traefik-forward-auth](https://github.com/thomseddon/traefik-forward-auth) | go | 1 CPU / 1024 MB | 0.46 | 17.07 | 177.2 | `tasks/alv-traefik-forward-auth-b13de2-83f06df0-v2` |
+| [executablebooks/sphinx-design](https://github.com/executablebooks/sphinx-design) | python | 1 CPU / 1024 MB | 0.5 | 22.63 | 98.7 | `tasks/alv-sphinx-design-f05541-4f66f32e-v2` |
+| [kubeflow/mcp-apache-spark-history-server](https://github.com/kubeflow/mcp-apache-spark-history-server) | python | 1 CPU / 1024 MB | 0.45 | 10.54 | 183.2 | `tasks/alv-mcp-apache-spark-his-4b1a26-e3dc6026-v2` |
+| [wallarm/api-firewall](https://github.com/wallarm/api-firewall) | go | 1 CPU / 1024 MB | 0.63 | 14.55 | 217.1 | `tasks/alv-api-firewall-667a08-8ed75e4c-v2` |
+| [rust-ndarray/ndarray-stats](https://github.com/rust-ndarray/ndarray-stats) | rust | 1 CPU / 1024 MB | 0.53 | 20.51 | 178.8 | `tasks/alv-ndarray-stats-2941bb-67d0292f-v2` |
+| [toss/es-hangul](https://github.com/toss/es-hangul) | typescript | 2 CPU / 4096 MB | 0.49 | 12.23 | 160.2 | `tasks/alv-es-hangul-dc7926-b48ebe9a-v2` |
+| [sigoden/aichat](https://github.com/sigoden/aichat) | rust | 2 CPU / 4096 MB | 0.51 | 2.97 | 93.7 | `tasks/alv-aichat-707f27-82976d34-v2` |
+| [databricks/click](https://github.com/databricks/click) | rust | 2 CPU / 4096 MB | 0.66 | 42.47 | 68.2 | `tasks/alv-click-481ab1-47ff7d1b-v2` |
+| [mmomtchev/rlayers](https://github.com/mmomtchev/rlayers) | typescript | 2 CPU / 4096 MB | 0.51 | 58.43 | 1452.3 | `tasks/alv-rlayers-1f7fe3-98a2862d-v2` |
+| [alexei-led/spotinfo](https://github.com/alexei-led/spotinfo) | go | 2 CPU / 4096 MB | 0.55 | 99.83 | 1138.4 | `tasks/alv-spotinfo-c8c9e4-ed8d6d0c-v2` |
+| [cosdata/cosdata](https://github.com/cosdata/cosdata) | rust | 2 CPU / 4096 MB | 0.51 | 77.4 | 572.3 | `tasks/alv-cosdata-74e012-1696d073-v2` |
+| [zalando-incubator/kube-ingress-aws-controller](https://github.com/zalando-incubator/kube-ingress-aws-controller) | go | 2 CPU / 4096 MB | 0.54 | 66.83 | 1278.3 | `tasks/alv-kube-ingress-aws-con-b3591f-f8b184bc-v2` |
 
 ## Logs
 
