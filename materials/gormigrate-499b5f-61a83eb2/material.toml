@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gormigrate-499b5f-61a83eb2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-gormigrate/gormigrate"
+base_commit = "61a83eb294b80e2792d5587a0fd7dc46cafe5681"
+source_tree = "ff9d2ac09a7bc14d58a1a1dfbd726c2141b95d81"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "912b4ea78e3e1cf20db2f9f34da2ff646579f471f1a0d1b47c3e94289ac77555"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gormigrate-499b5f-61a83eb2-v2-env-912b4ea7"
+template_id = "84d37s6bslz89tmrazo5"
+source_template_alias = "6gpgbt24ve2070vz90pc"
+source_template_id = "6gpgbt24ve2070vz90pc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

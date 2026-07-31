@@ -1,0 +1,44 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-gobdd-e1d7e3-83648a4a-v2"
+description = "Rebuildable repository task for go-bdd/gobdd"
+authors = []
+keywords = ["go", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-gobdd-e1d7e3-83648a4a-v2"
+material_id = "gobdd-e1d7e3-83648a4a"
+status = "direction"
+language = "go"
+repository_url = "https://github.com/go-bdd/gobdd"
+base_commit_hash = "83648a4a49b5c506634ddd0e67c895d6d5cdbaa8"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+GOCACHE = "/root/.cache/go-build"
+GOMODCACHE = "/go/pkg/mod"
+GOPATH = "/go"
+GOPROXY = "https://goproxy.cn,direct"
+GOTOOLCHAIN = "local"
+HOME = "/root"
+PATH = "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

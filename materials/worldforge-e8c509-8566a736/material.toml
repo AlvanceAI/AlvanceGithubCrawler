@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "worldforge-e8c509-8566a736"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/AbdelStark/worldforge"
+base_commit = "8566a736c07c7454d11f2dc3a8dfabf2ab86d0da"
+source_tree = "823e546dc9e5d66c7824429eafabaf2b276a77d3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.13"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "76450a6b83d18615e8a6dc7508ba0aa4413d4644cdec71040e9b7dda36bdf264"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-worldforge-e8c509-8566a736-v2-env-76450a6b"
+template_id = "7lkhxt8ygqnjgjxh6r1z"
+source_template_alias = "q5enyofxdbikfo3gvbbw"
+source_template_id = "q5enyofxdbikfo3gvbbw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "todoist-fbb86b-5eed237f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sachaos/todoist"
+base_commit = "5eed237f383a347c2ed5190f37db73a8b7d7a09e"
+source_tree = "59340934fd370d33f36006e01093186257fd2c19"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2b17baa4be614dbf68df8eb179146794d362b53045ac7b36ba916c1c806dc6cc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-todoist-fbb86b-5eed237f-v2-env-2b17baa4"
+template_id = "ulvowkezvg29i3dpets6"
+source_template_alias = "01cu5koi96piwh2egpuo"
+source_template_id = "01cu5koi96piwh2egpuo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

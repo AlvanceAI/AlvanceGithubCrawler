@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lea-515e47-8bcfe382"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/carbonfact/lea"
+base_commit = "8bcfe382975533c597b01e0adfb1a1b6e36d5efb"
+source_tree = "edfb6219dfcc8a918fcded1227783f9737d2a7c0"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "44693feef19cd3a9e17520a3ceafea0615214c52e92583b94d28468447a13c0d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lea-515e47-8bcfe382-v2-env-44693fee"
+template_id = "bok1540777fppqafe5ve"
+source_template_alias = "kp6jzeiw1pb61lo5siwz"
+source_template_id = "kp6jzeiw1pb61lo5siwz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "amazon-ec2-metadata-mock-9b8d31-bdf3096a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/aws/amazon-ec2-metadata-mock"
+base_commit = "bdf3096a6413e4e5ba90ea5890224f847f676faa"
+source_tree = "6a02f227a462f1c0e8f56d7a87112084333fdd84"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "39202d2c259e106af3baabc7e8257a76babeec2822a1fc4abfb9982ccca03aec"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-amazon-ec2-metadata--9b8d31-bdf3096a-v2-env-39202d2c"
+template_id = "r3womuq9zbdj5dliujmb"
+source_template_alias = "wkcb6w4mtcwfbyeou2op"
+source_template_id = "wkcb6w4mtcwfbyeou2op"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "half-rs-589fe4-688f1e2c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/VoidStarKat/half-rs"
+base_commit = "688f1e2c2a541186802b6b0fe0e6761cdb507428"
+source_tree = "df99e0aa8cbd2b24ee7b1331b14dd78d83216d06"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.81"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bc134d2292c18f3699a1cece2d9976c426d93c3d592c3b6cd4f363a261011f06"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-half-rs-589fe4-688f1e2c-v2-env-bc134d22"
+template_id = "bvwokfndipg1bt7pl3y4"
+source_template_alias = "byhnhax4uwlbmcyrlx5o"
+source_template_id = "byhnhax4uwlbmcyrlx5o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

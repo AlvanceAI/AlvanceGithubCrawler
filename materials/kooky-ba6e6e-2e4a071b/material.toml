@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kooky-ba6e6e-2e4a071b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/browserutils/kooky"
+base_commit = "2e4a071b0dc47a4a09b42b95cc598e9550a25676"
+source_tree = "af929cec6b4ca4fd6188702472e9576be4d2a102"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b7ab47c76bea4f0c8936449b25629d95d9d0383c2943ed28b86b31d8e5d18666"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kooky-ba6e6e-2e4a071b-v2-env-b7ab47c7"
+template_id = "qy8f9zyycgzgjckqsi1m"
+source_template_alias = "8h1nxgeg6anyocw33fph"
+source_template_id = "8h1nxgeg6anyocw33fph"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

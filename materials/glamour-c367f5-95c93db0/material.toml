@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "glamour-c367f5-95c93db0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/charmbracelet/glamour"
+base_commit = "95c93db04489cebf252ec856584445c7e85ee276"
+source_tree = "06be4444992c42d913cb27165a607494ba25832d"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.8"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e65d157942e2270cbe00a156c1ba24f76e17e5124478955f09a950cd2c9555b7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-glamour-c367f5-95c93db0-v2-env-e65d1579"
+template_id = "gc5n7vtxft0nuyoxcyp4"
+source_template_alias = "y6ajca6vsgr6myzktcrl"
+source_template_id = "y6ajca6vsgr6myzktcrl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

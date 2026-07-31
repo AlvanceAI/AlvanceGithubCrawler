@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gpdf-251dfe-0c04e85a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gpdf-dev/gpdf"
+base_commit = "0c04e85a529e88e1c1461bfc600cb5787c7f96f6"
+source_tree = "ed9606bc9980b4f568862d278704fbc9f5f7b848"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.22.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "21198e59aa03f079a15f1a1362d615e1ac4b024aed26d1ed0dd5b782285acb8a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gpdf-251dfe-0c04e85a-v2-env-21198e59"
+template_id = "pj9222kokyo96zew4z7w"
+source_template_alias = "jrsjjicsuaeec6ejy71f"
+source_template_id = "jrsjjicsuaeec6ejy71f"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

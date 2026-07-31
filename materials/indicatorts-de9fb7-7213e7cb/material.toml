@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "indicatorts-de9fb7-7213e7cb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cinar/indicatorts"
+base_commit = "7213e7cbec2bb96ee37da1318ce9e329d7efeef5"
+source_tree = "39bd5b5ee7d86a46b53e44a5269585ed08fa6b05"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "920d7265a76f58e343d8713b89d589a6d549585316f58ec3cd39bd30d1eb9e84"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-indicatorts-de9fb7-7213e7cb-v2-env-920d7265"
+template_id = "4yxlzpku9qqjwv8li98l"
+source_template_alias = "jkfg0lkno2iga1gbbnfu"
+source_template_id = "jkfg0lkno2iga1gbbnfu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

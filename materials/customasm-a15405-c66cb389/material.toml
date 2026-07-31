@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "customasm-a15405-c66cb389"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hlorenzi/customasm"
+base_commit = "c66cb389e7af95ad612520d4766bcb09adfea948"
+source_tree = "948bc399f432e920e5dd99903abaff5ff3abe4f7"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5bda194fe4a64edcf2a6e869c4cf544e8bc41fa6fb9c68779676d1da1ea5a4c8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-customasm-a15405-c66cb389-v2-env-5bda194f"
+template_id = "p60vb45mrnk5dqcda3f3"
+source_template_alias = "48fv74rmgkidkxvaetk7"
+source_template_id = "48fv74rmgkidkxvaetk7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

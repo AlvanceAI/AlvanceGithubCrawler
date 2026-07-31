@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "openapi-tui-5ac046-e36c971e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/zaghaghi/openapi-tui"
+base_commit = "e36c971e0d5086eda21b8fe9815511f5d3ae4b06"
+source_tree = "7a4d19d5979807b5fd9a413010837d6fe5be2671"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "41408909f5a289fcc6cbf6c2bf3f687af5d383a3e16bde1104d54ffe5264fd29"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-openapi-tui-5ac046-e36c971e-v2-env-41408909"
+template_id = "av93f6ura9tz83jo03x5"
+source_template_alias = "bsthd2p3xfon26h2a667"
+source_template_id = "bsthd2p3xfon26h2a667"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

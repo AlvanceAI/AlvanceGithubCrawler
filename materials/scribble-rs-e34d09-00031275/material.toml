@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "scribble-rs-e34d09-00031275"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/scribble-rs/scribble.rs"
+base_commit = "000312758ce98ca6280880ea5ab57d28d1215a2e"
+source_tree = "b7bd9496b1350f20977bdc4fddb194290006d733"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "919025715de520f2ceba841b09a2343bb24655253b5c923401e9933a31057730"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-scribble-rs-e34d09-00031275-v2-env-91902571"
+template_id = "h0688exe4ap7pn5iyiua"
+source_template_alias = "yo3pmxhwoky3gm4vve8p"
+source_template_id = "yo3pmxhwoky3gm4vve8p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

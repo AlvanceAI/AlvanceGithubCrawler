@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "parlay-2279b5-223fb73e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/snyk/parlay"
+base_commit = "223fb73e6b48227bf42a97dd64c93c352a992e89"
+source_tree = "6074e365274731b9b3b74c7e1b514c43cd7b1383"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "41a86eff26aa71325ff776fdad11caca082a5cc2df7cc12909769f2c0217e92f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-parlay-2279b5-223fb73e-v2-env-41a86eff"
+template_id = "sj2m91ckqxo3hjyyz17t"
+source_template_alias = "mo7hr0pcnlng1t17vebm"
+source_template_id = "mo7hr0pcnlng1t17vebm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

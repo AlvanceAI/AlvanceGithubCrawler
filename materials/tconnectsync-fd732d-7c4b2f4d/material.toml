@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tconnectsync-fd732d-7c4b2f4d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jwoglom/tconnectsync"
+base_commit = "7c4b2f4ddb560835c227aa75edd7dc3b57740d37"
+source_tree = "febff746af904b3a4b92f3ba45867542a5eb7456"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "21ed4b50109294e8a5d1de955d19121519b03eaf57cffc47acce0e6b24de864e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tconnectsync-fd732d-7c4b2f4d-v2-env-21ed4b50"
+template_id = "zvgemkd2b4cqs023kkef"
+source_template_alias = "j5qt4mjaq0rq28qgjh33"
+source_template_id = "j5qt4mjaq0rq28qgjh33"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

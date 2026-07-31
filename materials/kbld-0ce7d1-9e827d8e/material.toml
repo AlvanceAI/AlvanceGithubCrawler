@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kbld-0ce7d1-9e827d8e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/carvel-dev/kbld"
+base_commit = "9e827d8ecf9072101ca6fc84f20f2c30c8ef0f74"
+source_tree = "6b5757236fb1c72f0cfe172c75818221d55568e3"
+default_branch = "develop"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "866e2a2e59f6fffbbe5a254c0be09b151f76e4c345e43cc4961dde74235ec6f9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kbld-0ce7d1-9e827d8e-v2-env-866e2a2e"
+template_id = "43cgomuqs6qk4n43fyxw"
+source_template_alias = "6rmvsscc6thjlyvqimis"
+source_template_id = "6rmvsscc6thjlyvqimis"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

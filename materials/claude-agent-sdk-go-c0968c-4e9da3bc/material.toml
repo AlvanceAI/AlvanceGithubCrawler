@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "claude-agent-sdk-go-c0968c-4e9da3bc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/severity1/claude-agent-sdk-go"
+base_commit = "4e9da3bcc976941b5b34765d2536239651540b5a"
+source_tree = "69ca67824bc4153944e01d5c31b67a92df8cbddf"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a6606bbeb00787b8450b42dda06198c6a1a8e96893f304d737f72804fd9d9cee"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-claude-agent-sdk-go-c0968c-4e9da3bc-v2-env-a6606bbe"
+template_id = "t0b8acoeta6yplmq9gnz"
+source_template_alias = "toeav6nfyoy98kesanx8"
+source_template_id = "toeav6nfyoy98kesanx8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

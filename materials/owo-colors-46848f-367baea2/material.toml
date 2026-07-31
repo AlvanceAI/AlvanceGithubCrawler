@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "owo-colors-46848f-367baea2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/owo-colors/owo-colors"
+base_commit = "367baea2456f01d5a9b793eaf4b5217184c5d099"
+source_tree = "4fcd277bc8208b00477a088577821fa34502b50b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.81"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "73b082af00945a82b8ec45533b6d2701ead402cd5f8ff3b0ed1abeac0beaf5ad"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-owo-colors-46848f-367baea2-v2-env-73b082af"
+template_id = "50drlt5edfol3r4n9c0a"
+source_template_alias = "6pb5jns172vpaeov38mw"
+source_template_id = "6pb5jns172vpaeov38mw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

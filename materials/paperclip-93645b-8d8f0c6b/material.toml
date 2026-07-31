@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "paperclip-93645b-8d8f0c6b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/paperclip-rs/paperclip"
+base_commit = "8d8f0c6b0772308962c6f1617305f073fbed630c"
+source_tree = "475817ee2c724e7f5a4da37bafddc0783c5e334b"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d8060476d49728e1aedf9abd87e4fed6bb233a523ba60f880e2f02dadf72b7fa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-paperclip-93645b-8d8f0c6b-v2-env-d8060476"
+template_id = "c7k2kus4kc7h3fw1zpne"
+source_template_alias = "ai3l1qb037sa7kx0ogi1"
+source_template_id = "ai3l1qb037sa7kx0ogi1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bitmagnet-270469-e31b30d7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bitmagnet-io/bitmagnet"
+base_commit = "e31b30d7351c269dc801876f92ebc59d31fee545"
+source_tree = "816e9696bf945baf8d94a4dd93defd36f23c12a9"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.23.6"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eaef76a5919b07e1f68c354ba9c5d4754007059ff5de3351ae6fba38820fe466"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bitmagnet-270469-e31b30d7-v2-env-eaef76a5"
+template_id = "2vj13sqtim8f9bvomhtw"
+source_template_alias = "tfeojskcudxc639ch81y"
+source_template_id = "tfeojskcudxc639ch81y"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

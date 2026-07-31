@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kubectl-passman-b7b40d-6ca5019e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/chrisns/kubectl-passman"
+base_commit = "6ca5019e64432d1afdaf250be3e284f36486daf5"
+source_tree = "8d15ecf77ac8695d67047e4d17e59b11fd32efb8"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.22.3"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ad2b589456245635324c85a92f8e9ee06994d596c90d129479e5ad6dbfbafda8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kubectl-passman-b7b40d-6ca5019e-v2-env-ad2b5894"
+template_id = "xp0sbgzh89nacfnrjfme"
+source_template_alias = "8ndw6vq9dp1h6ztfuk2y"
+source_template_id = "8ndw6vq9dp1h6ztfuk2y"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

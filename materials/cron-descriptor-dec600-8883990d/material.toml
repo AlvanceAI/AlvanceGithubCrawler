@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cron-descriptor-dec600-8883990d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Salamek/cron-descriptor"
+base_commit = "8883990d1eacb9e8c292b7d6301a2e9b97913ce4"
+source_tree = "7a70f235aff004e900c4aadeb3626b412a2b8df6"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "221aef0c926e1ecdfbbd25081125b0532cf3ee61e02e91c1a299a67ec6324f87"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cron-descriptor-dec600-8883990d-v2-env-221aef0c"
+template_id = "erbff370gas6u9rzl01a"
+source_template_alias = "97madhj5bxeh03tuovom"
+source_template_id = "97madhj5bxeh03tuovom"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

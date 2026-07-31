@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "online3dviewer-ed47b5-d025663d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kovacsv/Online3DViewer"
+base_commit = "d025663dcdd101527e87971d9ae2cf16f02949b4"
+source_tree = "89abee0cddbf3489f3572a11f5b57e8d18069d38"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1af55e91c5ac070eed7e8eb94beb26b9477ef1fd7549818e8e90fe6f21dccb3f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-online3dviewer-ed47b5-d025663d-v2-env-1af55e91"
+template_id = "rg1deexyf3w5fb2k97wf"
+source_template_alias = "e3fj8lf2zysm5la6adv2"
+source_template_id = "e3fj8lf2zysm5la6adv2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

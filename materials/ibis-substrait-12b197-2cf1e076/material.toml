@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ibis-substrait-12b197-2cf1e076"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ibis-project/ibis-substrait"
+base_commit = "2cf1e0769ea93859be832cfa1554b4351e0f235f"
+source_tree = "6587255525b3b3e567501328fc0b235747d4ba58"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7b6fb00311d059a46dc8845e966d01b3bf8413e2ec77a1d7f6ea0064ae576d60"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ibis-substrait-12b197-2cf1e076-v2-env-7b6fb003"
+template_id = "4hcpg2idmky0pl1qq41u"
+source_template_alias = "01zdrurkdkx6d57sxfbw"
+source_template_id = "01zdrurkdkx6d57sxfbw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

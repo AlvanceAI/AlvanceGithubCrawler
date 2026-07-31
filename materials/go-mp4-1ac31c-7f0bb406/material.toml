@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-mp4-1ac31c-7f0bb406"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/abema/go-mp4"
+base_commit = "7f0bb4060772e78fb52d48b73a38b8c3928e83f0"
+source_tree = "180094739e9e0be43bdcfa59ac2c5689c7b03b77"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.14.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1eae747490aba852285b20dcf9f61bacafb23f6ec79ed91509560a4596576088"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-mp4-1ac31c-7f0bb406-v2-env-1eae7474"
+template_id = "iwt7c0qfs0bazour8533"
+source_template_alias = "cdfqca8oweqfgkua97b4"
+source_template_id = "cdfqca8oweqfgkua97b4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

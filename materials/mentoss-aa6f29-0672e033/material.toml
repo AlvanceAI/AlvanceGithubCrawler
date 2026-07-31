@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mentoss-aa6f29-0672e033"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/humanwhocodes/mentoss"
+base_commit = "0672e0336c9235bf07a205381496df301dbbe4ad"
+source_tree = "0cd58037ef4dbc2e70aba1b405a5df24b2dd5fd8"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9f3bf1f2730e5f5b502744044398cf445772bc7776fa42c7bc6501de0334eb5c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mentoss-aa6f29-0672e033-v2-env-9f3bf1f2"
+template_id = "5vqshcptcq5jtfo831iy"
+source_template_alias = "vrih2595tz02veukwwvp"
+source_template_id = "vrih2595tz02veukwwvp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

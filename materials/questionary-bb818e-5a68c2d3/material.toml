@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "questionary-bb818e-5a68c2d3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tmbo/questionary"
+base_commit = "5a68c2d3e1d4ed01b9692b487349be66014db65f"
+source_tree = "47a215d5a9cfd2a90574e7028103fb1a41ffdab9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "45839964d11a970923fe31f00c5edc9fb5b5bbd8feecb4d7edff2d1dee1354a0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-questionary-bb818e-5a68c2d3-v2-env-45839964"
+template_id = "wq73g4vk2l5lh8l5su64"
+source_template_alias = "alvance-repo-tmbo-q-bb818e47-5a68c2d3e1-b988c0a931-c1-m1024-v18"
+source_template_id = "5jdk9mxlzc1bd2kuxb38"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

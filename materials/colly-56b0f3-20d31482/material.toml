@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "colly-56b0f3-20d31482"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gocolly/colly"
+base_commit = "20d31482af5f754832a753f88517f3dfa61d921f"
+source_tree = "095b1fb379c2d2dc3cf5fafb10d8488187ebc1a2"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.9"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "623518748baad3691dbffab329047433af8d2317092bfeba2a461834025626bc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-colly-56b0f3-20d31482-v2-env-62351874"
+template_id = "hasuwvwxl9cw18lrjq4k"
+source_template_alias = "p2zw1pzkmrt0i8kn4832"
+source_template_id = "p2zw1pzkmrt0i8kn4832"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

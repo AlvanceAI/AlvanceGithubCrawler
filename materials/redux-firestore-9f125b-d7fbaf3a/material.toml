@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "redux-firestore-9f125b-d7fbaf3a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/prescottprue/redux-firestore"
+base_commit = "d7fbaf3a326634443e1372f216e3969657a288ba"
+source_tree = "3d423421f062d1e733efd5ecaa0fca7304db0c06"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "21c817b76e9ff518258f4082b7a9da19fffdecfb2ea89eb4462ec3076e79a6c1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-redux-firestore-9f125b-d7fbaf3a-v2-env-21c817b7"
+template_id = "jl8v9owcg3q67px6zuyo"
+source_template_alias = "7k4a7dzrq2wp6pnuyado"
+source_template_id = "7k4a7dzrq2wp6pnuyado"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

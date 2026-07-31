@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "quickbooks-online-mcp-se-965f50-09935185"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/intuit/quickbooks-online-mcp-server"
+base_commit = "099351858ee696dbbeb00dc7ca8e3a86276d86bb"
+source_tree = "df34635a06750438ed9c91a1f02987fd70e36a9e"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1fbeed9d78b3279d2cd296ff8e2bfec9837fe7b5f46ef6f2a8dda593c6f11be8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-quickbooks-online-mc-965f50-09935185-v2-env-1fbeed9d"
+template_id = "c8qchm5elb5igr21r1gq"
+source_template_alias = "deguvo3y1wmdn12jt0bk"
+source_template_id = "deguvo3y1wmdn12jt0bk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

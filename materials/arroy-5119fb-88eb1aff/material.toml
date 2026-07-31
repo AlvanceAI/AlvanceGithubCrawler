@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "arroy-5119fb-88eb1aff"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/meilisearch/arroy"
+base_commit = "88eb1affedcd11520d8a20910bd17b604705d48d"
+source_tree = "0a33d5ccd4dcfccd85017a2f9417f361feff8e71"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3643793fe008a9b4dad4cd6797317d9f7bfc12c83f9eeaeb7621b38f60e05f1c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-arroy-5119fb-88eb1aff-v2-env-3643793f"
+template_id = "g18qjvi6p7mx4ecp1v3n"
+source_template_alias = "zavlqjisw49spri96z32"
+source_template_id = "zavlqjisw49spri96z32"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

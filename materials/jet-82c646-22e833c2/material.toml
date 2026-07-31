@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "jet-82c646-22e833c2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/CloudyKit/jet"
+base_commit = "22e833c29a7039abb0eba39c642189234df92bc0"
+source_tree = "8010be7c4360d39a5513b474aab2604033763c5f"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.16.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8dced10ecebfc43c0b31723cab9c4ec126d9e180d06faae541a67c11a90c4be9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-jet-82c646-22e833c2-v2-env-8dced10e"
+template_id = "zaup7stcnvtdxu3wogv4"
+source_template_alias = "qm1qzkjnhlxys12y5z54"
+source_template_id = "qm1qzkjnhlxys12y5z54"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

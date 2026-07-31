@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fluxus-af39a5-d343ef74"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/fluxus-labs/fluxus"
+base_commit = "d343ef7432e1a47d0f51e14b030766b5c5ae528f"
+source_tree = "4621df99cd3696e2396d328370972d5febacaa6f"
+default_branch = "develop"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.88.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "88c512e0de818396e6334849b8df28112b2fc795f0c379f449b9479521994e06"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fluxus-af39a5-d343ef74-v2-env-88c512e0"
+template_id = "4evo11wgfli2mudgto0d"
+source_template_alias = "7oe2utqyhlh7h337vhig"
+source_template_id = "7oe2utqyhlh7h337vhig"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

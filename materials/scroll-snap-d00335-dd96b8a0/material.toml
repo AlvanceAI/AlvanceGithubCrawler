@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "scroll-snap-d00335-dd96b8a0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/lucafalasco/scroll-snap"
+base_commit = "dd96b8a0c1244d3930be4390e68d076f497d9fb4"
+source_tree = "379e272084a53c016a74016f74b4f2bcb87887c8"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8461a14f5129950c3d5e08d7f5d8da3040e96ef66737c5aaffc95365292118d0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-scroll-snap-d00335-dd96b8a0-v2-env-8461a14f"
+template_id = "i3xgk6y6v0ttb5gtjrd4"
+source_template_alias = "nrjhf80u0fjg8z2twrgg"
+source_template_id = "nrjhf80u0fjg8z2twrgg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-hyperglot-1ec2d8-74e069ce-v2"
+description = "Rebuildable repository task for rosettatype/hyperglot"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-hyperglot-1ec2d8-74e069ce-v2"
+material_id = "hyperglot-1ec2d8-74e069ce"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/rosettatype/hyperglot"
+base_commit_hash = "74e069ce2cd8bf97d879596b1641f0f19e9b2a7e"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

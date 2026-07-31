@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "node-hdb-41033e-0b1aa838"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/SAP/node-hdb"
+base_commit = "0b1aa8384b3da6c7dd7352dde5ad6f0e5205217f"
+source_tree = "bfbcb0477ba2a0f848af81a726176638af526630"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "07d63628b1d27dc9ff4767527c3b734d5caada38b7aa49b444c0a8e644d8afab"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-node-hdb-41033e-0b1aa838-v2-env-07d63628"
+template_id = "q2pb6li9643t5d72i8ga"
+source_template_alias = "qqcdw610e8sf2hdycn51"
+source_template_id = "qqcdw610e8sf2hdycn51"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

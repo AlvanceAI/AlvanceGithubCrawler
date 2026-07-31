@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "git-graph-0e9b50-c1af89dd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/git-bahn/git-graph"
+base_commit = "c1af89dd79be5947d6a86c2b5b80cbbc2689dead"
+source_tree = "a2af6da39f43feacef142ce0eb4503f6cfec3223"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.83.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a3705ce2dba71951198048e8ca8f212abc09f7b09708731e491cca14c54bbe58"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-git-graph-0e9b50-c1af89dd-v2-env-a3705ce2"
+template_id = "97jutmpdbu1pptxdg3ud"
+source_template_alias = "sv8dxw1mzi60x90mxvs5"
+source_template_id = "sv8dxw1mzi60x90mxvs5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

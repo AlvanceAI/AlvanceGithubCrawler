@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "go-cmp-b40eac-b133f1f1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/google/go-cmp"
+base_commit = "b133f1f1932e48f466f597a3346ce6f5a49a0dc1"
+source_tree = "6a1be19881e3fbd49171524bc0650bcdf07bf5f4"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "158335d9f8510d08210ff5546bcc0ebfc5e30057cc971c57b12384df7ed52535"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-go-cmp-b40eac-b133f1f1-v2-env-158335d9"
+template_id = "4swevgs91blp6ik3lbzv"
+source_template_alias = "fipgtc5yollvaleu5oi6"
+source_template_id = "fipgtc5yollvaleu5oi6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

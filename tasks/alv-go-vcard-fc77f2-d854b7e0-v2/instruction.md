@@ -1,0 +1,5 @@
+Repository `emersion/go-vcard` at commit `d854b7e0e2d39884e7ab42c5ab0bce2830a3687c` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+扩展 `ToV4` 转换逻辑，按照 RFC 6350 将 vCard 3.0 与 4.0 之间的属性、参数、值类型及语法差异完整规范化为 vCard 4.0。

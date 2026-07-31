@@ -1,0 +1,44 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-terraform-provider-k-f94b66-678b3c70-v2"
+description = "Rebuildable repository task for Mongey/terraform-provider-kafka"
+authors = []
+keywords = ["go", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-terraform-provider-k-f94b66-678b3c70-v2"
+material_id = "terraform-provider-kafka-f94b66-678b3c70"
+status = "direction"
+language = "go"
+repository_url = "https://github.com/Mongey/terraform-provider-kafka"
+base_commit_hash = "678b3c706c77585a2d866d1b1469a2235c2e98db"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+GOCACHE = "/root/.cache/go-build"
+GOMODCACHE = "/go/pkg/mod"
+GOPATH = "/go"
+GOPROXY = "https://goproxy.cn,direct"
+GOTOOLCHAIN = "auto"
+HOME = "/root"
+PATH = "/usr/local/go/bin:/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "import-fcfe47-dc699b0b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/11ty/import"
+base_commit = "dc699b0bb1e465e570c6127137b3f116337accf6"
+source_tree = "ac69e632c94c0edda29c445fe0313f0da8851008"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5d49bf312b194d43545d7bade9110887c057ff0f167a39fca788dbe3ac8e57c5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-import-fcfe47-dc699b0b-v2-env-5d49bf31"
+template_id = "otntt9pxt39gagoxdcu9"
+source_template_alias = "9y9b0cmafnit0xb8e6lz"
+source_template_id = "9y9b0cmafnit0xb8e6lz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

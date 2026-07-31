@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ward-accf4b-899aef42"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Eljakani/ward"
+base_commit = "899aef42e779d8385668d92f319d8523f0b72e0d"
+source_tree = "1be8615b1b03d7481990abe27d87d90305faebe7"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ba6528400d8073fa901f984be690c310a6a0517a9d987a2e4e88e7c28604320d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ward-accf4b-899aef42-v2-env-ba652840"
+template_id = "3g7m7pg79w0vnpg4c84u"
+source_template_alias = "v5k2vamktz0jqpc0ydrz"
+source_template_id = "v5k2vamktz0jqpc0ydrz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

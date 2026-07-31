@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-statemachine-3a4bf4-5bb50c17"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/fgmacedo/python-statemachine"
+base_commit = "5bb50c177f296d2dc45c60538929b51464aecdff"
+source_tree = "af245536fcf0f569162f07c1e20087e3b0365617"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "28ea35b1a1cdc38fca11c7319fa12f9f60888022ce1c99c28fcda982b31c0681"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-statemachine-3a4bf4-5bb50c17-v2-env-28ea35b1"
+template_id = "zio60svc6e5ugimh8d7o"
+source_template_alias = "q4tm2imknoiux72mowtj"
+source_template_id = "q4tm2imknoiux72mowtj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

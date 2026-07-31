@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "of-watchdog-08057b-8fda6a63"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/openfaas/of-watchdog"
+base_commit = "8fda6a636efbc14f236209cd98c7aa442d218d27"
+source_tree = "01dc2fd7d990e3ab49c3d0b79d50f85338d45bc0"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.26.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0981527a8e6d69211d340662d820015f3f83c648006f223c9b0a6e4b9a0d852a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-of-watchdog-08057b-8fda6a63-v2-env-0981527a"
+template_id = "9y10t9ezcuag7waacek5"
+source_template_alias = "61ndgpq3brqmm668h5q3"
+source_template_id = "61ndgpq3brqmm668h5q3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

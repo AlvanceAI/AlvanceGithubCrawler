@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "closed-chain-ik-js-fb59e2-5007bea8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gkjohnson/closed-chain-ik-js"
+base_commit = "5007bea806e6e03f4eb58f1246e75695a3d4ba76"
+source_tree = "e3757a272670dfa3f47821e48c01442ba15d2637"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d0d4b38ba680b64cb55c8f70416cf0167ba1a38c2b3479141eb337e3701b0a76"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-closed-chain-ik-js-fb59e2-5007bea8-v2-env-d0d4b38b"
+template_id = "dfrnc274w5co3tv7y7uo"
+source_template_alias = "k5zr279n6lp4jms1i7k3"
+source_template_id = "k5zr279n6lp4jms1i7k3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

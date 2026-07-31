@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "moxygen-82c2fb-d3da4f27"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sourcey/moxygen"
+base_commit = "d3da4f27c084a383538353c300b2bf15403b3b27"
+source_tree = "020d286a5b54f40f8f97022ac22f5eec889216a1"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "78402f9407456047121a92fc9f3cf9fe0ee14afa8d15cdaeb52e824c1165db87"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-moxygen-82c2fb-d3da4f27-v2-env-78402f94"
+template_id = "8ceva55xcflq36vjtlj1"
+source_template_alias = "wfm507ujnfnwd7yfnpkt"
+source_template_id = "wfm507ujnfnwd7yfnpkt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "poly-a0a51c-72017bd9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bebop/poly"
+base_commit = "72017bd9139b8076de3733939ac2465dbd82b48a"
+source_tree = "19e9f24559963b6a75cbc8f7402f3450ab31e236"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "39f66a81427bf8deab2c1503929cf507ee1023b64db733dfbd9e0190b5710d2c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-poly-a0a51c-72017bd9-v2-env-39f66a81"
+template_id = "28jutr37ezqn8bl9byu6"
+source_template_alias = "1ysfuq55zorz7yip8t8l"
+source_template_id = "1ysfuq55zorz7yip8t8l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

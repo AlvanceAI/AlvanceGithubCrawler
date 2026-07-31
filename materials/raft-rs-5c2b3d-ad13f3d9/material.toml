@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "raft-rs-5c2b3d-ad13f3d9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tikv/raft-rs"
+base_commit = "ad13f3d90780f53aea2488c6a4b76c0d334bf136"
+source_tree = "e2f4500721301b94a863c42b63716f7d197c5123"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "931494c0b2eaa1205a4dd749d97d06d3f02495a181891106906733601eb622a0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-raft-rs-5c2b3d-ad13f3d9-v2-env-931494c0"
+template_id = "yp5tmxg54w4h4q1tn1b5"
+source_template_alias = "0w89aw2smuapvj7lxzei"
+source_template_id = "0w89aw2smuapvj7lxzei"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

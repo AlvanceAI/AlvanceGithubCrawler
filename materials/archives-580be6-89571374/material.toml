@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "archives-580be6-89571374"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mholt/archives"
+base_commit = "89571374212ff39c25a5ae5148000c1ca14afdb3"
+source_tree = "a26c76df71bafffbb3e69fd48a3ca5967eabfe40"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "20db43a86e521009b85068f57cc0bdbf76f148227531d4466308f7e35e6cd142"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-archives-580be6-89571374-v2-env-20db43a8"
+template_id = "7vjdu9p8m8samso4ko3u"
+source_template_alias = "vzjtaxzyd0ek044voxgy"
+source_template_id = "vzjtaxzyd0ek044voxgy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

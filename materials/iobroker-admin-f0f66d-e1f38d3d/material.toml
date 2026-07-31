@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "iobroker-admin-f0f66d-e1f38d3d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ioBroker/ioBroker.admin"
+base_commit = "e1f38d3d4c53df6efddd4e7373f984317a02e31b"
+source_tree = "7c700ddd4aa5b08b3e978a63f4a7fdc017fb23c5"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c2f6fe4bcc36a617d376a893f5226670af5502cff348e03dfd6a24ad00f4a91a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-iobroker-admin-f0f66d-e1f38d3d-v2-env-c2f6fe4b"
+template_id = "iz85ya26r2qx30ei5nfy"
+source_template_alias = "vczldg3asqz92fcms1cc"
+source_template_id = "vczldg3asqz92fcms1cc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

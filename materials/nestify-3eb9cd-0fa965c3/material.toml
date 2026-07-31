@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nestify-3eb9cd-0fa965c3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/snowfoxsh/nestify"
+base_commit = "0fa965c3a97746b1b8d9d20c246f9a75ca37e24b"
+source_tree = "76d79ddaa51b5c58fbd23e750cb91504e59497ad"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "702416131b5221983cfa8af9f3f2b6fbbe80f809ac2ae105f0af4198fc3e4589"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nestify-3eb9cd-0fa965c3-v2-env-70241613"
+template_id = "00kc1lgw2g9t3dmovwnu"
+source_template_alias = "t7y1drz4c3zvgo69g7gp"
+source_template_id = "t7y1drz4c3zvgo69g7gp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gobdd-e1d7e3-83648a4a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-bdd/gobdd"
+base_commit = "83648a4a49b5c506634ddd0e67c895d6d5cdbaa8"
+source_tree = "9923cf91d0df07716a83c2f2ef25fcd3bbbfd9aa"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.17.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bcbc1aa7901b15ad56d70909b92226ded75c90bd1ecb0a75693acf0b33739bae"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gobdd-e1d7e3-83648a4a-v2-env-bcbc1aa7"
+template_id = "do39vjn61esn2dzos9fm"
+source_template_alias = "h9kx9wmhan8h9892yiqb"
+source_template_id = "h9kx9wmhan8h9892yiqb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

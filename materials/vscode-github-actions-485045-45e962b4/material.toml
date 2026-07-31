@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vscode-github-actions-485045-45e962b4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/github/vscode-github-actions"
+base_commit = "45e962b4439e6476d67937206566c0470743c660"
+source_tree = "91eb9e0d3fc7b6824a5e142d0c42965efdc7e8fe"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eea92154f0b867529cdc47cd070fa3a75d79176eb7eba5b0961ab7c538efc16d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vscode-github-action-485045-45e962b4-v2-env-eea92154"
+template_id = "vsn5nry1afwj9ekufgv2"
+source_template_alias = "3kgj9yw8v6h5y66ym4z8"
+source_template_id = "3kgj9yw8v6h5y66ym4z8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

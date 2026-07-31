@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "look-at-me-sideways-d5be4b-a35cb309"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/looker-open-source/look-at-me-sideways"
+base_commit = "a35cb309d2ac603d3ad62e556c36725c31c2f907"
+source_tree = "927c09a905e1dcf1b2e4c17783087eaea195f1f7"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8b19fea659ec788d5d614213190a0bf02769794c23b45e44b9b2ec63bafde6a1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-look-at-me-sideways-d5be4b-a35cb309-v2-env-8b19fea6"
+template_id = "i5iv62vvsek5x06z4u2c"
+source_template_alias = "yenlsncq3g0vdb1x1fhb"
+source_template_id = "yenlsncq3g0vdb1x1fhb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

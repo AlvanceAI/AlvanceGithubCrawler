@@ -1,0 +1,5 @@
+Repository `humanwhocodes/mentoss` at commit `0672e0336c9235bf07a205381496df301dbbe4ad` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+补全 Fetch 模拟器的 CORS 校验，使凭据模式、预检方法与请求头、协议、预检重定向及带用户信息的跨域重定向等失败场景产生与浏览器一致的错误。

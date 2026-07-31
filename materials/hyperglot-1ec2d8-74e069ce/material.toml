@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hyperglot-1ec2d8-74e069ce"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rosettatype/hyperglot"
+base_commit = "74e069ce2cd8bf97d879596b1641f0f19e9b2a7e"
+source_tree = "34bada23249acb6fb5b72e32eb22beaa0034f80e"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eba230b897eeb2450f0c6a9ddf38bf752efb1682fad76d709f702459d48376b7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hyperglot-1ec2d8-74e069ce-v2-env-eba230b8"
+template_id = "m6uectxhxy57riaa0x0h"
+source_template_alias = "77s0w1ee5gik9s0g7aq7"
+source_template_id = "77s0w1ee5gik9s0g7aq7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

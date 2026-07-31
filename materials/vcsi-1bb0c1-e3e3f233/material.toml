@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vcsi-1bb0c1-e3e3f233"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/amietn/vcsi"
+base_commit = "e3e3f2331d771e59b871a08c8ea23f8880011cca"
+source_tree = "6345da88f484f896a38d2141b92fb527b2fcea7e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4b5e40235d7ae64f51ad551ea49715926bb6bbeab891482bd0ada5f84561620e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vcsi-1bb0c1-e3e3f233-v2-env-4b5e4023"
+template_id = "1dqlaelvuhnkdsgiu4w2"
+source_template_alias = "1w4t6afs45pbmu2e93p9"
+source_template_id = "1w4t6afs45pbmu2e93p9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

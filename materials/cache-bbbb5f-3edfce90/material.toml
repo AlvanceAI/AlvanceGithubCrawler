@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cache-bbbb5f-3edfce90"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/actions/cache"
+base_commit = "3edfce9056124e459a23f683a21433670d47daca"
+source_tree = "ae8e37659a05f79e5b3ecfffbe592b72260586bf"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "15e22c363304d94170fe3085ef0a71971c2bd71560968b05af1514ceb2eca14a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cache-bbbb5f-3edfce90-v2-env-15e22c36"
+template_id = "z2tvz40vwxlbvbgc8gdl"
+source_template_alias = "l9xx6hjyep7ftt4vtxjh"
+source_template_id = "l9xx6hjyep7ftt4vtxjh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

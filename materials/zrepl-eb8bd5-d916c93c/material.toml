@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zrepl-eb8bd5-d916c93c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/zrepl/zrepl"
+base_commit = "d916c93cf939711d6632b0c8e812c04ffcaaf5ef"
+source_tree = "b5e0e434ed5f2fd8d52c9998cf9ab47f108eb3c9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.7"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bbf951e7c23b0fd1d606f94a30f69953bb33f13132c9fd6be6d72328d99e86d1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zrepl-eb8bd5-d916c93c-v2-env-bbf951e7"
+template_id = "1s2ipifa22pianaovnzp"
+source_template_alias = "6nw08s6n28shwflunkkd"
+source_template_id = "6nw08s6n28shwflunkkd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

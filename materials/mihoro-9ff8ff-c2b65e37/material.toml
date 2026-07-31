@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mihoro-9ff8ff-c2b65e37"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/spencerwooo/mihoro"
+base_commit = "c2b65e374d9d8a27f4eb3d2d2b5136d028563438"
+source_tree = "90474d1b2840471a24177bd29dcf68fc4492ab08"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b49f1da28d96c3f04f95f91443184d0c2740ac87438c1703d429ad11c21e2fc8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mihoro-9ff8ff-c2b65e37-v2-env-b49f1da2"
+template_id = "fc9td084ko9desx67uho"
+source_template_alias = "8gn3nb1m263eyo5kxa3o"
+source_template_id = "8gn3nb1m263eyo5kxa3o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
