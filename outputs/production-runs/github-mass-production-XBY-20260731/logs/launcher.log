@@ -7010,3 +7010,106 @@ command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/git
   "requeued": 0
 }
 [2026-07-31T07:15:47Z] stage=requeue-resource-failures exit_code=0 duration_s=3
+[XBY dd30454] docs: record github-mass-production-XBY-20260731 production statistics
+ 43 files changed, 28994 insertions(+), 39 deletions(-)
+ create mode 100644 docs/continuous-production-github-mass-production-XBY-20260731.md
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/crawl-20500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/crawl-21000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/crawl-21500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/crawl-22000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/launcher.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/prescreen-20500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/prescreen-21000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/prescreen-21500.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/prescreen-22000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/prescreen-resume-20000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/prescreen-resume-22000.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/repair-rebuildable-packages.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/report.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/requeue-e2b-rate-limit-backoff-v1.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/requeue-go-runtime-v4.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/requeue-node-package-manager-v18.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/requeue-resource-failures.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T034241Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T035011Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T040323Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T050358Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T054928Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T054958Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T055019Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T055053Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T055142Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default-20260731T063915Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-default.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/logs/verify-escalated-20260731T055410Z.log
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/metrics.json
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/producer.done
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/producer.status
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/stage-timings.jsonl
+ create mode 100644 outputs/production-runs/github-mass-production-XBY-20260731/statistics.md
+automatic git push disabled; push manually with: git push origin XBY
+continuous production complete: /home/xubingyu/AlvanceGithubCrawler/outputs/production-runs/github-mass-production-XBY-20260731
+
+[2026-07-31T07:15:56.343428+00:00] monitor launch max_per_language=3000 batch_per_language=100 prescreen_concurrency=20 e2b_concurrency_per_key=20
+preflight passed: branch=XBY github_tokens=2 prescreen=20 e2b_keys=3 e2b_slots=60
+[2026-07-31T07:15:58Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260731
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 705,
+  "languages": {
+    "go": 304,
+    "javascript": 50,
+    "python": 94,
+    "rust": 182,
+    "typescript": 75
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 705
+}
+[2026-07-31T07:16:04Z] stage=repair-rebuildable-packages exit_code=0 duration_s=6
+[2026-07-31T07:16:04Z] stage=requeue-node-package-manager-v18 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason build_fail --failure-contains can\ only\ install\ with\ an\ existing\ package-lock.json --requeue-marker node-package-manager-v18 --verbose
+{
+  "already_registered": 29,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-07-31T07:16:08Z] stage=requeue-node-package-manager-v18 exit_code=0 duration_s=4
+[2026-07-31T07:16:08Z] stage=requeue-go-runtime-v4 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason infra_error --failure-contains toolchain\ not\ available --requeue-marker go-runtime-v4 --verbose
+{
+  "already_registered": 17,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-07-31T07:16:11Z] stage=requeue-go-runtime-v4 exit_code=0 duration_s=3
+[2026-07-31T07:16:11Z] stage=requeue-e2b-rate-limit-backoff-v1 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason infra_error --failure-reason stage_error --failure-contains maximum\ number\ of\ concurrent --requeue-marker e2b-rate-limit-backoff-v1 --verbose
+{
+  "already_registered": 0,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-07-31T07:16:14Z] stage=requeue-e2b-rate-limit-backoff-v1 exit_code=0 duration_s=3
+[2026-07-31T07:16:19Z] stage=prescreen-resume-22000 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+{
+  "duplicate": 10917,
+  "input_total": 10917,
+  "processed": 0
+}
+[2026-07-31T07:16:23Z] stage=prescreen-resume-22000 exit_code=0 duration_s=4
+[2026-07-31T07:16:25Z] stage=requeue-resource-failures run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason e2b_resource_exhausted --failure-reason benchmark_resource_fail --failure-reason offline_test_timeout --requeue-marker resource-escalation-c2-m4096-v1 --verbose
+{
+  "already_registered": 108,
+  "already_requeued": 101,
+  "matched": 101,
+  "requeued": 0
+}
+[2026-07-31T07:16:29Z] stage=requeue-resource-failures exit_code=0 duration_s=4
