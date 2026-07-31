@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "signalbot-3ed351-e9b1ce41"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/signalbot-org/signalbot"
+base_commit = "e9b1ce411da05af1306d6827f5b5de20f0137809"
+source_tree = "8eb2f7c7fe0574b5add7ab7c078debac85ecfd9e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "10ac870435b1c3e8f10e0d9dae7a6d530f143142f6254e5cf521cd5ce6603ccd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-signalbot-3ed351-e9b1ce41-v2-env-10ac8704"
+template_id = "fb8t0j36ka6uppb0nzyg"
+source_template_alias = "y34gw7d051muplmfw8ju"
+source_template_id = "y34gw7d051muplmfw8ju"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "speedate-7ab6c7-6fafc2c6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pydantic/speedate"
+base_commit = "6fafc2c60b5cbe91378934a9b1b670fb8fc88102"
+source_tree = "83652f6d566cb1785449e102919252b4dc024b96"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "rust"
+rust = "1.97.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "df790f2b96f6f502789006e9f53341b8379bae40a35df9d316406552e383c639"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-speedate-7ab6c7-6fafc2c6-v2-env-df790f2b"
+template_id = "hw0b2p42lurxw7wd9lf6"
+source_template_alias = "012w0aqptrrx30ot3lct"
+source_template_id = "012w0aqptrrx30ot3lct"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

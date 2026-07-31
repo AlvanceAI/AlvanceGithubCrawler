@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dncil-1922d3-d174a366"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mandiant/dncil"
+base_commit = "d174a3664767db00d8ee2a0652af9e7275119334"
+source_tree = "8b16ce6d7bf26c353dc9146665f8af37aab8cd12"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2dcfb48c2c1badb71f8853ed64c498b32ba1494e09f7ff49e5ce0155dfae3fe1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dncil-1922d3-d174a366-v2-env-2dcfb48c"
+template_id = "j9zipdvb0c3fkl1x6erk"
+source_template_alias = "g000ymjoqwxie37rs9dc"
+source_template_id = "g000ymjoqwxie37rs9dc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

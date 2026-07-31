@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pluto-d18878-5f85d3f5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/FairwindsOps/pluto"
+base_commit = "5f85d3f5474aede69f17f71d3e0a36674b8b8b62"
+source_tree = "bf98d5a2709edb4aa1e1bc3ee448da96b37e4ce0"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.26.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "45c9c97a77e6ee50ef32ca82b65324f4bfb1d9d7147176e246456da3f812f22a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pluto-d18878-5f85d3f5-v2-env-45c9c97a"
+template_id = "68jt35ivzkje6h7g5fhl"
+source_template_alias = "5spnc956e6rh7jhsvvnj"
+source_template_id = "5spnc956e6rh7jhsvvnj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

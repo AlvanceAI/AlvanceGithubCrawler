@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gin-swagger-6cdcb8-45b6a78e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/swaggo/gin-swagger"
+base_commit = "45b6a78e0f9ece585e56c2f9763e707f7642de2e"
+source_tree = "c05b6c99791d5bd9f88733c866d42b6728a7cfff"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "64667c0bdb7f941176c8986f634778cd42b3960add7e7fed8514fbf396494bef"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gin-swagger-6cdcb8-45b6a78e-v2-env-64667c0b"
+template_id = "iqngjkthscmsms7q88z9"
+source_template_alias = "oq92pgmcntim60dyacvl"
+source_template_id = "oq92pgmcntim60dyacvl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "xskillscore-c100ff-acf57ba1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/xarray-contrib/xskillscore"
+base_commit = "acf57ba149035bb05d29e19e14940240b4188397"
+source_tree = "43a5faa17e1c2b33319785a0357a1a6c4b737b42"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "30d7ec587c3709716cfdccfdc4f74d54b72d9bf7f257d4d1a0b5350c56705354"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-xskillscore-c100ff-acf57ba1-v2-env-30d7ec58"
+template_id = "tinn3299e3rsrd5x8vdb"
+source_template_alias = "9swwff05vnxbflksfk8w"
+source_template_id = "9swwff05vnxbflksfk8w"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
