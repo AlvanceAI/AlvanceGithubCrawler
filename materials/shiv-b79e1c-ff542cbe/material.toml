@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "shiv-b79e1c-ff542cbe"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/linkedin/shiv"
+base_commit = "ff542cbe75ea832df3a989d07c7fdf5214f727fa"
+source_tree = "cc2c55ab6100b557c3acbff95ee42dfb6a325755"
+default_branch = "main"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cf2e7d5e3f3c3b163c3fe90ece4262b13a5afe72c3660a8e84b3de21779577f5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-shiv-b79e1c-ff542cbe-v2-env-cf2e7d5e"
+template_id = "ms7xvlv4456pf968mqsv"
+source_template_alias = "bgozzmlr9rzm40mhlar6"
+source_template_id = "bgozzmlr9rzm40mhlar6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

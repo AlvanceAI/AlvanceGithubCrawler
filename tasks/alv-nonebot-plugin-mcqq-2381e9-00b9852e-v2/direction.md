@@ -1,0 +1,1 @@
+将Minecraft消息中的ChatImageCode解析并转换为图片CQ码后发送至QQ，而不是原样转发代码文本。

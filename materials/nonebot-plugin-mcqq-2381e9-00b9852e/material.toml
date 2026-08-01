@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nonebot-plugin-mcqq-2381e9-00b9852e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/17TheWord/nonebot-plugin-mcqq"
+base_commit = "00b9852e32387ad742e68984410f2dda308c866c"
+source_tree = "d361aaff66158da328640a1fcea27022b3709e0e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a683769d748c1433415bd6051c92f3e85888afa787081562aa0933562c8e4f67"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nonebot-plugin-mcqq-2381e9-00b9852e-v2-env-a683769d"
+template_id = "4bsjx24tw6alf5m5r0j2"
+source_template_alias = "z5k07y36q6tln8q4jfid"
+source_template_id = "z5k07y36q6tln8q4jfid"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

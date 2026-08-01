@@ -1,0 +1,5 @@
+Repository `perrygeo/python-rasterstats` at commit `41f41dca4bc8e2d7ca625c4d380d6bccb607a0ea` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+在 zonal_stats 中对跨越大范围的 MultiPolygon/多几何要素按独立部件分块读取栅格并合并一维像元值，避免按整体外接矩形加载超大数组，同时保持现有统计量、掩膜和 nodata 语义。
