@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "browser-history-4a7522-943dd5e5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/browser-history/browser-history"
+base_commit = "943dd5e5d14246b8fbdb05874b56544cfb220e07"
+source_tree = "210f36cefae41e53fcdba1ad1336f78702aa4398"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bd02ece6104d957bb7b8e8991778b114279ce495efe4468c60843fe500a62e89"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-browser-history-4a7522-943dd5e5-v2-env-bd02ece6"
+template_id = "l39knj2fqa6thzxjnwtb"
+source_template_alias = "dtqidz07t1sew65rmzgi"
+source_template_id = "dtqidz07t1sew65rmzgi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "norminette-d9d419-f94f1ce2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/42school/norminette"
+base_commit = "f94f1ce26abe3e0346d44740c2c7360ef94ea0ac"
+source_tree = "431a17839850c45416c5659085c22d202200263d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "19f62fe0f471a475c8ae5d1c23ee11cbc27230e6e39ca8adb4e49d5ccb7f50e0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-norminette-d9d419-f94f1ce2-v2-env-19f62fe0"
+template_id = "uahcsfzzydf447sfxk71"
+source_template_alias = "mv9coqvebm1i3rz9omay"
+source_template_id = "mv9coqvebm1i3rz9omay"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

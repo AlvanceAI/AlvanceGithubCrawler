@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "submitit-d4cdbc-ca51a66b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/facebookincubator/submitit"
+base_commit = "ca51a66b6da2400468f338133eabdfb4c9a2936c"
+source_tree = "49345ad6fed887ec4219512455443d2b2543d015"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3c23760d027cc215594544c678fffa23c9aff0d526142f68bcc81116050d5623"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-submitit-d4cdbc-ca51a66b-v2-env-3c23760d"
+template_id = "n5py1orf1xvau5l19z2v"
+source_template_alias = "pp1mjcw8xroe9x36l69y"
+source_template_id = "pp1mjcw8xroe9x36l69y"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

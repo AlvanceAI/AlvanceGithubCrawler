@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gtfsdb-8d321a-58c879f2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/OpenTransitTools/gtfsdb"
+base_commit = "58c879f2c77a930bc8c7fc783d9d5a58585d2ed1"
+source_tree = "3182ba665d7d37ed90d23e20f0a20c328505d0ca"
+default_branch = "main"
+license = "MPL-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fb1cf4196776c5796b02f04d87a5bff3633c7a2183dd2def5e856e5dcb2e42c9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gtfsdb-8d321a-58c879f2-v2-env-fb1cf419"
+template_id = "z24f7736kvtnal67bipa"
+source_template_alias = "7b0557mslu38silwdxvt"
+source_template_id = "7b0557mslu38silwdxvt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

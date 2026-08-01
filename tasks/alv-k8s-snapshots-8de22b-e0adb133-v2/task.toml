@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-k8s-snapshots-8de22b-e0adb133-v2"
+description = "Rebuildable repository task for miracle2k/k8s-snapshots"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-k8s-snapshots-8de22b-e0adb133-v2"
+material_id = "k8s-snapshots-8de22b-e0adb133"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/miracle2k/k8s-snapshots"
+base_commit_hash = "e0adb133cf2df30abb649f35c1a8cd2a1dbc9229"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

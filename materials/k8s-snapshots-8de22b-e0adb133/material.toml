@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "k8s-snapshots-8de22b-e0adb133"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/miracle2k/k8s-snapshots"
+base_commit = "e0adb133cf2df30abb649f35c1a8cd2a1dbc9229"
+source_tree = "fb0eb753c3224f7722e5ac4f1e6fdad9f56f6502"
+default_branch = "master"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "aa5af2614f7fd554fe839910f2d7fbdbffda49b6ec9f5ddb388393e6cb7eb6cd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-k8s-snapshots-8de22b-e0adb133-v2-env-aa5af261"
+template_id = "nzm3o1yt8bxqh3g4idnm"
+source_template_alias = "sq1j9ij73hlyje1f0orv"
+source_template_id = "sq1j9ij73hlyje1f0orv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

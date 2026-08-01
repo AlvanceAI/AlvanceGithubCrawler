@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dcor-cc040f-d5121239"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vnmabus/dcor"
+base_commit = "d5121239dc50788f69ce95dd3c3cdbd2f5f4626c"
+source_tree = "0a34aab4ffd22e5704f427f6f28b70a03cfc21a6"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4d932dd604fbdf73b9419726e2f7bfc08b8137d3b17961883a2b2e6d43afb254"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dcor-cc040f-d5121239-v2-env-4d932dd6"
+template_id = "jlty56c3mlfke61iztnx"
+source_template_alias = "82xkzx43kcks4akjziry"
+source_template_id = "82xkzx43kcks4akjziry"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
