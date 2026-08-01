@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "millipds-da6519-faf0c36b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/DavidBuchanan314/millipds"
+base_commit = "faf0c36ba65183eba47c1d4f50d084aa11f4ce95"
+source_tree = "f12473aa3e994fafd4a00b1be916f892904b99a2"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8d52f4456c98038c355c8fb27d3d0ba508ed45138a3e16780d34a95f6957cb8a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-millipds-da6519-faf0c36b-v2-env-8d52f445"
+template_id = "6xgpllvx9sgkqu0u9k5k"
+source_template_alias = "i88br61u5jlafadir4bg"
+source_template_id = "i88br61u5jlafadir4bg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

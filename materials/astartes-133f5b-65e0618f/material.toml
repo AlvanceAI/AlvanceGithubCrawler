@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "astartes-133f5b-65e0618f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/JacksonBurns/astartes"
+base_commit = "65e0618f1c2d4905418a68fa5d829ae624738e0a"
+source_tree = "22d45421c1958aa822563670de1179c3d8f6d32e"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b4cfdb81e4d11f0621cf21b9d7329ff665141cce80eec1e8fa499b7d64c0ff47"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-astartes-133f5b-65e0618f-v2-env-b4cfdb81"
+template_id = "m3fggmwgfpsnanmta4sq"
+source_template_alias = "4b17ruh8wnz3gmh2fvyk"
+source_template_id = "4b17ruh8wnz3gmh2fvyk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
