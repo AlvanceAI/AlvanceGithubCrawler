@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vscode-jest-e08445-b71edf0b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jest-community/vscode-jest"
+base_commit = "b71edf0b1b80aa22a16222775fbd37dabab3aea0"
+source_tree = "295d5d003016714ff8fdbab4439d587e896e6366"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "616c371e3e49437d7b1db5c6ea533c23bbcb99dfd6236bd685cdab2a6aeed51a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vscode-jest-e08445-b71edf0b-v2-env-616c371e"
+template_id = "ku89fsn0k2pume4j0zgf"
+source_template_alias = "jq79cl1zhacqm1q5bbqs"
+source_template_id = "jq79cl1zhacqm1q5bbqs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "geojson-a19cc2-82055e86"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jazzband/geojson"
+base_commit = "82055e8679bbcdef5bd7fc0a3c7168e86cbd3d12"
+source_tree = "1bdb313d9687df2e29952601ca28950baaa3810f"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a3c062c86c4f27a9d03f3ba0408ea38617ff7e65bfbfa9fe60486bec2ffcdc80"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-geojson-a19cc2-82055e86-v2-env-a3c062c8"
+template_id = "8717g5wxonexn53ythaj"
+source_template_alias = "4vynyof5z1fna0ix9ohj"
+source_template_id = "4vynyof5z1fna0ix9ohj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
