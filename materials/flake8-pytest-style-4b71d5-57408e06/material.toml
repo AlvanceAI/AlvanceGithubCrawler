@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "flake8-pytest-style-4b71d5-57408e06"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/m-burst/flake8-pytest-style"
+base_commit = "57408e0668c5c0fa57969bbed1806961153540ef"
+source_tree = "119a0f3c5811f035677757f324962139ea2bfd73"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f7cd1d93560d8f8c272bc2feb4dc8d6d2cf08ede959392fc57cf838b701e15ec"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-flake8-pytest-style-4b71d5-57408e06-v2-env-f7cd1d93"
+template_id = "zjfd2y1cmo880ftaubm6"
+source_template_alias = "53s87oxpjw7p8exmzs5h"
+source_template_id = "53s87oxpjw7p8exmzs5h"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
