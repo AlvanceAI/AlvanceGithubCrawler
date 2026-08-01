@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fertilizer-cc656c-61b155ab"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/molecular-labs/fertilizer"
+base_commit = "61b155ab879cba51529005636dcee76c0c86c884"
+source_tree = "a01be59fd938852c71c66536cb337f878863f535"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7e378472887d26f8888dd29317746673532432018ead03e685d6fca430ada65d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fertilizer-cc656c-61b155ab-v2-env-7e378472"
+template_id = "vpfs40b55fegwocrsm2y"
+source_template_alias = "hmynpnybqwrorlpzo3k0"
+source_template_id = "hmynpnybqwrorlpzo3k0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

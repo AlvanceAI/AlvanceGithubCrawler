@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "luna-82c06f-6771b6d4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/greatscottgadgets/luna"
+base_commit = "6771b6d4600d9929880f77e7fce618887b850f73"
+source_tree = "0328487dad1127a772d7f995b410b9d26a907168"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c7345e1356c8382b0746b271c37f6549fe029ccb325c3f14f3e874592fa1f180"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-luna-82c06f-6771b6d4-v2-env-c7345e13"
+template_id = "ydinh2174bwx6rlei0z3"
+source_template_alias = "gr8h167cunulhmmbvyoq"
+source_template_id = "gr8h167cunulhmmbvyoq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
