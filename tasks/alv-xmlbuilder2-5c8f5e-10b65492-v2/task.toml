@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-xmlbuilder2-5c8f5e-10b65492-v2"
+description = "Rebuildable repository task for oozcitak/xmlbuilder2"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-xmlbuilder2-5c8f5e-10b65492-v2"
+material_id = "xmlbuilder2-5c8f5e-10b65492"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/oozcitak/xmlbuilder2"
+base_commit_hash = "10b65492d4c47a3a7c88e430be5b1d7bbd0ac85a"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

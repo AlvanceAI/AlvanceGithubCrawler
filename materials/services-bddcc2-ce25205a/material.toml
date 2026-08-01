@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "services-bddcc2-ce25205a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/volarjs/services"
+base_commit = "ce25205adf873830449078ff54f705edc64778e9"
+source_tree = "aa2a3c909dc9a10d9537dffadcb2563583dc9d8a"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "90ce5e29d9f48ab9f6d5c83ec9e2b269b1424fe3755496b86478b24efbe0f1dc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-services-bddcc2-ce25205a-v2-env-90ce5e29"
+template_id = "lz6tve81zog7ucq0jyq2"
+source_template_alias = "rajxrvhmwqae07ju5583"
+source_template_id = "rajxrvhmwqae07ju5583"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

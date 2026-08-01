@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "xmlbuilder2-5c8f5e-10b65492"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/oozcitak/xmlbuilder2"
+base_commit = "10b65492d4c47a3a7c88e430be5b1d7bbd0ac85a"
+source_tree = "bedd7b76c2cbe86c7450b78083be0d08d0e56a89"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a1b15ec83a755c6c0f50a831e0bce68dee918e67809ddcc2e6635569d3a154ce"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-xmlbuilder2-5c8f5e-10b65492-v2-env-a1b15ec8"
+template_id = "q4je9xsgxk612z1nicoe"
+source_template_alias = "dur1482enoioz7wr2x64"
+source_template_id = "dur1482enoioz7wr2x64"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

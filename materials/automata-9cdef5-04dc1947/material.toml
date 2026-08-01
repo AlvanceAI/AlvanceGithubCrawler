@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "automata-9cdef5-04dc1947"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/caleb531/automata"
+base_commit = "04dc1947315f322825991b5dc637604567703c9c"
+source_tree = "093b90510441916ca88ac409b3e5e3f9eec11d80"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "478aa01781d188266e5a00b4b205e6e45ad1f2fc1efa810ef28d6d43f73d273b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-automata-9cdef5-04dc1947-v2-env-478aa017"
+template_id = "69rfcxtxhcp10z0z7uxj"
+source_template_alias = "b2ws8i6wcn8a9cnlwlgb"
+source_template_id = "b2ws8i6wcn8a9cnlwlgb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

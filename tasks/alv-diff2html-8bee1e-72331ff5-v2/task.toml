@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-diff2html-8bee1e-72331ff5-v2"
+description = "Rebuildable repository task for rtfpessoa/diff2html"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-diff2html-8bee1e-72331ff5-v2"
+material_id = "diff2html-8bee1e-72331ff5"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/rtfpessoa/diff2html"
+base_commit_hash = "72331ff5d13a8d4d1f11256a7b554dd0d69d7014"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []
