@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ditox-940176-06ede1c6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mnasyrov/ditox"
+base_commit = "06ede1c62a96fff7333558756f8f8047487c978b"
+source_tree = "18e78642796509ff5059c433d166832212a75997"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "206dd3fab2ce10e4b52dcfd9924107a604540e4cc4c5daa7f467821f9dd56492"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ditox-940176-06ede1c6-v2-env-206dd3fa"
+template_id = "i3x61adecczsepbv05ms"
+source_template_alias = "67x5ekpt73utkphznpkf"
+source_template_id = "67x5ekpt73utkphznpkf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zarr-js-81deb3-c34cb91f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gzuidhof/zarr.js"
+base_commit = "c34cb91f980315bdca40b59645c5b48c0c426d64"
+source_tree = "77c889dc04fd6b18634dec289ae2ce106fa3f36b"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e234b4e10ddcd8a60f0ad44aa6f9138fe91eb30956abe212cd7b2ff10b5827fa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zarr-js-81deb3-c34cb91f-v2-env-e234b4e1"
+template_id = "cw67t0o7xqanoy2mehw3"
+source_template_alias = "cnqrkb259s02dm3b1wy9"
+source_template_id = "cnqrkb259s02dm3b1wy9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

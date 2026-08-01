@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "boilerplates-3f81dc-3ecb1038"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ChristianLempa/boilerplates"
+base_commit = "3ecb10381bda8b78f8d8160c0ec6b54a7dc3afdf"
+source_tree = "8e5004af50f78610ff44850989cfefb1e75d741d"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5424908d1d2886babc1eed66954ea1976ca038328c774459a38d1c63d6643123"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-boilerplates-3f81dc-3ecb1038-v2-env-5424908d"
+template_id = "8ak1ws3mfhlkn8w38ahb"
+source_template_alias = "7eee18skcw1epze1pqsj"
+source_template_id = "7eee18skcw1epze1pqsj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

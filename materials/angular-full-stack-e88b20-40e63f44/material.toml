@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "angular-full-stack-e88b20-40e63f44"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/DavideViolante/Angular-Full-Stack"
+base_commit = "40e63f44affcf0d0368429768a085b90b3c5e23e"
+source_tree = "298ab37ab850c988484db28667e2ba7426743037"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4dff6221b6dcd01007d6925877cc29bbbad6aa7d9086015d57519d255a535565"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-angular-full-stack-e88b20-40e63f44-v2-env-4dff6221"
+template_id = "2t8kn7moyjmlxc4cxy5w"
+source_template_alias = "5psoj1tud2qx7k1svc77"
+source_template_id = "5psoj1tud2qx7k1svc77"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
