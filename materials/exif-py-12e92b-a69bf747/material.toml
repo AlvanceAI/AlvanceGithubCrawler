@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "exif-py-12e92b-a69bf747"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ianare/exif-py"
+base_commit = "a69bf74770caf6b333221658f5092ed69f99faac"
+source_tree = "57bfdab2bd8471e117bc160f140a72895db27f08"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d904062611fb92acaed419c08545455bc4d84e887d83536088af22557ce38bdd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-exif-py-12e92b-a69bf747-v2-env-d9040626"
+template_id = "o0194cj8pni4lj0a3yya"
+source_template_alias = "j8yt56k8ru9v9ker26j9"
+source_template_id = "j8yt56k8ru9v9ker26j9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

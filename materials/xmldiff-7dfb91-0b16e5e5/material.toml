@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "xmldiff-7dfb91-0b16e5e5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Shoobx/xmldiff"
+base_commit = "0b16e5e52fcf189fb489ed83bd1ed306506e509b"
+source_tree = "cf19d2d69e6ccc57486775995b03d0b09fcd0aff"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2ecede4f401ad53b54d82d722b7b48529430775eb516ccf68c7d11c3d3265698"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-xmldiff-7dfb91-0b16e5e5-v2-env-2ecede4f"
+template_id = "a9raga3har9osa0df3xj"
+source_template_alias = "ww553qzqoq3ih9r67v5r"
+source_template_id = "ww553qzqoq3ih9r67v5r"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

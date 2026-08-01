@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "matrix-0461f3-0801afd2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/facebookresearch/matrix"
+base_commit = "0801afd276f2f7086ae8fecb07a5eac102227b74"
+source_tree = "128e392e5123f9c08f79de79fc7b902466490704"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "90b47648f288eb132ed62cf0c1238fdf773a82f5d4ddb6549ea52d451badb93f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-matrix-0461f3-0801afd2-v2-env-90b47648"
+template_id = "63jcyn7rsqa12voipbvp"
+source_template_alias = "avnf2dkq8wgrg1bnl2qf"
+source_template_id = "avnf2dkq8wgrg1bnl2qf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

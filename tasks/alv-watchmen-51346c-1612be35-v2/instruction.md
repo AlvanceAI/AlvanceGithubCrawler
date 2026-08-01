@@ -1,0 +1,5 @@
+Repository `firstbatchxyz/watchmen` at commit `1612be3537fdccaa477cedae38acb2f61dffa935` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+实现可插拔的 DelegationExecutor，在项目显式授权且满足令牌与递归深度预算时，通过无头 CLI 后端执行跨厂商路由选中的模型并返回结构化结果，而非仅生成建议文本。
