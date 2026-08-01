@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "asyncreview-16429b-0c9cd438"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/AsyncFuncAI/AsyncReview"
+base_commit = "0c9cd438b1682befc4f3e56b150f9840f1baf745"
+source_tree = "a2dc729b0eda9490356d91a794c19b13702c744a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "41175a94a9b7ecc7d9c5587ab3b0c17d3caac6a8f2321353627c55d27e9b85bf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-asyncreview-16429b-0c9cd438-v2-env-41175a94"
+template_id = "deafkgxrk3igvpsm7v30"
+source_template_alias = "bnd3fe8g9exeanb9s1xt"
+source_template_id = "bnd3fe8g9exeanb9s1xt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
