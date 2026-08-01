@@ -1,0 +1,52 @@
+[2026-08-01T07:58:13Z] stage=verify-default-20260801T075813Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 07:58:16,723 INFO alvance_github_crawler.pending.verification: verifying pending candidate greatscottgadgets/luna key_slot=1
+2026-08-01 07:58:16,724 INFO alvance_github_crawler.pending.verification: verifying pending candidate molecular-labs/fertilizer key_slot=2
+2026-08-01 07:58:23,733 INFO alvance_github_crawler.pending.verification: verifying pending candidate vikingmute/better-wechatpay key_slot=3
+2026-08-01 07:58:30,527 INFO alvance_github_crawler.pending.verification: verifying pending candidate agentscope-ai/agentscope-runtime key_slot=1
+2026-08-01 07:58:40,375 INFO alvance_github_crawler.pending.verification: verifying pending candidate azavea/raster-vision key_slot=2
+2026-08-01 07:58:55,681 INFO alvance_github_crawler.pending.verification: pending candidate azavea/raster-vision finished outcome=rejected key_slot=2 processed=1 in_flight=4
+2026-08-01 07:59:00,578 INFO alvance_github_crawler.pending.verification: pending candidate molecular-labs/fertilizer finished outcome=registered key_slot=2 processed=2 in_flight=3
+2026-08-01 07:59:01,113 INFO alvance_github_crawler.pending.verification: verifying pending candidate HKUDS/OpenHarness key_slot=2
+2026-08-01 07:59:19,617 INFO alvance_github_crawler.pending.verification: verifying pending candidate Quantinuum/lambeq key_slot=3
+2026-08-01 07:59:19,838 INFO alvance_github_crawler.pending.verification: pending candidate greatscottgadgets/luna finished outcome=registered key_slot=1 processed=3 in_flight=4
+2026-08-01 07:59:22,339 INFO alvance_github_crawler.pending.verification: pending candidate vikingmute/better-wechatpay finished outcome=registered key_slot=3 processed=4 in_flight=3
+2026-08-01 07:59:24,255 INFO alvance_github_crawler.pending.verification: verifying pending candidate plasticrake/homebridge-tplink-smarthome key_slot=1
+2026-08-01 07:59:42,828 INFO alvance_github_crawler.pending.verification: pending candidate Quantinuum/lambeq finished outcome=rejected key_slot=3 processed=5 in_flight=3
+2026-08-01 07:59:57,079 INFO alvance_github_crawler.pending.verification: pending candidate HKUDS/OpenHarness finished outcome=rejected key_slot=2 processed=6 in_flight=2
+2026-08-01 07:59:58,900 INFO alvance_github_crawler.pending.verification: verifying pending candidate doyensec/electronegativity key_slot=2
+2026-08-01 08:00:45,794 INFO alvance_github_crawler.pending.verification: verifying pending candidate google/jaxopt key_slot=3
+2026-08-01 08:01:14,962 INFO alvance_github_crawler.pending.verification: pending candidate google/jaxopt finished outcome=rejected key_slot=3 processed=7 in_flight=3
+2026-08-01 08:02:30,900 INFO alvance_github_crawler.pending.verification: verifying pending candidate Netflix/falcor key_slot=3
+2026-08-01 08:02:36,396 INFO alvance_github_crawler.pending.verification: verifying pending candidate vercel/cosmosdb-server key_slot=2
+2026-08-01 08:02:36,925 INFO alvance_github_crawler.pending.verification: pending candidate Netflix/falcor finished outcome=rejected key_slot=3 processed=8 in_flight=4
+2026-08-01 08:03:32,530 INFO alvance_github_crawler.pending.verification: pending candidate doyensec/electronegativity finished outcome=rejected key_slot=2 processed=9 in_flight=3
+2026-08-01 08:04:01,886 INFO alvance_github_crawler.pending.verification: verifying pending candidate cybrota/whispr key_slot=3
+2026-08-01 08:04:29,340 INFO alvance_github_crawler.pending.verification: pending candidate cybrota/whispr finished outcome=rejected key_slot=3 processed=10 in_flight=3
+2026-08-01 08:04:36,485 INFO alvance_github_crawler.pending.verification: verifying pending candidate hyparam/hightable key_slot=3
+2026-08-01 08:04:36,899 INFO alvance_github_crawler.pending.verification: pending candidate hyparam/hightable finished outcome=rejected key_slot=3 processed=11 in_flight=3
+2026-08-01 08:05:42,603 INFO alvance_github_crawler.pending.verification: verifying pending candidate vuejs/vue-cli key_slot=3
+2026-08-01 08:06:33,219 INFO alvance_github_crawler.pending.verification: pending candidate vuejs/vue-cli finished outcome=rejected key_slot=3 processed=12 in_flight=3
+2026-08-01 08:06:58,286 INFO alvance_github_crawler.pending.verification: pending candidate vercel/cosmosdb-server finished outcome=rejected key_slot=2 processed=13 in_flight=2
+2026-08-01 08:07:02,831 INFO alvance_github_crawler.pending.verification: verifying pending candidate wagtail/wagtail-factories key_slot=2
+2026-08-01 08:07:37,668 INFO alvance_github_crawler.pending.verification: pending candidate wagtail/wagtail-factories finished outcome=rejected key_slot=2 processed=14 in_flight=2
+2026-08-01 08:09:54,257 INFO alvance_github_crawler.pending.verification: verifying pending candidate gidgethub/gidgethub key_slot=3
+2026-08-01 08:10:47,328 INFO alvance_github_crawler.pending.verification: pending candidate gidgethub/gidgethub finished outcome=rejected key_slot=3 processed=15 in_flight=2
+2026-08-01 08:10:59,259 INFO alvance_github_crawler.pending.verification: pending candidate plasticrake/homebridge-tplink-smarthome finished outcome=rejected key_slot=1 processed=16 in_flight=1
+2026-08-01 08:13:31,532 INFO alvance_github_crawler.pending.verification: pending candidate agentscope-ai/agentscope-runtime finished outcome=rejected key_slot=1 processed=17 in_flight=0
+{
+  "key_slot_1_processed": 3,
+  "key_slot_1_registered": 1,
+  "key_slot_1_rejected": 2,
+  "key_slot_2_processed": 6,
+  "key_slot_2_registered": 1,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 8,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 7,
+  "processed": 17,
+  "registered": 3,
+  "rejected": 14,
+  "remaining": 0
+}
+[2026-08-01T08:13:32Z] stage=verify-default-20260801T075813Z exit_code=0 duration_s=919

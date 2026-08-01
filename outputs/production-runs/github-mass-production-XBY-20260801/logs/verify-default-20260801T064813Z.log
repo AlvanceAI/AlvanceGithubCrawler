@@ -1,0 +1,23 @@
+[2026-08-01T06:48:13Z] stage=verify-default-20260801T064813Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 06:48:16,419 INFO alvance_github_crawler.pending.verification: verifying pending candidate silkimen/cordova-plugin-advanced-http key_slot=1
+2026-08-01 06:48:17,960 ERROR alvance_github_crawler.e2b.verification: silkimen/cordova-plugin-advanced-http failed during stage3_5_e2b_environment
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/verification.py", line 64, in verify
+    environment = self.environment.ensure(repo, repo_path, str(repo["base_commit"]))
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/template.py", line 90, in ensure
+    runtime_version = detect_runtime_version(language, repo_path)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/runtime/profiles.py", line 93, in detect_runtime_version
+    engine = str((package.get("engines") or {}).get("node", ""))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-08-01 06:48:17,966 INFO alvance_github_crawler.pending.verification: pending candidate silkimen/cordova-plugin-advanced-http finished outcome=error key_slot=1 processed=1 in_flight=0
+{
+  "error": 1,
+  "exhausted": 1,
+  "key_slot_1_error": 1,
+  "key_slot_1_processed": 1,
+  "processed": 1,
+  "remaining": 0
+}
+[2026-08-01T06:48:19Z] stage=verify-default-20260801T064813Z exit_code=0 duration_s=6

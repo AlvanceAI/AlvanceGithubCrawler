@@ -1,0 +1,45 @@
+[2026-08-01T07:48:51Z] stage=verify-default-20260801T074851Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 07:48:54,546 INFO alvance_github_crawler.pending.verification: verifying pending candidate jazzband/geojson key_slot=1
+2026-08-01 07:49:08,706 INFO alvance_github_crawler.pending.verification: verifying pending candidate jmcollin78/versatile_thermostat key_slot=2
+2026-08-01 07:49:12,886 INFO alvance_github_crawler.pending.verification: verifying pending candidate PavelBlend/blender-xray key_slot=3
+2026-08-01 07:49:15,634 INFO alvance_github_crawler.pending.verification: verifying pending candidate iMerica/dj-rest-auth key_slot=1
+2026-08-01 07:49:21,139 INFO alvance_github_crawler.pending.verification: pending candidate PavelBlend/blender-xray finished outcome=rejected key_slot=3 processed=1 in_flight=3
+2026-08-01 07:49:22,984 INFO alvance_github_crawler.pending.verification: pending candidate jmcollin78/versatile_thermostat finished outcome=rejected key_slot=2 processed=2 in_flight=2
+2026-08-01 07:49:24,679 INFO alvance_github_crawler.pending.verification: verifying pending candidate Shaurya-Sethi/circuitron key_slot=2
+2026-08-01 07:49:30,352 INFO alvance_github_crawler.pending.verification: pending candidate jazzband/geojson finished outcome=registered key_slot=1 processed=3 in_flight=2
+2026-08-01 07:49:33,421 INFO alvance_github_crawler.pending.verification: verifying pending candidate gillsdk/gill key_slot=3
+2026-08-01 07:49:34,278 INFO alvance_github_crawler.pending.verification: pending candidate iMerica/dj-rest-auth finished outcome=rejected key_slot=1 processed=4 in_flight=2
+2026-08-01 07:49:55,320 INFO alvance_github_crawler.pending.verification: verifying pending candidate antfu-collective/vite-ssg key_slot=1
+2026-08-01 07:50:03,279 INFO alvance_github_crawler.pending.verification: pending candidate Shaurya-Sethi/circuitron finished outcome=rejected key_slot=2 processed=5 in_flight=2
+2026-08-01 07:50:19,576 INFO alvance_github_crawler.pending.verification: pending candidate antfu-collective/vite-ssg finished outcome=rejected key_slot=1 processed=6 in_flight=1
+2026-08-01 07:50:48,405 INFO alvance_github_crawler.pending.verification: verifying pending candidate iwoplaza/typed-binary key_slot=2
+2026-08-01 07:50:53,810 INFO alvance_github_crawler.pending.verification: verifying pending candidate RelaxedJS/ReLaXed key_slot=1
+2026-08-01 07:50:54,261 INFO alvance_github_crawler.pending.verification: pending candidate RelaxedJS/ReLaXed finished outcome=rejected key_slot=1 processed=7 in_flight=2
+2026-08-01 07:50:58,650 INFO alvance_github_crawler.pending.verification: verifying pending candidate fausecteam/ctf-gameserver key_slot=1
+2026-08-01 07:51:05,533 INFO alvance_github_crawler.pending.verification: verifying pending candidate effector/patronum key_slot=2
+2026-08-01 07:51:13,720 INFO alvance_github_crawler.pending.verification: verifying pending candidate Esri/esri-leaflet key_slot=3
+2026-08-01 07:51:33,435 INFO alvance_github_crawler.pending.verification: pending candidate iwoplaza/typed-binary finished outcome=rejected key_slot=2 processed=8 in_flight=4
+2026-08-01 07:51:37,837 INFO alvance_github_crawler.pending.verification: verifying pending candidate jest-community/vscode-jest key_slot=1
+2026-08-01 07:51:39,364 INFO alvance_github_crawler.pending.verification: pending candidate fausecteam/ctf-gameserver finished outcome=rejected key_slot=1 processed=9 in_flight=4
+2026-08-01 07:51:59,298 INFO alvance_github_crawler.pending.verification: pending candidate Esri/esri-leaflet finished outcome=rejected key_slot=3 processed=10 in_flight=3
+2026-08-01 07:52:17,668 INFO alvance_github_crawler.pending.verification: verifying pending candidate actions/download-artifact key_slot=2
+2026-08-01 07:53:37,190 INFO alvance_github_crawler.pending.verification: pending candidate gillsdk/gill finished outcome=rejected key_slot=3 processed=11 in_flight=3
+2026-08-01 07:53:50,215 INFO alvance_github_crawler.pending.verification: pending candidate actions/download-artifact finished outcome=registered key_slot=2 processed=12 in_flight=2
+2026-08-01 07:55:09,490 INFO alvance_github_crawler.pending.verification: pending candidate jest-community/vscode-jest finished outcome=registered key_slot=1 processed=13 in_flight=1
+2026-08-01 07:55:52,535 INFO alvance_github_crawler.pending.verification: pending candidate effector/patronum finished outcome=registered key_slot=2 processed=14 in_flight=0
+{
+  "key_slot_1_processed": 6,
+  "key_slot_1_registered": 2,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 5,
+  "key_slot_2_registered": 2,
+  "key_slot_2_rejected": 3,
+  "key_slot_3_processed": 3,
+  "key_slot_3_rejected": 3,
+  "processed": 14,
+  "registered": 4,
+  "rejected": 10,
+  "remaining": 0
+}
+[2026-08-01T07:55:53Z] stage=verify-default-20260801T074851Z exit_code=0 duration_s=422

@@ -1,0 +1,20 @@
+[2026-08-01T08:16:19Z] stage=verify-default-20260801T081619Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 08:16:21,671 INFO alvance_github_crawler.pending.verification: verifying pending candidate rusty1s/pytorch_scatter key_slot=1
+2026-08-01 08:16:28,554 INFO alvance_github_crawler.pending.verification: verifying pending candidate opencobra/optlang key_slot=2
+2026-08-01 08:16:37,533 INFO alvance_github_crawler.pending.verification: pending candidate rusty1s/pytorch_scatter finished outcome=rejected key_slot=1 processed=1 in_flight=1
+2026-08-01 08:16:49,989 INFO alvance_github_crawler.pending.verification: verifying pending candidate matthewwardrop/formulaic key_slot=3
+2026-08-01 08:16:58,735 INFO alvance_github_crawler.pending.verification: pending candidate opencobra/optlang finished outcome=rejected key_slot=2 processed=2 in_flight=1
+2026-08-01 08:17:24,204 INFO alvance_github_crawler.pending.verification: pending candidate matthewwardrop/formulaic finished outcome=rejected key_slot=3 processed=3 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_rejected": 1,
+  "key_slot_2_processed": 1,
+  "key_slot_2_rejected": 1,
+  "key_slot_3_processed": 1,
+  "key_slot_3_rejected": 1,
+  "processed": 3,
+  "rejected": 3,
+  "remaining": 0
+}
+[2026-08-01T08:17:25Z] stage=verify-default-20260801T081619Z exit_code=0 duration_s=66

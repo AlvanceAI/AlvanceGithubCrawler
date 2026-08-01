@@ -1,0 +1,58 @@
+[2026-08-01T08:32:34Z] stage=verify-default-20260801T083234Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 08:32:37,143 INFO alvance_github_crawler.pending.verification: verifying pending candidate aio-libs/aiokafka key_slot=1
+2026-08-01 08:32:43,989 INFO alvance_github_crawler.pending.verification: verifying pending candidate netbox-community/netbox-bgp key_slot=2
+2026-08-01 08:32:59,147 INFO alvance_github_crawler.pending.verification: verifying pending candidate ChristianLempa/boilerplates key_slot=3
+2026-08-01 08:32:59,450 INFO alvance_github_crawler.pending.verification: pending candidate netbox-community/netbox-bgp finished outcome=rejected key_slot=2 processed=1 in_flight=2
+2026-08-01 08:33:02,520 INFO alvance_github_crawler.pending.verification: verifying pending candidate FlowElement-ai/m_flow key_slot=2
+2026-08-01 08:33:06,722 INFO alvance_github_crawler.pending.verification: verifying pending candidate NicolasHug/Surprise key_slot=3
+2026-08-01 08:33:06,723 INFO alvance_github_crawler.pending.verification: verifying pending candidate pfirsich/makelove key_slot=1
+2026-08-01 08:33:18,985 INFO alvance_github_crawler.pending.verification: verifying pending candidate nipreps/smriprep key_slot=2
+2026-08-01 08:33:26,850 INFO alvance_github_crawler.pending.verification: pending candidate pfirsich/makelove finished outcome=rejected key_slot=1 processed=2 in_flight=5
+2026-08-01 08:33:37,282 INFO alvance_github_crawler.pending.verification: pending candidate ChristianLempa/boilerplates finished outcome=registered key_slot=3 processed=3 in_flight=4
+2026-08-01 08:33:39,111 INFO alvance_github_crawler.pending.verification: verifying pending candidate tomjschuster/sequelize-ui key_slot=3
+2026-08-01 08:33:58,561 INFO alvance_github_crawler.pending.verification: verifying pending candidate ktnyt/cclsp key_slot=1
+2026-08-01 08:33:58,968 INFO alvance_github_crawler.pending.verification: pending candidate ktnyt/cclsp finished outcome=rejected key_slot=1 processed=4 in_flight=5
+2026-08-01 08:34:09,169 INFO alvance_github_crawler.pending.verification: verifying pending candidate DavideViolante/Angular-Full-Stack key_slot=1
+2026-08-01 08:34:09,169 INFO alvance_github_crawler.pending.verification: verifying pending candidate ollama/ollama-js key_slot=2
+2026-08-01 08:34:19,134 INFO alvance_github_crawler.pending.verification: pending candidate NicolasHug/Surprise finished outcome=rejected key_slot=3 processed=5 in_flight=6
+2026-08-01 08:34:19,519 INFO alvance_github_crawler.pending.verification: verifying pending candidate JupiterOne/starbase key_slot=3
+2026-08-01 08:34:36,250 INFO alvance_github_crawler.pending.verification: verifying pending candidate spec-first/connexion key_slot=1
+2026-08-01 08:34:40,335 INFO alvance_github_crawler.pending.verification: verifying pending candidate hadynz/obsidian-kindle-plugin key_slot=3
+2026-08-01 08:34:40,763 INFO alvance_github_crawler.pending.verification: pending candidate hadynz/obsidian-kindle-plugin finished outcome=rejected key_slot=3 processed=6 in_flight=8
+2026-08-01 08:34:43,946 INFO alvance_github_crawler.pending.verification: pending candidate JupiterOne/starbase finished outcome=rejected key_slot=3 processed=7 in_flight=7
+2026-08-01 08:34:56,694 INFO alvance_github_crawler.pending.verification: verifying pending candidate pepperize/cdk-organizations key_slot=3
+2026-08-01 08:34:58,238 INFO alvance_github_crawler.pending.verification: pending candidate spec-first/connexion finished outcome=rejected key_slot=1 processed=8 in_flight=7
+2026-08-01 08:35:00,407 INFO alvance_github_crawler.pending.verification: pending candidate ollama/ollama-js finished outcome=registered key_slot=2 processed=9 in_flight=6
+2026-08-01 08:35:00,787 INFO alvance_github_crawler.pending.verification: verifying pending candidate gzuidhof/zarr.js key_slot=1
+2026-08-01 08:35:04,820 INFO alvance_github_crawler.pending.verification: pending candidate FlowElement-ai/m_flow finished outcome=rejected key_slot=2 processed=10 in_flight=6
+2026-08-01 08:35:09,459 INFO alvance_github_crawler.pending.verification: verifying pending candidate mnasyrov/ditox key_slot=2
+2026-08-01 08:35:13,919 INFO alvance_github_crawler.pending.verification: pending candidate nipreps/smriprep finished outcome=rejected key_slot=2 processed=11 in_flight=6
+2026-08-01 08:35:44,213 INFO alvance_github_crawler.pending.verification: verifying pending candidate ElshadHu/repo-health key_slot=2
+2026-08-01 08:36:21,230 INFO alvance_github_crawler.pending.verification: pending candidate pepperize/cdk-organizations finished outcome=rejected key_slot=3 processed=12 in_flight=6
+2026-08-01 08:36:24,999 INFO alvance_github_crawler.pending.verification: pending candidate mnasyrov/ditox finished outcome=registered key_slot=2 processed=13 in_flight=5
+2026-08-01 08:36:33,189 INFO alvance_github_crawler.pending.verification: pending candidate DavideViolante/Angular-Full-Stack finished outcome=registered key_slot=1 processed=14 in_flight=4
+2026-08-01 08:36:49,731 INFO alvance_github_crawler.pending.verification: pending candidate aio-libs/aiokafka finished outcome=registered key_slot=1 processed=15 in_flight=3
+2026-08-01 08:36:53,472 INFO alvance_github_crawler.pending.verification: pending candidate gzuidhof/zarr.js finished outcome=registered key_slot=1 processed=16 in_flight=2
+2026-08-01 08:37:38,234 INFO alvance_github_crawler.pending.verification: pending candidate ElshadHu/repo-health finished outcome=rejected key_slot=2 processed=17 in_flight=1
+2026-08-01 08:38:20,099 INFO alvance_github_crawler.pending.verification: verifying pending candidate IvanIhnatsiuk/react-native-advanced-input-mask key_slot=1
+2026-08-01 08:38:47,130 INFO alvance_github_crawler.pending.verification: pending candidate IvanIhnatsiuk/react-native-advanced-input-mask finished outcome=rejected key_slot=1 processed=18 in_flight=1
+2026-08-01 08:41:26,303 INFO alvance_github_crawler.pending.verification: verifying pending candidate atinux/nuxt-auth-utils key_slot=2
+2026-08-01 08:41:55,886 INFO alvance_github_crawler.pending.verification: pending candidate atinux/nuxt-auth-utils finished outcome=rejected key_slot=2 processed=19 in_flight=1
+2026-08-01 08:44:57,831 INFO alvance_github_crawler.pending.verification: pending candidate tomjschuster/sequelize-ui finished outcome=rejected key_slot=3 processed=20 in_flight=0
+{
+  "key_slot_1_processed": 7,
+  "key_slot_1_registered": 3,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 7,
+  "key_slot_2_registered": 2,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 6,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 5,
+  "processed": 20,
+  "registered": 6,
+  "rejected": 14,
+  "remaining": 0
+}
+[2026-08-01T08:44:59Z] stage=verify-default-20260801T083234Z exit_code=0 duration_s=745

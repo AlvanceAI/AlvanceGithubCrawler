@@ -1,0 +1,33 @@
+[2026-08-01T08:45:16Z] stage=verify-escalated-20260801T084516Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 08:45:19,447 INFO alvance_github_crawler.pending.verification: verifying pending candidate codinit-dev/codinit-dev key_slot=1
+2026-08-01 08:45:19,451 INFO alvance_github_crawler.pending.verification: verifying pending candidate pieces-app/cli-agent key_slot=2
+2026-08-01 08:45:19,457 INFO alvance_github_crawler.pending.verification: verifying pending candidate Shaurya-Sethi/circuitron key_slot=3
+2026-08-01 08:45:19,460 INFO alvance_github_crawler.pending.verification: verifying pending candidate gillsdk/gill key_slot=1
+2026-08-01 08:45:19,464 INFO alvance_github_crawler.pending.verification: verifying pending candidate plasticrake/homebridge-tplink-smarthome key_slot=2
+2026-08-01 08:45:19,467 INFO alvance_github_crawler.pending.verification: verifying pending candidate antfu-collective/vitesse-webext key_slot=3
+2026-08-01 08:45:19,470 INFO alvance_github_crawler.pending.verification: verifying pending candidate tomjschuster/sequelize-ui key_slot=1
+2026-08-01 08:45:19,471 INFO alvance_github_crawler.pending.verification: verifying pending candidate pepperize/cdk-organizations key_slot=2
+2026-08-01 08:46:25,644 INFO alvance_github_crawler.pending.verification: pending candidate Shaurya-Sethi/circuitron finished outcome=rejected key_slot=3 processed=1 in_flight=7
+2026-08-01 08:46:32,366 INFO alvance_github_crawler.pending.verification: pending candidate antfu-collective/vitesse-webext finished outcome=registered key_slot=3 processed=2 in_flight=6
+2026-08-01 08:47:19,938 INFO alvance_github_crawler.pending.verification: pending candidate pepperize/cdk-organizations finished outcome=rejected key_slot=2 processed=3 in_flight=5
+2026-08-01 08:47:29,856 INFO alvance_github_crawler.pending.verification: pending candidate codinit-dev/codinit-dev finished outcome=registered key_slot=1 processed=4 in_flight=4
+2026-08-01 08:51:04,145 INFO alvance_github_crawler.pending.verification: pending candidate gillsdk/gill finished outcome=rejected key_slot=1 processed=5 in_flight=3
+2026-08-01 08:56:00,080 INFO alvance_github_crawler.pending.verification: pending candidate pieces-app/cli-agent finished outcome=rejected key_slot=2 processed=6 in_flight=2
+2026-08-01 08:56:37,808 INFO alvance_github_crawler.pending.verification: pending candidate tomjschuster/sequelize-ui finished outcome=rejected key_slot=1 processed=7 in_flight=1
+2026-08-01 08:56:47,664 INFO alvance_github_crawler.pending.verification: pending candidate plasticrake/homebridge-tplink-smarthome finished outcome=rejected key_slot=2 processed=8 in_flight=0
+{
+  "key_slot_1_processed": 3,
+  "key_slot_1_registered": 1,
+  "key_slot_1_rejected": 2,
+  "key_slot_2_processed": 3,
+  "key_slot_2_rejected": 3,
+  "key_slot_3_processed": 2,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 1,
+  "processed": 8,
+  "registered": 2,
+  "rejected": 6,
+  "remaining": 0
+}
+[2026-08-01T08:56:49Z] stage=verify-escalated-20260801T084516Z exit_code=0 duration_s=693

@@ -1,0 +1,62 @@
+[2026-08-01T07:08:17Z] stage=verify-default-20260801T070817Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 07:08:20,554 INFO alvance_github_crawler.pending.verification: verifying pending candidate MTSWebServices/Ambrosia key_slot=1
+2026-08-01 07:08:20,555 INFO alvance_github_crawler.pending.verification: verifying pending candidate facebookresearch/matrix key_slot=2
+2026-08-01 07:08:26,169 INFO alvance_github_crawler.pending.verification: verifying pending candidate closeio/tasktiger key_slot=3
+2026-08-01 07:08:45,440 INFO alvance_github_crawler.pending.verification: pending candidate closeio/tasktiger finished outcome=rejected key_slot=3 processed=1 in_flight=2
+2026-08-01 07:08:48,537 INFO alvance_github_crawler.pending.verification: verifying pending candidate Shoobx/xmldiff key_slot=3
+2026-08-01 07:09:30,864 INFO alvance_github_crawler.pending.verification: pending candidate Shoobx/xmldiff finished outcome=registered key_slot=3 processed=2 in_flight=2
+2026-08-01 07:09:50,511 INFO alvance_github_crawler.pending.verification: verifying pending candidate personalizedrefrigerator/js-draw key_slot=3
+2026-08-01 07:09:55,986 INFO alvance_github_crawler.pending.verification: verifying pending candidate awslabs/amazon-quicksight-embedding-sdk key_slot=1
+2026-08-01 07:10:05,943 INFO alvance_github_crawler.pending.verification: pending candidate facebookresearch/matrix finished outcome=registered key_slot=2 processed=3 in_flight=3
+2026-08-01 07:10:06,291 INFO alvance_github_crawler.pending.verification: verifying pending candidate cdump/investments key_slot=2
+2026-08-01 07:10:07,643 INFO alvance_github_crawler.pending.verification: verifying pending candidate hyperweb-io/telescope key_slot=3
+2026-08-01 07:10:09,362 INFO alvance_github_crawler.pending.verification: verifying pending candidate AlexxIT/XiaomiGateway3 key_slot=2
+2026-08-01 07:10:17,569 INFO alvance_github_crawler.pending.verification: pending candidate AlexxIT/XiaomiGateway3 finished outcome=rejected key_slot=2 processed=4 in_flight=5
+2026-08-01 07:10:29,535 INFO alvance_github_crawler.pending.verification: pending candidate hyperweb-io/telescope finished outcome=rejected key_slot=3 processed=5 in_flight=4
+2026-08-01 07:10:54,643 INFO alvance_github_crawler.pending.verification: verifying pending candidate mkorpela/pabot key_slot=3
+2026-08-01 07:11:01,789 INFO alvance_github_crawler.pending.verification: verifying pending candidate akosbalasko/yarle key_slot=2
+2026-08-01 07:11:09,961 INFO alvance_github_crawler.pending.verification: verifying pending candidate enzymejs/enzyme key_slot=3
+2026-08-01 07:11:10,563 INFO alvance_github_crawler.pending.verification: pending candidate enzymejs/enzyme finished outcome=rejected key_slot=3 processed=6 in_flight=6
+2026-08-01 07:11:16,935 INFO alvance_github_crawler.pending.verification: pending candidate cdump/investments finished outcome=rejected key_slot=2 processed=7 in_flight=5
+2026-08-01 07:11:18,739 INFO alvance_github_crawler.pending.verification: verifying pending candidate the-convocation/twitter-scraper key_slot=2
+2026-08-01 07:11:53,947 INFO alvance_github_crawler.pending.verification: pending candidate the-convocation/twitter-scraper finished outcome=rejected key_slot=2 processed=8 in_flight=5
+2026-08-01 07:11:54,412 INFO alvance_github_crawler.pending.verification: pending candidate awslabs/amazon-quicksight-embedding-sdk finished outcome=registered key_slot=1 processed=9 in_flight=4
+2026-08-01 07:12:17,746 INFO alvance_github_crawler.pending.verification: pending candidate akosbalasko/yarle finished outcome=rejected key_slot=2 processed=10 in_flight=3
+2026-08-01 07:17:27,985 INFO alvance_github_crawler.pending.verification: pending candidate mkorpela/pabot finished outcome=rejected key_slot=3 processed=11 in_flight=2
+2026-08-01 07:18:55,519 INFO alvance_github_crawler.pending.verification: pending candidate MTSWebServices/Ambrosia finished outcome=rejected key_slot=1 processed=12 in_flight=1
+2026-08-01 07:20:12,353 INFO alvance_github_crawler.pending.verification: verifying pending candidate GoogleCloudPlatform/automlops key_slot=1
+2026-08-01 07:20:40,060 INFO alvance_github_crawler.pending.verification: verifying pending candidate phac-nml/staramr key_slot=2
+2026-08-01 07:20:41,059 INFO alvance_github_crawler.pending.verification: pending candidate GoogleCloudPlatform/automlops finished outcome=rejected key_slot=1 processed=13 in_flight=2
+2026-08-01 07:20:42,765 INFO alvance_github_crawler.pending.verification: verifying pending candidate ianare/exif-py key_slot=1
+2026-08-01 07:21:13,024 INFO alvance_github_crawler.pending.verification: verifying pending candidate nfroidure/svgicons2svgfont key_slot=2
+2026-08-01 07:21:22,619 INFO alvance_github_crawler.pending.verification: verifying pending candidate tezjs/tezjs key_slot=3
+2026-08-01 07:21:24,366 INFO alvance_github_crawler.pending.verification: pending candidate ianare/exif-py finished outcome=registered key_slot=1 processed=14 in_flight=4
+2026-08-01 07:21:33,427 INFO alvance_github_crawler.pending.verification: pending candidate phac-nml/staramr finished outcome=rejected key_slot=2 processed=15 in_flight=3
+2026-08-01 07:21:36,412 INFO alvance_github_crawler.pending.verification: verifying pending candidate LarrySnyder/stockpyl key_slot=1
+2026-08-01 07:21:44,784 INFO alvance_github_crawler.pending.verification: verifying pending candidate nchaulet/node-geocoder key_slot=2
+2026-08-01 07:21:45,161 INFO alvance_github_crawler.pending.verification: pending candidate nchaulet/node-geocoder finished outcome=rejected key_slot=2 processed=16 in_flight=4
+2026-08-01 07:21:48,200 INFO alvance_github_crawler.pending.verification: verifying pending candidate fastmachinelearning/qonnx key_slot=1
+2026-08-01 07:21:53,646 INFO alvance_github_crawler.pending.verification: verifying pending candidate firstbatchxyz/watchmen key_slot=2
+2026-08-01 07:21:54,264 INFO alvance_github_crawler.pending.verification: pending candidate nfroidure/svgicons2svgfont finished outcome=rejected key_slot=2 processed=17 in_flight=5
+2026-08-01 07:22:05,064 INFO alvance_github_crawler.pending.verification: pending candidate tezjs/tezjs finished outcome=rejected key_slot=3 processed=18 in_flight=4
+2026-08-01 07:22:27,505 INFO alvance_github_crawler.pending.verification: pending candidate LarrySnyder/stockpyl finished outcome=rejected key_slot=1 processed=19 in_flight=3
+2026-08-01 07:22:47,846 INFO alvance_github_crawler.pending.verification: pending candidate fastmachinelearning/qonnx finished outcome=rejected key_slot=1 processed=20 in_flight=2
+2026-08-01 07:23:03,686 INFO alvance_github_crawler.pending.verification: pending candidate firstbatchxyz/watchmen finished outcome=registered key_slot=2 processed=21 in_flight=1
+2026-08-01 07:24:52,306 INFO alvance_github_crawler.pending.verification: pending candidate personalizedrefrigerator/js-draw finished outcome=rejected key_slot=3 processed=22 in_flight=0
+{
+  "key_slot_1_processed": 6,
+  "key_slot_1_registered": 2,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 9,
+  "key_slot_2_registered": 2,
+  "key_slot_2_rejected": 7,
+  "key_slot_3_processed": 7,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 6,
+  "processed": 22,
+  "registered": 5,
+  "rejected": 17,
+  "remaining": 0
+}
+[2026-08-01T07:24:53Z] stage=verify-default-20260801T070817Z exit_code=0 duration_s=996

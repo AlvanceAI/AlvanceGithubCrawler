@@ -1,0 +1,63 @@
+[2026-08-01T06:39:31Z] stage=verify-default-20260801T063931Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 06:39:34,062 INFO alvance_github_crawler.pending.verification: verifying pending candidate hugsy/gef key_slot=1
+2026-08-01 06:39:35,525 INFO alvance_github_crawler.pending.verification: verifying pending candidate broadinstitute/CellBender key_slot=2
+2026-08-01 06:39:43,658 INFO alvance_github_crawler.pending.verification: pending candidate hugsy/gef finished outcome=rejected key_slot=1 processed=1 in_flight=1
+2026-08-01 06:39:45,506 INFO alvance_github_crawler.pending.verification: verifying pending candidate philipperemy/keras-tcn key_slot=3
+2026-08-01 06:40:01,265 INFO alvance_github_crawler.pending.verification: pending candidate philipperemy/keras-tcn finished outcome=rejected key_slot=3 processed=2 in_flight=1
+2026-08-01 06:40:12,677 INFO alvance_github_crawler.pending.verification: verifying pending candidate roskakori/pygount key_slot=1
+2026-08-01 06:40:14,171 INFO alvance_github_crawler.pending.verification: pending candidate broadinstitute/CellBender finished outcome=rejected key_slot=2 processed=3 in_flight=1
+2026-08-01 06:40:20,135 INFO alvance_github_crawler.pending.verification: verifying pending candidate pyrochlore/obsidian-tracker key_slot=2
+2026-08-01 06:40:26,926 INFO alvance_github_crawler.pending.verification: verifying pending candidate AmElmo/proofshot key_slot=3
+2026-08-01 06:40:28,252 INFO alvance_github_crawler.pending.verification: verifying pending candidate cubed-dev/cubed key_slot=1
+2026-08-01 06:40:34,633 INFO alvance_github_crawler.pending.verification: pending candidate pyrochlore/obsidian-tracker finished outcome=rejected key_slot=2 processed=4 in_flight=3
+2026-08-01 06:40:36,611 INFO alvance_github_crawler.pending.verification: verifying pending candidate elastic/eland key_slot=2
+2026-08-01 06:40:36,611 INFO alvance_github_crawler.pending.verification: verifying pending candidate productdevbook/etiket key_slot=3
+2026-08-01 06:40:43,561 INFO alvance_github_crawler.pending.verification: verifying pending candidate ember-template-lint/ember-template-lint key_slot=2
+2026-08-01 06:40:43,680 INFO alvance_github_crawler.pending.verification: pending candidate productdevbook/etiket finished outcome=rejected key_slot=3 processed=5 in_flight=5
+2026-08-01 06:40:53,922 INFO alvance_github_crawler.pending.verification: verifying pending candidate nellavio/nellavio key_slot=3
+2026-08-01 06:41:02,313 INFO alvance_github_crawler.pending.verification: verifying pending candidate Shopify/draggable key_slot=1
+2026-08-01 06:41:03,733 INFO alvance_github_crawler.pending.verification: pending candidate elastic/eland finished outcome=rejected key_slot=2 processed=6 in_flight=6
+2026-08-01 06:41:04,992 INFO alvance_github_crawler.pending.verification: pending candidate roskakori/pygount finished outcome=rejected key_slot=1 processed=7 in_flight=5
+2026-08-01 06:41:17,159 INFO alvance_github_crawler.pending.verification: pending candidate AmElmo/proofshot finished outcome=registered key_slot=3 processed=8 in_flight=4
+2026-08-01 06:41:18,918 INFO alvance_github_crawler.pending.verification: verifying pending candidate silkimen/cordova-plugin-advanced-http key_slot=2
+2026-08-01 06:41:19,360 ERROR alvance_github_crawler.e2b.verification: silkimen/cordova-plugin-advanced-http failed during stage3_5_e2b_environment
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/verification.py", line 64, in verify
+    environment = self.environment.ensure(repo, repo_path, str(repo["base_commit"]))
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/template.py", line 90, in ensure
+    runtime_version = detect_runtime_version(language, repo_path)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/runtime/profiles.py", line 93, in detect_runtime_version
+    engine = str((package.get("engines") or {}).get("node", ""))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-08-01 06:41:19,369 INFO alvance_github_crawler.pending.verification: pending candidate silkimen/cordova-plugin-advanced-http finished outcome=error key_slot=2 processed=9 in_flight=4
+2026-08-01 06:41:21,285 INFO alvance_github_crawler.pending.verification: verifying pending candidate codinit-dev/codinit-dev key_slot=3
+2026-08-01 06:41:39,864 INFO alvance_github_crawler.pending.verification: verifying pending candidate latticexyz/mud key_slot=2
+2026-08-01 06:41:45,713 INFO alvance_github_crawler.pending.verification: pending candidate cubed-dev/cubed finished outcome=rejected key_slot=1 processed=10 in_flight=5
+2026-08-01 06:41:48,730 INFO alvance_github_crawler.pending.verification: verifying pending candidate 11ty/webc key_slot=1
+2026-08-01 06:42:11,138 INFO alvance_github_crawler.pending.verification: pending candidate codinit-dev/codinit-dev finished outcome=rejected key_slot=3 processed=11 in_flight=5
+2026-08-01 06:42:27,988 INFO alvance_github_crawler.pending.verification: verifying pending candidate YunYouJun/cook key_slot=3
+2026-08-01 06:42:45,359 INFO alvance_github_crawler.pending.verification: pending candidate Shopify/draggable finished outcome=registered key_slot=1 processed=12 in_flight=5
+2026-08-01 06:42:47,816 INFO alvance_github_crawler.pending.verification: pending candidate latticexyz/mud finished outcome=rejected key_slot=2 processed=13 in_flight=4
+2026-08-01 06:43:17,283 INFO alvance_github_crawler.pending.verification: pending candidate YunYouJun/cook finished outcome=rejected key_slot=3 processed=14 in_flight=3
+2026-08-01 06:43:28,883 INFO alvance_github_crawler.pending.verification: pending candidate 11ty/webc finished outcome=registered key_slot=1 processed=15 in_flight=2
+2026-08-01 06:45:16,522 INFO alvance_github_crawler.pending.verification: pending candidate nellavio/nellavio finished outcome=registered key_slot=3 processed=16 in_flight=1
+2026-08-01 06:46:27,168 INFO alvance_github_crawler.pending.verification: pending candidate ember-template-lint/ember-template-lint finished outcome=rejected key_slot=2 processed=17 in_flight=0
+{
+  "error": 1,
+  "key_slot_1_processed": 5,
+  "key_slot_1_registered": 2,
+  "key_slot_1_rejected": 3,
+  "key_slot_2_error": 1,
+  "key_slot_2_processed": 6,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 6,
+  "key_slot_3_registered": 2,
+  "key_slot_3_rejected": 4,
+  "processed": 17,
+  "registered": 4,
+  "rejected": 12,
+  "remaining": 1
+}
+[2026-08-01T06:46:28Z] stage=verify-default-20260801T063931Z exit_code=0 duration_s=417
