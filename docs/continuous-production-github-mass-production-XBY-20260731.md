@@ -1,7 +1,7 @@
 # Pipeline statistics: github-mass-production-XBY-20260731
 
 - Status: `incomplete`
-- Generated: `2026-08-01T01:23:35.638153+00:00`
+- Generated: `2026-08-01T01:24:31.976037+00:00`
 - Raw GitHub sample: 38455
 - Initial filter accepted: 17710
 - E2B queue: 3472
@@ -3426,6 +3426,12 @@
 | requeue-go-runtime-v4 | 4 | 0 |
 | requeue-e2b-rate-limit-backoff-v1 | 3 | 0 |
 | crawl-38275 | 10 | 1 |
+| requeue-resource-failures | 3 | 0 |
+| repair-rebuildable-packages | 7 | 0 |
+| requeue-node-package-manager-v18 | 3 | 0 |
+| requeue-go-runtime-v4 | 4 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 3 | 0 |
+| crawl-38275 | 11 | 1 |
 | requeue-resource-failures | 3 | 0 |
 
 ## E2B task performance
