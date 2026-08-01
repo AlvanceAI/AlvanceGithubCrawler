@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bashhub-client-f650fe-c3259dcc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rcaloras/bashhub-client"
+base_commit = "c3259dcc0f6b4bb9f347e4ee980023864fa2bfc9"
+source_tree = "89123e3a7445db0d7c09ad7e62cb03cbac09211c"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4a89737f5a82ede0b56b90fe6a0e1631d2eeb1678138b86c5bd9fcf56dc7d3ca"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bashhub-client-f650fe-c3259dcc-v2-env-4a89737f"
+template_id = "vl927k5d1tt5t38p7ib2"
+source_template_alias = "4ju0zvgjltq00ia4786n"
+source_template_id = "4ju0zvgjltq00ia4786n"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

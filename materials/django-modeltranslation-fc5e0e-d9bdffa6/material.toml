@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "django-modeltranslation-fc5e0e-d9bdffa6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/deschler/django-modeltranslation"
+base_commit = "d9bdffa6108ef38db2e203e67a1affa99a7b39b1"
+source_tree = "1ebae312cc3eb2d2d2aad6a9fc76057662828c92"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a79da820a66ff6bb8132bf5b9c6fcbb4bb7db266c06c363113eff4f8c23c3e3b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-django-modeltranslat-fc5e0e-d9bdffa6-v2-env-a79da820"
+template_id = "bmpzpd2bpqk6hqos4xce"
+source_template_alias = "7nxqvyxnap1gmmtcknfw"
+source_template_id = "7nxqvyxnap1gmmtcknfw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
