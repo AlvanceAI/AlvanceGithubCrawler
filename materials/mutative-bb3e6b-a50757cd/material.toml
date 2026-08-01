@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mutative-bb3e6b-a50757cd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/unadlib/mutative"
+base_commit = "a50757cdae465034f8370a886cae32626d6c317e"
+source_tree = "f975722bf38a670534d26d6b86e2d6d5bda910a8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "31944d74b946f417c42c3296770b3ff5fea3ce86098486fc270b82293ff0637a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mutative-bb3e6b-a50757cd-v2-env-31944d74"
+template_id = "61ds7x5g8k6eylxr4rsd"
+source_template_alias = "ale3yf79eo9kar7vu9ws"
+source_template_id = "ale3yf79eo9kar7vu9ws"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

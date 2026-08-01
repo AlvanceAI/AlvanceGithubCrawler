@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "noaa-coops-e7aefa-02519cc0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/GClunies/noaa_coops"
+base_commit = "02519cc0dc516fc8df8e49bf1cf9ecaeb294bd57"
+source_tree = "39fd3d2306d981e2a51ee1cfaec7d4c9fa50ae8f"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5b168650f235b1174677bbef7ef5b3afa1d7c8ea5c34726f01a3d230bc20ce58"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-noaa-coops-e7aefa-02519cc0-v2-env-5b168650"
+template_id = "t429ji1f86cgq122uwi0"
+source_template_alias = "q711esu3tcrskrai1j8c"
+source_template_id = "q711esu3tcrskrai1j8c"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "paracelsus-54fae7-89b843b3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tedivm/paracelsus"
+base_commit = "89b843b346c6baf2b209dacfe1c9a83f244ee222"
+source_tree = "807112e5d94ac0d79adf42257d8c6afc3f208c7f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "247555861be5e15a1a4a9d6e5885866f97e3ffb951629ef76e6ea74667d0f0c6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-paracelsus-54fae7-89b843b3-v2-env-24755586"
+template_id = "pht6b1sc4rm84n1neh9o"
+source_template_alias = "o9w5zlq8z9vw0278d1in"
+source_template_id = "o9w5zlq8z9vw0278d1in"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

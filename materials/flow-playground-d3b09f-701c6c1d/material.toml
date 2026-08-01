@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "flow-playground-d3b09f-701c6c1d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/onflow/flow-playground"
+base_commit = "701c6c1daefbac163ea54f05c8116a3777239642"
+source_tree = "5196e8cef9a37dcef267b083a7ddac6f643238bc"
+default_branch = "staging"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "12968edea75e4ed942da716ba92e303c9990eb36a9fe3bfa196860d1a336d834"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-flow-playground-d3b09f-701c6c1d-v2-env-12968ede"
+template_id = "zv208ws2ddaulbm9sfq3"
+source_template_alias = "feifmmhtrx4f9j3comdd"
+source_template_id = "feifmmhtrx4f9j3comdd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

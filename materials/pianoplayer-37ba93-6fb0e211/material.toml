@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pianoplayer-37ba93-6fb0e211"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/marcomusy/pianoplayer"
+base_commit = "6fb0e2114d7b21f75c0be5208172e1243a57323e"
+source_tree = "156e0650c0e98dc12244d25877235757cb9cfaed"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ef66bc392115c10b90eaa1058a3be9077c54912e62a2c0d2f0c6d1e1303125af"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pianoplayer-37ba93-6fb0e211-v2-env-ef66bc39"
+template_id = "hnv3ezl7zcuuoybykck1"
+source_template_alias = "3awx136sqvkrtyk6rafd"
+source_template_id = "3awx136sqvkrtyk6rafd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
