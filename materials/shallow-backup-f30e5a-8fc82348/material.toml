@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "shallow-backup-f30e5a-8fc82348"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alichtman/shallow-backup"
+base_commit = "8fc823481d58c76b804e0ccf2d55c9777b76f65d"
+source_tree = "0a417ac3d83d454f5877b67a858848ef11a0741f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8c547740283b521bec8c7475ed2f6f843bcd644793bc90f63ce8c9923b1ddb96"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-shallow-backup-f30e5a-8fc82348-v2-env-8c547740"
+template_id = "0mgv33n5nkjlna1rnbwv"
+source_template_alias = "eblqjqt7zzxbfo1enx1e"
+source_template_id = "eblqjqt7zzxbfo1enx1e"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

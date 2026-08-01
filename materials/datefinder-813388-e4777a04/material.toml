@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "datefinder-813388-e4777a04"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/akoumjian/datefinder"
+base_commit = "e4777a04fce8677aa816f6fc016f2848fe8ccaf5"
+source_tree = "6ad688db9d21e79686565ce4a5c3df451292d716"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2c9ffecb3790a2d58f2fe16deb68d168a15162e50c1cccd089c287036c00c965"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-datefinder-813388-e4777a04-v2-env-2c9ffecb"
+template_id = "8kg4950clj866hr65j5t"
+source_template_alias = "lu2g7njvbk620ovre1yn"
+source_template_id = "lu2g7njvbk620ovre1yn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

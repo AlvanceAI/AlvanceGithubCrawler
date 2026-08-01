@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-evtx-b14ea5-1edde365"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/williballenthin/python-evtx"
+base_commit = "1edde3655c676bd44990ce9762d6b8f73334ed1d"
+source_tree = "5073baf8599b351bb589d8a89ba8bba5a4378499"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3d3097e8199c78c5a7fee529b479384bd910712f47c7e824e110afb79f9cf7c0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-evtx-b14ea5-1edde365-v2-env-3d3097e8"
+template_id = "rgak4m3at1yrnnmb3o48"
+source_template_alias = "qa2vdkyaet306k7t1dz9"
+source_template_id = "qa2vdkyaet306k7t1dz9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
