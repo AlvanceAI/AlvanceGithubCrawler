@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "doit-49b203-1f9cbbce"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pydoit/doit"
+base_commit = "1f9cbbce78a93f96a35abf2db5425361e2abf142"
+source_tree = "525dc089b45025e8db6325967693bcebd82fd7ce"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cd73de65e4dac5be64875b9c944414132beb2ba766aa0264f56cf5c2029690aa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-doit-49b203-1f9cbbce-v2-env-cd73de65"
+template_id = "dqhjj5kuup7c5dhpqtzp"
+source_template_alias = "pws8ob1v7fdly41jyx6z"
+source_template_id = "pws8ob1v7fdly41jyx6z"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

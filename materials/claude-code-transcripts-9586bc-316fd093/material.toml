@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "claude-code-transcripts-9586bc-316fd093"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/simonw/claude-code-transcripts"
+base_commit = "316fd093aca3c9c0ad8aa70092711aee3adacc6e"
+source_tree = "11685522c34637bd5823e9c9c3e0dc21f48a5e73"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4a8b353ba7d2fca3f1385f17b1922367f4049a3ab371e3356e8cc73464cee63a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-claude-code-transcri-9586bc-316fd093-v2-env-4a8b353b"
+template_id = "h3zq4u50bag1vvtle9ei"
+source_template_alias = "ypslttdzqrqc88faw4d9"
+source_template_id = "ypslttdzqrqc88faw4d9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

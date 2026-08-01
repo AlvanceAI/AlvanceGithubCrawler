@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "spotpy-0fbfd5-315a75ab"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/thouska/spotpy"
+base_commit = "315a75ab1025fce0b85de881cac39214a455fd90"
+source_tree = "6087455a71504ae7d55324bedf8e7cb99320a84f"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "83f90cc1653ee591c1f9217ac0410191bc17db83da256085d7f7c77bed9bd374"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-spotpy-0fbfd5-315a75ab-v2-env-83f90cc1"
+template_id = "ubgp4bp8iwjkkykshzz7"
+source_template_alias = "4ksugse66c5jckbbj01q"
+source_template_id = "4ksugse66c5jckbbj01q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
