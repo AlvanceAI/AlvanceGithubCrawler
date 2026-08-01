@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-react-doc-viewer-d49257-955795bc-v2"
+description = "Rebuildable repository task for cyntler/react-doc-viewer"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-react-doc-viewer-d49257-955795bc-v2"
+material_id = "react-doc-viewer-d49257-955795bc"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/cyntler/react-doc-viewer"
+base_commit_hash = "955795bca8bb5c81f76674321a019ef4f838f307"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

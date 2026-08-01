@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "yahoo-fantasy-api-73864c-c9f4fef4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/spilchen/yahoo_fantasy_api"
+base_commit = "c9f4fef444a521022579ba38e4721f0a780f66c6"
+source_tree = "765f9482969532aa48e8275d09136b91e9e0d873"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dcd02005a1e8aec97c49c39a5312ebcad9d4465e5e4031014211dca98c6242c6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-yahoo-fantasy-api-73864c-c9f4fef4-v2-env-dcd02005"
+template_id = "20w54raugthmlbakrqz2"
+source_template_alias = "e4v2vl3nreaex53h8dkv"
+source_template_id = "e4v2vl3nreaex53h8dkv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

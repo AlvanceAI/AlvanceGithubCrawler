@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cmaes-fae8c4-fb202266"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/CyberAgentAILab/cmaes"
+base_commit = "fb2022664af3e081f4016e6c21b84b136b74082c"
+source_tree = "d3e9e8f1275decd0eeed5719213d030253592589"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b48079d5668d52aa30a606968157a0a2f9c1e2e11b047e641b896ef388ae8744"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cmaes-fae8c4-fb202266-v2-env-b48079d5"
+template_id = "oj3wy157oubdflydrvj9"
+source_template_alias = "ma8d4mrrpevw0m9pz8dg"
+source_template_id = "ma8d4mrrpevw0m9pz8dg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

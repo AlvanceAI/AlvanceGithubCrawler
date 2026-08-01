@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "llm-mistral-a52a70-561a3d1e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/simonw/llm-mistral"
+base_commit = "561a3d1e94705202d9ffab8297500627c1a452c9"
+source_tree = "fa92f6dd8700c69d2d1318bfd409148d8f5ac153"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "886aebf7de87cc7d6535530424d3bc0b5ff081612763d38ed5cc0483161ba9fa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-llm-mistral-a52a70-561a3d1e-v2-env-886aebf7"
+template_id = "3f6goif0044b4nqqlv9s"
+source_template_alias = "16a20804dzpp1q8obcue"
+source_template_id = "16a20804dzpp1q8obcue"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
