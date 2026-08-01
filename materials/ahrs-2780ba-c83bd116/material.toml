@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ahrs-2780ba-c83bd116"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Mayitzin/ahrs"
+base_commit = "c83bd1169ae62d761862e53b2e15a66466ea0b05"
+source_tree = "1b529de7bc9a930280a40955d869d96e05f1eaef"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "177b7306d2838f3d091488fbed6f25dfae19981bfea9019b0cb359e534870ec0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ahrs-2780ba-c83bd116-v2-env-177b7306"
+template_id = "vn0c0kxnj7zu2ukbmw3o"
+source_template_alias = "p33dgjsabpdv6oi7b3fn"
+source_template_id = "p33dgjsabpdv6oi7b3fn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

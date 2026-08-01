@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "jupyterlab-server-8739ba-f64f5542"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jupyterlab/jupyterlab_server"
+base_commit = "f64f554291a09f072e479ff52ae2212084aaac39"
+source_tree = "fe26f86decc9598ecbe70293a8a38d0d82654ac4"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "38c7350926e5d83222d60b3045df87b7ad7b5adce343c71e9d59679d5186d619"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-jupyterlab-server-8739ba-f64f5542-v2-env-38c73509"
+template_id = "vjaq4b090jse4fma7sf6"
+source_template_alias = "8jk3jax3fbcjib1vndj0"
+source_template_id = "8jk3jax3fbcjib1vndj0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

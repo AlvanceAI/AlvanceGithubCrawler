@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pykrige-7d99a4-5e896fb3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/GeoStat-Framework/PyKrige"
+base_commit = "5e896fb3398cc86acd735d170fb758a02528b70e"
+source_tree = "8b278153841100b2f7ef3f8a079fee8e881475ad"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b8b8ded11f02c66dd97526a6dd985f29601c3dc9771a56a8d307b22ce8c3e6dc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pykrige-7d99a4-5e896fb3-v2-env-b8b8ded1"
+template_id = "v6nceebvddnf12whdce6"
+source_template_alias = "cmw08meyxpe3a16f03pa"
+source_template_id = "cmw08meyxpe3a16f03pa"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

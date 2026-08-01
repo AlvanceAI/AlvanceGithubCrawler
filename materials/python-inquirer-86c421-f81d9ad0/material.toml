@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-inquirer-86c421-f81d9ad0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/magmax/python-inquirer"
+base_commit = "f81d9ad09797780e8f9195177e4902d5ea51241e"
+source_tree = "920b584e3fd2d2995e55b57f29c6bbb3570ddbd3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "52f0697edd9a7851673aaca1a55f22d001c5e8f9b8d3ce747d6edca15015b452"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-inquirer-86c421-f81d9ad0-v2-env-52f0697e"
+template_id = "u7w0gq0t5pobzj3j3oy4"
+source_template_alias = "ad7xn1a5iy2rt7oidic7"
+source_template_id = "ad7xn1a5iy2rt7oidic7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
