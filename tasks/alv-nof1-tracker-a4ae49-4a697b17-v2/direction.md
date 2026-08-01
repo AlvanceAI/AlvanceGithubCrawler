@@ -1,0 +1,1 @@
+引入统一的 ExchangeService 接口并让 BinanceService 及交易执行相关服务依赖该抽象，以支持新增交易所适配器。

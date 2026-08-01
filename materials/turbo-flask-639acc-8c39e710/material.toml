@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "turbo-flask-639acc-8c39e710"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/miguelgrinberg/turbo-flask"
+base_commit = "8c39e71079a85f11bfaa38ff6f04617decef4e37"
+source_tree = "73cc901be4acaa2b0578b3f6502785aeb580a246"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "908351b191ee6f56e5d7ee776935abfb533ea9fa20f518e2879fb82231d8bf42"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-turbo-flask-639acc-8c39e710-v2-env-908351b1"
+template_id = "xv36gqlkztkfsoav9rwh"
+source_template_alias = "j3qzdcfqlj0rvjaplpit"
+source_template_id = "j3qzdcfqlj0rvjaplpit"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

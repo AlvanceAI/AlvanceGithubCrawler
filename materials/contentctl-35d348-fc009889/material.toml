@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "contentctl-35d348-fc009889"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/splunk/contentctl"
+base_commit = "fc0098898946fd681e9f9758c4512cfe17f32b52"
+source_tree = "434b05798e2fc889995d6c65dbb79daa1e612141"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "93495e968fdd7f00b280aa7555921750845a8b6af37dd1a4db51b1a32753552c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-contentctl-35d348-fc009889-v2-env-93495e96"
+template_id = "m6pkptrv85lnvisu2vee"
+source_template_alias = "g9sb40tmqvuttn6pd6jc"
+source_template_id = "g9sb40tmqvuttn6pd6jc"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kingdon-4e3df6-9f763e6f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tBuLi/kingdon"
+base_commit = "9f763e6f859e4ac6a0fed5d8bcfaea8881d812c0"
+source_tree = "87792f13b1c8069d10be9dea9af45502e456137d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c58579734e875013ca66a708a1ba381eb5dd1b6cda16cd9394e778c76ad6e97f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kingdon-4e3df6-9f763e6f-v2-env-c5857973"
+template_id = "63oq3qsvpenxpsz1siq2"
+source_template_alias = "kzfp15vjzk34aooxcz69"
+source_template_id = "kzfp15vjzk34aooxcz69"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

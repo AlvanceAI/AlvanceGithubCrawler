@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vue-concurrency-cde229-08ddb6f8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/MartinMalinda/vue-concurrency"
+base_commit = "08ddb6f87fecb35d5416a8259145459efbda99bc"
+source_tree = "ccd4b6aeba52f04715dd47a231395f632baefa61"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dda347e2addce3c5ba075f9fcffea66bfbb26cfd20334984a440ac91643797a2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vue-concurrency-cde229-08ddb6f8-v2-env-dda347e2"
+template_id = "s9gxzkfjsq752a381t3a"
+source_template_alias = "c0hwkntwrat19183mjnw"
+source_template_id = "c0hwkntwrat19183mjnw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

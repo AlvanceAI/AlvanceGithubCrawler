@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "excalibur-a38902-0d7f34bb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/camelot-dev/excalibur"
+base_commit = "0d7f34bb3feba6cbd670d244fe707621be7f7c69"
+source_tree = "366dc808f40934cdb133081fb05f6efdba4ba9b6"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "613a062b0ffaac738df871cf966d89d8b95fdbdc0d5df8a633d66ba2440f80a7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-excalibur-a38902-0d7f34bb-v2-env-613a062b"
+template_id = "ios8z39111g434s9pzdl"
+source_template_alias = "lq8d5d212ga3t5zgthxu"
+source_template_id = "lq8d5d212ga3t5zgthxu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

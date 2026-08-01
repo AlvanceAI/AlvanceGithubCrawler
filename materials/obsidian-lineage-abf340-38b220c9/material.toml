@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "obsidian-lineage-abf340-38b220c9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ycnmhd/obsidian-lineage"
+base_commit = "38b220c9f8c54f8507ed3f02f2e1aeb8884408d6"
+source_tree = "3a1b59af3d74247314fa2a1f43e5a354e54ebdd8"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ca6d4c12578c306f84699f62c43d33ac4adbc9ca075b863e6d0cac154a2f4f64"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-obsidian-lineage-abf340-38b220c9-v2-env-ca6d4c12"
+template_id = "9v7id9qndzjdo9rtsu8p"
+source_template_alias = "xg4849qdc79fl6bt8tv9"
+source_template_id = "xg4849qdc79fl6bt8tv9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-nof1-tracker-a4ae49-4a697b17-v2"
+description = "Rebuildable repository task for terryso/nof1-tracker"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-nof1-tracker-a4ae49-4a697b17-v2"
+material_id = "nof1-tracker-a4ae49-4a697b17"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/terryso/nof1-tracker"
+base_commit_hash = "4a697b17b82a7a4249de61b9c7bd7709e171d79b"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

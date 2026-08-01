@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aura-theme-69a953-20924aa0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/daltonmenezes/aura-theme"
+base_commit = "20924aa0a43975420edd0e0b2f919e07a3eff9c9"
+source_tree = "eabd04d03a985bbae8c5499cb7ad788d7c04215b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eb343e98664fb07917bfa6c6cd660249a353ae706400cd3ed78c28db5f9866f1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aura-theme-69a953-20924aa0-v2-env-eb343e98"
+template_id = "ogch88m1fvulb6rwk5qv"
+source_template_alias = "ohdh9hz8nmcq8dq7cy8k"
+source_template_id = "ohdh9hz8nmcq8dq7cy8k"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

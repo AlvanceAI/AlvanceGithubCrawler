@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pacu-aa3aa7-e597f23e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/RhinoSecurityLabs/pacu"
+base_commit = "e597f23ecfb88b82f706c5f0cac9d4577c2af262"
+source_tree = "832fe1f89347f1a3f2059f2041bb3255616cab31"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3ae391c05c023f3306163e18690a86c6340a1f76edf1e19c8d7457d53779c8ce"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pacu-aa3aa7-e597f23e-v2-env-3ae391c0"
+template_id = "6do9h2egibk40eze1rwf"
+source_template_alias = "ipi3w52a5djdk6rsopd8"
+source_template_id = "ipi3w52a5djdk6rsopd8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

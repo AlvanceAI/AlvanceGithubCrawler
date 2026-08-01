@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "twitter-cli-85e436-7c634e0d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/public-clis/twitter-cli"
+base_commit = "7c634e0d396b1e7af9f63315b414925fe4f29ae7"
+source_tree = "53a1183dbe47aacac37c9de30b742dbcbb7ee7aa"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0985ae80c8195e70ed7edb48057b29ed159ef54495a28eee16f91d23ddc406e4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-twitter-cli-85e436-7c634e0d-v2-env-0985ae80"
+template_id = "5augh9xls5g9j87mo6eq"
+source_template_alias = "3ah22nfco2nthlu6jsoi"
+source_template_id = "3ah22nfco2nthlu6jsoi"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

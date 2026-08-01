@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "unplugin-auto-import-f06c1d-131939b5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/unplugin/unplugin-auto-import"
+base_commit = "131939b5a0d3d0efa4326b99035a2644ff245bc5"
+source_tree = "b54bcf855da260d55cc81f6b5d1736bbdbe77207"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "540d2f62f112e0edb263f141e608937628bfba48de0dc237ed003d8ad4d15c94"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-unplugin-auto-import-f06c1d-131939b5-v2-env-540d2f62"
+template_id = "utxec3wfrvszl5y07nk2"
+source_template_alias = "9uwxrj8yluclroyn1bcz"
+source_template_id = "9uwxrj8yluclroyn1bcz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

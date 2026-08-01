@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "datar-c0fda8-490b3a7c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pwwang/datar"
+base_commit = "490b3a7c39e9e08f75363e256cea30f96b39a409"
+source_tree = "5f86c4b10db0ae1c897656d2543eb370a6a2bebd"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7a20d287b975bdba0ef06359e3f76e646879c48749d59c1b0d43a3fa4d6fb27b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-datar-c0fda8-490b3a7c-v2-env-7a20d287"
+template_id = "14aqycfrcfwqil7gmiud"
+source_template_alias = "fenhlx5f5giabtlgxn9q"
+source_template_id = "fenhlx5f5giabtlgxn9q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

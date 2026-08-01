@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vscode-runonsave-f95a65-9b269c43"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/emeraldwalk/vscode-runonsave"
+base_commit = "9b269c4375e9ab56bc47df0e4a1109c746d3db81"
+source_tree = "1077e893e382d67cf18c555b0f87aa471d61f291"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e528244de1118595ed984be609b49f2486169f6ca9532c3acfb166b7bcbca9d3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vscode-runonsave-f95a65-9b269c43-v2-env-e528244d"
+template_id = "sa9ibhpe7jk6jxsdcbyq"
+source_template_alias = "sck5vtdu5gieiskryo4t"
+source_template_id = "sck5vtdu5gieiskryo4t"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

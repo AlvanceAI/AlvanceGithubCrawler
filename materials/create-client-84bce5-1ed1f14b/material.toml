@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "create-client-84bce5-1ed1f14b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/api-platform/create-client"
+base_commit = "1ed1f14b3af00e40b2178f3ae4391d227c32ce2e"
+source_tree = "186083451f9ba160e7f6133a14436d9fa3824725"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c0b6ed540a29c68df1eee564414fee6b416ce42a8fb5aebbbac4bba64e926bff"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-create-client-84bce5-1ed1f14b-v2-env-c0b6ed54"
+template_id = "0r6jmq8yia8d54j89uw2"
+source_template_alias = "i9fdwhgk8lehapdalb3q"
+source_template_id = "i9fdwhgk8lehapdalb3q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

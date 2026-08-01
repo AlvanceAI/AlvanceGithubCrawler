@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "github-profile-readme-ge-fe08aa-5ae90bfc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/rahuldkjain/github-profile-readme-generator"
+base_commit = "5ae90bfcbd7ab2f69809b094601f7975c32ae077"
+source_tree = "687e5ca75bd31277477dca7fbcc0ce8697236aa3"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "93a0312b540ab51a4523c275ab3197411acd891020659d20f246c38301c157ef"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-github-profile-readm-fe08aa-5ae90bfc-v2-env-93a0312b"
+template_id = "96r7w5tn2hg92u2itusi"
+source_template_alias = "faa0tw0dvxmiir3gbfng"
+source_template_id = "faa0tw0dvxmiir3gbfng"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

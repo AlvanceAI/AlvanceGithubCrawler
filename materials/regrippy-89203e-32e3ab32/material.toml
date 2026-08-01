@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "regrippy-89203e-32e3ab32"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/airbus-cert/regrippy"
+base_commit = "32e3ab3243415b7bf46f812d933f4d29862e3046"
+source_tree = "021e214cf51fbfeaef3c2c4ae5bdbf86e6db8809"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0868c3ec9c94a7fa0523331595ba9c5654440c81f3edf20b64700fecc2504da2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-regrippy-89203e-32e3ab32-v2-env-0868c3ec"
+template_id = "svy1lf6g75wf8nv4ssth"
+source_template_alias = "sat9eg2d4x6a6vvewz5j"
+source_template_id = "sat9eg2d4x6a6vvewz5j"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "flickr-download-9af0f1-e5516da3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/beaufour/flickr-download"
+base_commit = "e5516da3feb31c03024571ad8ea674804f121922"
+source_tree = "338008127380d8893db2edb0517f727b657de7b1"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "000883b787ac5f12337e64938a16691407b78043d6618a18afd396145f94a1ce"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-flickr-download-9af0f1-e5516da3-v2-env-000883b7"
+template_id = "n5idgmdjlqkebhsl74fd"
+source_template_alias = "hcqhvs37djgptoonf33q"
+source_template_id = "hcqhvs37djgptoonf33q"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

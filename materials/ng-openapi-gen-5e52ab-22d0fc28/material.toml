@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ng-openapi-gen-5e52ab-22d0fc28"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cyclosproject/ng-openapi-gen"
+base_commit = "22d0fc28621cd5d264baec26827293d5195fdb1c"
+source_tree = "a7093435f993e70affe576a79d87268566781eaf"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "772dc4e02ec7c9948936417a5a7862b6cea2356e075ac70a77f90cca90bc9a4d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ng-openapi-gen-5e52ab-22d0fc28-v2-env-772dc4e0"
+template_id = "mxm9ghha7w1u0gni90wo"
+source_template_alias = "798wpdusg1bd996jb300"
+source_template_id = "798wpdusg1bd996jb300"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
