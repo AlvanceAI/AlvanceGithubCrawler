@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "eppy-c54b8c-073b7858"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/santoshphilip/eppy"
+base_commit = "073b7858d8906b2ce88c2b65d969b9593557808b"
+source_tree = "dddb5438e621096603d011a8870ceb64e687bd36"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9c47175c4af10fac822ea0d4ba7cb16407a8aa549249ddbb5596c3942c76e15f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-eppy-c54b8c-073b7858-v2-env-9c47175c"
+template_id = "iafqqd998phmz0ym13j2"
+source_template_alias = "m0akmpcfadci9jtxofkn"
+source_template_id = "m0akmpcfadci9jtxofkn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

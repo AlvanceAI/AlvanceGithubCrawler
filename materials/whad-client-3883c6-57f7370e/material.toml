@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "whad-client-3883c6-57f7370e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/whad-team/whad-client"
+base_commit = "57f7370e58cc9d0d318f3986ac3808335251cea7"
+source_tree = "5bdcbc1ad9da6dff4140923cd77e531a12516e88"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1418668c7fdb15ff3851e8e0ee567b3b0abe5704680c18d9bfe936e1bbd274f5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-whad-client-3883c6-57f7370e-v2-env-1418668c"
+template_id = "cspve8zxnyp4i5qedwpg"
+source_template_alias = "e0vj0pxckswfm03l5bb6"
+source_template_id = "e0vj0pxckswfm03l5bb6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

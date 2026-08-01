@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nuxt-pages-plus-fe3ab0-2ef0bb73"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/serkodev/nuxt-pages-plus"
+base_commit = "2ef0bb73eafae6b6c24b833ad8bc86216919efa2"
+source_tree = "63dd74428a8bde5f236febb1a6d8eff634881e35"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "64259c2e677ad3a0083bd9092373a1491e33976c4caee8c8a685a0dd84abd2fc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nuxt-pages-plus-fe3ab0-2ef0bb73-v2-env-64259c2e"
+template_id = "a2ceizmw0q9ghczwggdz"
+source_template_alias = "0r553mtkse2su1oi9e9k"
+source_template_id = "0r553mtkse2su1oi9e9k"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

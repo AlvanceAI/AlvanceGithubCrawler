@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dbt-checkpoint-c35fbd-2537c7bd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/dbt-checkpoint/dbt-checkpoint"
+base_commit = "2537c7bd9d64af06ed3c1f023e995d081f205da6"
+source_tree = "03a27e6bc1c4f3567e55508f950bdd0b5230c4f2"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a8368501b19ed837d52b33026bf5c7852212ba5f70c9763d8e6f0f2772769d34"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dbt-checkpoint-c35fbd-2537c7bd-v2-env-a8368501"
+template_id = "yr3foeml5y04360kunkg"
+source_template_alias = "cgqxg0s3zf91f7fto3my"
+source_template_id = "cgqxg0s3zf91f7fto3my"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

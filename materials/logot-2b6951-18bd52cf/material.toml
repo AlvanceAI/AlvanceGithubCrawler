@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "logot-2b6951-18bd52cf"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/etianen/logot"
+base_commit = "18bd52cfa01fe783c0b4ba7e8fda59b4a716058a"
+source_tree = "b7a1238e7142f907ecd6f9b641459f454811dfc0"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "907842e4bc2a4c9f8f29ad4c3d86b93cbf064976e20e4f90ab8519d567c166e8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-logot-2b6951-18bd52cf-v2-env-907842e4"
+template_id = "bpd95qysc6lgkgiqnbbk"
+source_template_alias = "868sb3nudrs5mzs0ad7p"
+source_template_id = "868sb3nudrs5mzs0ad7p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
