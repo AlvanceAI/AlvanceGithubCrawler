@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "webc-37cc2a-8f10a7c6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/11ty/webc"
+base_commit = "8f10a7c67b6b1eba1dccb66621dc39221f1562a4"
+source_tree = "65418ae887491247ae35c5a60750a1e207f8ee44"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d78eafaddedd143c953cce47ed3ed71dbd519418629f78240959e34c951a934e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-webc-37cc2a-8f10a7c6-v2-env-d78eafad"
+template_id = "nzcw7jslc0p3syc9n9uw"
+source_template_alias = "gdzdaj4ax7i1dgv38pnx"
+source_template_id = "gdzdaj4ax7i1dgv38pnx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

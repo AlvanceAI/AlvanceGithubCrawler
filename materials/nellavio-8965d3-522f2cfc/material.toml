@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nellavio-8965d3-522f2cfc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/nellavio/nellavio"
+base_commit = "522f2cfc78567c7b64f94e8c1f7da65ea4e02551"
+source_tree = "25b76141769ef8e2dc43e45debf03b95c3ebd258"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e5d3407173560c9df1a6981084a298075b6d0d26e9390a31b5d7a9eca6355ec1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nellavio-8965d3-522f2cfc-v2-env-e5d34071"
+template_id = "3czakipllcp7c6oqo4du"
+source_template_alias = "3r7rx4m2ghjavu0gxi8h"
+source_template_id = "3r7rx4m2ghjavu0gxi8h"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

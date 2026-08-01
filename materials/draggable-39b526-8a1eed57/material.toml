@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "draggable-39b526-8a1eed57"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Shopify/draggable"
+base_commit = "8a1eed57f3ab2dff9371e8ce60fb39ac85871e8d"
+source_tree = "30463531145e6eba7a5d0f99ff17623d0bb853b3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5851342dd8c1abcaf592a814163fd60c312281163ad49e035e161602182402f5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-draggable-39b526-8a1eed57-v2-env-5851342d"
+template_id = "logrk9w6i9e7xjto4t8o"
+source_template_alias = "nw26vly0mm3a629ingw9"
+source_template_id = "nw26vly0mm3a629ingw9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
