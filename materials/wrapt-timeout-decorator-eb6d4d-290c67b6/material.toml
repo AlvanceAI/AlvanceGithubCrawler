@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wrapt-timeout-decorator-eb6d4d-290c67b6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bitranox/wrapt_timeout_decorator"
+base_commit = "290c67b64b14bf376d0d122cf4d2ccbe038c1b51"
+source_tree = "90ec4a677d475f81f842f2896a15a3529b8b4212"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "08718ee462b8fb75e63b07b565ec83bd5cd0422c16ceb0f3a0477e83bc1f8e3b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wrapt-timeout-decora-eb6d4d-290c67b6-v2-env-08718ee4"
+template_id = "7ie1qv95yp7wtnu2ewt1"
+source_template_alias = "7w1akbkzn9xi2cq9t537"
+source_template_id = "7w1akbkzn9xi2cq9t537"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "itext2kg-38f435-9eb8b8fd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/AuvaLab/itext2kg"
+base_commit = "9eb8b8fd0b86567b5f7dc19362ba760c9c52666c"
+source_tree = "9a38c7013dfaf828cf86a5eda85bfe1550cf6a13"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "90cbb80ffb44f8ecfe60544d50c010b709b58323af995da1e309b4bbada48909"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-itext2kg-38f435-9eb8b8fd-v2-env-90cbb80f"
+template_id = "wttcnjinlykx5xqmtrqs"
+source_template_alias = "aovgsjc4s03jw1xlp8eg"
+source_template_id = "aovgsjc4s03jw1xlp8eg"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
