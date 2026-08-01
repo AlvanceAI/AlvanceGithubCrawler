@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "redis-commander-0935d5-2a222de6"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/joeferner/redis-commander"
+base_commit = "2a222de65ed15832d4d4adfbbce564539b80115f"
+source_tree = "b908a22ff2af1da4f90818174cd9f9137b3682a5"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d59b97ecf1c291f10d790d4cc9d63019249107cebc85b5af072e4b297c10b328"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-redis-commander-0935d5-2a222de6-v2-env-d59b97ec"
+template_id = "8lkpsd1oocfp1aleyqwt"
+source_template_alias = "jsh4bhyqf2zandx1p7iz"
+source_template_id = "jsh4bhyqf2zandx1p7iz"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

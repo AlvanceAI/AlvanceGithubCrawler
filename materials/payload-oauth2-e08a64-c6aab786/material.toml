@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "payload-oauth2-e08a64-c6aab786"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/WilsonLe/payload-oauth2"
+base_commit = "c6aab78667cad66451f7f3c877a4d723d841033a"
+source_tree = "96605d2726cccebedddd68aa6ce14df1ecd4af27"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "90f7cd5a3beb0e46586fabaefec037f4039ecf555ad5bfe14aa5b85a43961823"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-payload-oauth2-e08a64-c6aab786-v2-env-90f7cd5a"
+template_id = "1hl9snws77ncend6svbg"
+source_template_alias = "oiq8mnlblpnmyqzkd2pp"
+source_template_id = "oiq8mnlblpnmyqzkd2pp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

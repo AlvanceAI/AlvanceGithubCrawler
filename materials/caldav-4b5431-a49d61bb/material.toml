@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "caldav-4b5431-a49d61bb"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/python-caldav/caldav"
+base_commit = "a49d61bb50c7cf898e1687023666416ab1d5ae39"
+source_tree = "1ac5fba18bf78720c44df0f8ed228f213e8a8d0c"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3745c3dbb6415313eb29e1552e7ee0bc6d1f6974a3579e96a877c7ca1981bc72"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-caldav-4b5431-a49d61bb-v2-env-3745c3db"
+template_id = "1hyl637iy9zowx70rrix"
+source_template_alias = "t1lgv1vekckcbfu16fo9"
+source_template_id = "t1lgv1vekckcbfu16fo9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

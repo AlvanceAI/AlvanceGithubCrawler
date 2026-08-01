@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "prisma-mock-c25b35-3c6f6b77"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/demonsters/prisma-mock"
+base_commit = "3c6f6b77d23aa17a39c698d86033da252fb8d683"
+source_tree = "58141d7f284288fd68d32046809768a2e7356ba8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "fa8222483340eea7817d10b4bc056124243909754faa74f71a0a9efb94bf00ae"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-prisma-mock-c25b35-3c6f6b77-v2-env-fa822248"
+template_id = "xzm1dim07f6wl34m5wek"
+source_template_alias = "xnih4owmx7ig5hmqstj4"
+source_template_id = "xnih4owmx7ig5hmqstj4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
