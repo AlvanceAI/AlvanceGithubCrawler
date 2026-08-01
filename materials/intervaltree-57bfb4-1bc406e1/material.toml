@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "intervaltree-57bfb4-1bc406e1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/chaimleib/intervaltree"
+base_commit = "1bc406e1f441577c4e421fc51aba2ab67fbd97fb"
+source_tree = "bb66f069ef054d7ca84dba285e83d59563e013da"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "461fb57432cddc3c5d73f2a647739b71620bda8e1e163abb9df240dade0ad94a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-intervaltree-57bfb4-1bc406e1-v2-env-461fb574"
+template_id = "nwrneztpg9l1mr8qzswf"
+source_template_alias = "d737hypz64yuzc9mplce"
+source_template_id = "d737hypz64yuzc9mplce"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

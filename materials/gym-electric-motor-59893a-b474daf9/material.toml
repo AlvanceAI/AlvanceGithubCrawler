@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gym-electric-motor-59893a-b474daf9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/upb-lea/gym-electric-motor"
+base_commit = "b474daf9cf1ef55e9161009cb06bb996072d0df0"
+source_tree = "96dc4f2a07f246f1389c2b51d06c467188bcc81b"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9504235c3484257d7af317a6d271ae286426c10fa2e1b45d273abd71b2c7ae07"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gym-electric-motor-59893a-b474daf9-v2-env-9504235c"
+template_id = "aba0iduzwy2fug345n3z"
+source_template_alias = "sodf8c1i85u03mhu2z1r"
+source_template_id = "sodf8c1i85u03mhu2z1r"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
