@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-slop-guard-707b70-7ef2113c-v2"
+description = "Rebuildable repository task for eric-tramel/slop-guard"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-slop-guard-707b70-7ef2113c-v2"
+material_id = "slop-guard-707b70-7ef2113c"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/eric-tramel/slop-guard"
+base_commit_hash = "7ef2113c52f1b4765287f90ac0741b2051d66fcb"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

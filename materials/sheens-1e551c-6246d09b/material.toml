@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sheens-1e551c-6246d09b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Comcast/sheens"
+base_commit = "6246d09bc943070619d9114f85af70fc1acc719a"
+source_tree = "8af72a83df505b3b2b69ece0dd7b98d7d17e62d9"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.25.1"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7712de6a9e93da3bd3a8aad37ab8a2de12c3043d0177a9142febad58af144564"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sheens-1e551c-6246d09b-v2-env-7712de6a"
+template_id = "feqcy2xhvos2jr5by0nz"
+source_template_alias = "pu9svkcms5urg3d1llal"
+source_template_id = "pu9svkcms5urg3d1llal"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

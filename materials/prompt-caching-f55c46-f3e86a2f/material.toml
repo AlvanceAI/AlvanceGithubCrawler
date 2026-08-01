@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "prompt-caching-f55c46-f3e86a2f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/flightlesstux/prompt-caching"
+base_commit = "f3e86a2f80229a3e04d037195e08afcdfd1b1d12"
+source_tree = "1bd01177a41f3da9c84f0dfc0a1d4f6c9208df8d"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "585dc0ca2a6a9239556801f85bac968b09f4bc2ba045b6eb1841da9f467b5a6b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-prompt-caching-f55c46-f3e86a2f-v2-env-585dc0ca"
+template_id = "mhyrc6gul7pmte4b2jpk"
+source_template_alias = "agtiama31dbt29g8fw5z"
+source_template_id = "agtiama31dbt29g8fw5z"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

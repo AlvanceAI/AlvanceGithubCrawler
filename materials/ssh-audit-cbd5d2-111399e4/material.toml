@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ssh-audit-cbd5d2-111399e4"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jtesta/ssh-audit"
+base_commit = "111399e4319a7297c9edd075725048c5638dbceb"
+source_tree = "cde1c4ae6171c3f876206b74905aa2d0e68fff9a"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "42e2aab77452e179e9d4c2366998d8c1cecceb31934163fe2cc11321baba7a12"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ssh-audit-cbd5d2-111399e4-v2-env-42e2aab7"
+template_id = "b5df4s7dcgk86gv6qs8u"
+source_template_alias = "qsk18cfg32wp2qq4zyw6"
+source_template_id = "qsk18cfg32wp2qq4zyw6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

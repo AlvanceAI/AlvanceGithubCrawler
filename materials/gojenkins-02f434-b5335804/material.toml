@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gojenkins-02f434-b5335804"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bndr/gojenkins"
+base_commit = "b53358041d6023d4cc7bfff8e26e9e3228e0b45b"
+source_tree = "96838260543fbe78361d33d3a09cb2d75ec51383"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "853fce623eae5d759bfa4d4b8cc260f7da97a5ed49cf6c95cdc4b512112b4b8d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gojenkins-02f434-b5335804-v2-env-853fce62"
+template_id = "dh9y3dbt3nfs03vib7t3"
+source_template_alias = "3eb9o42d70j42n5xlino"
+source_template_id = "3eb9o42d70j42n5xlino"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

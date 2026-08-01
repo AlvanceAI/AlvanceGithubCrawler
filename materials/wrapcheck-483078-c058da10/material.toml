@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wrapcheck-483078-c058da10"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tomarrell/wrapcheck"
+base_commit = "c058da1005e26566820d7eb858899c280d87eab9"
+source_tree = "2ca26f0a310c4422ed4fbf4e503979d925fd3b3c"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2d56a2682345753f8a11856194f6cf54ddef765d9df40f2b9d75daaa03edb2df"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wrapcheck-483078-c058da10-v2-env-2d56a268"
+template_id = "dup9pi8b0hg66kldo84l"
+source_template_alias = "s5kgw6d17vsa90p1vu2g"
+source_template_id = "s5kgw6d17vsa90p1vu2g"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ytui-e412c7-432fdb4c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Banh-Canh/ytui"
+base_commit = "432fdb4cbe9a982c18954c5c7c72f12fcc01eae6"
+source_tree = "15bd44d053589ff5d6ceafb7370051da80e3a16f"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.24.4"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "528ff8ff857347e84d51d0b224a2e5f38c7f31e0af4e1abcf13967a9e78f06b6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ytui-e412c7-432fdb4c-v2-env-528ff8ff"
+template_id = "jjifdrx6pv3rklfu9v3f"
+source_template_alias = "6qqpt1j6q6a76kcvai3b"
+source_template_id = "6qqpt1j6q6a76kcvai3b"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

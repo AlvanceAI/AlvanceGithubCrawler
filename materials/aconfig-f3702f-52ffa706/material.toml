@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aconfig-f3702f-52ffa706"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cristalhq/aconfig"
+base_commit = "52ffa7065e3ea4675ef5da34e8d80920ddcc280a"
+source_tree = "f190b83de9862532f92cf6f8f3072c957308cbf4"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.18.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8fdb1324926269b5850f6b13305b27a691c53c2c554122b3aa9ce737f7289cbc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aconfig-f3702f-52ffa706-v2-env-8fdb1324"
+template_id = "v71mo4fh27o3tkm2kw80"
+source_template_alias = "czisps54ojzsdu7hrre6"
+source_template_id = "czisps54ojzsdu7hrre6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

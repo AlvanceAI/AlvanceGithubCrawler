@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fastest-validator-8522e2-bd415af2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/icebob/fastest-validator"
+base_commit = "bd415af2d29bc424bdbd5699af0b472242cc529f"
+source_tree = "c474805b4d3696c2ed1ac8ee7ef827d7b733b443"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c8f433a83580664c753cb280f9d7e19b2f4c239418f20590bf4f7c7f432ab269"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fastest-validator-8522e2-bd415af2-v2-env-c8f433a8"
+template_id = "viz6tv4q3q031t43479e"
+source_template_alias = "8nnxfxh1v0zrch7x5pw1"
+source_template_id = "8nnxfxh1v0zrch7x5pw1"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

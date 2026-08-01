@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "findmy-py-f0be72-31c7ef76"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/malmeloo/FindMy.py"
+base_commit = "31c7ef762b62c4cfb92d38aa576a127f0adee997"
+source_tree = "f3641705ba46ecd86266e6d64b3d7f8846dac5ca"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f3e9c09ab4b055473ef2e30142a3a000837f4f4fe3716ab22fcd86de15b8d96c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-findmy-py-f0be72-31c7ef76-v2-env-f3e9c09a"
+template_id = "v808e84br6rzynf9ihw8"
+source_template_alias = "zdbp6t9o4vxgozehzeb0"
+source_template_id = "zdbp6t9o4vxgozehzeb0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

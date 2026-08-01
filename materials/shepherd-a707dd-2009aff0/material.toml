@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "shepherd-a707dd-2009aff0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/shepherd-tools/shepherd"
+base_commit = "2009aff0284fe4342c6c0ca62044ff55829be597"
+source_tree = "480c958b62314143e31fc48d003dbe78d569b7e9"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7c79021bbf0aca01e22d8596630ccf5ec7122debc89911a49aedb91d5db0e769"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-shepherd-a707dd-2009aff0-v2-env-7c79021b"
+template_id = "q8n3cv3po110sm3fdrh1"
+source_template_alias = "xc95b6v9uytufwmterun"
+source_template_id = "xc95b6v9uytufwmterun"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

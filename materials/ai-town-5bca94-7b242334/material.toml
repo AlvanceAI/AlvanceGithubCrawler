@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ai-town-5bca94-7b242334"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/a16z-infra/ai-town"
+base_commit = "7b242334bfbfef02f7718bded120d431e8f307df"
+source_tree = "0f80a3adf652dfe7d4eb043b153ab3f093afe219"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "faa48b5ef3a2fafead3e876fe42f97b8777ce9505dc463d653e04ba430fedf56"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ai-town-5bca94-7b242334-v2-env-faa48b5e"
+template_id = "djogtbu34ssg13t79ab4"
+source_template_alias = "vvmlk8t2owhspm401ls3"
+source_template_id = "vvmlk8t2owhspm401ls3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fuck-u-code-85945b-13d082ae"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Done-0/fuck-u-code"
+base_commit = "13d082ae744cfeb45185460572b8033b08c4a37c"
+source_tree = "8e2413dff3ea50febe642ddee9c452a69d550ea6"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "260861f634fa083815d3a2003c23770c8a7438f22771dcc40b2dea91ada7d2dc"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fuck-u-code-85945b-13d082ae-v2-env-260861f6"
+template_id = "6tvx8ajpzxe8dyd2koy3"
+source_template_alias = "x942ajis6b5krkp2cdwy"
+source_template_id = "x942ajis6b5krkp2cdwy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

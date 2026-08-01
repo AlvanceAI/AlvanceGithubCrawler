@@ -1,0 +1,1 @@
+为 ImageCoherenceGrader 增加基于输入内容自动生成评估 rubric 并据此完成图像一致性评分的能力。

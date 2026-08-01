@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "rp2040js-42192a-7701ee06"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wokwi/rp2040js"
+base_commit = "7701ee065f50a04380f81361befd754810cb9e28"
+source_tree = "c921b9f55b7f2240accc5f3ca6ee41dade13704b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d352e1fcfcd890897da0d6d67565a5020738188a5e31f77d6720947f106e9af0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-rp2040js-42192a-7701ee06-v2-env-d352e1fc"
+template_id = "sinrqdp66r0vqw7js078"
+source_template_alias = "f6p4pipohgv2wl0b9jy5"
+source_template_id = "f6p4pipohgv2wl0b9jy5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

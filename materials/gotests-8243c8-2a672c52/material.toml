@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "gotests-8243c8-2a672c52"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cweill/gotests"
+base_commit = "2a672c523b4cb46a6dc7d04ab05fa0f4be72aade"
+source_tree = "06926838ee9668933562970b52bfef410bf655bd"
+default_branch = "develop"
+license = "Apache-2.0"
+
+[toolchain]
+language = "go"
+go = "1.24.5"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c487a83492af8aea4b9e674811a10dbf05233dc98a1188ccbab86dbd76cab5e3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-gotests-8243c8-2a672c52-v2-env-c487a834"
+template_id = "5994kpg2bb3nnlz1mkea"
+source_template_alias = "kcitdstldqcszn2xvye6"
+source_template_id = "kcitdstldqcszn2xvye6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

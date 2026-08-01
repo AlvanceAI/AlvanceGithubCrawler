@@ -1,0 +1,5 @@
+Repository `vmware/secrets-manager` at commit `919b1831159f25ca60bd4b6faf20a17e75a5bdd7` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为 Sentinel 与 Safe 的每次请求实现默认启用且可配置关闭的应用层嵌套加密协议，包括临时密钥对生成、双方签名验证、AES 加密交换及请求结束后的密钥销毁。

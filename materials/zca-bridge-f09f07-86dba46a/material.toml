@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zca-bridge-f09f07-86dba46a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/diendh/zca-bridge"
+base_commit = "86dba46a27e8eda83786a2720ca821d3c296d2db"
+source_tree = "a0d1f63baf1296ec4a7d19750171f5531e3d0e9c"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "9b5ada4c75e3cbaee063431eae661cf2660ee60b6b9125c8d2e2bc5f5058f749"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zca-bridge-f09f07-86dba46a-v2-env-9b5ada4c"
+template_id = "sjerbnvekzp5k77rg7o2"
+source_template_alias = "0krdvt3blq7wqfpu1mrt"
+source_template_id = "0krdvt3blq7wqfpu1mrt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

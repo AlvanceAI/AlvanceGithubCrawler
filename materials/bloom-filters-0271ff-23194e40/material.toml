@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bloom-filters-0271ff-23194e40"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Callidon/bloom-filters"
+base_commit = "23194e40dba29d03ba0b9aef8a08955b8cf16d12"
+source_tree = "88f8d0342a70b4eac8b91e46d657c15a46ea4923"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "28bd284f252958f93d895090a409b478d8e79b72bf0024be1196d1bd79b50492"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bloom-filters-0271ff-23194e40-v2-env-28bd284f"
+template_id = "vful2wucmtktu8x2oqdo"
+source_template_alias = "dxo70blrg9wlg3kn3hez"
+source_template_id = "dxo70blrg9wlg3kn3hez"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

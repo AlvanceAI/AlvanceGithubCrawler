@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hashit-98f8a1-28238a88"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/boyter/hashit"
+base_commit = "28238a88c010b59fde90136967315caf44f35b01"
+source_tree = "ee4d680a856af2f61e2044f72568183e04737f50"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "33f2bb514fb5975e08c383d1ae8b655e8511e3b1fcd898e0f45ab08d593b5ce3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hashit-98f8a1-28238a88-v2-env-33f2bb51"
+template_id = "uhr10gw8gpslw0834h7u"
+source_template_alias = "r62hyajizcr8yzejg6kw"
+source_template_id = "r62hyajizcr8yzejg6kw"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "flatten-js-7e6561-22108e7e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alexbol99/flatten-js"
+base_commit = "22108e7e238dc5a5f4bab30a49703b96190bd0ec"
+source_tree = "2b7beec068715d055f74a6861fc69e1a8582a0e3"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "226ec5950141efbfd3837845a1a3e610dfaf4378aaac827912441c68a4dd650a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-flatten-js-7e6561-22108e7e-v2-env-226ec595"
+template_id = "ed7h86o4hy8ldtvknb7t"
+source_template_alias = "l4i3iaqm02mh1vyo523j"
+source_template_id = "l4i3iaqm02mh1vyo523j"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

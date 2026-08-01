@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "slop-guard-707b70-7ef2113c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/eric-tramel/slop-guard"
+base_commit = "7ef2113c52f1b4765287f90ac0741b2051d66fcb"
+source_tree = "92d16a31c107639d57cf923ad0f4aa455c9cb906"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "229c93fb5bf335b08a0441745b628a7ff5d824b81ca0d755df47b6c44f6a2aaa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-slop-guard-707b70-7ef2113c-v2-env-229c93fb"
+template_id = "rdw35vmwuibck8zz8g21"
+source_template_alias = "far6x2dyf8din4ox0w6s"
+source_template_id = "far6x2dyf8din4ox0w6s"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

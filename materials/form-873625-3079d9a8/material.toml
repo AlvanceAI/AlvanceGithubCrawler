@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "form-873625-3079d9a8"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/go-playground/form"
+base_commit = "3079d9a89d178e7eb2651bcae73e889c42683be1"
+source_tree = "b1c668ad2df106426ee29c6f1ea05bbbe18b9f6f"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d17a4827c0fbbf0d25b358148f95e4d52bc119d5716a524c2149ce7570a4a3fd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-form-873625-3079d9a8-v2-env-d17a4827"
+template_id = "noh3vt7vspl1hjp1u04j"
+source_template_alias = "gixdr1c4wk3sgnl708lv"
+source_template_id = "gixdr1c4wk3sgnl708lv"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

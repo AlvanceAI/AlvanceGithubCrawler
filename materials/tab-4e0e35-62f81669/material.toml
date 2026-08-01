@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tab-4e0e35-62f81669"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gladly-team/tab"
+base_commit = "62f816696f4faec73fd3fc98d57dac10061ba025"
+source_tree = "a369fc00e9a923330c6f604b3fbaeacb32db933a"
+default_branch = "master"
+license = "MPL-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e0761e5a1790f4b48e8dbf3711b883348f6059408e3ad3f3aa9ad66fe3ba6e97"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tab-4e0e35-62f81669-v2-env-e0761e5a"
+template_id = "g5y6ktltd7x0zqveh4pg"
+source_template_alias = "ew5azlwv72dqln7fw4ox"
+source_template_id = "ew5azlwv72dqln7fw4ox"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

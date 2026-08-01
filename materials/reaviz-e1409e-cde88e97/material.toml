@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "reaviz-e1409e-cde88e97"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/reaviz/reaviz"
+base_commit = "cde88e9722fe8e2badd5d5eced20f25ac89a9847"
+source_tree = "5b22f7f8722d8decad9743ba92a6803f295c63e6"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ccf1a501adb2958dd985bfa52652f36fa96747490fa7f649d2660de3a7ddd72f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-reaviz-e1409e-cde88e97-v2-env-ccf1a501"
+template_id = "kvx74nq8sx0qlkucg1y1"
+source_template_alias = "59f0aysc7ky1xp04mcpb"
+source_template_id = "59f0aysc7ky1xp04mcpb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

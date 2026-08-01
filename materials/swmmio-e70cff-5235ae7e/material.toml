@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "swmmio-e70cff-5235ae7e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pyswmm/swmmio"
+base_commit = "5235ae7e7daae61291734daf4d6b78e18fd445e9"
+source_tree = "4e0cff032fcc940cd501973054b2820c41791bbf"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f1fe53cdb02e43a24cc1e8e4c0b714552dc8d5e11a70bcba2ac2f57999031c3e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-swmmio-e70cff-5235ae7e-v2-env-f1fe53cd"
+template_id = "l5yboue7jpwwskljjw8b"
+source_template_alias = "yk07plbr78atbr7r3thk"
+source_template_id = "yk07plbr78atbr7r3thk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "goat-f9930e-6d4db359"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/blampe/goat"
+base_commit = "6d4db359c601eae6efa1fcd94601fa1793e114d5"
+source_tree = "c1dacf20c07b1fce0e1be8e3fe396ca689241ef3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c62301b80729c2ab3a609021f761c28b6b8f8ee9f691ff02f1d1a9e8c982175d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-goat-f9930e-6d4db359-v2-env-c62301b8"
+template_id = "ardd03q6wcskcmbl4ndz"
+source_template_alias = "n69tqlhorgkvtj0zfast"
+source_template_id = "n69tqlhorgkvtj0zfast"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

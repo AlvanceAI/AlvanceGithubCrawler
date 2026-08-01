@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pandorasbox-696605-66e3b3ab"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/capnspacehook/pandorasbox"
+base_commit = "66e3b3abd6ccde2693623560e92e287f6e8f8b48"
+source_tree = "896b71f822f78df8dff85cdee389ae40cbc31d16"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.25.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f4aacc68b5f51feb0918fd605985fd48b04c90f72a4932f45fc6f849e1ae3244"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pandorasbox-696605-66e3b3ab-v2-env-f4aacc68"
+template_id = "y9t6rartikq9361cpwmr"
+source_template_alias = "ujr51jz5qpgz8t8i48bn"
+source_template_id = "ujr51jz5qpgz8t8i48bn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

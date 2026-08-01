@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "goharbor-client-13b6c8-78950ca3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mittwald/goharbor-client"
+base_commit = "78950ca3611b7b52b67adf8c3dd3b5adfc92ab5f"
+source_tree = "c9b3a57349bb95c9745a652ecc355eb736feef5c"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "19347e0cfb78f662b1a20a2b4551fe96b25ebe6b022c921075f99040ec46ec6d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-goharbor-client-13b6c8-78950ca3-v2-env-19347e0c"
+template_id = "cp6l8z34d8acz4wpx5ux"
+source_template_alias = "lmjj1y5vyttnes9qetwm"
+source_template_id = "lmjj1y5vyttnes9qetwm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

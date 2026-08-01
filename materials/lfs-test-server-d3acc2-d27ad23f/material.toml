@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "lfs-test-server-d3acc2-d27ad23f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/git-lfs/lfs-test-server"
+base_commit = "d27ad23fddc1949ecd9a4ba6a3d074bc6a567084"
+source_tree = "96bbe3b0b69edf81db7975bef4eac43546312f16"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.20.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "79f23668e25845633d480ec9ac0ba4d0cc9b7046d6783a38cfeb0c4c8b560ba2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-lfs-test-server-d3acc2-d27ad23f-v2-env-79f23668"
+template_id = "kx3jaztcsnz9yy82wpek"
+source_template_alias = "7uaajff7fxd9agx3ivnb"
+source_template_id = "7uaajff7fxd9agx3ivnb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "secrets-manager-90fc6a-919b1831"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/vmware/secrets-manager"
+base_commit = "919b1831159f25ca60bd4b6faf20a17e75a5bdd7"
+source_tree = "a88ffdb6d765b39e25665b87abd0bde6c1a50cae"
+default_branch = "main"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "go"
+go = "1.23.2"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6285ae7dcc1785a285e22e7b9c1e6165c3a5530bbb81e9ce7bc21dcbbd092a95"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-secrets-manager-90fc6a-919b1831-v2-env-6285ae7d"
+template_id = "ixvune4dvenum3otxez1"
+source_template_alias = "vi2zacygmd83mql3fb6r"
+source_template_id = "vi2zacygmd83mql3fb6r"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

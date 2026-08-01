@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "openjudge-f8edc2-2151def3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/agentscope-ai/OpenJudge"
+base_commit = "2151def3553e5521ff8b3e2fea837561c57255f9"
+source_tree = "6382e8ecff1fb8fa20b43099ec11839d8a6a1fd5"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ad925b070b36295ce5277405c0de51f5acddc07c5d33866a910cac270df2e61a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-openjudge-f8edc2-2151def3-v2-env-ad925b07"
+template_id = "y0c3c4i6fi6u2qg7j5z5"
+source_template_alias = "h3xmzhcdwec8vkvcgms4"
+source_template_id = "h3xmzhcdwec8vkvcgms4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

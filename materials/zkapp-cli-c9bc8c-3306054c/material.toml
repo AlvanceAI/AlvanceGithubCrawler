@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zkapp-cli-c9bc8c-3306054c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/o1-labs/zkapp-cli"
+base_commit = "3306054c2446164bf05650a76d1d090d7e5c4502"
+source_tree = "a618bef6c02b6f8808c85a1172c8c7de2be63bfe"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "517686d2d5bbe9c6ca2c018808b2a2959a571eb70191d7c634892ca9de4560ae"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zkapp-cli-c9bc8c-3306054c-v2-env-517686d2"
+template_id = "00edrbkntd5l3iz75dut"
+source_template_alias = "2k1yj9o0h85367chv4fl"
+source_template_id = "2k1yj9o0h85367chv4fl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

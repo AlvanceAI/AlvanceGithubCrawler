@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "puppetboard-4eb2ab-434b9cf9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/voxpupuli/puppetboard"
+base_commit = "434b9cf9e3e7477b09a88886d073c520dc610155"
+source_tree = "4b3aa915953b33a2e9ef689983fe1512e23ed828"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a3e7044cb5a4aecc999ab6445b64223812fdaeccdb2a604ec859d363efda42c2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-puppetboard-4eb2ab-434b9cf9-v2-env-a3e7044c"
+template_id = "k0vnpx3dso6ljky7t8d9"
+source_template_alias = "sd6q7kgjlascg3ypf90d"
+source_template_id = "sd6q7kgjlascg3ypf90d"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

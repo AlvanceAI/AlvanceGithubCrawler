@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dcrdata-8f4d68-9c02e711"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/decred/dcrdata"
+base_commit = "9c02e7116ede87b57ee6189c5dc3c22d48937a3a"
+source_tree = "83f64a92b45be4dcb7a9d8c8565d3ae95c62381b"
+default_branch = "master"
+license = "ISC"
+
+[toolchain]
+language = "go"
+go = "1.21.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "24b9d888b897a1a30e4168d2f7d8a53c6430ad637793a1ac21c8de95493f23e5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dcrdata-8f4d68-9c02e711-v2-env-24b9d888"
+template_id = "2valmzdo8e6cdlgiq0jc"
+source_template_alias = "snmjjm67vtpa9k74mog9"
+source_template_id = "snmjjm67vtpa9k74mog9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

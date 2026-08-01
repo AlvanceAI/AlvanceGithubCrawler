@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "powerquery-parser-936aa5-04426773"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/microsoft/powerquery-parser"
+base_commit = "04426773402214b1ad18f93bca760e1ccf74a688"
+source_tree = "90da0bf294147d6d36a7158c030d127ceb423982"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b4038335ce097e729e28c577d74ac5e15d8bb8bb1056a11d9314da114ac469d3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-powerquery-parser-936aa5-04426773-v2-env-b4038335"
+template_id = "koyjrjg6fj9jnb5xnmqb"
+source_template_alias = "2s69cmr9dm2luuidrjoe"
+source_template_id = "2s69cmr9dm2luuidrjoe"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
