@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mkdocs-publisher-e73d32-af719b43"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mkdocs-publisher/mkdocs-publisher"
+base_commit = "af719b43cad19d9cbad436ba10d08e413ab272d1"
+source_tree = "c794b51f9bfb7fe9f86958a7f9e07deff3f86b95"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cc12c9776f5d5f833f6066f44ad47efb8f038f337f689bc603cfdb0cd3a30804"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mkdocs-publisher-e73d32-af719b43-v2-env-cc12c977"
+template_id = "4z3xanb291papjj58mf0"
+source_template_alias = "g5no4rvofax3hlbsiqtt"
+source_template_id = "g5no4rvofax3hlbsiqtt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

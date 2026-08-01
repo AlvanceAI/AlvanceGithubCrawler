@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "agentic-radar-2a2e4b-65a7e4bd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/splx-ai/agentic-radar"
+base_commit = "65a7e4bd01e2034c7cb52e9620eeed287688cc53"
+source_tree = "9e7ef2e3ff3da6e8b84d0e0731e24b5e1745f4b8"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "eb573cc1977923751cea811bcb4cbd93b2a61dff7bd09e24523498b3911f8b3a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-agentic-radar-2a2e4b-65a7e4bd-v2-env-eb573cc1"
+template_id = "8n4z46e6jaycrcoghrl7"
+source_template_alias = "mv5awgpf5dlj67g8s3ot"
+source_template_id = "mv5awgpf5dlj67g8s3ot"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
