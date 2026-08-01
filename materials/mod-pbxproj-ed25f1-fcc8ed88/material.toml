@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "mod-pbxproj-ed25f1-fcc8ed88"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/kronenthaler/mod-pbxproj"
+base_commit = "fcc8ed889845ba094b2b002c9c2a3147fb849374"
+source_tree = "eee810b6ce1664f62e7340869a717e9935d22eaf"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "52bc448e403f64225cf8b6231957a042a09128e45ca8e80cd906b73b207f13dd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-mod-pbxproj-ed25f1-fcc8ed88-v2-env-52bc448e"
+template_id = "aaahy309aok9sbiwthyf"
+source_template_alias = "qkr3baoqvq52wz4v7zvk"
+source_template_id = "qkr3baoqvq52wz4v7zvk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

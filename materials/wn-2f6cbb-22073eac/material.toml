@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wn-2f6cbb-22073eac"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/goodmami/wn"
+base_commit = "22073eacc4780b835830b9987de42840351bc8e4"
+source_tree = "d8f27c4bfff4e217ead6ca4e3f47fb0046a50a61"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "29adda5e49dbfd511862a1a2e3919e55226a600072892570be729e8885f014b9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wn-2f6cbb-22073eac-v2-env-29adda5e"
+template_id = "7wxi1b73o7ifagsg11jm"
+source_template_alias = "mc513sjnvhgfsu59jvq3"
+source_template_id = "mc513sjnvhgfsu59jvq3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

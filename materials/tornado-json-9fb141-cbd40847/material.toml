@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tornado-json-9fb141-cbd40847"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hfaran/Tornado-JSON"
+base_commit = "cbd408471aade7a8acb9f784721a7e0a115d4bfb"
+source_tree = "5072a1a07db5a866836d0db0775689f73cd6d28c"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0db6dc801beae86c167648ea0db92e28d285a5cb721f03d415558e737b5458cd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tornado-json-9fb141-cbd40847-v2-env-0db6dc80"
+template_id = "36u44658urpj6kk269yw"
+source_template_alias = "0pu04rzikiyu8qyeqcl5"
+source_template_id = "0pu04rzikiyu8qyeqcl5"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
