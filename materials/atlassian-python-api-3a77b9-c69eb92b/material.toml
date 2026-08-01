@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "atlassian-python-api-3a77b9-c69eb92b"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/atlassian-api/atlassian-python-api"
+base_commit = "c69eb92ba214c2f21e93f1e25a24fe314cd75e11"
+source_tree = "334f75afa4a7c12baf792b064bb01e1761eba7f3"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6b0bb5e13afc79de1675ea03d2d5277eaf3a69a4c81e9c5460e1de81d98a67aa"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-atlassian-python-api-3a77b9-c69eb92b-v2-env-6b0bb5e1"
+template_id = "2a6bixy75efb962z6bpf"
+source_template_alias = "y3mrnpv7291yh9p73q54"
+source_template_id = "y3mrnpv7291yh9p73q54"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

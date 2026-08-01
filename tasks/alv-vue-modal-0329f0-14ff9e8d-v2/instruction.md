@@ -1,0 +1,5 @@
+Repository `Jenesius/vue-modal` at commit `14ff9e8d926c09050d8d0e3ce1c1c400b4560fb1` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为 Vue Router 集成增加可配置的模态框堆叠模式，使嵌套路由对应的模态框按 `pushModal()` 语义依次叠加，并在路由回退时逐层关闭。

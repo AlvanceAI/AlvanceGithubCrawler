@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vue-modal-0329f0-14ff9e8d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Jenesius/vue-modal"
+base_commit = "14ff9e8d926c09050d8d0e3ce1c1c400b4560fb1"
+source_tree = "134835011c819746fba6586068ffd45312f4e21a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8d91d3fe4cb2e681ba3781ff51dfeba044fbe1e07c4eda0c65ad1ca9e037e380"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vue-modal-0329f0-14ff9e8d-v2-env-8d91d3fe"
+template_id = "6s9v69jlj1rk4dr98nos"
+source_template_alias = "7dbo47ul4am25o9o2apn"
+source_template_id = "7dbo47ul4am25o9o2apn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
