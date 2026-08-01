@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-my-notes-449555-f898436e-v2"
+description = "Rebuildable repository task for penge/my-notes"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-my-notes-449555-f898436e-v2"
+material_id = "my-notes-449555-f898436e"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/penge/my-notes"
+base_commit_hash = "f898436e37a5c72ed8d2cb7607bd11c42fc57750"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

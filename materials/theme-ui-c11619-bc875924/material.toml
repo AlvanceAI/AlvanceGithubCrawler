@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "theme-ui-c11619-bc875924"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/system-ui/theme-ui"
+base_commit = "bc87592449bdd43312b363753c077dcd8cb05b30"
+source_tree = "ddfff9da94d2387181a5e8aabc129c7e28a867fa"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "173649ce4f393f08111d602cb5c913c8535d49e51d5f88f818486298a606ae21"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-theme-ui-c11619-bc875924-v2-env-173649ce"
+template_id = "7jupwlc763nxs3tl8wng"
+source_template_alias = "kmnpcuxvha8r1ckfws01"
+source_template_id = "kmnpcuxvha8r1ckfws01"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "openclaw-nerve-ce5f91-312e2733"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/daggerhashimoto/openclaw-nerve"
+base_commit = "312e27333e14f841b95bf4f2b205a856b4a4c370"
+source_tree = "243a82d52a8095c48393f4cfcde477075f6ac075"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "22"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4d05169e96a70c34472f9228a00c1a741b37ad2f4064b0fdb429e01bc9077462"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-openclaw-nerve-ce5f91-312e2733-v2-env-4d05169e"
+template_id = "clpfnn74prj1djtki2vm"
+source_template_alias = "3zfs7bunm8c8jt8v2qfa"
+source_template_id = "3zfs7bunm8c8jt8v2qfa"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

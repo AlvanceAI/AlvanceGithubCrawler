@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "my-notes-449555-f898436e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/penge/my-notes"
+base_commit = "f898436e37a5c72ed8d2cb7607bd11c42fc57750"
+source_tree = "4ec8aa5f4ead9974514b76aba7fc1b90e018df41"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4d4a2229b035e940365dfe1b20ab70ca73da564934043745da46fb450bf25116"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-my-notes-449555-f898436e-v2-env-4d4a2229"
+template_id = "5wvrw2r7t3i3jgz6bi90"
+source_template_alias = "s3036dzjju5vtfr3mrgm"
+source_template_id = "s3036dzjju5vtfr3mrgm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

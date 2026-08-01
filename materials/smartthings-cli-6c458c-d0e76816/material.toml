@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "smartthings-cli-6c458c-d0e76816"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/SmartThingsCommunity/smartthings-cli"
+base_commit = "d0e76816b56608fb827ee3bac0c09b31d92b9388"
+source_tree = "680995a45e40fb8fa80ef4770937bc845550a8c2"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "24"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c1f047a65b72e9d665066585c054d3b6429f2833a783924b4854eb7bc1c67577"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-smartthings-cli-6c458c-d0e76816-v2-env-c1f047a6"
+template_id = "81jrh0wa6bf1vi4jvk7q"
+source_template_alias = "xcxxyt34voy868p44znl"
+source_template_id = "xcxxyt34voy868p44znl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
