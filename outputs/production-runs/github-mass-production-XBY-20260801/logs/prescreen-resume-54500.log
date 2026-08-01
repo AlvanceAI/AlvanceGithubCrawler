@@ -1,0 +1,55 @@
+[2026-08-01T17:04:05Z] stage=prescreen-resume-54500 run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-08-01 17:04:09,110 INFO alvance_github_crawler.pipeline: processing crawled candidate sb-ai-lab/tsururu@3fd789fb0bad562fc18d72f24cb24c91d531cf4f
+2026-08-01 17:04:09,112 INFO alvance_github_crawler.pipeline: processing crawled candidate banteg/takopi@e0123d4f9b2588bf45ec7250ad648c324e20ce20
+2026-08-01 17:04:09,115 INFO alvance_github_crawler.pipeline: processing crawled candidate kytmanov/obsidian-llm-wiki-local@ad2e425f20f348154dde19d7c895b9bba69b7ad5
+2026-08-01 17:04:09,119 INFO alvance_github_crawler.pipeline: processing crawled candidate pimutils/todoman@78e35788606a0add0c4f99ceb702c3ea0d0b1346
+2026-08-01 17:04:09,122 INFO alvance_github_crawler.pipeline: processing crawled candidate matthew-brett/delocate@9aeae5734ea038a0147c0f0d34b917db6fce2a53
+2026-08-01 17:04:09,124 INFO alvance_github_crawler.pipeline: processing crawled candidate Tishka17/sulguk@72cc20bd7f61e8c08b14e49dfc9b92e8744de61a
+2026-08-01 17:04:09,125 INFO alvance_github_crawler.pipeline: processing crawled candidate saulpw/aipl@97fac3f28cfd749f4876fd06d865e866e0d2f30c
+2026-08-01 17:04:09,126 INFO alvance_github_crawler.pipeline: processing crawled candidate simondotm/nx-firebase@d02e6243cb27c8aded576338f2a33fa4b9d4fa5b
+2026-08-01 17:04:16,352 ERROR alvance_github_crawler.pipeline: matthew-brett/delocate failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 17:04:25,202 ERROR alvance_github_crawler.pipeline: pimutils/todoman failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 17:04:52,824 ERROR alvance_github_crawler.pipeline: banteg/takopi failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 17:05:08,759 ERROR alvance_github_crawler.pipeline: simondotm/nx-firebase failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+{
+  "duplicate": 22338,
+  "error": 4,
+  "input_total": 22346,
+  "processed": 8,
+  "queued": 2,
+  "rejected": 2
+}
+[2026-08-01T17:05:09Z] stage=prescreen-resume-54500 exit_code=0 duration_s=64

@@ -1,0 +1,51 @@
+[2026-08-01T17:11:25Z] stage=verify-default-20260801T171125Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 17:11:28,521 INFO alvance_github_crawler.pending.verification: verifying pending candidate linkedin/shiv key_slot=1
+2026-08-01 17:11:28,522 INFO alvance_github_crawler.pending.verification: verifying pending candidate amaranth-lang/amaranth-soc key_slot=2
+2026-08-01 17:11:29,891 INFO alvance_github_crawler.pending.verification: verifying pending candidate django-commons/django-unicorn key_slot=3
+2026-08-01 17:11:39,544 INFO alvance_github_crawler.pending.verification: verifying pending candidate BioPandas/biopandas key_slot=1
+2026-08-01 17:11:39,544 INFO alvance_github_crawler.pending.verification: verifying pending candidate WebexCommunity/WebexPythonSDK key_slot=2
+2026-08-01 17:11:39,545 INFO alvance_github_crawler.pending.verification: verifying pending candidate mwilliamson/python-mammoth key_slot=3
+2026-08-01 17:11:43,533 INFO alvance_github_crawler.pending.verification: verifying pending candidate perrygeo/python-rasterstats key_slot=1
+2026-08-01 17:11:51,835 INFO alvance_github_crawler.pending.verification: verifying pending candidate lucasimi/tda-mapper-python key_slot=2
+2026-08-01 17:11:54,516 INFO alvance_github_crawler.pending.verification: verifying pending candidate ruvnet/FACT key_slot=3
+2026-08-01 17:12:00,248 INFO alvance_github_crawler.pending.verification: pending candidate mwilliamson/python-mammoth finished outcome=rejected key_slot=3 processed=1 in_flight=8
+2026-08-01 17:12:04,888 INFO alvance_github_crawler.pending.verification: verifying pending candidate rackspace/runway key_slot=3
+2026-08-01 17:12:05,203 INFO alvance_github_crawler.pending.verification: pending candidate amaranth-lang/amaranth-soc finished outcome=registered key_slot=2 processed=2 in_flight=8
+2026-08-01 17:12:08,717 INFO alvance_github_crawler.pending.verification: pending candidate BioPandas/biopandas finished outcome=rejected key_slot=1 processed=3 in_flight=7
+2026-08-01 17:12:10,517 INFO alvance_github_crawler.pending.verification: verifying pending candidate simondotm/nx-firebase key_slot=1
+2026-08-01 17:12:17,389 INFO alvance_github_crawler.pending.verification: verifying pending candidate 17TheWord/nonebot-plugin-mcqq key_slot=2
+2026-08-01 17:12:17,763 INFO alvance_github_crawler.pending.verification: pending candidate ruvnet/FACT finished outcome=rejected key_slot=3 processed=4 in_flight=8
+2026-08-01 17:12:20,346 INFO alvance_github_crawler.pending.verification: pending candidate WebexCommunity/WebexPythonSDK finished outcome=rejected key_slot=2 processed=5 in_flight=7
+2026-08-01 17:12:22,875 INFO alvance_github_crawler.pending.verification: pending candidate django-commons/django-unicorn finished outcome=rejected key_slot=3 processed=6 in_flight=6
+2026-08-01 17:12:26,075 INFO alvance_github_crawler.pending.verification: verifying pending candidate Diizzayy/nuxt-graphql-client key_slot=3
+2026-08-01 17:13:01,256 INFO alvance_github_crawler.pending.verification: pending candidate linkedin/shiv finished outcome=registered key_slot=1 processed=7 in_flight=6
+2026-08-01 17:13:07,156 INFO alvance_github_crawler.pending.verification: verifying pending candidate StackExchange/Stacks-Editor key_slot=1
+2026-08-01 17:13:09,750 INFO alvance_github_crawler.pending.verification: verifying pending candidate mydraft-cc/ui key_slot=2
+2026-08-01 17:13:17,975 INFO alvance_github_crawler.pending.verification: verifying pending candidate Derive-Risk/pyfair key_slot=3
+2026-08-01 17:13:29,952 INFO alvance_github_crawler.pending.verification: pending candidate 17TheWord/nonebot-plugin-mcqq finished outcome=registered key_slot=2 processed=8 in_flight=8
+2026-08-01 17:13:35,854 INFO alvance_github_crawler.pending.verification: verifying pending candidate thetarnav/solid-devtools key_slot=2
+2026-08-01 17:13:41,213 INFO alvance_github_crawler.pending.verification: pending candidate Diizzayy/nuxt-graphql-client finished outcome=rejected key_slot=3 processed=9 in_flight=8
+2026-08-01 17:14:04,158 INFO alvance_github_crawler.pending.verification: pending candidate Derive-Risk/pyfair finished outcome=rejected key_slot=3 processed=10 in_flight=7
+2026-08-01 17:14:14,652 INFO alvance_github_crawler.pending.verification: pending candidate simondotm/nx-firebase finished outcome=registered key_slot=1 processed=11 in_flight=6
+2026-08-01 17:14:15,340 INFO alvance_github_crawler.pending.verification: pending candidate StackExchange/Stacks-Editor finished outcome=rejected key_slot=1 processed=12 in_flight=5
+2026-08-01 17:14:16,610 INFO alvance_github_crawler.pending.verification: pending candidate rackspace/runway finished outcome=rejected key_slot=3 processed=13 in_flight=4
+2026-08-01 17:14:18,525 INFO alvance_github_crawler.pending.verification: pending candidate mydraft-cc/ui finished outcome=rejected key_slot=2 processed=14 in_flight=3
+2026-08-01 17:14:23,211 INFO alvance_github_crawler.pending.verification: pending candidate thetarnav/solid-devtools finished outcome=rejected key_slot=2 processed=15 in_flight=2
+2026-08-01 17:14:31,919 INFO alvance_github_crawler.pending.verification: pending candidate perrygeo/python-rasterstats finished outcome=registered key_slot=1 processed=16 in_flight=1
+2026-08-01 17:14:50,787 INFO alvance_github_crawler.pending.verification: pending candidate lucasimi/tda-mapper-python finished outcome=rejected key_slot=2 processed=17 in_flight=0
+{
+  "key_slot_1_processed": 5,
+  "key_slot_1_registered": 3,
+  "key_slot_1_rejected": 2,
+  "key_slot_2_processed": 6,
+  "key_slot_2_registered": 2,
+  "key_slot_2_rejected": 4,
+  "key_slot_3_processed": 6,
+  "key_slot_3_rejected": 6,
+  "processed": 17,
+  "registered": 5,
+  "rejected": 12,
+  "remaining": 0
+}
+[2026-08-01T17:14:51Z] stage=verify-default-20260801T171125Z exit_code=0 duration_s=207

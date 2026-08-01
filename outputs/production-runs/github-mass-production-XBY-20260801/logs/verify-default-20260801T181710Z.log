@@ -1,0 +1,32 @@
+[2026-08-01T18:17:10Z] stage=verify-default-20260801T181710Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 18:17:12,870 INFO alvance_github_crawler.pending.verification: verifying pending candidate mbarkhau/bumpver key_slot=1
+2026-08-01 18:17:12,871 INFO alvance_github_crawler.pending.verification: verifying pending candidate zemse/hardhat-tracer key_slot=2
+2026-08-01 18:17:29,096 INFO alvance_github_crawler.pending.verification: verifying pending candidate NVIDIA-Omniverse/LearnOpenUSD key_slot=3
+2026-08-01 18:17:30,729 INFO alvance_github_crawler.pending.verification: pending candidate mbarkhau/bumpver finished outcome=rejected key_slot=1 processed=1 in_flight=2
+2026-08-01 18:17:39,066 INFO alvance_github_crawler.pending.verification: verifying pending candidate Dineshkarthik/telegram_media_downloader key_slot=1
+2026-08-01 18:17:45,665 INFO alvance_github_crawler.pending.verification: verifying pending candidate dulnan/nuxt-multi-cache key_slot=2
+2026-08-01 18:17:46,953 INFO alvance_github_crawler.pending.verification: verifying pending candidate inseq-team/inseq key_slot=3
+2026-08-01 18:17:56,393 INFO alvance_github_crawler.pending.verification: verifying pending candidate ionic-team/native-run key_slot=1
+2026-08-01 18:17:57,055 INFO alvance_github_crawler.pending.verification: pending candidate ionic-team/native-run finished outcome=rejected key_slot=1 processed=2 in_flight=5
+2026-08-01 18:17:57,390 INFO alvance_github_crawler.pending.verification: pending candidate Dineshkarthik/telegram_media_downloader finished outcome=rejected key_slot=1 processed=3 in_flight=4
+2026-08-01 18:18:10,331 INFO alvance_github_crawler.pending.verification: pending candidate inseq-team/inseq finished outcome=rejected key_slot=3 processed=4 in_flight=3
+2026-08-01 18:18:22,808 INFO alvance_github_crawler.pending.verification: verifying pending candidate yuanqing/figma-plugins key_slot=1
+2026-08-01 18:18:35,896 INFO alvance_github_crawler.pending.verification: pending candidate NVIDIA-Omniverse/LearnOpenUSD finished outcome=rejected key_slot=3 processed=5 in_flight=3
+2026-08-01 18:19:03,214 INFO alvance_github_crawler.pending.verification: pending candidate dulnan/nuxt-multi-cache finished outcome=rejected key_slot=2 processed=6 in_flight=2
+2026-08-01 18:19:29,257 INFO alvance_github_crawler.pending.verification: verifying pending candidate daveschumaker/artbot-for-stable-diffusion key_slot=3
+2026-08-01 18:21:36,347 INFO alvance_github_crawler.pending.verification: pending candidate daveschumaker/artbot-for-stable-diffusion finished outcome=rejected key_slot=3 processed=7 in_flight=2
+2026-08-01 18:24:46,503 INFO alvance_github_crawler.pending.verification: pending candidate zemse/hardhat-tracer finished outcome=rejected key_slot=2 processed=8 in_flight=1
+2026-08-01 18:26:58,016 INFO alvance_github_crawler.pending.verification: pending candidate yuanqing/figma-plugins finished outcome=rejected key_slot=1 processed=9 in_flight=0
+{
+  "key_slot_1_processed": 4,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 2,
+  "key_slot_2_rejected": 2,
+  "key_slot_3_processed": 3,
+  "key_slot_3_rejected": 3,
+  "processed": 9,
+  "rejected": 9,
+  "remaining": 0
+}
+[2026-08-01T18:26:59Z] stage=verify-default-20260801T181710Z exit_code=0 duration_s=589

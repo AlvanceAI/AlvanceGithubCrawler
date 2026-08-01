@@ -1,0 +1,50 @@
+[2026-08-01T18:50:40Z] stage=verify-escalated-20260801T185040Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 18:50:43,047 INFO alvance_github_crawler.pending.verification: verifying pending candidate StackExchange/Stacks-Editor key_slot=1
+2026-08-01 18:50:43,048 INFO alvance_github_crawler.pending.verification: verifying pending candidate mhnpd/react-loader-spinner key_slot=2
+2026-08-01 18:50:43,049 INFO alvance_github_crawler.pending.verification: verifying pending candidate unplugin/unplugin-icons key_slot=3
+2026-08-01 18:50:43,051 INFO alvance_github_crawler.pending.verification: verifying pending candidate jupyter-widgets/ipydatagrid key_slot=1
+2026-08-01 18:50:43,057 INFO alvance_github_crawler.pending.verification: verifying pending candidate jaxleyverse/jaxley key_slot=2
+2026-08-01 18:50:43,059 INFO alvance_github_crawler.pending.verification: verifying pending candidate patrick-kidger/optimistix key_slot=3
+2026-08-01 18:50:43,062 INFO alvance_github_crawler.pending.verification: verifying pending candidate graphql-compose/graphql-compose-mongoose key_slot=1
+2026-08-01 18:50:43,063 INFO alvance_github_crawler.pending.verification: verifying pending candidate sapientml/sapientml key_slot=2
+2026-08-01 18:50:43,065 INFO alvance_github_crawler.pending.verification: verifying pending candidate trekhleb/self-parking-car-evolution key_slot=3
+2026-08-01 18:50:43,067 INFO alvance_github_crawler.pending.verification: verifying pending candidate infinitered/gluegun key_slot=1
+2026-08-01 18:50:43,072 INFO alvance_github_crawler.pending.verification: verifying pending candidate typedorm/typedorm key_slot=2
+2026-08-01 18:50:43,073 INFO alvance_github_crawler.pending.verification: verifying pending candidate crutchcorn/cli-testing-library key_slot=3
+2026-08-01 18:50:43,074 INFO alvance_github_crawler.pending.verification: verifying pending candidate yuanqing/figma-plugins key_slot=1
+2026-08-01 18:50:43,077 INFO alvance_github_crawler.pending.verification: verifying pending candidate daveschumaker/artbot-for-stable-diffusion key_slot=2
+2026-08-01 18:50:43,078 INFO alvance_github_crawler.pending.verification: verifying pending candidate videogular/ngx-videogular key_slot=3
+2026-08-01 18:50:43,080 INFO alvance_github_crawler.pending.verification: verifying pending candidate digicert/pkilint key_slot=1
+2026-08-01 18:52:00,995 INFO alvance_github_crawler.pending.verification: pending candidate unplugin/unplugin-icons finished outcome=registered key_slot=3 processed=1 in_flight=15
+2026-08-01 18:52:17,484 INFO alvance_github_crawler.pending.verification: pending candidate sapientml/sapientml finished outcome=rejected key_slot=2 processed=2 in_flight=14
+2026-08-01 18:52:30,132 INFO alvance_github_crawler.pending.verification: pending candidate StackExchange/Stacks-Editor finished outcome=rejected key_slot=1 processed=3 in_flight=13
+2026-08-01 18:52:31,438 INFO alvance_github_crawler.pending.verification: pending candidate graphql-compose/graphql-compose-mongoose finished outcome=rejected key_slot=1 processed=4 in_flight=12
+2026-08-01 18:52:49,385 INFO alvance_github_crawler.pending.verification: pending candidate videogular/ngx-videogular finished outcome=rejected key_slot=3 processed=5 in_flight=11
+2026-08-01 18:52:56,738 INFO alvance_github_crawler.pending.verification: pending candidate digicert/pkilint finished outcome=rejected key_slot=1 processed=6 in_flight=10
+2026-08-01 18:53:21,176 INFO alvance_github_crawler.pending.verification: pending candidate daveschumaker/artbot-for-stable-diffusion finished outcome=registered key_slot=2 processed=7 in_flight=9
+2026-08-01 18:54:10,857 INFO alvance_github_crawler.pending.verification: pending candidate jupyter-widgets/ipydatagrid finished outcome=registered key_slot=1 processed=8 in_flight=8
+2026-08-01 18:54:28,200 INFO alvance_github_crawler.pending.verification: pending candidate mhnpd/react-loader-spinner finished outcome=registered key_slot=2 processed=9 in_flight=7
+2026-08-01 18:54:52,624 INFO alvance_github_crawler.pending.verification: pending candidate crutchcorn/cli-testing-library finished outcome=registered key_slot=3 processed=10 in_flight=6
+2026-08-01 18:55:51,438 INFO alvance_github_crawler.pending.verification: pending candidate typedorm/typedorm finished outcome=registered key_slot=2 processed=11 in_flight=5
+2026-08-01 19:01:28,125 INFO alvance_github_crawler.pending.verification: pending candidate infinitered/gluegun finished outcome=rejected key_slot=1 processed=12 in_flight=4
+2026-08-01 19:01:37,425 INFO alvance_github_crawler.pending.verification: pending candidate patrick-kidger/optimistix finished outcome=rejected key_slot=3 processed=13 in_flight=3
+2026-08-01 19:02:26,444 INFO alvance_github_crawler.pending.verification: pending candidate jaxleyverse/jaxley finished outcome=rejected key_slot=2 processed=14 in_flight=2
+2026-08-01 19:02:35,845 INFO alvance_github_crawler.pending.verification: pending candidate trekhleb/self-parking-car-evolution finished outcome=rejected key_slot=3 processed=15 in_flight=1
+2026-08-01 19:05:53,953 INFO alvance_github_crawler.pending.verification: pending candidate yuanqing/figma-plugins finished outcome=rejected key_slot=1 processed=16 in_flight=0
+{
+  "key_slot_1_processed": 6,
+  "key_slot_1_registered": 1,
+  "key_slot_1_rejected": 5,
+  "key_slot_2_processed": 5,
+  "key_slot_2_registered": 3,
+  "key_slot_2_rejected": 2,
+  "key_slot_3_processed": 5,
+  "key_slot_3_registered": 2,
+  "key_slot_3_rejected": 3,
+  "processed": 16,
+  "registered": 6,
+  "rejected": 10,
+  "remaining": 0
+}
+[2026-08-01T19:05:55Z] stage=verify-escalated-20260801T185040Z exit_code=0 duration_s=915

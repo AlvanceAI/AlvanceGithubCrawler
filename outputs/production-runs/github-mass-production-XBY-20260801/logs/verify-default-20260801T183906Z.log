@@ -1,0 +1,45 @@
+[2026-08-01T18:39:06Z] stage=verify-default-20260801T183906Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 18:39:08,964 INFO alvance_github_crawler.pending.verification: verifying pending candidate AuvaLab/itext2kg key_slot=1
+2026-08-01 18:39:08,965 INFO alvance_github_crawler.pending.verification: verifying pending candidate IFCA-Advanced-Computing/frouros key_slot=2
+2026-08-01 18:39:20,059 INFO alvance_github_crawler.pending.verification: verifying pending candidate videogular/ngx-videogular key_slot=3
+2026-08-01 18:39:34,192 INFO alvance_github_crawler.pending.verification: pending candidate IFCA-Advanced-Computing/frouros finished outcome=rejected key_slot=2 processed=1 in_flight=2
+2026-08-01 18:39:40,206 INFO alvance_github_crawler.pending.verification: verifying pending candidate giampaolo/pyftpdlib key_slot=2
+2026-08-01 18:39:40,206 INFO alvance_github_crawler.pending.verification: verifying pending candidate juftin/browsr key_slot=3
+2026-08-01 18:39:46,999 INFO alvance_github_crawler.pending.verification: verifying pending candidate microsoft/MLOS key_slot=1
+2026-08-01 18:39:47,000 INFO alvance_github_crawler.pending.verification: verifying pending candidate pyranges/pyranges0 key_slot=2
+2026-08-01 18:39:52,555 INFO alvance_github_crawler.pending.verification: verifying pending candidate laurent-laporte-pro/deprecated key_slot=3
+2026-08-01 18:39:53,938 INFO alvance_github_crawler.pending.verification: verifying pending candidate digicert/pkilint key_slot=1
+2026-08-01 18:39:56,792 INFO alvance_github_crawler.pending.verification: verifying pending candidate Unbabel/COMET key_slot=2
+2026-08-01 18:39:58,245 INFO alvance_github_crawler.pending.verification: pending candidate microsoft/MLOS finished outcome=rejected key_slot=1 processed=2 in_flight=8
+2026-08-01 18:40:04,462 INFO alvance_github_crawler.pending.verification: verifying pending candidate bitranox/wrapt_timeout_decorator key_slot=1
+2026-08-01 18:40:08,784 INFO alvance_github_crawler.pending.verification: verifying pending candidate testing-library/user-event key_slot=2
+2026-08-01 18:40:09,360 INFO alvance_github_crawler.pending.verification: pending candidate testing-library/user-event finished outcome=rejected key_slot=2 processed=3 in_flight=9
+2026-08-01 18:40:09,731 INFO alvance_github_crawler.pending.verification: verifying pending candidate napolab/y-durableobjects key_slot=3
+2026-08-01 18:40:12,637 INFO alvance_github_crawler.pending.verification: verifying pending candidate radish-bdd/radish key_slot=1
+2026-08-01 18:40:14,255 INFO alvance_github_crawler.pending.verification: pending candidate giampaolo/pyftpdlib finished outcome=rejected key_slot=2 processed=4 in_flight=10
+2026-08-01 18:40:17,559 INFO alvance_github_crawler.pending.verification: pending candidate Unbabel/COMET finished outcome=rejected key_slot=2 processed=5 in_flight=9
+2026-08-01 18:40:26,387 INFO alvance_github_crawler.pending.verification: pending candidate juftin/browsr finished outcome=rejected key_slot=3 processed=6 in_flight=8
+2026-08-01 18:40:29,264 INFO alvance_github_crawler.pending.verification: pending candidate laurent-laporte-pro/deprecated finished outcome=registered key_slot=3 processed=7 in_flight=7
+2026-08-01 18:40:41,566 INFO alvance_github_crawler.pending.verification: pending candidate AuvaLab/itext2kg finished outcome=registered key_slot=1 processed=8 in_flight=6
+2026-08-01 18:41:05,623 INFO alvance_github_crawler.pending.verification: pending candidate napolab/y-durableobjects finished outcome=rejected key_slot=3 processed=9 in_flight=5
+2026-08-01 18:41:42,983 INFO alvance_github_crawler.pending.verification: pending candidate videogular/ngx-videogular finished outcome=rejected key_slot=3 processed=10 in_flight=4
+2026-08-01 18:41:53,031 INFO alvance_github_crawler.pending.verification: pending candidate pyranges/pyranges0 finished outcome=rejected key_slot=2 processed=11 in_flight=3
+2026-08-01 18:42:30,708 INFO alvance_github_crawler.pending.verification: pending candidate bitranox/wrapt_timeout_decorator finished outcome=registered key_slot=1 processed=12 in_flight=2
+2026-08-01 18:43:05,899 INFO alvance_github_crawler.pending.verification: pending candidate radish-bdd/radish finished outcome=registered key_slot=1 processed=13 in_flight=1
+2026-08-01 18:50:12,846 INFO alvance_github_crawler.pending.verification: pending candidate digicert/pkilint finished outcome=rejected key_slot=1 processed=14 in_flight=0
+{
+  "key_slot_1_processed": 5,
+  "key_slot_1_registered": 3,
+  "key_slot_1_rejected": 2,
+  "key_slot_2_processed": 5,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 4,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 3,
+  "processed": 14,
+  "registered": 4,
+  "rejected": 10,
+  "remaining": 0
+}
+[2026-08-01T18:50:14Z] stage=verify-default-20260801T183906Z exit_code=0 duration_s=668
