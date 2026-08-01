@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vitesse-webext-5d7b02-d237f4c0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/antfu-collective/vitesse-webext"
+base_commit = "d237f4c00f1ac2cae9ea2b3d5dd93dd64d465073"
+source_tree = "b98da669b4669d81405db5ec21fba35ab608c19a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "136c8bce26a2f9aa2296203f2d83104f11a32808caee97937904e625036a4900"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vitesse-webext-5d7b02-d237f4c0-v2-env-136c8bce"
+template_id = "1ybzl7o0l9cuq6hzwe29"
+source_template_alias = "5565bkevufwubyq3brn0"
+source_template_id = "5565bkevufwubyq3brn0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

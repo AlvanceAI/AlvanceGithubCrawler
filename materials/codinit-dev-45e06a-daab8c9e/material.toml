@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "codinit-dev-45e06a-daab8c9e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/codinit-dev/codinit-dev"
+base_commit = "daab8c9ef39b24204aa2cccd5e7aa7ab2f149ae8"
+source_tree = "ea7ce003442e0b1187dbb04132e22c299e05752b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2f4ccf88eac3e69ad98516b46b0f81d242251509c3dd5bd0f842a9c90894f5bf"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-codinit-dev-45e06a-daab8c9e-v2-env-2f4ccf88"
+template_id = "327tht0kvt0iauoeyuxl"
+source_template_alias = "xxjqzin7t9n408jc2njm"
+source_template_id = "xxjqzin7t9n408jc2njm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
