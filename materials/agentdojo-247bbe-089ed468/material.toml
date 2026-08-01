@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "agentdojo-247bbe-089ed468"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ethz-spylab/agentdojo"
+base_commit = "089ed468cf3ed0322acc66b0211f26d9d90dbf60"
+source_tree = "45cc40920b8ddca28e675505fdd6a92139008ab3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "5ae39216b4f83a9290e3dc9dc03cce7698d656df0934b2886f50cdba696e79eb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-agentdojo-247bbe-089ed468-v2-env-5ae39216"
+template_id = "ucmit2sgdw28b51nlhox"
+source_template_alias = "81w1gpta035sgkj8nic6"
+source_template_id = "81w1gpta035sgkj8nic6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
