@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "opentaxii-1df34c-1506bb7f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/eclecticiq/OpenTAXII"
+base_commit = "1506bb7f54c2da3e839ccdfd5c5bcd16c928a9ac"
+source_tree = "7322fa11954b5bd048fdbc12d52fe56f4ea83922"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bab27a9646f0c187c40869a6936c76836686d16c31eca230e9830121f0e0348a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-opentaxii-1df34c-1506bb7f-v2-env-bab27a96"
+template_id = "egmkz9mnhy7uwdadrpon"
+source_template_alias = "otxgta6tekqs56ydd4tr"
+source_template_id = "otxgta6tekqs56ydd4tr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

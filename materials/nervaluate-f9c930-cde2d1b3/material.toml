@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nervaluate-f9c930-cde2d1b3"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/MantisAI/nervaluate"
+base_commit = "cde2d1b392a4ceb9b60a926218ed845939d85c07"
+source_tree = "d405b0c55b8dac027b2b8aa1c6c84136677d284a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a18985d10155a2ca460bc297cb1548a8890d56e5f388f1e2cde73777238b35b2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nervaluate-f9c930-cde2d1b3-v2-env-a18985d1"
+template_id = "z6sukb5i47c1bmbf5mrv"
+source_template_alias = "gctbopw0w2ugrq5fw7us"
+source_template_id = "gctbopw0w2ugrq5fw7us"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

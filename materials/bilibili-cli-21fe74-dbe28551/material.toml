@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bilibili-cli-21fe74-dbe28551"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/public-clis/bilibili-cli"
+base_commit = "dbe28551930df43b633baa52e9639832aeada967"
+source_tree = "4fa5eba3f90bf79f15cb6676a1aae39abb2da578"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "84f2d353c2a1358e13a58464f25130227bb754df9273f82b5ad3709e0fb7fe22"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bilibili-cli-21fe74-dbe28551-v2-env-84f2d353"
+template_id = "sg2eg501rw7m99t9txp1"
+source_template_alias = "2m4715s5tkua6wttitis"
+source_template_id = "2m4715s5tkua6wttitis"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
