@@ -1,0 +1,66 @@
+[2026-08-01T19:51:34Z] stage=verify-default-20260801T195134Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 19:51:37,404 INFO alvance_github_crawler.pending.verification: verifying pending candidate iamport/iamport-rest-client-python key_slot=1
+2026-08-01 19:51:37,406 INFO alvance_github_crawler.pending.verification: verifying pending candidate awslabs/aws-embedded-metrics-python key_slot=2
+2026-08-01 19:51:37,407 INFO alvance_github_crawler.pending.verification: verifying pending candidate dalinicus/homeassistant-acinfinity key_slot=3
+2026-08-01 19:51:37,409 INFO alvance_github_crawler.pending.verification: verifying pending candidate p0n1/epub_to_audiobook key_slot=1
+2026-08-01 19:51:42,923 INFO alvance_github_crawler.pending.verification: verifying pending candidate citusdata/django-multitenant key_slot=2
+2026-08-01 19:51:47,019 INFO alvance_github_crawler.pending.verification: pending candidate p0n1/epub_to_audiobook finished outcome=rejected key_slot=1 processed=1 in_flight=4
+2026-08-01 19:51:47,336 INFO alvance_github_crawler.pending.verification: verifying pending candidate Ljzd-PRO/nonebot-plugin-mystool key_slot=3
+2026-08-01 19:51:48,695 INFO alvance_github_crawler.pending.verification: pending candidate dalinicus/homeassistant-acinfinity finished outcome=rejected key_slot=3 processed=2 in_flight=4
+2026-08-01 19:51:50,432 INFO alvance_github_crawler.pending.verification: verifying pending candidate instavm/clickclickclick key_slot=1
+2026-08-01 19:51:51,763 INFO alvance_github_crawler.pending.verification: verifying pending candidate bndr/pipreqs key_slot=3
+2026-08-01 19:51:53,104 INFO alvance_github_crawler.pending.verification: verifying pending candidate scikit-learn-contrib/metric-learn key_slot=1
+2026-08-01 19:51:57,142 INFO alvance_github_crawler.pending.verification: verifying pending candidate silvandeleemput/memcnn key_slot=2
+2026-08-01 19:51:57,150 INFO alvance_github_crawler.pending.verification: pending candidate citusdata/django-multitenant finished outcome=rejected key_slot=2 processed=3 in_flight=7
+2026-08-01 19:51:57,636 INFO alvance_github_crawler.pending.verification: pending candidate awslabs/aws-embedded-metrics-python finished outcome=rejected key_slot=2 processed=4 in_flight=6
+2026-08-01 19:51:57,946 INFO alvance_github_crawler.pending.verification: verifying pending candidate hyperledger-indy/indy-plenum key_slot=2
+2026-08-01 19:51:58,298 INFO alvance_github_crawler.pending.verification: pending candidate instavm/clickclickclick finished outcome=rejected key_slot=1 processed=5 in_flight=6
+2026-08-01 19:52:00,085 INFO alvance_github_crawler.pending.verification: verifying pending candidate public-clis/bilibili-cli key_slot=3
+2026-08-01 19:52:02,709 INFO alvance_github_crawler.pending.verification: verifying pending candidate GoogleCloudPlatform/dfcx-scrapi key_slot=1
+2026-08-01 19:52:06,801 INFO alvance_github_crawler.pending.verification: verifying pending candidate ra1nty/DXcam key_slot=2
+2026-08-01 19:52:09,685 INFO alvance_github_crawler.pending.verification: verifying pending candidate sirfz/tesserocr key_slot=3
+2026-08-01 19:52:09,686 INFO alvance_github_crawler.pending.verification: verifying pending candidate caikit/caikit key_slot=1
+2026-08-01 19:52:09,852 INFO alvance_github_crawler.pending.verification: pending candidate Ljzd-PRO/nonebot-plugin-mystool finished outcome=rejected key_slot=3 processed=6 in_flight=10
+2026-08-01 19:52:10,647 INFO alvance_github_crawler.pending.verification: pending candidate silvandeleemput/memcnn finished outcome=rejected key_slot=2 processed=7 in_flight=9
+2026-08-01 19:52:26,246 INFO alvance_github_crawler.pending.verification: verifying pending candidate EdanToledo/Stoix key_slot=2
+2026-08-01 19:52:27,654 INFO alvance_github_crawler.pending.verification: verifying pending candidate stan-dev/pystan key_slot=3
+2026-08-01 19:52:27,660 INFO alvance_github_crawler.pending.verification: pending candidate sirfz/tesserocr finished outcome=rejected key_slot=3 processed=8 in_flight=10
+2026-08-01 19:52:29,515 INFO alvance_github_crawler.pending.verification: verifying pending candidate MantisAI/nervaluate key_slot=2
+2026-08-01 19:52:35,834 INFO alvance_github_crawler.pending.verification: pending candidate ra1nty/DXcam finished outcome=rejected key_slot=2 processed=9 in_flight=10
+2026-08-01 19:52:37,574 INFO alvance_github_crawler.pending.verification: verifying pending candidate aigc3d/LHM key_slot=3
+2026-08-01 19:52:38,087 INFO alvance_github_crawler.pending.verification: pending candidate stan-dev/pystan finished outcome=rejected key_slot=3 processed=10 in_flight=10
+2026-08-01 19:52:39,173 INFO alvance_github_crawler.pending.verification: pending candidate caikit/caikit finished outcome=rejected key_slot=1 processed=11 in_flight=9
+2026-08-01 19:52:39,612 INFO alvance_github_crawler.pending.verification: pending candidate hyperledger-indy/indy-plenum finished outcome=rejected key_slot=2 processed=12 in_flight=8
+2026-08-01 19:52:42,731 INFO alvance_github_crawler.pending.verification: verifying pending candidate CrystalWindSnake/ex4nicegui key_slot=2
+2026-08-01 19:52:50,135 INFO alvance_github_crawler.pending.verification: pending candidate aigc3d/LHM finished outcome=rejected key_slot=3 processed=13 in_flight=8
+2026-08-01 19:52:50,491 INFO alvance_github_crawler.pending.verification: pending candidate scikit-learn-contrib/metric-learn finished outcome=rejected key_slot=1 processed=14 in_flight=7
+2026-08-01 19:52:53,564 INFO alvance_github_crawler.pending.verification: pending candidate bndr/pipreqs finished outcome=rejected key_slot=3 processed=15 in_flight=6
+2026-08-01 19:52:56,693 INFO alvance_github_crawler.pending.verification: pending candidate GoogleCloudPlatform/dfcx-scrapi finished outcome=rejected key_slot=1 processed=16 in_flight=5
+2026-08-01 19:52:58,349 INFO alvance_github_crawler.pending.verification: verifying pending candidate vvaezian/metabase_api_python key_slot=3
+2026-08-01 19:52:58,349 INFO alvance_github_crawler.pending.verification: verifying pending candidate eclecticiq/OpenTAXII key_slot=1
+2026-08-01 19:52:58,350 INFO alvance_github_crawler.pending.verification: pending candidate public-clis/bilibili-cli finished outcome=registered key_slot=3 processed=17 in_flight=6
+2026-08-01 19:53:08,638 INFO alvance_github_crawler.pending.verification: pending candidate vvaezian/metabase_api_python finished outcome=rejected key_slot=3 processed=18 in_flight=5
+2026-08-01 19:53:10,450 INFO alvance_github_crawler.pending.verification: verifying pending candidate CiscoDevNet/virlutils key_slot=3
+2026-08-01 19:53:13,457 INFO alvance_github_crawler.pending.verification: pending candidate MantisAI/nervaluate finished outcome=registered key_slot=2 processed=19 in_flight=5
+2026-08-01 19:53:16,109 INFO alvance_github_crawler.pending.verification: pending candidate iamport/iamport-rest-client-python finished outcome=rejected key_slot=1 processed=20 in_flight=4
+2026-08-01 19:53:31,064 INFO alvance_github_crawler.pending.verification: pending candidate CiscoDevNet/virlutils finished outcome=rejected key_slot=3 processed=21 in_flight=3
+2026-08-01 19:53:34,154 INFO alvance_github_crawler.pending.verification: pending candidate CrystalWindSnake/ex4nicegui finished outcome=rejected key_slot=2 processed=22 in_flight=2
+2026-08-01 19:53:47,251 INFO alvance_github_crawler.pending.verification: pending candidate EdanToledo/Stoix finished outcome=rejected key_slot=2 processed=23 in_flight=1
+2026-08-01 19:57:40,529 INFO alvance_github_crawler.pending.verification: pending candidate eclecticiq/OpenTAXII finished outcome=registered key_slot=1 processed=24 in_flight=0
+{
+  "key_slot_1_processed": 7,
+  "key_slot_1_registered": 1,
+  "key_slot_1_rejected": 6,
+  "key_slot_2_processed": 8,
+  "key_slot_2_registered": 1,
+  "key_slot_2_rejected": 7,
+  "key_slot_3_processed": 9,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 8,
+  "processed": 24,
+  "registered": 3,
+  "rejected": 21,
+  "remaining": 0
+}
+[2026-08-01T19:57:41Z] stage=verify-default-20260801T195134Z exit_code=0 duration_s=367

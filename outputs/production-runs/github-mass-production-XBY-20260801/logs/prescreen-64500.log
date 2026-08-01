@@ -1,0 +1,443 @@
+[2026-08-01T20:40:37Z] stage=prescreen-64500 run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-08-01 20:40:42,065 INFO alvance_github_crawler.pipeline: processing crawled candidate sensedeep/dynamodb-onetable@d76abebb9e39e01d6121dd5f8234b3c8880213d7
+2026-08-01 20:40:42,069 INFO alvance_github_crawler.pipeline: processing crawled candidate BurnySc2/python-sc2@81d66110cb0aa57cc7c2895dad207775e496fbd1
+2026-08-01 20:40:42,071 INFO alvance_github_crawler.pipeline: processing crawled candidate Preston-Landers/concurrent-log-handler@491b4c2442e455f5a57319023dcc4a86bf87999a
+2026-08-01 20:40:42,073 INFO alvance_github_crawler.pipeline: processing crawled candidate jblance/mpp-solar@eafdd4328c77f516cf82430c5bcb6fa042c45d3a
+2026-08-01 20:40:42,076 INFO alvance_github_crawler.pipeline: processing crawled candidate teabranch/open-responses-server@0d4353cc274604236bdaece6734b42fddec6f970
+2026-08-01 20:40:42,077 INFO alvance_github_crawler.pipeline: processing crawled candidate pybuilder/pybuilder@fe618dba93dc6b95f7cf975134bec948672a9315
+2026-08-01 20:40:42,081 INFO alvance_github_crawler.pipeline: processing crawled candidate pyamg/pyamg@0c021343e7dce3274f0d587fd60be2bd0ae53495
+2026-08-01 20:40:42,083 INFO alvance_github_crawler.pipeline: processing crawled candidate darrenburns/posting@56703a11513e8e74e681b4f859f31945b71e746f
+2026-08-01 20:40:42,085 INFO alvance_github_crawler.pipeline: processing crawled candidate goodmami/wn@22073eacc4780b835830b9987de42840351bc8e4
+2026-08-01 20:40:42,087 INFO alvance_github_crawler.pipeline: processing crawled candidate h2non/pook@c7dcf2d39317e3308853a2811346c1bacabb6537
+2026-08-01 20:40:42,089 INFO alvance_github_crawler.pipeline: processing crawled candidate jdoiro3/mkdocs-multirepo-plugin@a44dd5847ed007ed626ef64655ddca7f47191381
+2026-08-01 20:40:42,091 INFO alvance_github_crawler.pipeline: processing crawled candidate cheran-senthil/TLE@9613e02715ced8b54b7a4660e32b0482b3cca9df
+2026-08-01 20:40:42,093 INFO alvance_github_crawler.pipeline: processing crawled candidate vishnubob/python-midi@3fe5d295edb18ee211e163cb8369f4c3e691e418
+2026-08-01 20:40:42,094 INFO alvance_github_crawler.pipeline: processing crawled candidate CamDavidsonPilon/lifelines@7a8fc34a013ecd79fa405017b89e1697c1cc6e17
+2026-08-01 20:40:42,096 INFO alvance_github_crawler.pipeline: processing crawled candidate geometric-kernels/GeometricKernels@16fc137f40b3324e4aa61f438e15744ff4d248f8
+2026-08-01 20:40:42,097 INFO alvance_github_crawler.pipeline: processing crawled candidate mlx-graphs/mlx-graphs@fabc897d4c51d526950492b9846d760983fb6d81
+2026-08-01 20:40:42,098 INFO alvance_github_crawler.pipeline: processing crawled candidate tehmaze/xmodem@579a93b72ca44b55feaefca7cdb158b6c5a26f18
+2026-08-01 20:40:42,100 INFO alvance_github_crawler.pipeline: processing crawled candidate omnilib/aiosqlite@9b127cecc7de843bf4f343b6da63b641866533fb
+2026-08-01 20:40:42,102 INFO alvance_github_crawler.pipeline: processing crawled candidate mert-kurttutan/torchview@241d22b5cdeb2c227acee2c85611f0442f15c091
+2026-08-01 20:40:42,102 INFO alvance_github_crawler.pipeline: processing crawled candidate Krukov/cashews@f3d810af58c586e6c1bfa3a272dd9f7d3a3c8565
+2026-08-01 20:40:51,288 ERROR alvance_github_crawler.pipeline: Preston-Landers/concurrent-log-handler failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:51,298 INFO alvance_github_crawler.pipeline: processing crawled candidate jupyter-server/jupyter-scheduler@955883c1b33a7c366df0e3e7d9a9523dff48c9b4
+2026-08-01 20:40:51,310 ERROR alvance_github_crawler.pipeline: tehmaze/xmodem failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:51,316 INFO alvance_github_crawler.pipeline: processing crawled candidate rsokl/MyGrad@6971309f884bad0b9950dcbee3898ec7f35e2fbb
+2026-08-01 20:40:51,372 ERROR alvance_github_crawler.pipeline: Krukov/cashews failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:51,376 ERROR alvance_github_crawler.pipeline: jdoiro3/mkdocs-multirepo-plugin failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:51,380 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/multi-agent-marketplace@fdaf34d1696e301a6df20417b78be4ab1ff18c02
+2026-08-01 20:40:51,385 INFO alvance_github_crawler.pipeline: processing crawled candidate tensortrade-org/tensortrade@d58afba23deb1fded39793203b7997c3990bb032
+2026-08-01 20:40:51,418 ERROR alvance_github_crawler.pipeline: h2non/pook failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:51,421 INFO alvance_github_crawler.pipeline: processing crawled candidate evhub/coconut@bdf64a9e662471f1df1752122ea69d8808f4de42
+2026-08-01 20:40:51,518 ERROR alvance_github_crawler.pipeline: sensedeep/dynamodb-onetable failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:51,521 INFO alvance_github_crawler.pipeline: processing crawled candidate benjaminp/six@c8e394065cd541a16c040515dc0afb85cf22a7c3
+2026-08-01 20:40:52,425 ERROR alvance_github_crawler.pipeline: mlx-graphs/mlx-graphs failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:52,428 INFO alvance_github_crawler.pipeline: processing crawled candidate okfn/opendataeditor@957c793517817af77cf29805560df7b8cba76ae6
+2026-08-01 20:40:52,493 ERROR alvance_github_crawler.pipeline: teabranch/open-responses-server failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:52,496 INFO alvance_github_crawler.pipeline: processing crawled candidate ssato/python-anyconfig@2f9f9409ec90a5921795fe346695640d8dea003d
+2026-08-01 20:40:57,379 ERROR alvance_github_crawler.pipeline: CamDavidsonPilon/lifelines failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:57,381 INFO alvance_github_crawler.pipeline: processing crawled candidate cdgriffith/Box@a4c10e977b574114613431394b30412b50aaacce
+2026-08-01 20:40:58,131 ERROR alvance_github_crawler.pipeline: cheran-senthil/TLE failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:58,135 INFO alvance_github_crawler.pipeline: processing crawled candidate marcospereirampj/python-keycloak@c5848e806d8539e5e80d01d265e230ac870572f7
+2026-08-01 20:40:59,800 ERROR alvance_github_crawler.pipeline: BurnySc2/python-sc2 failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:59,802 INFO alvance_github_crawler.pipeline: processing crawled candidate protectai/modelscan@61fcec9c2a37c24c1fb12d84ede30fe248a364bd
+2026-08-01 20:40:59,829 ERROR alvance_github_crawler.pipeline: evhub/coconut failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:40:59,833 INFO alvance_github_crawler.pipeline: processing crawled candidate mir-evaluation/mir_eval@fe73b3533737814f83dbd9739f06e90f5f82f758
+2026-08-01 20:41:00,210 INFO alvance_github_crawler.pipeline: processing crawled candidate guillermo-navas-palencia/optbinning@36a276f564742f32028c88b612afc4dfd3df7a15
+2026-08-01 20:41:01,205 ERROR alvance_github_crawler.pipeline: goodmami/wn failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:01,210 INFO alvance_github_crawler.pipeline: processing crawled candidate thouska/spotpy@315a75ab1025fce0b85de881cac39214a455fd90
+2026-08-01 20:41:02,146 ERROR alvance_github_crawler.pipeline: cdgriffith/Box failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:02,152 INFO alvance_github_crawler.pipeline: processing crawled candidate gatagat/lap@e29341d9e0ec8c3a1f11f239eb65a31973f4a0ab
+2026-08-01 20:41:02,465 ERROR alvance_github_crawler.pipeline: rsokl/MyGrad failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:02,469 INFO alvance_github_crawler.pipeline: processing crawled candidate rehanguha/brisque@42c854ef9278f09d047abb8600d5204f779eca52
+2026-08-01 20:41:03,850 ERROR alvance_github_crawler.pipeline: jblance/mpp-solar failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:03,853 INFO alvance_github_crawler.pipeline: processing crawled candidate llazzaro/django-scheduler@ab3618013b3de2f194e3d2898653bcf88d6ec163
+2026-08-01 20:41:05,538 INFO alvance_github_crawler.pipeline: processing crawled candidate kennethreitz/records@ea4273695cee6da42edf1cb294d1f2a4505470fc
+2026-08-01 20:41:06,514 ERROR alvance_github_crawler.pipeline: protectai/modelscan failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:06,517 INFO alvance_github_crawler.pipeline: processing crawled candidate pydoit/doit@1f9cbbce78a93f96a35abf2db5425361e2abf142
+2026-08-01 20:41:07,126 ERROR alvance_github_crawler.pipeline: gatagat/lap failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:07,129 INFO alvance_github_crawler.pipeline: processing crawled candidate wq/django-rest-pandas@7bdf912d16774133ce731100bf9a245917b0aa59
+2026-08-01 20:41:08,262 ERROR alvance_github_crawler.pipeline: guillermo-navas-palencia/optbinning failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:08,266 INFO alvance_github_crawler.pipeline: processing crawled candidate lastmile-ai/aiconfig@cef0162b31b50dccbf42f1b0f5bb7627fb402e84
+2026-08-01 20:41:10,649 ERROR alvance_github_crawler.pipeline: llazzaro/django-scheduler failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:10,656 INFO alvance_github_crawler.pipeline: processing crawled candidate jonrau1/ElectricEye@199c4190722c71edca87edac4d129056932b5abb
+2026-08-01 20:41:10,687 INFO alvance_github_crawler.pipeline: processing crawled candidate danielweidman/pixmob-ir-reverse-engineering@b372420e1e1ff818a8d25ba50f0c71e97e62f138
+2026-08-01 20:41:10,709 INFO alvance_github_crawler.pipeline: processing crawled candidate cltk/cltk@f079e2900f57c5cc933c7f9a04cb494a24d93ba7
+2026-08-01 20:41:11,497 INFO alvance_github_crawler.pipeline: processing crawled candidate pavdmyt/yaspin@ffb89d2fc2c890c96606c187bd7b91752e4c4c9d
+2026-08-01 20:41:11,567 INFO alvance_github_crawler.pipeline: processing crawled candidate SAML-Toolkits/python-saml@488a00d8987ebd2314b72d233ae1b6de8802892a
+2026-08-01 20:41:11,646 INFO alvance_github_crawler.pipeline: processing crawled candidate cgtuebingen/3D-RE-GEN@9a6275f3af97eae484c34d0ff5d9cc8177adaa17
+2026-08-01 20:41:11,724 ERROR alvance_github_crawler.pipeline: pybuilder/pybuilder failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:11,726 INFO alvance_github_crawler.pipeline: processing crawled candidate hdwallet-io/python-hdwallet@3a5d40b0828ffba7fa7b8d5907fe53cb9e5896bd
+2026-08-01 20:41:13,529 INFO alvance_github_crawler.pipeline: processing crawled candidate yashlamba/handwrite@8f4603fa175db6c74be42d0845e6035c8a1cfa5a
+2026-08-01 20:41:14,132 ERROR alvance_github_crawler.pipeline: microsoft/multi-agent-marketplace failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:14,134 INFO alvance_github_crawler.pipeline: processing crawled candidate inclusionAI/dInfer@1ffeb961cd258bede74fcf5ca8a416ae6d57b18f
+2026-08-01 20:41:15,547 INFO alvance_github_crawler.pipeline: processing crawled candidate phospho-app/phosphobot@a5de051197c879e3c685d1362f649ce54ee47a3c
+2026-08-01 20:41:15,788 INFO alvance_github_crawler.pipeline: processing crawled candidate AvivK5498/The-Claude-Protocol@af754ef63535a416af4894223edda1b2c730d3c2
+2026-08-01 20:41:16,332 INFO alvance_github_crawler.pipeline: processing crawled candidate Anrijs/Aranet4-Python@414079ccb3abc6baf95ce32a919a6be3226d6c39
+2026-08-01 20:41:17,066 INFO alvance_github_crawler.pipeline: processing crawled candidate mstuttgart/brazilcep@a661fbae69f3343250d31f5f78ffc2c2285beda4
+2026-08-01 20:41:17,590 INFO alvance_github_crawler.pipeline: processing crawled candidate aidos-lab/pytorch-topological@8aca6dbb87d0b03902df657528f53c06184a63c6
+2026-08-01 20:41:18,386 ERROR alvance_github_crawler.pipeline: tensortrade-org/tensortrade failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:18,389 INFO alvance_github_crawler.pipeline: processing crawled candidate damianvtran/local-operator@61544ffbe2720febf34d8e6d708e6dff37d8a79a
+2026-08-01 20:41:18,589 INFO alvance_github_crawler.pipeline: processing crawled candidate msm-code/ghidralib@6e4714e36c19937f27af926c66362894797c0049
+2026-08-01 20:41:18,705 INFO alvance_github_crawler.pipeline: processing crawled candidate symbolica-ai/agentica-python-sdk@1e64ecda69b6456530c9aabff476923893f41fe8
+2026-08-01 20:41:19,120 INFO alvance_github_crawler.pipeline: processing crawled candidate ptr-yudai/ptrlib@3bc14a428feb99fa01ed0d29701fbb4e7688b151
+2026-08-01 20:41:19,643 INFO alvance_github_crawler.pipeline: processing crawled candidate slidoapp/dbt-superset-lineage@7e5cd202c1aaa916df5f52d6604eafaacd7dfd87
+2026-08-01 20:41:21,139 INFO alvance_github_crawler.pipeline: processing crawled candidate shanbay/sea@1e7f074e72b3227f4066e1ce8d3b41a83cd1e32a
+2026-08-01 20:41:21,884 INFO alvance_github_crawler.pipeline: processing crawled candidate Infinity-AILab/DeepResearchEval@121d4c34050d0e3b0ee441c52c4467cf58ab941e
+2026-08-01 20:41:22,504 INFO alvance_github_crawler.pipeline: processing crawled candidate FoundationAgents/OpenManus@52a13f2a57d8c7f6737eefb02ccf569594d44273
+2026-08-01 20:41:24,058 INFO alvance_github_crawler.pipeline: processing crawled candidate modin-project/modin@7ca200b08597ed6ecfd2db2d08bd322f83c2cec1
+2026-08-01 20:41:25,537 INFO alvance_github_crawler.pipeline: processing crawled candidate anthropics/claude-code-security-review@0c6a49f1fa56a1d472575da86a94dbc1edb78eda
+2026-08-01 20:41:25,545 ERROR alvance_github_crawler.pipeline: jupyter-server/jupyter-scheduler failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:25,609 INFO alvance_github_crawler.pipeline: processing crawled candidate webdataset/webdataset@e0953f9bba17b416d5792d5a263b171c266e78be
+2026-08-01 20:41:25,630 INFO alvance_github_crawler.pipeline: processing crawled candidate MiniMax-AI/Mini-Agent@d76a4f6389688cabda39c224a6cdfa274215d47c
+2026-08-01 20:41:25,964 ERROR alvance_github_crawler.pipeline: ssato/python-anyconfig failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:25,966 INFO alvance_github_crawler.pipeline: processing crawled candidate pyusb/pyusb@3241c0e6a7debafd7597925e8403d9d3ea02ed93
+2026-08-01 20:41:27,529 INFO alvance_github_crawler.pipeline: processing crawled candidate jmfernandes/robin_stocks@1b4ef98be36d1df127886889c843256799a1dfea
+2026-08-01 20:41:29,931 INFO alvance_github_crawler.pipeline: processing crawled candidate lupantech/AgentFlow@b94006436b8712ab8682846fb0d886a5f174f2d4
+2026-08-01 20:41:30,610 INFO alvance_github_crawler.pipeline: processing crawled candidate Kav-K/GPTDiscord@2bf8e5cf6267bb44b62e78b19d79b594379b5a7d
+2026-08-01 20:41:30,723 INFO alvance_github_crawler.pipeline: processing crawled candidate google-research/circuit_training@c417a3a13f40867b649c719c03daaf1b39a909bc
+2026-08-01 20:41:32,252 ERROR alvance_github_crawler.pipeline: benjaminp/six failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:32,254 INFO alvance_github_crawler.pipeline: processing crawled candidate simonw/claude-code-transcripts@316fd093aca3c9c0ad8aa70092711aee3adacc6e
+2026-08-01 20:41:32,935 INFO alvance_github_crawler.pipeline: processing crawled candidate bernardopires/django-tenant-schemas@013e82f6bbda5e4dcaddea29aef7d0663b559c2b
+2026-08-01 20:41:33,689 INFO alvance_github_crawler.pipeline: processing crawled candidate marcboeker/gmail-to-sqlite@79bbd12f0aa66f5ef7a2cb52fed0178d2698c2a6
+2026-08-01 20:41:34,476 ERROR alvance_github_crawler.pipeline: aidos-lab/pytorch-topological failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:34,477 INFO alvance_github_crawler.pipeline: processing crawled candidate character-ai/prompt-poet@dd5987486084757fce3ef77b2f4b4d7873490ee5
+2026-08-01 20:41:35,810 INFO alvance_github_crawler.pipeline: processing crawled candidate Saik0s/mcp-browser-use@03e0dad7f429568f922e0cc09b72849472cb867c
+2026-08-01 20:41:36,634 INFO alvance_github_crawler.pipeline: processing crawled candidate OpenBMB/AgentCPM@4a43561e790c154292798b3edd50171f71241cec
+2026-08-01 20:41:36,791 INFO alvance_github_crawler.pipeline: processing crawled candidate long2ice/fastapi-limiter@cc95615f9d68a6e82dcd2fa5abbf3f09c3f82569
+2026-08-01 20:41:37,909 INFO alvance_github_crawler.pipeline: processing crawled candidate google-deepmind/recurrentgemma@2efa84dac0e68e63547a27a18fa943c98f1c312e
+2026-08-01 20:41:38,104 ERROR alvance_github_crawler.pipeline: okfn/opendataeditor failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:38,106 INFO alvance_github_crawler.pipeline: processing crawled candidate andravin/wincnn@c2bf6305cc75866b19e204628b95baed4d13065c
+2026-08-01 20:41:38,515 INFO alvance_github_crawler.pipeline: processing crawled candidate IdentityPython/pysaml2@9e597e1eb3d7bd66aa659b1906604f4bc56e529e
+2026-08-01 20:41:39,963 INFO alvance_github_crawler.pipeline: processing crawled candidate bellingcat/ShadowFinder@f12f8d6d30094f94c8cacb27f3c77db7e443d6fd
+2026-08-01 20:41:40,002 INFO alvance_github_crawler.pipeline: processing crawled candidate sergiocorreia/panflute@296ad183f58697c9380bcf1591fe33e4ad893e9e
+2026-08-01 20:41:41,753 INFO alvance_github_crawler.pipeline: processing crawled candidate TuragaLab/flybody@d015e9bfe441bd90ae431bac24c55cb74bdbce26
+2026-08-01 20:41:41,767 INFO alvance_github_crawler.pipeline: processing crawled candidate koaning/embetter@c75f0f5b362db961c25643592063c6eb4f1d4ab0
+2026-08-01 20:41:41,907 INFO alvance_github_crawler.pipeline: processing crawled candidate ferrolho/VL53L5CX-BNO08X-viewer@21a000d7bd6d769cc8e95e104e47916cbaa147bc
+2026-08-01 20:41:42,082 INFO alvance_github_crawler.pipeline: processing crawled candidate gao-lab/GLUE@5a30146c6148a52210f547c9e9c330ecfbdf1090
+2026-08-01 20:41:42,240 INFO alvance_github_crawler.pipeline: processing crawled candidate atiilla/sqlmap-ai@4d160d4d2977f16c4bfe6cfa7836d76ab7bcfbc0
+2026-08-01 20:41:43,650 INFO alvance_github_crawler.pipeline: processing crawled candidate oasis-open/cti-python-stix2@2270361774215de49717c1a6028a80c91075b400
+2026-08-01 20:41:44,388 INFO alvance_github_crawler.pipeline: processing crawled candidate bartdegoede/python-searchengine@c76ebb6b4b9cc48bdf8854f7f8a8ece4313bc8cd
+2026-08-01 20:41:44,415 INFO alvance_github_crawler.pipeline: processing crawled candidate AcademySoftwareFoundation/OpenColorIO-Config-ACES@97a47181b52a051518163e2a7a8c29f6c7ab8da7
+2026-08-01 20:41:44,526 INFO alvance_github_crawler.pipeline: processing crawled candidate metauto-ai/HGM@013872d95da978483f5b540e531db063d23890da
+2026-08-01 20:41:45,087 INFO alvance_github_crawler.pipeline: processing crawled candidate OALabs/hashdb@ffc74bdb93849873b76d562cfcc61cf8b1846445
+2026-08-01 20:41:45,467 INFO alvance_github_crawler.pipeline: processing crawled candidate philippb/claude-homeassistant@e1973e58e87d0cb7ea969c131019ceb954df7c8d
+2026-08-01 20:41:46,273 INFO alvance_github_crawler.pipeline: processing crawled candidate ag2ai/Agents_Failure_Attribution@f4d2b6da464a826580e59b3a0eae15ea2d642d7c
+2026-08-01 20:41:46,466 INFO alvance_github_crawler.pipeline: processing crawled candidate rxn4chemistry/rxnmapper@a01ecdcd5ac944850e9691739c1df858e005fd39
+2026-08-01 20:41:46,862 INFO alvance_github_crawler.pipeline: processing crawled candidate Pangu-Immortal/hunter-ai-content-factory@21cebd438f668083f7307870bf079ff7f766166d
+2026-08-01 20:41:47,308 INFO alvance_github_crawler.pipeline: processing crawled candidate snap-stanford/stark@b246b9490b1dc216892ce78303140014506932c1
+2026-08-01 20:41:47,651 INFO alvance_github_crawler.pipeline: processing crawled candidate sfstar/hass-victron@3d3ec1e6cb7768d3c6d49ed23e9b52814477c205
+2026-08-01 20:41:47,710 INFO alvance_github_crawler.pipeline: processing crawled candidate googlefonts/nanoemoji@237db784172116c44d0e829c43388c846d280128
+2026-08-01 20:41:49,352 INFO alvance_github_crawler.pipeline: processing crawled candidate choderalab/pymbar@ed40ec3bbef03bb08938ad1a74d459b0d1ab81f7
+2026-08-01 20:41:49,663 INFO alvance_github_crawler.pipeline: processing crawled candidate affaan-m/claude-swarm@9b1c5561157abd2d0d043758b7bfcb0319267d9f
+2026-08-01 20:41:49,747 INFO alvance_github_crawler.pipeline: processing crawled candidate royerlab/napari-chatgpt@b439696984855c5ffbf528829783e4a5ea898e67
+2026-08-01 20:41:49,990 INFO alvance_github_crawler.pipeline: processing crawled candidate NVlabs/GTRS@92a740def80610e4096962d25cc837b21e72ef78
+2026-08-01 20:41:51,091 INFO alvance_github_crawler.pipeline: processing crawled candidate florimondmanca/asgi-lifespan@8591cb106849c73e3080e6c689e8c22b70fd863f
+2026-08-01 20:41:51,366 INFO alvance_github_crawler.pipeline: processing crawled candidate sorz/sstp-server@5920a632daa9b2aae1460da52386e0b9c082156d
+2026-08-01 20:41:52,308 INFO alvance_github_crawler.pipeline: processing crawled candidate Kugelaudio/kugelaudio-open@ce0ce233aaf4a14074e2ca4bc32820097453a1ea
+2026-08-01 20:41:52,861 INFO alvance_github_crawler.pipeline: processing crawled candidate hodgerpodger/staketaxcsv@a99acd845a3409aa11d28bd2cb61ae652bea290d
+2026-08-01 20:41:53,587 INFO alvance_github_crawler.pipeline: processing crawled candidate djangostarter/web@2cce2f972b9a794e4830e29d1320f7e470246080
+2026-08-01 20:41:54,582 INFO alvance_github_crawler.pipeline: processing crawled candidate wukan1986/polars_ta@f3097d5ac93df23fb854bcdad0f65f63b807d9e6
+2026-08-01 20:41:54,609 ERROR alvance_github_crawler.pipeline: OALabs/hashdb failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:41:54,611 INFO alvance_github_crawler.pipeline: processing crawled candidate mthh/jenkspy@e4f6356340d8ed82d8868bbac943660bc4294145
+2026-08-01 20:41:54,651 INFO alvance_github_crawler.pipeline: processing crawled candidate monim67/django-bootstrap-datepicker-plus@9739ecc08a529951830f84d9753749ac0e3d6332
+2026-08-01 20:41:56,503 INFO alvance_github_crawler.pipeline: processing crawled candidate anveshane/Comfyui_turbodiffusion@ccf900c76c3e2f293d5ba3f97066efb25c833817
+2026-08-01 20:41:57,083 INFO alvance_github_crawler.pipeline: processing crawled candidate laclouis5/globox@940811fc0315fac6daa89b6e7d84531cf7c4ae63
+2026-08-01 20:41:57,266 INFO alvance_github_crawler.pipeline: processing crawled candidate ESDS-Leipzig/cubo@1bf975e5d928b42db1a6fd742a4770c9ea3f0631
+2026-08-01 20:41:57,741 INFO alvance_github_crawler.pipeline: processing crawled candidate zhizhuodemao/android_proxy_mcp@7d54a3afce993c66c07f547c929429b1d135bf2e
+2026-08-01 20:41:58,376 INFO alvance_github_crawler.pipeline: processing crawled candidate containers/ai-lab-recipes@25fca348b7d93adfbe4601d4fdac4655203bf3ac
+2026-08-01 20:41:58,749 INFO alvance_github_crawler.pipeline: processing crawled candidate cyberark/Vulnhalla@d315bc2b051f27e1248dff55f5996286a398fde6
+2026-08-01 20:41:58,993 INFO alvance_github_crawler.pipeline: processing crawled candidate marbl/ModDotPlot@a2268ee0a92f4bc2a06851ccb817bb170a7af7d9
+2026-08-01 20:41:59,396 INFO alvance_github_crawler.pipeline: processing crawled candidate tompollard/tableone@a9e229df81097016a6d9b0abbd8a55235b7c5c9d
+2026-08-01 20:41:59,587 INFO alvance_github_crawler.pipeline: processing crawled candidate twonds/punjab@139a21eab4e665bb3e2b3b20828a978d8d23e8ed
+2026-08-01 20:42:01,064 INFO alvance_github_crawler.pipeline: processing crawled candidate datachecks/dcs-core@425a7f973b1fd07c80cf5a328b59aa6ef3c4ced9
+2026-08-01 20:42:01,364 INFO alvance_github_crawler.pipeline: processing crawled candidate zsylvester/meanderpy@0b836b4896ced7e70aab6d81972d81bc72e86d57
+2026-08-01 20:42:01,389 INFO alvance_github_crawler.pipeline: processing crawled candidate irahorecka/youtube2audio@057cc1ce1ddb2330392e91af50adaf6bd62c41b7
+2026-08-01 20:42:02,176 INFO alvance_github_crawler.pipeline: processing crawled candidate Rambatino/CHAID@9ba23614928b93d8d9731506e709c380871aa2af
+2026-08-01 20:42:03,740 INFO alvance_github_crawler.pipeline: processing crawled candidate jlbadano/ig-mcp@549fbeedc7f4409556a88d9d462e5f7ea454ca6a
+2026-08-01 20:42:04,154 INFO alvance_github_crawler.pipeline: processing crawled candidate TRI-AMDD/beep@f2b984e4bbf54554d9514c1defc81d09ac2a3dee
+2026-08-01 20:42:04,312 INFO alvance_github_crawler.pipeline: processing crawled candidate fraim-dev/fraim@e7678484e352dda145b9348979a2524e87d8dc37
+2026-08-01 20:42:05,131 INFO alvance_github_crawler.pipeline: processing crawled candidate wharton/wrds@5d7bf38de5bd367852b7ccdd05079c1a1820f888
+2026-08-01 20:42:05,218 INFO alvance_github_crawler.pipeline: processing crawled candidate MinhxLe/subliminal-learning@db04f4150edf940559b5f3147f65d808e9313efd
+2026-08-01 20:42:05,433 INFO alvance_github_crawler.pipeline: processing crawled candidate sebastien/multiplex@4bf25337fe594c70d9a280709e34b879da943a91
+2026-08-01 20:42:05,979 INFO alvance_github_crawler.pipeline: processing crawled candidate CourtBouillon/pydyf@16461385571120a9773455a993ed0ba1437fef43
+2026-08-01 20:42:06,853 INFO alvance_github_crawler.pipeline: processing crawled candidate krhatland/cloudnetdraw@7b852ad9654c7144338b8f40eb6ec4d7cf11d83f
+2026-08-01 20:42:07,260 INFO alvance_github_crawler.pipeline: processing crawled candidate snakers4/silero-stress@76706c123dc9ac0ca0b2b428d132a71c6cc4ff36
+2026-08-01 20:42:08,216 INFO alvance_github_crawler.pipeline: processing crawled candidate DSGWJQ/Feagent@8c18847139b66f1ded99d4bd2a5e3037e80c5917
+2026-08-01 20:42:09,449 INFO alvance_github_crawler.pipeline: processing crawled candidate simonw/go-to-wheel@eb9c343a6bd3c4da4c7bcb4a6106c8fd67cc10a8
+2026-08-01 20:42:09,487 INFO alvance_github_crawler.pipeline: processing crawled candidate 1Password/SCAM@ce2761e8530142521360e23cce66a9e24cd1b3e5
+2026-08-01 20:42:10,137 INFO alvance_github_crawler.pipeline: processing crawled candidate baverman/sqlbind@248fb732b4e05f5545e8a6f1f3bc0c770c20338b
+2026-08-01 20:42:11,321 INFO alvance_github_crawler.pipeline: processing crawled candidate MotrixLab/hmr-benchmarks@4434e4c9281679aa89856c7125c741a6f1bd9ad3
+2026-08-01 20:42:12,070 INFO alvance_github_crawler.pipeline: processing crawled candidate somnathrakshit/geograpy3@c5a5bfe2fe0a2b6d451582987a689eaf8bb0919b
+2026-08-01 20:42:13,697 ERROR alvance_github_crawler.pipeline: webdataset/webdataset failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 20:42:13,699 INFO alvance_github_crawler.pipeline: processing crawled candidate bkbilly/AlarmPI@37ef70171e8e1797a297fb6afa2f8b88a2f150f6
+2026-08-01 20:42:14,931 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/planetary-computer-apis@d79b0e3bd614b522651d6fb0bfd51101e8038d9d
+2026-08-01 20:42:14,951 INFO alvance_github_crawler.pipeline: processing crawled candidate pawamoy/duty@ccc11b5782e00719a66e2f2c2397ea0c1cc3ab8f
+2026-08-01 20:42:15,405 INFO alvance_github_crawler.pipeline: processing crawled candidate SYuan03/MM-IFEngine@bb844a7f145934da4ed82077735736d02bfafca4
+2026-08-01 20:42:16,127 INFO alvance_github_crawler.pipeline: processing crawled candidate sphinx-contrib/openapi@8a56eaf0a5fb8a3b088d0a66dac338e33a33a7ba
+2026-08-01 20:42:16,439 INFO alvance_github_crawler.pipeline: processing crawled candidate bartTC/django-wakawaka@d708d481b15307584568f2b63dfbaf1845745b6d
+2026-08-01 20:42:16,473 INFO alvance_github_crawler.pipeline: processing crawled candidate lsp-client/lsp-skill@66f3e419ed9cacccde02912f22cd8e7840191670
+2026-08-01 20:42:17,752 INFO alvance_github_crawler.pipeline: processing crawled candidate maweigert/gputools@7addc6cfa6000d190f7c651e8f1fc2ee3e98a0b7
+2026-08-01 20:42:17,811 INFO alvance_github_crawler.pipeline: processing crawled candidate lym29/EasyHOI@d1b3b18d6b3fed5361f482cd42c68dd235c9926d
+2026-08-01 20:42:18,372 INFO alvance_github_crawler.pipeline: processing crawled candidate wagtail/wagtail-transfer@fc146eafaf399781241690214f9f9562e1e64313
+2026-08-01 20:42:18,463 INFO alvance_github_crawler.pipeline: processing crawled candidate xarray-contrib/xarray-regrid@d804302a4d25dfe5cee940a1a408c47e799b93f6
+2026-08-01 20:42:18,554 INFO alvance_github_crawler.pipeline: processing crawled candidate RazerM/orbital@5d7b1de5894af6d8cbc40aa5416198bbaf68d448
+2026-08-01 20:42:18,686 INFO alvance_github_crawler.pipeline: processing crawled candidate FHPythonUtils/TStickers@92f20736c6a776924d0517c9466c77dd0d124e22
+2026-08-01 20:42:19,313 INFO alvance_github_crawler.pipeline: processing crawled candidate jackwuwei/gptspeaker@f2a35dc7e805cbd845df7683d9a6a9aefff274a9
+2026-08-01 20:42:20,146 INFO alvance_github_crawler.pipeline: processing crawled candidate oegedijk/explainerdashboard@678e695d87076c2506cac75f23f065a4b9283d91
+2026-08-01 20:42:20,638 INFO alvance_github_crawler.pipeline: processing crawled candidate weaviate/elysia@0f363c54b4d388e0b2e71f5fba541e6acf1eec42
+2026-08-01 20:42:20,767 INFO alvance_github_crawler.pipeline: processing crawled candidate wkaisertexas/tiktok-uploader@1cea92dd4c815dbd5127ee4b3a0a7b6fabbaa5f0
+2026-08-01 20:42:21,427 INFO alvance_github_crawler.pipeline: processing crawled candidate alexziskind1/llama-throughput-lab@60bf3e88170ca97c4f4a0dd2e57e64ea200e5599
+2026-08-01 20:42:21,650 INFO alvance_github_crawler.pipeline: processing crawled candidate elefant-ai/open-p2p@a329d98cbe62119679a254d71bea6446773541bc
+2026-08-01 20:42:22,688 INFO alvance_github_crawler.pipeline: processing crawled candidate jakubplichta/grafana-dashboard-builder@077aea0ab115443c119c79b0c3bd41e639ca8e33
+2026-08-01 20:42:22,816 INFO alvance_github_crawler.pipeline: processing crawled candidate dschuler36/reaper-mcp-server@d909a48ee4f795e18a9b281dbfd4f970a033bfaa
+{
+  "duplicate": 24854,
+  "error": 30,
+  "input_total": 25016,
+  "processed": 162,
+  "queued": 25,
+  "rejected": 107
+}
+[2026-08-01T20:42:59Z] stage=prescreen-64500 exit_code=0 duration_s=142

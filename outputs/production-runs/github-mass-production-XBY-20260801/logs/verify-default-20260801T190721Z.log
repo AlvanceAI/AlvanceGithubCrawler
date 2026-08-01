@@ -1,0 +1,26 @@
+[2026-08-01T19:07:21Z] stage=verify-default-20260801T190721Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 19:07:23,537 INFO alvance_github_crawler.pending.verification: verifying pending candidate kiyoon/jupynium.nvim key_slot=1
+2026-08-01 19:07:23,538 INFO alvance_github_crawler.pending.verification: verifying pending candidate radiac/nanodjango key_slot=2
+2026-08-01 19:07:30,360 INFO alvance_github_crawler.pending.verification: verifying pending candidate cjolowicz/nox-poetry key_slot=3
+2026-08-01 19:07:44,873 INFO alvance_github_crawler.pending.verification: verifying pending candidate OpenDataServices/flatten-tool key_slot=1
+2026-08-01 19:07:46,453 INFO alvance_github_crawler.pending.verification: pending candidate radiac/nanodjango finished outcome=rejected key_slot=2 processed=1 in_flight=3
+2026-08-01 19:07:46,995 INFO alvance_github_crawler.pending.verification: pending candidate kiyoon/jupynium.nvim finished outcome=rejected key_slot=1 processed=2 in_flight=2
+2026-08-01 19:07:48,693 INFO alvance_github_crawler.pending.verification: verifying pending candidate AsyncFuncAI/AsyncReview key_slot=2
+2026-08-01 19:08:05,858 INFO alvance_github_crawler.pending.verification: pending candidate cjolowicz/nox-poetry finished outcome=rejected key_slot=3 processed=3 in_flight=2
+2026-08-01 19:08:09,313 INFO alvance_github_crawler.pending.verification: pending candidate OpenDataServices/flatten-tool finished outcome=rejected key_slot=1 processed=4 in_flight=1
+2026-08-01 19:10:43,990 INFO alvance_github_crawler.pending.verification: pending candidate AsyncFuncAI/AsyncReview finished outcome=registered key_slot=2 processed=5 in_flight=0
+{
+  "key_slot_1_processed": 2,
+  "key_slot_1_rejected": 2,
+  "key_slot_2_processed": 2,
+  "key_slot_2_registered": 1,
+  "key_slot_2_rejected": 1,
+  "key_slot_3_processed": 1,
+  "key_slot_3_rejected": 1,
+  "processed": 5,
+  "registered": 1,
+  "rejected": 4,
+  "remaining": 0
+}
+[2026-08-01T19:10:45Z] stage=verify-default-20260801T190721Z exit_code=0 duration_s=204

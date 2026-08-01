@@ -1,0 +1,486 @@
+[2026-08-01T19:11:36Z] stage=prescreen-60000 run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-08-01 19:11:40,367 INFO alvance_github_crawler.pipeline: processing crawled candidate bjodah/chempy@b291866275e9232495a0984e222e6f3a650f85ed
+2026-08-01 19:11:40,371 INFO alvance_github_crawler.pipeline: processing crawled candidate itamarst/eliot@92ecc03d3e557e2a55c78eefc763193587650600
+2026-08-01 19:11:40,372 INFO alvance_github_crawler.pipeline: processing crawled candidate wagtail/django-modelcluster@fef1604656d9c146077958e32a86cd8138ee30de
+2026-08-01 19:11:40,376 INFO alvance_github_crawler.pipeline: processing crawled candidate flrs/blend_modes@950e20d4df5803b75ee8f87bd47df6bf9aca6cae
+2026-08-01 19:11:40,378 INFO alvance_github_crawler.pipeline: processing crawled candidate sensedeep/dynamodb-onetable@d76abebb9e39e01d6121dd5f8234b3c8880213d7
+2026-08-01 19:11:40,380 INFO alvance_github_crawler.pipeline: processing crawled candidate cyntler/react-doc-viewer@955795bca8bb5c81f76674321a019ef4f838f307
+2026-08-01 19:11:40,382 INFO alvance_github_crawler.pipeline: processing crawled candidate BurnySc2/python-sc2@81d66110cb0aa57cc7c2895dad207775e496fbd1
+2026-08-01 19:11:40,383 INFO alvance_github_crawler.pipeline: processing crawled candidate timolins/react-hot-toast@f339d7105c90e64bc80ee836b987f2efe235035c
+2026-08-01 19:11:40,385 INFO alvance_github_crawler.pipeline: processing crawled candidate tyrellshawn/bolt.diy@72c718d6ff23943934201011f3e754ea1815917a
+2026-08-01 19:11:40,387 INFO alvance_github_crawler.pipeline: processing crawled candidate BioPhoton/angular-star-rating@a67ac4ef05511e02f80ff5eda08435eda2f42a7e
+2026-08-01 19:11:40,389 INFO alvance_github_crawler.pipeline: processing crawled candidate moloch--/RootTheBox@8398fed6db5ac67c57a2c16459d69c7bbdab2d51
+2026-08-01 19:11:40,391 INFO alvance_github_crawler.pipeline: processing crawled candidate dswah/pyGAM@b6a48ab5d1ef7df07ce2a34bbe572bca75e83e7d
+2026-08-01 19:11:40,394 INFO alvance_github_crawler.pipeline: processing crawled candidate openai/swarm@6af0b4caf37dca4526dfd98e9fbd8ce36e7eeb22
+2026-08-01 19:11:40,396 INFO alvance_github_crawler.pipeline: processing crawled candidate cuemacro/finmarketpy@afeaef28f5c8b78e613e649ecf18a9653dbf41fd
+2026-08-01 19:11:40,398 INFO alvance_github_crawler.pipeline: processing crawled candidate QData/TextAttack@7f4a99306dca64d379c4fd77183b629e3508b73f
+2026-08-01 19:11:40,400 INFO alvance_github_crawler.pipeline: processing crawled candidate python-arq/arq@5ee4b48cf6faf4dc181f1ccb76dfb1bc1fedf9bf
+2026-08-01 19:11:40,402 INFO alvance_github_crawler.pipeline: processing crawled candidate shenweichen/DeepMatch@fd74417629b19ba4518add93d05cafa551ac7c09
+2026-08-01 19:11:40,405 INFO alvance_github_crawler.pipeline: processing crawled candidate iver56/audiomentations@f5e45049dfa8b33e8ee79a900b2b796a9dcae45f
+2026-08-01 19:11:40,407 INFO alvance_github_crawler.pipeline: processing crawled candidate Suor/django-cacheops@57dc991e7793345bc43e66b7331214eea90f41ed
+2026-08-01 19:11:40,408 INFO alvance_github_crawler.pipeline: processing crawled candidate pytorch-tabular/pytorch_tabular@8495f6413d0e184039d57e5c983647c0285bac15
+2026-08-01 19:11:44,907 INFO alvance_github_crawler.pipeline: processing crawled candidate rcaloras/bashhub-client@c3259dcc0f6b4bb9f347e4ee980023864fa2bfc9
+2026-08-01 19:11:46,915 INFO alvance_github_crawler.pipeline: processing crawled candidate EnergieID/entsoe-py@fbd0d24708592c4184234c7a0d4a3fcc912d2b1d
+2026-08-01 19:11:49,816 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/multilspy@6f4c0b7c287f2ff6917fc4008ba0d98a26d6aa24
+2026-08-01 19:11:51,340 ERROR alvance_github_crawler.pipeline: sensedeep/dynamodb-onetable failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:11:51,353 INFO alvance_github_crawler.pipeline: processing crawled candidate CerebrasResearch/reap@1970473c51ca3caeb98c10392f15b3a08a672974
+2026-08-01 19:11:51,460 INFO alvance_github_crawler.pipeline: processing crawled candidate tensorpool/tensorpool@4eb9fa674f4895bfe1d83766136349f2b6ebdf59
+2026-08-01 19:11:52,304 INFO alvance_github_crawler.pipeline: processing crawled candidate the-palindrome/mlfz@8d045c0d988257d48ca17d26a5a14e90fe7771af
+2026-08-01 19:11:52,465 ERROR alvance_github_crawler.pipeline: tyrellshawn/bolt.diy failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:11:52,467 INFO alvance_github_crawler.pipeline: processing crawled candidate jonlabelle/SublimeJsPrettier@9bc6e7f4e5f1776c869b781b1dc955870c65d6d8
+2026-08-01 19:11:52,763 ERROR alvance_github_crawler.pipeline: dswah/pyGAM failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:11:52,765 INFO alvance_github_crawler.pipeline: processing crawled candidate pfnet/plamo-translate-cli@840de559ee22a6b523e63257fa537e115d9d0d5b
+2026-08-01 19:11:53,736 INFO alvance_github_crawler.pipeline: processing crawled candidate stphivos/django-mock-queries@aea8e72285d17841e1370f18f3e90d84a0364830
+2026-08-01 19:11:54,380 INFO alvance_github_crawler.pipeline: processing crawled candidate SPFlow/SPFlow@360e8fa77e5fd1823bda67359a299807692e218a
+2026-08-01 19:11:54,612 INFO alvance_github_crawler.pipeline: processing crawled candidate HKUSTDial/DeepEar@579b7d418554f5da0a708e940b8df4d1ad035067
+2026-08-01 19:11:55,090 ERROR alvance_github_crawler.pipeline: BioPhoton/angular-star-rating failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:11:55,092 INFO alvance_github_crawler.pipeline: processing crawled candidate darrikonn/td-cli@bf21b4f5b3ad9e7537b8ccdc5fdc982e9399a9cb
+2026-08-01 19:11:55,319 INFO alvance_github_crawler.pipeline: processing crawled candidate andsens/docopt.sh@b77404564b528b75be138b75f7dd69215e5759f0
+2026-08-01 19:11:55,540 INFO alvance_github_crawler.pipeline: processing crawled candidate lord63/tldr.py@d3be61cb15e48b18c774d239a2cf32f5f5b6919c
+2026-08-01 19:11:55,626 INFO alvance_github_crawler.pipeline: processing crawled candidate lord63/py-spin@c9c3a56c7fe61fe04f070857403ca874833bdf1a
+2026-08-01 19:11:57,605 INFO alvance_github_crawler.pipeline: processing crawled candidate joewongjc/feishu-claude-code@595cdcb38cb775f88700a3c88e3984d1cbdf3e09
+2026-08-01 19:11:57,830 INFO alvance_github_crawler.pipeline: processing crawled candidate jrxFive/python-nomad@e949a8bc0459c2b87a24bc2cfd4a432c69a5e237
+2026-08-01 19:11:58,064 INFO alvance_github_crawler.pipeline: processing crawled candidate SherylHYX/pytorch_geometric_signed_directed@ecdf3fcf94b148ae9350c848e7774915495170d9
+2026-08-01 19:11:58,153 INFO alvance_github_crawler.pipeline: processing crawled candidate nikolasibalic/ARC-Alkali-Rydberg-Calculator@4b4573e965222e798ac59636ad7a8b3457262835
+2026-08-01 19:11:58,215 INFO alvance_github_crawler.pipeline: processing crawled candidate kenshiro-o/nagato-ai@ea19ab507d1aba6f545cb76448e6d281d70e86ff
+2026-08-01 19:11:58,382 INFO alvance_github_crawler.pipeline: processing crawled candidate Naapperas/zon@259f4fc5611ea4340d957c0cff270fd8e2f8187f
+2026-08-01 19:11:59,073 INFO alvance_github_crawler.pipeline: processing crawled candidate frenck/python-adguardhome@9d8a5965efa09b1a4ac9a908f7b311901869afd1
+2026-08-01 19:11:59,091 INFO alvance_github_crawler.pipeline: processing crawled candidate polyphony-dev/polyphony@6fffcad9c60f3497c0e007628aabe8916409444f
+2026-08-01 19:12:00,116 INFO alvance_github_crawler.pipeline: processing crawled candidate aws-cloudformation/cloudformation-cli-python-plugin@9159d8b1296e6cb82b917eb63062ba664e193b7b
+2026-08-01 19:12:00,510 INFO alvance_github_crawler.pipeline: processing crawled candidate jeanralphaviles/comment_parser@2b1d71e5d41bba4122df80616b41390ebb4a8aab
+2026-08-01 19:12:01,834 INFO alvance_github_crawler.pipeline: processing crawled candidate doccano/doccano@ab6b765ea326d07b2b806a4280cd097565e62321
+2026-08-01 19:12:03,066 INFO alvance_github_crawler.pipeline: processing crawled candidate openai/transformer-debugger@c22efe8d5b3e514ac8ff5e15d2441fa1dcaff1d7
+2026-08-01 19:12:03,309 INFO alvance_github_crawler.pipeline: processing crawled candidate Johnserf-Seed/f2@7dab3e2ffffaa2535834d28fca99dbc2e89fa9d3
+2026-08-01 19:12:03,340 INFO alvance_github_crawler.pipeline: processing crawled candidate mac-cleanup/mac-cleanup-py@ba4d6ef1e7d2795439f0d3aaf48f59e61b49f656
+2026-08-01 19:12:05,416 ERROR alvance_github_crawler.pipeline: timolins/react-hot-toast failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:05,418 INFO alvance_github_crawler.pipeline: processing crawled candidate openshift/openshift-ansible@440ea65eb643090218c8b92556bd5afec83735bd
+2026-08-01 19:12:06,631 INFO alvance_github_crawler.pipeline: processing crawled candidate sc0tfree/mentalist@8223d8eafb9a5ffe7ca1151dbe6cc076bd0018f4
+2026-08-01 19:12:06,949 INFO alvance_github_crawler.pipeline: processing crawled candidate deschler/django-modeltranslation@d9bdffa6108ef38db2e203e67a1affa99a7b39b1
+2026-08-01 19:12:08,120 INFO alvance_github_crawler.pipeline: processing crawled candidate open-thought/reasoning-gym@49b07130b3fcd12f2d064bba7c43869543a0e7e7
+2026-08-01 19:12:08,643 INFO alvance_github_crawler.pipeline: processing crawled candidate cknd/stackprinter@7a07a51a806e70c273a96071c87d19289bc0c69e
+2026-08-01 19:12:08,676 ERROR alvance_github_crawler.pipeline: cyntler/react-doc-viewer failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:08,678 INFO alvance_github_crawler.pipeline: processing crawled candidate tbenthompson/cppimport@c66fd372c42098c133f3032266a70e58f17fb6db
+2026-08-01 19:12:09,039 INFO alvance_github_crawler.pipeline: processing crawled candidate yandex-research/rtdl@4ca77be57aae445648df63e9ef3a5566b1f0a835
+2026-08-01 19:12:10,326 INFO alvance_github_crawler.pipeline: processing crawled candidate PRIME-RL/TTRL@5806e119789132fcb43552beaf2532d7d0447213
+2026-08-01 19:12:10,482 INFO alvance_github_crawler.pipeline: processing crawled candidate rcortx/kiwiq@e1dc6486cbf8425ca146970d515415e29e569679
+2026-08-01 19:12:10,818 INFO alvance_github_crawler.pipeline: processing crawled candidate jitsi/jiwer@2227002889f20f3fb19d523eeb322732cb67b431
+2026-08-01 19:12:11,094 INFO alvance_github_crawler.pipeline: processing crawled candidate btseytlin/hr-breaker@a6a3cbe166f5f285ac2c5f888b201d42c5d6ac67
+2026-08-01 19:12:11,810 INFO alvance_github_crawler.pipeline: processing crawled candidate AkagawaTsurunaki/ZerolanLiveRobot@aad29d093295eef351da03a0bbe6ffac5539716d
+2026-08-01 19:12:12,752 INFO alvance_github_crawler.pipeline: processing crawled candidate scientifichackers/ampy@3633a14eb22d3c5da43849eaa87434e25dc41a3b
+2026-08-01 19:12:13,258 INFO alvance_github_crawler.pipeline: processing crawled candidate alvations/pywsd@7337f11818af689b3ce0d4d46b64c99f2d9dc9b4
+2026-08-01 19:12:13,750 ERROR alvance_github_crawler.pipeline: flrs/blend_modes failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:13,752 INFO alvance_github_crawler.pipeline: processing crawled candidate ucfopen/canvasapi@513588f3077fbc7470c28ae56fa541b5ddce6849
+2026-08-01 19:12:13,932 INFO alvance_github_crawler.pipeline: processing crawled candidate ayeowch/bitnodes@036dc5cfe9f4ea1975830dcd44de3aa7e6367896
+2026-08-01 19:12:14,030 INFO alvance_github_crawler.pipeline: processing crawled candidate stchris/untangle@04f5da55c4273c6284da1366b52ca787cc2564c3
+2026-08-01 19:12:14,678 INFO alvance_github_crawler.pipeline: processing crawled candidate virajmavani/semi-auto-image-annotation-tool@dff020bba927c7f826e97162e59bc0a2d524644c
+2026-08-01 19:12:14,739 INFO alvance_github_crawler.pipeline: processing crawled candidate christian-byrne/audio-separation-nodes-comfyui@ac339561973f0c1e56db2f9d40f11b0fddda6763
+2026-08-01 19:12:15,477 INFO alvance_github_crawler.pipeline: processing crawled candidate bendichter/brokenaxes@b87550715f3c2fa84bf8854de7eb3ef5a1cf3b67
+2026-08-01 19:12:15,731 INFO alvance_github_crawler.pipeline: processing crawled candidate cryptoadvance/specter-diy@eb8397d2b53bfe43cec0571f8efa235aa352d8ec
+2026-08-01 19:12:17,908 INFO alvance_github_crawler.pipeline: processing crawled candidate PaddlePaddle/PaddleTS@21064c69be7202d5b9e156570b4349114ddcb707
+2026-08-01 19:12:20,230 ERROR alvance_github_crawler.pipeline: SPFlow/SPFlow failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:20,232 INFO alvance_github_crawler.pipeline: processing crawled candidate GilpinLab/dysts@2a03f1ae7b0680b0470458783dcb4664660e131a
+2026-08-01 19:12:21,028 INFO alvance_github_crawler.pipeline: processing crawled candidate naver/kapture@8225b77d0657e6a3eb1ffc941d009100b792fb25
+2026-08-01 19:12:21,534 ERROR alvance_github_crawler.pipeline: BurnySc2/python-sc2 failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:21,536 INFO alvance_github_crawler.pipeline: processing crawled candidate robbievanleeuwen/section-properties@1e12d48b3ccb9ee1b7df8e2ac357c633cc004bdf
+2026-08-01 19:12:21,730 INFO alvance_github_crawler.pipeline: processing crawled candidate earthlab/earthpy@f655c0cf7ebc048fac465043bd243a1c1739e5d3
+2026-08-01 19:12:26,544 INFO alvance_github_crawler.pipeline: processing crawled candidate marcusbuffett/command-line-chess@fce08742dee04a1ff546169e05b67406cd7b7bac
+2026-08-01 19:12:26,936 INFO alvance_github_crawler.pipeline: processing crawled candidate OpenBMB/DeepThinkVLA@0b03dd35cb693e5fa8cb712be7ccbb25507de63a
+2026-08-01 19:12:28,145 INFO alvance_github_crawler.pipeline: processing crawled candidate astrofrog/mpl-scatter-density@6db1ca4cf7ac6e2963736126b958d508b4b55295
+2026-08-01 19:12:30,008 INFO alvance_github_crawler.pipeline: processing crawled candidate WolframResearch/WolframClientForPython@a5762a406e75bde042a43b012e895ed5b6249372
+2026-08-01 19:12:30,123 INFO alvance_github_crawler.pipeline: processing crawled candidate cjrh/aiorun@1e063d8c44dfd83961accf2b5ca46b3270570a41
+2026-08-01 19:12:30,141 INFO alvance_github_crawler.pipeline: processing crawled candidate poseljacob/agentic-video-editor@47248b577046b0563e57e78edad86a3106c6faab
+2026-08-01 19:12:32,201 INFO alvance_github_crawler.pipeline: processing crawled candidate jfilter/split-folders@4a1a1fb888bcf503ff54c3fc89ae94d50ebffc3a
+2026-08-01 19:12:32,357 INFO alvance_github_crawler.pipeline: processing crawled candidate Corvia/django-tenant-users@a450d0226d1019283397a03eff00676dd2674747
+2026-08-01 19:12:33,950 INFO alvance_github_crawler.pipeline: processing crawled candidate smousavi05/EQTransformer@a589da6504b11df8341fe1dc859a025f49955409
+2026-08-01 19:12:37,517 INFO alvance_github_crawler.pipeline: processing crawled candidate microsoft/GUI-Actor@d98d1bbd01862f9112114b83b032f492c365a173
+2026-08-01 19:12:37,997 INFO alvance_github_crawler.pipeline: processing crawled candidate openai/openai-security-bots@06351ef80f46cf00eee7dc68e08f97d2a1d7aa38
+2026-08-01 19:12:39,734 INFO alvance_github_crawler.pipeline: processing crawled candidate Any-4D/Any4D@aa9f1b0d7ecdf44a6ef8cef93387be0093bdd497
+2026-08-01 19:12:39,886 INFO alvance_github_crawler.pipeline: processing crawled candidate xytian1008/VAPO@67687cf33edd758db4b02e4659f9f6d30240b194
+2026-08-01 19:12:41,143 ERROR alvance_github_crawler.pipeline: cryptoadvance/specter-diy failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:41,145 INFO alvance_github_crawler.pipeline: processing crawled candidate crytic/pyevmasm@57f78d7dc103edbb7f806e5230cc22bb96ad7977
+2026-08-01 19:12:41,464 ERROR alvance_github_crawler.pipeline: EnergieID/entsoe-py failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:41,466 INFO alvance_github_crawler.pipeline: processing crawled candidate Preston-Landers/concurrent-log-handler@491b4c2442e455f5a57319023dcc4a86bf87999a
+2026-08-01 19:12:41,514 INFO alvance_github_crawler.pipeline: processing crawled candidate klen/peewee_migrate@704f6b1349c0924ee406d6635e87b034e8417ed9
+2026-08-01 19:12:43,387 INFO alvance_github_crawler.pipeline: processing crawled candidate sponsfreixes/jinja2-fragments@e3920949b9ecdcb63ef9b80e450cd92a0124eb63
+2026-08-01 19:12:43,979 INFO alvance_github_crawler.pipeline: processing crawled candidate yifangao112/Camyla@df4434f9d4aef5b7394ed03a4e877a8130c1b6cf
+2026-08-01 19:12:45,079 INFO alvance_github_crawler.pipeline: processing crawled candidate pwwang/python-varname@578a9fe6ee0a8423f5fc22c7e461b894fb69595a
+2026-08-01 19:12:45,396 ERROR alvance_github_crawler.pipeline: QData/TextAttack failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:45,398 INFO alvance_github_crawler.pipeline: processing crawled candidate sns-sdks/python-youtube@1694c2c91820dde127a1876ee2f16db31c565d7c
+2026-08-01 19:12:46,215 INFO alvance_github_crawler.pipeline: processing crawled candidate aparrish/pronouncingpy@2af6e438b5c2a93bb863b1a81e187f0958386711
+2026-08-01 19:12:47,065 INFO alvance_github_crawler.pipeline: processing crawled candidate rottytooth/Rivulet@d041798ea979ee86af35dc3698e3a2a59f57e8ab
+2026-08-01 19:12:48,211 INFO alvance_github_crawler.pipeline: processing crawled candidate lettucecfd/lettuce@121359d2b7eed2c21ae81446645ac306e15e3c59
+2026-08-01 19:12:48,917 INFO alvance_github_crawler.pipeline: processing crawled candidate algorand/pyteal@cf8b130a6507676cc7d7c234bc2e383a8d40e626
+2026-08-01 19:12:48,989 INFO alvance_github_crawler.pipeline: processing crawled candidate ATaC-team/ATaC@86a9341a63c68bff90971275e4a22b6550e7fc27
+2026-08-01 19:12:49,302 INFO alvance_github_crawler.pipeline: processing crawled candidate ray-project/deltacat@875041cc5fe606d3f0e0c9787b630f1640ab6ae9
+2026-08-01 19:12:51,108 INFO alvance_github_crawler.pipeline: processing crawled candidate choderalab/espaloma@413eb55074037540e1414eb365da7304bd5d72be
+2026-08-01 19:12:51,174 INFO alvance_github_crawler.pipeline: processing crawled candidate agiresearch/ASB@1f561dccf92d55302368fa67679b4ba9d9c8fdc4
+2026-08-01 19:12:51,845 INFO alvance_github_crawler.pipeline: processing crawled candidate opentapioca/opentapioca@2bedda1dedcb1e0f8f3ccc1cc4e46d64c058e8fa
+2026-08-01 19:12:52,219 INFO alvance_github_crawler.pipeline: processing crawled candidate napalm-automation/napalm-ansible@4bb6e738a78326a3beec7f924fd9555e1e8ba653
+2026-08-01 19:12:53,998 INFO alvance_github_crawler.pipeline: processing crawled candidate jefferyZhan/Griffon@f1b31751a40b65f34b858a26c7eed77bd71f76c5
+2026-08-01 19:12:54,002 ERROR alvance_github_crawler.pipeline: stchris/untangle failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:12:54,004 INFO alvance_github_crawler.pipeline: processing crawled candidate AIRI-Institute/nablaDFT@67ca402809806e5dd55095e1f095ec9b2683ac41
+2026-08-01 19:12:54,294 INFO alvance_github_crawler.pipeline: processing crawled candidate ju-bezdek/langchain-decorators@95efbc11f9fa738b020ebebcaa69422608ecc411
+2026-08-01 19:12:56,324 INFO alvance_github_crawler.pipeline: processing crawled candidate lightning-uq-box/lightning-uq-box@bb7f5757d8a82b4dd45347280551f01996c50da7
+2026-08-01 19:12:56,350 INFO alvance_github_crawler.pipeline: processing crawled candidate bbc/audio-offset-finder@a1548ebf88554da3efe971ef408c7e2a0254aeeb
+2026-08-01 19:12:57,118 INFO alvance_github_crawler.pipeline: processing crawled candidate general-molecular-simulations/so3lr@5c6f36914bd2424563c1fd80bc21610960d947a4
+2026-08-01 19:12:57,349 INFO alvance_github_crawler.pipeline: processing crawled candidate Wiselnn570/VideoRoPE@7712ca3f52b795284e0453badc6cf1642c1368c4
+2026-08-01 19:12:58,760 INFO alvance_github_crawler.pipeline: processing crawled candidate trailofbits/mcp-context-protector@05e56c1616f4382ca25eb15bdfc98c4967bbdd74
+2026-08-01 19:12:59,456 INFO alvance_github_crawler.pipeline: processing crawled candidate xiaomi-research/unidrivevla@a93c175af893b35dc16618e659eca4d18bb1ec86
+2026-08-01 19:12:59,617 INFO alvance_github_crawler.pipeline: processing crawled candidate bellshade/Python@972659762ce3fddf0c387ea17c5dbe0d1b333115
+2026-08-01 19:12:59,944 INFO alvance_github_crawler.pipeline: processing crawled candidate nemori-ai/nemori@d2a6dff6e5481214a0be6a2d10147feccfc16244
+2026-08-01 19:13:02,624 ERROR alvance_github_crawler.pipeline: moloch--/RootTheBox failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:13:02,627 INFO alvance_github_crawler.pipeline: processing crawled candidate Akuli/porcupine@8e34077345317427aa4664d6b1ec556c3c6812e7
+2026-08-01 19:13:03,058 INFO alvance_github_crawler.pipeline: processing crawled candidate celebi-pkg/flight-analysis@2b0b4fff96639c44960d529f21260768c19c609e
+2026-08-01 19:13:03,872 INFO alvance_github_crawler.pipeline: processing crawled candidate NVIDIA-AI-Blueprints/data-flywheel@4e5e71257051b85688edb14dbf3b2c6bd173fff7
+2026-08-01 19:13:05,243 INFO alvance_github_crawler.pipeline: processing crawled candidate themperek/cocotb-test@f399ca18af0ebade4073832e1afd32800d18e24e
+2026-08-01 19:13:05,414 ERROR alvance_github_crawler.pipeline: Preston-Landers/concurrent-log-handler failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:13:05,415 INFO alvance_github_crawler.pipeline: processing crawled candidate PoomSmart/EmojiFonts@07764aec634832dbeebef631fb6a7f9d6f991a3f
+2026-08-01 19:13:06,625 INFO alvance_github_crawler.pipeline: processing crawled candidate photocrowd/django-cursor-pagination@1442d7a94c259c807d2bed3e4e67dc53f546f642
+2026-08-01 19:13:06,681 INFO alvance_github_crawler.pipeline: processing crawled candidate thammegowda/mtdata@cc92769b03d693187d697701dedec2ef5929aab4
+2026-08-01 19:13:07,559 INFO alvance_github_crawler.pipeline: processing crawled candidate think41/extrasuite@ded6772adbc1db10f04fbc5d95620f591e9aa66d
+2026-08-01 19:13:09,540 INFO alvance_github_crawler.pipeline: processing crawled candidate cisco-ai-defense/a2a-scanner@3d0ef5eeb941b948b0d0983741ece66dd490c609
+2026-08-01 19:13:12,139 INFO alvance_github_crawler.pipeline: processing crawled candidate UMass-Embodied-AGI/Genesis-Humanoid@b36c778c8ca4333e91b8a23d10239eda3c0329ad
+2026-08-01 19:13:12,546 INFO alvance_github_crawler.pipeline: processing crawled candidate severity1/claude-code-auto-memory@d8254a86956f131bbedcf6045d953f44823b4b31
+2026-08-01 19:13:13,059 INFO alvance_github_crawler.pipeline: processing crawled candidate Video-Reason/VBVR-DataFactory@2b5aa337ca0f88dd3bffdf451b58400e994c0750
+2026-08-01 19:13:13,311 INFO alvance_github_crawler.pipeline: processing crawled candidate Introspective-Diffusion/I-DLM@a23c1a12ef997c7f3ad616b25bcfb62db39ded68
+2026-08-01 19:13:14,553 INFO alvance_github_crawler.pipeline: processing crawled candidate Yelp/amira@9723e366bda24458275c33b733adaa45f5883cf7
+/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `list[Union[AnnotationFileCitation, AnnotationURLCitation, AnnotationContainerFileCitation, AnnotationFilePath]]` - serialized value may not be as expected [field_name='annotations', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `list[Logprob]` - serialized value may not be as expected [field_name='logprobs', input_value={}, input_type=dict])
+  return self.__pydantic_serializer__.to_python(
+/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `list[Union[AnnotationFileCitation, AnnotationURLCitation, AnnotationContainerFileCitation, AnnotationFilePath]]` - serialized value may not be as expected [field_name='annotations', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `ResponseOutputRefusal` - serialized value may not be as expected [field_name='content', input_value=ResponseOutputText(annota...tput_text', logprobs={}), input_type=ResponseOutputText])
+  PydanticSerializationUnexpectedValue(Expected `list[Union[AnnotationFileCitation, AnnotationURLCitation, AnnotationContainerFileCitation, AnnotationFilePath]]` - serialized value may not be as expected [field_name='annotations', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `list[Logprob]` - serialized value may not be as expected [field_name='logprobs', input_value={}, input_type=dict])
+  return self.__pydantic_serializer__.to_python(
+/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `ResponseOutputMessage` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFileSearchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionWebSearch` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `list[Summary]` - serialized value may not be as expected [field_name='summary', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `Program` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ProgramOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `AdditionalTools` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCompactionItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ImageGenerationCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCodeInterpreterToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpListTools` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalRequest` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalResponse` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `list[Summary]` - serialized value may not be as expected [field_name='summary', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `list[Content]` - serialized value may not be as expected [field_name='content', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `ResponseOutputMessage` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFileSearchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionWebSearch` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `list[Summary]` - serialized value may not be as expected [field_name='summary', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `Program` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ProgramOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `AdditionalTools` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCompactionItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ImageGenerationCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCodeInterpreterToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpListTools` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalRequest` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalResponse` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `list[Summary]` - serialized value may not be as expected [field_name='summary', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `list[Content]` - serialized value may not be as expected [field_name='content', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `ResponseOutputMessage` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFileSearchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionWebSearch` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `list[Summary]` - serialized value may not be as expected [field_name='summary', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `Program` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ProgramOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `AdditionalTools` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCompactionItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ImageGenerationCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCodeInterpreterToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpListTools` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalRequest` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalResponse` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `list[Summary]` - serialized value may not be as expected [field_name='summary', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `list[Content]` - serialized value may not be as expected [field_name='content', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `ResponseOutputMessage` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFileSearchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionWebSearch` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `list[Summary]` - serialized value may not be as expected [field_name='summary', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `Program` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ProgramOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `AdditionalTools` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCompactionItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ImageGenerationCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCodeInterpreterToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpListTools` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalRequest` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalResponse` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseReasoningItem(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseReasoningItem])
+  PydanticSerializationUnexpectedValue(Expected `list[Summary]` - serialized value may not be as expected [field_name='summary', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `list[Content]` - serialized value may not be as expected [field_name='content', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(PydanticSerializationUnexpectedValue: Expected `list[Union[AnnotationFileCitation, AnnotationURLCitation, AnnotationContainerFileCitation, AnnotationFilePath]]` - serialized value may not be as expected [field_name='annotations', input_value={}, input_type=dict]
+PydanticSerializationUnexpectedValue: Expected `ResponseOutputRefusal` - serialized value may not be as expected [field_name='content', input_value=ResponseOutputText(annota...tput_text', logprobs={}), input_type=ResponseOutputText])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFileSearchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionWebSearch` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseComputerToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseReasoningItem` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `Program` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ProgramOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseToolSearchOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `AdditionalTools` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCompactionItem` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ImageGenerationCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCodeInterpreterToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `LocalShellCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseFunctionShellToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseApplyPatchToolCallOutput` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `McpCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `McpListTools` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalRequest` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `McpApprovalResponse` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCall` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `ResponseCustomToolCallOutputItem` - serialized value may not be as expected [field_name='output', input_value=ResponseOutputMessage(id=...224-98d2-9bbd4fdf05ba'}), input_type=ResponseOutputMessage])
+  PydanticSerializationUnexpectedValue(Expected `list[Union[AnnotationFileCitation, AnnotationURLCitation, AnnotationContainerFileCitation, AnnotationFilePath]]` - serialized value may not be as expected [field_name='annotations', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `ResponseOutputRefusal` - serialized value may not be as expected [field_name='content', input_value=ResponseOutputText(annota...tput_text', logprobs={}), input_type=ResponseOutputText])
+  PydanticSerializationUnexpectedValue(Expected `list[Union[AnnotationFileCitation, AnnotationURLCitation, AnnotationContainerFileCitation, AnnotationFilePath]]` - serialized value may not be as expected [field_name='annotations', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `list[Logprob]` - serialized value may not be as expected [field_name='logprobs', input_value={}, input_type=dict])
+  PydanticSerializationUnexpectedValue(Expected `list[Union[definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref, definition-ref]]` - serialized value may not be as expected [field_name='tools', input_value={}, input_type=dict])
+  return self.__pydantic_serializer__.to_python(
+2026-08-01 19:13:16,750 INFO alvance_github_crawler.pipeline: processing crawled candidate xytian1008/MUPO@3a35c962ada4fea9c31bd49b9f1cbbda39d1a7a2
+2026-08-01 19:13:17,305 INFO alvance_github_crawler.pipeline: processing crawled candidate napalm-automation/napalm-logs@1f7b06f808156812bab07d1c622fa1d0ba91f2d5
+2026-08-01 19:13:18,245 INFO alvance_github_crawler.pipeline: processing crawled candidate oprypin/mkdocs-gen-files@d13bd16bdfa74d48b24e7a62bcbf8c8a10613757
+2026-08-01 19:13:18,545 INFO alvance_github_crawler.pipeline: processing crawled candidate itsmostafa/inference-speed-tests@3664dbff50677734dd07527e8b010e4ab459e2af
+2026-08-01 19:13:20,419 INFO alvance_github_crawler.pipeline: processing crawled candidate PokeAPI/pokepy@34822d0e1cb746907eda4f93c265f78c26c78a34
+2026-08-01 19:13:20,592 INFO alvance_github_crawler.pipeline: processing crawled candidate huggingface/transformers-research-projects@fccd0cdab03c1407bb7def05e1b48528fc817078
+2026-08-01 19:13:20,733 INFO alvance_github_crawler.pipeline: processing crawled candidate vulnerability-lookup/cpe-guesser@b5fa6aac1c6d632141c9406989cc0ecf85d092e5
+2026-08-01 19:13:22,808 INFO alvance_github_crawler.pipeline: processing crawled candidate NVlabs/VideoITG@50a60a822c0e362bfd8747c45ba34e66e9c9d650
+2026-08-01 19:13:24,253 INFO alvance_github_crawler.pipeline: processing crawled candidate RyanNavillus/Syllabus@2d3b9bdad95581ee2945499193f34dc2ef4c1507
+2026-08-01 19:13:24,396 INFO alvance_github_crawler.pipeline: processing crawled candidate comp-imaging/ProxImaL@b9ba1687b35e6cfab1b95f09dde8bf22177cd6ac
+2026-08-01 19:13:25,878 INFO alvance_github_crawler.pipeline: processing crawled candidate tim-fiola/network_traffic_modeler_py3@3e5a605ed35747779e8ac62438f8e904e012cb34
+2026-08-01 19:13:26,404 INFO alvance_github_crawler.pipeline: processing crawled candidate Alencryenfo/CILRouter@2ed6e45fcdfa40614f50a7785cd45f4d18454715
+2026-08-01 19:13:27,532 INFO alvance_github_crawler.pipeline: processing crawled candidate AR-FORUM/hodoscope@e9b6930d4a0149cf76b15190a85dc9d9ff78a860
+2026-08-01 19:13:27,967 INFO alvance_github_crawler.pipeline: processing crawled candidate iprak/yahoofinance@760659d2aea38908e5f3e75d433e53f7370a0b93
+2026-08-01 19:13:28,453 INFO alvance_github_crawler.pipeline: processing crawled candidate conglu1997/v-d4rl@5bf757f23aa001f65cd764b5dd8b4b65716d8851
+2026-08-01 19:13:28,971 INFO alvance_github_crawler.pipeline: processing crawled candidate jonlabelle/Trimmer@41cd39d0fad6f752a4b05799911d77a628ef023a
+2026-08-01 19:13:30,241 INFO alvance_github_crawler.pipeline: processing crawled candidate atomicarchitects/equiformer_v3@a7300c58df683dc99cb48027d5bfd4c887486c48
+2026-08-01 19:13:30,244 INFO alvance_github_crawler.pipeline: processing crawled candidate opencivicdata/scrapers-us-municipal@c06805a7ffb5b60d181d032f85188181bbc07f55
+2026-08-01 19:13:30,289 INFO alvance_github_crawler.pipeline: processing crawled candidate pehses/twixtools@ff16a9c085a1f8f844d802fe4553466bf3052623
+2026-08-01 19:13:31,172 INFO alvance_github_crawler.pipeline: processing crawled candidate oprypin/mkdocs-literate-nav@b15147038b68f56bf7894549062d6bb4985223a1
+2026-08-01 19:13:31,603 INFO alvance_github_crawler.pipeline: processing crawled candidate alingse/jsoncsv@e75fcce212ba30446a9175609786ecc9eb24fb2d
+2026-08-01 19:13:31,907 INFO alvance_github_crawler.pipeline: processing crawled candidate earthspecies/NatureLM-audio@c708df7a4cc294ca8d4aaf0498794b5674ce20b1
+2026-08-01 19:13:32,802 INFO alvance_github_crawler.pipeline: processing crawled candidate benadida/helios-server@c7d5e60fbf9123be13d250a2ad9dae9efd8978e3
+2026-08-01 19:13:33,030 INFO alvance_github_crawler.pipeline: processing crawled candidate TQZHR/grok2api@b0c939418e5a29606d918ba349b03022bebdc2b0
+2026-08-01 19:13:33,084 INFO alvance_github_crawler.pipeline: processing crawled candidate django-simple-deploy/django-simple-deploy@77e7a4e370413f48d300b9a776dcd1198416d8c5
+2026-08-01 19:13:33,391 INFO alvance_github_crawler.pipeline: processing crawled candidate rodlaf/KalshiMarketMaker@af660af885d20c089c37901e1110c38dc4c12e01
+2026-08-01 19:13:42,505 ERROR alvance_github_crawler.pipeline: themperek/cocotb-test failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 19:13:59,077 ERROR alvance_github_crawler.pipeline: django-simple-deploy/django-simple-deploy failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+{
+  "duplicate": 23686,
+  "error": 17,
+  "input_total": 23842,
+  "processed": 156,
+  "queued": 14,
+  "rejected": 125
+}
+[2026-08-01T19:15:55Z] stage=prescreen-60000 exit_code=0 duration_s=259

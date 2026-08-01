@@ -1,0 +1,16 @@
+[2026-08-01T20:49:21Z] stage=verify-escalated-20260801T204921Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 20:49:23,967 INFO alvance_github_crawler.pending.verification: verifying pending candidate napalm-automation/napalm-logs key_slot=1
+2026-08-01 20:49:23,968 INFO alvance_github_crawler.pending.verification: verifying pending candidate weaviate/elysia key_slot=2
+2026-08-01 20:50:13,718 INFO alvance_github_crawler.pending.verification: pending candidate weaviate/elysia finished outcome=rejected key_slot=2 processed=1 in_flight=1
+2026-08-01 21:00:18,918 INFO alvance_github_crawler.pending.verification: pending candidate napalm-automation/napalm-logs finished outcome=rejected key_slot=1 processed=2 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_rejected": 1,
+  "key_slot_2_processed": 1,
+  "key_slot_2_rejected": 1,
+  "processed": 2,
+  "rejected": 2,
+  "remaining": 0
+}
+[2026-08-01T21:00:19Z] stage=verify-escalated-20260801T204921Z exit_code=0 duration_s=658

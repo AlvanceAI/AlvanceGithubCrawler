@@ -1,0 +1,42 @@
+[2026-08-01T19:12:32Z] stage=verify-default-20260801T191232Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 19:12:34,455 INFO alvance_github_crawler.pending.verification: verifying pending candidate iver56/audiomentations key_slot=1
+2026-08-01 19:12:34,456 INFO alvance_github_crawler.pending.verification: verifying pending candidate rcaloras/bashhub-client key_slot=2
+2026-08-01 19:12:45,360 INFO alvance_github_crawler.pending.verification: verifying pending candidate python-arq/arq key_slot=3
+2026-08-01 19:13:00,367 INFO alvance_github_crawler.pending.verification: verifying pending candidate robbievanleeuwen/section-properties key_slot=1
+2026-08-01 19:13:04,398 INFO alvance_github_crawler.pending.verification: verifying pending candidate earthlab/earthpy key_slot=2
+2026-08-01 19:13:09,822 INFO alvance_github_crawler.pending.verification: pending candidate iver56/audiomentations finished outcome=rejected key_slot=1 processed=1 in_flight=4
+2026-08-01 19:13:10,570 INFO alvance_github_crawler.pending.verification: pending candidate python-arq/arq finished outcome=rejected key_slot=3 processed=2 in_flight=3
+2026-08-01 19:13:16,489 INFO alvance_github_crawler.pending.verification: pending candidate rcaloras/bashhub-client finished outcome=registered key_slot=2 processed=3 in_flight=2
+2026-08-01 19:13:19,578 INFO alvance_github_crawler.pending.verification: verifying pending candidate Corvia/django-tenant-users key_slot=3
+2026-08-01 19:13:31,899 INFO alvance_github_crawler.pending.verification: verifying pending candidate ucfopen/canvasapi key_slot=1
+2026-08-01 19:13:36,032 INFO alvance_github_crawler.pending.verification: verifying pending candidate itamarst/eliot key_slot=2
+2026-08-01 19:13:40,057 INFO alvance_github_crawler.pending.verification: verifying pending candidate lettucecfd/lettuce key_slot=3
+2026-08-01 19:13:40,207 INFO alvance_github_crawler.pending.verification: pending candidate Corvia/django-tenant-users finished outcome=rejected key_slot=3 processed=4 in_flight=5
+2026-08-01 19:13:47,567 INFO alvance_github_crawler.pending.verification: verifying pending candidate pytorch-tabular/pytorch_tabular key_slot=3
+2026-08-01 19:13:48,952 INFO alvance_github_crawler.pending.verification: pending candidate ucfopen/canvasapi finished outcome=rejected key_slot=1 processed=5 in_flight=5
+2026-08-01 19:13:55,365 INFO alvance_github_crawler.pending.verification: pending candidate itamarst/eliot finished outcome=rejected key_slot=2 processed=6 in_flight=4
+2026-08-01 19:13:56,389 INFO alvance_github_crawler.pending.verification: pending candidate earthlab/earthpy finished outcome=rejected key_slot=2 processed=7 in_flight=3
+2026-08-01 19:13:59,371 INFO alvance_github_crawler.pending.verification: verifying pending candidate think41/extrasuite key_slot=2
+2026-08-01 19:14:03,592 INFO alvance_github_crawler.pending.verification: pending candidate lettucecfd/lettuce finished outcome=rejected key_slot=3 processed=8 in_flight=3
+2026-08-01 19:14:05,345 INFO alvance_github_crawler.pending.verification: verifying pending candidate PokeAPI/pokepy key_slot=3
+2026-08-01 19:14:08,683 INFO alvance_github_crawler.pending.verification: pending candidate think41/extrasuite finished outcome=rejected key_slot=2 processed=9 in_flight=3
+2026-08-01 19:14:21,247 INFO alvance_github_crawler.pending.verification: pending candidate pytorch-tabular/pytorch_tabular finished outcome=rejected key_slot=3 processed=10 in_flight=2
+2026-08-01 19:14:23,778 INFO alvance_github_crawler.pending.verification: pending candidate PokeAPI/pokepy finished outcome=rejected key_slot=3 processed=11 in_flight=1
+2026-08-01 19:14:30,876 INFO alvance_github_crawler.pending.verification: verifying pending candidate deschler/django-modeltranslation key_slot=2
+2026-08-01 19:15:14,791 INFO alvance_github_crawler.pending.verification: pending candidate robbievanleeuwen/section-properties finished outcome=rejected key_slot=1 processed=12 in_flight=1
+2026-08-01 19:15:49,084 INFO alvance_github_crawler.pending.verification: pending candidate deschler/django-modeltranslation finished outcome=registered key_slot=2 processed=13 in_flight=0
+{
+  "key_slot_1_processed": 3,
+  "key_slot_1_rejected": 3,
+  "key_slot_2_processed": 5,
+  "key_slot_2_registered": 2,
+  "key_slot_2_rejected": 3,
+  "key_slot_3_processed": 5,
+  "key_slot_3_rejected": 5,
+  "processed": 13,
+  "registered": 2,
+  "rejected": 11,
+  "remaining": 0
+}
+[2026-08-01T19:15:50Z] stage=verify-default-20260801T191232Z exit_code=0 duration_s=198

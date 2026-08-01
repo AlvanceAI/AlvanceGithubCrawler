@@ -52,3 +52,12 @@ command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/git
   "requeued": 0
 }
 [2026-08-01T17:03:58Z] stage=requeue-node-package-manager-v18 exit_code=0 duration_s=4
+[2026-08-01T19:06:27Z] stage=requeue-node-package-manager-v18 run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason build_fail --failure-contains can\ only\ install\ with\ an\ existing\ package-lock.json --requeue-marker node-package-manager-v18 --verbose
+{
+  "already_registered": 29,
+  "already_requeued": 1,
+  "matched": 1,
+  "requeued": 0
+}
+[2026-08-01T19:06:31Z] stage=requeue-node-package-manager-v18 exit_code=0 duration_s=4

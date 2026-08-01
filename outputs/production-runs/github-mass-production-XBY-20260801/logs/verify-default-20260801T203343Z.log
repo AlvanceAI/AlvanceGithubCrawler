@@ -1,0 +1,36 @@
+[2026-08-01T20:33:43Z] stage=verify-default-20260801T203343Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 20:33:46,076 INFO alvance_github_crawler.pending.verification: verifying pending candidate vibrantlabsai/ragas key_slot=1
+2026-08-01 20:33:51,458 ERROR alvance_github_crawler.e2b.verification: vibrantlabsai/ragas failed during stage3_5_e2b_environment
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/verification.py", line 64, in verify
+    environment = self.environment.ensure(repo, repo_path, str(repo["base_commit"]))
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/template.py", line 104, in ensure
+    dependency_commands = repository_dependency_commands(language, repo_path)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/runtime/recipes.py", line 94, in repository_dependency_commands
+    return tuple(python_install_commands(repo_path))
+                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/runtime/python.py", line 162, in python_install_commands
+    commands.extend(python_workspace_install_commands(repo_path, requirements))
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/runtime/python.py", line 56, in python_workspace_install_commands
+    packages = workspace_packages_to_install(repo_path, requirement_files)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/runtime/python.py", line 78, in workspace_packages_to_install
+    packages.update(uv_workspace_packages(repo_path))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/runtime/python.py", line 128, in uv_workspace_packages
+    for path in repo_path.glob(member):
+                ~~~~~~~~~~~~~~^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 594, in glob
+    raise ValueError("Unacceptable pattern: {!r}".format(pattern))
+ValueError: Unacceptable pattern: PosixPath('.')
+2026-08-01 20:33:51,993 INFO alvance_github_crawler.pending.verification: pending candidate vibrantlabsai/ragas finished outcome=error key_slot=1 processed=1 in_flight=0
+{
+  "error": 1,
+  "exhausted": 1,
+  "key_slot_1_error": 1,
+  "key_slot_1_processed": 1,
+  "processed": 1,
+  "remaining": 0
+}
+[2026-08-01T20:33:53Z] stage=verify-default-20260801T203343Z exit_code=0 duration_s=10
