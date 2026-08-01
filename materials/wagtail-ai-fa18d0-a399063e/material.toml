@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wagtail-ai-fa18d0-a399063e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wagtail/wagtail-ai"
+base_commit = "a399063e89181faddd69fd4e6c001a9ac25c7462"
+source_tree = "75e02e03cc9f6a073d0b2023e3f6e190cff301e8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e3a5d993a0f1ffc28b9102aac722e03ea905e0aebcffa0b7b023a97e1b03d27b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wagtail-ai-fa18d0-a399063e-v2-env-e3a5d993"
+template_id = "u0wb82u722cnvcka0f3m"
+source_template_alias = "mv7jw4xl98mby54do1jb"
+source_template_id = "mv7jw4xl98mby54do1jb"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

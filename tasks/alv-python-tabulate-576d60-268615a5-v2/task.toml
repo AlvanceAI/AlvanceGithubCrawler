@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-python-tabulate-576d60-268615a5-v2"
+description = "Rebuildable repository task for astanin/python-tabulate"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-python-tabulate-576d60-268615a5-v2"
+material_id = "python-tabulate-576d60-268615a5"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/astanin/python-tabulate"
+base_commit_hash = "268615a5c27dc40e5c22454c07b44d5c50410da0"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "python-tabulate-576d60-268615a5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/astanin/python-tabulate"
+base_commit = "268615a5c27dc40e5c22454c07b44d5c50410da0"
+source_tree = "d37e101eb621004f505c8861c5da5d7a366f985e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b5a891d46ae676796bad89622279c6d6227ba2664c242d7875ecf8687d53253e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-python-tabulate-576d60-268615a5-v2-env-b5a891d4"
+template_id = "trurhryv1xxa5slmbnj5"
+source_template_alias = "5pfskpi3rpc1cj73cswk"
+source_template_id = "5pfskpi3rpc1cj73cswk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

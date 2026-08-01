@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "ps-fuzz-390a52-a04982f5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/prompt-security/ps-fuzz"
+base_commit = "a04982f58fe6c99b08df12a69e967368c96ef9f4"
+source_tree = "ba9d19911cbafbb784902d733ae8b0f3d5b314ef"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "52e75c01e2325f75d0e687ca9890e2608c48b4836d79d5427f4d63cc4fd17a95"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-ps-fuzz-390a52-a04982f5-v2-env-52e75c01"
+template_id = "wyf9eq0hn5fa4c6f06kx"
+source_template_alias = "g5d94eau4bh4mj35nafk"
+source_template_id = "g5d94eau4bh4mj35nafk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

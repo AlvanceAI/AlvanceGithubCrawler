@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "podcast-creator-bac022-904da36c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/lfnovo/podcast-creator"
+base_commit = "904da36cca12846e8c610fff5cab2972735b007d"
+source_tree = "26faf0495f8c7d43bb911c06cd9cbdddd9b584ed"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ed32c469974b04dc6203d47b324de34beeafc7dff85c3767fc66031493064080"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-podcast-creator-bac022-904da36c-v2-env-ed32c469"
+template_id = "1d17k09y9dng5w0wb8bb"
+source_template_alias = "znmkjm4emqoq6w9ryjcu"
+source_template_id = "znmkjm4emqoq6w9ryjcu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,5 @@
+Repository `platelminto/parse-torrent-title` at commit `4e793868512074e49c78e5b714d072f748ab9dc1` is preloaded in `/app`.
+
+Work in `/app`. The validated fuzzy direction is:
+
+为字段内的特定模式增加可配置的大小写敏感匹配，使分辨率中的 qHD 与 QHD 能分别解析为 540p 和 1440p，同时不要求整个字段大小写敏感。

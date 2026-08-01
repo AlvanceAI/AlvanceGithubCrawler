@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pyabel-efc21b-f4459a7c"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/PyAbel/PyAbel"
+base_commit = "f4459a7ce5f62088781b863d0cd08bbb54ed123b"
+source_tree = "6019aa7c6aadc98696690d100a6da8a0dc679ac0"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b9efd8c0184db3be98ae1343297aed777bdecafa985fa2a77a520371e3270b83"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pyabel-efc21b-f4459a7c-v2-env-b9efd8c0"
+template_id = "d5fiup5aqthx73sj0mll"
+source_template_alias = "62vaytf0l5r2tt3h6xig"
+source_template_id = "62vaytf0l5r2tt3h6xig"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
