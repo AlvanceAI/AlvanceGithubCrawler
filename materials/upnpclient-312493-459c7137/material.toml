@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "upnpclient-312493-459c7137"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/flyte/upnpclient"
+base_commit = "459c7137158b6fc803bf631061d9fc714a2df4c9"
+source_tree = "afa3d40492316ce870bc41281424758672a2eef0"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "69979b9c630bae4d33d102d4a90a7507d980962be8f2ab561b12881804e5b41c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-upnpclient-312493-459c7137-v2-env-69979b9c"
+template_id = "b2arv2nlsvpwt5yy90ao"
+source_template_alias = "99rzcq5nfaq3r1zga82u"
+source_template_id = "99rzcq5nfaq3r1zga82u"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

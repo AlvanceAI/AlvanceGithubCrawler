@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-spaces-f7f604-8ce74848"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/aeagle/react-spaces"
+base_commit = "8ce74848929d1c46ac4c5da5fad0e43596e45ffa"
+source_tree = "4ae1ce3fc2b70b3375cd9197c476bbaa3de7966f"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f350f2076c604e3ae4f8aa82dd12a3c9a7f109a078ebab2f413d0ec2f721d978"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-spaces-f7f604-8ce74848-v2-env-f350f207"
+template_id = "x48mlr4vvqqajmgacsop"
+source_template_alias = "ahywhxkp5cd3aqx0zc5u"
+source_template_id = "ahywhxkp5cd3aqx0zc5u"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

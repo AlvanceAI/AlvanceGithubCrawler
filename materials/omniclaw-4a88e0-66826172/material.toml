@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "omniclaw-4a88e0-66826172"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/omnuron/omniclaw"
+base_commit = "66826172a3520a28ba414cae274d18f3d6ef0edd"
+source_tree = "04b8854a45a3230ccfb50d4c3ce174d5e4f1f1cf"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ff172eac878b9c8297f41cf7ae5490ce6f3937e81d9a3661f343ad15b66f7d07"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-omniclaw-4a88e0-66826172-v2-env-ff172eac"
+template_id = "1c91bq0jmu2eopgsh84e"
+source_template_alias = "ge1qdya0jc0phn9gtuks"
+source_template_id = "ge1qdya0jc0phn9gtuks"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

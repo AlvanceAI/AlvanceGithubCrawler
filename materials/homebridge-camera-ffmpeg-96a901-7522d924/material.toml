@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "homebridge-camera-ffmpeg-96a901-7522d924"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/homebridge-plugins/homebridge-camera-ffmpeg"
+base_commit = "7522d924bedf922b3a7a4d71d35eb722dd3d790e"
+source_tree = "ce193ee7be4218523c4346e7dc9bc2341b70eba3"
+default_branch = "latest"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "076df43a72d6cfce6bc648f178a176bc96fa9d6b3599db58629ac634b7fc7e18"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-homebridge-camera-ff-96a901-7522d924-v2-env-076df43a"
+template_id = "8qrlnyirlclwthcw3eru"
+source_template_alias = "ed7yzgnyu6bo2i51cu42"
+source_template_id = "ed7yzgnyu6bo2i51cu42"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
