@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "unplugin-icons-609880-0bbf1cfd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/unplugin/unplugin-icons"
+base_commit = "0bbf1cfdb1812a711d3e8b77268b16dab1272ee5"
+source_tree = "458deb79b0a76d970fea114624bff1bf429be4b5"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "97e7fec29804330cc75c27d0786469daa5928feae8b1bc8ba7f542cbce25c292"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-unplugin-icons-609880-0bbf1cfd-v2-env-97e7fec2"
+template_id = "x8tb2dp4ia0zbcnm7vnl"
+source_template_alias = "6tpm5syt2m65dd99um4l"
+source_template_id = "6tpm5syt2m65dd99um4l"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

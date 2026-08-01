@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "typedorm-e17a58-cddbfa1f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/typedorm/typedorm"
+base_commit = "cddbfa1fad7c664b9aa2612ccb18b85595fa840d"
+source_tree = "3528debbc539759d65b1c5572d2d93e7993178ee"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c897bc28ff70d57204701327eadea5fde48f3da3ace3de633f81197208b69bc6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-typedorm-e17a58-cddbfa1f-v2-env-c897bc28"
+template_id = "9ea8xog4iszu0dsid2si"
+source_template_alias = "7e4vdyrhjunq8quuthw7"
+source_template_id = "7e4vdyrhjunq8quuthw7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
