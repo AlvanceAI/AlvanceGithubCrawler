@@ -1,0 +1,181 @@
+[2026-08-01T21:59:54Z] stage=verify-default-20260801T215954Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 21:59:56,984 INFO alvance_github_crawler.pending.verification: verifying pending candidate mcomunita/nablafx key_slot=1
+2026-08-01 21:59:58,360 INFO alvance_github_crawler.pending.verification: verifying pending candidate Mayitzin/ahrs key_slot=2
+2026-08-01 21:59:59,670 INFO alvance_github_crawler.pending.verification: verifying pending candidate alkaline-ml/pmdarima key_slot=3
+2026-08-01 22:00:17,858 INFO alvance_github_crawler.pending.verification: verifying pending candidate StackGuardian/tirith key_slot=1
+2026-08-01 22:00:30,060 INFO alvance_github_crawler.pending.verification: verifying pending candidate EIDOSLAB/torchstain key_slot=2
+2026-08-01 22:00:30,587 INFO alvance_github_crawler.pending.verification: pending candidate mcomunita/nablafx finished outcome=rejected key_slot=1 processed=1 in_flight=4
+2026-08-01 22:00:30,877 INFO alvance_github_crawler.pending.verification: verifying pending candidate Mohammedcha/gplay-scraper key_slot=3
+2026-08-01 22:00:38,389 INFO alvance_github_crawler.pending.verification: pending candidate StackGuardian/tirith finished outcome=rejected key_slot=1 processed=2 in_flight=4
+2026-08-01 22:00:48,641 INFO alvance_github_crawler.pending.verification: pending candidate EIDOSLAB/torchstain finished outcome=rejected key_slot=2 processed=3 in_flight=3
+2026-08-01 22:00:55,578 INFO alvance_github_crawler.pending.verification: verifying pending candidate magmax/python-inquirer key_slot=1
+2026-08-01 22:00:57,286 INFO alvance_github_crawler.pending.verification: pending candidate Mayitzin/ahrs finished outcome=registered key_slot=2 processed=4 in_flight=3
+2026-08-01 22:01:21,359 INFO alvance_github_crawler.pending.verification: pending candidate alkaline-ml/pmdarima finished outcome=rejected key_slot=3 processed=5 in_flight=2
+2026-08-01 22:01:29,686 INFO alvance_github_crawler.pending.verification: verifying pending candidate XanaduAI/thewalrus key_slot=2
+2026-08-01 22:02:02,210 INFO alvance_github_crawler.pending.verification: verifying pending candidate DrDroidLab/PlayBooks key_slot=3
+2026-08-01 22:02:11,778 INFO alvance_github_crawler.pending.verification: pending candidate DrDroidLab/PlayBooks finished outcome=rejected key_slot=3 processed=6 in_flight=3
+2026-08-01 22:02:54,292 INFO alvance_github_crawler.pending.verification: pending candidate magmax/python-inquirer finished outcome=registered key_slot=1 processed=7 in_flight=2
+2026-08-01 22:04:59,811 INFO alvance_github_crawler.pending.verification: pending candidate XanaduAI/thewalrus finished outcome=rejected key_slot=2 processed=8 in_flight=1
+2026-08-01 22:07:33,693 INFO alvance_github_crawler.pending.verification: verifying pending candidate circlemind-ai/fast-graphrag key_slot=1
+2026-08-01 22:07:39,146 INFO alvance_github_crawler.pending.verification: verifying pending candidate h2r/pomdp-py key_slot=2
+2026-08-01 22:07:41,252 INFO alvance_github_crawler.pending.verification: pending candidate Mohammedcha/gplay-scraper finished outcome=rejected key_slot=3 processed=9 in_flight=2
+2026-08-01 22:07:41,639 INFO alvance_github_crawler.pending.verification: verifying pending candidate r4fek/django-cassandra-engine key_slot=3
+2026-08-01 22:07:44,337 INFO alvance_github_crawler.pending.verification: verifying pending candidate DocNow/twarc key_slot=1
+2026-08-01 22:07:47,119 INFO alvance_github_crawler.pending.verification: verifying pending candidate adaptive-intelligent-robotics/QDax key_slot=2
+2026-08-01 22:07:47,119 INFO alvance_github_crawler.pending.verification: verifying pending candidate geldata/gel-python key_slot=3
+2026-08-01 22:07:53,780 INFO alvance_github_crawler.pending.verification: verifying pending candidate hildensia/bayesian_changepoint_detection key_slot=1
+2026-08-01 22:07:55,130 INFO alvance_github_crawler.pending.verification: verifying pending candidate AmpyFin/ampyfin key_slot=2
+2026-08-01 22:07:59,640 INFO alvance_github_crawler.pending.verification: pending candidate geldata/gel-python finished outcome=rejected key_slot=3 processed=10 in_flight=7
+2026-08-01 22:08:02,911 INFO alvance_github_crawler.pending.verification: verifying pending candidate GAA-UAM/scikit-fda key_slot=3
+2026-08-01 22:08:05,722 INFO alvance_github_crawler.pending.verification: pending candidate AmpyFin/ampyfin finished outcome=rejected key_slot=2 processed=11 in_flight=7
+2026-08-01 22:08:15,914 INFO alvance_github_crawler.pending.verification: pending candidate r4fek/django-cassandra-engine finished outcome=rejected key_slot=3 processed=12 in_flight=6
+2026-08-01 22:08:17,608 INFO alvance_github_crawler.pending.verification: verifying pending candidate meta-llama/synthetic-data-kit key_slot=3
+2026-08-01 22:08:18,926 INFO alvance_github_crawler.pending.verification: pending candidate hildensia/bayesian_changepoint_detection finished outcome=rejected key_slot=1 processed=13 in_flight=6
+2026-08-01 22:08:32,101 INFO alvance_github_crawler.pending.verification: pending candidate DocNow/twarc finished outcome=rejected key_slot=1 processed=14 in_flight=5
+2026-08-01 22:09:13,341 INFO alvance_github_crawler.pending.verification: pending candidate GAA-UAM/scikit-fda finished outcome=rejected key_slot=3 processed=15 in_flight=4
+2026-08-01 22:09:16,537 ERROR alvance_github_crawler.e2b.verification: h2r/pomdp-py failed during stage4_e2b_offline_test
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 185, in handle_request
+    raise LocalProtocolError(exc)  # pragma: nocover
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+httpcore.LocalProtocolError: Invalid input ConnectionInputs.RECV_PING in state ConnectionState.CLOSED
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/verification.py", line 148, in verify
+    offline = self.offline.verify(
+        environment.repository_template,
+    ...<2 lines>...
+        user=environment.execution_user,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/e2b/offline.py", line 42, in verify
+    with Sandbox.create(
+         ~~~~~~~~~~~~~~^
+        template=template,
+        ^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        api_key=self.api_key,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ) as sandbox:
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/sandbox_sync/main.py", line 458, in __exit__
+    self.kill()
+    ~~~~~~~~~^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/sandbox/utils.py", line 23, in _wrapper
+    return self.method(obj, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/sandbox_sync/main.py", line 501, in kill
+    return SandboxApi._cls_kill(
+           ~~~~~~~~~~~~~~~~~~~~^
+        sandbox_id=self.sandbox_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self.connection_config.get_api_params(**opts),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/sandbox_sync/sandbox_api.py", line 137, in _cls_kill
+    res = delete_sandboxes_sandbox_id.sync_detailed(
+        sandbox_id,
+        client=api_client,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/e2b/api/client/api/sandboxes/delete_sandboxes_sandbox_id.py", line 82, in sync_detailed
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.LocalProtocolError: Invalid input ConnectionInputs.RECV_PING in state ConnectionState.CLOSED
+2026-08-01 22:09:16,586 INFO alvance_github_crawler.pending.verification: pending candidate h2r/pomdp-py finished outcome=error key_slot=2 processed=16 in_flight=3
+2026-08-01 22:10:14,447 INFO alvance_github_crawler.pending.verification: pending candidate meta-llama/synthetic-data-kit finished outcome=rejected key_slot=3 processed=17 in_flight=2
+2026-08-01 22:10:27,064 INFO alvance_github_crawler.pending.verification: verifying pending candidate kazewong/flowMC key_slot=3
+2026-08-01 22:11:43,266 INFO alvance_github_crawler.pending.verification: pending candidate kazewong/flowMC finished outcome=rejected key_slot=3 processed=18 in_flight=2
+2026-08-01 22:16:39,873 INFO alvance_github_crawler.pending.verification: verifying pending candidate buildinspace/peru key_slot=3
+2026-08-01 22:16:45,304 INFO alvance_github_crawler.pending.verification: verifying pending candidate mkdocs/mkdocs key_slot=1
+2026-08-01 22:16:46,627 INFO alvance_github_crawler.pending.verification: verifying pending candidate IDSIA/sacred key_slot=2
+2026-08-01 22:16:52,154 INFO alvance_github_crawler.pending.verification: verifying pending candidate grll/mcpadapt key_slot=3
+2026-08-01 22:17:03,464 INFO alvance_github_crawler.pending.verification: verifying pending candidate dfunckt/django-rules key_slot=1
+2026-08-01 22:17:03,512 INFO alvance_github_crawler.pending.verification: pending candidate buildinspace/peru finished outcome=rejected key_slot=3 processed=19 in_flight=6
+2026-08-01 22:17:05,266 INFO alvance_github_crawler.pending.verification: verifying pending candidate rom1504/img2dataset key_slot=3
+2026-08-01 22:17:05,738 INFO alvance_github_crawler.pending.verification: pending candidate IDSIA/sacred finished outcome=rejected key_slot=2 processed=20 in_flight=6
+2026-08-01 22:17:06,438 INFO alvance_github_crawler.pending.verification: pending candidate mkdocs/mkdocs finished outcome=rejected key_slot=1 processed=21 in_flight=5
+2026-08-01 22:17:19,230 INFO alvance_github_crawler.pending.verification: pending candidate rom1504/img2dataset finished outcome=rejected key_slot=3 processed=22 in_flight=4
+2026-08-01 22:17:22,291 INFO alvance_github_crawler.pending.verification: verifying pending candidate clokep/django-querysetsequence key_slot=2
+2026-08-01 22:17:25,186 INFO alvance_github_crawler.pending.verification: pending candidate dfunckt/django-rules finished outcome=rejected key_slot=1 processed=23 in_flight=4
+2026-08-01 22:17:33,785 INFO alvance_github_crawler.pending.verification: verifying pending candidate lmstudio-ai/lmstudio-python key_slot=3
+2026-08-01 22:17:36,561 INFO alvance_github_crawler.pending.verification: verifying pending candidate GeoStat-Framework/PyKrige key_slot=1
+2026-08-01 22:17:42,135 INFO alvance_github_crawler.pending.verification: pending candidate clokep/django-querysetsequence finished outcome=rejected key_slot=2 processed=24 in_flight=5
+2026-08-01 22:17:54,621 INFO alvance_github_crawler.pending.verification: pending candidate lmstudio-ai/lmstudio-python finished outcome=rejected key_slot=3 processed=25 in_flight=4
+2026-08-01 22:17:56,354 INFO alvance_github_crawler.pending.verification: verifying pending candidate pygae/clifford key_slot=2
+2026-08-01 22:18:01,782 INFO alvance_github_crawler.pending.verification: verifying pending candidate jupyterlab/jupyterlab_server key_slot=3
+2026-08-01 22:18:11,405 INFO alvance_github_crawler.pending.verification: verifying pending candidate insanum/gcalcli key_slot=1
+2026-08-01 22:18:15,526 INFO alvance_github_crawler.pending.verification: verifying pending candidate FenTechSolutions/CausalDiscoveryToolbox key_slot=2
+2026-08-01 22:18:37,280 INFO alvance_github_crawler.pending.verification: verifying pending candidate haijeploeg/excludarr key_slot=3
+2026-08-01 22:18:41,394 INFO alvance_github_crawler.pending.verification: pending candidate pygae/clifford finished outcome=rejected key_slot=2 processed=26 in_flight=8
+2026-08-01 22:18:46,717 INFO alvance_github_crawler.pending.verification: pending candidate insanum/gcalcli finished outcome=rejected key_slot=1 processed=27 in_flight=7
+2026-08-01 22:18:56,659 INFO alvance_github_crawler.pending.verification: pending candidate adaptive-intelligent-robotics/QDax finished outcome=rejected key_slot=2 processed=28 in_flight=6
+2026-08-01 22:18:59,893 INFO alvance_github_crawler.pending.verification: pending candidate haijeploeg/excludarr finished outcome=rejected key_slot=3 processed=29 in_flight=5
+2026-08-01 22:19:05,801 INFO alvance_github_crawler.pending.verification: pending candidate FenTechSolutions/CausalDiscoveryToolbox finished outcome=rejected key_slot=2 processed=30 in_flight=4
+2026-08-01 22:19:23,675 INFO alvance_github_crawler.pending.verification: pending candidate grll/mcpadapt finished outcome=rejected key_slot=3 processed=31 in_flight=3
+2026-08-01 22:19:49,729 INFO alvance_github_crawler.pending.verification: verifying pending candidate dask/dask-cloudprovider key_slot=2
+2026-08-01 22:20:13,842 INFO alvance_github_crawler.pending.verification: pending candidate dask/dask-cloudprovider finished outcome=rejected key_slot=2 processed=32 in_flight=3
+2026-08-01 22:22:34,886 INFO alvance_github_crawler.pending.verification: pending candidate circlemind-ai/fast-graphrag finished outcome=rejected key_slot=1 processed=33 in_flight=2
+2026-08-01 22:23:01,131 INFO alvance_github_crawler.pending.verification: pending candidate jupyterlab/jupyterlab_server finished outcome=registered key_slot=3 processed=34 in_flight=1
+2026-08-01 22:24:38,321 INFO alvance_github_crawler.pending.verification: pending candidate GeoStat-Framework/PyKrige finished outcome=registered key_slot=1 processed=35 in_flight=0
+{
+  "error": 1,
+  "key_slot_1_processed": 10,
+  "key_slot_1_registered": 2,
+  "key_slot_1_rejected": 8,
+  "key_slot_2_error": 1,
+  "key_slot_2_processed": 11,
+  "key_slot_2_registered": 1,
+  "key_slot_2_rejected": 9,
+  "key_slot_3_processed": 14,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 13,
+  "processed": 35,
+  "registered": 4,
+  "rejected": 30,
+  "remaining": 1
+}
+[2026-08-01T22:24:39Z] stage=verify-default-20260801T215954Z exit_code=0 duration_s=1485

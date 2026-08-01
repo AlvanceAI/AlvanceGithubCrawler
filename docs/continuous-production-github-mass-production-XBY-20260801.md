@@ -1,18 +1,18 @@
 # Pipeline statistics: github-mass-production-XBY-20260801
 
 - Status: `complete`
-- Generated: `2026-08-01T21:00:22.792173+00:00`
-- Raw GitHub sample: 64500
-- Initial filter accepted: 25016
-- E2B queue: 4526
-- Deliverable tasks: 1311
+- Generated: `2026-08-01T22:39:50.445624+00:00`
+- Raw GitHub sample: 69500
+- Initial filter accepted: 26067
+- E2B queue: 4676
+- Deliverable tasks: 1336
 - Pending: 0
 
 ## Language funnel
 
 | Language | Initial accepted | Final tasks |
 |---|---:|---:|
-| python | 7689 | 239 |
+| python | 8740 | 264 |
 | go | 5479 | 458 |
 | typescript | 5132 | 222 |
 | javascript | 2731 | 112 |
@@ -220,6 +220,42 @@
 | verify-default-20260801T204106Z | 484 | 0 |
 | requeue-resource-failures | 6 | 0 |
 | verify-escalated-20260801T204921Z | 658 | 0 |
+| repair-rebuildable-packages | 10 | 0 |
+| requeue-node-package-manager-v18 | 3 | 0 |
+| requeue-go-runtime-v4 | 3 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 4 | 0 |
+| prescreen-resume-64500 | 106 | 0 |
+| verify-default-20260801T210145Z | 88 | 0 |
+| crawl-65000 | 258 | 0 |
+| verify-default-20260801T210758Z | 124 | 0 |
+| prescreen-65000 | 207 | 0 |
+| crawl-65500 | 244 | 0 |
+| prescreen-65500 | 144 | 0 |
+| verify-default-20260801T211530Z | 249 | 0 |
+| crawl-66000 | 243 | 0 |
+| prescreen-66000 | 195 | 0 |
+| crawl-66500 | 259 | 0 |
+| prescreen-66500 | 204 | 0 |
+| verify-default-20260801T212158Z | 606 | 0 |
+| crawl-67000 | 256 | 0 |
+| prescreen-67000 | 197 | 0 |
+| verify-default-20260801T213733Z | 274 | 0 |
+| crawl-67500 | 267 | 0 |
+| prescreen-67500 | 249 | 0 |
+| verify-default-20260801T214449Z | 273 | 0 |
+| crawl-68000 | 253 | 0 |
+| prescreen-68000 | 159 | 0 |
+| verify-default-20260801T215315Z | 166 | 0 |
+| crawl-68500 | 245 | 0 |
+| prescreen-68500 | 181 | 0 |
+| crawl-69000 | 274 | 0 |
+| prescreen-69000 | 282 | 0 |
+| crawl-69500 | 268 | 0 |
+| prescreen-69500 | 235 | 0 |
+| verify-default-20260801T215954Z | 1485 | 0 |
+| verify-default-20260801T222457Z | 99 | 0 |
+| requeue-resource-failures | 9 | 0 |
+| verify-escalated-20260801T222647Z | 780 | 0 |
 
 ## E2B task performance
 
@@ -1536,6 +1572,31 @@
 | [pydoit/doit](https://github.com/pydoit/doit) | python | 1 CPU / 1024 MB | 0.46 | 9.55 | 51.0 | `tasks/alv-doit-49b203-1f9cbbce-v2` |
 | [thouska/spotpy](https://github.com/thouska/spotpy) | python | 1 CPU / 1024 MB | 0.55 | 92.07 | 571.7 | `tasks/alv-spotpy-0fbfd5-315a75ab-v2` |
 | [choderalab/pymbar](https://github.com/choderalab/pymbar) | python | 1 CPU / 1024 MB | 0.38 | 27.07 | 317.1 | `tasks/alv-pymbar-471cf4-ed40ec3b-v2` |
+| [hfaran/Tornado-JSON](https://github.com/hfaran/Tornado-JSON) | python | 1 CPU / 1024 MB | 0.46 | 1.78 | 44.6 | `tasks/alv-tornado-json-9fb141-cbd40847-v2` |
+| [goodmami/wn](https://github.com/goodmami/wn) | python | 1 CPU / 1024 MB | 0.47 | 2.15 | 69.9 | `tasks/alv-wn-2f6cbb-22073eac-v2` |
+| [kronenthaler/mod-pbxproj](https://github.com/kronenthaler/mod-pbxproj) | python | 1 CPU / 1024 MB | 0.4 | 2.33 | 38.2 | `tasks/alv-mod-pbxproj-ed25f1-fcc8ed88-v2` |
+| [devopshq/artifactory-cleanup](https://github.com/devopshq/artifactory-cleanup) | python | 1 CPU / 1024 MB | 0.47 | 1.41 | 47.8 | `tasks/alv-artifactory-cleanup-f54384-4fff9794-v2` |
+| [cdgriffith/Box](https://github.com/cdgriffith/Box) | python | 1 CPU / 1024 MB | 0.44 | 2.56 | 55.6 | `tasks/alv-box-f97955-a4c10e97-v2` |
+| [Asifdotexe/DORA](https://github.com/Asifdotexe/DORA) | python | 1 CPU / 1024 MB | 0.58 | 19.26 | 309.9 | `tasks/alv-dora-6369ba-a360eea1-v2` |
+| [OpenTransitTools/gtfsdb](https://github.com/OpenTransitTools/gtfsdb) | python | 1 CPU / 1024 MB | 0.44 | 9.58 | 95.5 | `tasks/alv-gtfsdb-8d321a-58c879f2-v2` |
+| [olzhasar/pytest-watcher](https://github.com/olzhasar/pytest-watcher) | python | 1 CPU / 1024 MB | 0.42 | 1.63 | 41.2 | `tasks/alv-pytest-watcher-19605a-290f8605-v2` |
+| [42school/norminette](https://github.com/42school/norminette) | python | 1 CPU / 1024 MB | 0.45 | 2.73 | 40.3 | `tasks/alv-norminette-d9d419-f94f1ce2-v2` |
+| [facebookincubator/submitit](https://github.com/facebookincubator/submitit) | python | 1 CPU / 1024 MB | 0.52 | 37.29 | 47.2 | `tasks/alv-submitit-d4cdbc-ca51a66b-v2` |
+| [vnmabus/dcor](https://github.com/vnmabus/dcor) | python | 1 CPU / 1024 MB | 0.5 | 33.04 | 410.6 | `tasks/alv-dcor-cc040f-d5121239-v2` |
+| [miracle2k/k8s-snapshots](https://github.com/miracle2k/k8s-snapshots) | python | 1 CPU / 1024 MB | 0.45 | 2.81 | 81.2 | `tasks/alv-k8s-snapshots-8de22b-e0adb133-v2` |
+| [browser-history/browser-history](https://github.com/browser-history/browser-history) | python | 1 CPU / 1024 MB | 0.46 | 2.67 | 42.8 | `tasks/alv-browser-history-4a7522-943dd5e5-v2` |
+| [FactoryBoy/factory_boy](https://github.com/FactoryBoy/factory_boy) | python | 1 CPU / 1024 MB | 0.46 | 2.78 | 119.3 | `tasks/alv-factory-boy-c7146b-ae9f2f46-v2` |
+| [giacomoferretti/whatsapp-backup-downloader-decryptor](https://github.com/giacomoferretti/whatsapp-backup-downloader-decryptor) | python | 1 CPU / 1024 MB | 0.5 | 1.26 | 45.3 | `tasks/alv-whatsapp-backup-down-6d06c3-9bb21b12-v2` |
+| [chaimleib/intervaltree](https://github.com/chaimleib/intervaltree) | python | 1 CPU / 1024 MB | 0.42 | 9.49 | 124.3 | `tasks/alv-intervaltree-57bfb4-1bc406e1-v2` |
+| [upb-lea/gym-electric-motor](https://github.com/upb-lea/gym-electric-motor) | python | 1 CPU / 1024 MB | 0.51 | 52.65 | 163.0 | `tasks/alv-gym-electric-motor-59893a-b474daf9-v2` |
+| [weaveworks/grafanalib](https://github.com/weaveworks/grafanalib) | python | 1 CPU / 1024 MB | 0.42 | 1.52 | 43.5 | `tasks/alv-grafanalib-5833b7-a79ef6ea-v2` |
+| [Kozea/cairocffi](https://github.com/Kozea/cairocffi) | python | 1 CPU / 1024 MB | 0.42 | 3.26 | 66.5 | `tasks/alv-cairocffi-fe5f1e-b5c27d94-v2` |
+| [splx-ai/agentic-radar](https://github.com/splx-ai/agentic-radar) | python | 1 CPU / 1024 MB | 0.58 | 9.52 | 157.2 | `tasks/alv-agentic-radar-2a2e4b-65a7e4bd-v2` |
+| [mkdocs-publisher/mkdocs-publisher](https://github.com/mkdocs-publisher/mkdocs-publisher) | python | 1 CPU / 1024 MB | 0.56 | 3.4 | 60.7 | `tasks/alv-mkdocs-publisher-e73d32-af719b43-v2` |
+| [Mayitzin/ahrs](https://github.com/Mayitzin/ahrs) | python | 1 CPU / 1024 MB | 0.44 | 6.35 | 63.9 | `tasks/alv-ahrs-2780ba-c83bd116-v2` |
+| [magmax/python-inquirer](https://github.com/magmax/python-inquirer) | python | 1 CPU / 1024 MB | 0.55 | 15.92 | 51.8 | `tasks/alv-python-inquirer-86c421-f81d9ad0-v2` |
+| [jupyterlab/jupyterlab_server](https://github.com/jupyterlab/jupyterlab_server) | python | 1 CPU / 1024 MB | 0.63 | 59.96 | 114.2 | `tasks/alv-jupyterlab-server-8739ba-f64f5542-v2` |
+| [GeoStat-Framework/PyKrige](https://github.com/GeoStat-Framework/PyKrige) | python | 1 CPU / 1024 MB | 0.44 | 10.12 | 159.2 | `tasks/alv-pykrige-7d99a4-5e896fb3-v2` |
 
 ## Logs
 

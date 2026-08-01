@@ -1,0 +1,54 @@
+[2026-08-01T21:07:58Z] stage=verify-default-20260801T210758Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 21:08:01,355 INFO alvance_github_crawler.pending.verification: verifying pending candidate CamDavidsonPilon/lifelines key_slot=1
+2026-08-01 21:08:01,356 INFO alvance_github_crawler.pending.verification: verifying pending candidate goodmami/wn key_slot=2
+2026-08-01 21:08:02,755 INFO alvance_github_crawler.pending.verification: verifying pending candidate jupyter-server/jupyter-scheduler key_slot=3
+2026-08-01 21:08:05,602 INFO alvance_github_crawler.pending.verification: verifying pending candidate microsoft/multi-agent-marketplace key_slot=1
+2026-08-01 21:08:06,919 INFO alvance_github_crawler.pending.verification: verifying pending candidate hfaran/Tornado-JSON key_slot=2
+2026-08-01 21:08:08,300 INFO alvance_github_crawler.pending.verification: verifying pending candidate jblance/mpp-solar key_slot=3
+2026-08-01 21:08:18,497 INFO alvance_github_crawler.pending.verification: pending candidate microsoft/multi-agent-marketplace finished outcome=rejected key_slot=1 processed=1 in_flight=5
+2026-08-01 21:08:20,391 INFO alvance_github_crawler.pending.verification: verifying pending candidate pybuilder/pybuilder key_slot=1
+2026-08-01 21:08:26,572 INFO alvance_github_crawler.pending.verification: pending candidate jblance/mpp-solar finished outcome=rejected key_slot=3 processed=2 in_flight=5
+2026-08-01 21:08:26,914 INFO alvance_github_crawler.pending.verification: pending candidate jupyter-server/jupyter-scheduler finished outcome=rejected key_slot=3 processed=3 in_flight=4
+2026-08-01 21:08:31,462 INFO alvance_github_crawler.pending.verification: verifying pending candidate okfn/opendataeditor key_slot=3
+2026-08-01 21:08:39,207 INFO alvance_github_crawler.pending.verification: pending candidate hfaran/Tornado-JSON finished outcome=registered key_slot=2 processed=4 in_flight=4
+2026-08-01 21:08:39,516 INFO alvance_github_crawler.pending.verification: pending candidate CamDavidsonPilon/lifelines finished outcome=rejected key_slot=1 processed=5 in_flight=3
+2026-08-01 21:08:41,204 INFO alvance_github_crawler.pending.verification: verifying pending candidate aidos-lab/pytorch-topological key_slot=1
+2026-08-01 21:08:41,528 INFO alvance_github_crawler.pending.verification: pending candidate goodmami/wn finished outcome=registered key_slot=2 processed=6 in_flight=3
+2026-08-01 21:08:44,617 INFO alvance_github_crawler.pending.verification: verifying pending candidate NVIDIA/earth2mip key_slot=2
+2026-08-01 21:08:45,914 INFO alvance_github_crawler.pending.verification: verifying pending candidate cmsis-svd/cmsis-svd key_slot=3
+2026-08-01 21:08:48,644 INFO alvance_github_crawler.pending.verification: verifying pending candidate kronenthaler/mod-pbxproj key_slot=2
+2026-08-01 21:08:48,730 INFO alvance_github_crawler.pending.verification: pending candidate pybuilder/pybuilder finished outcome=rejected key_slot=1 processed=7 in_flight=5
+2026-08-01 21:08:50,388 INFO alvance_github_crawler.pending.verification: verifying pending candidate HackSoftware/Django-Styleguide-Example key_slot=1
+2026-08-01 21:08:53,282 INFO alvance_github_crawler.pending.verification: pending candidate cmsis-svd/cmsis-svd finished outcome=rejected key_slot=3 processed=8 in_flight=5
+2026-08-01 21:08:56,981 INFO alvance_github_crawler.pending.verification: pending candidate aidos-lab/pytorch-topological finished outcome=rejected key_slot=1 processed=9 in_flight=4
+2026-08-01 21:08:57,439 INFO alvance_github_crawler.pending.verification: verifying pending candidate tobgu/pyrsistent key_slot=3
+2026-08-01 21:08:59,459 INFO alvance_github_crawler.pending.verification: pending candidate HackSoftware/Django-Styleguide-Example finished outcome=rejected key_slot=1 processed=10 in_flight=4
+2026-08-01 21:08:59,759 INFO alvance_github_crawler.pending.verification: verifying pending candidate OpenLEADR/openleadr-python key_slot=1
+2026-08-01 21:09:02,503 INFO alvance_github_crawler.pending.verification: verifying pending candidate open-mmlab/mmcv key_slot=1
+2026-08-01 21:09:09,299 INFO alvance_github_crawler.pending.verification: verifying pending candidate federicotdn/wikiquote key_slot=2
+2026-08-01 21:09:13,463 INFO alvance_github_crawler.pending.verification: verifying pending candidate emilsvennesson/script.module.inputstreamhelper key_slot=3
+2026-08-01 21:09:16,167 INFO alvance_github_crawler.pending.verification: pending candidate tobgu/pyrsistent finished outcome=rejected key_slot=3 processed=11 in_flight=7
+2026-08-01 21:09:18,852 INFO alvance_github_crawler.pending.verification: pending candidate okfn/opendataeditor finished outcome=rejected key_slot=3 processed=12 in_flight=6
+2026-08-01 21:09:19,185 INFO alvance_github_crawler.pending.verification: verifying pending candidate simplecto/django-reference-implementation key_slot=3
+2026-08-01 21:09:22,959 INFO alvance_github_crawler.pending.verification: pending candidate OpenLEADR/openleadr-python finished outcome=rejected key_slot=1 processed=13 in_flight=6
+2026-08-01 21:09:26,528 INFO alvance_github_crawler.pending.verification: pending candidate kronenthaler/mod-pbxproj finished outcome=registered key_slot=2 processed=14 in_flight=5
+2026-08-01 21:09:29,099 INFO alvance_github_crawler.pending.verification: pending candidate emilsvennesson/script.module.inputstreamhelper finished outcome=rejected key_slot=3 processed=15 in_flight=4
+2026-08-01 21:09:47,261 INFO alvance_github_crawler.pending.verification: pending candidate open-mmlab/mmcv finished outcome=rejected key_slot=1 processed=16 in_flight=3
+2026-08-01 21:09:54,999 INFO alvance_github_crawler.pending.verification: pending candidate federicotdn/wikiquote finished outcome=rejected key_slot=2 processed=17 in_flight=2
+2026-08-01 21:09:56,780 INFO alvance_github_crawler.pending.verification: pending candidate NVIDIA/earth2mip finished outcome=rejected key_slot=2 processed=18 in_flight=1
+2026-08-01 21:10:01,223 INFO alvance_github_crawler.pending.verification: pending candidate simplecto/django-reference-implementation finished outcome=rejected key_slot=3 processed=19 in_flight=0
+{
+  "key_slot_1_processed": 7,
+  "key_slot_1_rejected": 7,
+  "key_slot_2_processed": 5,
+  "key_slot_2_registered": 3,
+  "key_slot_2_rejected": 2,
+  "key_slot_3_processed": 7,
+  "key_slot_3_rejected": 7,
+  "processed": 19,
+  "registered": 3,
+  "rejected": 16,
+  "remaining": 0
+}
+[2026-08-01T21:10:02Z] stage=verify-default-20260801T210758Z exit_code=0 duration_s=124

@@ -1,0 +1,140 @@
+[2026-08-01T21:44:03Z] stage=prescreen-67500 run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-08-01 21:44:07,903 INFO alvance_github_crawler.pipeline: processing crawled candidate laike9m/pdir2@6746b97518e01a568331065b98b19b9dced439c5
+2026-08-01 21:44:07,904 INFO alvance_github_crawler.pipeline: processing crawled candidate holoviz/spatialpandas@7739b953dc8890676e05f76ab66a0310bbb44c86
+2026-08-01 21:44:07,905 INFO alvance_github_crawler.pipeline: processing crawled candidate Trusted-AI/adversarial-robustness-toolbox@23539e2c06045d78594b6b6da533eed57967e410
+2026-08-01 21:44:07,905 INFO alvance_github_crawler.pipeline: processing crawled candidate jasonxtn/Argus@f51c0442802f1a557220943c72fb2584c7c99fa4
+2026-08-01 21:44:07,908 INFO alvance_github_crawler.pipeline: processing crawled candidate opendilab/DI-engine@d0b21d065b2d80317cc16b28a95301be8871d950
+2026-08-01 21:44:07,912 INFO alvance_github_crawler.pipeline: processing crawled candidate weaveworks/grafanalib@a79ef6eaf143ae1fb0fedb8f655a2e9aa7c1c5d1
+2026-08-01 21:44:07,914 INFO alvance_github_crawler.pipeline: processing crawled candidate chibisov/drf-extensions@41bd651bf5eb0af8cd6a4f8d80c553518719ec39
+2026-08-01 21:44:07,916 INFO alvance_github_crawler.pipeline: processing crawled candidate aio-libs/aiopg@eabd5216c0adf7a131f79d028af9810c99e9b8ae
+2026-08-01 21:44:07,918 INFO alvance_github_crawler.pipeline: processing crawled candidate open-gigaai/giga-train@ace2d52979dafe272beb5cf7ba2c09a010058b85
+2026-08-01 21:44:07,920 INFO alvance_github_crawler.pipeline: processing crawled candidate authomatic/authomatic@e9bdbbb86159daacfa043c42938b89c296f5d6a8
+2026-08-01 21:44:07,922 INFO alvance_github_crawler.pipeline: processing crawled candidate baal-org/baal@2309c970e2e6200edfdfc1e4e554bd48bc08a751
+2026-08-01 21:44:07,925 INFO alvance_github_crawler.pipeline: processing crawled candidate mcfunley/pugsql@425b9ea567e42cd1ab23d36d0789e21309537d45
+2026-08-01 21:44:07,927 INFO alvance_github_crawler.pipeline: processing crawled candidate juanifioren/django-oidc-provider@f8dbf990975bdca2263bcaf0492c2af6dde65ed1
+2026-08-01 21:44:07,929 INFO alvance_github_crawler.pipeline: processing crawled candidate agi-inc/agisdk@97a245dcbccd3e1cf4d5ee00d5b1707942258518
+2026-08-01 21:44:07,931 INFO alvance_github_crawler.pipeline: processing crawled candidate navig-me/telert@babe752d00926887d7fa89ac91b66c3801d15336
+2026-08-01 21:44:07,933 INFO alvance_github_crawler.pipeline: processing crawled candidate flowersteam/lamorel@dce6f0dd7c350ec6e919b957cc15ffe890b525d2
+2026-08-01 21:44:07,935 INFO alvance_github_crawler.pipeline: processing crawled candidate CalebBell/ht@85e0ee686ec91b35919925fd31d73d140a9de135
+2026-08-01 21:44:07,937 INFO alvance_github_crawler.pipeline: processing crawled candidate django-commons/drf-excel@973b9e566646c37b69b3381accebf394985403a0
+2026-08-01 21:44:07,939 INFO alvance_github_crawler.pipeline: processing crawled candidate click-contrib/sphinx-click@e8eb75e292ff6df69230420d992a34e68a7385d0
+2026-08-01 21:44:07,941 INFO alvance_github_crawler.pipeline: processing crawled candidate tpoisonooo/ROGRAG@f5a6f139e5b2a050142e01009b36404f01d5f56f
+2026-08-01 21:44:10,152 INFO alvance_github_crawler.pipeline: processing crawled candidate kousheekc/isaac_drone_racer@d530f67768d53701454f406e4da967e0e9c30842
+2026-08-01 21:44:10,202 INFO alvance_github_crawler.pipeline: processing crawled candidate NTNU-IHB/PythonFMU@fab861ae48fbaaa75c37c3aca76c92fc0e6399c0
+2026-08-01 21:44:10,459 INFO alvance_github_crawler.pipeline: processing crawled candidate CiwPython/Ciw@05f17273386032dfa9cf95b2922fd84c55c575f8
+2026-08-01 21:44:14,962 INFO alvance_github_crawler.pipeline: processing crawled candidate HaxL0p4/L0p4-Toolkit@07dcb136936595caeee7b64a0f88458e028a9e7c
+2026-08-01 21:44:15,727 INFO alvance_github_crawler.pipeline: processing crawled candidate darinkishore/codex_dspy@cd25f4192026ce71de9de3ca3a91921d3a0e2e37
+2026-08-01 21:44:16,049 INFO alvance_github_crawler.pipeline: processing crawled candidate georgebv/drf-pydantic@1ba4417f806faeb4eeedea9e4dec6409957d88d3
+2026-08-01 21:44:16,961 INFO alvance_github_crawler.pipeline: processing crawled candidate RaspberryPiFoundation/picozero@0f5f07701c0057db2c11be710193cdf14ec68c29
+2026-08-01 21:44:17,401 INFO alvance_github_crawler.pipeline: processing crawled candidate Karib0u/kernagent@038040f698daed0269eb1f35e1b043c368c841ea
+2026-08-01 21:44:18,722 ERROR alvance_github_crawler.pipeline: holoviz/spatialpandas failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 21:44:18,733 INFO alvance_github_crawler.pipeline: processing crawled candidate fixie-ai/ultravox@69ddc63b2d72be5e9a86f818315da72cec55a876
+2026-08-01 21:44:19,977 INFO alvance_github_crawler.pipeline: processing crawled candidate CatchTheTornado/text-extract-api@a78eebfbcbfdaa96951ddb3aaed571e7b77ad511
+2026-08-01 21:44:20,164 INFO alvance_github_crawler.pipeline: processing crawled candidate nidhaloff/igel@bf4544d6c86ab4ace21254cb38a011ce3e845700
+2026-08-01 21:44:22,074 INFO alvance_github_crawler.pipeline: processing crawled candidate justquick/django-activity-stream@39f8d7f3a902c131c244454f84cf8a2c36111dfe
+2026-08-01 21:44:22,083 INFO alvance_github_crawler.pipeline: processing crawled candidate allenai/scispacy@eacccd4ef3e7ef13d4aa35700e718bd4318ded17
+2026-08-01 21:44:23,325 INFO alvance_github_crawler.pipeline: processing crawled candidate open-gigaai/giga-world-0@f3fbdab0d6853a125cd0b898137e30a63aadbe7d
+2026-08-01 21:44:25,006 INFO alvance_github_crawler.pipeline: processing crawled candidate Teemu/pytest-sugar@54ec9991e1e6e57a6fa4d70e5094797f6dc72f11
+2026-08-01 21:44:25,880 INFO alvance_github_crawler.pipeline: processing crawled candidate hustvl/DiffusionDrive@9b52ed0ec06b073d82d6f392ab084c7b301c8681
+2026-08-01 21:44:26,358 INFO alvance_github_crawler.pipeline: processing crawled candidate nod-ai/AMD-SHARK-Studio@f6dd02fa672ae875151558285759012f4f8cc8a0
+2026-08-01 21:44:26,663 INFO alvance_github_crawler.pipeline: processing crawled candidate sec-edgar/sec-edgar@97db601615ebedd49637fb4ed847b3f714114720
+2026-08-01 21:44:28,312 INFO alvance_github_crawler.pipeline: processing crawled candidate predict-idlab/plotly-resampler@94833263ccc089fd31f328c79dc283a2cd920f36
+2026-08-01 21:44:30,635 INFO alvance_github_crawler.pipeline: processing crawled candidate agiresearch/A-mem@ceffb860f0712bbae97b184d440df62bc910ca8d
+2026-08-01 21:44:33,449 INFO alvance_github_crawler.pipeline: processing crawled candidate open-gigaai/giga-models@b0e05c7353a2d5d06fa8a92d2103c0fdd52e2e4d
+2026-08-01 21:44:37,472 INFO alvance_github_crawler.pipeline: processing crawled candidate vmagamedov/grpclib@0d27158f98aa939493009e6844576d81ec7d8254
+2026-08-01 21:44:38,825 ERROR alvance_github_crawler.pipeline: laike9m/pdir2 failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-01 21:44:38,827 INFO alvance_github_crawler.pipeline: processing crawled candidate coderholic/django-cities@cc83ab1716eb574a309689b52f3dbe4b2d8b719d
+2026-08-01 21:44:38,830 INFO alvance_github_crawler.pipeline: processing crawled candidate hellock/icrawler@f2a326dc2b0798a5cdb14afd4753af9e86775e66
+2026-08-01 21:44:38,838 INFO alvance_github_crawler.pipeline: processing crawled candidate pola-rs/geopolars@eebad68a3c0175dd496f66b40765a7ab9eb1122f
+2026-08-01 21:44:40,332 INFO alvance_github_crawler.pipeline: processing crawled candidate lifeiteng/OmniSenseVoice@c0a9516b8509aee378e7c9f94ba40ca00823c956
+2026-08-01 21:44:40,609 INFO alvance_github_crawler.pipeline: processing crawled candidate cvg/limap@4be6fca7189187eb925ac1de50a8acb587e11c62
+2026-08-01 21:44:41,672 INFO alvance_github_crawler.pipeline: processing crawled candidate amazon-far/TWIST2@d5c7108e9ef82d1b8770e5b692f27a1294f3aa8a
+2026-08-01 21:44:41,947 INFO alvance_github_crawler.pipeline: processing crawled candidate asaini/Apriori@cd2a2963d0aa2f3feb82e851d2597f91a5d195a4
+2026-08-01 21:44:43,287 INFO alvance_github_crawler.pipeline: processing crawled candidate AmbitionEng/django-pgtrigger@98f763d130ea8512a0196879e055a9e834de25e9
+2026-08-01 21:44:44,094 INFO alvance_github_crawler.pipeline: processing crawled candidate inertiajs/inertia-django@d73e7e5bc362faa6ac6c86d7de50a6e880c5b279
+2026-08-01 21:44:46,194 INFO alvance_github_crawler.pipeline: processing crawled candidate openai/circuit_sparsity@dbf1fe0d27b76c19e10d2a715f28c2e5da535e08
+2026-08-01 21:44:46,891 INFO alvance_github_crawler.pipeline: processing crawled candidate jason8745/llm-agent-trader@68b2741077b6fcc1ab2c4708227821ad406df45f
+2026-08-01 21:44:48,774 INFO alvance_github_crawler.pipeline: processing crawled candidate worm-privacy/proof-of-burn@92a7ecd1c5317ee383cf7b26b2977731ca6ff4fe
+2026-08-01 21:44:49,046 INFO alvance_github_crawler.pipeline: processing crawled candidate FocoosAI/focoos@26a898674edb972b3efaaca2f31dfba08eaf84c6
+2026-08-01 21:44:50,234 INFO alvance_github_crawler.pipeline: processing crawled candidate panel-extensions/panel-graphic-walker@2a892dc62b3ebfc5c658e5df280e92a418e07c16
+2026-08-01 21:44:51,433 INFO alvance_github_crawler.pipeline: processing crawled candidate CSBDeep/CSBDeep@35f135fb1de64170dd339094302bb40283a6d1d9
+2026-08-01 21:44:52,356 INFO alvance_github_crawler.pipeline: processing crawled candidate lucidrains/minGRU-pytorch@9fe95d623b2a30f5cbc689e4640dc62403da0df5
+2026-08-01 21:44:53,256 INFO alvance_github_crawler.pipeline: processing crawled candidate worldbench/LaserMix@a4277292d9d25fba399bfb1cec5d2757331c4975
+2026-08-01 21:44:53,510 INFO alvance_github_crawler.pipeline: processing crawled candidate ApeWorX/evm-trace@72e892bf5f217ff08dc8667d7d2596bb1d9f2ea2
+2026-08-01 21:44:54,219 INFO alvance_github_crawler.pipeline: processing crawled candidate PeterZhao119/luoyun_project@70542b937263eaec68890633ea1e30cde94a992c
+2026-08-01 21:44:55,814 INFO alvance_github_crawler.pipeline: processing crawled candidate OpenDriveLab/DetAny3D@10e484be0837d80aa33cff6ed95a9be834a3f794
+2026-08-01 21:44:55,859 INFO alvance_github_crawler.pipeline: processing crawled candidate python-jsonschema/hypothesis-jsonschema@fa38b03d8bb6f917ba749ef84ce1e4465d1e27cc
+2026-08-01 21:44:55,946 INFO alvance_github_crawler.pipeline: processing crawled candidate machow/quartodoc@ae646238ebe9ad7ab98cfa2a36e5e86b1a87db79
+2026-08-01 21:44:57,558 INFO alvance_github_crawler.pipeline: processing crawled candidate zhuang2002/Cobra@2b5d19c204545fd065b6c3864a93d9142dff88c8
+2026-08-01 21:44:58,684 INFO alvance_github_crawler.pipeline: processing crawled candidate LYL1015/JarvisIR@a775eaa90a1576f91b317b4d7bb5976b1dd657c6
+2026-08-01 21:44:58,962 INFO alvance_github_crawler.pipeline: processing crawled candidate romis2012/aiohttp-socks@47a7b7a15a0eb5dca2c09e1e29385b14889d228e
+2026-08-01 21:44:59,184 INFO alvance_github_crawler.pipeline: processing crawled candidate pola-rs/polars-xdt@699bcc67a89eb03ae8e232a8079285956432c740
+2026-08-01 21:44:59,315 INFO alvance_github_crawler.pipeline: processing crawled candidate GFZ/arosics@c222d21a75f8bd7f3dde64fff16fd14bc4858325
+2026-08-01 21:45:01,781 INFO alvance_github_crawler.pipeline: processing crawled candidate PancrePal-xiaoyibao/PancrePal-xiaoyibao@71130c6bbbd06085d23b30b55360dfebef2c8ab1
+2026-08-01 21:45:03,635 INFO alvance_github_crawler.pipeline: processing crawled candidate Kozea/cairocffi@b5c27d9477bc2aa1a8fbb7a2332c7ae8b6aadfcc
+2026-08-01 21:45:03,784 INFO alvance_github_crawler.pipeline: processing crawled candidate MiniZinc/minizinc-python@73b5b4e40965b016b255217eac3d857abb99acd4
+2026-08-01 21:45:07,118 INFO alvance_github_crawler.pipeline: processing crawled candidate TheDuckAI/DuckTrack@09e0473fbf5271dce2af9a825832b8bdac6f3f1e
+2026-08-01 21:45:07,560 INFO alvance_github_crawler.pipeline: processing crawled candidate circstat/pycircstat@bcfe6aa02b99ac590e6a79091f550c9ad79592e5
+2026-08-01 21:45:10,315 INFO alvance_github_crawler.pipeline: processing crawled candidate MarcoGorelli/polars-plugins-tutorial@f5a5257116b47566229f64188784eff5fe59d110
+2026-08-01 21:45:11,711 INFO alvance_github_crawler.pipeline: processing crawled candidate DessimozLab/read2tree@e19ad8f32a438ff7a38d9ee1d41832e1fc326a3c
+2026-08-01 21:45:16,210 INFO alvance_github_crawler.pipeline: processing crawled candidate Hamidreza-Hashempoor/FastTracker@d35eeda120981c7138b70d13f87bcb4f9fbcbe52
+2026-08-01 21:45:19,733 INFO alvance_github_crawler.pipeline: processing crawled candidate Visual-AI/3DRS@0401f547778c5de2e9e889c0606442087128c13d
+2026-08-01 21:45:22,684 INFO alvance_github_crawler.pipeline: processing crawled candidate DenizParlak/heimdall@0589f504fb9b3107ac006e5dc9d07e326ab3af83
+2026-08-01 21:45:23,631 INFO alvance_github_crawler.pipeline: processing crawled candidate vita-epfl/RAP@5fd8630ae54442dd41827de4a9afe1690e3f02bb
+2026-08-01 21:45:26,432 INFO alvance_github_crawler.pipeline: processing crawled candidate gavinying/modpoll@0d4d337de51dd07d7ac64db7b707630f098525b6
+2026-08-01 21:45:26,474 INFO alvance_github_crawler.pipeline: processing crawled candidate MIC-DKFZ/Skeleton-Recall@bbd958f86ef29985c157998a63ebd91493b11419
+2026-08-01 21:45:28,541 INFO alvance_github_crawler.pipeline: processing crawled candidate KempnerInstitute/overcomplete@a1781af49c6e4bbfdbfd763b9757bcf6c5dd6403
+2026-08-01 21:45:30,942 INFO alvance_github_crawler.pipeline: processing crawled candidate singularityhub/singularity-hpc@99f4479d122293e720088462bb656f2fa17222d6
+2026-08-01 21:45:34,859 INFO alvance_github_crawler.pipeline: processing crawled candidate YuxingLu613/KARMA@23610bc2a93ddc9f75322a1234ae6f688f87bdff
+2026-08-01 21:45:35,807 INFO alvance_github_crawler.pipeline: processing crawled candidate django-functest/django-functest@050a7dcdd8a440c9c3efaaedb14e47476c64e0ea
+2026-08-01 21:45:35,964 INFO alvance_github_crawler.pipeline: processing crawled candidate AWehenkel/UMNN@59118c14c57bd1ae066f3c84042ab01a90bcd17e
+2026-08-01 21:45:37,246 INFO alvance_github_crawler.pipeline: processing crawled candidate bowang-lab/Orthrus@8a26aebbc3883ab9d8b7efd773e1d913c0fbddaa
+2026-08-01 21:45:37,600 INFO alvance_github_crawler.pipeline: processing crawled candidate yondonfu/comfystream@c5697be077d70410a4a6085c1821bc92c45f3bd9
+2026-08-01 21:45:39,185 INFO alvance_github_crawler.pipeline: processing crawled candidate fluiddyn/transonic@c6096902fc42004462eb7c7f91503b224717fbd3
+2026-08-01 21:45:39,322 INFO alvance_github_crawler.pipeline: processing crawled candidate ai4co/routefinder@cc3ab078650e8db62c0562a60f421defe38d5ae3
+2026-08-01 21:45:39,812 INFO alvance_github_crawler.pipeline: processing crawled candidate martinez-zacharya/TRILL@30f235d357b8feeb99cb5fcb2382eda54b7d9b23
+2026-08-01 21:45:40,143 INFO alvance_github_crawler.pipeline: processing crawled candidate uezo/chatmemory@89c35d3b20646fa22cccd689ad580020e3f9f1a9
+2026-08-01 21:45:41,768 INFO alvance_github_crawler.pipeline: processing crawled candidate squishykid/solax@6c9e490b979279486ffec9fc0841b649704489d6
+2026-08-01 21:45:42,566 INFO alvance_github_crawler.pipeline: processing crawled candidate GoogleCloudPlatform/ran-agent@4aafe765960b4d72a58054b2ccb05443bb0c5e4b
+2026-08-01 21:45:42,641 INFO alvance_github_crawler.pipeline: processing crawled candidate chazzu/hass-animated-scenes@781933d35e9769231f6961bc61c416e941e5e9e3
+2026-08-01 21:45:43,622 INFO alvance_github_crawler.pipeline: processing crawled candidate alipay/YiJian-Community@e6bc563a5b596fc1cd5221744b3bb9f22e46acbf
+2026-08-01 21:45:44,690 INFO alvance_github_crawler.pipeline: processing crawled candidate rht/eigen-neovim@24539ffabceda889b3861b6792c37028dffb0438
+2026-08-01 21:45:44,738 INFO alvance_github_crawler.pipeline: processing crawled candidate vberlier/pytest-insta@b3698236a1784459786170433e0fc891cec2b7b5
+2026-08-01 21:45:45,863 INFO alvance_github_crawler.pipeline: processing crawled candidate eoda-dev/py-maplibregl@8cb05d3340e05efe338bb2edd573030d7f6c06c5
+2026-08-01 21:45:46,551 INFO alvance_github_crawler.pipeline: processing crawled candidate bbgouzi123/wx-dump-plus@0b408f015b6fbaf8c961255a2263c6fc4d7a2e70
+2026-08-01 21:45:46,764 INFO alvance_github_crawler.pipeline: processing crawled candidate ebiose-ai/ebiose@3b8ec8fbd32c702c4441550490ac5d81b05f31ae
+2026-08-01 21:45:48,495 INFO alvance_github_crawler.pipeline: processing crawled candidate pedroallenrevez/jisho-api@fbb69d47a96f8942635d6b7d070abff430a747fd
+2026-08-01 21:45:48,525 INFO alvance_github_crawler.pipeline: processing crawled candidate ScrapingBee/langchain-scrapingbee@d8a3898e188f6054cfc29020668f9b767d232506
+2026-08-01 21:45:49,354 INFO alvance_github_crawler.pipeline: processing crawled candidate cvlab-kaist/DiffTrack@670a83c185b26a04fdb83e0f32e3d8e629ba1d41
+2026-08-01 21:45:50,300 INFO alvance_github_crawler.pipeline: processing crawled candidate streamlit/llm-examples@7cf260745675e41f92e7436d3777aafdab9dad9f
+2026-08-01 21:45:50,373 INFO alvance_github_crawler.pipeline: processing crawled candidate mnwato/tradingview-scraper@6f4af279a9081937186a6a78f9ab4a63a43608bf
+2026-08-01 21:45:50,403 INFO alvance_github_crawler.pipeline: processing crawled candidate smat-dev/jinni@1a26e8f2da60b09cec3c814faedbf0870d06a724
+2026-08-01 21:45:50,507 INFO alvance_github_crawler.pipeline: processing crawled candidate florimondmanca/httpx-sse@ccba32e3f9b03d1c1c42b788fdae7ea59ebcb9b8
+2026-08-01 21:45:51,075 INFO alvance_github_crawler.pipeline: processing crawled candidate JayGarland/Autoreply_Sydneybot_Reddit@27e0bea007bf61138a2a9e96525f8c81ca021938
+2026-08-01 21:45:52,287 INFO alvance_github_crawler.pipeline: processing crawled candidate VermiIIi0n/fuckBookWalker@02d5a5bfaffe8a28de7c2804f54752abb711c65c
+{
+  "duplicate": 25562,
+  "error": 2,
+  "input_total": 25673,
+  "processed": 111,
+  "queued": 14,
+  "rejected": 95
+}
+[2026-08-01T21:48:12Z] stage=prescreen-67500 exit_code=0 duration_s=249

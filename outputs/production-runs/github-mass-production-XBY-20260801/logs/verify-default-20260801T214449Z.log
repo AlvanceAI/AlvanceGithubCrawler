@@ -1,0 +1,45 @@
+[2026-08-01T21:44:49Z] stage=verify-default-20260801T214449Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 21:44:51,518 INFO alvance_github_crawler.pending.verification: verifying pending candidate weaveworks/grafanalib key_slot=1
+2026-08-01 21:45:21,276 INFO alvance_github_crawler.pending.verification: verifying pending candidate nod-ai/AMD-SHARK-Studio key_slot=2
+2026-08-01 21:45:24,042 INFO alvance_github_crawler.pending.verification: verifying pending candidate CatchTheTornado/text-extract-api key_slot=3
+2026-08-01 21:45:24,049 INFO alvance_github_crawler.pending.verification: pending candidate weaveworks/grafanalib finished outcome=registered key_slot=1 processed=1 in_flight=2
+2026-08-01 21:45:27,161 INFO alvance_github_crawler.pending.verification: verifying pending candidate FocoosAI/focoos key_slot=1
+2026-08-01 21:45:35,318 INFO alvance_github_crawler.pending.verification: verifying pending candidate authomatic/authomatic key_slot=2
+2026-08-01 21:45:43,426 INFO alvance_github_crawler.pending.verification: verifying pending candidate hellock/icrawler key_slot=3
+2026-08-01 21:45:47,154 INFO alvance_github_crawler.pending.verification: pending candidate nod-ai/AMD-SHARK-Studio finished outcome=rejected key_slot=2 processed=2 in_flight=4
+2026-08-01 21:45:48,728 INFO alvance_github_crawler.pending.verification: verifying pending candidate aio-libs/aiopg key_slot=1
+2026-08-01 21:45:50,273 INFO alvance_github_crawler.pending.verification: verifying pending candidate RaspberryPiFoundation/picozero key_slot=2
+2026-08-01 21:45:50,296 INFO alvance_github_crawler.pending.verification: pending candidate authomatic/authomatic finished outcome=rejected key_slot=2 processed=3 in_flight=5
+2026-08-01 21:45:54,795 INFO alvance_github_crawler.pending.verification: verifying pending candidate Kozea/cairocffi key_slot=2
+2026-08-01 21:45:57,873 INFO alvance_github_crawler.pending.verification: pending candidate CatchTheTornado/text-extract-api finished outcome=rejected key_slot=3 processed=4 in_flight=5
+2026-08-01 21:45:59,699 INFO alvance_github_crawler.pending.verification: pending candidate FocoosAI/focoos finished outcome=rejected key_slot=1 processed=5 in_flight=4
+2026-08-01 21:46:04,161 INFO alvance_github_crawler.pending.verification: pending candidate aio-libs/aiopg finished outcome=rejected key_slot=1 processed=6 in_flight=3
+2026-08-01 21:46:05,222 INFO alvance_github_crawler.pending.verification: pending candidate hellock/icrawler finished outcome=rejected key_slot=3 processed=7 in_flight=2
+2026-08-01 21:46:06,843 INFO alvance_github_crawler.pending.verification: pending candidate RaspberryPiFoundation/picozero finished outcome=rejected key_slot=2 processed=8 in_flight=1
+2026-08-01 21:46:24,661 INFO alvance_github_crawler.pending.verification: verifying pending candidate yondonfu/comfystream key_slot=3
+2026-08-01 21:46:31,397 INFO alvance_github_crawler.pending.verification: verifying pending candidate baal-org/baal key_slot=1
+2026-08-01 21:46:43,561 INFO alvance_github_crawler.pending.verification: verifying pending candidate juanifioren/django-oidc-provider key_slot=2
+2026-08-01 21:46:43,701 INFO alvance_github_crawler.pending.verification: pending candidate Kozea/cairocffi finished outcome=registered key_slot=2 processed=9 in_flight=3
+2026-08-01 21:47:00,271 INFO alvance_github_crawler.pending.verification: verifying pending candidate sec-edgar/sec-edgar key_slot=3
+2026-08-01 21:47:06,411 INFO alvance_github_crawler.pending.verification: pending candidate juanifioren/django-oidc-provider finished outcome=rejected key_slot=2 processed=10 in_flight=3
+2026-08-01 21:47:26,095 INFO alvance_github_crawler.pending.verification: pending candidate baal-org/baal finished outcome=rejected key_slot=1 processed=11 in_flight=2
+2026-08-01 21:47:43,807 INFO alvance_github_crawler.pending.verification: pending candidate sec-edgar/sec-edgar finished outcome=rejected key_slot=3 processed=12 in_flight=1
+2026-08-01 21:48:12,575 INFO alvance_github_crawler.pending.verification: verifying pending candidate eoda-dev/py-maplibregl key_slot=1
+2026-08-01 21:48:45,726 INFO alvance_github_crawler.pending.verification: pending candidate eoda-dev/py-maplibregl finished outcome=rejected key_slot=1 processed=13 in_flight=1
+2026-08-01 21:49:21,167 INFO alvance_github_crawler.pending.verification: pending candidate yondonfu/comfystream finished outcome=rejected key_slot=3 processed=14 in_flight=0
+{
+  "key_slot_1_processed": 5,
+  "key_slot_1_registered": 1,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 5,
+  "key_slot_2_registered": 1,
+  "key_slot_2_rejected": 4,
+  "key_slot_3_processed": 4,
+  "key_slot_3_rejected": 4,
+  "processed": 14,
+  "registered": 2,
+  "rejected": 12,
+  "remaining": 0
+}
+[2026-08-01T21:49:22Z] stage=verify-default-20260801T214449Z exit_code=0 duration_s=273

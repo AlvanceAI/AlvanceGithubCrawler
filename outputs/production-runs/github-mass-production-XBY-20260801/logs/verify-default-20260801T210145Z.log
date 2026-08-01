@@ -1,0 +1,28 @@
+[2026-08-01T21:01:45Z] stage=verify-default-20260801T210145Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 21:01:47,914 INFO alvance_github_crawler.pending.verification: verifying pending candidate cheran-senthil/TLE key_slot=1
+2026-08-01 21:01:47,914 INFO alvance_github_crawler.pending.verification: verifying pending candidate sensedeep/dynamodb-onetable key_slot=2
+2026-08-01 21:01:47,915 INFO alvance_github_crawler.pending.verification: verifying pending candidate Krukov/cashews key_slot=3
+2026-08-01 21:02:01,227 INFO alvance_github_crawler.pending.verification: verifying pending candidate rsokl/MyGrad key_slot=1
+2026-08-01 21:02:02,637 INFO alvance_github_crawler.pending.verification: verifying pending candidate tehmaze/xmodem key_slot=2
+2026-08-01 21:02:03,898 INFO alvance_github_crawler.pending.verification: verifying pending candidate guillermo-navas-palencia/optbinning key_slot=3
+2026-08-01 21:02:06,257 INFO alvance_github_crawler.pending.verification: pending candidate Krukov/cashews finished outcome=rejected key_slot=3 processed=1 in_flight=5
+2026-08-01 21:02:18,887 INFO alvance_github_crawler.pending.verification: pending candidate tehmaze/xmodem finished outcome=rejected key_slot=2 processed=2 in_flight=4
+2026-08-01 21:02:20,083 INFO alvance_github_crawler.pending.verification: pending candidate cheran-senthil/TLE finished outcome=rejected key_slot=1 processed=3 in_flight=3
+2026-08-01 21:02:32,512 INFO alvance_github_crawler.pending.verification: pending candidate rsokl/MyGrad finished outcome=rejected key_slot=1 processed=4 in_flight=2
+2026-08-01 21:02:39,892 INFO alvance_github_crawler.pending.verification: pending candidate sensedeep/dynamodb-onetable finished outcome=rejected key_slot=2 processed=5 in_flight=1
+2026-08-01 21:02:49,501 INFO alvance_github_crawler.pending.verification: verifying pending candidate ssato/python-anyconfig key_slot=1
+2026-08-01 21:03:05,260 INFO alvance_github_crawler.pending.verification: pending candidate ssato/python-anyconfig finished outcome=rejected key_slot=1 processed=6 in_flight=1
+2026-08-01 21:03:12,506 INFO alvance_github_crawler.pending.verification: pending candidate guillermo-navas-palencia/optbinning finished outcome=rejected key_slot=3 processed=7 in_flight=0
+{
+  "key_slot_1_processed": 3,
+  "key_slot_1_rejected": 3,
+  "key_slot_2_processed": 2,
+  "key_slot_2_rejected": 2,
+  "key_slot_3_processed": 2,
+  "key_slot_3_rejected": 2,
+  "processed": 7,
+  "rejected": 7,
+  "remaining": 0
+}
+[2026-08-01T21:03:13Z] stage=verify-default-20260801T210145Z exit_code=0 duration_s=88

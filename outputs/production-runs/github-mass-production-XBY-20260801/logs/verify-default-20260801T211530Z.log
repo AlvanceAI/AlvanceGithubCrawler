@@ -1,0 +1,43 @@
+[2026-08-01T21:15:30Z] stage=verify-default-20260801T211530Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 21:15:33,075 INFO alvance_github_crawler.pending.verification: verifying pending candidate cdgriffith/Box key_slot=1
+2026-08-01 21:15:33,076 INFO alvance_github_crawler.pending.verification: verifying pending candidate darrenburns/textual-autocomplete key_slot=2
+2026-08-01 21:15:46,457 INFO alvance_github_crawler.pending.verification: verifying pending candidate messkan/rag-chunk key_slot=3
+2026-08-01 21:15:49,248 INFO alvance_github_crawler.pending.verification: verifying pending candidate google/fuzzbench key_slot=1
+2026-08-01 21:15:50,528 INFO alvance_github_crawler.pending.verification: verifying pending candidate lastmile-ai/mcp-agent key_slot=2
+2026-08-01 21:15:51,815 INFO alvance_github_crawler.pending.verification: verifying pending candidate gogcom/galaxy-integrations-python-api key_slot=3
+2026-08-01 21:15:52,724 INFO alvance_github_crawler.pending.verification: pending candidate darrenburns/textual-autocomplete finished outcome=rejected key_slot=2 processed=1 in_flight=5
+2026-08-01 21:16:01,103 INFO alvance_github_crawler.pending.verification: verifying pending candidate blockchain-etl/ethereum-etl key_slot=2
+2026-08-01 21:16:02,688 INFO alvance_github_crawler.pending.verification: pending candidate google/fuzzbench finished outcome=rejected key_slot=1 processed=2 in_flight=5
+2026-08-01 21:16:03,505 INFO alvance_github_crawler.pending.verification: pending candidate messkan/rag-chunk finished outcome=rejected key_slot=3 processed=3 in_flight=4
+2026-08-01 21:16:06,525 INFO alvance_github_crawler.pending.verification: verifying pending candidate rfeinman/pytorch-minimize key_slot=3
+2026-08-01 21:16:21,724 INFO alvance_github_crawler.pending.verification: pending candidate rfeinman/pytorch-minimize finished outcome=rejected key_slot=3 processed=4 in_flight=4
+2026-08-01 21:16:28,793 INFO alvance_github_crawler.pending.verification: verifying pending candidate devopshq/artifactory-cleanup key_slot=1
+2026-08-01 21:16:37,253 INFO alvance_github_crawler.pending.verification: pending candidate blockchain-etl/ethereum-etl finished outcome=rejected key_slot=2 processed=5 in_flight=4
+2026-08-01 21:16:39,525 INFO alvance_github_crawler.pending.verification: pending candidate gogcom/galaxy-integrations-python-api finished outcome=rejected key_slot=3 processed=6 in_flight=3
+2026-08-01 21:16:40,139 INFO alvance_github_crawler.pending.verification: pending candidate lastmile-ai/mcp-agent finished outcome=rejected key_slot=2 processed=7 in_flight=2
+2026-08-01 21:16:40,551 INFO alvance_github_crawler.pending.verification: verifying pending candidate inria-UFF/VRPSolverEasy key_slot=2
+2026-08-01 21:16:48,648 INFO alvance_github_crawler.pending.verification: verifying pending candidate Asifdotexe/DORA key_slot=3
+2026-08-01 21:16:54,060 INFO alvance_github_crawler.pending.verification: verifying pending candidate jonducrou/ha_visualiser key_slot=2
+2026-08-01 21:16:57,136 INFO alvance_github_crawler.pending.verification: pending candidate inria-UFF/VRPSolverEasy finished outcome=rejected key_slot=2 processed=8 in_flight=4
+2026-08-01 21:17:01,658 INFO alvance_github_crawler.pending.verification: verifying pending candidate cloudify-cosmo/wagon key_slot=3
+2026-08-01 21:17:04,838 INFO alvance_github_crawler.pending.verification: pending candidate devopshq/artifactory-cleanup finished outcome=registered key_slot=1 processed=9 in_flight=4
+2026-08-01 21:17:05,643 INFO alvance_github_crawler.pending.verification: pending candidate cdgriffith/Box finished outcome=registered key_slot=1 processed=10 in_flight=3
+2026-08-01 21:17:15,800 INFO alvance_github_crawler.pending.verification: pending candidate cloudify-cosmo/wagon finished outcome=rejected key_slot=3 processed=11 in_flight=2
+2026-08-01 21:19:31,316 INFO alvance_github_crawler.pending.verification: pending candidate Asifdotexe/DORA finished outcome=registered key_slot=3 processed=12 in_flight=1
+2026-08-01 21:19:38,439 INFO alvance_github_crawler.pending.verification: pending candidate jonducrou/ha_visualiser finished outcome=rejected key_slot=2 processed=13 in_flight=0
+{
+  "key_slot_1_processed": 3,
+  "key_slot_1_registered": 2,
+  "key_slot_1_rejected": 1,
+  "key_slot_2_processed": 5,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 5,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 4,
+  "processed": 13,
+  "registered": 3,
+  "rejected": 10,
+  "remaining": 0
+}
+[2026-08-01T21:19:39Z] stage=verify-default-20260801T211530Z exit_code=0 duration_s=249
