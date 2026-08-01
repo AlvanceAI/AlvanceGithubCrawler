@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "grafanalib-5833b7-a79ef6ea"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/weaveworks/grafanalib"
+base_commit = "a79ef6eaf143ae1fb0fedb8f655a2e9aa7c1c5d1"
+source_tree = "0166933b232b9b34cd50a16c7f2b05de4f21a71e"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0b1dfa6acc824d9771e1a9487246bc0a16711257470a8836ffd75800fbf22cb0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-grafanalib-5833b7-a79ef6ea-v2-env-0b1dfa6a"
+template_id = "mjylt86li0q5lvb24sx2"
+source_template_alias = "l9ork5b1gvsttc0uorge"
+source_template_id = "l9ork5b1gvsttc0uorge"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

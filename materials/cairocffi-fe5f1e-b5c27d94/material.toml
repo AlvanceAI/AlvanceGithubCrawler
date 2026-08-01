@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cairocffi-fe5f1e-b5c27d94"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Kozea/cairocffi"
+base_commit = "b5c27d9477bc2aa1a8fbb7a2332c7ae8b6aadfcc"
+source_tree = "0cfb4535d1d2fff9fd3cf40c5b62fc673e6abd69"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "23a1b86e53ac53faad059d6008729170b2c9d83990459e9adef559c226269f3c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cairocffi-fe5f1e-b5c27d94-v2-env-23a1b86e"
+template_id = "e57rsdb9hjv5spyk92zq"
+source_template_alias = "76d3ol4nha14cbpt4z1e"
+source_template_id = "76d3ol4nha14cbpt4z1e"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
