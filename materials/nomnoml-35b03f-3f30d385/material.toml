@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "nomnoml-35b03f-3f30d385"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/skanaar/nomnoml"
+base_commit = "3f30d38556e93b89231d7c11ef7ef93faf525d90"
+source_tree = "6bc1098ccab0579f96c2b0b4e0cd450415bafe25"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "dd0974f239db215c244e398ef6ddb5b6377bcfd7249a2fdbcf145edbd640c87e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-nomnoml-35b03f-3f30d385-v2-env-dd0974f2"
+template_id = "1waoilyidei3euo6njzo"
+source_template_alias = "fydklndgms7o5jedhobs"
+source_template_id = "fydklndgms7o5jedhobs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
