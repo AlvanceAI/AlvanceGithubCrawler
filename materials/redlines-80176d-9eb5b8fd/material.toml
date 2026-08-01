@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "redlines-80176d-9eb5b8fd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/houfu/redlines"
+base_commit = "9eb5b8fdc1e57adb729093e632c281850eb860cc"
+source_tree = "16b533e94c830aff6f9e092da776cc936802aa35"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d145b34284bb3c01ab890e0fd75ce3c73bc1368b6203491f8df83d78e082d85d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-redlines-80176d-9eb5b8fd-v2-env-d145b342"
+template_id = "u6939kusvjebvc3a7l7r"
+source_template_alias = "7s2jvm8j35g61h0ekus9"
+source_template_id = "7s2jvm8j35g61h0ekus9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

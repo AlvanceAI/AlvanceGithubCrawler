@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sgqlc-344e96-d252fc62"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/profusion/sgqlc"
+base_commit = "d252fc626c703d0ca510e74b130bbd0cf86da6fc"
+source_tree = "3d028f470628338af821f2c5dfe0bdbee054fd27"
+default_branch = "master"
+license = "ISC"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c93b7408748985c3954bd9cf26e91742b4e74ea0ab5c263e27103db860b7d5c0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sgqlc-344e96-d252fc62-v2-env-c93b7408"
+template_id = "1lmbvie34u7yruco4zi2"
+source_template_alias = "1n1j2x0wfuhciig8je1e"
+source_template_id = "1n1j2x0wfuhciig8je1e"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

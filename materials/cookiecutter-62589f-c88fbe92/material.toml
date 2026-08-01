@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "cookiecutter-62589f-c88fbe92"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cookiecutter/cookiecutter"
+base_commit = "c88fbe921c97c58b65f1883ba90a0ab53cc91b34"
+source_tree = "8148a3ddca11aa52fd5a4f3ed0127c086508a08f"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "deb901ae13bfea0ed3cdd032f31092ea3fad49e118f4c3479e23328217669afd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-cookiecutter-62589f-c88fbe92-v2-env-deb901ae"
+template_id = "ts2tf4lsq3xl13urj6ku"
+source_template_alias = "d8cu5xfb003uv042lff6"
+source_template_id = "d8cu5xfb003uv042lff6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

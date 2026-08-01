@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tilesets-cli-384bfd-fdb4f26f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mapbox/tilesets-cli"
+base_commit = "fdb4f26f38c836ed25eec16dea35a9441b0ecd97"
+source_tree = "2bb73233eb57f582e54b813cad0047b24cd42416"
+default_branch = "master"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "be287c5f064414903f58e60058ffd0db21c23bae9f6170613ee085c07ce87330"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tilesets-cli-384bfd-fdb4f26f-v2-env-be287c5f"
+template_id = "9mo555rdk4u22fz6vnb6"
+source_template_alias = "kqqv6njp1opaoos49gqa"
+source_template_id = "kqqv6njp1opaoos49gqa"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

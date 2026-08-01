@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "hackingbuddygpt-8fed7a-d0ff901f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ipa-lab/hackingBuddyGPT"
+base_commit = "d0ff901fb14ebc67ed91a67232bc0a923957fcd0"
+source_tree = "3b481ed24183b461e25f7662be0d9d1a4032af5a"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "31d3124a303a70960ac2048c1903d4cbcc0341c39698af453ac4e04af750bc4b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-hackingbuddygpt-8fed7a-d0ff901f-v2-env-31d3124a"
+template_id = "iz1ntrmv38dmwicoyr9t"
+source_template_alias = "sia11x4ae1sjny3c39cf"
+source_template_id = "sia11x4ae1sjny3c39cf"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
