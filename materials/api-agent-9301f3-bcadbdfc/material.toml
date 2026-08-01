@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "api-agent-9301f3-bcadbdfc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/agoda-com/api-agent"
+base_commit = "bcadbdfce78d10eb69ed9fd7cb821c965c7083b7"
+source_tree = "7791693d0c12ab67e86e8a54ba8ae0f1891355e4"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1d5af472946f7fbc02526d283ad35e285b9de67ad6874b5102271295d965ecab"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-api-agent-9301f3-bcadbdfc-v2-env-1d5af472"
+template_id = "toufglf1bkgvtr3gsbzb"
+source_template_alias = "vea5c9otiyko017b3mxm"
+source_template_id = "vea5c9otiyko017b3mxm"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

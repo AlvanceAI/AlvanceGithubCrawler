@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "git-revise-1244bf-a5bdbe42"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mystor/git-revise"
+base_commit = "a5bdbe420521a7784dd16c8f22b374b2f1d2d167"
+source_tree = "0a96326a7db792c609d498457e80e599c97dbabf"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "62cd41ebd9b4b2b689ebdd27ce7470ab9f63bc9f7ebc775b08cdfba8dd555569"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-git-revise-1244bf-a5bdbe42-v2-env-62cd41eb"
+template_id = "72v7k4v5wuzj7yfim4du"
+source_template_alias = "flzs5ebp8wvgkh4ck8jo"
+source_template_id = "flzs5ebp8wvgkh4ck8jo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

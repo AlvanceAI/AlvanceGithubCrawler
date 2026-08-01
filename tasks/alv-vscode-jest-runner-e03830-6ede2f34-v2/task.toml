@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-vscode-jest-runner-e03830-6ede2f34-v2"
+description = "Rebuildable repository task for firsttris/vscode-jest-runner"
+authors = []
+keywords = ["typescript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-vscode-jest-runner-e03830-6ede2f34-v2"
+material_id = "vscode-jest-runner-e03830-6ede2f34"
+status = "direction"
+language = "typescript"
+repository_url = "https://github.com/firsttris/vscode-jest-runner"
+base_commit_hash = "6ede2f34a9e838af53362bfad1a027f580a3f748"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

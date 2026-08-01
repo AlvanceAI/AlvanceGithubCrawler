@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "monitorcontrol-80bbef-dc57ebc7"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/newAM/monitorcontrol"
+base_commit = "dc57ebc7a6003389e2161766ee67b07195e0a713"
+source_tree = "63add8023b71d215cb57682a1c709f4cdf346424"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1c88b67171a131ad699a4450a1a69f5028b88961e892c7c793cd096b0dc6ee03"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-monitorcontrol-80bbef-dc57ebc7-v2-env-1c88b671"
+template_id = "zflymt12z9u5dnd58ywj"
+source_template_alias = "56e8zhk4knvvv40emol7"
+source_template_id = "56e8zhk4knvvv40emol7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
