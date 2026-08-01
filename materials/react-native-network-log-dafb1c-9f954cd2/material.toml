@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-native-network-log-dafb1c-9f954cd2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alexbrazier/react-native-network-logger"
+base_commit = "9f954cd29f2cc8f96de5ab9dcc0dd77c4446b623"
+source_tree = "99c6418ec034bf4216d16281678a24d2889db7cd"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2226137436996c9139de66876b39574ea4715da4273d0f177232bfe400e8d3a4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-native-network-dafb1c-9f954cd2-v2-env-22261374"
+template_id = "ipqi6j3ugtnbvf1sa5ih"
+source_template_alias = "c47vj60au6yeccfuzj6c"
+source_template_id = "c47vj60au6yeccfuzj6c"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

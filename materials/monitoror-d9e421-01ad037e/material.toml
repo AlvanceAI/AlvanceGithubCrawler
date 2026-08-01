@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "monitoror-d9e421-01ad037e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/monitoror/monitoror"
+base_commit = "01ad037ec66cee85bd3efb766091e073c9c53035"
+source_tree = "92b1d687ac65e5ba03710d7c05aa652fe7293f74"
+default_branch = "develop"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.23.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d3f931b47cb3d3701ed472fed6d2eceb43c2ffe873de1d0f474c290bd81f92d1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-monitoror-d9e421-01ad037e-v2-env-d3f931b4"
+template_id = "g1stpk19sw509v5v8z9w"
+source_template_alias = "fgtsw80l7yuxytvb9ouh"
+source_template_id = "fgtsw80l7yuxytvb9ouh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
