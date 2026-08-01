@@ -4507,3 +4507,12 @@ command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/git
   "requeued": 0
 }
 [2026-08-01T00:39:32Z] stage=requeue-go-runtime-v4 exit_code=0 duration_s=3
+[2026-08-01T00:40:22Z] stage=requeue-go-runtime-v4 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason infra_error --failure-contains toolchain\ not\ available --requeue-marker go-runtime-v4 --verbose
+{
+  "already_registered": 17,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-08-01T00:40:25Z] stage=requeue-go-runtime-v4 exit_code=0 duration_s=3
