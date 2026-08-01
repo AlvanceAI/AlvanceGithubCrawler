@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "do-markdownit-3df477-1da71a7d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/digitalocean/do-markdownit"
+base_commit = "1da71a7dc254851043dc0060b362a1b6d72f01e7"
+source_tree = "4d687511f7b9959fa5c57fa1f27369cffca767ec"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8a71e5b0bcb7672cd5759c8d90fae9f1ed758b84f926664e54ab0669672b0940"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-do-markdownit-3df477-1da71a7d-v2-env-8a71e5b0"
+template_id = "78021g28cxbdgx2s7i8d"
+source_template_alias = "wvegea5cwruizs0goru0"
+source_template_id = "wvegea5cwruizs0goru0"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "next-discussion-platform-efd2cb-9d0e3574"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mbeps/next_discussion_platform"
+base_commit = "9d0e3574f206a9576b94f3b2aa2527ab419d0390"
+source_tree = "62ab49581016cf376a84a424a607dbf6fa8ec86d"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e048e4bd0a84dc9ff3e66453263150197ab806fdd328d6ed6c47ac946860f036"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-next-discussion-plat-efd2cb-9d0e3574-v2-env-e048e4bd"
+template_id = "k4vazymb0vafbausat3d"
+source_template_alias = "kr53cavd59n3qjwc2zjn"
+source_template_id = "kr53cavd59n3qjwc2zjn"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "numpy-groupies-d7d46d-8f501311"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/ml31415/numpy-groupies"
+base_commit = "8f50131102d7cff0a5376c10c4ec8e54c577be5e"
+source_tree = "36b4bec313bcd213622d625eeb024ad7d2b3c4d3"
+default_branch = "master"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8b356c566eccef65da92c2291d05e04ba93be63d9ad9d69df1dca549f4052dc4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-numpy-groupies-d7d46d-8f501311-v2-env-8b356c56"
+template_id = "29ykgyc1oixbohdxe710"
+source_template_alias = "8kx2s279asherjf0fnmr"
+source_template_id = "8kx2s279asherjf0fnmr"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

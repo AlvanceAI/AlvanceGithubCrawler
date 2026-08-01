@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "three-bvh-csg-d0492b-26729f52"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gkjohnson/three-bvh-csg"
+base_commit = "26729f5260e010440f00b4e3130efde96661ce2d"
+source_tree = "c6c8b1217513729345733e8f1f0faa84cea0bdd0"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "358321a99d5b8325aa42cca42aa14f35b4921484b1311e0fb63bf49750076b41"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-three-bvh-csg-d0492b-26729f52-v2-env-358321a9"
+template_id = "tx9m63e6jcefjscfe0sm"
+source_template_alias = "7tp62iqoq9o0j1e81zsx"
+source_template_id = "7tp62iqoq9o0j1e81zsx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

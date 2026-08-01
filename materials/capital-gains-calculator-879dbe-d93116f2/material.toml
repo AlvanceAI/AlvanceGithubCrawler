@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "capital-gains-calculator-879dbe-d93116f2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/KapJI/capital-gains-calculator"
+base_commit = "d93116f2347cefa4b1d7f61ee35d629f786f6354"
+source_tree = "54f7cc4a07e9a3f3640487f49a29faee50c31c3b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b2b37eee56fa43f947f3acea28c2595b2291b253ddb66b4f0f33bb249295022d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-capital-gains-calcul-879dbe-d93116f2-v2-env-b2b37eee"
+template_id = "3gj3u0neazapv7flvx62"
+source_template_alias = "tmk7bw9hexsmnpo68ttu"
+source_template_id = "tmk7bw9hexsmnpo68ttu"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-dnd-treeview-44c954-d3163ab2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/minop1205/react-dnd-treeview"
+base_commit = "d3163ab29d01a8e35d57a8da5ecf945657360189"
+source_tree = "e17d312babb3405b14e9e41bdda90027682ceeb8"
+default_branch = "next"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "a4e3a115598ce0bd7f83d135cba8e370983c0e1bb7f9e765fb369bc6e5f3d44b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-dnd-treeview-44c954-d3163ab2-v2-env-a4e3a115"
+template_id = "3lggli1v1w99pz1spmrd"
+source_template_alias = "gfpoj8no6xzb4euxmpiq"
+source_template_id = "gfpoj8no6xzb4euxmpiq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

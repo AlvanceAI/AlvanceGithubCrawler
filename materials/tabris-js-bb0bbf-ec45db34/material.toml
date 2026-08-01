@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tabris-js-bb0bbf-ec45db34"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/eclipsesource/tabris-js"
+base_commit = "ec45db341b137e964bfd69aa6a1c49e6dd0780ea"
+source_tree = "da7bebaf973492c341cf39ac901012aab2dbec30"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3ef088bc4b56abc5259f6feec9bcfe2bff111014b6d7d95d7c9afda638654dda"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tabris-js-bb0bbf-ec45db34-v2-env-3ef088bc"
+template_id = "bo0dwrrru4tdkbvedy4l"
+source_template_alias = "a9ladvt2ro5cu434igea"
+source_template_id = "a9ladvt2ro5cu434igea"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

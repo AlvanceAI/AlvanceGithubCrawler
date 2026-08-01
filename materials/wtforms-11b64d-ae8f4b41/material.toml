@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wtforms-11b64d-ae8f4b41"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pallets-eco/wtforms"
+base_commit = "ae8f4b41332a5a0fe6e8a14839487c476c175ba7"
+source_tree = "e89157a515512e44c15c176bba6486aab0b23a74"
+default_branch = "main"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "7d4c33e9f943f3e1b32644d9c8380ccbb6c56eb1f13034fc6d59fa8483a091c5"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wtforms-11b64d-ae8f4b41-v2-env-7d4c33e9"
+template_id = "t9hea36q5ezntgv5n6nq"
+source_template_alias = "b0m9915au6lippsnv9u9"
+source_template_id = "b0m9915au6lippsnv9u9"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

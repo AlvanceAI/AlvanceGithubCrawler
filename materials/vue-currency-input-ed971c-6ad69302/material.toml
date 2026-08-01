@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "vue-currency-input-ed971c-6ad69302"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/dm4t2/vue-currency-input"
+base_commit = "6ad69302c8517e602e4d5ed4a2b9026a0d7bb08d"
+source_tree = "191e797ba764074ca0cd1f598da9ee8ec81740a3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cd4b066e36c5622f2e80eb506f61d8d9d62dc012db1921a014e93f75cb55ffb2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-vue-currency-input-ed971c-6ad69302-v2-env-cd4b066e"
+template_id = "zfo9t1vc5lwnjulm99p7"
+source_template_alias = "p7iz65hcqw8puv4ocxp4"
+source_template_id = "p7iz65hcqw8puv4ocxp4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

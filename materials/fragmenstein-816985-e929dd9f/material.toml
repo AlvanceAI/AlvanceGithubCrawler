@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "fragmenstein-816985-e929dd9f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/matteoferla/Fragmenstein"
+base_commit = "e929dd9fed1b41224b6ce8521a9362d106c4915f"
+source_tree = "b018fe1527742684ba4c458618c3c59cfb57afe9"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "06a9c854cf36c113f13203d42c703023664f31813ef9eeab2eb7d62e777149b1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-fragmenstein-816985-e929dd9f-v2-env-06a9c854"
+template_id = "qq78gar7j73swdym346s"
+source_template_alias = "9zqtx8lb3dzv7mxmppx7"
+source_template_id = "9zqtx8lb3dzv7mxmppx7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

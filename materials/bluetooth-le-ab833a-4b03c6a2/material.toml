@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bluetooth-le-ab833a-4b03c6a2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/capacitor-community/bluetooth-le"
+base_commit = "4b03c6a2f4381e2a4fd119ed2cb4e9c8d96192f2"
+source_tree = "d6d4a1167b812702b85ff175f573d9caa5d7da54"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "8e7a300e8cbbc0756014830f05f8396fbc180bb041754b8d05bf2553a6a0d403"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bluetooth-le-ab833a-4b03c6a2-v2-env-8e7a300e"
+template_id = "y6jcc7zu08qu3x0ikhrl"
+source_template_alias = "jl30tnx3zvy762pqlgjj"
+source_template_id = "jl30tnx3zvy762pqlgjj"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

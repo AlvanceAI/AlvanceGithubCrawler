@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "teams-mcp-2b0555-e635dbfc"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/floriscornel/teams-mcp"
+base_commit = "e635dbfcf64dcebb62ffc64e4d56d6c83f779791"
+source_tree = "49f575df6a3de148cdc585a242a3e8f5e1024930"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ebe2a1fcd0db63f39e35bce9e957c03f36016e894763e6526502a841f394a789"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-teams-mcp-2b0555-e635dbfc-v2-env-ebe2a1fc"
+template_id = "aqklye3lnxeub3wqwp2y"
+source_template_alias = "fcqjqumsownmjci6jv9i"
+source_template_id = "fcqjqumsownmjci6jv9i"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

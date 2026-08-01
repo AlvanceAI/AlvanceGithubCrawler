@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "xray-vpn-oneclick-8e1d21-7cb742b2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/DanOps-1/Xray-VPN-OneClick"
+base_commit = "7cb742b27561de7e397ca43f9c74e4f514dfbe07"
+source_tree = "9a1f7a3be2e2b5d526db2f7afe121b8bf0f54728"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "512a8e65bad2198681a42c14cc19dcacdc5425d306fc199872a8cb34f2a57a12"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-xray-vpn-oneclick-8e1d21-7cb742b2-v2-env-512a8e65"
+template_id = "jugsielyb3htxanbuia6"
+source_template_alias = "ofozkjqg1804gpfggx8o"
+source_template_id = "ofozkjqg1804gpfggx8o"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

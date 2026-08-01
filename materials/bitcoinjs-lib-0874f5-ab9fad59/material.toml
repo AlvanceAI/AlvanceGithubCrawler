@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "bitcoinjs-lib-0874f5-ab9fad59"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bitcoinjs/bitcoinjs-lib"
+base_commit = "ab9fad5978bc1f4fb6542d1cde903d4427c3344e"
+source_tree = "9f0e4145abbef9d40d89020480545b460070c392"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "0b7a3527032e4dc1812d21ac5ffab911d96a82aa8e34bc8af424578029c5420d"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-bitcoinjs-lib-0874f5-ab9fad59-v2-env-0b7a3527"
+template_id = "xje60fxc0ubehw03mub8"
+source_template_alias = "t04hjahadnsxqx9yaqcl"
+source_template_id = "t04hjahadnsxqx9yaqcl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

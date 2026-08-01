@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-three-bvh-csg-d0492b-26729f52-v2"
+description = "Rebuildable repository task for gkjohnson/three-bvh-csg"
+authors = []
+keywords = ["javascript", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-three-bvh-csg-d0492b-26729f52-v2"
+material_id = "three-bvh-csg-d0492b-26729f52"
+status = "direction"
+language = "javascript"
+repository_url = "https://github.com/gkjohnson/three-bvh-csg"
+base_commit_hash = "26729f5260e010440f00b4e3130efde96661ce2d"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/root"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

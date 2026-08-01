@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "jsondiff-98fc5e-6a665f12"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/xlwings/jsondiff"
+base_commit = "6a665f12e1c4bc4c8291b58dc3f27ac03841133f"
+source_tree = "d39c32e11d77e0bb4f95dd9b7749c0de6498a0a3"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b4cd74ed90505e5436dd1ccc5a143436cdaa0e9b7cbc06a08a46b8034e65a6ab"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-jsondiff-98fc5e-6a665f12-v2-env-b4cd74ed"
+template_id = "tdns83bsyiy37mx0xcpu"
+source_template_alias = "gf1bf4j2puokl3bl04yk"
+source_template_id = "gf1bf4j2puokl3bl04yk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
