@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wooey-d93690-d1db8bc5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/wooey/Wooey"
+base_commit = "d1db8bc506d266cf687897b9585c2614605468d6"
+source_tree = "135e091d62bcc70e3a3364d7892d7ce691fbb192"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3d2a63c4b3d1c33b8ee4bf2d718c75a1339af9a6c059a1e600fa937bc7cf99b6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wooey-d93690-d1db8bc5-v2-env-3d2a63c4"
+template_id = "0piluiua9hgejbilkfc3"
+source_template_alias = "nnd4ta70uumy3v20q3x3"
+source_template_id = "nnd4ta70uumy3v20q3x3"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

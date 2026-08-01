@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "huami-token-f3de3a-1b326585"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/argrento/huami-token"
+base_commit = "1b32658519d1f35cd3c4345bb9ced3ba6881bb56"
+source_tree = "51299b4581249688e1a019112000791b035ba93e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1297cc51ed8761c3851e8ad5c63badc515b1d074150df40be21d22dab23131db"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-huami-token-f3de3a-1b326585-v2-env-1297cc51"
+template_id = "u0olacm1q1ooga6xakwu"
+source_template_alias = "8384m7q2scsyiw856el6"
+source_template_id = "8384m7q2scsyiw856el6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
