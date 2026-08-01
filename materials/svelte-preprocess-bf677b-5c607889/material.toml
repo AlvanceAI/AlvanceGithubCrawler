@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "svelte-preprocess-bf677b-5c607889"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sveltejs/svelte-preprocess"
+base_commit = "5c607889f1b09e48fce8a400d16a123c6c25ef56"
+source_tree = "41489cded72eba22faf3e174cb37bb96758debbc"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c7ae70916accded598b750e9f11547659cbff1a3baa6c0010f26aaf8e2c9b3b6"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-svelte-preprocess-bf677b-5c607889-v2-env-c7ae7091"
+template_id = "m9qej7wb6v127pkbw07u"
+source_template_alias = "ca5divqnvy90zk1auqo6"
+source_template_id = "ca5divqnvy90zk1auqo6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

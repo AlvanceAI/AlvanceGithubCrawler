@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "flask-monitoringdashboar-1bfbb1-2a071705"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/flask-dashboard/Flask-MonitoringDashboard"
+base_commit = "2a07170504d21228e6a42ed42d389bd67634ffeb"
+source_tree = "a471fc06f0501f042ef670f40ba1d9330421f4a0"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "07b816fbac3df4910af64615458cbb0acf258985feeecb328355d682f04bcbdd"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-flask-monitoringdash-1bfbb1-2a071705-v2-env-07b816fb"
+template_id = "0x6iaj7muor1beu6qfsl"
+source_template_alias = "ctch3c4g7ckxzu7zqceq"
+source_template_id = "ctch3c4g7ckxzu7zqceq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

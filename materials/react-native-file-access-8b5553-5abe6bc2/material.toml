@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-native-file-access-8b5553-5abe6bc2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alpha0010/react-native-file-access"
+base_commit = "5abe6bc24581a12f173f745226e4afe73e482d5d"
+source_tree = "b0c5a57a97a27bbe1e58bd1fcfd758a4721f6c22"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4b348ccc1587b3e43d2e4d0332690555f116acd552f0cc47703b26691f965b66"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-native-file-ac-8b5553-5abe6bc2-v2-env-4b348ccc"
+template_id = "9e4smwzq53p8x76jlowo"
+source_template_alias = "oftv4mmsipw6kcp9cmc2"
+source_template_id = "oftv4mmsipw6kcp9cmc2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
