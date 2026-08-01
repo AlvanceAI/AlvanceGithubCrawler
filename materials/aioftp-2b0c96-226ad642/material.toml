@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aioftp-2b0c96-226ad642"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/aio-libs/aioftp"
+base_commit = "226ad64264c5dd7e93a56fe92544b7cf0cc5da50"
+source_tree = "89b5fdcfee7334d51b8230b1830b65c71db5a67a"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "96f4fa043a39566718e64ee63fd335abb48d5a6230c6fafe624ed6a37fad9454"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aioftp-2b0c96-226ad642-v2-env-96f4fa04"
+template_id = "fivfewcrer6hiysg92jg"
+source_template_alias = "k8r4me6ie5fq97fsg0d2"
+source_template_id = "k8r4me6ie5fq97fsg0d2"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

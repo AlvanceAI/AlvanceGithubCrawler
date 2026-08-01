@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sayn-866904-f6e2da51"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/173TECH/sayn"
+base_commit = "f6e2da51cfc9e110bd22a20f3ba10f147e0771b3"
+source_tree = "759237a2e3cc6b196817fc8855a06cfdaf796970"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f1b8dab5e027382d55c70c2909169526cbac41f71d9f675b8f0fce47b1e35d94"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sayn-866904-f6e2da51-v2-env-f1b8dab5"
+template_id = "5750zx63cqn0w8isjj8p"
+source_template_alias = "mcl37u5nhhj8fnkiqnpo"
+source_template_id = "mcl37u5nhhj8fnkiqnpo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

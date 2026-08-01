@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "click-option-group-ed3a7a-11c161d0"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/click-contrib/click-option-group"
+base_commit = "11c161d0f66768510f45459a38e673a00b1918d8"
+source_tree = "2a1638472c6050a4fda4db86304f85ac3bac07bd"
+default_branch = "master"
+license = "BSD-3-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "32ed66fb0df3ad311b933701cfdd2b31bb079151d78255d4d93aa0e186382a5e"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-click-option-group-ed3a7a-11c161d0-v2-env-32ed66fb"
+template_id = "5n7iog7jqnpm79o8ft42"
+source_template_alias = "agndts5hq53ckp46rog7"
+source_template_id = "agndts5hq53ckp46rog7"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

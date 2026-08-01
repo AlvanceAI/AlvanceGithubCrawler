@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "greenery-e6b220-da3cb209"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/qntm/greenery"
+base_commit = "da3cb2092178357bb089de842a20ec2a8053b889"
+source_tree = "7b4e1be0fc1a374e42b44f7a0026af8d2f73d2a4"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f20da7a0993abb12551051a3a873e2d4a8082e15cf2127b2944d2c349618e4ef"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-greenery-e6b220-da3cb209-v2-env-f20da7a0"
+template_id = "gfr1v4yfvg3sexrv62k3"
+source_template_alias = "yxrx3pnhmpf5uizwcd44"
+source_template_id = "yxrx3pnhmpf5uizwcd44"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
