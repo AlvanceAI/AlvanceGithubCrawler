@@ -1,0 +1,45 @@
+[2026-08-01T06:22:31Z] stage=verify-escalated-20260801T062231Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 06:22:33,942 INFO alvance_github_crawler.pending.verification: verifying pending candidate mwaskom/seaborn key_slot=1
+2026-08-01 06:22:33,943 INFO alvance_github_crawler.pending.verification: verifying pending candidate apideck-libraries/portman key_slot=2
+2026-08-01 06:22:33,944 INFO alvance_github_crawler.pending.verification: verifying pending candidate sveltejs/svelte-preprocess key_slot=3
+2026-08-01 06:22:33,945 INFO alvance_github_crawler.pending.verification: verifying pending candidate flask-dashboard/Flask-MonitoringDashboard key_slot=1
+2026-08-01 06:22:33,946 INFO alvance_github_crawler.pending.verification: verifying pending candidate patrick-kidger/lineax key_slot=2
+2026-08-01 06:22:33,948 INFO alvance_github_crawler.pending.verification: verifying pending candidate vercel/edge-runtime key_slot=3
+2026-08-01 06:22:33,952 INFO alvance_github_crawler.pending.verification: verifying pending candidate nVuln/homebridge-lg-thinq key_slot=1
+2026-08-01 06:22:33,956 INFO alvance_github_crawler.pending.verification: verifying pending candidate nuxt-modules/prismic key_slot=2
+2026-08-01 06:22:33,962 INFO alvance_github_crawler.pending.verification: verifying pending candidate jtrackingai/analytics-tracking-automation key_slot=3
+2026-08-01 06:22:33,966 INFO alvance_github_crawler.pending.verification: verifying pending candidate hivesolutions/netius key_slot=1
+2026-08-01 06:22:33,969 INFO alvance_github_crawler.pending.verification: verifying pending candidate patrick-kidger/diffrax key_slot=2
+2026-08-01 06:22:33,971 INFO alvance_github_crawler.pending.verification: verifying pending candidate wybert/earth-agent-chrome-ext key_slot=3
+2026-08-01 06:22:33,974 INFO alvance_github_crawler.pending.verification: verifying pending candidate alpha0010/react-native-file-access key_slot=1
+2026-08-01 06:22:33,977 INFO alvance_github_crawler.pending.verification: verifying pending candidate blackflux/object-scan key_slot=2
+2026-08-01 06:23:07,976 INFO alvance_github_crawler.pending.verification: pending candidate nuxt-modules/prismic finished outcome=rejected key_slot=2 processed=1 in_flight=13
+2026-08-01 06:23:56,233 INFO alvance_github_crawler.pending.verification: pending candidate alpha0010/react-native-file-access finished outcome=registered key_slot=1 processed=2 in_flight=12
+2026-08-01 06:24:16,734 INFO alvance_github_crawler.pending.verification: pending candidate nVuln/homebridge-lg-thinq finished outcome=rejected key_slot=1 processed=3 in_flight=11
+2026-08-01 06:24:28,970 INFO alvance_github_crawler.pending.verification: pending candidate vercel/edge-runtime finished outcome=rejected key_slot=3 processed=4 in_flight=10
+2026-08-01 06:24:49,068 INFO alvance_github_crawler.pending.verification: pending candidate sveltejs/svelte-preprocess finished outcome=registered key_slot=3 processed=5 in_flight=9
+2026-08-01 06:25:26,937 INFO alvance_github_crawler.pending.verification: pending candidate wybert/earth-agent-chrome-ext finished outcome=registered key_slot=3 processed=6 in_flight=8
+2026-08-01 06:26:07,156 INFO alvance_github_crawler.pending.verification: pending candidate flask-dashboard/Flask-MonitoringDashboard finished outcome=registered key_slot=1 processed=7 in_flight=7
+2026-08-01 06:29:15,291 INFO alvance_github_crawler.pending.verification: pending candidate apideck-libraries/portman finished outcome=rejected key_slot=2 processed=8 in_flight=6
+2026-08-01 06:31:57,297 INFO alvance_github_crawler.pending.verification: pending candidate mwaskom/seaborn finished outcome=rejected key_slot=1 processed=9 in_flight=5
+2026-08-01 06:32:54,553 INFO alvance_github_crawler.pending.verification: pending candidate hivesolutions/netius finished outcome=rejected key_slot=1 processed=10 in_flight=4
+2026-08-01 06:33:12,212 INFO alvance_github_crawler.pending.verification: pending candidate blackflux/object-scan finished outcome=rejected key_slot=2 processed=11 in_flight=3
+2026-08-01 06:33:12,555 INFO alvance_github_crawler.pending.verification: pending candidate jtrackingai/analytics-tracking-automation finished outcome=rejected key_slot=3 processed=12 in_flight=2
+2026-08-01 06:33:16,002 INFO alvance_github_crawler.pending.verification: pending candidate patrick-kidger/lineax finished outcome=rejected key_slot=2 processed=13 in_flight=1
+2026-08-01 06:33:18,497 INFO alvance_github_crawler.pending.verification: pending candidate patrick-kidger/diffrax finished outcome=rejected key_slot=2 processed=14 in_flight=0
+{
+  "key_slot_1_processed": 5,
+  "key_slot_1_registered": 2,
+  "key_slot_1_rejected": 3,
+  "key_slot_2_processed": 5,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 4,
+  "key_slot_3_registered": 2,
+  "key_slot_3_rejected": 2,
+  "processed": 14,
+  "registered": 4,
+  "rejected": 10,
+  "remaining": 0
+}
+[2026-08-01T06:33:19Z] stage=verify-escalated-20260801T062231Z exit_code=0 duration_s=648

@@ -1,21 +1,21 @@
 # Pipeline statistics: github-mass-production-XBY-20260801
 
 - Status: `complete`
-- Generated: `2026-08-01T04:30:41.417753+00:00`
-- Raw GitHub sample: 43500
-- Initial filter accepted: 19420
-- E2B queue: 3754
-- Deliverable tasks: 1128
+- Generated: `2026-08-01T06:33:23.528756+00:00`
+- Raw GitHub sample: 48500
+- Initial filter accepted: 20764
+- E2B queue: 3953
+- Deliverable tasks: 1185
 - Pending: 0
 
 ## Language funnel
 
 | Language | Initial accepted | Final tasks |
 |---|---:|---:|
-| python | 4246 | 141 |
+| python | 4849 | 164 |
 | go | 5479 | 458 |
-| typescript | 3488 | 150 |
-| javascript | 2222 | 99 |
+| typescript | 3971 | 174 |
+| javascript | 2480 | 109 |
 | rust | 3985 | 280 |
 
 ## Stage timings
@@ -56,6 +56,40 @@
 | verify-default-20260801T035740Z | 1230 | 0 |
 | requeue-resource-failures | 20 | 0 |
 | verify-escalated-20260801T041832Z | 726 | 0 |
+| repair-rebuildable-packages | 8 | 0 |
+| requeue-node-package-manager-v18 | 4 | 0 |
+| requeue-go-runtime-v4 | 3 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 3 | 0 |
+| prescreen-resume-43500 | 73 | 0 |
+| verify-default-20260801T043137Z | 189 | 0 |
+| crawl-44000 | 290 | 0 |
+| prescreen-44000 | 234 | 0 |
+| crawl-44500 | 289 | 0 |
+| prescreen-44500 | 211 | 0 |
+| crawl-45000 | 298 | 0 |
+| prescreen-45000 | 316 | 0 |
+| verify-default-20260801T043757Z | 1465 | 0 |
+| crawl-45500 | 282 | 0 |
+| prescreen-45500 | 270 | 0 |
+| verify-default-20260801T050516Z | 414 | 0 |
+| crawl-46000 | 303 | 0 |
+| prescreen-46000 | 219 | 0 |
+| crawl-46500 | 278 | 0 |
+| verify-default-20260801T051500Z | 481 | 0 |
+| prescreen-46500 | 176 | 0 |
+| crawl-47000 | 288 | 0 |
+| prescreen-47000 | 210 | 0 |
+| crawl-47500 | 282 | 0 |
+| prescreen-47500 | 312 | 0 |
+| verify-default-20260801T052318Z | 1725 | 0 |
+| crawl-48000 | 927 | 0 |
+| prescreen-48000 | 319 | 0 |
+| verify-default-20260801T055951Z | 440 | 0 |
+| crawl-48500 | 270 | 0 |
+| prescreen-48500 | 322 | 0 |
+| verify-default-20260801T060952Z | 736 | 0 |
+| requeue-resource-failures | 20 | 0 |
+| verify-escalated-20260801T062231Z | 648 | 0 |
 
 ## E2B task performance
 
@@ -1189,6 +1223,63 @@
 | [system-ui/theme-ui](https://github.com/system-ui/theme-ui) | typescript | 2 CPU / 4096 MB | 0.57 | 44.52 | 1604.9 | `tasks/alv-theme-ui-c11619-bc875924-v2` |
 | [SmartThingsCommunity/smartthings-cli](https://github.com/SmartThingsCommunity/smartthings-cli) | typescript | 2 CPU / 4096 MB | 0.49 | 47.05 | 1797.2 | `tasks/alv-smartthings-cli-6c458c-d0e76816-v2` |
 | [daggerhashimoto/openclaw-nerve](https://github.com/daggerhashimoto/openclaw-nerve) | typescript | 2 CPU / 4096 MB | 0.44 | 92.13 | 204.2 | `tasks/alv-openclaw-nerve-ce5f91-312e2733-v2` |
+| [skanaar/nomnoml](https://github.com/skanaar/nomnoml) | typescript | 1 CPU / 1024 MB | 0.35 | 2.61 | 54.9 | `tasks/alv-nomnoml-35b03f-3f30d385-v2` |
+| [dm4t2/vue-currency-input](https://github.com/dm4t2/vue-currency-input) | typescript | 1 CPU / 1024 MB | 0.36 | 6.08 | 163.4 | `tasks/alv-vue-currency-input-ed971c-6ad69302-v2` |
+| [capacitor-community/bluetooth-le](https://github.com/capacitor-community/bluetooth-le) | typescript | 1 CPU / 1024 MB | 0.53 | 10.35 | 371.0 | `tasks/alv-bluetooth-le-ab833a-4b03c6a2-v2` |
+| [shentao/vue-multiselect](https://github.com/shentao/vue-multiselect) | javascript | 1 CPU / 1024 MB | 0.4 | 9.63 | 176.4 | `tasks/alv-vue-multiselect-92d972-80929170-v2` |
+| [floriscornel/teams-mcp](https://github.com/floriscornel/teams-mcp) | typescript | 1 CPU / 1024 MB | 0.58 | 16.15 | 261.0 | `tasks/alv-teams-mcp-2b0555-e635dbfc-v2` |
+| [oujingzhou/openmozi](https://github.com/oujingzhou/openmozi) | typescript | 1 CPU / 1024 MB | 0.56 | 8.06 | 110.9 | `tasks/alv-openmozi-4dc4fd-f92eff61-v2` |
+| [ml31415/numpy-groupies](https://github.com/ml31415/numpy-groupies) | python | 1 CPU / 1024 MB | 0.48 | 31.03 | 521.5 | `tasks/alv-numpy-groupies-d7d46d-8f501311-v2` |
+| [minop1205/react-dnd-treeview](https://github.com/minop1205/react-dnd-treeview) | typescript | 1 CPU / 1024 MB | 0.41 | 19.67 | 268.3 | `tasks/alv-react-dnd-treeview-44c954-d3163ab2-v2` |
+| [pallets-eco/wtforms](https://github.com/pallets-eco/wtforms) | python | 1 CPU / 1024 MB | 0.46 | 2.43 | 48.7 | `tasks/alv-wtforms-11b64d-ae8f4b41-v2` |
+| [canopen-python/canopen](https://github.com/canopen-python/canopen) | python | 1 CPU / 1024 MB | 0.52 | 8.33 | 56.7 | `tasks/alv-canopen-3982e4-14b3336b-v2` |
+| [matteoferla/Fragmenstein](https://github.com/matteoferla/Fragmenstein) | python | 1 CPU / 1024 MB | 0.48 | 8.83 | 203.6 | `tasks/alv-fragmenstein-816985-e929dd9f-v2` |
+| [KapJI/capital-gains-calculator](https://github.com/KapJI/capital-gains-calculator) | python | 1 CPU / 1024 MB | 0.39 | 16.01 | 111.5 | `tasks/alv-capital-gains-calcul-879dbe-d93116f2-v2` |
+| [digitalocean/do-markdownit](https://github.com/digitalocean/do-markdownit) | javascript | 1 CPU / 1024 MB | 0.39 | 9.3 | 138.8 | `tasks/alv-do-markdownit-3df477-1da71a7d-v2` |
+| [atlassian/react-sweet-state](https://github.com/atlassian/react-sweet-state) | javascript | 1 CPU / 1024 MB | 0.41 | 8.54 | 181.9 | `tasks/alv-react-sweet-state-2d69b5-f0667280-v2` |
+| [gkjohnson/three-bvh-csg](https://github.com/gkjohnson/three-bvh-csg) | javascript | 1 CPU / 1024 MB | 0.37 | 5.82 | 101.0 | `tasks/alv-three-bvh-csg-d0492b-26729f52-v2` |
+| [DanOps-1/Xray-VPN-OneClick](https://github.com/DanOps-1/Xray-VPN-OneClick) | typescript | 1 CPU / 1024 MB | 0.49 | 23.27 | 231.8 | `tasks/alv-xray-vpn-oneclick-8e1d21-7cb742b2-v2` |
+| [mbeps/next_discussion_platform](https://github.com/mbeps/next_discussion_platform) | typescript | 1 CPU / 1024 MB | 0.55 | 7.37 | 109.5 | `tasks/alv-next-discussion-plat-efd2cb-9d0e3574-v2` |
+| [aeirola/react-native-svg-app-icon](https://github.com/aeirola/react-native-svg-app-icon) | typescript | 1 CPU / 1024 MB | 0.49 | 34.75 | 201.8 | `tasks/alv-react-native-svg-app-66e435-7695aaa1-v2` |
+| [xlwings/jsondiff](https://github.com/xlwings/jsondiff) | python | 1 CPU / 1024 MB | 0.61 | 20.35 | 78.6 | `tasks/alv-jsondiff-98fc5e-6a665f12-v2` |
+| [bitcoinjs/bitcoinjs-lib](https://github.com/bitcoinjs/bitcoinjs-lib) | javascript | 1 CPU / 1024 MB | 0.53 | 49.39 | 362.7 | `tasks/alv-bitcoinjs-lib-0874f5-ab9fad59-v2` |
+| [eclipsesource/tabris-js](https://github.com/eclipsesource/tabris-js) | javascript | 1 CPU / 1024 MB | 0.59 | 30.2 | 247.1 | `tasks/alv-tabris-js-bb0bbf-ec45db34-v2` |
+| [WilsonLe/payload-oauth2](https://github.com/WilsonLe/payload-oauth2) | typescript | 1 CPU / 1024 MB | 0.43 | 4.11 | 124.0 | `tasks/alv-payload-oauth2-e08a64-c6aab786-v2` |
+| [demonsters/prisma-mock](https://github.com/demonsters/prisma-mock) | typescript | 1 CPU / 1024 MB | 0.52 | 22.73 | 343.3 | `tasks/alv-prisma-mock-c25b35-3c6f6b77-v2` |
+| [joeferner/redis-commander](https://github.com/joeferner/redis-commander) | javascript | 1 CPU / 1024 MB | 0.43 | 2.07 | 62.2 | `tasks/alv-redis-commander-0935d5-2a222de6-v2` |
+| [mozilla/nunjucks](https://github.com/mozilla/nunjucks) | javascript | 1 CPU / 1024 MB | 0.47 | 47.38 | 324.4 | `tasks/alv-nunjucks-54d36a-2025c933-v2` |
+| [python-caldav/caldav](https://github.com/python-caldav/caldav) | python | 1 CPU / 1024 MB | 0.51 | 2.72 | 54.1 | `tasks/alv-caldav-4b5431-a49d61bb-v2` |
+| [caleb531/automata](https://github.com/caleb531/automata) | python | 1 CPU / 1024 MB | 0.45 | 5.76 | 101.4 | `tasks/alv-automata-9cdef5-04dc1947-v2` |
+| [volarjs/services](https://github.com/volarjs/services) | typescript | 1 CPU / 1024 MB | 0.36 | 2.24 | 88.2 | `tasks/alv-services-bddcc2-ce25205a-v2` |
+| [rtfpessoa/diff2html](https://github.com/rtfpessoa/diff2html) | typescript | 1 CPU / 1024 MB | 0.4 | 0.89 | 54.9 | `tasks/alv-diff2html-8bee1e-72331ff5-v2` |
+| [idosal/git-mcp](https://github.com/idosal/git-mcp) | typescript | 1 CPU / 1024 MB | 0.41 | 6.15 | 222.9 | `tasks/alv-git-mcp-dcb52f-c487a298-v2` |
+| [oozcitak/xmlbuilder2](https://github.com/oozcitak/xmlbuilder2) | typescript | 1 CPU / 1024 MB | 0.39 | 68.7 | 199.4 | `tasks/alv-xmlbuilder2-5c8f5e-10b65492-v2` |
+| [GClunies/noaa_coops](https://github.com/GClunies/noaa_coops) | python | 1 CPU / 1024 MB | 0.59 | 3.63 | 116.6 | `tasks/alv-noaa-coops-e7aefa-02519cc0-v2` |
+| [unadlib/mutative](https://github.com/unadlib/mutative) | typescript | 1 CPU / 1024 MB | 0.52 | 52.18 | 514.1 | `tasks/alv-mutative-bb3e6b-a50757cd-v2` |
+| [pappasam/jedi-language-server](https://github.com/pappasam/jedi-language-server) | python | 1 CPU / 1024 MB | 0.53 | 79.87 | 81.9 | `tasks/alv-jedi-language-server-9d7fce-e5dc07d3-v2` |
+| [tedivm/paracelsus](https://github.com/tedivm/paracelsus) | python | 1 CPU / 1024 MB | 0.45 | 2.15 | 60.8 | `tasks/alv-paracelsus-54fae7-89b843b3-v2` |
+| [mattpocock/evalite](https://github.com/mattpocock/evalite) | typescript | 1 CPU / 1024 MB | 0.49 | 103.56 | 555.9 | `tasks/alv-evalite-037cea-e18a7937-v2` |
+| [marcomusy/pianoplayer](https://github.com/marcomusy/pianoplayer) | python | 1 CPU / 1024 MB | 0.47 | 31.06 | 38.4 | `tasks/alv-pianoplayer-37ba93-6fb0e211-v2` |
+| [arrow-py/arrow](https://github.com/arrow-py/arrow) | python | 1 CPU / 1024 MB | 0.48 | 17.03 | 166.1 | `tasks/alv-arrow-cf8481-2224255c-v2` |
+| [onflow/flow-playground](https://github.com/onflow/flow-playground) | typescript | 1 CPU / 1024 MB | 0.4 | 4.19 | 97.2 | `tasks/alv-flow-playground-d3b09f-701c6c1d-v2` |
+| [benavlabs/fastcrud](https://github.com/benavlabs/fastcrud) | python | 1 CPU / 1024 MB | 0.46 | 56.75 | 216.4 | `tasks/alv-fastcrud-49a106-790aacbe-v2` |
+| [wagtail/draftail](https://github.com/wagtail/draftail) | typescript | 1 CPU / 1024 MB | 0.54 | 31.09 | 513.7 | `tasks/alv-draftail-ffbf5d-0ea1bed4-v2` |
+| [newAM/monitorcontrol](https://github.com/newAM/monitorcontrol) | python | 1 CPU / 1024 MB | 0.46 | 1.51 | 38.1 | `tasks/alv-monitorcontrol-80bbef-dc57ebc7-v2` |
+| [MartinThoma/flake8-simplify](https://github.com/MartinThoma/flake8-simplify) | python | 1 CPU / 1024 MB | 0.52 | 2.12 | 41.7 | `tasks/alv-flake8-simplify-13c32d-41296284-v2` |
+| [mystor/git-revise](https://github.com/mystor/git-revise) | python | 1 CPU / 1024 MB | 0.47 | 11.79 | 37.6 | `tasks/alv-git-revise-1244bf-a5bdbe42-v2` |
+| [express-labs/pure-react-carousel](https://github.com/express-labs/pure-react-carousel) | javascript | 1 CPU / 1024 MB | 0.56 | 13.88 | 238.7 | `tasks/alv-pure-react-carousel-2c3610-a73776b7-v2` |
+| [firsttris/vscode-jest-runner](https://github.com/firsttris/vscode-jest-runner) | typescript | 1 CPU / 1024 MB | 0.48 | 46.03 | 491.1 | `tasks/alv-vscode-jest-runner-e03830-6ede2f34-v2` |
+| [fengari-lua/fengari](https://github.com/fengari-lua/fengari) | javascript | 1 CPU / 1024 MB | 0.5 | 77.42 | 460.7 | `tasks/alv-fengari-5b0ab9-ac8c3872-v2` |
+| [agoda-com/api-agent](https://github.com/agoda-com/api-agent) | python | 1 CPU / 1024 MB | 0.78 | 87.43 | 178.8 | `tasks/alv-api-agent-9301f3-bcadbdfc-v2` |
+| [etianen/logot](https://github.com/etianen/logot) | python | 1 CPU / 1024 MB | 0.51 | 6.17 | 260.9 | `tasks/alv-logot-2b6951-18bd52cf-v2` |
+| [serkodev/nuxt-pages-plus](https://github.com/serkodev/nuxt-pages-plus) | typescript | 1 CPU / 1024 MB | 0.37 | 2.36 | 80.2 | `tasks/alv-nuxt-pages-plus-fe3ab0-2ef0bb73-v2` |
+| [dbt-checkpoint/dbt-checkpoint](https://github.com/dbt-checkpoint/dbt-checkpoint) | python | 1 CPU / 1024 MB | 0.44 | 3.96 | 65.6 | `tasks/alv-dbt-checkpoint-c35fbd-2537c7bd-v2` |
+| [santoshphilip/eppy](https://github.com/santoshphilip/eppy) | python | 1 CPU / 1024 MB | 0.45 | 12.55 | 402.6 | `tasks/alv-eppy-c54b8c-073b7858-v2` |
+| [whad-team/whad-client](https://github.com/whad-team/whad-client) | python | 1 CPU / 1024 MB | 0.49 | 35.46 | 134.6 | `tasks/alv-whad-client-3883c6-57f7370e-v2` |
+| [alpha0010/react-native-file-access](https://github.com/alpha0010/react-native-file-access) | typescript | 2 CPU / 4096 MB | 0.42 | 4.93 | 139.2 | `tasks/alv-react-native-file-ac-8b5553-5abe6bc2-v2` |
+| [sveltejs/svelte-preprocess](https://github.com/sveltejs/svelte-preprocess) | typescript | 2 CPU / 4096 MB | 0.44 | 22.98 | 857.6 | `tasks/alv-svelte-preprocess-bf677b-5c607889-v2` |
+| [wybert/earth-agent-chrome-ext](https://github.com/wybert/earth-agent-chrome-ext) | typescript | 2 CPU / 4096 MB | 0.46 | 28.11 | 1586.2 | `tasks/alv-earth-agent-chrome-e-dc90c2-8b33aa0b-v2` |
+| [flask-dashboard/Flask-MonitoringDashboard](https://github.com/flask-dashboard/Flask-MonitoringDashboard) | python | 2 CPU / 4096 MB | 0.45 | 41.41 | 162.3 | `tasks/alv-flask-monitoringdash-1bfbb1-2a071705-v2` |
 
 ## Logs
 

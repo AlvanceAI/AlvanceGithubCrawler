@@ -1,0 +1,38 @@
+[2026-08-01T05:15:00Z] stage=verify-default-20260801T051500Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 05:15:03,795 INFO alvance_github_crawler.pending.verification: verifying pending candidate caleb531/automata key_slot=1
+2026-08-01 05:15:03,796 INFO alvance_github_crawler.pending.verification: verifying pending candidate bd-j/prospector key_slot=2
+2026-08-01 05:15:36,262 INFO alvance_github_crawler.pending.verification: verifying pending candidate mapillary/mapillary_tools key_slot=3
+2026-08-01 05:15:36,408 INFO alvance_github_crawler.pending.verification: pending candidate bd-j/prospector finished outcome=rejected key_slot=2 processed=1 in_flight=2
+2026-08-01 05:15:47,690 INFO alvance_github_crawler.pending.verification: verifying pending candidate rtfpessoa/diff2html key_slot=2
+2026-08-01 05:15:54,397 INFO alvance_github_crawler.pending.verification: verifying pending candidate browser-actions/setup-chrome key_slot=3
+2026-08-01 05:15:58,429 INFO alvance_github_crawler.pending.verification: verifying pending candidate volarjs/services key_slot=1
+2026-08-01 05:15:58,431 INFO alvance_github_crawler.pending.verification: verifying pending candidate twurple/twurple key_slot=2
+2026-08-01 05:15:59,196 INFO alvance_github_crawler.pending.verification: pending candidate twurple/twurple finished outcome=rejected key_slot=2 processed=2 in_flight=5
+2026-08-01 05:16:03,926 INFO alvance_github_crawler.pending.verification: pending candidate caleb531/automata finished outcome=registered key_slot=1 processed=3 in_flight=4
+2026-08-01 05:16:19,155 INFO alvance_github_crawler.pending.verification: verifying pending candidate idosal/git-mcp key_slot=1
+2026-08-01 05:16:38,299 INFO alvance_github_crawler.pending.verification: pending candidate volarjs/services finished outcome=registered key_slot=1 processed=4 in_flight=4
+2026-08-01 05:16:39,954 INFO alvance_github_crawler.pending.verification: verifying pending candidate kahole/edamagit key_slot=2
+2026-08-01 05:16:40,459 INFO alvance_github_crawler.pending.verification: pending candidate rtfpessoa/diff2html finished outcome=registered key_slot=2 processed=5 in_flight=4
+2026-08-01 05:16:49,388 INFO alvance_github_crawler.pending.verification: pending candidate browser-actions/setup-chrome finished outcome=rejected key_slot=3 processed=6 in_flight=3
+2026-08-01 05:17:17,138 INFO alvance_github_crawler.pending.verification: pending candidate mapillary/mapillary_tools finished outcome=rejected key_slot=3 processed=7 in_flight=2
+2026-08-01 05:17:25,450 INFO alvance_github_crawler.pending.verification: verifying pending candidate cburgmer/rasterizeHTML.js key_slot=3
+2026-08-01 05:17:34,274 INFO alvance_github_crawler.pending.verification: pending candidate idosal/git-mcp finished outcome=registered key_slot=1 processed=8 in_flight=2
+2026-08-01 05:17:39,973 INFO alvance_github_crawler.pending.verification: verifying pending candidate oozcitak/xmlbuilder2 key_slot=1
+2026-08-01 05:17:39,986 INFO alvance_github_crawler.pending.verification: pending candidate kahole/edamagit finished outcome=rejected key_slot=2 processed=9 in_flight=2
+2026-08-01 05:18:53,184 INFO alvance_github_crawler.pending.verification: pending candidate cburgmer/rasterizeHTML.js finished outcome=rejected key_slot=3 processed=10 in_flight=1
+2026-08-01 05:22:59,824 INFO alvance_github_crawler.pending.verification: pending candidate oozcitak/xmlbuilder2 finished outcome=registered key_slot=1 processed=11 in_flight=0
+{
+  "key_slot_1_processed": 4,
+  "key_slot_1_registered": 4,
+  "key_slot_2_processed": 4,
+  "key_slot_2_registered": 1,
+  "key_slot_2_rejected": 3,
+  "key_slot_3_processed": 3,
+  "key_slot_3_rejected": 3,
+  "processed": 11,
+  "registered": 5,
+  "rejected": 6,
+  "remaining": 0
+}
+[2026-08-01T05:23:01Z] stage=verify-default-20260801T051500Z exit_code=0 duration_s=481
