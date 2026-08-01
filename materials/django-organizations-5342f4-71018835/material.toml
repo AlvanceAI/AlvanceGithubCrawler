@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "django-organizations-5342f4-71018835"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/bennylope/django-organizations"
+base_commit = "71018835a6ccd28558513614af9e7d77ee921fe4"
+source_tree = "0cd8020f03f7c9dc9ed776bf019acfc05de73e3e"
+default_branch = "master"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e4f76364f268d427ee93b8a554017884b2696972aeb824f2ede779ea3146939b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-django-organizations-5342f4-71018835-v2-env-e4f76364"
+template_id = "pvg5c56wd0rlxrbc85tm"
+source_template_alias = "phztj6505exezen77goe"
+source_template_id = "phztj6505exezen77goe"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

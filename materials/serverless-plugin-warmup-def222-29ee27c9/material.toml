@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "serverless-plugin-warmup-def222-29ee27c9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/juanjoDiaz/serverless-plugin-warmup"
+base_commit = "29ee27c9b5fb2ab451d79b2d62b83e44c4dff58f"
+source_tree = "93e08825dcfb698f3ee4219725f36afb1967a2e8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d5f960079fee2af8ef5b64ac2d96bffef693fe914ee1ab8f82bfd5d499b148d7"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-serverless-plugin-wa-def222-29ee27c9-v2-env-d5f96007"
+template_id = "9ytdf4pcne21cbiezshp"
+source_template_alias = "evcllqal8bfcdurqv6zd"
+source_template_id = "evcllqal8bfcdurqv6zd"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

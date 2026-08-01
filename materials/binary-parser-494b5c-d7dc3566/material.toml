@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "binary-parser-494b5c-d7dc3566"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/keichi/binary-parser"
+base_commit = "d7dc356679f393e767ef11f6c9eddfb0240e89e6"
+source_tree = "5ee737ae65e0cd82187c4297181ae61f6fb1896e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4c3a3cbac8e2476ed188a49dd4ed430c0253624e78da9330b7256aac87665d93"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-binary-parser-494b5c-d7dc3566-v2-env-4c3a3cba"
+template_id = "gg6tqxk2od6qzv5luycn"
+source_template_alias = "rlz0lihh9aphxf1lrwuh"
+source_template_id = "rlz0lihh9aphxf1lrwuh"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

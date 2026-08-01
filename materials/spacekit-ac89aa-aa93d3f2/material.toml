@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "spacekit-ac89aa-aa93d3f2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/typpo/spacekit"
+base_commit = "aa93d3f21c3bd983e8c55af88a175f06c3d32fc8"
+source_tree = "c0aa78b857bd78584ebc4af566dc04c8475bb49e"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e7dc67a9bd83114199b63a80322a837d964518c96ab4fbb75fa48640b7b63a04"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-spacekit-ac89aa-aa93d3f2-v2-env-e7dc67a9"
+template_id = "zcugkdzawebz2aqjpago"
+source_template_alias = "tdu6kxk4qg5cayc8otqo"
+source_template_id = "tdu6kxk4qg5cayc8otqo"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

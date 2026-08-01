@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "relay-hooks-213070-7e8471c9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/relay-tools/relay-hooks"
+base_commit = "7e8471c9a83d9ccf5ced3369bc96c3a80cde15b7"
+source_tree = "2a17c4bb6b6e76923f28fc5b4f17f55cf0c35209"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d5d23443b79423035f23c0d56f7e794d0b0839b41ab01e31699dd393864a33ec"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-relay-hooks-213070-7e8471c9-v2-env-d5d23443"
+template_id = "7wy2k7irfztf96ud59kf"
+source_template_alias = "g9r0z7vc8lng6y40f8jk"
+source_template_id = "g9r0z7vc8lng6y40f8jk"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

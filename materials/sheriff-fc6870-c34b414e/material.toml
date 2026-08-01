@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "sheriff-fc6870-c34b414e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/softarc-consulting/sheriff"
+base_commit = "c34b414e5e4e00632b5174ecaf875e18275f06b2"
+source_tree = "0e8e72957570dd3c11db4524a1b088055c949367"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c6cd3ed137d3d19a78306d787b47c353a64e2259740698c4ea25bf8b6eee27f4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-sheriff-fc6870-c34b414e-v2-env-c6cd3ed1"
+template_id = "i2571smbrbou6c08fj6d"
+source_template_alias = "uopljb9bc7qt38dbngpq"
+source_template_id = "uopljb9bc7qt38dbngpq"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

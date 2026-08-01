@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "asciimatics-b63b26-bf0cea87"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/peterbrittain/asciimatics"
+base_commit = "bf0cea87b50439e40a5c7b708d64da4195314a60"
+source_tree = "471b02aacac64b9a4a89d32ecae3a35747cf4084"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f7faf256a869503552f085c16cea82b77cdca901e9a10b7fd47b427e1bff5ca4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-asciimatics-b63b26-bf0cea87-v2-env-f7faf256"
+template_id = "i61u94noii8asdyww0x2"
+source_template_alias = "hy5glrepbyjg0t8gwc1f"
+source_template_id = "hy5glrepbyjg0t8gwc1f"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

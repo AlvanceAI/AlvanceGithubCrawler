@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "velo-080d10-ec47a7a5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/avihaymenahem/velo"
+base_commit = "ec47a7a5095bb5deffc24e9b6812e39107508dbe"
+source_tree = "efbae16b517596b3f3a6f7e2e3736e0cffdd4e12"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "112a2d0fbd531c3277a19237e3785c48f216a3c93b44fbc5eb46720bd37d1063"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-velo-080d10-ec47a7a5-v2-env-112a2d0f"
+template_id = "7ea488j2xyo31i2j9i5t"
+source_template_alias = "i90gmzrwg8ggg5c0d31y"
+source_template_id = "i90gmzrwg8ggg5c0d31y"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

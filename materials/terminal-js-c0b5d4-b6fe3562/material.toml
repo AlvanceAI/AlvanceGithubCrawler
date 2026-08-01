@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terminal-js-c0b5d4-b6fe3562"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Gottox/terminal.js"
+base_commit = "b6fe3562c95f200b327e865fc5b33df8744ea0ac"
+source_tree = "f1fb9dd163085d8b9862c27ed4c672a8e8ec3e72"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "596d64225264fadbd40f3b1ecbb33b46ba559a826dfa363f864d76ecf35bd1bb"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terminal-js-c0b5d4-b6fe3562-v2-env-596d6422"
+template_id = "n9c0wbfizm4mk7x00jhz"
+source_template_alias = "3dsiyow19u2pdw8n5hks"
+source_template_id = "3dsiyow19u2pdw8n5hks"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

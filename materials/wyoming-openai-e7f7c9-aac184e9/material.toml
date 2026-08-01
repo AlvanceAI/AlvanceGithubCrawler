@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "wyoming-openai-e7f7c9-aac184e9"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/roryeckel/wyoming_openai"
+base_commit = "aac184e9340fe39098328055a6211805c3198aea"
+source_tree = "dad796344bfa5a093f6e0631c72bccd6b45b6d14"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.12"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "800d6a9d867af5fc1bea8c869b9d39170dfd90377c99747e7475d6c927559dd2"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-wyoming-openai-e7f7c9-aac184e9-v2-env-800d6a9d"
+template_id = "1nzvx0i806srs8bi182s"
+source_template_alias = "73f2s7vp5cdk1tgve3d8"
+source_template_id = "73f2s7vp5cdk1tgve3d8"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

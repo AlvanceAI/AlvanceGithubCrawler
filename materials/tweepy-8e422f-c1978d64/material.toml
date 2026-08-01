@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "tweepy-8e422f-c1978d64"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tweepy/tweepy"
+base_commit = "c1978d643ecce491929084e4290b35f57e4921ad"
+source_tree = "8b57797b62849ccda9c63024a5bd0c2411a4f723"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "de26029dc1ba0ff6a87328e522582d0fbdc895d1fc740ba00920a8e27c51d004"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-tweepy-8e422f-c1978d64-v2-env-de26029d"
+template_id = "ze8qivbq7z6wjl7k8l6v"
+source_template_alias = "clqyzg3js0azbpq4v6ko"
+source_template_id = "clqyzg3js0azbpq4v6ko"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

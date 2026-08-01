@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "october-24ff52-77ad53e5"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/marcus-crane/october"
+base_commit = "77ad53e511a93fee7eb0062da575082580a2ea01"
+source_tree = "b0e9e67171f8834019e1dc05c6e1de614701d1c5"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "go"
+go = "1.22.0"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "ec68e0462387ad7f0a60f14c4847e156d3589bb07681545856e159bb12a9b258"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-october-24ff52-77ad53e5-v2-env-ec68e046"
+template_id = "acxptqzuzihhwrl7dcll"
+source_template_alias = "lofz1rwkq6od772djn96"
+source_template_id = "lofz1rwkq6od772djn96"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

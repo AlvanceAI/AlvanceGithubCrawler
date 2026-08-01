@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "kubernetes-asyncio-11c7eb-7730a330"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/tomplus/kubernetes_asyncio"
+base_commit = "7730a330a5467a7b6c591099bc4465a9db219258"
+source_tree = "cca908eafad109b9653345d2fcb2751840f4ad12"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "4bd4558b398f5b5fb2696607bb9cc2d625630b4d7f426820b1560dfc052dd37a"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-kubernetes-asyncio-11c7eb-7730a330-v2-env-4bd4558b"
+template_id = "s3ekjoxnsierzrz6qzix"
+source_template_alias = "j926fj2xlimf8vcn709i"
+source_template_id = "j926fj2xlimf8vcn709i"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "aiomonitor-f9af0d-2fc127fa"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/aio-libs/aiomonitor"
+base_commit = "2fc127facaf7cd6ffefe6aba5a6856a59b178403"
+source_tree = "04d08080d77834bb5a6e4908b6aac75ce7e0e7cd"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "1450bb14c7d969086110e77b6f151fe1502101db454bb430a313051c6e3e308f"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-aiomonitor-f9af0d-2fc127fa-v2-env-1450bb14"
+template_id = "01t49wt7njul9xl2xe6u"
+source_template_alias = "ki3zyit218t7hbta385w"
+source_template_id = "ki3zyit218t7hbta385w"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

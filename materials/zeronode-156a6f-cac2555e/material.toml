@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "zeronode-156a6f-cac2555e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/sfast/zeronode"
+base_commit = "cac2555e44cdd1e3d9eb187e3b29f1ebb907bfab"
+source_tree = "ddec56298f2529171ff59d87a94db82420c89827"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "00f86625642aec9b305f476487bafed2a1c0b0159f1f1dadf64c9c54241f3ed0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-zeronode-156a6f-cac2555e-v2-env-00f86625"
+template_id = "652m2taq1g7lvawmtz98"
+source_template_alias = "cfmgmbt3b34ppgozcimt"
+source_template_id = "cfmgmbt3b34ppgozcimt"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

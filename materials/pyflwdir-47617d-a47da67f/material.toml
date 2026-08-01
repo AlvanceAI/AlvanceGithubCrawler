@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "pyflwdir-47617d-a47da67f"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Deltares/pyflwdir"
+base_commit = "a47da67fcee99b79eaf7ff2af0cd359652dae312"
+source_tree = "0617280ff6fbf8721eaa6d72ff436a0b8d1e65a0"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c899621b1c42576208276ae18d14101a8ffd14e544384ca03df491b8f9c42b0c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-pyflwdir-47617d-a47da67f-v2-env-c899621b"
+template_id = "knzvdyd13c5a9fjr7kdd"
+source_template_alias = "zlb3j15cgfb70bot820m"
+source_template_id = "zlb3j15cgfb70bot820m"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

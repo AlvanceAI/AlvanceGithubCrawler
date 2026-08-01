@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "node-cbor-04b22c-90d9c52d"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/hildjj/node-cbor"
+base_commit = "90d9c52d9abbfddd0e550ba14724ac7f3c28a723"
+source_tree = "168352edb362a4b26333ebefd52ba9544f45c0b8"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "f2d23d115dc7fb3264386dbe47dbe05b91a83c7d07f202ee9254786f270ed8d9"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-node-cbor-04b22c-90d9c52d-v2-env-f2d23d11"
+template_id = "439a2il4adf8if69tb5x"
+source_template_alias = "wseujyhwpycc6y4ydjfl"
+source_template_id = "wseujyhwpycc6y4ydjfl"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

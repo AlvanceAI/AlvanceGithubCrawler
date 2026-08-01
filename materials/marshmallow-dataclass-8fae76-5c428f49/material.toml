@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "marshmallow-dataclass-8fae76-5c428f49"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/lovasoa/marshmallow_dataclass"
+base_commit = "5c428f493ef3059246974bedf9a7d89599994b34"
+source_tree = "d1218dfca4b8878bb4634505e8f07db5e1b72f11"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "e913729e02a6c82d5b37685237bcfd8a6bff3b1594460606eb9dd3f644f0c707"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-marshmallow-dataclas-8fae76-5c428f49-v2-env-e913729e"
+template_id = "4fhostni5yk8pxnvp8a8"
+source_template_alias = "rfvw0eli1xn499cbfmsa"
+source_template_id = "rfvw0eli1xn499cbfmsa"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

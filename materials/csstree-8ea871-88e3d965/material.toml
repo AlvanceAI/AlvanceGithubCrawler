@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "csstree-8ea871-88e3d965"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/csstree/csstree"
+base_commit = "88e3d965c0b1628642a30a841745b410d6835052"
+source_tree = "c86ba0a6861540cc9e4ae1375e4f63fe14c1d25d"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "2f70aa5e28873e995453f78835ca906e56ec88deba50f72cc78da8068b35d187"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-csstree-8ea871-88e3d965-v2-env-2f70aa5e"
+template_id = "x429w68fbgz1mclx4vr8"
+source_template_alias = "dk3gk6jioald7qgsg1j6"
+source_template_id = "dk3gk6jioald7qgsg1j6"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

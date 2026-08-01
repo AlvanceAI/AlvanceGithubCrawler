@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "node-video-lib-424649-f47b4464"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/gkozlenko/node-video-lib"
+base_commit = "f47b4464e8064d873250a78c68beac17bc2941fd"
+source_tree = "8b82d689254cbb4937478833f3aa1f791040b5f6"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "3ba4fecc8a8e77414a96b579b051e979b478acc8be2a0e0d9b6859f4d1c759af"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-node-video-lib-424649-f47b4464-v2-env-3ba4fecc"
+template_id = "mijzsihzmnv255by7e8p"
+source_template_alias = "7nc8c1x8a65gbf4ut4fx"
+source_template_id = "7nc8c1x8a65gbf4ut4fx"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
