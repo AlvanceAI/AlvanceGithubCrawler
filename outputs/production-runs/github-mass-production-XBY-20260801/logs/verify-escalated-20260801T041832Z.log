@@ -1,0 +1,50 @@
+[2026-08-01T04:18:32Z] stage=verify-escalated-20260801T041832Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 04:18:35,575 INFO alvance_github_crawler.pending.verification: verifying pending candidate penge/my-notes key_slot=1
+2026-08-01 04:18:35,577 INFO alvance_github_crawler.pending.verification: verifying pending candidate neurostuff/NiMARE key_slot=2
+2026-08-01 04:18:35,578 INFO alvance_github_crawler.pending.verification: verifying pending candidate Yqnn/svg-path-editor key_slot=3
+2026-08-01 04:18:35,580 INFO alvance_github_crawler.pending.verification: verifying pending candidate bwplotka/bingo key_slot=1
+2026-08-01 04:18:35,581 INFO alvance_github_crawler.pending.verification: verifying pending candidate wakatime/browser-wakatime key_slot=2
+2026-08-01 04:18:35,585 INFO alvance_github_crawler.pending.verification: verifying pending candidate bpmn-io/bpmnlint key_slot=3
+2026-08-01 04:18:35,593 INFO alvance_github_crawler.pending.verification: verifying pending candidate MeshJS/mesh key_slot=1
+2026-08-01 04:18:35,596 INFO alvance_github_crawler.pending.verification: verifying pending candidate loixlab/gstore-node key_slot=2
+2026-08-01 04:18:35,599 INFO alvance_github_crawler.pending.verification: verifying pending candidate observIQ/stanza key_slot=3
+2026-08-01 04:18:35,599 INFO alvance_github_crawler.pending.verification: verifying pending candidate KitwareMedical/dicom-anonymizer key_slot=1
+2026-08-01 04:18:35,604 INFO alvance_github_crawler.pending.verification: verifying pending candidate system-ui/theme-ui key_slot=2
+2026-08-01 04:18:35,606 INFO alvance_github_crawler.pending.verification: verifying pending candidate SmartThingsCommunity/smartthings-cli key_slot=3
+2026-08-01 04:18:35,606 INFO alvance_github_crawler.pending.verification: verifying pending candidate Guts/mkdocs-rss-plugin key_slot=1
+2026-08-01 04:18:35,608 INFO alvance_github_crawler.pending.verification: verifying pending candidate artem-mangilev/ngx-vflow key_slot=2
+2026-08-01 04:18:35,610 INFO alvance_github_crawler.pending.verification: verifying pending candidate daggerhashimoto/openclaw-nerve key_slot=3
+2026-08-01 04:18:35,612 INFO alvance_github_crawler.pending.verification: verifying pending candidate fvutils/pyvsc key_slot=1
+2026-08-01 04:19:50,056 INFO alvance_github_crawler.pending.verification: pending candidate loixlab/gstore-node finished outcome=rejected key_slot=2 processed=1 in_flight=15
+2026-08-01 04:19:52,321 INFO alvance_github_crawler.pending.verification: pending candidate MeshJS/mesh finished outcome=rejected key_slot=1 processed=2 in_flight=14
+2026-08-01 04:20:41,375 INFO alvance_github_crawler.pending.verification: pending candidate penge/my-notes finished outcome=registered key_slot=1 processed=3 in_flight=13
+2026-08-01 04:23:04,374 INFO alvance_github_crawler.pending.verification: pending candidate system-ui/theme-ui finished outcome=registered key_slot=2 processed=4 in_flight=12
+2026-08-01 04:23:04,657 INFO alvance_github_crawler.pending.verification: pending candidate SmartThingsCommunity/smartthings-cli finished outcome=registered key_slot=3 processed=5 in_flight=11
+2026-08-01 04:23:53,204 INFO alvance_github_crawler.pending.verification: pending candidate observIQ/stanza finished outcome=rejected key_slot=3 processed=6 in_flight=10
+2026-08-01 04:25:54,317 INFO alvance_github_crawler.pending.verification: pending candidate fvutils/pyvsc finished outcome=rejected key_slot=1 processed=7 in_flight=9
+2026-08-01 04:27:45,643 INFO alvance_github_crawler.pending.verification: pending candidate wakatime/browser-wakatime finished outcome=rejected key_slot=2 processed=8 in_flight=8
+2026-08-01 04:29:00,367 INFO alvance_github_crawler.pending.verification: pending candidate KitwareMedical/dicom-anonymizer finished outcome=rejected key_slot=1 processed=9 in_flight=7
+2026-08-01 04:29:09,314 INFO alvance_github_crawler.pending.verification: pending candidate bpmn-io/bpmnlint finished outcome=rejected key_slot=3 processed=10 in_flight=6
+2026-08-01 04:29:20,188 INFO alvance_github_crawler.pending.verification: pending candidate bwplotka/bingo finished outcome=rejected key_slot=1 processed=11 in_flight=5
+2026-08-01 04:29:22,096 INFO alvance_github_crawler.pending.verification: pending candidate Guts/mkdocs-rss-plugin finished outcome=rejected key_slot=1 processed=12 in_flight=4
+2026-08-01 04:29:23,858 INFO alvance_github_crawler.pending.verification: pending candidate daggerhashimoto/openclaw-nerve finished outcome=registered key_slot=3 processed=13 in_flight=3
+2026-08-01 04:29:46,356 INFO alvance_github_crawler.pending.verification: pending candidate neurostuff/NiMARE finished outcome=rejected key_slot=2 processed=14 in_flight=2
+2026-08-01 04:29:47,408 INFO alvance_github_crawler.pending.verification: pending candidate artem-mangilev/ngx-vflow finished outcome=rejected key_slot=2 processed=15 in_flight=1
+2026-08-01 04:30:36,992 INFO alvance_github_crawler.pending.verification: pending candidate Yqnn/svg-path-editor finished outcome=rejected key_slot=3 processed=16 in_flight=0
+{
+  "key_slot_1_processed": 6,
+  "key_slot_1_registered": 1,
+  "key_slot_1_rejected": 5,
+  "key_slot_2_processed": 5,
+  "key_slot_2_registered": 1,
+  "key_slot_2_rejected": 4,
+  "key_slot_3_processed": 5,
+  "key_slot_3_registered": 2,
+  "key_slot_3_rejected": 3,
+  "processed": 16,
+  "registered": 4,
+  "rejected": 12,
+  "remaining": 0
+}
+[2026-08-01T04:30:38Z] stage=verify-escalated-20260801T041832Z exit_code=0 duration_s=726

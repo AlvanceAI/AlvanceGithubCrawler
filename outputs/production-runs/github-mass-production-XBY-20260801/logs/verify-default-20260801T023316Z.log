@@ -1,0 +1,20 @@
+[2026-08-01T02:33:17Z] stage=verify-default-20260801T023316Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 02:33:19,723 INFO alvance_github_crawler.pending.verification: verifying pending candidate ucb-bar/hammer key_slot=1
+2026-08-01 02:33:19,724 INFO alvance_github_crawler.pending.verification: verifying pending candidate mitsuba-renderer/mitsuba-blender key_slot=2
+2026-08-01 02:33:21,064 INFO alvance_github_crawler.pending.verification: verifying pending candidate Serchinastico/Kin key_slot=3
+2026-08-01 02:33:31,892 INFO alvance_github_crawler.pending.verification: pending candidate mitsuba-renderer/mitsuba-blender finished outcome=rejected key_slot=2 processed=1 in_flight=2
+2026-08-01 02:33:33,455 INFO alvance_github_crawler.pending.verification: pending candidate ucb-bar/hammer finished outcome=rejected key_slot=1 processed=2 in_flight=1
+2026-08-01 02:33:49,582 INFO alvance_github_crawler.pending.verification: pending candidate Serchinastico/Kin finished outcome=rejected key_slot=3 processed=3 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_rejected": 1,
+  "key_slot_2_processed": 1,
+  "key_slot_2_rejected": 1,
+  "key_slot_3_processed": 1,
+  "key_slot_3_rejected": 1,
+  "processed": 3,
+  "rejected": 3,
+  "remaining": 0
+}
+[2026-08-01T02:33:50Z] stage=verify-default-20260801T023316Z exit_code=0 duration_s=33

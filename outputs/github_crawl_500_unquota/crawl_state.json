@@ -1,40 +1,52 @@
 {
-  "api_request_count": 70663,
-  "completed": false,
+  "allocation_semantics": "balanced_with_exhaustion_redistribution_v1",
+  "api_request_count": 78625,
+  "completed": true,
   "cutoff_time": "2025-07-29T09:08:23.059900+00:00",
+  "exhausted_languages": [
+    "go",
+    "rust"
+  ],
   "next_page_by_language": {
-    "go": 9,
-    "javascript": 11,
-    "python": 9,
+    "go": 3,
+    "javascript": 2,
+    "python": 2,
     "rust": 11,
-    "typescript": 2
+    "typescript": 3
   },
-  "per_language": 7700,
+  "per_language": 8700,
   "pushed_before_by_language": {
-    "go": "2026-03-30",
-    "javascript": "2026-06-02",
-    "python": "2026-07-17",
+    "go": "2025-08-12",
+    "javascript": "2026-03-08",
+    "python": "2026-07-02",
     "rust": "2026-01-21",
-    "typescript": "2026-06-24"
+    "typescript": "2026-05-29"
   },
-  "retry_count": 12,
-  "schema_version": "1.3",
+  "raw_targets_by_language": {
+    "go": 8520,
+    "javascript": 9064,
+    "python": 9194,
+    "rust": 7655,
+    "typescript": 9067
+  },
+  "retry_count": 13,
+  "schema_version": "1.4",
   "search_pages_fetched_by_language": {
-    "go": 84,
-    "javascript": 90,
-    "python": 88,
+    "go": 100,
+    "javascript": 111,
+    "python": 111,
     "rust": 86,
-    "typescript": 91
+    "typescript": 112
   },
   "search_windows_by_language": {
-    "go": 8,
-    "javascript": 8,
-    "python": 8,
+    "go": 11,
+    "javascript": 11,
+    "python": 11,
     "rust": 8,
-    "typescript": 9
+    "typescript": 11
   },
   "selection_semantics": "raw_sample_all_pass_v1",
   "started_at": "2026-07-29T09:08:23.060613+00:00",
-  "target_total": 38500,
-  "updated_at": "2026-07-31T17:02:15.182045+00:00"
+  "target_total": 43500,
+  "updated_at": "2026-08-01T04:12:46.211757+00:00"
 }

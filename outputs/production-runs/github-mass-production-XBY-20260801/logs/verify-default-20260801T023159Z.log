@@ -1,0 +1,12 @@
+[2026-08-01T02:31:59Z] stage=verify-default-20260801T023159Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 02:32:02,162 INFO alvance_github_crawler.pending.verification: verifying pending candidate HA-Pulse/home-assistant-global-health-score key_slot=1
+2026-08-01 02:32:32,684 INFO alvance_github_crawler.pending.verification: pending candidate HA-Pulse/home-assistant-global-health-score finished outcome=rejected key_slot=1 processed=1 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_rejected": 1,
+  "processed": 1,
+  "rejected": 1,
+  "remaining": 0
+}
+[2026-08-01T02:32:33Z] stage=verify-default-20260801T023159Z exit_code=0 duration_s=34

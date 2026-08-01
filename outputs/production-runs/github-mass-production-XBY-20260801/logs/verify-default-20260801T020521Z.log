@@ -1,0 +1,12 @@
+[2026-08-01T02:05:21Z] stage=verify-default-20260801T020521Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 02:05:23,643 INFO alvance_github_crawler.pending.verification: verifying pending candidate m-burst/flake8-pytest-style key_slot=1
+2026-08-01 02:06:39,762 INFO alvance_github_crawler.pending.verification: pending candidate m-burst/flake8-pytest-style finished outcome=registered key_slot=1 processed=1 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_registered": 1,
+  "processed": 1,
+  "registered": 1,
+  "remaining": 0
+}
+[2026-08-01T02:06:40Z] stage=verify-default-20260801T020521Z exit_code=0 duration_s=79
