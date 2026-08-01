@@ -1,0 +1,9 @@
+[2026-08-01T16:36:27Z] stage=retry-disk-space-v1 run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --retry-rejected --defer-e2b --verbose --repository ChaokunHong/MetaScreener
+2026-08-01 16:36:31,306 INFO alvance_github_crawler.pipeline: processing crawled candidate ChaokunHong/MetaScreener@532ee3cc10a7e22e54747d7c3413509c31b9a99b
+{
+  "input_total": 1,
+  "processed": 1,
+  "rejected": 1
+}
+[2026-08-01T16:36:49Z] stage=retry-disk-space-v1 exit_code=0 duration_s=22

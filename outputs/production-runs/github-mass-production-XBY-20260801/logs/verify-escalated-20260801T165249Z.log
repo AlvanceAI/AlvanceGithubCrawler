@@ -1,0 +1,12 @@
+[2026-08-01T16:52:49Z] stage=verify-escalated-20260801T165249Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 16:52:51,933 INFO alvance_github_crawler.pending.verification: verifying pending candidate ebonnal/streamable key_slot=1
+2026-08-01 17:03:21,021 INFO alvance_github_crawler.pending.verification: pending candidate ebonnal/streamable finished outcome=rejected key_slot=1 processed=1 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_rejected": 1,
+  "processed": 1,
+  "rejected": 1,
+  "remaining": 0
+}
+[2026-08-01T17:03:22Z] stage=verify-escalated-20260801T165249Z exit_code=0 duration_s=633

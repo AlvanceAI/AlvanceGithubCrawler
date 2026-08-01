@@ -1,0 +1,64 @@
+[2026-08-01T16:37:53Z] stage=verify-default-20260801T163753Z run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-01 16:37:56,077 INFO alvance_github_crawler.pending.verification: verifying pending candidate flyte/upnpclient key_slot=1
+2026-08-01 16:38:25,665 INFO alvance_github_crawler.pending.verification: verifying pending candidate ebonnal/streamable key_slot=2
+2026-08-01 16:38:31,058 INFO alvance_github_crawler.pending.verification: verifying pending candidate aden-hive/hive key_slot=3
+2026-08-01 16:38:40,485 INFO alvance_github_crawler.pending.verification: verifying pending candidate predibase/lorax key_slot=1
+2026-08-01 16:38:47,150 INFO alvance_github_crawler.pending.verification: verifying pending candidate marcj/deepkit key_slot=2
+2026-08-01 16:38:52,560 INFO alvance_github_crawler.pending.verification: pending candidate flyte/upnpclient finished outcome=registered key_slot=1 processed=1 in_flight=4
+2026-08-01 16:38:55,642 INFO alvance_github_crawler.pending.verification: verifying pending candidate aeagle/react-spaces key_slot=3
+2026-08-01 16:38:56,909 INFO alvance_github_crawler.pending.verification: verifying pending candidate homebridge-plugins/homebridge-camera-ffmpeg key_slot=1
+2026-08-01 16:38:57,723 INFO alvance_github_crawler.pending.verification: pending candidate aden-hive/hive finished outcome=rejected key_slot=3 processed=2 in_flight=5
+2026-08-01 16:39:00,883 INFO alvance_github_crawler.pending.verification: pending candidate predibase/lorax finished outcome=rejected key_slot=1 processed=3 in_flight=4
+2026-08-01 16:39:05,440 INFO alvance_github_crawler.pending.verification: verifying pending candidate ts-graphviz/ts-graphviz key_slot=3
+2026-08-01 16:39:12,190 INFO alvance_github_crawler.pending.verification: verifying pending candidate omnuron/omniclaw key_slot=1
+2026-08-01 16:39:12,191 INFO alvance_github_crawler.pending.verification: verifying pending candidate reagento/descanso key_slot=2
+2026-08-01 16:39:28,515 INFO alvance_github_crawler.pending.verification: pending candidate marcj/deepkit finished outcome=rejected key_slot=2 processed=4 in_flight=6
+2026-08-01 16:39:33,050 INFO alvance_github_crawler.pending.verification: pending candidate reagento/descanso finished outcome=rejected key_slot=2 processed=5 in_flight=5
+2026-08-01 16:40:04,285 INFO alvance_github_crawler.pending.verification: pending candidate ts-graphviz/ts-graphviz finished outcome=rejected key_slot=3 processed=6 in_flight=4
+2026-08-01 16:40:17,590 INFO alvance_github_crawler.pending.verification: pending candidate homebridge-plugins/homebridge-camera-ffmpeg finished outcome=registered key_slot=1 processed=7 in_flight=3
+2026-08-01 16:40:17,901 INFO alvance_github_crawler.pending.verification: verifying pending candidate ui-schema/ui-schema key_slot=3
+2026-08-01 16:41:26,651 INFO alvance_github_crawler.pending.verification: pending candidate aeagle/react-spaces finished outcome=registered key_slot=3 processed=8 in_flight=3
+2026-08-01 16:41:55,750 INFO alvance_github_crawler.pending.verification: pending candidate omnuron/omniclaw finished outcome=registered key_slot=1 processed=9 in_flight=2
+2026-08-01 16:42:01,944 INFO alvance_github_crawler.pending.verification: verifying pending candidate wee-slack/wee-slack key_slot=1
+2026-08-01 16:42:17,056 INFO alvance_github_crawler.pending.verification: pending candidate wee-slack/wee-slack finished outcome=rejected key_slot=1 processed=10 in_flight=2
+2026-08-01 16:42:36,418 INFO alvance_github_crawler.pending.verification: pending candidate ui-schema/ui-schema finished outcome=rejected key_slot=3 processed=11 in_flight=1
+2026-08-01 16:47:28,375 INFO alvance_github_crawler.pending.verification: verifying pending candidate enzet/map-machine key_slot=3
+2026-08-01 16:47:28,375 INFO alvance_github_crawler.pending.verification: verifying pending candidate mie-lab/trackintel key_slot=1
+2026-08-01 16:47:29,730 INFO alvance_github_crawler.pending.verification: verifying pending candidate huggingface/optimum-nvidia key_slot=2
+2026-08-01 16:47:39,363 INFO alvance_github_crawler.pending.verification: verifying pending candidate huggingface/simulate key_slot=3
+2026-08-01 16:47:43,503 INFO alvance_github_crawler.pending.verification: verifying pending candidate philippj/SteamworksPy key_slot=1
+2026-08-01 16:47:53,487 INFO alvance_github_crawler.pending.verification: pending candidate philippj/SteamworksPy finished outcome=rejected key_slot=1 processed=12 in_flight=5
+2026-08-01 16:47:59,453 INFO alvance_github_crawler.pending.verification: pending candidate huggingface/optimum-nvidia finished outcome=rejected key_slot=2 processed=13 in_flight=4
+2026-08-01 16:48:03,742 INFO alvance_github_crawler.pending.verification: verifying pending candidate huggingface/nanotron key_slot=2
+2026-08-01 16:48:10,726 INFO alvance_github_crawler.pending.verification: verifying pending candidate reyesoft/ngx-jsonapi key_slot=1
+2026-08-01 16:48:17,485 INFO alvance_github_crawler.pending.verification: verifying pending candidate antfu-collective/eslint-vitest-rule-tester key_slot=2
+2026-08-01 16:48:18,843 INFO alvance_github_crawler.pending.verification: verifying pending candidate superlucky84/fp-pack key_slot=3
+2026-08-01 16:48:26,136 INFO alvance_github_crawler.pending.verification: pending candidate superlucky84/fp-pack finished outcome=rejected key_slot=3 processed=14 in_flight=7
+2026-08-01 16:48:29,239 INFO alvance_github_crawler.pending.verification: verifying pending candidate IanVS/prettier-plugin-sort-imports key_slot=1
+2026-08-01 16:48:34,997 INFO alvance_github_crawler.pending.verification: pending candidate huggingface/simulate finished outcome=rejected key_slot=3 processed=15 in_flight=7
+2026-08-01 16:48:39,496 INFO alvance_github_crawler.pending.verification: verifying pending candidate AnubisLMS/Anubis key_slot=3
+2026-08-01 16:48:45,562 INFO alvance_github_crawler.pending.verification: pending candidate IanVS/prettier-plugin-sort-imports finished outcome=rejected key_slot=1 processed=16 in_flight=7
+2026-08-01 16:48:54,089 INFO alvance_github_crawler.pending.verification: pending candidate ebonnal/streamable finished outcome=rejected key_slot=2 processed=17 in_flight=6
+2026-08-01 16:49:02,557 INFO alvance_github_crawler.pending.verification: pending candidate AnubisLMS/Anubis finished outcome=rejected key_slot=3 processed=18 in_flight=5
+2026-08-01 16:49:48,361 INFO alvance_github_crawler.pending.verification: pending candidate enzet/map-machine finished outcome=registered key_slot=3 processed=19 in_flight=4
+2026-08-01 16:50:00,910 INFO alvance_github_crawler.pending.verification: pending candidate antfu-collective/eslint-vitest-rule-tester finished outcome=registered key_slot=2 processed=20 in_flight=3
+2026-08-01 16:50:25,826 INFO alvance_github_crawler.pending.verification: pending candidate huggingface/nanotron finished outcome=rejected key_slot=2 processed=21 in_flight=2
+2026-08-01 16:51:16,542 INFO alvance_github_crawler.pending.verification: pending candidate mie-lab/trackintel finished outcome=rejected key_slot=1 processed=22 in_flight=1
+2026-08-01 16:52:39,867 INFO alvance_github_crawler.pending.verification: pending candidate reyesoft/ngx-jsonapi finished outcome=registered key_slot=1 processed=23 in_flight=0
+{
+  "key_slot_1_processed": 9,
+  "key_slot_1_registered": 4,
+  "key_slot_1_rejected": 5,
+  "key_slot_2_processed": 6,
+  "key_slot_2_registered": 1,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 8,
+  "key_slot_3_registered": 2,
+  "key_slot_3_rejected": 6,
+  "processed": 23,
+  "registered": 7,
+  "rejected": 16,
+  "remaining": 0
+}
+[2026-08-01T16:52:41Z] stage=verify-default-20260801T163753Z exit_code=0 duration_s=888

@@ -1,20 +1,20 @@
 # Pipeline statistics: github-mass-production-XBY-20260801
 
 - Status: `complete`
-- Generated: `2026-08-01T08:56:56.467233+00:00`
-- Raw GitHub sample: 53500
-- Initial filter accepted: 22098
-- E2B queue: 4083
-- Deliverable tasks: 1215
+- Generated: `2026-08-01T17:03:24.966671+00:00`
+- Raw GitHub sample: 54500
+- Initial filter accepted: 22346
+- E2B queue: 4106
+- Deliverable tasks: 1222
 - Pending: 0
 
 ## Language funnel
 
 | Language | Initial accepted | Final tasks |
 |---|---:|---:|
-| python | 5409 | 175 |
+| python | 5553 | 178 |
 | go | 5479 | 458 |
-| typescript | 4494 | 190 |
+| typescript | 4598 | 194 |
 | javascript | 2731 | 112 |
 | rust | 3985 | 280 |
 
@@ -130,6 +130,23 @@
 | verify-default-20260801T083234Z | 745 | 0 |
 | requeue-resource-failures | 14 | 0 |
 | verify-escalated-20260801T084516Z | 693 | 0 |
+| repair-rebuildable-packages | 10 | 0 |
+| requeue-node-package-manager-v18 | 5 | 0 |
+| requeue-go-runtime-v4 | 3 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 3 | 0 |
+| verify-default-20260801T085740Z | 10 | 0 |
+| prescreen-resume-53500 | 26 | 0 |
+| repair-rebuildable-packages | 11 | 0 |
+| requeue-node-package-manager-v18 | 3 | 0 |
+| requeue-go-runtime-v4 | 3 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 4 | 0 |
+| retry-disk-space-v1 | 22 | 0 |
+| prescreen-resume-54000 | 312 | 0 |
+| crawl-54500 | 274 | 0 |
+| prescreen-54500 | 130 | 0 |
+| verify-default-20260801T163753Z | 888 | 0 |
+| requeue-resource-failures | 4 | 0 |
+| verify-escalated-20260801T165249Z | 633 | 0 |
 
 ## E2B task performance
 
@@ -1350,6 +1367,13 @@
 | [gzuidhof/zarr.js](https://github.com/gzuidhof/zarr.js) | typescript | 1 CPU / 1024 MB | 0.39 | 13.91 | 160.9 | `tasks/alv-zarr-js-81deb3-c34cb91f-v2` |
 | [antfu-collective/vitesse-webext](https://github.com/antfu-collective/vitesse-webext) | typescript | 2 CPU / 4096 MB | 0.39 | 5.2 | 182.9 | `tasks/alv-vitesse-webext-5d7b02-d237f4c0-v2` |
 | [codinit-dev/codinit-dev](https://github.com/codinit-dev/codinit-dev) | typescript | 2 CPU / 4096 MB | 0.46 | 12.49 | 313.2 | `tasks/alv-codinit-dev-45e06a-daab8c9e-v2` |
+| [flyte/upnpclient](https://github.com/flyte/upnpclient) | python | 1 CPU / 1024 MB | 0.4 | 2.32 | 51.7 | `tasks/alv-upnpclient-312493-459c7137-v2` |
+| [homebridge-plugins/homebridge-camera-ffmpeg](https://github.com/homebridge-plugins/homebridge-camera-ffmpeg) | typescript | 1 CPU / 1024 MB | 0.47 | 5.27 | 91.3 | `tasks/alv-homebridge-camera-ff-96a901-7522d924-v2` |
+| [aeagle/react-spaces](https://github.com/aeagle/react-spaces) | typescript | 1 CPU / 1024 MB | 0.38 | 23.68 | 474.8 | `tasks/alv-react-spaces-f7f604-8ce74848-v2` |
+| [omnuron/omniclaw](https://github.com/omnuron/omniclaw) | python | 1 CPU / 1024 MB | 0.58 | 22.35 | 124.5 | `tasks/alv-omniclaw-4a88e0-66826172-v2` |
+| [enzet/map-machine](https://github.com/enzet/map-machine) | python | 1 CPU / 1024 MB | 0.38 | 19.91 | 125.7 | `tasks/alv-map-machine-c8b5e9-eab10c1e-v2` |
+| [antfu-collective/eslint-vitest-rule-tester](https://github.com/antfu-collective/eslint-vitest-rule-tester) | typescript | 1 CPU / 1024 MB | 0.45 | 14.36 | 234.8 | `tasks/alv-eslint-vitest-rule-t-10fb4f-0f36b013-v2` |
+| [reyesoft/ngx-jsonapi](https://github.com/reyesoft/ngx-jsonapi) | typescript | 1 CPU / 1024 MB | 0.77 | 29.52 | 506.8 | `tasks/alv-ngx-jsonapi-59c90e-07e0d3b9-v2` |
 
 ## Logs
 

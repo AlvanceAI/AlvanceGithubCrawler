@@ -1,0 +1,107 @@
+[2026-08-01T08:57:39Z] stage=prescreen-resume-53500 run_id=github-mass-production-XBY-20260801
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-08-01 08:57:43,876 INFO alvance_github_crawler.pipeline: processing crawled candidate ChaokunHong/MetaScreener@532ee3cc10a7e22e54747d7c3413509c31b9a99b
+2026-08-01 08:57:43,877 INFO alvance_github_crawler.pipeline: processing crawled candidate JIAjindou/A2A_Flow_Matching@a5792ecf4e7f8fa4d85fe66ea9a50618138f925c
+2026-08-01 08:57:43,880 INFO alvance_github_crawler.pipeline: processing crawled candidate Yourdaylight/stock_datasource@f18044670ee8d011e6e0d46953e974f3a19b7a3a
+2026-08-01 08:58:05,323 ERROR alvance_github_crawler.pipeline: ChaokunHong/MetaScreener failed during stage2_checkout
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/workspace.py", line 72, in _download_tarball
+    tar.extractall(destination, filter="data")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2382, in extractall
+    self._extract_one(tarinfo, path, set_attrs=not tarinfo.isdir(),
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      numeric_owner=numeric_owner,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      filter_function=filter_function)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2491, in _extract_one
+    self._handle_fatal_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2485, in _extract_one
+    self._extract_member(tarinfo, os.path.join(path, tarinfo.name),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         set_attrs=set_attrs,
+                         ^^^^^^^^^^^^^^^^^^^^
+                         numeric_owner=numeric_owner,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         filter_function=filter_function,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         extraction_root=path)
+                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2574, in _extract_member
+    self.makefile(tarinfo, targetpath)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2631, in makefile
+    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 253, in copyfileobj
+    dst.write(buf)
+    ~~~~~~~~~^^^^^
+OSError: [Errno 28] No space left on device
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/workspace.py", line 38, in cloned_repository
+    extracted = _download_tarball(full_name, base_commit, path)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/workspace.py", line 76, in _download_tarball
+    raise CloneError(f"git clone and tarball fallback failed: {exc}") from exc
+alvance_github_crawler.workspace.CloneError: git clone and tarball fallback failed: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 344, in _process_repo
+    with cloned_repository(repo["full_name"], base_commit) as repo_path:
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/workspace.py", line 42, in cloned_repository
+    _run_git(["clone", "--depth=1", "--no-tags", "--filter=blob:none", url, str(path)])
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/workspace.py", line 29, in _run_git
+    raise CloneError((result.stderr or result.stdout)[-2_000:])
+alvance_github_crawler.workspace.CloneError: files:  98% (1315/1341)
+error: unable to write file tests/unit/validation/test_aggregator.py
+error: unable to write file tests/unit/validation/test_cross_paper.py
+error: unable to write file tests/unit/validation/test_numerical_coherence.py
+error: unable to write file tests/unit/validation/test_rule_validator.py
+error: unable to write file tests/unit/validation/test_source_coherence.py
+error: unable to write file tests/unit/validation/test_validation_models.py
+error: unable to write file uv.lock
+error: unable to write file validation/__init__.py
+error: unable to write file validation/analysis/__init__.py
+error: unable to write file validation/analysis/generate_figures.py
+error: unable to write file validation/analysis/generate_tables.py
+error: unable to write file validation/common.py
+error: unable to write file validation/datasets/README.md
+Updating files:  99% (1328/1341)
+error: unable to write file validation/datasets/__init__.py
+error: unable to write file validation/datasets/download_asreview.py
+error: unable to write file validation/datasets/download_cohen.py
+error: unable to write file validation/experiments/__init__.py
+error: unable to write file validation/experiments/exp1_amr_internal.py
+error: unable to write file validation/experiments/exp2_cohen_benchmark.py
+error: unable to write file validation/experiments/exp3_asreview_benchmark.py
+error: unable to write file validation/experiments/exp4_ablation_study.py
+error: unable to write file validation/experiments/exp4b_ft_ablation.py
+error: unable to write file validation/experiments/exp5_extraction_accuracy.py
+error: unable to write file validation/experiments/exp6_rob_reliability.py
+error: unable to write file validation/experiments/exp7_cost_time.py
+Updating files: 100% (1341/1341)
+Updating files: 100% (1341/1341), done.
+fatal: unable to checkout working tree
+warning: Clone succeeded, but checkout failed.
+You can inspect what was checked out with 'git status'
+and retry with 'git restore --source=HEAD :/'
+
+
+{
+  "duplicate": 22095,
+  "error": 1,
+  "input_total": 22098,
+  "processed": 3,
+  "rejected": 2
+}
+[2026-08-01T08:58:05Z] stage=prescreen-resume-53500 exit_code=0 duration_s=26
