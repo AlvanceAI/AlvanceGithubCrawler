@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "json-translator-3a866b-749e602a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/mololab/json-translator"
+base_commit = "749e602a1e19dfc194750a543d3db40ca8820a33"
+source_tree = "2fc1a231aec7e6fafcdd18ba40191bc25b92baed"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "cb0586f783b8a2c1f07e798f9a95e69fb40c3c0966bc5a52a3ace827821d85d1"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-json-translator-3a866b-749e602a-v2-env-cb0586f7"
+template_id = "solvl02oabkpvy4vwqte"
+source_template_alias = "e5ymyaadzx2620iztw6p"
+source_template_id = "e5ymyaadzx2620iztw6p"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

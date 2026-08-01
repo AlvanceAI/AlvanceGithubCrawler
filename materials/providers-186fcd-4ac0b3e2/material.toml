@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "providers-186fcd-4ac0b3e2"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/MetaMask/providers"
+base_commit = "4ac0b3e2df7de682a95d50e3429dadb0995862cf"
+source_tree = "b4cbb5ac7b839a6740536f7263789f4e0de4735b"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "03e25853590fd89756c39e20dbc5fd20dd9f2ace316f3d5109b6db5acce312fe"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-providers-186fcd-4ac0b3e2-v2-env-03e25853"
+template_id = "9h8r65qs5z05ezxnnx7u"
+source_template_alias = "ydcr0ob8fvufxxlddyws"
+source_template_id = "ydcr0ob8fvufxxlddyws"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

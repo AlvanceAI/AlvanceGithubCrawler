@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "datetimerange-69e6f1-7ddde34a"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/thombashi/DateTimeRange"
+base_commit = "7ddde34a09ad6e5432e27b4bea6171c39edb4792"
+source_tree = "05facd078ee4b8d92dafb5622bfcf16a865b11ab"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bf9fbc705a743768659ad98335de9c7a123dbdb90e5557ead4de62744c0e4b3b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-datetimerange-69e6f1-7ddde34a-v2-env-bf9fbc70"
+template_id = "kn5hpdd36yifv2eksk17"
+source_template_alias = "9oxuybyjxdf2zsasglap"
+source_template_id = "9oxuybyjxdf2zsasglap"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

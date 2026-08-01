@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "react-three-rapier-16622b-ae5c3fed"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/pmndrs/react-three-rapier"
+base_commit = "ae5c3fede5ca489fd7eaa8271e9d9c5eabc88e98"
+source_tree = "ec6711b510073e93717d567281226e0054d93bfd"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "946701884d871092d264d1b44acec96bbf4ed7cb4ab037aaa390a8790d235730"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-react-three-rapier-16622b-ae5c3fed-v2-env-94670188"
+template_id = "70zqz4wa798tfmxx8g3b"
+source_template_alias = "fjwfz26t3bs57pq6pu1s"
+source_template_id = "fjwfz26t3bs57pq6pu1s"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,39 @@
+version = "1.0"
+schema_version = "1.3"
+
+[task]
+name = "alvance/alv-isso-2ec06b-9c24f9b3-v2"
+description = "Rebuildable repository task for isso-comments/isso"
+authors = []
+keywords = ["python", "dockerfile", "github"]
+
+[metadata]
+task_id = "alv-isso-2ec06b-9c24f9b3-v2"
+material_id = "isso-2ec06b-9c24f9b3"
+status = "direction"
+language = "python"
+repository_url = "https://github.com/isso-comments/isso"
+base_commit_hash = "9c24f9b3d9f259cff84b67e50875e6137b459ef7"
+storage_mode = "dockerfile-rebuildable"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "shared"
+
+[verifier.env]
+HOME = "/home/user"
+PATH = "/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[agent]
+timeout_sec = 5400.0
+
+[environment]
+build_timeout_sec = 3600.0
+cpus = 1
+memory_mb = 1024
+storage_mb = 10240
+gpus = 0
+allow_internet = true
+mcp_servers = []

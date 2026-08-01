@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "helium-js-993503-996ca82e"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/helium/helium-js"
+base_commit = "996ca82e25cc543d4e0a73d0e41442eb706b2c8c"
+source_tree = "0e483829a55b782a76d79bb29d25823c0b3f96c3"
+default_branch = "master"
+license = "Apache-2.0"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "c4f77df007ba4dd12d98e244de296502cb5abe44ce3be2254d4ac9e5a32a65a0"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-helium-js-993503-996ca82e-v2-env-c4f77df0"
+template_id = "bffwaeac84v8jf0ykv3w"
+source_template_alias = "ffqb89s4xodzcqw6utws"
+source_template_id = "ffqb89s4xodzcqw6utws"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
