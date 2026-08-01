@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "html-to-gutenberg-47ed34-1f34ba10"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jverneaut/html-to-gutenberg"
+base_commit = "1f34ba106ecc597564a4a75406d47689d8eb01b1"
+source_tree = "3c278ecba7d9391960b2ec2cabd8add1bb120ef3"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "javascript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "b5fd6fc799b287006c2e220213f87f601ca962cd60bbd611ba9c017256c2e849"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-html-to-gutenberg-47ed34-1f34ba10-v2-env-b5fd6fc7"
+template_id = "4v2f07l7tphzakbnltli"
+source_template_alias = "t7gmwjxsyfnyn6dhbsxs"
+source_template_id = "t7gmwjxsyfnyn6dhbsxs"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

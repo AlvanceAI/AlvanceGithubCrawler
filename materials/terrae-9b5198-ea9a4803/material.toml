@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "terrae-9b5198-ea9a4803"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/alamenai/terrae"
+base_commit = "ea9a4803463817393c1da6ce486e42ebd7eac341"
+source_tree = "610315ccdfb769fd2a9f17f9cef835a87993cafa"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "d742f660ca33ad15dfb4e9cfa91d544952095815e3c9cd79c6356c39bb819b7b"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-terrae-9b5198-ea9a4803-v2-env-d742f660"
+template_id = "umyeq6yb0zz3de57j8oj"
+source_template_alias = "wsyt57kwv9cgwlapah50"
+source_template_id = "wsyt57kwv9cgwlapah50"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

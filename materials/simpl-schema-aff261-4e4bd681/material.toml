@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "simpl-schema-aff261-4e4bd681"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/longshotlabs/simpl-schema"
+base_commit = "4e4bd6816a897267f92160a33a5f99a21c22e501"
+source_tree = "38d87b893541420205c7dad541318f8ac72dc662"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "typescript"
+node = "20"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "27d0aaf8ae88df340a03a35e0d4d7db0be7c72f6f9f771a5430030aca7aab57c"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-simpl-schema-aff261-4e4bd681-v2-env-27d0aaf8"
+template_id = "qn2utzop8i2us0cru9nk"
+source_template_alias = "jx4468cbmy3j0buzb25e"
+source_template_id = "jx4468cbmy3j0buzb25e"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
