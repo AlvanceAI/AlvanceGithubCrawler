@@ -4921,3 +4921,12 @@ command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/git
   "requeued": 0
 }
 [2026-08-01T01:21:18Z] stage=requeue-e2b-rate-limit-backoff-v1 exit_code=0 duration_s=3
+[2026-08-01T01:22:10Z] stage=requeue-e2b-rate-limit-backoff-v1 run_id=github-mass-production-XBY-20260731
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason infra_error --failure-reason stage_error --failure-contains maximum\ number\ of\ concurrent --requeue-marker e2b-rate-limit-backoff-v1 --verbose
+{
+  "already_registered": 0,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-08-01T01:22:13Z] stage=requeue-e2b-rate-limit-backoff-v1 exit_code=0 duration_s=3
