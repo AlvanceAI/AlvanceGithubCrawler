@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "box-f97955-a4c10e97"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/cdgriffith/Box"
+base_commit = "a4c10e977b574114613431394b30412b50aaacce"
+source_tree = "7807dc8a1c010ad8d04b2a01810a81ae52670d13"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "bdaaa35b22924e082470a075ce609287a3678f9544472347b3abf99ba43318c8"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-box-f97955-a4c10e97-v2-env-bdaaa35b"
+template_id = "lcyib895cbagl4ol04gr"
+source_template_alias = "5sqwewgjdqiub6vly6o4"
+source_template_id = "5sqwewgjdqiub6vly6o4"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "dora-6369ba-a360eea1"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Asifdotexe/DORA"
+base_commit = "a360eea184266d756ee718510e7370cd27dffb3b"
+source_tree = "06aaeb01e44a86c21d538c8e564b0fd775822045"
+default_branch = "main"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.13"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "6626d0a5b65383c8ac0b91354bde95ef94ecea35f7144652980d4e22d4011102"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-dora-6369ba-a360eea1-v2-env-6626d0a5"
+template_id = "audrvux4h4rxxzueil46"
+source_template_alias = "gdh2pyt19c18z1hkktac"
+source_template_id = "gdh2pyt19c18z1hkktac"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
