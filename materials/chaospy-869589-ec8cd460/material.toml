@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "chaospy-869589-ec8cd460"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/jonathf/chaospy"
+base_commit = "ec8cd460bf1440eca4b409d996cfdb104d24ae06"
+source_tree = "27bbd42e127b1d157fec051c7c0a062f90871c05"
+default_branch = "master"
+license = "MIT"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "af569e27db03d9529375df7115b09b543cfb7b44e786dc08bb1e5d595b6466d4"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-chaospy-869589-ec8cd460-v2-env-af569e27"
+template_id = "soheekov6uba1pcy3vgf"
+source_template_alias = "vg3x9uvq2nomivalx0rp"
+source_template_id = "vg3x9uvq2nomivalx0rp"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"

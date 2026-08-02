@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "webassets-dc1ace-5a7af269"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/miracle2k/webassets"
+base_commit = "5a7af269789a6e0da1f22dc114b02c117d79e8fe"
+source_tree = "f537cf60c812613e45051b113a1504d7d1deb7c5"
+default_branch = "master"
+license = "BSD-2-Clause"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "13b22febafc0197527ef5e867851839292a8ed2d242223d32741905487704013"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-webassets-dc1ace-5a7af269-v2-env-13b22feb"
+template_id = "cv1gjf0whhz2h0taiefb"
+source_template_alias = "vefubz61fcm4avcituxy"
+source_template_id = "vefubz61fcm4avcituxy"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
