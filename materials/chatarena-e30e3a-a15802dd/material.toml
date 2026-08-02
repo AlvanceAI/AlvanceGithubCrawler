@@ -1,0 +1,38 @@
+schema_version = "0.3"
+material_id = "chatarena-e30e3a-a15802dd"
+status = "qualified"
+
+[source]
+repository_url = "https://github.com/Farama-Foundation/ChatArena"
+base_commit = "a15802dd89c0d69165bb0b07e70c2bac5a7c4e36"
+source_tree = "a7455fbcd18561ed7eb59360baade8480628e337"
+default_branch = "main"
+license = "Apache-2.0"
+
+[toolchain]
+language = "python"
+python = "3.11"
+
+[environment]
+mode = "dockerfile-rebuildable"
+dockerfile = "environment/Dockerfile"
+workdir = "/app"
+environment_sha256 = "927ab494d603c4e5200f3451e79b3663eb86ac3ec7778ebc4ab1470baf8943c3"
+dockerfile_rebuildable = true
+rebuild_network_required = true
+
+[e2b_history]
+template_alias = "alv-chatarena-e30e3a-a15802dd-v2-env-927ab494"
+template_id = "9ygn8t3tywp6rfp0bi5v"
+source_template_alias = "1l9zlve2w7g8r2k9jq9k"
+source_template_id = "1l9zlve2w7g8r2k9jq9k"
+receipt = "receipts/e2b.json"
+operational_dependency = false
+
+[baseline]
+script = "scripts/baseline.sh"
+receipt = "receipts/e2b.json"
+
+[submission]
+script = "scripts/export-patch.sh"
+artifact = "/logs/artifacts/model.patch"
