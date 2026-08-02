@@ -1,0 +1,17 @@
+[2026-08-02T01:44:17Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260802
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 1358,
+  "languages": {
+    "go": 461,
+    "javascript": 112,
+    "python": 283,
+    "rust": 280,
+    "typescript": 222
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 1358
+}
+[2026-08-02T01:44:28Z] stage=repair-rebuildable-packages exit_code=0 duration_s=11

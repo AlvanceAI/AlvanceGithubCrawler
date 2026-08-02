@@ -1,0 +1,349 @@
+
+[2026-08-02T01:44:14.831685+00:00] monitor launch max_per_language=14300 batch_per_language=100 prescreen_concurrency=20 e2b_concurrency_per_key=20
+preflight passed: branch=XBY github_tokens=2 prescreen=20 e2b_keys=3 e2b_slots=60 workspace=/home/xubingyu/AlvanceGithubCrawler/.crawler-state/workspaces/github-mass-production-XBY-20260802.5KECto workspace_free_mb=193984
+[2026-08-02T01:44:17Z] stage=repair-rebuildable-packages run_id=github-mass-production-XBY-20260802
+command= uv run python scripts/repair_rebuildable_tasks.py --root /home/xubingyu/AlvanceGithubCrawler --workers 8
+{
+  "changed": 0,
+  "checked": 1358,
+  "languages": {
+    "go": 461,
+    "javascript": 112,
+    "python": 283,
+    "rust": 280,
+    "typescript": 222
+  },
+  "mode": "repair",
+  "python_dependency_resolutions": 0,
+  "unchanged": 1358
+}
+[2026-08-02T01:44:28Z] stage=repair-rebuildable-packages exit_code=0 duration_s=11
+[2026-08-02T01:44:28Z] stage=requeue-node-package-manager-v18 run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason build_fail --failure-contains can\ only\ install\ with\ an\ existing\ package-lock.json --requeue-marker node-package-manager-v18 --verbose
+{
+  "already_registered": 29,
+  "already_requeued": 1,
+  "matched": 1,
+  "requeued": 0
+}
+[2026-08-02T01:44:31Z] stage=requeue-node-package-manager-v18 exit_code=0 duration_s=3
+[2026-08-02T01:44:31Z] stage=requeue-go-runtime-v4 run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason infra_error --failure-contains toolchain\ not\ available --requeue-marker go-runtime-v4 --verbose
+{
+  "already_registered": 17,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-08-02T01:44:34Z] stage=requeue-go-runtime-v4 exit_code=0 duration_s=3
+[2026-08-02T01:44:34Z] stage=requeue-e2b-rate-limit-backoff-v1 run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason infra_error --failure-reason stage_error --failure-contains maximum\ number\ of\ concurrent --requeue-marker e2b-rate-limit-backoff-v1 --verbose
+{
+  "already_registered": 0,
+  "already_requeued": 0,
+  "matched": 0,
+  "requeued": 0
+}
+[2026-08-02T01:44:38Z] stage=requeue-e2b-rate-limit-backoff-v1 exit_code=0 duration_s=4
+[2026-08-02T01:44:57Z] stage=crawl-71500 run_id=github-mass-production-XBY-20260802
+command= uv run alvance-github-crawler crawl --target-total 71500 --per-language 14300 --max-search-pages 10 --output /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota --request-interval 0.2 --verbose
+[2026-08-02T01:44:57Z] stage=verify-default-20260802T014457Z run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-02 01:45:00,267 INFO alvance_github_crawler.pending.verification: verifying pending candidate jonathf/chaospy key_slot=1
+{
+  "accepted_by_language": {
+    "go": 5479,
+    "javascript": 2731,
+    "python": 9095,
+    "rust": 3985,
+    "typescript": 5132
+  },
+  "accepted_total": 26422,
+  "allocation_semantics": "balanced_with_exhaustion_redistribution_v1",
+  "api_request_count": 119647,
+  "cutoff_time": "2025-07-29T09:08:23.059900+00:00",
+  "deduplicated_total": 71500,
+  "duplicate_results": 0,
+  "duration_seconds": 319023.433,
+  "end_time": "2026-08-02T01:45:26.493963+00:00",
+  "exhausted_languages": [
+    "go",
+    "javascript",
+    "rust",
+    "typescript"
+  ],
+  "fetched_total": 71500,
+  "github_rate_limit_remaining": {
+    "actions_runner_registration": 20000,
+    "audit_log": 3500,
+    "audit_log_streaming": 30,
+    "code_scanning_autofix": 20,
+    "code_search": 20,
+    "copilot_usage_records": 3500,
+    "core": 9988,
+    "dependency_sbom": 200,
+    "dependency_snapshots": 200,
+    "graphql": 10000,
+    "integration_manifest": 10000,
+    "scim": 30000,
+    "search": 60,
+    "source_import": 200
+  },
+  "output_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota",
+  "per_language": 14300,
+  "raw_per_language": 14300,
+  "raw_targets_by_language": {
+    "go": 8520,
+    "javascript": 12215,
+    "python": 27779,
+    "rust": 7655,
+    "typescript": 15331
+  },
+  "rejected_by_reason": {
+    "inactive_head_commit": 3073,
+    "inactive_push": 5,
+    "language_mismatch": 8,
+    "no_test_infra": 17223,
+    "tree_unavailable": 42,
+    "unsupported_license": 24727
+  },
+  "rejected_total": 45078,
+  "retry_count": 20,
+  "schema_version": "1.4",
+  "search_pages_fetched": {
+    "go": 100,
+    "javascript": 150,
+    "python": 311,
+    "rust": 86,
+    "typescript": 189
+  },
+  "search_windows_used": {
+    "go": 11,
+    "javascript": 14,
+    "python": 31,
+    "rust": 8,
+    "typescript": 18
+  },
+  "selection_semantics": "raw_sample_all_pass_v1",
+  "start_time": "2026-07-29T09:08:23.060613+00:00",
+  "status": "completed",
+  "target_total": 71500,
+  "validation_errors": []
+}
+[2026-08-02T01:45:28Z] stage=crawl-71500 exit_code=0 duration_s=31
+[2026-08-02T01:45:28Z] stage=prescreen-resume-71500 run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_LANGUAGE_QUOTA_ENABLED=false PIPELINE_PRESCREEN_CONCURRENCY=20 uv run alvance-github-crawler produce --input /home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota/accepted_repositories.jsonl --prescreen-concurrency 20 --defer-e2b --verbose
+2026-08-02 01:45:33,769 INFO alvance_github_crawler.pipeline: processing crawled candidate huggingface/picotron@59714b1bf25541dbeb6f5a721ed15f6d0768e786
+2026-08-02 01:45:33,771 INFO alvance_github_crawler.pipeline: processing crawled candidate takuseno/d3rlpy@38c34b6f99fde82875e2ad81d1ba1f7a7da34137
+2026-08-02 01:45:33,772 INFO alvance_github_crawler.pipeline: processing crawled candidate enoch3712/ExtractThinker@66920c9af1b74bd20731ed7ac1cbe4794a0da21b
+2026-08-02 01:45:33,773 INFO alvance_github_crawler.pipeline: processing crawled candidate themanojdesai/python-a2a@40b969a465f85e8156793b7cfac16c5e23ed0b86
+2026-08-02 01:45:33,776 INFO alvance_github_crawler.pipeline: processing crawled candidate radomirbosak/duden@a261bda9653f376efb63c606dbeb32751c2ab8c7
+2026-08-02 01:45:33,777 INFO alvance_github_crawler.pipeline: processing crawled candidate pytransitions/transitions@bd42b38f3627e6bca7274fb4d9af2e105f75da7c
+2026-08-02 01:45:33,784 INFO alvance_github_crawler.pipeline: processing crawled candidate mcs07/PubChemPy@9935a14e7fdb4a88d27a99fedce69ca99f004698
+2026-08-02 01:45:33,787 INFO alvance_github_crawler.pipeline: processing crawled candidate sovrasov/flops-counter.pytorch@d612c7547445841a325fd2a1ff2ab27583f01bae
+2026-08-02 01:45:33,789 INFO alvance_github_crawler.pipeline: processing crawled candidate cobrateam/splinter@861539107381e848f63c350189360520c300ced9
+2026-08-02 01:45:33,791 INFO alvance_github_crawler.pipeline: processing crawled candidate desgeeko/pdfsyntax@475d42babeecdc42ffe978dca45f107fbc4f9a7f
+2026-08-02 01:45:33,793 INFO alvance_github_crawler.pipeline: processing crawled candidate ionelmc/python-hunter@b29fb483a14db7cedbb68d354ffd6188c0415c68
+2026-08-02 01:45:33,797 INFO alvance_github_crawler.pipeline: processing crawled candidate arthurhenrique/cookiecutter-fastapi@6418a161e72caedf04655cdf5b22dae9386d3b8e
+2026-08-02 01:45:33,800 INFO alvance_github_crawler.pipeline: processing crawled candidate yezyilomo/django-restql@a4e3f2163b80a9e6c60542fab6f6f5d566edadd9
+2026-08-02 01:45:33,801 INFO alvance_github_crawler.pipeline: processing crawled candidate InternLM/InternEvo@a5b3972be7cc3448563b4ddfbb0cee736bdea7ef
+2026-08-02 01:45:33,804 INFO alvance_github_crawler.pipeline: processing crawled candidate cmbruns/pyopenvr@64a6c399148cb0a989812e0dc7080dd6298db7c7
+2026-08-02 01:45:33,807 INFO alvance_github_crawler.pipeline: processing crawled candidate aws/sagemaker-pytorch-training-toolkit@d9298721b3bbe28be2c008a11586ce9bec379679
+2026-08-02 01:45:33,809 INFO alvance_github_crawler.pipeline: processing crawled candidate Jacob-liu1996/miniagent@4c6fa2966f286d28b49fa6c06bb88f0693a659c0
+2026-08-02 01:45:33,811 INFO alvance_github_crawler.pipeline: processing crawled candidate nl4dv/nl4dv@2581c9d75632d0ed451455c5588617e9f2f13cdb
+2026-08-02 01:45:33,813 INFO alvance_github_crawler.pipeline: processing crawled candidate jialuechen/flowpylib@5201bb80a732d0037a7cae413369fcacd126d2f2
+2026-08-02 01:45:33,816 INFO alvance_github_crawler.pipeline: processing crawled candidate d-k-patel/ai-ffmpeg-cli@b2a86cefa166f9e735189e8a5eeb409ae5e37073
+2026-08-02 01:45:37,549 INFO alvance_github_crawler.pipeline: processing crawled candidate rklb7/ic-py@0e58fd1e0106ec1577110be6d315747f8152e00a
+2026-08-02 01:45:39,707 INFO alvance_github_crawler.pipeline: processing crawled candidate oscarychen/drf-stripe-subscription@76cb8742ca7399981fba3343ebc7c8edc3700197
+2026-08-02 01:45:40,679 INFO alvance_github_crawler.pipeline: processing crawled candidate raysect/source@5ed9a21b5f6ec10b71e187d51da2b430bdc65e20
+2026-08-02 01:45:41,338 INFO alvance_github_crawler.pipeline: processing crawled candidate google/matched_markets@5e3cd957d9e3945b0446c94763f2f88b21f03ca5
+2026-08-02 01:45:43,513 INFO alvance_github_crawler.pipeline: processing crawled candidate KevinMusgrave/pytorch-metric-learning@c8350998ebc8aacf2c45de50e2556bc854cc0361
+2026-08-02 01:45:45,796 INFO alvance_github_crawler.pipeline: processing crawled candidate idealo/imagededup@f0534a6ec10c02379c627696fbd486841068631c
+2026-08-02 01:45:48,445 INFO alvance_github_crawler.pipeline: processing crawled candidate spulec/freezegun@92d61b3f5c31942a1039713574487bdcfcdbbfff
+2026-08-02 01:45:49,116 INFO alvance_github_crawler.pipeline: processing crawled candidate 0xHJK/music-dl@90163bc472c653d052d241207c6c9e731441a566
+2026-08-02 01:45:51,342 INFO alvance_github_crawler.pipeline: processing crawled candidate jennyzzt/dgm@a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2
+2026-08-02 01:45:51,747 INFO alvance_github_crawler.pipeline: processing crawled candidate LeapLabTHU/Absolute-Zero-Reasoner@484afa480c8f6fd77faa3d35451f24f287f58ee1
+2026-08-02 01:45:52,552 INFO alvance_github_crawler.pipeline: processing crawled candidate AkariAsai/OpenScholar@0e9b8fb912273d3dae39e593da86e4f6d3bf8de1
+2026-08-02 01:45:56,287 INFO alvance_github_crawler.pipeline: processing crawled candidate myshell-ai/AIlice@63a22105cdf8c0d297af332010f46e4153bbc1ec
+2026-08-02 01:45:56,679 INFO alvance_github_crawler.pipeline: processing crawled candidate wild-card-ai/agents-json@5f5e60a4074eb0fb2aed5a3b03c8149dc3fd7120
+2026-08-02 01:45:58,922 INFO alvance_github_crawler.pipeline: processing crawled candidate Alibaba-NLP/ZeroSearch@67de52289c584348dd6517339dde285d5cc1822f
+2026-08-02 01:45:59,545 INFO alvance_github_crawler.pipeline: processing crawled candidate linkedin/oncall@9bc2b6874b4bcb20b412b3af7b49b3c200d784c7
+2026-08-02 01:45:59,758 INFO alvance_github_crawler.pipeline: processing crawled candidate TomasTomecek/sen@3a31c949f3732910a1f2e58ef8ee88c4758c1107
+2026-08-02 01:46:02,980 INFO alvance_github_crawler.pipeline: processing crawled candidate mandiant/flare-emu@6688c3270d9847c1b96ffcae00f58c0c85ab1a7e
+2026-08-02 01:46:04,042 INFO alvance_github_crawler.pipeline: processing crawled candidate miracle2k/webassets@5a7af269789a6e0da1f22dc114b02c117d79e8fe
+2026-08-02 01:46:04,198 INFO alvance_github_crawler.pipeline: processing crawled candidate trailofbits/deepstate@e68b98e552ab7d59d369a26569562f74a13caa02
+2026-08-02 01:46:04,384 INFO alvance_github_crawler.pending.verification: verifying pending candidate d-k-patel/ai-ffmpeg-cli key_slot=2
+2026-08-02 01:46:05,253 INFO alvance_github_crawler.pipeline: processing crawled candidate triton-inference-server/pytriton@88e92b5ec7cfdf8f22d4e9f00671db331f8288dc
+2026-08-02 01:46:05,311 INFO alvance_github_crawler.pipeline: processing crawled candidate CodeCutTech/data-science-template@bcdd7737fcf9f4f4ac9b51c70992d071ae00f443
+2026-08-02 01:46:07,329 INFO alvance_github_crawler.pipeline: processing crawled candidate lucidrains/native-sparse-attention-pytorch@83fa271c21a0db35ef10d38d1d50aba8a09d3c69
+2026-08-02 01:46:10,302 INFO alvance_github_crawler.pipeline: processing crawled candidate OverLordGoldDragon/ssqueezepy@adf76ac1930321a6e06d5fa5762dc5549316cf91
+2026-08-02 01:46:11,614 INFO alvance_github_crawler.pipeline: processing crawled candidate OleehyO/TexTeller@9b88cec77bda735aa16f9fc7e4ccb4eb1500a8b2
+2026-08-02 01:46:12,712 INFO alvance_github_crawler.pending.verification: verifying pending candidate sovrasov/flops-counter.pytorch key_slot=3
+2026-08-02 01:46:14,969 INFO alvance_github_crawler.pipeline: processing crawled candidate AnjieCheng/NaVILA@76b98f233dd0fff05dfcd69435eec6740febff9d
+2026-08-02 01:46:17,636 INFO alvance_github_crawler.pipeline: processing crawled candidate byRen2002/Re-Centris@919df194c1a74e31456fa00701c82f7059e76f23
+2026-08-02 01:46:17,643 INFO alvance_github_crawler.pipeline: processing crawled candidate heyangxu/Re-movery@1634a169af04094d8132c52be0000d7913ffc049
+2026-08-02 01:46:18,223 INFO alvance_github_crawler.pending.verification: verifying pending candidate themanojdesai/python-a2a key_slot=1
+2026-08-02 01:46:19,158 INFO alvance_github_crawler.pipeline: processing crawled candidate SamKhoze/ComfyUI-DeepFuze@e98418b351ba798d1c72ba8f6ea8f90d69e412e0
+2026-08-02 01:46:20,096 INFO alvance_github_crawler.pipeline: processing crawled candidate OPPO-PersonalAI/Agent-KB@588d6694e743a981179f2e11b47ca3a668e2f1ac
+2026-08-02 01:46:20,101 INFO alvance_github_crawler.pipeline: processing crawled candidate RenzKa/simlingo@743b243afd6cf5ff51b9fa1f8cac86f22d569684
+2026-08-02 01:46:20,103 INFO alvance_github_crawler.pipeline: processing crawled candidate libdyson-wg/ha-dyson@41c33383fa0dde1a9b80929ddb7ef96b5ad76474
+2026-08-02 01:46:20,840 INFO alvance_github_crawler.pending.verification: verifying pending candidate rklb7/ic-py key_slot=2
+2026-08-02 01:46:25,141 INFO alvance_github_crawler.pipeline: processing crawled candidate saprmarks/dictionary_learning@60ec6bf5264944d64a4ca271f45a29ebfb9d4946
+2026-08-02 01:46:26,952 INFO alvance_github_crawler.pipeline: processing crawled candidate george0st/qgate-model@3a172b6cb50bb6c014d98ea67f326d5e646c6b85
+2026-08-02 01:46:27,693 INFO alvance_github_crawler.pipeline: processing crawled candidate jart/fabulous@07ed16034b7d5542a0e3295b06f1c65694666da8
+2026-08-02 01:46:29,199 INFO alvance_github_crawler.pending.verification: pending candidate sovrasov/flops-counter.pytorch finished outcome=rejected key_slot=3 processed=1 in_flight=4
+2026-08-02 01:46:29,655 INFO alvance_github_crawler.pipeline: processing crawled candidate dusktreader/flask-praetorian@075c4f051dbe70504173bf8676d38dcba1397561
+2026-08-02 01:46:30,324 INFO alvance_github_crawler.pipeline: processing crawled candidate meta-pytorch/applied-ai@2391954b19988bd76cf3c2ea84c1ce74b68d568b
+2026-08-02 01:46:31,486 INFO alvance_github_crawler.pipeline: processing crawled candidate lartpang/OVCamo@419c16beea40a9cf0458199f1172b8bdd37d505d
+2026-08-02 01:46:33,046 INFO alvance_github_crawler.pipeline: processing crawled candidate argilla-io/spacy-wordnet@fddfb6f1f3cdf86e5fbac16f650dba5f2cd01055
+2026-08-02 01:46:33,423 INFO alvance_github_crawler.pipeline: processing crawled candidate aazuspan/wxee@33b79185953e9fc64ad5508f66137992620afec4
+2026-08-02 01:46:34,051 INFO alvance_github_crawler.pipeline: processing crawled candidate Dadmatech/DadmaTools@8e779244b980672be90f032c1e7a3a5360aa77c4
+2026-08-02 01:46:35,802 INFO alvance_github_crawler.pipeline: processing crawled candidate TsinghuaC3I/SSRL@3009f2163497ec3f14508bb5e0c60e82536c13f6
+2026-08-02 01:46:35,835 INFO alvance_github_crawler.pipeline: processing crawled candidate datastax/astra-assistants-api@6328c717fa9e3803b692329eb9899553aec08b2c
+2026-08-02 01:46:36,340 INFO alvance_github_crawler.pending.verification: verifying pending candidate pytransitions/transitions key_slot=3
+2026-08-02 01:46:36,340 INFO alvance_github_crawler.pending.verification: verifying pending candidate enoch3712/ExtractThinker key_slot=3
+2026-08-02 01:46:38,769 INFO alvance_github_crawler.pipeline: processing crawled candidate OpenBMB/RLPR@235870e1a934b52ed28902d5d68ec8a811063cdc
+2026-08-02 01:46:38,828 INFO alvance_github_crawler.pipeline: processing crawled candidate QwenAudio/CV3-Eval@68b7682a410d048308d1a12f2fbc266770cd23d5
+2026-08-02 01:46:39,249 INFO alvance_github_crawler.pending.verification: verifying pending candidate triton-inference-server/pytriton key_slot=1
+2026-08-02 01:46:40,731 INFO alvance_github_crawler.pipeline: processing crawled candidate internetarchive/warctools@dda34c5d3dc20aec0a01776480a3820ab1cc9de2
+2026-08-02 01:46:43,433 INFO alvance_github_crawler.pipeline: processing crawled candidate Kodo-Robotics/launchmap@0d3233bdd8b92207789c3547e4065bb63b95946b
+2026-08-02 01:46:43,510 INFO alvance_github_crawler.pipeline: processing crawled candidate doyc-1/Crux@a36eca28f78a080f2e66ab9e69e392afeafe24a3
+2026-08-02 01:46:44,134 INFO alvance_github_crawler.pipeline: processing crawled candidate GeminiLight/virne@d1ec1e4a20461fc9bad50612ad5026fd31e693a8
+2026-08-02 01:46:44,774 INFO alvance_github_crawler.pending.verification: verifying pending candidate raysect/source key_slot=2
+2026-08-02 01:46:45,821 INFO alvance_github_crawler.pipeline: processing crawled candidate awslabs/slapo@d659eddcec58e894381beca3a81dac9b6f573228
+2026-08-02 01:46:46,970 INFO alvance_github_crawler.pending.verification: pending candidate d-k-patel/ai-ffmpeg-cli finished outcome=rejected key_slot=2 processed=2 in_flight=7
+2026-08-02 01:46:47,996 INFO alvance_github_crawler.pipeline: processing crawled candidate 9600dev/llmvm@2939932cb03e17df5c7ca66d3b874c465e24e8a0
+2026-08-02 01:46:48,266 INFO alvance_github_crawler.pipeline: processing crawled candidate ealcobaca/pymfe@550648533ffed791cc52682c2e1ee447ca142160
+2026-08-02 01:46:48,585 INFO alvance_github_crawler.pipeline: processing crawled candidate polaris-hub/polaris@4dd22f132c87c370b01e539e3a416cb5edbc70bd
+2026-08-02 01:46:48,641 INFO alvance_github_crawler.pipeline: processing crawled candidate bot-ssttkkl/nonebot-plugin-pixivbot@53dc7c79b32fa9328d39ead9663d689ab85ece3d
+2026-08-02 01:46:51,308 INFO alvance_github_crawler.pipeline: processing crawled candidate LiamMa/GRIT@6c988ea600a606fbb49a2246c64a2d37396b3ab5
+2026-08-02 01:46:51,488 INFO alvance_github_crawler.pipeline: processing crawled candidate evz/tacofancy-api@af133c3f7d5852186d004f5b3e9266d92fc74645
+2026-08-02 01:46:51,978 INFO alvance_github_crawler.pending.verification: pending candidate pytransitions/transitions finished outcome=rejected key_slot=3 processed=3 in_flight=6
+2026-08-02 01:46:52,149 INFO alvance_github_crawler.pipeline: processing crawled candidate LiamLian0727/USIS10K@d9e56ce828ec6c229dde565e9f2eafebe6461f40
+2026-08-02 01:46:53,450 INFO alvance_github_crawler.pipeline: processing crawled candidate matyalatte/Blender-DDS-Addon@1b3303718b8018b3cdbb1ae0ee2d7c37ad806eab
+2026-08-02 01:46:53,556 INFO alvance_github_crawler.pipeline: processing crawled candidate carbonsilicon-ai/CarsiDock@502cb8f4b769402be628ad001f727a8b21a56cf9
+2026-08-02 01:46:53,706 INFO alvance_github_crawler.pipeline: processing crawled candidate Tele-AI/nl2sql@4beaa6431a7dddfd29d59b4b40f170cb10996cf4
+2026-08-02 01:46:54,134 INFO alvance_github_crawler.pipeline: processing crawled candidate taylorwilsdon/quantconnect-mcp@db736df08275c83d277ecbf4be124ecedafb0b40
+2026-08-02 01:46:55,303 INFO alvance_github_crawler.pipeline: processing crawled candidate KRR-Oxford/OWL2Vec-Star@e7cdc4d9c023061c9518c3e25856b25d4c15b34f
+2026-08-02 01:46:56,292 INFO alvance_github_crawler.pipeline: processing crawled candidate dlesbre/bibtex-autocomplete@aa6ef5a990096cdf51ef6297342a34ae9331d421
+2026-08-02 01:46:56,359 INFO alvance_github_crawler.pipeline: processing crawled candidate ptonlix/gohumanloop@69d7158abfce603efc68152007c82ce12915258c
+2026-08-02 01:46:58,266 INFO alvance_github_crawler.pipeline: processing crawled candidate knowsuchagency/promptic@fe15855b0a0d50229215e76595f8871a5999cca0
+2026-08-02 01:47:01,261 INFO alvance_github_crawler.pending.verification: pending candidate enoch3712/ExtractThinker finished outcome=rejected key_slot=3 processed=4 in_flight=5
+2026-08-02 01:47:01,327 INFO alvance_github_crawler.pipeline: processing crawled candidate yunbo646794/redesigned-gen-aibi-dashboard@456ad9094d107de956455a5c941e469a82f783e8
+2026-08-02 01:47:01,640 INFO alvance_github_crawler.pipeline: processing crawled candidate graphql-python/graphql-server@2d5ac9539307d6db22b3364a61063e050c3f20b9
+2026-08-02 01:47:01,676 INFO alvance_github_crawler.pending.verification: pending candidate rklb7/ic-py finished outcome=rejected key_slot=2 processed=5 in_flight=4
+2026-08-02 01:47:02,547 INFO alvance_github_crawler.pipeline: processing crawled candidate danielmeppiel/oracle-mcp-server@37ce2ead4e8caa274eb9442b44aff7f7a59573dd
+2026-08-02 01:47:03,093 INFO alvance_github_crawler.pipeline: processing crawled candidate hilmiazizi/tokopaedi@3d74be192ff9c4e278df24eb930329a1117c68ea
+2026-08-02 01:47:04,922 INFO alvance_github_crawler.pending.verification: pending candidate themanojdesai/python-a2a finished outcome=rejected key_slot=1 processed=6 in_flight=3
+2026-08-02 01:47:06,768 INFO alvance_github_crawler.pending.verification: verifying pending candidate radomirbosak/duden key_slot=3
+2026-08-02 01:47:23,467 INFO alvance_github_crawler.pending.verification: verifying pending candidate datastax/astra-assistants-api key_slot=2
+2026-08-02 01:47:26,228 INFO alvance_github_crawler.pending.verification: verifying pending candidate libdyson-wg/ha-dyson key_slot=3
+2026-08-02 01:47:30,406 INFO alvance_github_crawler.pending.verification: verifying pending candidate matyalatte/Blender-DDS-Addon key_slot=1
+2026-08-02 01:47:33,291 INFO alvance_github_crawler.pending.verification: verifying pending candidate dlesbre/bibtex-autocomplete key_slot=2
+2026-08-02 01:47:37,394 ERROR alvance_github_crawler.pipeline: mcs07/PubChemPy failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-02 01:47:42,970 INFO alvance_github_crawler.pending.verification: pending candidate libdyson-wg/ha-dyson finished outcome=rejected key_slot=3 processed=7 in_flight=7
+2026-08-02 01:47:51,764 INFO alvance_github_crawler.pending.verification: verifying pending candidate polaris-hub/polaris key_slot=3
+2026-08-02 01:47:52,103 INFO alvance_github_crawler.pending.verification: pending candidate matyalatte/Blender-DDS-Addon finished outcome=rejected key_slot=1 processed=8 in_flight=7
+2026-08-02 01:47:53,531 ERROR alvance_github_crawler.pipeline: TomasTomecek/sen failed during stage3_direction
+Traceback (most recent call last):
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/pipeline.py", line 362, in _process_repo
+    direction = self.direction_checker.check(repo, summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 290, in check
+    verdict = self.judge.judge(repo, issue, repo_tree_summary)
+  File "/home/xubingyu/AlvanceGithubCrawler/src/alvance_github_crawler/screening/direction.py", line 104, in judge
+    raise RuntimeError("OpenAI response did not contain a parsed direction verdict")
+RuntimeError: OpenAI response did not contain a parsed direction verdict
+2026-08-02 01:47:58,088 INFO alvance_github_crawler.pending.verification: pending candidate triton-inference-server/pytriton finished outcome=rejected key_slot=1 processed=9 in_flight=6
+2026-08-02 01:48:02,131 INFO alvance_github_crawler.pending.verification: pending candidate radomirbosak/duden finished outcome=rejected key_slot=3 processed=10 in_flight=5
+2026-08-02 01:48:10,887 INFO alvance_github_crawler.pending.verification: verifying pending candidate trailofbits/deepstate key_slot=1
+2026-08-02 01:48:14,614 INFO alvance_github_crawler.pending.verification: pending candidate datastax/astra-assistants-api finished outcome=rejected key_slot=2 processed=11 in_flight=5
+2026-08-02 01:48:17,908 INFO alvance_github_crawler.pending.verification: pending candidate trailofbits/deepstate finished outcome=rejected key_slot=1 processed=12 in_flight=4
+2026-08-02 01:48:19,651 INFO alvance_github_crawler.pending.verification: verifying pending candidate takuseno/d3rlpy key_slot=3
+2026-08-02 01:48:20,504 INFO alvance_github_crawler.pending.verification: pending candidate polaris-hub/polaris finished outcome=rejected key_slot=3 processed=13 in_flight=4
+2026-08-02 01:48:25,100 INFO alvance_github_crawler.pending.verification: verifying pending candidate miracle2k/webassets key_slot=1
+2026-08-02 01:48:39,180 INFO alvance_github_crawler.pending.verification: pending candidate takuseno/d3rlpy finished outcome=rejected key_slot=3 processed=14 in_flight=4
+{
+  "duplicate": 26334,
+  "error": 2,
+  "input_total": 26422,
+  "processed": 88,
+  "queued": 17,
+  "rejected": 69
+}
+[2026-08-02T01:48:41Z] stage=prescreen-resume-71500 exit_code=0 duration_s=193
+2026-08-02 01:49:12,457 INFO alvance_github_crawler.pending.verification: pending candidate miracle2k/webassets finished outcome=registered key_slot=1 processed=15 in_flight=3
+2026-08-02 01:49:50,117 INFO alvance_github_crawler.pending.verification: pending candidate jonathf/chaospy finished outcome=registered key_slot=1 processed=16 in_flight=2
+2026-08-02 01:57:55,646 INFO alvance_github_crawler.pending.verification: pending candidate dlesbre/bibtex-autocomplete finished outcome=rejected key_slot=2 processed=17 in_flight=1
+2026-08-02 02:01:54,534 INFO alvance_github_crawler.pending.verification: pending candidate raysect/source finished outcome=rejected key_slot=2 processed=18 in_flight=0
+{
+  "key_slot_1_processed": 6,
+  "key_slot_1_registered": 2,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 5,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 7,
+  "key_slot_3_rejected": 7,
+  "processed": 18,
+  "registered": 2,
+  "rejected": 16,
+  "remaining": 0
+}
+[2026-08-02T02:01:55Z] stage=verify-default-20260802T014457Z exit_code=0 duration_s=1018
+[XBY f89102b0] chore(tasks): publish github-mass-production-XBY-20260802 batch 20260802T020156Z
+ 28 files changed, 416 insertions(+)
+ create mode 100644 materials/chaospy-869589-ec8cd460/README.md
+ create mode 100644 materials/chaospy-869589-ec8cd460/environment/Dockerfile
+ create mode 100644 materials/chaospy-869589-ec8cd460/material.toml
+ create mode 100644 materials/chaospy-869589-ec8cd460/receipts/e2b.json
+ create mode 100755 materials/chaospy-869589-ec8cd460/scripts/baseline.sh
+ create mode 100755 materials/chaospy-869589-ec8cd460/scripts/export-patch.sh
+ create mode 100644 materials/webassets-dc1ace-5a7af269/README.md
+ create mode 100644 materials/webassets-dc1ace-5a7af269/environment/Dockerfile
+ create mode 100644 materials/webassets-dc1ace-5a7af269/material.toml
+ create mode 100644 materials/webassets-dc1ace-5a7af269/receipts/e2b.json
+ create mode 100755 materials/webassets-dc1ace-5a7af269/scripts/baseline.sh
+ create mode 100755 materials/webassets-dc1ace-5a7af269/scripts/export-patch.sh
+ create mode 100644 tasks/alv-chaospy-869589-ec8cd460-v2/direction.md
+ create mode 100644 tasks/alv-chaospy-869589-ec8cd460-v2/environment/Dockerfile
+ create mode 100644 tasks/alv-chaospy-869589-ec8cd460-v2/instruction.md
+ create mode 100644 tasks/alv-chaospy-869589-ec8cd460-v2/material.toml
+ create mode 100755 tasks/alv-chaospy-869589-ec8cd460-v2/solution/solve.sh
+ create mode 100644 tasks/alv-chaospy-869589-ec8cd460-v2/task.toml
+ create mode 100755 tasks/alv-chaospy-869589-ec8cd460-v2/tests/test.sh
+ create mode 100644 tasks/alv-webassets-dc1ace-5a7af269-v2/direction.md
+ create mode 100644 tasks/alv-webassets-dc1ace-5a7af269-v2/environment/Dockerfile
+ create mode 100644 tasks/alv-webassets-dc1ace-5a7af269-v2/instruction.md
+ create mode 100644 tasks/alv-webassets-dc1ace-5a7af269-v2/material.toml
+ create mode 100755 tasks/alv-webassets-dc1ace-5a7af269-v2/solution/solve.sh
+ create mode 100644 tasks/alv-webassets-dc1ace-5a7af269-v2/task.toml
+ create mode 100755 tasks/alv-webassets-dc1ace-5a7af269-v2/tests/test.sh
+automatic git push disabled; push manually with: git push origin XBY
+[2026-08-02T02:01:58Z] stage=requeue-resource-failures run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota uv run alvance-github-crawler --requeue-failures --failure-reason e2b_resource_exhausted --failure-reason benchmark_resource_fail --failure-reason offline_test_timeout --requeue-marker resource-escalation-c2-m4096-v1 --verbose
+{
+  "already_registered": 147,
+  "already_requeued": 157,
+  "matched": 158,
+  "requeued": 1
+}
+[2026-08-02T02:02:03Z] stage=requeue-resource-failures exit_code=0 duration_s=5
+[2026-08-02T02:02:03Z] stage=verify-escalated-20260802T020203Z run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=2 PIPELINE_E2B_MEMORY_MB=4096 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-02 02:02:06,665 INFO alvance_github_crawler.pending.verification: verifying pending candidate dlesbre/bibtex-autocomplete key_slot=1
+2026-08-02 02:12:32,537 INFO alvance_github_crawler.pending.verification: pending candidate dlesbre/bibtex-autocomplete finished outcome=rejected key_slot=1 processed=1 in_flight=0
+{
+  "key_slot_1_processed": 1,
+  "key_slot_1_rejected": 1,
+  "processed": 1,
+  "rejected": 1,
+  "remaining": 0
+}
+[2026-08-02T02:12:33Z] stage=verify-escalated-20260802T020203Z exit_code=0 duration_s=630

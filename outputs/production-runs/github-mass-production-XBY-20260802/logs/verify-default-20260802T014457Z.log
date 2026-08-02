@@ -1,0 +1,52 @@
+[2026-08-02T01:44:57Z] stage=verify-default-20260802T014457Z run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --e2b-concurrency 20 --verbose
+2026-08-02 01:45:00,267 INFO alvance_github_crawler.pending.verification: verifying pending candidate jonathf/chaospy key_slot=1
+2026-08-02 01:46:04,384 INFO alvance_github_crawler.pending.verification: verifying pending candidate d-k-patel/ai-ffmpeg-cli key_slot=2
+2026-08-02 01:46:12,712 INFO alvance_github_crawler.pending.verification: verifying pending candidate sovrasov/flops-counter.pytorch key_slot=3
+2026-08-02 01:46:18,223 INFO alvance_github_crawler.pending.verification: verifying pending candidate themanojdesai/python-a2a key_slot=1
+2026-08-02 01:46:20,840 INFO alvance_github_crawler.pending.verification: verifying pending candidate rklb7/ic-py key_slot=2
+2026-08-02 01:46:29,199 INFO alvance_github_crawler.pending.verification: pending candidate sovrasov/flops-counter.pytorch finished outcome=rejected key_slot=3 processed=1 in_flight=4
+2026-08-02 01:46:36,340 INFO alvance_github_crawler.pending.verification: verifying pending candidate pytransitions/transitions key_slot=3
+2026-08-02 01:46:36,340 INFO alvance_github_crawler.pending.verification: verifying pending candidate enoch3712/ExtractThinker key_slot=3
+2026-08-02 01:46:39,249 INFO alvance_github_crawler.pending.verification: verifying pending candidate triton-inference-server/pytriton key_slot=1
+2026-08-02 01:46:44,774 INFO alvance_github_crawler.pending.verification: verifying pending candidate raysect/source key_slot=2
+2026-08-02 01:46:46,970 INFO alvance_github_crawler.pending.verification: pending candidate d-k-patel/ai-ffmpeg-cli finished outcome=rejected key_slot=2 processed=2 in_flight=7
+2026-08-02 01:46:51,978 INFO alvance_github_crawler.pending.verification: pending candidate pytransitions/transitions finished outcome=rejected key_slot=3 processed=3 in_flight=6
+2026-08-02 01:47:01,261 INFO alvance_github_crawler.pending.verification: pending candidate enoch3712/ExtractThinker finished outcome=rejected key_slot=3 processed=4 in_flight=5
+2026-08-02 01:47:01,676 INFO alvance_github_crawler.pending.verification: pending candidate rklb7/ic-py finished outcome=rejected key_slot=2 processed=5 in_flight=4
+2026-08-02 01:47:04,922 INFO alvance_github_crawler.pending.verification: pending candidate themanojdesai/python-a2a finished outcome=rejected key_slot=1 processed=6 in_flight=3
+2026-08-02 01:47:06,768 INFO alvance_github_crawler.pending.verification: verifying pending candidate radomirbosak/duden key_slot=3
+2026-08-02 01:47:23,467 INFO alvance_github_crawler.pending.verification: verifying pending candidate datastax/astra-assistants-api key_slot=2
+2026-08-02 01:47:26,228 INFO alvance_github_crawler.pending.verification: verifying pending candidate libdyson-wg/ha-dyson key_slot=3
+2026-08-02 01:47:30,406 INFO alvance_github_crawler.pending.verification: verifying pending candidate matyalatte/Blender-DDS-Addon key_slot=1
+2026-08-02 01:47:33,291 INFO alvance_github_crawler.pending.verification: verifying pending candidate dlesbre/bibtex-autocomplete key_slot=2
+2026-08-02 01:47:42,970 INFO alvance_github_crawler.pending.verification: pending candidate libdyson-wg/ha-dyson finished outcome=rejected key_slot=3 processed=7 in_flight=7
+2026-08-02 01:47:51,764 INFO alvance_github_crawler.pending.verification: verifying pending candidate polaris-hub/polaris key_slot=3
+2026-08-02 01:47:52,103 INFO alvance_github_crawler.pending.verification: pending candidate matyalatte/Blender-DDS-Addon finished outcome=rejected key_slot=1 processed=8 in_flight=7
+2026-08-02 01:47:58,088 INFO alvance_github_crawler.pending.verification: pending candidate triton-inference-server/pytriton finished outcome=rejected key_slot=1 processed=9 in_flight=6
+2026-08-02 01:48:02,131 INFO alvance_github_crawler.pending.verification: pending candidate radomirbosak/duden finished outcome=rejected key_slot=3 processed=10 in_flight=5
+2026-08-02 01:48:10,887 INFO alvance_github_crawler.pending.verification: verifying pending candidate trailofbits/deepstate key_slot=1
+2026-08-02 01:48:14,614 INFO alvance_github_crawler.pending.verification: pending candidate datastax/astra-assistants-api finished outcome=rejected key_slot=2 processed=11 in_flight=5
+2026-08-02 01:48:17,908 INFO alvance_github_crawler.pending.verification: pending candidate trailofbits/deepstate finished outcome=rejected key_slot=1 processed=12 in_flight=4
+2026-08-02 01:48:19,651 INFO alvance_github_crawler.pending.verification: verifying pending candidate takuseno/d3rlpy key_slot=3
+2026-08-02 01:48:20,504 INFO alvance_github_crawler.pending.verification: pending candidate polaris-hub/polaris finished outcome=rejected key_slot=3 processed=13 in_flight=4
+2026-08-02 01:48:25,100 INFO alvance_github_crawler.pending.verification: verifying pending candidate miracle2k/webassets key_slot=1
+2026-08-02 01:48:39,180 INFO alvance_github_crawler.pending.verification: pending candidate takuseno/d3rlpy finished outcome=rejected key_slot=3 processed=14 in_flight=4
+2026-08-02 01:49:12,457 INFO alvance_github_crawler.pending.verification: pending candidate miracle2k/webassets finished outcome=registered key_slot=1 processed=15 in_flight=3
+2026-08-02 01:49:50,117 INFO alvance_github_crawler.pending.verification: pending candidate jonathf/chaospy finished outcome=registered key_slot=1 processed=16 in_flight=2
+2026-08-02 01:57:55,646 INFO alvance_github_crawler.pending.verification: pending candidate dlesbre/bibtex-autocomplete finished outcome=rejected key_slot=2 processed=17 in_flight=1
+2026-08-02 02:01:54,534 INFO alvance_github_crawler.pending.verification: pending candidate raysect/source finished outcome=rejected key_slot=2 processed=18 in_flight=0
+{
+  "key_slot_1_processed": 6,
+  "key_slot_1_registered": 2,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 5,
+  "key_slot_2_rejected": 5,
+  "key_slot_3_processed": 7,
+  "key_slot_3_rejected": 7,
+  "processed": 18,
+  "registered": 2,
+  "rejected": 16,
+  "remaining": 0
+}
+[2026-08-02T02:01:55Z] stage=verify-default-20260802T014457Z exit_code=0 duration_s=1018
