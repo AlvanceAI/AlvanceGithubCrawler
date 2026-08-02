@@ -1,18 +1,18 @@
 # Pipeline statistics: github-mass-production-XBY-20260802
 
 - Status: `complete`
-- Generated: `2026-08-02T02:12:37.322780+00:00`
-- Raw GitHub sample: 71500
-- Initial filter accepted: 26422
-- E2B queue: 4716
-- Deliverable tasks: 1345
+- Generated: `2026-08-02T09:10:14.069385+00:00`
+- Raw GitHub sample: 71963
+- Initial filter accepted: 26501
+- E2B queue: 4724
+- Deliverable tasks: 1346
 - Pending: 0
 
 ## Language funnel
 
 | Language | Initial accepted | Final tasks |
 |---|---:|---:|
-| python | 9095 | 273 |
+| python | 9174 | 274 |
 | go | 5479 | 458 |
 | typescript | 5132 | 222 |
 | javascript | 2731 | 112 |
@@ -31,6 +31,22 @@
 | verify-default-20260802T014457Z | 1018 | 0 |
 | requeue-resource-failures | 5 | 0 |
 | verify-escalated-20260802T020203Z | 630 | 0 |
+| repair-rebuildable-packages | 10 | 0 |
+| requeue-node-package-manager-v18 | 4 | 0 |
+| requeue-go-runtime-v4 | 3 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 4 | 0 |
+| prescreen-resume-71500 | 163 | 0 |
+| crawl-72000 | 46 | 1 |
+| requeue-resource-failures | 3 | 0 |
+| repair-rebuildable-packages | 10 | 0 |
+| requeue-node-package-manager-v18 | 4 | 0 |
+| requeue-go-runtime-v4 | 4 | 0 |
+| requeue-e2b-rate-limit-backoff-v1 | 3 | 0 |
+| crawl-72000 | 202 | 0 |
+| crawl-producer | 202 | 0 |
+| prescreen-follow | 656 | 0 |
+| verify-follow-default | 657 | 0 |
+| requeue-resource-failures | 4 | 0 |
 
 ## E2B task performance
 
@@ -1381,6 +1397,7 @@
 | [aio-libs/aioftp](https://github.com/aio-libs/aioftp) | python | 1 CPU / 1024 MB | 0.41 | 13.45 | 100.5 | `tasks/alv-aioftp-2b0c96-226ad642-v2` |
 | [miracle2k/webassets](https://github.com/miracle2k/webassets) | python | 1 CPU / 1024 MB | 0.41 | 3.18 | 50.4 | `tasks/alv-webassets-dc1ace-5a7af269-v2` |
 | [jonathf/chaospy](https://github.com/jonathf/chaospy) | python | 1 CPU / 1024 MB | 0.53 | 45.03 | 773.8 | `tasks/alv-chaospy-869589-ec8cd460-v2` |
+| [Farama-Foundation/ChatArena](https://github.com/Farama-Foundation/ChatArena) | python | 1 CPU / 1024 MB | 0.55 | 8.49 | 159.5 | `tasks/alv-chatarena-e30e3a-a15802dd-v2` |
 
 ## Logs
 

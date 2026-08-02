@@ -18829,31 +18829,47 @@
       "status": "ready_for_phase1",
       "task_path": "tasks/alv-chaospy-869589-ec8cd460-v2",
       "test_duration_median_s": 45.03
+    },
+    {
+      "base_commit": "a15802dd89c0d69165bb0b07e70c2bac5a7c4e36",
+      "cold_start_median_s": 0.55,
+      "cpu_count": 1,
+      "language": "python",
+      "launch_command": "harbor run --path tasks/alv-chatarena-e30e3a-a15802dd-v2 --env e2b --no-force-build",
+      "memory_mb": 1024,
+      "offline_duration_s": 16.65,
+      "peak_mem_median_mb": 159.5,
+      "repo": "Farama-Foundation/ChatArena",
+      "status": "ready_for_phase1",
+      "task_path": "tasks/alv-chatarena-e30e3a-a15802dd-v2",
+      "test_duration_median_s": 8.49
     }
   ],
   "crawl": {
     "accepted_by_language": {
       "go": 5479,
       "javascript": 2731,
-      "python": 9095,
+      "python": 9174,
       "rust": 3985,
       "typescript": 5132
     },
-    "accepted_total": 26422,
+    "accepted_total": 26501,
     "allocation_semantics": "balanced_with_exhaustion_redistribution_v1",
-    "api_request_count": 119647,
+    "api_request_count": 120192,
     "cutoff_time": "2025-07-29T09:08:23.059900+00:00",
-    "deduplicated_total": 71500,
+    "deduplicated_total": 71963,
     "duplicate_results": 0,
-    "duration_seconds": 319023.433,
-    "end_time": "2026-08-02T01:45:26.493963+00:00",
+    "duration_seconds": 345247.218,
+    "end_time": "2026-08-02T09:02:30.278159+00:00",
     "exhausted_languages": [
       "go",
       "javascript",
+      "python",
       "rust",
       "typescript"
     ],
-    "fetched_total": 71500,
+    "exhausted_without_full_target": true,
+    "fetched_total": 71963,
     "github_rate_limit_remaining": {
       "actions_runner_registration": 20000,
       "audit_log": 3500,
@@ -18861,40 +18877,40 @@
       "code_scanning_autofix": 20,
       "code_search": 20,
       "copilot_usage_records": 3500,
-      "core": 9988,
+      "core": 9967,
       "dependency_sbom": 200,
       "dependency_snapshots": 200,
-      "graphql": 10000,
+      "graphql": 9994,
       "integration_manifest": 10000,
       "scim": 30000,
       "search": 60,
       "source_import": 200
     },
     "output_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota",
-    "per_language": 14300,
-    "raw_per_language": 14300,
+    "per_language": 14400,
+    "raw_per_language": 14400,
     "raw_targets_by_language": {
       "go": 8520,
       "javascript": 12215,
-      "python": 27779,
+      "python": 28242,
       "rust": 7655,
       "typescript": 15331
     },
     "rejected_by_reason": {
-      "inactive_head_commit": 3073,
-      "inactive_push": 5,
+      "inactive_head_commit": 3093,
+      "inactive_push": 22,
       "language_mismatch": 8,
-      "no_test_infra": 17223,
-      "tree_unavailable": 42,
-      "unsupported_license": 24727
+      "no_test_infra": 17350,
+      "tree_unavailable": 43,
+      "unsupported_license": 24946
     },
-    "rejected_total": 45078,
+    "rejected_total": 45462,
     "retry_count": 20,
     "schema_version": "1.4",
     "search_pages_fetched": {
       "go": 100,
       "javascript": 150,
-      "python": 311,
+      "python": 317,
       "rust": 86,
       "typescript": 189
     },
@@ -18908,10 +18924,10 @@
     "selection_semantics": "raw_sample_all_pass_v1",
     "start_time": "2026-07-29T09:08:23.060613+00:00",
     "status": "completed",
-    "target_total": 71500,
+    "target_total": 72000,
     "validation_errors": []
   },
-  "generated_at": "2026-08-02T02:12:37.322780+00:00",
+  "generated_at": "2026-08-02T09:10:14.069385+00:00",
   "paths": {
     "crawl_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_crawl_500_unquota",
     "production_dir": "/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota",
@@ -18921,41 +18937,41 @@
     "candidate_by_language": {
       "go": 458,
       "javascript": 112,
-      "python": 273,
+      "python": 274,
       "rust": 280,
       "typescript": 222
     },
     "candidate_by_resource": {
-      "1cpu-1024mb": 1198,
+      "1cpu-1024mb": 1199,
       "2cpu-4096mb": 147
     },
-    "candidate_total": 1345,
-    "e2b_queued_total": 4716,
+    "candidate_total": 1346,
+    "e2b_queued_total": 4724,
     "latest_rejection_by_reason": {
       "benchmark_resource_fail": 27,
       "benchmark_test_fail": 37,
-      "build_fail": 1257,
+      "build_fail": 1258,
       "e2b_build_timeout": 30,
-      "e2b_disk_exhausted": 109,
+      "e2b_disk_exhausted": 111,
       "e2b_resource_exhausted": 149,
       "flaky_adjusted_score=5.0": 1,
       "flaky_adjusted_score=6.0": 5,
-      "inactive": 15,
+      "inactive": 28,
       "infra_error": 22,
-      "no_direction": 11307,
-      "offline_test_fail": 1622,
+      "no_direction": 11330,
+      "offline_test_fail": 1626,
       "offline_test_timeout": 129,
-      "repo_too_large": 2147,
-      "score=4": 1211,
-      "score=5": 2441,
-      "score=6": 4570,
-      "stage_error": 92,
+      "repo_too_large": 2154,
+      "score=4": 1215,
+      "score=5": 2455,
+      "score=6": 4582,
+      "stage_error": 90,
       "unsupported_dependency_lock": 130,
       "unsupported_runtime": 41
     },
-    "latest_rejection_total": 25342,
+    "latest_rejection_total": 25420,
     "pending_remaining": 0,
-    "rejection_record_total": 27579
+    "rejection_record_total": 27661
   },
   "run_id": "github-mass-production-XBY-20260802",
   "schema_version": "1.0",
@@ -19031,6 +19047,134 @@
       "run_id": "github-mass-production-XBY-20260802",
       "stage": "verify-escalated-20260802T020203Z",
       "started_at": "2026-08-02T02:02:03Z"
+    },
+    {
+      "duration_s": 10,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T02:13:12Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "repair-rebuildable-packages",
+      "started_at": "2026-08-02T02:13:02Z"
+    },
+    {
+      "duration_s": 4,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T02:13:16Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "requeue-node-package-manager-v18",
+      "started_at": "2026-08-02T02:13:12Z"
+    },
+    {
+      "duration_s": 3,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T02:13:19Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "requeue-go-runtime-v4",
+      "started_at": "2026-08-02T02:13:16Z"
+    },
+    {
+      "duration_s": 4,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T02:13:23Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "requeue-e2b-rate-limit-backoff-v1",
+      "started_at": "2026-08-02T02:13:19Z"
+    },
+    {
+      "duration_s": 163,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T02:16:06Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "prescreen-resume-71500",
+      "started_at": "2026-08-02T02:13:23Z"
+    },
+    {
+      "duration_s": 46,
+      "exit_code": 1,
+      "finished_at": "2026-08-02T02:16:52Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "crawl-72000",
+      "started_at": "2026-08-02T02:16:06Z"
+    },
+    {
+      "duration_s": 3,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T02:16:58Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "requeue-resource-failures",
+      "started_at": "2026-08-02T02:16:55Z"
+    },
+    {
+      "duration_s": 10,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T08:58:59Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "repair-rebuildable-packages",
+      "started_at": "2026-08-02T08:58:49Z"
+    },
+    {
+      "duration_s": 4,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T08:59:03Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "requeue-node-package-manager-v18",
+      "started_at": "2026-08-02T08:58:59Z"
+    },
+    {
+      "duration_s": 4,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T08:59:07Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "requeue-go-runtime-v4",
+      "started_at": "2026-08-02T08:59:03Z"
+    },
+    {
+      "duration_s": 3,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T08:59:10Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "requeue-e2b-rate-limit-backoff-v1",
+      "started_at": "2026-08-02T08:59:07Z"
+    },
+    {
+      "duration_s": 202,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T09:02:32Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "crawl-72000",
+      "started_at": "2026-08-02T08:59:10Z"
+    },
+    {
+      "duration_s": 202,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T09:02:32Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "crawl-producer",
+      "started_at": "2026-08-02T08:59:10Z"
+    },
+    {
+      "duration_s": 656,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T09:10:06Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "prescreen-follow",
+      "started_at": "2026-08-02T08:59:10Z"
+    },
+    {
+      "duration_s": 657,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T09:10:07Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "verify-follow-default",
+      "started_at": "2026-08-02T08:59:10Z"
+    },
+    {
+      "duration_s": 4,
+      "exit_code": 0,
+      "finished_at": "2026-08-02T09:10:11Z",
+      "run_id": "github-mass-production-XBY-20260802",
+      "stage": "requeue-resource-failures",
+      "started_at": "2026-08-02T09:10:07Z"
     }
   ],
   "status": "complete"

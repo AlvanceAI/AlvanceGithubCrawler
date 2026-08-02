@@ -1,0 +1,32 @@
+[2026-08-02T08:59:10Z] stage=verify-follow-default run_id=github-mass-production-XBY-20260802
+command= env PIPELINE_OUTPUT_DIR=/home/xubingyu/AlvanceGithubCrawler/outputs/github_production_500_unquota PIPELINE_E2B_CPU_COUNT=1 PIPELINE_E2B_MEMORY_MB=1024 PIPELINE_E2B_CONCURRENCY=20 PIPELINE_LANGUAGE_QUOTA_ENABLED=false uv run alvance-github-crawler --verify-pending --follow-until /home/xubingyu/AlvanceGithubCrawler/outputs/production-runs/github-mass-production-XBY-20260802/prescreen.done --follow-status /home/xubingyu/AlvanceGithubCrawler/outputs/production-runs/github-mass-production-XBY-20260802/e2b-follow.status.json --follow-poll-interval 2 --e2b-concurrency 20 --verbose
+2026-08-02 09:04:46,121 INFO alvance_github_crawler.pending.verification: verifying pending candidate andrewvillazon/pbipy key_slot=1
+2026-08-02 09:04:56,139 INFO alvance_github_crawler.pending.verification: verifying pending candidate AmenRa/ranx key_slot=2
+2026-08-02 09:05:00,147 INFO alvance_github_crawler.pending.verification: verifying pending candidate Farama-Foundation/ChatArena key_slot=3
+2026-08-02 09:05:03,132 INFO alvance_github_crawler.pending.verification: pending candidate andrewvillazon/pbipy finished outcome=rejected key_slot=1 processed=1 in_flight=2
+2026-08-02 09:05:13,149 INFO alvance_github_crawler.pending.verification: verifying pending candidate stopstalk/stopstalk-deployment key_slot=1
+2026-08-02 09:05:21,900 INFO alvance_github_crawler.pending.verification: pending candidate stopstalk/stopstalk-deployment finished outcome=rejected key_slot=1 processed=2 in_flight=2
+2026-08-02 09:06:12,965 INFO alvance_github_crawler.pending.verification: verifying pending candidate koreo-dev/koreo-core key_slot=1
+2026-08-02 09:06:49,110 INFO alvance_github_crawler.pending.verification: pending candidate AmenRa/ranx finished outcome=rejected key_slot=2 processed=3 in_flight=2
+2026-08-02 09:06:55,128 INFO alvance_github_crawler.pending.verification: pending candidate koreo-dev/koreo-core finished outcome=rejected key_slot=1 processed=4 in_flight=1
+2026-08-02 09:07:07,963 INFO alvance_github_crawler.pending.verification: pending candidate Farama-Foundation/ChatArena finished outcome=registered key_slot=3 processed=5 in_flight=0
+2026-08-02 09:07:11,968 INFO alvance_github_crawler.pending.verification: verifying pending candidate AlignmentResearch/tuned-lens key_slot=2
+2026-08-02 09:07:42,399 INFO alvance_github_crawler.pending.verification: pending candidate AlignmentResearch/tuned-lens finished outcome=rejected key_slot=2 processed=6 in_flight=0
+2026-08-02 09:08:54,439 INFO alvance_github_crawler.pending.verification: verifying pending candidate open-mmlab/mmpose key_slot=3
+2026-08-02 09:08:55,442 INFO alvance_github_crawler.pending.verification: verifying pending candidate alexgolec/schwab-py key_slot=1
+2026-08-02 09:09:18,789 INFO alvance_github_crawler.pending.verification: pending candidate alexgolec/schwab-py finished outcome=rejected key_slot=1 processed=7 in_flight=1
+2026-08-02 09:09:29,277 INFO alvance_github_crawler.pending.verification: pending candidate open-mmlab/mmpose finished outcome=rejected key_slot=3 processed=8 in_flight=0
+{
+  "key_slot_1_processed": 4,
+  "key_slot_1_rejected": 4,
+  "key_slot_2_processed": 2,
+  "key_slot_2_rejected": 2,
+  "key_slot_3_processed": 2,
+  "key_slot_3_registered": 1,
+  "key_slot_3_rejected": 1,
+  "processed": 8,
+  "registered": 1,
+  "rejected": 7,
+  "remaining": 0
+}
+[2026-08-02T09:10:07Z] stage=verify-follow-default exit_code=0 duration_s=657
