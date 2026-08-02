@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .github import GitHubClient
-from .jsonl_io import append_text_locked, read_text_locked
+from .jsonl_io import append_text_locked, read_text_locked, split_jsonl_lines
 from .screening.filters import PERMISSIVE_LICENSES, test_infrastructure_evidence
 from .screening.scoring import developer_library_score
 
@@ -23,8 +23,9 @@ GITHUB_LANGUAGE_NAMES = {
     "javascript": "JavaScript",
     "rust": "Rust",
 }
-CRAWL_STATE_VERSION = "1.3"
+CRAWL_STATE_VERSION = "1.4"
 SELECTION_SEMANTICS = "raw_sample_all_pass_v1"
+ALLOCATION_SEMANTICS = "balanced_with_exhaustion_redistribution_v1"
 FULL_SHA = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
 
 
@@ -93,7 +94,10 @@ class CandidateCrawler:
             for item in [*accepted, *rejected]
             if item.get("repo")
         }
-        if self._raw_sample_complete(raw_records) and len(processed) == self.target_total:
+        self.state["processed_total"] = len(processed)
+        self.state["accepted_total"] = len(accepted)
+        self.state["rejected_total"] = len(rejected)
+        if self._raw_sample_complete(raw_records) and len(processed) == len(raw_records):
             previous_summary = _read_json(self.summary_path)
             if self._completed_summary_matches(previous_summary, raw_records, accepted, rejected):
                 self._validate_completed(previous_summary)
@@ -104,8 +108,9 @@ class CandidateCrawler:
             return summary
 
         try:
-            for language in CRAWL_LANGUAGES:
-                while True:
+            while True:
+                made_progress = False
+                for language in CRAWL_LANGUAGES:
                     pending = self._pending_for_language(raw_records, processed, language)
                     if pending:
                         self._process_pending(
@@ -117,63 +122,80 @@ class CandidateCrawler:
                             processed=processed,
                         )
                         self._save_state(completed=False)
+                        made_progress = True
 
                     raw_count = self._raw_count(raw_records, language)
-                    if raw_count >= self.per_language:
-                        break
+                    target = self._raw_target(language)
+                    if raw_count >= target or language in self._exhausted_languages():
+                        continue
 
-                    page = int(self.state["next_page_by_language"][language])
-                    if page > self.max_search_pages:
-                        if self._advance_search_window(language, raw_records):
-                            continue
-                        raise CrawlIncompleteError(
-                            f"{language} has only {raw_count} raw repositories "
-                            "after exhausting all search windows"
-                        )
-                    items = self._fetch_page(language, page)
-                    fetched_at = _utc_now()
-                    pushed_before = str(
-                        self.state["pushed_before_by_language"].get(language) or ""
-                    )
-                    page_records = []
-                    known_raw = {
-                        str(record.get("full_name") or "").casefold()
-                        for record in raw_records
-                        if record.get("full_name")
-                    }
-                    remaining = self.per_language - raw_count
-                    for item in items:
-                        if not isinstance(item, dict):
-                            continue
-                        key = str(item.get("full_name") or "").casefold()
-                        if not key or key in known_raw:
-                            continue
-                        record = dict(item)
-                        record["_crawl"] = {
-                            "query_language": language,
-                            "page": page,
-                            "pushed_before": pushed_before,
-                            "fetched_at": fetched_at,
-                        }
-                        page_records.append(record)
-                        known_raw.add(key)
-                        if len(page_records) >= remaining:
+                    while raw_count < target:
+                        page = int(self.state["next_page_by_language"][language])
+                        if page > self.max_search_pages:
+                            if self._advance_search_window(language, raw_records):
+                                made_progress = True
+                                continue
+                            self._mark_language_exhausted(language, raw_records)
+                            made_progress = True
                             break
-                    _append_jsonl_many(self.raw_path, page_records)
-                    raw_records.extend(page_records)
-                    self.state["next_page_by_language"][language] = page + 1
-                    self.state["search_pages_fetched_by_language"][language] += 1
-                    self._save_state(completed=False)
-                    if not page_records:
+                        items = self._fetch_page(language, page)
+                        fetched_at = _utc_now()
+                        pushed_before = str(
+                            self.state["pushed_before_by_language"].get(language) or ""
+                        )
+                        page_records = []
+                        known_raw = {
+                            str(record.get("full_name") or "").casefold()
+                            for record in raw_records
+                            if record.get("full_name")
+                        }
+                        remaining = target - raw_count
+                        for item in items:
+                            if not isinstance(item, dict):
+                                continue
+                            key = str(item.get("full_name") or "").casefold()
+                            if not key or key in known_raw:
+                                continue
+                            record = dict(item)
+                            record["_crawl"] = {
+                                "query_language": language,
+                                "page": page,
+                                "pushed_before": pushed_before,
+                                "fetched_at": fetched_at,
+                            }
+                            page_records.append(record)
+                            known_raw.add(key)
+                            if len(page_records) >= remaining:
+                                break
+                        # The summary immediately reopens this file. Force raw page
+                        # visibility on clustered filesystems before updating memory.
+                        _append_jsonl_many(self.raw_path, page_records, durable=True)
+                        raw_records.extend(page_records)
+                        raw_count += len(page_records)
+                        self.state.setdefault("raw_counts_by_language", {})[
+                            language
+                        ] = raw_count
+                        self.state["next_page_by_language"][language] = page + 1
+                        self.state["search_pages_fetched_by_language"][language] += 1
+                        self._save_state(completed=False)
+                        if page_records:
+                            made_progress = True
+                            continue
                         if self._advance_search_window(
                             language,
                             raw_records,
                             page_items=items,
                         ):
+                            made_progress = True
                             continue
-                        raise CrawlIncompleteError(
-                            f"GitHub search was exhausted for {language}"
-                        )
+                        self._mark_language_exhausted(language, raw_records)
+                        made_progress = True
+                        break
+
+                if self._raw_sample_complete(raw_records) and len(processed) == len(raw_records):
+                    break
+                if not made_progress:
+                    raise CrawlIncompleteError("crawl made no progress toward the target sample")
         except KeyboardInterrupt:
             self._save_state(completed=False)
             self._write_summary(completed=False, error="interrupted", refresh_rate_limit=False)
@@ -212,6 +234,7 @@ class CandidateCrawler:
             state = {
                 "schema_version": CRAWL_STATE_VERSION,
                 "selection_semantics": SELECTION_SEMANTICS,
+                "allocation_semantics": ALLOCATION_SEMANTICS,
                 "target_total": self.target_total,
                 "per_language": self.per_language,
                 "started_at": _utc_now(),
@@ -220,6 +243,7 @@ class CandidateCrawler:
                 "api_request_count": 0,
                 "retry_count": 0,
                 "completed": False,
+                "exhausted_languages": [],
             }
 
         persisted_cutoff = _parse_github_time(str(state.get("cutoff_time") or ""))
@@ -229,6 +253,7 @@ class CandidateCrawler:
             state["cutoff_time"] = persisted_cutoff.isoformat()
         self.cutoff = persisted_cutoff
         state["schema_version"] = CRAWL_STATE_VERSION
+        state["allocation_semantics"] = ALLOCATION_SEMANTICS
 
         pages = state.setdefault(
             "next_page_by_language", {language: 1 for language in CRAWL_LANGUAGES}
@@ -264,6 +289,15 @@ class CandidateCrawler:
                     int(pages_fetched[language]),
                     page,
                 )
+        exhausted = state.setdefault("exhausted_languages", [])
+        state["exhausted_languages"] = sorted(
+            {
+                str(language).lower()
+                for language in exhausted
+                if str(language).lower() in CRAWL_LANGUAGES
+            }
+        )
+        self._rebalance_raw_targets(state, raw_records)
         return state
 
     def _raw_count(self, raw_records: list[dict[str, Any]], language: str) -> int:
@@ -273,10 +307,87 @@ class CandidateCrawler:
             if str((record.get("_crawl") or {}).get("query_language") or "").lower() == language
         )
 
-    def _raw_sample_complete(self, raw_records: list[dict[str, Any]]) -> bool:
-        return all(
-            self._raw_count(raw_records, language) == self.per_language
+    def _exhausted_languages(self) -> set[str]:
+        return {
+            str(language)
+            for language in self.state.get("exhausted_languages", [])
+            if str(language) in CRAWL_LANGUAGES
+        }
+
+    def _raw_target(self, language: str) -> int:
+        targets = self.state.get("raw_targets_by_language") or {}
+        return int(targets.get(language, self.per_language))
+
+    def _rebalance_raw_targets(
+        self,
+        state: dict[str, Any],
+        raw_records: list[dict[str, Any]],
+    ) -> None:
+        exhausted = {
+            str(language)
+            for language in state.get("exhausted_languages", [])
+            if str(language) in CRAWL_LANGUAGES
+        }
+        active = [language for language in CRAWL_LANGUAGES if language not in exhausted]
+        counts = {
+            language: self._raw_count(raw_records, language) for language in CRAWL_LANGUAGES
+        }
+        targets = {
+            language: (
+                counts[language]
+                if language in exhausted
+                else max(counts[language], self.per_language)
+            )
             for language in CRAWL_LANGUAGES
+        }
+        remaining = self.target_total - sum(targets.values())
+        if remaining < 0:
+            raise CrawlIncompleteError("existing raw sample exceeds the requested target")
+        exhausted_without_full_target = bool(remaining and not active)
+        if not exhausted_without_full_target:
+            for index in range(remaining):
+                targets[active[index % len(active)]] += 1
+        state["raw_counts_by_language"] = counts
+        state["raw_targets_by_language"] = targets
+        state["exhausted_languages"] = sorted(exhausted)
+        state["exhausted_without_full_target"] = exhausted_without_full_target
+
+    def _mark_language_exhausted(
+        self,
+        language: str,
+        raw_records: list[dict[str, Any]],
+    ) -> None:
+        exhausted = self._exhausted_languages()
+        if language in exhausted:
+            return
+        exhausted.add(language)
+        self.state["exhausted_languages"] = sorted(exhausted)
+        self._rebalance_raw_targets(self.state, raw_records)
+        self._save_state(completed=False)
+        LOGGER.warning(
+            "GitHub search exhausted for %s at %s repositories; redistributed target=%s",
+            language,
+            self._raw_count(raw_records, language),
+            self.state["raw_targets_by_language"],
+        )
+
+    def _raw_sample_complete(self, raw_records: list[dict[str, Any]]) -> bool:
+        counts_match_targets = all(
+            self._raw_count(raw_records, language) == self._raw_target(language)
+            for language in CRAWL_LANGUAGES
+        )
+        if len(raw_records) == self.target_total and counts_match_targets:
+            return True
+
+        # GitHub Search can run out of repositories before the requested sample
+        # size. Once every language is exhausted, the available raw sample is a
+        # valid terminal checkpoint and must still be screened and delivered.
+        return bool(
+            self.state.get("exhausted_without_full_target")
+            and self._exhausted_languages() == set(CRAWL_LANGUAGES)
+            and counts_match_targets
+            and len(raw_records)
+            == sum(self._raw_target(language) for language in CRAWL_LANGUAGES)
         )
 
     def _pending_for_language(
@@ -345,6 +456,10 @@ class CandidateCrawler:
                 assert rejection is not None
                 _append_jsonl(self.rejected_path, rejection)
                 rejected.append(rejection)
+            self.state["processed_total"] = len(processed)
+            self.state["accepted_total"] = len(accepted)
+            self.state["rejected_total"] = len(rejected)
+            self._save_state(completed=False)
 
     def _evaluate_repository(
         self, repo: dict[str, Any], expected_language: str
@@ -556,9 +671,14 @@ class CandidateCrawler:
         return (
             self.state.get("completed") is True
             and summary.get("selection_semantics") == SELECTION_SEMANTICS
+            and summary.get("allocation_semantics") == ALLOCATION_SEMANTICS
             and summary.get("status") == "completed"
             and summary.get("target_total") == self.target_total
             and summary.get("per_language") == self.per_language
+            and summary.get("raw_targets_by_language")
+            == self.state.get("raw_targets_by_language")
+            and bool(summary.get("exhausted_without_full_target"))
+            == bool(self.state.get("exhausted_without_full_target"))
             and summary.get("fetched_total") == len(raw)
             and summary.get("accepted_total") == len(accepted)
             and summary.get("rejected_total") == len(rejected)
@@ -608,30 +728,45 @@ class CandidateCrawler:
         raw_counts = Counter(
             str((item.get("_crawl") or {}).get("query_language") or "").lower() for item in raw
         )
+        raw_targets = {
+            language: self._raw_target(language) for language in CRAWL_LANGUAGES
+        }
         if completed:
-            if len(raw) != self.target_total:
-                validation_errors.append(f"raw count is {len(raw)}, expected {self.target_total}")
-            if len(unique_raw) != self.target_total:
+            exhaustion_terminal = bool(self.state.get("exhausted_without_full_target"))
+            expected_raw_total = (
+                sum(raw_targets.values()) if exhaustion_terminal else self.target_total
+            )
+            if len(raw) != expected_raw_total:
                 validation_errors.append(
-                    f"unique raw count is {len(unique_raw)}, expected {self.target_total}"
+                    f"raw count is {len(raw)}, expected {expected_raw_total}"
+                )
+            if len(unique_raw) != expected_raw_total:
+                validation_errors.append(
+                    f"unique raw count is {len(unique_raw)}, expected {expected_raw_total}"
                 )
             for language in CRAWL_LANGUAGES:
-                if raw_counts[language] != self.per_language:
+                if raw_counts[language] != raw_targets[language]:
                     validation_errors.append(
                         f"raw {language} count is {raw_counts[language]}, "
-                        f"expected {self.per_language}"
+                        f"expected {raw_targets[language]}"
                     )
-            if len(accepted) + len(rejected) != self.target_total:
+            if len(accepted) + len(rejected) != expected_raw_total:
                 validation_errors.append(
                     "accepted and rejected records do not cover the complete raw sample"
                 )
         summary: dict[str, Any] = {
             "schema_version": CRAWL_STATE_VERSION,
             "selection_semantics": SELECTION_SEMANTICS,
+            "allocation_semantics": ALLOCATION_SEMANTICS,
             "status": "completed" if completed and not validation_errors else "incomplete",
             "target_total": self.target_total,
             "raw_per_language": self.per_language,
             "per_language": self.per_language,
+            "raw_targets_by_language": raw_targets,
+            "exhausted_languages": sorted(self._exhausted_languages()),
+            "exhausted_without_full_target": bool(
+                self.state.get("exhausted_without_full_target")
+            ),
             "cutoff_time": self.cutoff.isoformat(),
             "fetched_total": len(raw),
             "deduplicated_total": len(unique_raw),
@@ -703,7 +838,7 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
     if not path.is_file():
         return []
     records: list[dict[str, Any]] = []
-    for line in read_text_locked(path).splitlines():
+    for line in split_jsonl_lines(read_text_locked(path)):
         if not line.strip():
             continue
         try:
@@ -729,14 +864,19 @@ def _append_jsonl(path: Path, payload: dict[str, Any]) -> None:
     _append_jsonl_many(path, [payload])
 
 
-def _append_jsonl_many(path: Path, payloads: list[dict[str, Any]]) -> None:
+def _append_jsonl_many(
+    path: Path,
+    payloads: list[dict[str, Any]],
+    *,
+    durable: bool = False,
+) -> None:
     if not payloads:
         return
     path.parent.mkdir(parents=True, exist_ok=True)
     serialized = "".join(
         json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n" for payload in payloads
     )
-    append_text_locked(path, serialized)
+    append_text_locked(path, serialized, durable=durable)
 
 
 def _write_json_atomic(path: Path, payload: dict[str, Any]) -> None:

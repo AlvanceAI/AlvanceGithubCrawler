@@ -64,6 +64,7 @@ class PipelineConfig:
     openai_timeout_s: int = 120
     openai_max_output_tokens: int = 1_000
     build_timeout_s: int = 600
+    e2b_template_build_timeout_s: int = 900
     benchmark_timeout_s: int = 600
     benchmark_runs: int = 3
     e2b_cpu_count: int = 1
@@ -162,6 +163,9 @@ class PipelineConfig:
             feature_issue_limit=int(value("PIPELINE_FEATURE_ISSUE_LIMIT") or "10"),
             openai_timeout_s=int(value("PIPELINE_OPENAI_TIMEOUT_S") or "120"),
             openai_max_output_tokens=int(value("PIPELINE_OPENAI_MAX_OUTPUT_TOKENS") or "1000"),
+            e2b_template_build_timeout_s=int(
+                value("PIPELINE_E2B_TEMPLATE_BUILD_TIMEOUT_S") or "900"
+            ),
             e2b_cpu_count=int(value("PIPELINE_E2B_CPU_COUNT") or "1"),
             e2b_memory_mb=int(value("PIPELINE_E2B_MEMORY_MB") or "1024"),
             e2b_concurrency=int(value("PIPELINE_E2B_CONCURRENCY") or "20"),
@@ -186,6 +190,8 @@ class PipelineConfig:
             raise ValueError("PIPELINE_E2B_CPU_COUNT must be >= 1")
         if self.e2b_memory_mb < 128:
             raise ValueError("PIPELINE_E2B_MEMORY_MB must be >= 128")
+        if self.e2b_template_build_timeout_s < 60:
+            raise ValueError("PIPELINE_E2B_TEMPLATE_BUILD_TIMEOUT_S must be >= 60")
         if not 1 <= self.e2b_concurrency <= 20:
             raise ValueError("PIPELINE_E2B_CONCURRENCY must be between 1 and 20 per key")
         if not 1 <= self.prescreen_concurrency <= 20:

@@ -3,12 +3,17 @@ from __future__ import annotations
 import sys
 from types import SimpleNamespace
 
+import pytest
+
 from alvance_github_crawler.e2b import (
     E2BOfflineVerifier,
+    RepositoryTemplateBuildError,
     _add_repository_build_steps,
+    build_control,
     detect_runtime_version,
     hash_dependency_manifests,
     render_runtime_dockerfile,
+    repository_dependency_commands,
     repository_template_alias,
     runtime_environment,
     runtime_template_alias,
@@ -55,11 +60,17 @@ def test_environment_manager_propagates_built_template_ids(monkeypatch, tmp_path
             return False
 
         @classmethod
-        def build(cls, builder, *, name: str, cpu_count: int, memory_mb: int, **kwargs):
+        def build_in_background(
+            cls, builder, *, name: str, cpu_count: int, memory_mb: int, **kwargs
+        ):
             build_names.append(name)
             build_resources.append((cpu_count, memory_mb))
             template_id = "runtime-uuid" if len(build_names) == 1 else "repository-uuid"
-            return SimpleNamespace(template_id=template_id)
+            return SimpleNamespace(template_id=template_id, build_id=f"build-{len(build_names)}")
+
+        @staticmethod
+        def get_build_status(info, **kwargs):
+            return SimpleNamespace(status="ready", log_entries=[], reason=None)
 
         def from_image(self, image: str):
             return self
@@ -92,10 +103,59 @@ def test_environment_manager_propagates_built_template_ids(monkeypatch, tmp_path
 
     assert result.runtime_template == "runtime-uuid"
     assert result.repository_template == "repository-uuid"
-    assert result.runtime_alias.endswith("-c2-m4096-v3")
-    assert result.repository_alias.endswith("-c2-m4096-v17")
+    assert result.runtime_alias.endswith("-c2-m4096-v4")
+    assert result.repository_alias.endswith("-c2-m4096-v18")
     assert parent_template_ids == ["runtime-uuid"]
     assert build_resources == [(2, 4_096), (2, 4_096)]
+
+
+def test_environment_manager_bounds_repository_template_build_time(
+    monkeypatch,
+    tmp_path,
+) -> None:
+    class Template:
+        @staticmethod
+        def alias_exists(alias: str, *, api_key: str) -> bool:
+            return alias.startswith("alvance-runtime-")
+
+        @staticmethod
+        def build_in_background(builder, **kwargs):
+            return SimpleNamespace(template_id="repository-uuid", build_id="stuck-build")
+
+        @staticmethod
+        def get_build_status(info, **kwargs):
+            return SimpleNamespace(status="building", log_entries=[], reason=None)
+
+        def from_template(self, template_id: str):
+            return self
+
+        def set_envs(self, envs: dict[str, str]):
+            return self
+
+        def set_workdir(self, workdir: str):
+            return self
+
+        def run_cmd(self, command: str, *, user: str):
+            return self
+
+    clock = iter((0.0, 0.0, 2.0))
+    monkeypatch.setattr(build_control.time, "monotonic", lambda: next(clock))
+    monkeypatch.setitem(sys.modules, "e2b", SimpleNamespace(Template=Template))
+    (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.22\n", encoding="utf-8")
+
+    with pytest.raises(
+        RepositoryTemplateBuildError,
+        match=r"E2B template build timed out after 1s.*stuck-build",
+    ):
+        E2BEnvironmentManager("test-key", template_build_timeout_s=1).ensure(
+            {
+                "language": "go",
+                "full_name": "owner/repo",
+                "default_branch": "main",
+            },
+            tmp_path,
+            "a" * 40,
+        )
 
 
 def test_environment_manager_returns_launchable_aliases_on_cache_hit(
@@ -282,9 +342,9 @@ def test_go_runtime_and_template_recipe(tmp_path) -> None:
     version = detect_runtime_version("go", tmp_path)
     assert version == "1.26.5"
     dockerfile = render_runtime_dockerfile("go", version)
-    assert "GOTOOLCHAIN=go1.26.5+auto" in dockerfile
+    assert "GOTOOLCHAIN=auto" in dockerfile
     assert "PATH=/usr/local/go/bin" in dockerfile
-    assert runtime_template_alias("go", version) == ("alvance-runtime-go-1-26-5-amd64-v3")
+    assert runtime_template_alias("go", version) == ("alvance-runtime-go-1-26-5-amd64-v4")
 
 
 def test_go_language_version_is_normalized_to_a_concrete_toolchain(tmp_path) -> None:
@@ -293,8 +353,29 @@ def test_go_language_version_is_normalized_to_a_concrete_toolchain(tmp_path) -> 
     version = detect_runtime_version("go", tmp_path)
 
     assert version == "1.26.0"
-    assert runtime_environment("go", "1.26")["GOTOOLCHAIN"] == "go1.26.0+auto"
-    assert runtime_template_alias("go", "1.26") == "alvance-runtime-go-1-26-0-amd64-v3"
+    assert runtime_environment("go", "1.26")["GOTOOLCHAIN"] == "auto"
+    assert runtime_template_alias("go", "1.26") == "alvance-runtime-go-1-26-0-amd64-v4"
+
+
+def test_old_go_language_version_uses_local_bootstrap_toolchain(tmp_path) -> None:
+    (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.18\n", encoding="utf-8")
+
+    version = detect_runtime_version("go", tmp_path)
+
+    assert version == "1.18.0"
+    assert runtime_environment("go", version)["GOTOOLCHAIN"] == "local"
+
+
+def test_go_toolchain_directive_selects_newer_runtime(tmp_path) -> None:
+    (tmp_path / "go.mod").write_text(
+        "module example.com/demo\n\ngo 1.22\ntoolchain go1.24.3\n",
+        encoding="utf-8",
+    )
+
+    version = detect_runtime_version("go", tmp_path)
+
+    assert version == "1.24.3"
+    assert runtime_environment("go", version)["GOTOOLCHAIN"] == "auto"
 
 
 def test_rust_runtime_uses_toml_fields_instead_of_license_comment(tmp_path) -> None:
@@ -330,6 +411,26 @@ def test_dependency_hash_changes_with_lockfile(tmp_path) -> None:
     (tmp_path / "package-lock.json").write_text("{}", encoding="utf-8")
     second = hash_dependency_manifests("typescript", tmp_path)
     assert first != second
+
+
+def test_node_dependency_recipe_matches_lockfile(tmp_path) -> None:
+    (tmp_path / "package.json").write_text('{"name":"demo"}', encoding="utf-8")
+    (tmp_path / "pnpm-lock.yaml").write_text("lockfileVersion: '9.0'\n", encoding="utf-8")
+
+    assert repository_dependency_commands("typescript", tmp_path) == (
+        "/usr/local/bin/corepack enable && /usr/local/bin/pnpm install --frozen-lockfile",
+    )
+
+
+def test_node_dependency_recipe_uses_yarn_generation(tmp_path) -> None:
+    (tmp_path / "package.json").write_text(
+        '{"name":"demo","packageManager":"yarn@4.1.0"}', encoding="utf-8"
+    )
+    (tmp_path / "yarn.lock").write_text("", encoding="utf-8")
+
+    assert repository_dependency_commands("javascript", tmp_path) == (
+        "/usr/local/bin/corepack enable && /usr/local/bin/yarn install --immutable",
+    )
 
 
 def test_python_runtime_prefers_stable_default_within_constraints(tmp_path) -> None:
@@ -409,7 +510,7 @@ def test_repository_alias_is_bounded() -> None:
         "b" * 16,
     )
     assert len(alias) <= 63
-    assert alias.endswith("-c1-m1024-v17")
+    assert alias.endswith("-c1-m1024-v18")
 
 
 def test_resource_escalation_uses_distinct_bounded_template_aliases() -> None:
@@ -422,6 +523,6 @@ def test_resource_escalation_uses_distinct_bounded_template_aliases() -> None:
         memory_mb=4_096,
     )
 
-    assert runtime == "alvance-runtime-go-1-26-0-amd64-c2-m4096-v3"
+    assert runtime == "alvance-runtime-go-1-26-0-amd64-c2-m4096-v4"
     assert len(repository) <= 63
-    assert repository.endswith("-c2-m4096-v17")
+    assert repository.endswith("-c2-m4096-v18")

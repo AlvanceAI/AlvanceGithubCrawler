@@ -56,6 +56,44 @@ def build_parser() -> argparse.ArgumentParser:
         help="accepted crawl JSONL consumed by the produce command",
     )
     parser.add_argument(
+        "--follow-input",
+        action="store_true",
+        help="follow an append-only accepted JSONL until --input-done exists",
+    )
+    parser.add_argument(
+        "--input-cursor",
+        type=str,
+        help="persistent byte cursor used by --follow-input",
+    )
+    parser.add_argument(
+        "--input-done",
+        type=str,
+        help="producer completion marker used by --follow-input",
+    )
+    parser.add_argument(
+        "--follow-status",
+        type=str,
+        help="optional JSON status file for a follower stage",
+    )
+    parser.add_argument(
+        "--follow-poll-interval",
+        type=float,
+        default=2.0,
+        help="seconds to wait when a follower has no new input",
+    )
+    parser.add_argument(
+        "--pending-high-watermark",
+        type=int,
+        default=480,
+        help="pause prescreen intake at this pending depth in follow mode",
+    )
+    parser.add_argument(
+        "--pending-low-watermark",
+        type=int,
+        default=120,
+        help="resume prescreen intake below this pending depth in follow mode",
+    )
+    parser.add_argument(
         "--repository",
         action="append",
         help="exact repo from --input to produce; repeatable and order-preserving",
@@ -126,6 +164,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="consume queued candidates through E2B, benchmark, and Harbor packaging",
     )
+    parser.add_argument(
+        "--follow-until",
+        type=str,
+        help="keep --verify-pending alive until this upstream done marker exists",
+    )
     modes.add_argument(
         "--requeue-failures",
         action="store_true",
@@ -141,6 +184,11 @@ def build_parser() -> argparse.ArgumentParser:
         default="",
         help="optional rejection-log substring selected by --requeue-failures",
     )
+    parser.add_argument(
+        "--requeue-marker",
+        default="",
+        help="idempotency marker preventing the same repair batch from reopening twice",
+    )
     parser.add_argument("--verbose", action="store_true")
     return parser
 
@@ -155,6 +203,7 @@ def doctor(config: PipelineConfig) -> dict[str, object]:
         "e2b_api_key_count": len(config.e2b_api_keys),
         "e2b_cpu_count": config.e2b_cpu_count,
         "e2b_memory_mb": config.e2b_memory_mb,
+        "e2b_template_build_timeout_s": config.e2b_template_build_timeout_s,
         "e2b_concurrency_per_key": config.e2b_concurrency,
         "e2b_total_concurrency": config.e2b_total_concurrency,
         "prescreen_concurrency": config.prescreen_concurrency,
@@ -182,6 +231,12 @@ def main(argv: list[str] | None = None) -> int:
         config.prescreen_concurrency = args.prescreen_concurrency
     if args.max_repos is not None and args.max_repos < 1:
         raise SystemExit("--max-repos must be >= 1")
+    if args.follow_poll_interval <= 0:
+        raise SystemExit("--follow-poll-interval must be > 0")
+    if args.follow_input and (not args.input_cursor or not args.input_done):
+        raise SystemExit("--follow-input requires --input-cursor and --input-done")
+    if args.pending_low_watermark < 0 or args.pending_high_watermark <= args.pending_low_watermark:
+        raise SystemExit("pending watermarks must satisfy 0 <= low < high")
 
     if args.command == "crawl":
         if not config.github_tokens:
@@ -224,11 +279,26 @@ def main(argv: list[str] | None = None) -> int:
                 defer_e2b=args.defer_e2b,
                 retry_rejected=args.retry_rejected,
             )
-            stats = pipeline.run_crawl_candidates(
-                Path(args.input),
-                max_repos=args.max_repos,
-                repositories=args.repository,
-            )
+            if args.follow_input:
+                if args.repository or args.max_repos is not None:
+                    raise ValueError(
+                        "follow input cannot be combined with --repository or --max-repos"
+                    )
+                stats = pipeline.run_crawl_candidates_follow(
+                    Path(args.input),
+                    cursor_path=Path(args.input_cursor),
+                    producer_done_path=Path(args.input_done),
+                    poll_interval_s=args.follow_poll_interval,
+                    pending_high_watermark=args.pending_high_watermark,
+                    pending_low_watermark=args.pending_low_watermark,
+                    status_path=Path(args.follow_status) if args.follow_status else None,
+                )
+            else:
+                stats = pipeline.run_crawl_candidates(
+                    Path(args.input),
+                    max_repos=args.max_repos,
+                    repositories=args.repository,
+                )
         except ValueError as exc:
             print(str(exc), file=sys.stderr)
             return 2
@@ -253,6 +323,7 @@ def main(argv: list[str] | None = None) -> int:
                 config.catalog_dir,
                 cpu_count=config.e2b_cpu_count,
                 memory_mb=config.e2b_memory_mb,
+                template_build_timeout_s=config.e2b_template_build_timeout_s,
             ),
             GitHubClient(config.github_tokens),
         )
@@ -265,10 +336,20 @@ def main(argv: list[str] | None = None) -> int:
         except ValueError as exc:
             print(str(exc), file=sys.stderr)
             return 2
-        stats = PendingVerificationRunner.from_config(config).run(
-            max_items=args.max_repos,
-            max_workers=config.e2b_concurrency,
-        )
+        runner = PendingVerificationRunner.from_config(config)
+        if args.follow_until:
+            stats = runner.run_follow(
+                until_path=Path(args.follow_until),
+                max_workers=config.e2b_concurrency,
+                poll_interval_s=args.follow_poll_interval,
+                status_path=Path(args.follow_status) if args.follow_status else None,
+            )
+        else:
+            stats = runner.run(
+                max_items=args.max_repos,
+                max_workers=config.e2b_concurrency,
+                status_path=Path(args.follow_status) if args.follow_status else None,
+            )
         print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
         if (
             int(stats.get("key_slots_exhausted", 0)) >= len(config.e2b_api_keys)
@@ -289,6 +370,7 @@ def main(argv: list[str] | None = None) -> int:
             reasons=reasons,
             error_contains=args.failure_contains,
             exclude_repos=registry.existing_repos(),
+            marker=args.requeue_marker,
         )
         print(json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True))
         return 0

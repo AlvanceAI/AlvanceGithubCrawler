@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from ..github import GitHubClient
-from ..jsonl_io import read_text_locked
+from ..jsonl_io import read_text_locked, split_jsonl_lines
 from ..models import ScoreResult
 
 LANG_QUOTA = {
@@ -80,7 +80,7 @@ class LanguageQuota:
         self._lock = threading.Lock()
         seen_repos: set[str] = set()
         if candidates_path and candidates_path.is_file():
-            for line in read_text_locked(candidates_path).splitlines():
+            for line in split_jsonl_lines(read_text_locked(candidates_path)):
                 try:
                     record = json.loads(line)
                 except json.JSONDecodeError:

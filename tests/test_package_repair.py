@@ -83,7 +83,10 @@ def test_package_repair_is_idempotent(tmp_path: Path) -> None:
     repaired = repair_packages(tmp_path, workers=1)
     assert repaired["checked"] == 1
     assert repaired["changed"] == 1
-    assert "FROM e2bdev/base" not in task_environment.read_text(encoding="utf-8")
+    repaired_dockerfile = task_environment.read_text(encoding="utf-8")
+    assert "FROM e2bdev/base" not in repaired_dockerfile
+    assert not any(line.lstrip().startswith("#") for line in repaired_dockerfile.splitlines())
+    assert repaired_dockerfile == material_environment.read_text(encoding="utf-8")
 
     checked = repair_packages(tmp_path, workers=1, check_only=True)
     assert checked["checked"] == 1

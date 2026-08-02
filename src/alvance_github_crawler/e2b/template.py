@@ -23,6 +23,7 @@ from ..runtime.recipes import (
     runtime_base_image,
     runtime_probe_command,
 )
+from .build_control import build_template_with_timeout
 from .build_logs import E2BBuildLogBuffer
 
 
@@ -63,10 +64,12 @@ class E2BEnvironmentManager:
         *,
         cpu_count: int = 1,
         memory_mb: int = 1_024,
+        template_build_timeout_s: int = 900,
     ) -> None:
         self.api_key = api_key
         self.cpu_count = cpu_count
         self.memory_mb = memory_mb
+        self.template_build_timeout_s = template_build_timeout_s
         self._alias_locks: dict[str, threading.Lock] = {}
         self._alias_locks_guard = threading.Lock()
 
@@ -156,11 +159,13 @@ class E2BEnvironmentManager:
             started = time.monotonic()
             logs = E2BBuildLogBuffer()
             try:
-                info = Template.build(
+                info = build_template_with_timeout(
+                    Template,
                     builder,
                     name=runtime_alias,
                     cpu_count=self.cpu_count,
                     memory_mb=self.memory_mb,
+                    timeout_s=self.template_build_timeout_s,
                     skip_cache=False,
                     api_key=self.api_key,
                     on_build_logs=logs,
@@ -207,11 +212,13 @@ class E2BEnvironmentManager:
             started = time.monotonic()
             logs = E2BBuildLogBuffer()
             try:
-                info = Template.build(
+                info = build_template_with_timeout(
+                    Template,
                     builder,
                     name=repository_alias,
                     cpu_count=self.cpu_count,
                     memory_mb=self.memory_mb,
+                    timeout_s=self.template_build_timeout_s,
                     skip_cache=False,
                     api_key=self.api_key,
                     on_build_logs=logs,

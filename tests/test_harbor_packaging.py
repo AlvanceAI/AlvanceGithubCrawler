@@ -3,6 +3,12 @@ from __future__ import annotations
 import json
 import tomllib
 
+import pytest
+
+from alvance_github_crawler.catalog.harbor_task import (
+    render_environment_dockerfile,
+    validate_e2b_dockerfile,
+)
 from alvance_github_crawler.catalog.package_models import (
     E2BWrapperReceipt,
     HarborPackageResult,
@@ -38,6 +44,20 @@ def candidate_record() -> dict[str, object]:
             "stable": True,
         },
     }
+
+
+def test_durable_dockerfile_uses_only_e2b_supported_instructions() -> None:
+    repository = QualifiedRepository.from_candidate(candidate_record())
+
+    dockerfile = render_environment_dockerfile(repository)
+
+    assert not any(line.lstrip().startswith("#") for line in dockerfile.splitlines())
+    validate_e2b_dockerfile(dockerfile)
+
+
+def test_e2b_dockerfile_contract_rejects_comment_nodes() -> None:
+    with pytest.raises(ValueError, match=r"instruction\(s\): COMMENT"):
+        validate_e2b_dockerfile("# metadata\nFROM python:3.12\n")
 
 
 def test_trace_store_writes_tiny_native_layout(tmp_path) -> None:

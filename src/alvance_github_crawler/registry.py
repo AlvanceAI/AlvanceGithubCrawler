@@ -6,7 +6,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from .jsonl_io import append_text_locked, read_text_locked
+from .jsonl_io import append_text_locked, read_text_locked, split_jsonl_lines
 
 
 class JsonlRegistry:
@@ -21,7 +21,7 @@ class JsonlRegistry:
         if not self.candidates_path.is_file():
             return set()
         repos: set[str] = set()
-        for line in read_text_locked(self.candidates_path).splitlines():
+        for line in split_jsonl_lines(read_text_locked(self.candidates_path)):
             try:
                 record = json.loads(line)
             except json.JSONDecodeError:
@@ -35,7 +35,7 @@ class JsonlRegistry:
         if not self.rejections_path.is_file():
             return set()
         latest: dict[str, str] = {}
-        for line in read_text_locked(self.rejections_path).splitlines():
+        for line in split_jsonl_lines(read_text_locked(self.rejections_path)):
             try:
                 record = json.loads(line)
             except json.JSONDecodeError:

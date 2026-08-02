@@ -67,6 +67,7 @@ def test_runner_defers_failed_items_to_queue_tail(tmp_path, monkeypatch) -> None
 
 def test_runner_evicts_items_after_attempt_limit(tmp_path, monkeypatch) -> None:
     queue = filled_queue(tmp_path, count=1)
+    monkeypatch.setattr(queue, "ready", queue.pending)
     runner = PendingVerificationRunner(queue, registry=StubRegistry(), verifier=None)  # type: ignore[arg-type]
     monkeypatch.setattr(runner, "_verify_item", lambda repo, candidate: "error")
 
@@ -75,6 +76,23 @@ def test_runner_evicts_items_after_attempt_limit(tmp_path, monkeypatch) -> None:
         assert stats["remaining"] == expected_remaining
 
     assert queue.pending() == []
+
+
+def test_runner_rate_limit_defers_without_consuming_attempt(tmp_path, monkeypatch) -> None:
+    queue = filled_queue(tmp_path, count=1)
+    runner = PendingVerificationRunner(
+        queue, registry=StubRegistry(), verifier=None  # type: ignore[arg-type]
+    )
+    monkeypatch.setattr(runner, "_verify_item", lambda repo, candidate: "rate_limited")
+
+    stats = runner.run(max_workers=2, max_consecutive_errors=1)
+
+    assert stats["rate_limited"] == 1
+    assert stats["remaining"] == 1
+    assert stats["key_slot_1_capacity_reductions"] == 1
+    assert "halted" not in stats
+    assert queue.attempt_counts() == {}
+    assert queue.ready() == []
 
 
 def test_runner_skips_already_registered_repos(tmp_path, monkeypatch) -> None:

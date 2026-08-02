@@ -23,7 +23,8 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
-from alvance_github_crawler.config import PipelineConfig
+from alvance_github_crawler.config import PipelineConfig, dotenv_values
+from alvance_github_crawler.jsonl_io import read_text_locked, split_jsonl_lines
 
 REPO_ROOT = Path(__file__).resolve().parent
 DEFAULT_STATE_DIR = Path(
@@ -43,6 +44,9 @@ STAGE_PRIORITY = {
     "GitHub crawl": 2,
     "Driver": 3,
 }
+CYCLE_COMPLETE_MARKER = "production-cycle-complete"
+_JSONL_CACHE: dict[Path, tuple[int, int, list[dict[str, Any]]]] = {}
+_LINE_COUNT_CACHE: dict[Path, tuple[int, int, int]] = {}
 
 
 @dataclass(frozen=True)
@@ -88,18 +92,31 @@ def configured_github_token_count() -> int:
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
     if not path.is_file():
         return []
+    try:
+        stat = path.stat()
+    except OSError:
+        return []
+    cached = _JSONL_CACHE.get(path)
+    signature = (stat.st_mtime_ns, stat.st_size)
+    if cached and cached[:2] == signature:
+        return cached[2]
     records: list[dict[str, Any]] = []
     try:
-        text = path.read_text(encoding="utf-8")
+        text = read_text_locked(path)
     except OSError:
         return records
-    for line in text.splitlines():
+    for line in split_jsonl_lines(text):
         try:
             value = json.loads(line)
         except json.JSONDecodeError:
             continue
         if isinstance(value, dict):
             records.append(value)
+    try:
+        final_stat = path.stat()
+        _JSONL_CACHE[path] = (final_stat.st_mtime_ns, final_stat.st_size, records)
+    except OSError:
+        pass
     return records
 
 
@@ -117,8 +134,16 @@ def line_count(path: Path) -> int:
     if not path.is_file():
         return 0
     try:
+        stat = path.stat()
+        cached = _LINE_COUNT_CACHE.get(path)
+        signature = (stat.st_mtime_ns, stat.st_size)
+        if cached and cached[:2] == signature:
+            return cached[2]
         with path.open("rb") as handle:
-            return sum(1 for _ in handle)
+            count = sum(1 for _ in handle)
+        final_stat = path.stat()
+        _LINE_COUNT_CACHE[path] = (final_stat.st_mtime_ns, final_stat.st_size, count)
+        return count
     except OSError:
         return 0
 
@@ -168,6 +193,7 @@ def build_pipeline_environment(
     ceiling_per_language: int,
 ) -> dict[str, str]:
     environment = os.environ.copy()
+    local_dotenv = dotenv_values(REPO_ROOT / ".env")
     environment.update(
         {
             "PIPELINE_RUN_ID": args.run_id,
@@ -181,8 +207,21 @@ def build_pipeline_environment(
             "E2B_CONCURRENCY": str(args.e2b_concurrency),
             "PUBLISH_TASKS": "true",
             "PUBLISH_RUN_ARTIFACTS": "true",
+            "AUTO_GIT_PUSH": "false",
         }
     )
+    for name in (
+        "PIPELINE_WORKSPACE_TMPDIR",
+        "PIPELINE_WORKSPACE_MIN_FREE_MB",
+        "PIPELINE_WORKSPACE_MAX_MB",
+        "PIPELINE_WORKSPACE_RESERVATION_MB",
+        "PIPELINE_WORKSPACE_QUOTA_WAIT_S",
+        "PENDING_HIGH_WATERMARK",
+        "PENDING_LOW_WATERMARK",
+    ):
+        value = os.environ.get(name) or local_dotenv.get(name)
+        if value:
+            environment[name] = value
     return environment
 
 
@@ -244,6 +283,31 @@ def stop_pipeline(pipeline: ManagedPipeline) -> int:
     except ProcessLookupError:
         pass
     return pipeline.process.wait()
+
+
+def checkpoint_per_language(crawl_dir: Path) -> int:
+    state = read_json(crawl_dir / "crawl_state.json")
+    try:
+        return max(0, int(state.get("per_language", 0) or 0))
+    except (TypeError, ValueError):
+        return 0
+
+
+def pipeline_exit_action(
+    return_code: int,
+    *,
+    stop_at_max: bool,
+    exhausted: bool,
+    cycle_completed: bool,
+    source_exhausted: bool = False,
+) -> str:
+    if exhausted or return_code == 4:
+        return "exhausted"
+    if return_code != 0 or not cycle_completed:
+        return "failed"
+    if source_exhausted:
+        return "source_exhausted"
+    return "complete" if stop_at_max else "extend"
 
 
 def pending_stats(records: list[dict[str, Any]]) -> dict[str, Any]:
@@ -408,15 +472,30 @@ def render(
     rate = task_rate_summary(candidates)
     processes = pipeline_processes()
 
-    raw_total = line_count(crawl_dir / "raw_repositories.jsonl")
-    accepted_total = line_count(crawl_dir / "accepted_repositories.jsonl")
     crawl_state = read_json(crawl_dir / "crawl_state.json")
+    raw_counts = crawl_state.get("raw_counts_by_language")
+    if isinstance(raw_counts, dict) and raw_counts:
+        raw_total = sum(int(value or 0) for value in raw_counts.values())
+    else:
+        raw_total = line_count(crawl_dir / "raw_repositories.jsonl")
+    accepted_total = int(
+        crawl_state.get("accepted_total")
+        or line_count(crawl_dir / "accepted_repositories.jsonl")
+    )
+    initial_rejected_total = int(
+        crawl_state.get("rejected_total")
+        or line_count(crawl_dir / "rejected_repositories.jsonl")
+    )
+    screened_total = min(raw_total, accepted_total + initial_rejected_total)
     target_total = int(crawl_state.get("target_total") or raw_total)
     completion = (100.0 * raw_total / target_total) if target_total else 0.0
+    screening_completion = (100.0 * screened_total / raw_total) if raw_total else 0.0
 
     run_dir = latest_run_dir(run_root)
     timings = read_jsonl(run_dir / "stage-timings.jsonl") if run_dir else []
     last_stage = timings[-1] if timings else {}
+    e2b_follow = read_json(run_dir / "e2b-follow.status.json") if run_dir else {}
+    prescreen_follow = read_json(run_dir / "prescreen-follow.status.json") if run_dir else {}
 
     status = Text(overflow="ellipsis", no_wrap=True)
     if terminal_status:
@@ -478,6 +557,11 @@ def render(
     summary = Text()
     summary.append("Raw repositories: ", style="bold")
     summary.append(f"{raw_total:,} / {target_total:,} ({completion:.1f}%)\n", style="cyan")
+    summary.append("Initial filter progress: ", style="bold")
+    summary.append(
+        f"{screened_total:,} / {raw_total:,} ({screening_completion:.1f}%)\n",
+        style="cyan",
+    )
     summary.append("Initial filter accepted: ", style="bold")
     summary.append(f"{accepted_total:,}\n", style="green")
     if ceiling_per_language:
@@ -495,6 +579,43 @@ def render(
         summary.append(
             f"{e2b_concurrency_per_key}/key x {e2b_key_count} = {total_e2b_workers}\n",
             style="bold cyan",
+        )
+    if e2b_follow:
+        in_flight = e2b_follow.get("in_flight_by_key") or {}
+        active_slots = sum(int(value or 0) for value in in_flight.values())
+        configured_slots = int(e2b_follow.get("key_slots", e2b_key_count) or 0)
+        per_key_slots = int(
+            e2b_follow.get("max_workers_per_key", e2b_concurrency_per_key or 0) or 0
+        )
+        lane_text = " ".join(
+            f"k{index}={int(in_flight.get(f'key_slot_{index}', 0) or 0)}/{per_key_slots}"
+            for index in range(1, configured_slots + 1)
+        )
+        summary.append("E2B in flight: ", style="bold")
+        summary.append(
+            f"{active_slots}/{configured_slots * per_key_slots} "
+            f"({e2b_follow.get('state', 'unknown')})\n",
+            style="bold cyan",
+        )
+        if lane_text:
+            summary.append("E2B lanes: ", style="bold")
+            summary.append(f"{lane_text}\n", style="dim cyan")
+        summary.append("E2B consume rate: ", style="bold")
+        summary.append(
+            f"{float(e2b_follow.get('processed_rate_per_hour', 0) or 0):.1f}/h\n",
+            style="cyan",
+        )
+    if prescreen_follow:
+        summary.append("Prescreen follower: ", style="bold")
+        summary.append(
+            f"{prescreen_follow.get('processed', 0):,} processed, "
+            f"{prescreen_follow.get('state', 'unknown')}\n",
+            style="cyan",
+        )
+        summary.append("Prescreen queue rate: ", style="bold")
+        summary.append(
+            f"{float(prescreen_follow.get('queued_rate_per_hour', 0) or 0):.1f}/h\n",
+            style="cyan",
         )
     summary.append("Task rate (rolling): ", style="bold")
     summary.append(
@@ -646,7 +767,10 @@ def main(argv: list[str] | None = None) -> int:
 
     managed: ManagedPipeline | None = None
     attached = False
-    ceiling_per_language = args.max_per_language
+    ceiling_per_language = max(
+        args.max_per_language,
+        checkpoint_per_language(args.crawl_dir),
+    )
     if not args.monitor_only:
         active_processes = pipeline_processes()
         if active_processes:
@@ -680,8 +804,18 @@ def main(argv: list[str] | None = None) -> int:
                 if managed and managed.process.poll() is not None:
                     final_code = int(managed.process.returncode or 0)
                     managed.close_log()
-                    exhausted = (args.run_root / args.run_id / "e2b-keys-exhausted").is_file()
-                    if final_code == 0 and not args.stop_at_max and not exhausted:
+                    run_dir = args.run_root / args.run_id
+                    exhausted = (run_dir / "e2b-keys-exhausted").is_file()
+                    source_exhausted = (run_dir / "crawl-exhausted").is_file()
+                    cycle_completed = (run_dir / CYCLE_COMPLETE_MARKER).is_file()
+                    action = pipeline_exit_action(
+                        final_code,
+                        stop_at_max=args.stop_at_max,
+                        exhausted=exhausted,
+                        cycle_completed=cycle_completed,
+                        source_exhausted=source_exhausted,
+                    )
+                    if action == "extend":
                         ceiling_per_language += args.extension_per_language
                         managed = launch_pipeline(
                             args,
@@ -689,12 +823,17 @@ def main(argv: list[str] | None = None) -> int:
                         )
                         footer_hint = "Press Ctrl+C to pause pipeline and exit"
                     else:
-                        if exhausted or final_code == 4:
+                        if action == "exhausted":
                             terminal_status = ("◆ E2B KEYS EXHAUSTED", "bold yellow")
                             final_code = 0
-                        elif final_code == 0:
+                        elif action == "source_exhausted":
+                            terminal_status = ("✓ GITHUB SOURCE EXHAUSTED", "bold green")
+                            final_code = 0
+                        elif action == "complete":
                             terminal_status = ("✓ PIPELINE COMPLETE", "bold green")
                         else:
+                            if final_code == 0:
+                                final_code = 5
                             terminal_status = (
                                 f"× PIPELINE STOPPED  exit={final_code}",
                                 "bold red",

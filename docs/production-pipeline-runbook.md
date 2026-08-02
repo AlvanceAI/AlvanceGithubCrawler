@@ -104,7 +104,7 @@ PIPELINE_RUN_ID=github-mass-production-20260729 \
 `PIPELINE_E2B_CONCURRENCY`/`E2B_CONCURRENCY` 表示每个 Key 的并发数，默认每个 Key
 20，总并发 60。脚本复用现有 crawl 和 production checkpoint，逐批把样本扩展到
 每种语言 1000 条（GitHub Search 单查询上限），生产者与 E2B 消费者并行运行。每轮完整
-task 会自动提交并推送到 `XBY`；原始日志、阶段耗时、最终指标和 Markdown 统计保存在
+task 会提交到本地当前分支但不会自动推送；原始日志、阶段耗时、最终指标和 Markdown 统计保存在
 `outputs/production-runs/<RUN_ID>/`。
 
 持续入口默认用 20 个 prescreen worker 并行 clone、评分和方向判断；GitHub HTTP 请求仍在
@@ -113,3 +113,7 @@ task 会自动提交并推送到 `XBY`；原始日志、阶段耗时、最终指
 
 任一 Key 额度耗尽后，其未完成任务会转交其他 Key；三个 Key 都耗尽时脚本以退出码 4
 停止并保留 pending checkpoint。日志只显示 Key 槽编号，不包含密钥值。
+
+持续模式的 crawl、prescreen 和 E2B 是同时运行的。prescreen 使用 accepted JSONL 的持久
+byte cursor，E2B 在 pending 暂时为空时不会退出；完整的高/低水位、状态文件和恢复命令见
+[`docs/streaming-concurrent-production.md`](streaming-concurrent-production.md)。

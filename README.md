@@ -46,6 +46,12 @@ E2B_API_KEY3=e2b_replace_with_third_key
 
 PIPELINE_E2B_CONCURRENCY=20
 PIPELINE_PRESCREEN_CONCURRENCY=20
+PENDING_HIGH_WATERMARK=480
+PENDING_LOW_WATERMARK=120
+PIPELINE_WORKSPACE_TMPDIR=/home/your-user/.cache/alvance-github-crawler/workspaces
+PIPELINE_WORKSPACE_MIN_FREE_MB=20480
+PIPELINE_WORKSPACE_MAX_MB=51200
+PIPELINE_WORKSPACE_RESERVATION_MB=640
 ```
 
 字段说明：
@@ -55,8 +61,8 @@ PIPELINE_PRESCREEN_CONCURRENCY=20
 - `OPENAI_API_KEY`：Stage 3 issue 方向判定；
 - `OPENAI_MODEL`：可选，默认 `gpt-5-mini`；
 - `OPENAI_BASE_URL`：可选，OpenAI 兼容网关地址；
-- `E2B_API_KEY1`、`E2B_API_KEY2`、`E2B_API_KEY3`：三个独立 E2B 并发池，每个 Key 最多 20；
-- `E2B_API_KEY`：只用于单 Key 命令，双 Key 量产时保持为空。
+- `E2B_API_KEY1`、`E2B_API_KEY2`、`E2B_API_KEY3`（以及后续编号）：每个已配置 Key 都是独立并发池，每个最多 20；
+- `E2B_API_KEY`：单 Key 兼容回退；量产会自动读取所有编号 Key 并按实际数量计算总并发。
 
 也支持已有环境的别名 `MODEL_API_KEY`、`MODEL_BASE_URL`、`MODEL_NAME`、`E2B_KEY`，
 并可通过 `PIPELINE_ENV_FILE=/path/to/.env` 加载外部文件。未设置任意 GitHub Token 时，
@@ -74,7 +80,7 @@ uv run alvance-github-crawler --doctor
 ## 三 Key 并发量产
 
 量产必须在 `XBY` 分支运行。根目录的一键入口会启动完整的 GitHub 抓取、初筛、方向判断、
-E2B 离线测试、资源升级重试、Dockerfile/Task 生成、日志统计和分批推送，并同时显示终端
+E2B 离线测试、资源升级重试、Dockerfile/Task 生成、日志统计和本地分批提交，并同时显示终端
 进度页面：
 
 ```bash
@@ -89,12 +95,26 @@ git pull --ff-only origin XBY
 uv run python monitor.py
 ```
 
-默认预筛并发为 20；`E2B_API_KEY1`、`E2B_API_KEY2` 和 `E2B_API_KEY3` 各使用 20 个并发槽，总 E2B
-并发最多 60。完成一轮后会继续扩大抓取范围，直到三个 E2B Key 都耗尽、发生不可恢复错误，
+默认预筛并发为 20；每个编号 E2B Key 使用最多 20 个并发槽，总 E2B 并发为
+`20 × 已配置 Key 数量`。完成一轮后会继续扩大抓取范围，直到 E2B Key 耗尽、GitHub 搜索源耗尽、发生不可恢复错误，
 或用户按 `Ctrl+C` 安全暂停。断点和完整日志保存在 `outputs/`，生成的 Task、material、
-catalog 和统计文档会自动提交并推送到 `XBY`，不会自动修改 `main`。
+catalog 和统计文档会自动提交到本地 `XBY`，但不会自动推送远程，也不会修改 `main`。检查完成后
+由用户手动执行 `git push origin XBY`。
 
-启动脚本只检查凭据是否存在，不会输出 Key 内容。若当前不在 `XBY`、缺少三个 E2B Key、
+生产入口采用流式三阶段并发：crawl 持续追加 accepted JSONL，prescreen 通过持久 byte cursor
+即时读取新增记录，E2B follower 在 pending 暂时为空时保持 60 个 key 槽可用，直到上游结束且
+队列清空。pending 在 480 条处形成高水位、降到 120 条以下才恢复 intake，避免队列无限增长。
+监控页面会显示每个 Key 的实际 in-flight 槽位、入队/消费速率和 follower 状态；详细的状态文件
+与恢复说明见 [`docs/streaming-concurrent-production.md`](docs/streaming-concurrent-production.md)。
+
+并发 checkout 默认使用当前用户的 `~/.cache/alvance-github-crawler/workspaces/`，不会占用
+容量较小的 `/tmp` 内存盘。默认总配额为 50GB，每个活动 checkout 预留并限制为 640MB，
+因此最多允许 80 个本地工作区，正好覆盖 60 个 E2B worker 和 20 个 prescreen worker。
+启动时若可用空间低于 20GB，脚本会明确停止而不是让 worker 因 `No space left on device`
+批量失败。可在 `.env` 用 `PIPELINE_WORKSPACE_TMPDIR`、`PIPELINE_WORKSPACE_MAX_MB` 和
+`PIPELINE_WORKSPACE_RESERVATION_MB` 覆盖；工作区内容不会保存进 Task，正常退出时会清理。
+
+启动脚本只检查凭据是否存在，不会输出 Key 内容。若当前不在 `XBY`、没有可用的编号 E2B Key、
 缺少 GitHub/OpenAI 凭据或没有安装 E2B SDK，脚本会在消耗额度前停止并给出修复指令。
 
 ## 运行

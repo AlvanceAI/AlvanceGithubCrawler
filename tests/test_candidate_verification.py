@@ -2,11 +2,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from alvance_github_crawler.e2b import RepositoryTemplateBuildError
 from alvance_github_crawler.e2b.verification import (
     E2BCandidateVerifier,
     benchmark_rejection,
+    is_disk_e2b_error,
     is_e2b_key_exhausted_error,
+    is_rate_limit_e2b_error,
     is_resource_e2b_error,
+    is_template_build_timeout_error,
     is_transient_e2b_error,
 )
 from alvance_github_crawler.runtime.profiles import UnsupportedRuntimeError
@@ -42,6 +46,13 @@ def test_transient_e2b_error_classification() -> None:
     assert not is_transient_e2b_error(
         RuntimeError("layer 18f429ac: compiling concurrent-queue failed")
     )
+    assert is_transient_e2b_error(RuntimeError("spurious network error while downloading crate"))
+    assert not is_transient_e2b_error(RuntimeError("crate wait-timeout failed to compile"))
+
+
+def test_rate_limit_e2b_error_classification() -> None:
+    assert is_rate_limit_e2b_error(RuntimeError("HTTP 429: too many concurrent sandboxes"))
+    assert not is_rate_limit_e2b_error(RuntimeError("502 Bad Gateway"))
 
 
 def test_resource_e2b_error_classification() -> None:
@@ -51,10 +62,52 @@ def test_resource_e2b_error_classification() -> None:
     assert not is_resource_e2b_error(RuntimeError("failed to run npm ci: exit status 1"))
 
 
+def test_disk_e2b_error_classification() -> None:
+    assert is_disk_e2b_error(RuntimeError("write layer: no space left on device"))
+    assert not is_resource_e2b_error(RuntimeError("write layer: no space left on device"))
+
+
 def test_e2b_key_exhaustion_classification() -> None:
     assert is_e2b_key_exhausted_error(RuntimeError("HTTP 402: payment required"))
     assert is_e2b_key_exhausted_error(RuntimeError("not enough credits to build template"))
     assert not is_e2b_key_exhausted_error(RuntimeError("too many concurrent sandboxes"))
+
+
+def test_template_build_timeout_classification() -> None:
+    assert is_template_build_timeout_error(
+        RuntimeError("E2B template build timed out after 900s: build_id=stuck")
+    )
+    assert not is_template_build_timeout_error(RuntimeError("request timed out"))
+
+
+def test_template_build_timeout_is_a_terminal_rejection(tmp_path) -> None:
+    rejected: list[tuple[str, str]] = []
+
+    class Environment:
+        @staticmethod
+        def ensure(repo, repo_path, base_commit):
+            raise RepositoryTemplateBuildError(
+                "E2B template build timed out after 900s: build_id=stuck"
+            )
+
+    class Registry:
+        @staticmethod
+        def reject(repo, stage, reason, **details):
+            rejected.append((stage, reason))
+
+    verifier = E2BCandidateVerifier.__new__(E2BCandidateVerifier)
+    verifier.environment = Environment()  # type: ignore[assignment]
+    verifier.registry = Registry()  # type: ignore[assignment]
+
+    outcome = verifier.verify(
+        {"full_name": "owner/repository", "base_commit": "a" * 40},
+        tmp_path,
+        score={"total": 10},
+        direction={},
+    )
+
+    assert outcome == "rejected"
+    assert rejected == [("stage3_5_e2b_environment", "e2b_build_timeout")]
 
 
 def test_unsupported_runtime_is_a_terminal_rejection(tmp_path) -> None:

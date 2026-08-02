@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from ..github import GitHubClient
+from ..jsonl_io import split_jsonl_lines
 from .harbor_packaging import HarborPackager
 
 
@@ -15,7 +16,7 @@ def package_existing_candidates(
     stats = {"processed": 0, "packaged": 0, "error": 0}
     if not candidates_path.is_file():
         return stats
-    for line in candidates_path.read_text(encoding="utf-8").splitlines():
+    for line in split_jsonl_lines(candidates_path.read_text(encoding="utf-8")):
         try:
             record = json.loads(line)
             stats["processed"] += 1

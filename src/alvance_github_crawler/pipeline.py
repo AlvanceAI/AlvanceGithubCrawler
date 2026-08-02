@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
 from collections import Counter
 from collections.abc import Iterable
 from concurrent.futures import ThreadPoolExecutor
@@ -13,7 +14,7 @@ from .catalog.harbor_packaging import HarborPackager
 from .config import PipelineConfig
 from .e2b.verification import E2BCandidateVerifier
 from .github import GitHubClient, GitHubError
-from .jsonl_io import read_text_locked
+from .jsonl_io import IncrementalJSONLReader, read_text_locked, split_jsonl_lines
 from .pending.queue import PendingQueue, build_pending_candidate
 from .pending.registration import CandidateRegistrar
 from .registry import JsonlRegistry
@@ -29,7 +30,7 @@ COMMIT_SHA_RE = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
 
 def catalog_repositories(catalog_dir: Path) -> set[str]:
     repositories: set[str] = set()
-    for raw_line in read_text_locked(catalog_dir / "e2b-packages.jsonl").splitlines():
+    for raw_line in split_jsonl_lines(read_text_locked(catalog_dir / "e2b-packages.jsonl")):
         try:
             package = json.loads(raw_line)
         except json.JSONDecodeError:
@@ -50,7 +51,7 @@ def load_crawl_candidates(
         raise ValueError(f"candidate input file does not exist: {path}")
 
     candidates: dict[str, dict[str, Any]] = {}
-    for line_number, raw_line in enumerate(read_text_locked(path).splitlines(), 1):
+    for line_number, raw_line in enumerate(split_jsonl_lines(read_text_locked(path)), 1):
         if not raw_line.strip():
             continue
         try:
@@ -149,6 +150,7 @@ class Pipeline:
                 config.catalog_dir,
                 cpu_count=config.e2b_cpu_count,
                 memory_mb=config.e2b_memory_mb,
+                template_build_timeout_s=config.e2b_template_build_timeout_s,
             )
         )
         self.registrar = CandidateRegistrar(
@@ -248,6 +250,132 @@ class Pipeline:
             ) as pool:
                 for outcome in pool.map(self._process_crawl_candidate, selected):
                     stats[outcome] += 1
+        return dict(stats)
+
+    def run_crawl_candidates_follow(
+        self,
+        path: Path,
+        *,
+        cursor_path: Path,
+        producer_done_path: Path,
+        chunk_size: int = 200,
+        poll_interval_s: float = 2.0,
+        pending_high_watermark: int = 480,
+        pending_low_watermark: int = 120,
+        capacity_stop_path: Path | None = None,
+        status_path: Path | None = None,
+    ) -> dict[str, int]:
+        """Follow an append-only crawl output while the crawler is still running.
+
+        ``run_crawl_candidates`` is intentionally kept as a finite batch API. This
+        method is the streaming counterpart used by continuous production: it only
+        reads bytes after the persisted cursor, waits while the downstream queue is
+        above its high-water mark, and remains alive while the producer has not
+        signalled completion even when the input is temporarily empty.
+        """
+        if chunk_size < 1:
+            raise ValueError("chunk_size must be >= 1")
+        if poll_interval_s <= 0:
+            raise ValueError("poll_interval_s must be > 0")
+        if pending_low_watermark < 0 or pending_high_watermark <= pending_low_watermark:
+            raise ValueError("pending watermarks must satisfy 0 <= low < high")
+
+        reader = IncrementalJSONLReader(path, cursor_path)
+        stats: Counter[str] = Counter()
+        started_at = time.time()
+        seen = self.registry.existing_repos()
+        seen |= self.pending.known_repos()
+        seen |= catalog_repositories(self.config.catalog_dir)
+        if not self.retry_rejected:
+            seen |= self.registry.terminal_rejections()
+
+        def write_status(state: str) -> None:
+            if status_path is None:
+                return
+            payload = {
+                "state": state,
+                "updated_at": time.time(),
+                "started_at": started_at,
+                "cursor_offset": reader.offset,
+                "input_path": str(path),
+                "input_total": int(stats.get("input_total", 0)),
+                "processed": int(stats.get("processed", 0)),
+                "queued": int(stats.get("queued", 0)),
+                "duplicates": int(stats.get("duplicate", 0)),
+                "rejected": int(stats.get("rejected", 0)),
+                "input_rate_per_hour": int(stats.get("input_total", 0))
+                * 3600.0
+                / max(1.0, time.time() - started_at),
+                "queued_rate_per_hour": int(stats.get("queued", 0))
+                * 3600.0
+                / max(1.0, time.time() - started_at),
+                "pending": self.pending.active_count(),
+                "pending_high_watermark": pending_high_watermark,
+                "pending_low_watermark": pending_low_watermark,
+            }
+            status_path.parent.mkdir(parents=True, exist_ok=True)
+            temporary = status_path.with_suffix(status_path.suffix + ".tmp")
+            temporary.write_text(
+                json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
+            temporary.replace(status_path)
+
+        write_status("waiting_for_input")
+        while True:
+            batch = reader.read(chunk_size)
+            has_new_bytes = batch.next_offset > reader.offset
+            if has_new_bytes:
+                if self.pending.active_count() >= pending_high_watermark:
+                    while self.pending.active_count() > pending_low_watermark:
+                        if capacity_stop_path is not None and capacity_stop_path.is_file():
+                            break
+                        write_status("backpressure")
+                        time.sleep(poll_interval_s)
+
+                selected: list[dict[str, Any]] = []
+                for candidate in batch.records:
+                    full_name = str(candidate.get("repo") or "")
+                    if not full_name:
+                        stats["invalid"] += 1
+                        continue
+                    if full_name in seen:
+                        stats["duplicate"] += 1
+                        continue
+                    seen.add(full_name)
+                    selected.append(candidate)
+
+                stats["input_total"] += len(batch.records)
+                stats["processed"] += len(selected)
+                if self.config.prescreen_concurrency == 1:
+                    outcomes = map(self._process_crawl_candidate, selected)
+                    for outcome in outcomes:
+                        stats[outcome] += 1
+                else:
+                    with ThreadPoolExecutor(
+                        max_workers=self.config.prescreen_concurrency,
+                        thread_name_prefix="prescreen",
+                    ) as pool:
+                        for outcome in pool.map(self._process_crawl_candidate, selected):
+                            stats[outcome] += 1
+                reader.commit(batch)
+                write_status("running")
+                continue
+
+            if producer_done_path.is_file():
+                # The producer closes the append-only file before writing its done
+                # marker. One final read handles a marker/file visibility race.
+                final_batch = reader.read(chunk_size)
+                if final_batch.next_offset > reader.offset:
+                    continue
+                break
+
+            write_status("waiting_for_input")
+            time.sleep(poll_interval_s)
+
+        write_status("complete")
+        stats["remaining_pending"] = self.pending.active_count()
+        stats["cursor_offset"] = reader.offset
         return dict(stats)
 
     def _process_crawl_candidate(self, candidate: dict[str, Any]) -> str:

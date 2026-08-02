@@ -8,6 +8,7 @@ from pathlib import Path
 
 from ..models import BenchmarkResult, BenchmarkRun
 from ..runtime.profiles import command_with_environment, command_with_timeout
+from .build_control import build_template_with_timeout
 
 THRESHOLDS = {
     "cold_start_s": 20.0,
@@ -57,10 +58,18 @@ def summarize_runs(runs: list[BenchmarkRun], test_cmd: str) -> BenchmarkResult:
 
 
 class E2BTemplateBuilder:
-    def __init__(self, api_key: str, *, cpu_count: int = 1, memory_mb: int = 1_024) -> None:
+    def __init__(
+        self,
+        api_key: str,
+        *,
+        cpu_count: int = 1,
+        memory_mb: int = 1_024,
+        template_build_timeout_s: int = 900,
+    ) -> None:
         self.api_key = api_key
         self.cpu_count = cpu_count
         self.memory_mb = memory_mb
+        self.template_build_timeout_s = template_build_timeout_s
 
     def build(self, repo_path: Path, dockerfile: str, alias: str) -> str:
         try:
@@ -71,13 +80,14 @@ class E2BTemplateBuilder:
         if Template.alias_exists(alias, api_key=self.api_key):
             return alias
         template = Template(file_context_path=repo_path).from_dockerfile(dockerfile)
-        info = Template.build(
+        info = build_template_with_timeout(
+            Template,
             template,
             name=alias,
-            alias=alias,
             cpu_count=self.cpu_count,
             memory_mb=self.memory_mb,
             api_key=self.api_key,
+            timeout_s=self.template_build_timeout_s,
         )
         return info.template_id
 

@@ -6,6 +6,7 @@ import threading
 from pathlib import Path
 from typing import Any
 
+from ..jsonl_io import split_jsonl_lines
 from .harbor_task import (
     harbor_template_alias,
     material_id,
@@ -178,7 +179,7 @@ class TracePackageStore:
         path = self.catalog_dir / "e2b-packages.jsonl"
         packages: dict[str, dict[str, Any]] = {}
         if path.is_file():
-            for line in path.read_text(encoding="utf-8").splitlines():
+            for line in split_jsonl_lines(path.read_text(encoding="utf-8")):
                 try:
                     existing = json.loads(line)
                 except json.JSONDecodeError:

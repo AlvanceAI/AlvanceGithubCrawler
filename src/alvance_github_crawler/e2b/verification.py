@@ -9,6 +9,7 @@ from ..config import PipelineConfig
 from ..pending.registration import CandidateRegistrar
 from ..registry import JsonlRegistry
 from ..runtime.profiles import UnsupportedRuntimeError
+from ..runtime.recipes import UnsupportedDependencyError
 from . import (
     E2BEnvironmentManager,
     E2BOfflineVerifier,
@@ -37,6 +38,7 @@ class E2BCandidateVerifier:
             config.e2b_api_key,
             cpu_count=config.e2b_cpu_count,
             memory_mb=config.e2b_memory_mb,
+            template_build_timeout_s=config.e2b_template_build_timeout_s,
         )
         self.offline = E2BOfflineVerifier(
             config.e2b_api_key,
@@ -61,6 +63,11 @@ class E2BCandidateVerifier:
             try:
                 environment = self.environment.ensure(repo, repo_path, str(repo["base_commit"]))
             except RuntimeTemplateBuildError as exc:
+                if is_template_build_timeout_error(exc):
+                    self.registry.reject(
+                        repo, stage, "e2b_build_timeout", error=str(exc)[-4_000:]
+                    )
+                    return "rejected"
                 if is_e2b_key_exhausted_error(exc):
                     self.registry.reject(
                         repo,
@@ -69,6 +76,19 @@ class E2BCandidateVerifier:
                         error=str(exc)[-4_000:],
                     )
                     return "key_exhausted"
+                if is_rate_limit_e2b_error(exc):
+                    self.registry.reject(
+                        repo, stage, "infra_error", error=str(exc)[-4_000:]
+                    )
+                    return "rate_limited"
+                if is_disk_e2b_error(exc):
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        "e2b_disk_exhausted",
+                        error=str(exc)[-4_000:],
+                    )
+                    return "rejected"
                 if is_resource_e2b_error(exc):
                     self.registry.reject(
                         repo,
@@ -80,6 +100,11 @@ class E2BCandidateVerifier:
                 self.registry.reject(repo, stage, "infra_error", error=str(exc)[-4_000:])
                 return "error"
             except RepositoryTemplateBuildError as exc:
+                if is_template_build_timeout_error(exc):
+                    self.registry.reject(
+                        repo, stage, "e2b_build_timeout", error=str(exc)[-4_000:]
+                    )
+                    return "rejected"
                 if is_e2b_key_exhausted_error(exc):
                     self.registry.reject(
                         repo,
@@ -88,6 +113,19 @@ class E2BCandidateVerifier:
                         error=str(exc)[-4_000:],
                     )
                     return "key_exhausted"
+                if is_rate_limit_e2b_error(exc):
+                    self.registry.reject(
+                        repo, stage, "infra_error", error=str(exc)[-4_000:]
+                    )
+                    return "rate_limited"
+                if is_disk_e2b_error(exc):
+                    self.registry.reject(
+                        repo,
+                        stage,
+                        "e2b_disk_exhausted",
+                        error=str(exc)[-4_000:],
+                    )
+                    return "rejected"
                 if is_resource_e2b_error(exc):
                     self.registry.reject(
                         repo,
@@ -114,16 +152,16 @@ class E2BCandidateVerifier:
                 user=environment.execution_user,
             )
             if not offline.ok:
-                offline_reason = (
-                    "e2b_resource_exhausted"
-                    if is_resource_e2b_error(
-                        RuntimeError(
-                            f"exit_code={offline.exit_code}\n"
-                            f"{offline.stdout_tail}\n{offline.stderr_tail}"
-                        )
-                    )
-                    else offline.reason
+                offline_error = RuntimeError(
+                    f"exit_code={offline.exit_code}\n"
+                    f"{offline.stdout_tail}\n{offline.stderr_tail}"
                 )
+                if is_disk_e2b_error(offline_error):
+                    offline_reason = "e2b_disk_exhausted"
+                elif is_resource_e2b_error(offline_error):
+                    offline_reason = "e2b_resource_exhausted"
+                else:
+                    offline_reason = offline.reason
                 self.registry.reject(
                     repo,
                     stage,
@@ -194,11 +232,24 @@ class E2BCandidateVerifier:
             )
             return "registered"
         except Exception as exc:
-            if isinstance(exc, UnsupportedRuntimeError):
+            if isinstance(exc, (UnsupportedRuntimeError, UnsupportedDependencyError)):
                 self.registry.reject(
                     repo,
                     stage,
-                    "unsupported_runtime",
+                    (
+                        "unsupported_runtime"
+                        if isinstance(exc, UnsupportedRuntimeError)
+                        else "unsupported_dependency_lock"
+                    ),
+                    error=str(exc)[-4_000:],
+                )
+                return "rejected"
+            if is_template_build_timeout_error(exc):
+                self.registry.reject(
+                    repo,
+                    stage,
+                    "e2b_build_timeout",
+                    error_type=type(exc).__name__,
                     error=str(exc)[-4_000:],
                 )
                 return "rejected"
@@ -212,6 +263,15 @@ class E2BCandidateVerifier:
                     error=str(exc)[-4_000:],
                 )
                 return "key_exhausted"
+            if is_rate_limit_e2b_error(exc):
+                self.registry.reject(
+                    repo,
+                    stage,
+                    "infra_error",
+                    error_type=type(exc).__name__,
+                    error=str(exc)[-4_000:],
+                )
+                return "rate_limited"
             LOGGER.exception("%s failed during %s", repo.get("full_name"), stage)
             self.registry.reject(
                 repo,
@@ -256,6 +316,37 @@ def is_transient_e2b_error(error: BaseException) -> bool:
         "request timeout",
         "request timed out",
         "internal server error",
+        "spurious network error",
+        "failed to download",
+        "failed to get successful http response",
+        "operation too slow",
+        "temporary failure in name resolution",
+        "could not resolve host",
+    )
+    if any(marker in message for marker in markers):
+        return True
+    return bool(
+        re.search(
+            r"\bhttp(?:\s+status)?\s*429\b"
+            r"|\bstatus(?:\s+code|_code)?\s*[=:]\s*429\b"
+            r"|\b429\s+(?:client error|too many requests)\b",
+            message,
+        )
+    )
+
+
+def is_template_build_timeout_error(error: BaseException) -> bool:
+    return "e2b template build timed out after" in str(error).lower()
+
+
+def is_rate_limit_e2b_error(error: BaseException) -> bool:
+    message = str(error).lower()
+    markers = (
+        "rate limit",
+        "too many requests",
+        "too many concurrent",
+        "maximum number of concurrent",
+        "concurrency limit",
     )
     if any(marker in message for marker in markers):
         return True
@@ -300,5 +391,15 @@ def is_resource_e2b_error(error: BaseException) -> bool:
         "memory limit",
         "exit code 137",
         "exit_code=137",
+    )
+    return any(marker in message for marker in markers)
+
+
+def is_disk_e2b_error(error: BaseException) -> bool:
+    message = str(error).lower()
+    markers = (
+        "no space left on device",
+        "disk quota exceeded",
+        "insufficient disk space",
     )
     return any(marker in message for marker in markers)

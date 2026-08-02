@@ -16,7 +16,9 @@ from ..runtime.recipes import (
 from .package_models import QualifiedRepository
 
 HARBOR_ENVELOPE_VERSION = "v2"
-DOCKERFILE_RECIPE_VERSION = "v3"
+E2B_DOCKERFILE_INSTRUCTIONS = frozenset(
+    {"ADD", "ARG", "CMD", "COPY", "ENTRYPOINT", "ENV", "FROM", "RUN", "USER", "WORKDIR"}
+)
 
 
 def material_id(repository: QualifiedRepository) -> str:
@@ -42,9 +44,6 @@ def harbor_template_alias(task_name: str, environment_dir: Path) -> str:
 
 def render_environment_dockerfile(repository: QualifiedRepository) -> str:
     lines = [
-        f"# Harbor rebuildable envelope {HARBOR_ENVELOPE_VERSION}",
-        f"# Dockerfile recipe {DOCKERFILE_RECIPE_VERSION}",
-        "# E2B aliases are optional caches; this file is the durable build source.",
         f"FROM {runtime_base_image(repository.language, repository.runtime_version)}",
         "USER root",
     ]
@@ -80,7 +79,39 @@ def render_environment_dockerfile(repository: QualifiedRepository) -> str:
         f"RUN {command}" for command in repository_finalize_commands(repository.language)
     )
     lines.extend(["USER root", "WORKDIR /app", ""])
-    return "\n".join(lines)
+    dockerfile = "\n".join(lines)
+    validate_e2b_dockerfile(dockerfile)
+    return dockerfile
+
+
+def validate_e2b_dockerfile(dockerfile: str) -> None:
+    """Reject top-level instructions that E2B's Dockerfile adapter cannot apply."""
+
+    unsupported = sorted(
+        set(_dockerfile_instructions(dockerfile)) - E2B_DOCKERFILE_INSTRUCTIONS
+    )
+    if unsupported:
+        raise ValueError(
+            "unsupported E2B Dockerfile instruction(s): " + ", ".join(unsupported)
+        )
+
+
+def _dockerfile_instructions(dockerfile: str) -> tuple[str, ...]:
+    instructions: list[str] = []
+    continued = False
+    for raw_line in dockerfile.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if continued:
+            continued = line.endswith("\\")
+            continue
+        if line.startswith("#"):
+            instructions.append("COMMENT")
+        else:
+            instructions.append(line.split(None, 1)[0].upper())
+        continued = line.endswith("\\")
+    return tuple(instructions)
 
 
 def render_instruction(repository: QualifiedRepository) -> str:

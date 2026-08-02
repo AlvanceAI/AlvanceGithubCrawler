@@ -13,6 +13,7 @@ from typing import Any
 
 from dirhash import dirhash
 
+from ..jsonl_io import split_jsonl_lines
 from ..runtime.profiles import execution_user, runtime_environment
 from ..runtime.recipes import repository_dependency_commands, runtime_base_image
 from ..workspace import cloned_repository
@@ -20,6 +21,7 @@ from .harbor_task import (
     render_environment_dockerfile,
     render_task_material_toml,
     render_task_toml,
+    validate_e2b_dockerfile,
 )
 from .package_models import E2BWrapperReceipt, QualifiedRepository
 from .trace_materials import (
@@ -118,7 +120,8 @@ def _record_language(records: list[dict[str, Any]], package_id: str) -> str:
 def _load_records(path: Path) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    lines = split_jsonl_lines(path.read_text(encoding="utf-8"))
+    for line_number, line in enumerate(lines, 1):
         if not line.strip():
             continue
         try:
@@ -391,6 +394,10 @@ def _audit(root_dir: Path, records: list[dict[str, Any]]) -> list[str]:
         material_content = material_dockerfile.read_text(encoding="utf-8", errors="replace")
         if task_content != material_content:
             errors.append(f"{package_id}: task/material Dockerfiles differ")
+        try:
+            validate_e2b_dockerfile(task_content)
+        except ValueError as exc:
+            errors.append(f"{package_id}: {exc}")
         if "FROM e2bdev/base" in task_content:
             errors.append(f"{package_id}: E2B fingerprint Dockerfile remains")
         commit = str(record.get("base_commit") or "")

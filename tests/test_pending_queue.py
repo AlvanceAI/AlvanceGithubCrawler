@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import UTC, datetime, timedelta
 
 from alvance_github_crawler.pending.queue import (
     PendingQueue,
@@ -80,6 +81,20 @@ def test_defer_moves_item_to_tail(tmp_path) -> None:
     ]
 
 
+def test_deferred_item_is_not_ready_until_retry_time(tmp_path) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    item = candidate()
+    key = pending_key(item)
+    queue.enqueue(item)
+    queue.defer(key, delay_s=60)
+
+    now = datetime.now(UTC)
+    assert queue.ready(now=now) == []
+    assert [pending.key for pending in queue.ready(now=now + timedelta(seconds=61))] == [
+        key
+    ]
+
+
 def test_completed_item_can_be_enqueued_again(tmp_path) -> None:
     queue = PendingQueue(tmp_path / "pending.jsonl")
     item = candidate()
@@ -105,3 +120,34 @@ def test_attempt_counts_and_active_repos(tmp_path) -> None:
     queue.complete(key, "error_exhausted")
     assert queue.active_repos() == set()
     assert queue.known_repos() == {"owner/repository"}
+
+
+def test_requeue_starts_a_fresh_attempt_cycle(tmp_path) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    item = candidate()
+    key = pending_key(item)
+    queue.enqueue(item)
+    queue.record_attempt(key)
+    queue.record_attempt(key)
+    queue.complete(key, "error_exhausted")
+
+    assert queue.requeue(key, marker="recipe-v2") is True
+    assert queue.attempt_counts() == {}
+
+    queue.record_attempt(key)
+    assert queue.attempt_counts() == {key: 1}
+
+
+def test_active_count_tracks_appended_tail(tmp_path) -> None:
+    queue = PendingQueue(tmp_path / "pending.jsonl")
+    first = candidate()
+    second = candidate()
+    second["repo"]["base_commit"] = "c" * 40
+
+    assert queue.active_count() == 0
+    assert queue.enqueue(first)
+    assert queue.active_count() == 1
+    queue.complete(pending_key(first), "registered")
+    assert queue.active_count() == 0
+    assert queue.enqueue(second)
+    assert queue.active_count() == 1

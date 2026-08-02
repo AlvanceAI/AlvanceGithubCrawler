@@ -9,9 +9,11 @@ import pytest
 MONITOR = runpy.run_path(str(Path(__file__).resolve().parents[1] / "monitor.py"))
 build_pipeline_environment = MONITOR["build_pipeline_environment"]
 candidate_summary = MONITOR["candidate_summary"]
+checkpoint_per_language = MONITOR["checkpoint_per_language"]
 launch_pipeline = MONITOR["launch_pipeline"]
 parse_args = MONITOR["parse_args"]
 pending_stats = MONITOR["pending_stats"]
+pipeline_exit_action = MONITOR["pipeline_exit_action"]
 rejection_summary = MONITOR["rejection_summary"]
 task_rate_summary = MONITOR["task_rate_summary"]
 
@@ -122,7 +124,15 @@ def launcher_args(tmp_path: Path):
     )
 
 
-def test_default_launcher_environment_enables_full_dual_key_pipeline(tmp_path: Path) -> None:
+def test_default_launcher_environment_enables_full_dual_key_pipeline(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("PIPELINE_WORKSPACE_TMPDIR", str(tmp_path / "workspace"))
+    monkeypatch.setenv("PIPELINE_WORKSPACE_MIN_FREE_MB", "20480")
+    monkeypatch.setenv("PIPELINE_WORKSPACE_MAX_MB", "51200")
+    monkeypatch.setenv("PIPELINE_WORKSPACE_RESERVATION_MB", "640")
+    monkeypatch.setenv("PIPELINE_WORKSPACE_QUOTA_WAIT_S", "900")
     args = launcher_args(tmp_path)
 
     environment = build_pipeline_environment(args, ceiling_per_language=2_000)
@@ -137,6 +147,61 @@ def test_default_launcher_environment_enables_full_dual_key_pipeline(tmp_path: P
     assert environment["E2B_CONCURRENCY"] == "20"
     assert environment["PUBLISH_TASKS"] == "true"
     assert environment["PUBLISH_RUN_ARTIFACTS"] == "true"
+    assert environment["AUTO_GIT_PUSH"] == "false"
+    assert environment["PIPELINE_WORKSPACE_TMPDIR"] == str(tmp_path / "workspace")
+    assert environment["PIPELINE_WORKSPACE_MIN_FREE_MB"] == "20480"
+    assert environment["PIPELINE_WORKSPACE_MAX_MB"] == "51200"
+    assert environment["PIPELINE_WORKSPACE_RESERVATION_MB"] == "640"
+    assert environment["PIPELINE_WORKSPACE_QUOTA_WAIT_S"] == "900"
+
+
+def test_checkpoint_ceiling_never_drops_below_existing_target(tmp_path: Path) -> None:
+    crawl_dir = tmp_path / "crawl"
+    crawl_dir.mkdir()
+    (crawl_dir / "crawl_state.json").write_text(
+        '{"target_total":38500,"per_language":7700}',
+        encoding="utf-8",
+    )
+
+    assert checkpoint_per_language(crawl_dir) == 7_700
+
+
+@pytest.mark.parametrize(
+    (
+        "return_code",
+        "stop_at_max",
+        "exhausted",
+        "cycle_completed",
+        "source_exhausted",
+        "expected",
+    ),
+    [
+        (0, False, False, True, False, "extend"),
+        (0, True, False, True, False, "complete"),
+        (0, False, False, False, False, "failed"),
+        (1, False, False, True, False, "failed"),
+        (4, False, True, False, False, "exhausted"),
+        (0, False, False, True, True, "source_exhausted"),
+    ],
+)
+def test_pipeline_exit_action_requires_a_successful_cycle_marker(
+    return_code: int,
+    stop_at_max: bool,
+    exhausted: bool,
+    cycle_completed: bool,
+    source_exhausted: bool,
+    expected: str,
+) -> None:
+    assert (
+        pipeline_exit_action(
+            return_code,
+            stop_at_max=stop_at_max,
+            exhausted=exhausted,
+            cycle_completed=cycle_completed,
+            source_exhausted=source_exhausted,
+        )
+        == expected
+    )
 
 
 def test_launch_pipeline_runs_continuous_driver_in_new_process_group(

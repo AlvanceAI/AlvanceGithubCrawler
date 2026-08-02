@@ -23,11 +23,13 @@ class HarborPackager:
         *,
         cpu_count: int = 1,
         memory_mb: int = 1_024,
+        template_build_timeout_s: int = 900,
     ) -> None:
         self.wrapper_manager = E2BHarborWrapperManager(
             api_key,
             cpu_count=cpu_count,
             memory_mb=memory_mb,
+            template_build_timeout_s=template_build_timeout_s,
         )
         self.store = TracePackageStore(catalog_dir)
 

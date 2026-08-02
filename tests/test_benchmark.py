@@ -193,7 +193,7 @@ def test_dockerfile_uses_repository_runtime_version(tmp_path) -> None:
     (tmp_path / "go.mod").write_text("module example.com/demo\n\ngo 1.26.5\n", encoding="utf-8")
     dockerfile = dockerfile_for("go", tmp_path)
     assert dockerfile.startswith("FROM golang:1.22\n")
-    assert "ENV GOTOOLCHAIN=go1.26.5+auto\n" in dockerfile
+    assert "ENV GOTOOLCHAIN=auto\n" in dockerfile
 
 
 def test_rust_dockerfile_ignores_versions_in_toolchain_comments(tmp_path) -> None:

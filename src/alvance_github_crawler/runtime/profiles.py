@@ -9,8 +9,8 @@ from pathlib import Path
 
 from packaging.specifiers import InvalidSpecifier, SpecifierSet
 
-RUNTIME_RECIPE_VERSION = "v3"
-REPOSITORY_RECIPE_VERSION = "v17"
+RUNTIME_RECIPE_VERSION = "v4"
+REPOSITORY_RECIPE_VERSION = "v18"
 
 DEFAULT_RUNTIME_VERSIONS = {
     "go": "1.22",
@@ -35,12 +35,14 @@ DEPENDENCY_FILES = {
     "typescript": (
         "package.json",
         "package-lock.json",
+        "npm-shrinkwrap.json",
         "pnpm-lock.yaml",
         "yarn.lock",
     ),
     "javascript": (
         "package.json",
         "package-lock.json",
+        "npm-shrinkwrap.json",
         "pnpm-lock.yaml",
         "yarn.lock",
     ),
@@ -55,12 +57,27 @@ class UnsupportedRuntimeError(ValueError):
 def detect_runtime_version(language: str, repo_path: Path) -> str:
     language = language.lower()
     if language == "go":
-        match = re.search(
+        content = _read(repo_path / "go.mod")
+        go_match = re.search(
             r"^go\s+(\d+\.\d+(?:\.\d+)?)\s*$",
-            _read(repo_path / "go.mod"),
+            content,
             re.MULTILINE,
         )
-        version = match.group(1) if match else DEFAULT_RUNTIME_VERSIONS[language]
+        toolchain_match = re.search(
+            r"^toolchain\s+go(\d+\.\d+(?:\.\d+)?)\s*$",
+            content,
+            re.MULTILINE,
+        )
+        versions = [
+            match.group(1)
+            for match in (go_match, toolchain_match)
+            if match is not None
+        ]
+        version = (
+            max(versions, key=_go_version_tuple)
+            if versions
+            else DEFAULT_RUNTIME_VERSIONS[language]
+        )
         return normalize_go_toolchain_version(version)
     if language == "python":
         match = re.search(
@@ -97,8 +114,22 @@ def select_python_runtime(requirement: str) -> str:
 
 
 def normalize_go_toolchain_version(version: str) -> str:
-    """Turn a Go language version into the concrete toolchain name E2B needs."""
+    """Normalize Go language versions for stable metadata and template aliases."""
     return f"{version}.0" if re.fullmatch(r"\d+\.\d+", version) else version
+
+
+def go_toolchain_environment_value(version: str) -> str:
+    """Use the bootstrap toolchain for compatible modules and auto-upgrade newer ones."""
+    normalized = normalize_go_toolchain_version(version)
+    if _go_version_tuple(normalized) <= _go_version_tuple(DEFAULT_RUNTIME_VERSIONS["go"]):
+        return "local"
+    return "auto"
+
+
+def _go_version_tuple(version: str) -> tuple[int, int, int]:
+    parts = [int(part) for part in version.split(".")]
+    padded = (parts + [0, 0, 0])[:3]
+    return padded[0], padded[1], padded[2]
 
 
 def detect_rust_runtime(repo_path: Path) -> str:
@@ -213,7 +244,7 @@ def runtime_environment(language: str, version: str) -> dict[str, str]:
             "GOMODCACHE": "/go/pkg/mod",
             "GOCACHE": "/root/.cache/go-build",
             "GOPROXY": "https://goproxy.cn,direct",
-            "GOTOOLCHAIN": f"go{version}+auto",
+            "GOTOOLCHAIN": go_toolchain_environment_value(version),
         }
     if language == "python":
         return {

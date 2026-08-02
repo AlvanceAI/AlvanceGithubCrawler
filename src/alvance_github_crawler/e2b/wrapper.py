@@ -7,6 +7,7 @@ import time
 import requests
 
 from ..catalog.package_models import E2BWrapperReceipt, QualifiedRepository
+from .build_control import build_template_with_timeout
 
 
 class E2BHarborWrapperManager:
@@ -18,10 +19,12 @@ class E2BHarborWrapperManager:
         *,
         cpu_count: int = 1,
         memory_mb: int = 1_024,
+        template_build_timeout_s: int = 900,
     ) -> None:
         self.api_key = api_key
         self.cpu_count = cpu_count
         self.memory_mb = memory_mb
+        self.template_build_timeout_s = template_build_timeout_s
 
     def ensure(
         self,
@@ -45,11 +48,13 @@ class E2BHarborWrapperManager:
                 repository.runtime_env,
             )
             started = time.monotonic()
-            info = Template.build(
+            info = build_template_with_timeout(
+                Template,
                 builder,
                 name=harbor_alias,
                 cpu_count=self.cpu_count,
                 memory_mb=self.memory_mb,
+                timeout_s=self.template_build_timeout_s,
                 skip_cache=False,
                 api_key=self.api_key,
             )

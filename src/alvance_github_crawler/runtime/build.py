@@ -8,8 +8,13 @@ from pathlib import Path
 from typing import Any
 
 from ..models import BuildResult
-from .profiles import detect_runtime_version, normalize_go_toolchain_version
+from .profiles import (
+    detect_runtime_version,
+    go_toolchain_environment_value,
+    normalize_go_toolchain_version,
+)
 from .python import python_test_command
+from .recipes import repository_dependency_commands
 
 DOCKERFILE_TEMPLATES = {
     "go": """FROM golang:1.22
@@ -68,8 +73,11 @@ def dockerfile_for(language: str, repo_path: Path | None = None) -> str:
         return dockerfile
     if language == "go":
         required = _detect_go_version(repo_path)
-        if required and required != "1.22":
-            rest = f"ENV GOTOOLCHAIN=go{required}+auto\n{rest}"
+        if required:
+            rest = f"ENV GOTOOLCHAIN={go_toolchain_environment_value(required)}\n{rest}"
+    elif language in {"typescript", "javascript"}:
+        commands = repository_dependency_commands(language, repo_path)
+        rest = rest.replace("RUN npm ci\n", f"RUN {' && '.join(commands)}\n", 1)
     return f"FROM {base_image}\n{rest}"
 
 
