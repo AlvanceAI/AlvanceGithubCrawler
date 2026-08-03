@@ -1,215 +1,803 @@
-# Alvance GitHub Crawler
+# AlvanceGithubCrawler 交付文档
 
-按《仓库收集与检验管线 — 最终方案》实现的 GitHub 仓库候选收集器。主流程包含：
+`AlvanceGithubCrawler` 是面向 DeepSWE Bench 生产前置阶段的 GitHub 仓库收集、筛选、环境验证和材料导出工具。它的职责不是直接生成最终 DeepSWE/Harbor 问题包，而是稳定产出可被 `AlvanceDeepSWE` 消费的高质量仓库材料：真实 GitHub 仓库、固定 commit、可运行测试命令、E2B/Harbor 环境信息、方向候选和轻量任务封装。
 
-1. GitHub Search 抓取 Go、Python、TypeScript、JavaScript、Rust 候选；
-2. Stars、活跃度、许可证和原生测试设施硬过滤；
-3. 文件数、Stars、feature issue、公开符号和开发者库偏好评分（满分 12，默认 7 分入围）；
-4. OpenAI 结构化输出分析 feature issue，并通过 GitHub Code Search 与 grep.app 执行 H6 核查；
-5. 在 e2b 持久化 Runtime Template 与 Repository Template；
-6. 从同一个 Repository Template 启动断网 Sandbox 做 H5 检验和三次执行基准；
-7. 将爬取状态写入本地忽略的 `.crawler-state/`；
-8. 按 Trace 原生约定生成 `catalog/`、`materials/`、`tasks/`，并在 e2b 持久化 Harbor-compatible wrapper template。
+当前推荐的生产边界：
 
-## 从新克隆开始安装
+- Crawler 负责发现、筛选、验证仓库材料，并写出 `catalog/`、`materials/`、`tasks/`、`.crawler-state/` 等控制面产物。
+- DeepSWE 负责基于这些材料进一步生成 instruction、verifier、answer、轨迹和最终 Harbor 问题包。
+- 生产环境统一使用 conda 环境 `bench`。不要在仓库内创建或依赖 `.venv`，也不要把真实 API key 写入仓库、README、命令行历史或产物。
 
-量产脚本面向 Linux/bash，需要 `git`、`uv` 和 `jq`。自动提交 Task 时还需要当前用户
-拥有仓库 `XBY` 分支的推送权限，并已配置 Git 提交用户名和邮箱。
+## 环境安装
+
+在总工作区根目录运行：
 
 ```bash
-git clone git@github.com:AlvanceAI/AlvanceGithubCrawler.git
-cd AlvanceGithubCrawler
-git switch XBY
-git pull --ff-only origin XBY
-uv sync --extra e2b --extra dev
-cp .env.example .env
+conda activate bench
+python -m pip install -e AlvanceGithubCrawler[e2b]
 ```
 
-后续命令通过 `uv run` 使用项目环境，无需手动激活虚拟环境。
+如果只做本地单元测试、不调用 E2B，可省略 `[e2b]`：
 
-打开 `.env`，至少填写下面这些值。不要把真实 Key 写进 README、命令行或提交记录；
-`.env` 已被 Git 忽略。
+```bash
+conda activate bench
+python -m pip install -e AlvanceGithubCrawler
+```
+
+### 工作目录约定
+
+除非命令明确写了总工作区路径，本文后续 Crawler 独立命令默认在 Crawler 包根目录执行：
+
+```bash
+cd /home/wyy/Workspace/Benchmark/DeepSWE/AlvanceGithubCrawler
+```
+
+原因是当前实现中的 `.env`、`.crawler-state`、`catalog`、`materials`、`tasks` 等默认路径都是相对当前工作目录解析的。如果在总工作区根目录直接运行 `alvance-github-crawler`，这些目录会被写到总根目录，容易与 DeepSWE 的产物混在一起。
+
+如果确实需要从其他目录运行，必须显式设置：
+
+```bash
+export PIPELINE_ENV_FILE=/home/wyy/Workspace/Benchmark/DeepSWE/AlvanceGithubCrawler/.env
+export PIPELINE_OUTPUT_DIR=/home/wyy/Workspace/Benchmark/DeepSWE/AlvanceGithubCrawler/.crawler-state
+export PIPELINE_CATALOG_DIR=/home/wyy/Workspace/Benchmark/DeepSWE/AlvanceGithubCrawler/catalog
+```
+
+生产前自检：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler --doctor
+```
+
+自检只输出布尔值、计数和模型名，不应输出密钥内容。正式生产至少应看到：
+
+- `github_token: true` 或 `github_token_count > 0`
+- `openai_api_key: true`
+- `e2b_api_key_count > 0`
+- `git: true`
+- `openai_sdk: true`
+- `e2b_sdk: true`
+
+`docker: false` 不一定阻塞 E2B 生产；只有显式走本地 Docker fallback 时才需要本机 Docker。
+
+## 凭据与配置
+
+Crawler 当前没有 TOML profile；配置主要来自环境变量、`.env` 和 CLI 参数。
+
+### 配置文件位置
+
+默认会读取当前工作目录下的：
+
+```text
+.env
+```
+
+按本文工作目录约定执行时，它就是 `AlvanceGithubCrawler/.env`。
+
+也可通过外部路径覆盖：
+
+```bash
+export PIPELINE_ENV_FILE=/path/to/crawler.env
+```
+
+配置优先级：
+
+```text
+进程环境变量 > PIPELINE_ENV_FILE 指向的 dotenv > 当前工作目录 .env > 代码默认值
+```
+
+注意：进程环境优先级最高。如果 shell 里已经 export 了某个变量，`.env` 中同名字段不会覆盖它。
+
+### 凭据字段
 
 ```dotenv
 GITHUB_TOKEN=
-GITHUB_TOKEN1=github_pat_replace_me_1
-GITHUB_TOKEN2=github_pat_replace_me_2
+GITHUB_TOKEN1=
+GITHUB_TOKEN2=
 
-OPENAI_API_KEY=sk_replace_me
+OPENAI_API_KEY=
 OPENAI_BASE_URL=
 OPENAI_MODEL=gpt-5-mini
 
 E2B_API_KEY=
-E2B_API_KEY1=e2b_replace_with_first_key
-E2B_API_KEY2=e2b_replace_with_second_key
-E2B_API_KEY3=e2b_replace_with_third_key
-
-PIPELINE_E2B_CONCURRENCY=20
-PIPELINE_PRESCREEN_CONCURRENCY=20
+E2B_API_KEY1=
+E2B_API_KEY2=
+E2B_API_KEY3=
 ```
 
-字段说明：
+字段语义：
 
-- `GITHUB_TOKEN1`、`GITHUB_TOKEN2`：GitHub 仓库搜索、内容读取和 code search 的轮询凭据池；
-- `GITHUB_TOKEN`：单 Token 兼容回退配置。编号 Token 存在时优先使用编号池；两个 PAT 若属于同一 GitHub 账号，GitHub 可能仍共享账号级额度；
-- `OPENAI_API_KEY`：Stage 3 issue 方向判定；
-- `OPENAI_MODEL`：可选，默认 `gpt-5-mini`；
-- `OPENAI_BASE_URL`：可选，OpenAI 兼容网关地址；
-- `E2B_API_KEY1`、`E2B_API_KEY2`、`E2B_API_KEY3`：三个独立 E2B 并发池，每个 Key 最多 20；
-- `E2B_API_KEY`：只用于单 Key 命令，双 Key 量产时保持为空。
+- `GITHUB_TOKEN1`、`GITHUB_TOKEN2`：GitHub API token 池，按编号顺序去重轮询。用于仓库搜索、文件读取、tree、issue 和 code search。
+- `GITHUB_TOKEN`：单 token 回退。没有编号 token 时使用。
+- `OPENAI_API_KEY`：方向判断阶段使用的 OpenAI 兼容模型凭据。
+- `OPENAI_BASE_URL`：OpenAI 兼容网关地址。若只给域名根路径，代码会补 `/v1`。
+- `OPENAI_MODEL`：方向判断模型，默认 `gpt-5-mini`。
+- `E2B_API_KEY1`、`E2B_API_KEY2`、`E2B_API_KEY3`：E2B key 池，按编号顺序去重轮询。
+- `E2B_API_KEY`：单 key 回退。没有编号 key 时使用。
 
-也支持已有环境的别名 `MODEL_API_KEY`、`MODEL_BASE_URL`、`MODEL_NAME`、`E2B_KEY`，
-并可通过 `PIPELINE_ENV_FILE=/path/to/.env` 加载外部文件。未设置任意 GitHub Token 时，
-程序会尝试安全复用当前 `gh auth` 登录态。
+兼容别名：
 
-环境自检不会输出密钥内容：
+- `MODEL_API_KEY` 等同于 `OPENAI_API_KEY`
+- `MODEL_BASE_URL` 等同于 `OPENAI_BASE_URL`
+- `MODEL_NAME` 等同于 `OPENAI_MODEL`
+- `E2B_KEY` 等同于 `E2B_API_KEY`
+
+如果没有配置 GitHub token，程序会尝试使用本机 `gh auth token` 的登录态，但生产不建议依赖隐式凭据。
+
+### 生产参数环境变量
+
+这些变量由 `PipelineConfig.from_env()` 读取：
+
+- `PIPELINE_OUTPUT_DIR`：Crawler 状态目录，默认 `.crawler-state`。
+- `PIPELINE_CATALOG_DIR`：Trace/Harbor 控制面 catalog 目录，默认 `catalog`。
+- `PIPELINE_FEATURE_ISSUE_LIMIT`：Stage 3 检查 feature issue 的数量上限，默认 `10`。
+- `PIPELINE_OPENAI_TIMEOUT_S`：方向判断 LLM 请求超时，默认 `120`。
+- `PIPELINE_OPENAI_MAX_OUTPUT_TOKENS`：方向判断输出 token 上限，默认 `1000`。
+- `PIPELINE_E2B_CPU_COUNT`：E2B template CPU，默认 `1`。
+- `PIPELINE_E2B_MEMORY_MB`：E2B template 内存，默认 `1024`。
+- `PIPELINE_E2B_CONCURRENCY`：每个 E2B key 的并发，默认 `20`，必须在 `1..20`。
+- `PIPELINE_PRESCREEN_CONCURRENCY`：仓库 checkout、评分和方向判断并发，默认 `1`，必须在 `1..20`。
+- `PIPELINE_LANGUAGE_QUOTA_ENABLED`：是否启用语言占比惩罚，默认 `false`。
+- `PIPELINE_MAX_REPO_SIZE_KB`：GitHub 报告仓库大小上限，默认 `100000`。
+
+代码内仍有一些固定默认值：
+
+- 支持语言：`go`、`python`、`typescript`、`javascript`、`rust`。
+- 软评分入围阈值：`min_soft_score = 7.0`。
+- GitHub 搜索每页候选数：`max_candidates_per_query = 100`。
+- 默认搜索页数：`search_pages = 1`，可由 CLI `--search-pages` 覆盖。
+- E2B 离线测试命令超时：`build_timeout_s = 600`。
+- E2B benchmark 单次命令超时：`benchmark_timeout_s = 600`。
+- benchmark 次数：`benchmark_runs = 3`。
+- tree summary 限制：`max_tree_entries = 1500`，`max_tree_chars = 18000`。
+
+这些固定值如果后续需要大规模调参，建议优先迁移为环境变量或 profile 文件，不要在流程代码里继续散落魔法数字。
+
+## 常用命令
+
+### 环境自检
 
 ```bash
-uv run alvance-github-crawler --doctor
+conda run --no-capture-output -n bench alvance-github-crawler --doctor
 ```
 
-开始量产前应确认输出至少包含：`github_token: true`、`github_token_count: 2`、`openai_api_key: true`、
-`e2b_api_key_count: 3`、`e2b_total_concurrency: 60` 和 `e2b_sdk: true`。
+### 少量仓库完整试跑
 
-## 三 Key 并发量产
-
-量产必须在 `XBY` 分支运行。根目录的一键入口会启动完整的 GitHub 抓取、初筛、方向判断、
-E2B 离线测试、资源升级重试、Dockerfile/Task 生成、日志统计和分批推送，并同时显示终端
-进度页面：
+实时搜索 GitHub，并对最多 5 个新仓库跑完整 pipeline：
 
 ```bash
-git switch XBY
-git pull --ff-only origin XBY
-./run.sh
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --max-repos 5 \
+  --verbose
 ```
 
-也可以直接运行同一个入口：
+### 只抓取初筛候选
+
+不调用 LLM、Docker 或 E2B，只写 crawl 输出：
 
 ```bash
-uv run python monitor.py
-```
-
-默认预筛并发为 20；`E2B_API_KEY1`、`E2B_API_KEY2` 和 `E2B_API_KEY3` 各使用 20 个并发槽，总 E2B
-并发最多 60。完成一轮后会继续扩大抓取范围，直到三个 E2B Key 都耗尽、发生不可恢复错误，
-或用户按 `Ctrl+C` 安全暂停。断点和完整日志保存在 `outputs/`，生成的 Task、material、
-catalog 和统计文档会自动提交并推送到 `XBY`，不会自动修改 `main`。
-
-启动脚本只检查凭据是否存在，不会输出 Key 内容。若当前不在 `XBY`、缺少三个 E2B Key、
-缺少 GitHub/OpenAI 凭据或没有安装 E2B SDK，脚本会在消耗额度前停止并给出修复指令。
-
-## 运行
-
-先用少量仓库验证完整链路：
-
-```bash
-uv run alvance-github-crawler --max-repos 5 --verbose
-```
-
-暂时没有 e2b 凭据时，可显式使用本地 Docker fallback。此模式写入的状态是 `offline_verified_local`，不是最终的 `ready_for_phase1`：
-
-```bash
-uv run alvance-github-crawler --max-repos 5 --skip-e2b
-```
-
-覆盖默认搜索条件：
-
-```bash
-uv run alvance-github-crawler \
-  --query 'language:go stars:100..5000 pushed:>2025-07-01' \
-  --search-pages 2 \
-  --max-repos 20
-```
-
-构建器升级后需要精确重跑历史淘汰项时，可添加 `--retry-rejected`。Docker 基础版本会优先从仓库的 `go.mod`、`pyproject.toml`、`package.json engines` 或 `rust-toolchain` 推导。
-
-爬取状态文件是追加写入的。再次执行时，已经进入 `.crawler-state/candidates.jsonl` 的仓库会跳过；语言配额也会从这个文件恢复。失败记录不会永久去重，因此临时 API 或构建错误修复后可以重试。
-
-通过项目会自动生成轻量 Harbor 封装：本地和 GitHub 只保存 TOML、JSON、Dockerfile 指纹以及测试入口，不保存仓库源码、依赖、编译缓存或镜像。完整环境仅存在 e2b。已有候选可迁移：
-
-```bash
-uv run alvance-github-crawler --package-existing
-```
-
-大量发现时可先把通过前三阶段的候选写入本地忽略的轻量队列，避免一个耗时较长的
-E2B 首次构建阻塞后续仓库发现；消费队列时仍会重新下载精确 commit 到临时目录，
-并在单项结束后删除：
-
-```bash
-uv run alvance-github-crawler --defer-e2b --max-repos 100
-uv run alvance-github-crawler --verify-pending --e2b-concurrency 20
-```
-
-新建 E2B template 默认使用 1 vCPU、1024 MB；并发默认上限为每个 Key 20。可分别通过
-`PIPELINE_E2B_CPU_COUNT`、`PIPELINE_E2B_MEMORY_MB` 和
-`PIPELINE_E2B_CONCURRENCY` 调整。三个编号 Key 可提供 60 个总并发槽。已存在且命中
-alias 的 template 会直接复用原规格。
-语言配额惩罚默认关闭，因此仓库不会因当前语言占比而被淘汰；只有明确设置
-`PIPELINE_LANGUAGE_QUOTA_ENABLED=true` 时才启用原方案中的 S5 配额评分。
-
-迁移后可从项目根目录直接复用远端模板：
-
-```bash
-export E2B_API_KEY="${E2B_API_KEY:-$E2B_KEY}"
-harbor run \
-  --path tasks/<task-name> \
-  --env e2b \
-  --no-force-build \
-  --agent nop \
-  --disable-verification
-```
-
-不要对这种封装使用 `harbor tasks start-env`，因为当前 Harbor 版本的该命令固定强制重建；`harbor run` 默认会命中已经准备好的 e2b alias。
-
-## 关键实现约定
-
-- 采用方案末尾的最终修订：S6 纳入评分，阈值为 7/12。
-- Stage 1 的测试设施检测不只看配置文件：Go 要求 `go.mod` 和 `_test.go`；Node 要求
-  test script 和 Jest/Vitest/Mocha 等框架；Python 检查 pytest 配置、测试依赖或 `tests/`；
-  Rust 检查 Cargo 测试代码、测试 target 或 dev dependencies。
-- Stage 4 与方案伪代码一致：依赖在镜像构建期联网获取，随后在完全断网的容器中跑测试，用于排除运行期联网依赖。
-- 默认路径不在本机保存仓库镜像：Runtime Template 按语言/版本持久化在 e2b，Repository Template 按仓库/commit/依赖哈希持久化在 e2b；相同 alias 会直接复用，不重新安装或编译。
-- Repository Template 在 e2b 内按精确 commit 初始化真实浅 Git 仓库到 `/app`，因此 Trace 可直接执行 `git rev-parse`、保留 rollout commit 并导出二进制 patch。
-- 每个通过仓库还会派生一个只做运行时命令适配的 Harbor wrapper Template。wrapper 构建一次后持久化在 e2b；本地三层 Trace 封装通常只占十余 KB。
-- Stage 4 和 Stage 5 复用同一个 e2b Repository Template，二者均设置 `allow_internet_access=False`。本地 Docker 只在 `--skip-e2b` 时启用。
-- E2B Runtime/Repository Template 的首次构建不设淘汰超时，只记录构建耗时；600 秒限制仅用于断网测试命令。本地 Docker fallback 仍保留自身构建超时。
-- Node 的默认测试命令使用 `CI=1 npm test`，同时兼容 jest 和 vitest。
-- H6 的任何搜索异常都会记录为 `stage_error`，不会当作“零结果”放行。
-- 当 grep.app 返回 Vercel Security Checkpoint 或连接超时时，使用 Sourcegraph 公共代码索引作为第二独立搜索源，并在候选记录的 `h6_sources` 中标注 `sourcegraph_fallback`；两个来源都不可用时仍失败关闭。
-- e2b 超资源阈值时，会依据 LLM 返回的 `target_paths` 尝试生成保守的子集测试命令。
-- flaky 定义为三次耗时极差至少 15 秒或退出码不一致，按方案扣 2 分；资源仍超限或扣分后低于 7 时排除。
-- 为避免明显不可能满足 e2b 启动/测试阈值的超大仓库阻塞下载，默认跳过 GitHub 报告体积超过 100 MB 的仓库；可用 `PIPELINE_MAX_REPO_SIZE_KB` 调整。tarball 本身另有 200 MB/180 秒保护上限。
-
-## 测试
-
-```bash
-uv run pytest
-```
-
-单元测试不访问 GitHub、OpenAI、Docker 或 e2b。真实端到端执行会产生 API、Docker 构建与 e2b 费用，建议从 `--max-repos 1` 开始。
-
-完整的 500 仓库生产运行使用可恢复脚本：
-
-```bash
-PIPELINE_RUN_ID=github-500-20260729 scripts/run_production_pipeline.sh
-```
-
-该脚本默认使用滚动 20 并发，保留逐阶段日志和性能统计，并只对明确的资源失败项从
-1 CPU / 1024 MB 升级到 2 CPU / 4096 MB。运行和恢复说明见
-[`docs/production-pipeline-runbook.md`](docs/production-pipeline-runbook.md)。
-
-## 初步候选抓取
-
-本轮只抓取并筛选五种语言的候选，不调用 LLM、Docker 或 E2B。`target-total`
-表示原始 GitHub 样本数；`per-language` 仅控制每条语言查询抽取多少原始结果，
-不限制初筛通过数。500 条原始记录都会被检查，通过项全部进入后续管线：
-
-```bash
-uv run alvance-github-crawler crawl \
+conda run --no-capture-output -n bench alvance-github-crawler crawl \
   --target-total 100 \
   --per-language 20 \
-  --output outputs/github_crawl_100
+  --output outputs/github_crawl_100 \
+  --verbose
 ```
 
-该模式生成 `raw_repositories.jsonl`、`accepted_repositories.jsonl`、
-`rejected_repositories.jsonl`、`summary.json` 以及断点文件；同一输出目录可重复运行并继续
-未完成的语言页。
+`--target-total` 必须等于 `--per-language * 5`，因为当前固定抓取五种语言。
+
+输出目录包含：
+
+- `raw_repositories.jsonl`
+- `accepted_repositories.jsonl`
+- `rejected_repositories.jsonl`
+- `summary.json`
+- checkpoint 文件
+
+### 基于 crawl 结果生产候选
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler produce \
+  --input outputs/github_crawl_100/accepted_repositories.jsonl \
+  --max-repos 10 \
+  --verbose
+```
+
+只生产指定仓库，可重复 `--repository`：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler produce \
+  --input outputs/github_crawl_100/accepted_repositories.jsonl \
+  --repository owner/repo-a \
+  --repository owner/repo-b \
+  --verbose
+```
+
+### 分离 prescreen 与 E2B 验证
+
+先把通过初筛和方向判断的候选放入 pending 队列：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler produce \
+  --input outputs/github_crawl_100/accepted_repositories.jsonl \
+  --defer-e2b \
+  --prescreen-concurrency 8 \
+  --verbose
+```
+
+再消费 pending 队列执行 E2B template、断网测试、benchmark 和 Harbor wrapper 包装：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --verify-pending \
+  --e2b-concurrency 4 \
+  --verbose
+```
+
+这种方式更适合大规模生产，因为长尾 E2B 构建不会阻塞前面的 GitHub 发现和方向判断。
+
+### 本地 fallback
+
+没有 E2B 凭据时可跳过 E2B：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --max-repos 5 \
+  --skip-e2b \
+  --verbose
+```
+
+该模式会写入 `offline_verified_local`，不能等价视为最终可用于 DeepSWE 的 E2B 材料。
+
+### 重新打开失败项
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --requeue-failures \
+  --failure-reason e2b_resource_exhausted \
+  --failure-reason benchmark_resource_fail \
+  --verbose
+```
+
+可加 `--failure-contains TEXT` 进一步限制错误日志包含某段文本的失败项。
+
+### 打包已有 qualified 候选
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --package-existing \
+  --verbose
+```
+
+用于已有 `.crawler-state/candidates.jsonl` 或 `catalog/e2b-packages.jsonl`，但还需要补齐 Harbor/E2B wrapper 的场景。
+
+### 导出 DeepSWE handoff
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --export-deepswe-input \
+  --repo owner/repo \
+  --out outputs/owner-repo-handoff.json
+```
+
+该 JSON 是 DeepSWE 消费 Crawler 结果的桥接输入。
+
+### 导出 repo summary
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --export-repo-summary \
+  --repo owner/repo \
+  --out outputs/owner-repo.summary.json
+```
+
+用于 DeepSWE 生成 repo card 或做材料 review。
+
+### 导出 Material 目录
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --export-materials \
+  --repo-count 5 \
+  --material-dir Material \
+  --clone-repos \
+  --require-clone \
+  --clone-timeout-s 120
+```
+
+该命令从本地 Crawler 产物选择可用记录，准备 DeepSWE/Harbor 材料目录。`--clone-repos` 会把仓库 clone 到 Material 内；不加时只导出元数据和已有材料。
+
+### 多样性报告
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --diversity-report \
+  --out catalog/diversity-report.md
+```
+
+报告按语言、领域、质量和 DeepSWE feedback 汇总候选分布，用于批量生产时避免样本过度集中。
+
+### 记录 DeepSWE 反馈
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --record-deepswe-feedback \
+  --repo owner/repo \
+  --base-commit 0123456789abcdef0123456789abcdef01234567 \
+  --material-id example-material \
+  --task-id example-task \
+  --outcome abandoned \
+  --reason verifier_weak \
+  --notes "verifier could not distinguish API-compatible failure"
+```
+
+反馈默认写入 `catalog/deepswe-feedback.jsonl`，也可用 `--out` 指定路径。
+
+### 查看生产事件
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --events \
+  --tail 50
+```
+
+筛选某个仓库：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --events \
+  --repo owner/repo \
+  --tail 20
+```
+
+## CLI 参数语义
+
+`alvance-github-crawler` 有两类用法：
+
+- 子命令模式：`crawl` 和 `produce`。
+- 直接模式：不写子命令时，直接从 GitHub 搜索并运行完整 pipeline。
+
+### 通用参数
+
+- `--query QUERY`：覆盖默认 GitHub search query，可重复。
+- `--max-repos N`：最多处理多少个新仓库。
+- `--search-pages N`：实时搜索模式下每条 query 抓取多少页，必须大于等于 1。
+- `--prescreen-concurrency N`：checkout、软评分、方向判断并发，范围 `1..20`。
+- `--e2b-concurrency N`：每个 E2B key 的并发，范围 `1..20`。
+- `--skip-e2b`：跳过 E2B，用本地 Docker fallback 或只注册本地验证结果。
+- `--defer-e2b`：prescreen 通过后写 pending 队列，不立即跑 E2B。
+- `--verify-pending`：消费 pending 队列。
+- `--requeue-failures`：把指定失败原因重新放回 pending。
+- `--failure-reason REASON`：`--requeue-failures` 使用的失败原因，可重复。
+- `--failure-contains TEXT`：按错误文本进一步过滤失败项。
+- `--retry-rejected`：实时 pipeline 中允许重新尝试历史 terminal rejection。
+- `--verbose`：输出更详细日志。
+- `--doctor`：环境与凭据自检。
+
+### `crawl` 参数
+
+- `--target-total N`：总原始样本数，必须等于 `--per-language * 5`。
+- `--per-language N`：每种语言抓取多少条原始记录。
+- `--output DIR`：crawl 输出目录。
+- `--max-search-pages N`：每种语言最多请求多少 GitHub Search 页，GitHub Search API 上限通常为 10。
+- `--request-interval SECONDS`：GitHub 请求最小间隔。
+- `--api-timeout SECONDS`：GitHub 请求超时。
+
+### `produce` 参数
+
+- `--input PATH`：消费 `accepted_repositories.jsonl`。
+- `--repository OWNER/REPO`：只生产指定仓库，可重复且保持顺序。
+- `--max-repos N`：从输入里最多选择多少个未处理仓库。
+- `--defer-e2b`：只做 prescreen 并入队。
+- `--skip-e2b`：不使用 E2B，写本地验证结果。
+
+### 导出与辅助参数
+
+- `--package-existing`：为已有候选补 Harbor/E2B wrapper。
+- `--export-deepswe-input`：导出单个候选的 DeepSWE handoff JSON，要求 `--repo` 和 `--out`。
+- `--export-repo-summary`：导出单个候选的 summary JSON，要求 `--repo` 和 `--out`。
+- `--diversity-report`：写多样性报告，默认输出到 `catalog/diversity-report.md`。
+- `--record-deepswe-feedback`：追加 DeepSWE 生产反馈，要求 `--repo`、`--base-commit`、`--outcome`、`--reason`。
+- `--task-id`、`--material-id`、`--base-commit`、`--outcome`、`--reason`、`--notes`：feedback 模式字段。
+- `--events`：打印 `.crawler-state/events.jsonl`。
+- `--tail N`：事件输出只保留最后 N 行。
+- `--export-materials`：导出 DeepSWE Material 目录。
+- `--repo-count N`：`--export-materials` 选择仓库数，默认 5。
+- `--material-dir DIR`：`--export-materials` 输出目录，默认 `Material`。
+- `--clone-repos`：导出材料时 clone 仓库。
+- `--require-clone`：clone 失败即失败。
+- `--clone-timeout-s N`：clone 相关单命令超时，默认 120 秒。
+
+## 执行流程
+
+### 1. GitHub crawl
+
+目标：
+
+- 从五种语言按 query 抓取原始仓库记录。
+- 固定 repo、默认分支、base commit、source tree、stars、license、topics、pushed_at、测试证据等快照字段。
+- 生成可恢复的 crawl 输出，后续 produce 不应随 GitHub 默认分支漂移而改变材料语义。
+
+主要产物：
+
+- `outputs/<crawl-run>/raw_repositories.jsonl`
+- `outputs/<crawl-run>/accepted_repositories.jsonl`
+- `outputs/<crawl-run>/rejected_repositories.jsonl`
+- `outputs/<crawl-run>/summary.json`
+
+### 2. Stage 1 hard filter
+
+目标是先剔除明显不适合 DeepSWE 的仓库。当前硬过滤包括：
+
+- stars 至少 100。
+- 最近一年有 push。
+- 许可证在许可列表内：MIT、Apache-2.0、BSD-2-Clause、BSD-3-Clause、ISC、MPL-2.0。
+- 语言属于 Go、Python、TypeScript、JavaScript、Rust。
+- 存在原生测试设施。
+
+测试设施不是简单看目录名：
+
+- Go：需要 `go.mod` 和 `_test.go`。
+- Python：检查 `tests/`、pytest 配置、`conftest.py` 或 requirements 中 pytest。
+- Node：需要 `package.json` test script，并能识别 Jest、Vitest、Mocha、Node test、Bun test 等。
+- Rust：检查 `Cargo.toml`、integration tests、test target 或 dev dependencies。
+
+失败会写入 `.crawler-state/rejections.jsonl`，stage 通常为 `stage1_hard_filter`。
+
+### 3. Stage 2 checkout and soft score
+
+目标：
+
+- clone 精确 commit。
+- 用本地 tree summary、文件数量、public symbol、stars、feature issue、开发者库信号等计算软评分。
+- 过滤明显过小、过大、缺少公共 API 或不适合构造成库级任务的项目。
+
+当前软评分满分 12：
+
+- `S1_file_count`：文件数规模。
+- `S2_stars`：star 区间。
+- `S3_feature_issues`：是否存在 feature issue。
+- `S4_public_symbols`：公共符号数量。
+- `S5_language_quota`：语言配额项，默认不强制语言占比时通常为通过。
+- `S6_developer_lib`：是否具有 library/sdk/framework/parser/client/driver 等开发者库信号。
+
+默认入围阈值为 `7.0`。
+
+### 4. Stage 3 direction
+
+目标：
+
+- 让 OpenAI 兼容模型基于 issue、仓库摘要和 tree summary 判断是否存在适合 DeepSWE 的功能扩展方向。
+- 生成方向描述、关键词、目标路径候选。
+- 用 GitHub Code Search、grep.app 或 Sourcegraph fallback 做公开实现核查，避免选择已有明显公开实现污染的问题。
+
+结果会进入候选记录的 `direction`、`direction_keywords`、`direction_target_paths`、`h6_sources`。
+
+### 5. Stage 3.5 E2B environment
+
+目标：
+
+- 基于语言和依赖推导 runtime。
+- 在 E2B 中构建 Runtime Template 和 Repository Template。
+- Repository Template 固定精确 commit，并在 `/app` 保留真实 Git 仓库。
+
+E2B template alias 会进入 `catalog/e2b-packages.jsonl`、`materials/<material-id>/material.toml` 和 receipt，供 DeepSWE/Harbor 后续复用。
+
+### 6. Stage 4 offline test
+
+目标：
+
+- 从同一个 E2B Repository Template 启动断网 sandbox。
+- 执行原生测试命令，确认仓库不依赖运行期联网。
+
+失败原因可能包括：
+
+- `offline_test_timeout`
+- `benchmark_test_fail`
+- `e2b_resource_exhausted`
+- `build_fail`
+- `infra_error`
+
+### 7. Stage 5 benchmark
+
+目标：
+
+- 重复运行测试命令，默认 3 次。
+- 记录 cold start、中位测试耗时、峰值内存、exit code 稳定性。
+- 判断是否 flaky、是否资源超限。
+
+flaky 会扣 2 分；若扣分后低于软评分阈值，会被拒绝。
+
+### 8. Stage 6 Harbor package
+
+目标：
+
+- 为通过 E2B 验证的仓库生成 Harbor-compatible wrapper。
+- 写入 Trace 风格三层控制面：`catalog/`、`materials/`、`tasks/`。
+- 通过 `harbor run --env e2b --no-force-build` 复用已有 E2B alias。
+
+Crawler 生成的 task 是材料级方向任务，不是最终 DeepSWE Bench 问题包。最终 instruction、verifier 和轨迹仍由 DeepSWE 管线生成。
+
+## 产物结构
+
+### `.crawler-state/`
+
+默认状态目录，可通过 `PIPELINE_OUTPUT_DIR` 改变：
+
+```text
+.crawler-state/
+├── candidates.jsonl
+├── rejections.jsonl
+├── pending.jsonl
+└── events.jsonl
+```
+
+- `candidates.jsonl`：成功注册或已验证候选，按 JSONL 追加。包含 repo、base commit、score、direction、environment、benchmark、harbor package 等信息。
+- `rejections.jsonl`：被拒绝或阶段异常的候选，包含 stage、reason、错误摘要和相关证据。
+- `pending.jsonl`：`--defer-e2b` 生成的待验证队列。
+- `events.jsonl`：生产事件流，可用 `--events` 查看。
+
+### `catalog/`
+
+```text
+catalog/
+├── e2b-packages.jsonl
+├── repo-materials.toml
+├── diversity-report.md
+└── deepswe-feedback.jsonl
+```
+
+- `e2b-packages.jsonl`：qualified package 总账，含 E2B alias、Harbor wrapper、测试命令、资源、benchmark 和材料路径。
+- `repo-materials.toml`：Trace 风格 material 索引。
+- `diversity-report.md`：候选多样性报告。
+- `deepswe-feedback.jsonl`：DeepSWE 后续生产结果反馈。
+
+### `materials/<material-id>/`
+
+典型内容：
+
+```text
+materials/<material-id>/
+├── README.md
+├── material.toml
+├── environment/Dockerfile
+├── receipts/e2b.json
+└── ...
+```
+
+`material.toml` 保存 repo、commit、source tree、语言、runtime、E2B template、测试命令和 Harbor 环境信息。材料目录不应包含 API key、私有 token、完整源码镜像、依赖缓存或本机临时路径。
+
+### `tasks/<task-id>/`
+
+典型内容：
+
+```text
+tasks/<task-id>/
+├── task.toml
+├── material.toml
+├── direction.md
+├── instruction.md
+├── environment/Dockerfile
+├── tests/test.sh
+└── solution/solve.sh
+```
+
+该 task 是 Crawler 阶段的 Harbor-compatible material wrapper，用于确认环境可启动和测试命令可运行。不要把它误解为最终隐藏 verifier 完备的 DeepSWE 题目包。
+
+### `outputs/production-runs/<RUN_ID>/`
+
+历史批处理脚本会生成：
+
+```text
+outputs/production-runs/<RUN_ID>/
+├── crawl/
+├── production/
+├── logs/
+├── stage-timings.jsonl
+├── metrics.json
+└── statistics.md
+```
+
+其中 `metrics.json` 和 `statistics.md` 用于写生产统计；`logs/` 保留每个阶段 stdout/stderr。
+
+## 如何分析运行结果
+
+### 快速判断本轮是否成功
+
+1. 看命令最终 JSON summary。
+2. 看 `.crawler-state/events.jsonl` 是否有持续新增。
+3. 看 `.crawler-state/candidates.jsonl` 中是否有新增 `ready_for_phase1` 或 `qualified` 记录。
+4. 看 `.crawler-state/rejections.jsonl` 的 `stage` 和 `reason` 是否集中在某一类。
+
+### 常见状态含义
+
+- `registered`：候选已注册。
+- `queued`：prescreen 通过，已进入 pending，尚未跑 E2B。
+- `duplicate`：该 repo 已在 candidate、pending 或 catalog 中存在。
+- `rejected`：质量或环境原因拒绝。
+- `error`：阶段异常，通常需要看 `error_type` 和日志。
+- `key_exhausted`：E2B key 额度或并发槽耗尽。
+- `offline_verified_local`：本地 fallback 通过，但不是最终 E2B qualified。
+- `ready_for_phase1`：E2B 离线测试和 benchmark 通过，可供 DeepSWE 使用。
+- `ready_for_phase1_flaky_test_suite`：测试可用但存在 flaky 扣分风险。
+
+### 常见 rejection stage
+
+- `stage1_hard_filter`：stars、活跃度、许可证、语言或测试设施不满足。
+- `stage2_checkout`：clone 或 checkout 失败。
+- `stage2_soft_score`：软评分不足或仓库过大。
+- `stage3_direction`：没有合适功能扩展方向，或公开实现污染风险无法排除。
+- `stage3_5_e2b_environment`：E2B runtime/repository template 构建失败。
+- `stage4_e2b_offline_test`：断网测试失败。
+- `stage5_e2b_benchmark`：benchmark 不稳定、资源超限或测试失败。
+- `stage6_harbor_package`：Harbor wrapper 包装失败。
+
+### 调试命令
+
+查看最近事件：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler --events --tail 50
+```
+
+查看某个 repo：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --events \
+  --repo owner/repo \
+  --tail 50
+```
+
+统计 rejection 分布：
+
+```bash
+python - <<'PY'
+import json
+from collections import Counter
+from pathlib import Path
+
+path = Path("AlvanceGithubCrawler/.crawler-state/rejections.jsonl")
+counts = Counter()
+for line in path.read_text(encoding="utf-8").splitlines():
+    if not line.strip():
+        continue
+    item = json.loads(line)
+    counts[(item.get("stage"), item.get("reason"))] += 1
+for (stage, reason), count in counts.most_common(30):
+    print(count, stage, reason)
+PY
+```
+
+## 与 DeepSWE 管线的衔接
+
+DeepSWE 可以通过三种方式消费 Crawler 结果：
+
+1. 直接指定 Crawler task：
+
+```bash
+conda run --no-capture-output -n bench alvance-produce-sweharbor \
+  --root AlvanceDeepSWE \
+  --crawler-root AlvanceGithubCrawler \
+  --crawler-task alv-example-task-v2 \
+  --api-key-file /home/wyy/Workspace/Benchmark/DeepSWE/api_key.json \
+  --require-harbor-cli \
+  --require-e2b-cli \
+  --verbose
+```
+
+2. 批量扫描 Crawler qualified 任务：
+
+```bash
+conda run --no-capture-output -n bench alvance-produce-sweharbor \
+  --root AlvanceDeepSWE \
+  --crawler-root AlvanceGithubCrawler \
+  --all \
+  --repo-count 3 \
+  --samples-per-repo 2 \
+  --api-key-file /home/wyy/Workspace/Benchmark/DeepSWE/api_key.json \
+  --require-harbor-cli \
+  --require-e2b-cli \
+  --continue-on-error \
+  --out analysis/three-repos-two-each-summary.json \
+  --report-out analysis/production-reports \
+  --feedback-out analysis/crawler-feedback.jsonl \
+  --jsonl-events analysis/three-repos-two-each-events.jsonl \
+  --explain-next \
+  --verbose
+```
+
+3. 先导出 handoff 或 Material，再由 DeepSWE 显式消费：
+
+```bash
+conda run --no-capture-output -n bench alvance-github-crawler \
+  --export-deepswe-input \
+  --repo owner/repo \
+  --out outputs/owner-repo-handoff.json
+```
+
+DeepSWE 侧如果最终 abandon 某个材料，应回写 feedback，避免 Crawler 后续继续优先选择同类问题。
+
+## 历史脚本与当前生产标准
+
+仓库保留了这些历史脚本：
+
+- `run.sh`
+- `monitor.py`
+- `scripts/run_production_pipeline.sh`
+- `scripts/run_continuous_production.sh`
+
+它们用于早期 XBY 分支连续量产，内部仍可能调用 `uv run`，并带有自动提交、推送、压缩 raw crawl 等行为。当前统一 bench 环境下，推荐优先使用 `conda run -n bench alvance-github-crawler ...` 和 DeepSWE 的 `alvance-produce-sweharbor ...` 组合。
+
+如果必须使用历史脚本，需要先审查：
+
+- 是否会自动 `git add/commit/push`。
+- 是否仍依赖 `uv`。
+- 输出目录是否会覆盖当前实验。
+- `PIPELINE_RUN_ID`、`PIPELINE_RUN_ROOT` 是否唯一。
+- 是否会把 raw API payload 或本地路径加入 Git。
+
+## 质量标准与蚂蚁需求对应
+
+Crawler 对 DeepSWE Bench 的贡献主要体现在材料质量：
+
+- 真实仓库：仓库来自 GitHub，记录 repo URL、base commit 和 source tree。
+- 可复现环境：通过 E2B Repository Template、断网测试和 benchmark 验证。
+- 可运行测试：每个候选必须有原生测试设施和测试命令。
+- 低污染风险：Stage 3 使用公开实现搜索，发现明显已有实现时拒绝。
+- 可追溯：候选、拒绝、pending、events、catalog、material、task 都是结构化产物。
+- 可批量恢复：crawl、pending、candidate registry 和 production run 输出都支持断点续跑。
+
+Crawler 不能替代 DeepSWE 的隐藏 verifier 校准。它只能证明“这个仓库材料适合生成问题”，不能证明“最终问题包具备合理难度、隐藏 verifier 充分、轨迹分布健康”。
+
+## 当前不足和风险点
+
+### 1. 配置方式仍偏环境变量
+
+Crawler 当前没有类似 DeepSWE 的 TOML profile。环境变量适合脚本，但不利于记录一次实验的完整配置快照。后续如果继续扩展，建议引入显式 profile 文件，并在 summary 中写出实际生效配置。
+
+### 2. 历史脚本仍含 `uv run`
+
+生产统一到 conda `bench` 后，历史脚本如果直接使用可能绕过 bench 环境。建议优先走 console script；若继续保留脚本，应逐步改为可配置 Python 入口或显式 `conda run -n bench`。
+
+### 3. 自动提交/推送有污染风险
+
+持续量产脚本可能自动提交 `catalog`、`materials`、`tasks` 和统计文档。正式运行前必须确认 `.gitignore`、输出目录和 raw payload 处理策略，避免提交本机路径、密钥、临时日志或大体积产物。
+
+### 4. 网关和 GitHub/E2B 额度影响明显
+
+GitHub rate limit、OpenAI 兼容网关超时、E2B key 额度耗尽都会造成大规模生产中断。需要使用 `--defer-e2b`、pending 队列、分 key 并发和 events/rejections 报告区分“材料质量失败”和“基础设施失败”。
+
+### 5. 方向判断仍依赖 LLM
+
+Stage 3 的 direction quality 会影响 DeepSWE 后续成包率。方向过浅、API contract 不清、目标路径过散，都可能导致 DeepSWE Roll 1/2 大量 revise 或 reject。应持续利用 `deepswe-feedback.jsonl` 反哺 Crawler 排序。
+
+### 6. Crawler task 不是最终题包
+
+`tasks/<task-id>` 只是材料 wrapper 和方向载体。最终交付前必须经过 DeepSWE 的 instruction lock、verifier lock、answer lock、trajectory report、package manifest 和 runtime validation。
+
+## 开发与测试
+
+单元测试：
+
+```bash
+conda run --no-capture-output -n bench pytest AlvanceGithubCrawler/tests
+```
+
+代码风格：
+
+```bash
+conda run --no-capture-output -n bench ruff check AlvanceGithubCrawler/src AlvanceGithubCrawler/tests
+```
+
+单元测试不应访问 GitHub、OpenAI、Docker 或 E2B。真实端到端测试会消耗 API 和 E2B 额度，应从 `--max-repos 1` 或小 crawl 目录开始。
+
+## 文档维护原则
+
+后续修改 Crawler 代码时，需要同步更新本 README，尤其是：
+
+- 新增或删除 CLI 参数。
+- 新增环境变量或改变默认值。
+- 调整筛选、评分、E2B、benchmark 或 Harbor 包装逻辑。
+- 改变 `.crawler-state`、`catalog`、`materials`、`tasks` 的结构。
+- 改变与 DeepSWE 的 handoff、feedback 或 Material 导出格式。
+
+文档应保持“生产可执行、参数可追溯、风险可排查”的结构，不要堆积历史流水账。
